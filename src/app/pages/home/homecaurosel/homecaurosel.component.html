@@ -1,0 +1,13 @@
+<div class="container">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel"  [ngClass]="{'active' : i == 0}" *ngFor="let event of eventList; let i = index"></li>
+    </ol>
+
+    <div class="carousel-inner" role="listbox">
+      <div class="item" [ngClass]="{'active' : i == 0}" *ngFor="let event of eventList; let i = index">
+        <img src="{{event.EventLargeImage}}" alt="{{event.EventName}}">
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,239 @@
+.cart_image{
+    border:1px solid #d7d7d7;
+    border-radius: 6px;
+}
+.cart_image img{
+    height: 100px;
+    margin: 0 auto;
+    display: block;
+}
+table{
+    width: 100%;
+    text-align: center;
+}
+table tr th {
+    background: #e5e5e5;
+    padding: 10px;
+    border-right: 2px solid #fff;
+    font-family: poppinsbold;
+    font-size: 12px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.29;
+    letter-spacing: 0.1px;
+     text-align: center; 
+    color: #222222;
+}
+table tr th:last-child{
+    border-right:none; 
+}
+table tr td .img_div{
+    min-width: 30%;
+    max-width: 50%;
+    float: left;
+    border: 1px solid gray;
+    padding: 15px;
+    border-radius: 4px;
+    height: 100px;
+   
+}
+
+.Product_name h5{
+    font-family: poppinsbold;
+    font-size: 20px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: -0.5px;
+    text-align: center; 
+    color: #262628;
+}
+table tr td .img_div img{
+    height: 50px;
+    width: auto;
+    max-width: 66px;
+    margin: 0 auto;
+    display: block;
+}
+table tr td .total_price{
+    font-family: poppinsbold;
+    font-size: 24px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    color: #ea1c2d;
+}
+table tr td .Product_price{
+    font-family: poppinsbold;
+    font-size: 18px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: #f11b2e;
+}
+.you_save{
+    opacity: 0.6;
+  font-family: poppinsbold;
+  font-size: 12px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: rgba(38, 38, 40, 0.6);
+}
+.Product_name ul li {
+    list-style-type: none;
+    display: inline-block;
+}
+/* .Product_name ul li i{
+    color:#f8c848;
+    font-size: 10px;
+} */
+.Product_name .font_size {
+    font-family: poppinsbold;
+    font-size: 10px;
+    line-height: 2.11;
+    letter-spacing: 0.3px;
+    text-align: left;
+    color: #777777;
+}
+button.dec_circle,button.dec_circle:focus{
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid #d0d0d0;
+    outline: none;
+}
+.margin_top{
+    margin-top: 5px;
+}
+.margin_top .value{
+    margin: 0 10px 0 10px;
+    font-family: poppinsbold;
+    font-size: 12.7px;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #221f1f;
+}
+button.bg_black {
+    border: 0;
+    background-color: transparent;
+    padding: 10px;
+}
+.bg_black img{
+    margin-top: -5px;
+}
+
+button.bg_black:focus{
+  outline: none;
+}
+
+.btn_right{
+    float: right;
+ }
+.btn_right button{
+    background: #ec1c24;
+    font-family: montserratbold;
+    font-size: 11.2px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    width: 131px;
+    text-align: center;
+    padding: 15px 0 15px; 
+    border:#ec1c24;
+    box-shadow: none;
+}
+.btn_right button:focus{
+    border:#ec1c24;
+    outline: none;
+    box-shadow: none;
+}
+.Search_div input, .Search_div input::placeholder{
+    color:rgba(25,25,25,255);
+    /* font-family: Poppins-SemiBold; */
+    font-family: montserratbold!important;
+    font-size: 20px;
+}
+.Search_div input:focus{
+    box-shadow: none;
+    outline: none;
+}
+
+@media screen and (max-width: 767px) {
+
+    table tr th,table tr td {
+    font-size: 10px !important;
+}
+table tr td .img_div {
+    padding: 10px;
+}
+/* Force table to not be like tables anymore */
+#no-more-tables table, #no-more-tables thead, #no-more-tables tbody, #no-more-tables th, #no-more-tables td, #no-more-tables tr {
+    display: block;
+}
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    #no-more-tables thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+#no-more-tables tr {
+    border: 1px solid #ccc;
+}
+
+#no-more-tables td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+    white-space: normal;
+    text-align: left;
+}
+
+    #no-more-tables td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+    }
+
+table.res_table td:before {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Search_div input, .Search_div input::placeholder{
+ font-size: 12px;
+}
+
+table tr td .Product_price,table tr td .you_save,table tr td .total_price{
+    font-family: poppinsbold;
+    font-size: 18px;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.5px;
+    text-align: left;
+    color: #f11b2e;
+}
+
+
+
+}

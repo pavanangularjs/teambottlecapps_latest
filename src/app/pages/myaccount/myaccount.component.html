@@ -1,0 +1,75 @@
+<section class="m_bottom">
+    <div class="container">
+
+        <div class="Search_div col-md-12 col-sm-12 col-lg-12 col-xs-12">
+            <input type="text" placeholder="My Account">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a>Home</a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <a>Account</a>
+                </li>
+            </ol>
+        </div>
+
+
+        <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12">
+            <ul class="sidebar-menu">
+                <li>
+                    <a>
+                        <img class="beer" src="assets/Images/assets/Orders.png">
+                        <span>My Orders</span>
+                        <i class="fa fa-angle-down pull-right"></i>
+                    </a>
+                
+                </li>
+                <li>
+                    <a>
+                        <img class="beer" src="assets/Images/account.png">
+                        <span>My Account</span>
+                        <i class="fa fa-angle-down pull-right"></i>
+                    </a>
+                    <ul class="sidebar-submenu" style="display: none;">
+                        <li>
+                            <a>Profil Information</a>
+                        </li>
+                        <li>
+                            <a>Manage Addresses</a>
+                        </li>
+                        <li>
+                            <a>Payment methods</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="star_color">
+                    <a>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <span>Favorites</span>
+                        <i class="fa fa-angle-down pull-right"></i>
+                    </a>
+
+                </li>
+
+                <li class="">
+                    <a>
+                        <img class="beer" src="assets/Images/logout.png">
+                        <span>Log Out</span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            <router-outlet></router-outlet>
+        </div>
+
+    
+
+    </div>
+
+</section>
+
+

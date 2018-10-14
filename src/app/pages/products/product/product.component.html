@@ -1,0 +1,42 @@
+<div class="Main_bottlesection">
+  <div class="item_img circle">
+    <div class="img_div">
+
+      <div class="margin_bottom">
+        <img class="firimg" src="assets/Images/favorites.png" *ngIf="item?.IsFavorite===false; else favActive"/>
+        <ng-template #favActive>
+            <img class="firimg" src="assets/Images/favorites-active.png">
+        </ng-template>       
+        <img class="second_img" src="{{item?.ProductImg}}" />
+        <img class="third_img" src="assets/Images/add-cart.png" *ngIf="item?.InCart===0; else cartActive"/>
+        <ng-template #cartActive>
+            <img class="third_img" src="assets/Images/add-cart-active.png"/>
+        </ng-template>
+        
+      </div>
+      <div class="second_content">
+        <div class="">
+          <p class="price">{{item?.OfferPriceDisplay}}</p>
+          <h5 class="productname">{{item?.ProductName}}</h5>
+          <p class="product_size">
+            <span>{{item?.Size}}</span>
+          </p>
+          <p class="rating_star">
+            <span *ngIf="item?.Rating===0; else starActive">
+                <i class="fa fa-star" *ngFor="let item of getCount(5)"></i>
+            </span>
+            <ng-template #starActive>
+              <span class='active-star'>
+                  <i class="fa fa-star" *ngFor="let item of getCount(item?.Rating)"></i>
+              </span>               
+            </ng-template>
+            
+            
+            <span class="first">{{item?.ReviewCount}}</span>
+            <span class="reviews"> reviews</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

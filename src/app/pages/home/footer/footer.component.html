@@ -1,0 +1,187 @@
+<footer>
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img footer_image">
+              <a href="#">
+                  <img src="assets/Images/foorterlogo.png" alt="Battlecapse">
+              </a>
+              <div class="margin_left">
+                  <address class="storelocation">
+                      <img class="location" src="assets/Images/location.png">Location
+                      <br>
+                      <span class="margin_left">storename</span>
+                      <br>
+                      <br>
+                      <span class="margin_left"> Address1</span>
+                      <br>
+                      <br>
+                      <span class="margin_left">City,State</span>
+                      <br>
+                      <br>
+                      <div class="contact_text">
+                          <img class="contact" src="assets/Images/contact.png">
+                          <span class="call"> Call: Phone</span>
+                          <br>
+                          <br>
+                      </div>
+                      <div>
+                          <img class="email" src="assets/Images/email.png">
+                          <span class="call">Email:StoreEmail</span>
+                      </div>
+
+                  </address>
+
+              </div>
+          </div>
+          <div class="accounts col-lg-2 col-md-2 col-sm-2 col-xs-6 item_img">
+              <h4 class="font_size">Accounts</h4>
+              <ul class="list-unstyled clear-margins">
+                  <li>
+                      <a (click)="myorders()">My Orders</a>
+                  </li>
+                  <li>
+                      <a [routerLink]="['/login']">My Payment method</a>
+                  </li>
+                  <li>
+                      <a [routerLink]="['/myaccount']" [queryParams]="{'id':2}">My Address</a>
+                  </li>
+                  <li>
+                      <a [routerLink]="['/login']">My Personal Info</a>
+                  </li>
+              </ul>
+          </div>
+          <div class="information col-lg-2 col-md-2 col-sm-2 col-xs-6 item_img">
+              <h4 class="font_size">Information</h4>
+              <ul class="list-unstyled clear-margins">
+
+                  <li>
+                      <a>Beer</a>
+                  </li>
+                  <li>
+                      <a>Liquor</a>
+                  </li>
+                  <li>
+                      <a>Wine</a>
+                  </li>
+                  <li>
+                      <a>Mixers & More</a>
+                  </li>
+                  <li>
+                      <a [routerLink]="['/']">Deals</a>
+                  </li>
+                  <li>
+                      <a [routerLink]="['/']">New Products</a>
+                  </li>
+                  <li>
+                      <a [routerLink]="['/']">Best Sellers</a>
+                  </li>
+                  <li>
+                      <a [routerLink]="['/']">Our Stores</a>
+                  </li>
+              </ul>
+          </div>
+
+          <div class="about col-lg-2 col-md-2 col-sm-2 col-xs-6 item_img">
+              <h4 class="font_size">About</h4>
+              <ul class="list-unstyled clear-margins">
+                  <li>
+                      <a [routerLink]="['/']">Deals</a>
+                  </li>
+                  <li>
+                      <a [routerLink]="['/']">New Products</a>
+                  </li>
+              </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img">
+              <h3 class="Subscribe">Subscribe Newsletter</h3>
+              <p class="newslatter">Enter your email address for our mailing list to keep yourself updated</p>
+              <div class="input-group subscribe">
+                  <input type="text" class="form-control" id="myid" placeholder="ENTER EMAIL ADDRESS ">
+                  <button type="button" class="btn btn-primaray">
+                      <img src="assets/Images/send.png">
+                  </button>
+
+              </div>
+              <div class="cards">
+                  <ul>
+                      <li>
+                          <img src="assets/Images/paypal.png">
+                      </li>
+                      <li>
+                          <img src="assets/Images/mastercard.png">
+                      </li>
+                      <li>
+                          <img src="assets/Images/visa.png">
+                      </li>
+                      <li>
+                          <img src="assets/Images/disocver.png">
+                      </li>
+                  </ul>
+
+              </div>
+          </div>
+          <div>
+              <a class="scrollToTop">
+                  <i class="fa fa-arrow-up" aria-hidden="true"></i>
+              </a>
+          </div>
+      </div>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <div class="container">
+      <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text_center">
+              <div class="copyright">
+                  <p class="made_with">Made With
+                      <i class="fa fa-heart" aria-hidden="true"></i>
+                      &
+                      <img class="beer" src="assets/Images/drink.png">
+                      <span class="allrights"> © 2018, All rights reserved</span>
+                  </p>
+
+              </div>
+          </div>
+          <div class="col-md-4 col-sm-4 col-lg-4">
+              <ul class="social-network social-circle">
+                     <li>
+                      <a class="icoFacebook" title="Facebook">
+                          <img src="assets/Images/facebook.png">
+                      </a>
+                  </li>
+                  <li>
+                      <a class="icoTwitter" title="Twitter">
+                          <img src="assets/Images/twitter.png">
+                      </a>
+                  </li>
+                  <li>
+                      <a class="icoLinkedin" title="Linkedin">
+                          <img src="assets/Images/linkedin.png">
+                      </a>
+                  </li>
+                  <li>
+                      <a class="youtube" title="Youtube">
+                          <img src="assets/Images/youtube.png">
+                      </a>
+                  </li>
+
+                  <li>
+                      <a class="instagram" title="instagram">
+                          <img src="assets/Images/Insta.png">
+                      </a>
+                  </li>
+              </ul>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+              <div class="design text_center">
+                  <a>PoweredBy </a>
+                  <img src="assets/Images/powered-by.png" alt="Battlecapse" class="first_imge">
+              </div>
+
+          </div>
+
+      </div>
+
+  </div>
+</div>
