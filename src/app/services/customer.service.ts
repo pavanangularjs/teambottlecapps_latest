@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError, EMPTY } from 'rxjs';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { switchMap, catchError, retry } from 'rxjs/operators';
 import * as global from '../global';
 import { CustomerLoginRequestPayload } from '../models/customer-login-request-payload';
@@ -9,12 +9,12 @@ import { UrlNames } from './url-provider';
 
 @Injectable()
 export class CustomerService {
-
+  headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
   constructor(private http: HttpClient) {
   }
 
   loginCustomer( reqParams: CustomerLoginRequestPayload ): Observable<any> {
-    return this.http.post<any>(global.baseUrl + UrlNames.LoginCustomer, reqParams).pipe(
+    return this.http.post<any>(global.baseUrl + UrlNames.LoginCustomer, reqParams, {headers : this.headers}).pipe(
       switchMap((res: any) => {
         return of(res);
       }),

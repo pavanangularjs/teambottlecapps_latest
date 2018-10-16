@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -15,27 +15,22 @@ import { ProductStoreSelectors } from '../../../state/product-store/product-stor
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent implements OnInit {
-  @ViewChild('openModal') openModal: ElementRef;
-
   customerSession: CustomerLoginSession;
   storeGetHomeData: any;
 
   constructor(private store: Store<CustomerLoginSession>, private customerService: CustomerService) {
-    console.log('... a new instance of HomepageComponent has been created');
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         this.customerSession = clsd;
       });
-      this.store.select(ProductStoreSelectors.productStoreStateData)
+    this.store.select(ProductStoreSelectors.productStoreStateData)
       .subscribe(pssd => {
         this.storeGetHomeData = pssd;
       });
   }
 
   ngOnInit() {
-    console.log('... OnInit hook on HomepageComponent is called');
-    // this.openModal.nativeElement.click();
-    this.store.dispatch(new CustomerLogin (this.customerService.getLoginCustomerParams()));
+    this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams()));
   }
 
 }
