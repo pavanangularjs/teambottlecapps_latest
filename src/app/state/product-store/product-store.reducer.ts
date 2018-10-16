@@ -2,10 +2,12 @@ import { ProductStoreActionTypes, ProductStoreAction } from './product-store.act
 
 export interface StateModel {
     getStoreHomeData: any;
+    productGetList: any;
 }
 
 const initialState: StateModel = {
-    getStoreHomeData: null
+    getStoreHomeData: null,
+    productGetList: null
 };
 
 export function productStoreReducer(state = initialState, action: ProductStoreAction): StateModel {
@@ -16,6 +18,13 @@ export function productStoreReducer(state = initialState, action: ProductStoreAc
             return {
                 ...state,
                 getStoreHomeData: action.payload
+            };
+        }
+
+        case ProductStoreActionTypes.ProductGetListSuccess: {
+            return {
+                ...state,
+                productGetList: action.payload
             };
         }
 

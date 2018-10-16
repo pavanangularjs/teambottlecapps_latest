@@ -64,8 +64,8 @@ import { CacheInterceptor } from './cacheInterceptor';
     StoreModule.forRoot({customer: customerReducer, productStore: productStoreReducer }),
     EffectsModule.forRoot([CustomerEffects, ProductStoreEffects]),
   ],
-  providers: [CustomerService, ProductStoreService,
-    HttpCacheService, { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true }],
+  providers: [CustomerService, ProductStoreService],
+    // HttpCacheService, { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

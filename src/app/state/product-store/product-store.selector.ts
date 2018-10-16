@@ -11,6 +11,16 @@ export const productStoreStateData = createSelector(
         }
     }
 );
+
+export const productGetListData = createSelector(
+    productStoreState,
+    (state) => {
+        if (state) {
+            return state.productGetList;
+        }
+    }
+);
 export const ProductStoreSelectors = {
-    productStoreStateData
+    productStoreStateData,
+    productGetListData
 };

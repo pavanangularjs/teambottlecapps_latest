@@ -1,9 +1,11 @@
 import { Action } from '@ngrx/store';
-import { StoreGetHomeRequestPayload } from '../../models/store-get-home-request-payload';
+import { ProductGetListRequestPayload } from '../../models/product-get-list-request-payload';
 
 export enum ProductStoreActionTypes {
     StoreGetHome = '[Store] StoreGetHome',
     StoreGetHomeSuccess = '[Store] StoreGetHomeSuccess',
+    ProductGetList = '[Store] ProductGetList',
+    ProductGetListSuccess = '[Store] ProductGetListSuccess',
 }
 
 export class StoreGetHome implements Action {
@@ -18,9 +20,26 @@ export class StoreGetHomeSuccess implements Action {
     constructor(public payload: any) { }
 }
 
+export class ProductGetList implements Action {
+    readonly type = ProductStoreActionTypes.ProductGetList;
+
+    constructor(public payload: ProductGetListRequestPayload) { }
+}
+
+export class ProductGetListSuccess implements Action {
+    readonly type = ProductStoreActionTypes.ProductGetListSuccess;
+
+    constructor(public payload: any) { }
+}
+
 export const ProductStoreActions = {
     StoreGetHome,
-    StoreGetHomeSuccess
+    StoreGetHomeSuccess,
+    ProductGetList,
+    ProductGetListSuccess
 };
 
-export type ProductStoreAction = StoreGetHome | StoreGetHomeSuccess;
+export type ProductStoreAction = StoreGetHome |
+StoreGetHomeSuccess |
+ProductGetList |
+ProductGetListSuccess;
