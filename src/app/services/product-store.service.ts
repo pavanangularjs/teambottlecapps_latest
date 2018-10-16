@@ -2,12 +2,11 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError, EMPTY } from 'rxjs';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { switchMap, catchError, retry } from 'rxjs/operators';
-import * as global from '../global';
 import { Store } from '@ngrx/store';
 
 import { CustomerService } from './customer.service';
 import { StoreGetHomeRequestPayload } from '../models/store-get-home-request-payload';
-import { UrlNames } from './url-provider';
+import { baseUrl, UrlNames } from './url-provider';
 import { CustomerSelectors } from '../state/customer/customer.selector';
 import { CustomerLoginSession } from '../models/customer-login-session';
 import { StoreGetHome } from '../state/product-store/product-store.action';
@@ -28,7 +27,7 @@ export class ProductStoreService {
     }
 
     getStoreHome(): Observable<any> {
-        return this.http.post<any>(global.baseUrl + UrlNames.GetStoreHome, this.getStoreObject()).pipe(
+        return this.http.post<any>(baseUrl + UrlNames.GetStoreHome, this.getStoreObject()).pipe(
             switchMap((res: any) => {
                 return of(res);
             }),
