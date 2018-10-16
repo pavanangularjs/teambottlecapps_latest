@@ -1,0 +1,269 @@
+<div class="container">
+    <div class="row">
+        <div class="Search_div col-md-12 col-sm-12 col-lg-12 col-xs-12">
+            <input type="text" placeholder="Product">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active"><a href="#">SearchCategories</a></li>
+                <li class="breadcrumb-item active"><a href="#">Product Details</a></li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-lg-6 col-xs-12">
+                <div class="product_img">
+                    <img class="second_img" src='../../../../assets/Images/bottele.jpg' />
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-lg-6 col-xs-12">
+                <div class="product_content">
+                    <h3>Product Name</h3>
+                    <div>
+                        <ul>
+                            <li>
+                                <a> United States
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a> California
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="customers_review">
+                        <span>$150.49</span>
+                        <ul class="float_right">
+                            <li>
+
+                                <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]"></i>(5 Customer reviews)
+
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="padding_bottom">
+                        <span class="size_bottle">4pk-150ML Btls</span>
+                        <span class="float_right">SKU:productdetaile.SKU</span>
+                    </div>
+                    <p class="font_size">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                        but also the leap into electronic typesetting, remaining essentially unchanged. It was
+                        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                        passages,including versions of Lorem Ipsum.
+                    </p>
+                </div>
+                <!-- <h4 class="size1">Size</h4>  -->
+                <div class="row">
+                    <div class="size">
+
+                        <div class="margin_top col-md-6 col-sm-6 col-lg-6 col-xs-6">
+                            <span class="sizelabel">SIZE</span>
+                            <select class="selectsize">
+                                <option disabled>Please select</option>
+                                <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20] ">{{i}}</option>
+                            </select>
+                            <!-- <button  class="dec_circle">
+                                <i class="fa fa-minus" aria-hidden="true"></i>
+                            </button>
+                            <span class="value">5</span>
+                            <button  class="dec_circle">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </button> -->
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-default addtocart">Add to Cart</button>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+
+            <ng-container>
+                <div class="related_product">
+
+                    <div class="Searchrelated_div col-md-10 col-sm-10 col-lg-10 col-xs-12">
+                        <!-- <input type="text" placeholder="Related Product"> -->
+                        <h4>Related Product</h4>
+                    </div>
+
+                    <div class="col-md-2 col-sm-2 col-lg-2 col-xs-12">
+                        <h4 class="view_more"><span> View More
+                                <span class="arrow_right">
+                                    <img src="../../../../assets/Images/viewmore.png">
+                                </span>
+                            </span>
+                        </h4>
+                    </div>
+                </div>
+            </ng-container>
+            <div class="Main_bottlesection">
+
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img">
+                    <div class="img_div">
+
+
+
+                        <div class="margin_bottom">
+                            <!-- <img class="firimg" (click)="favoriteadd(product.PID)" src="assets/Images/assets/favorites.png" /> -->
+                            <ng-container>
+                                <img class="firimg" src="../../../../assets/Images/favorites.png" />
+                            </ng-container>
+
+                            <img class="second_img" src='../../../../assets/Images/bottele.jpg' />
+                            <!-- <img class="third_img" (click)="addtocart(product.PID)" src="assets/Images/assets/add-cart.png" /> -->
+
+                            <ng-container>
+                                <img class="third_img" src="../../../../assets/Images/add-cart.png" />
+                            </ng-container>
+
+
+                        </div>
+                        <div class="second_content">
+                            <div class="">
+
+                                <ng-container>
+                                    <h5>
+                                        <p class="strike_text">$11.23</p>
+                                        <p class="price">$9.99</p>
+                                    </h5>
+                                </ng-container>
+                                <h5>Liqour-rooftop</h5>
+                                <!-- <p> {{product.Size}}</p> -->
+                                <p class="rating_star">
+                                    <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]" ></i>
+                                    <!-- [ngClass]="{'checked':star+0.5 <= product.Rating, 'fa-star-half-o':star+0.5 == product.Rating}"-->
+                                    <span class="first">4 reviews</span>
+                                    <span class="reviews"> </span>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="total_border">
+            <h4 class="review_title">Reviews</h4>
+            <div class="reviews">
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                    <!-- <div class="circle_bg"></div> -->
+                    <img src="../../../../assets/Images/beer-bg.png">
+                </div>
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                    <div class="border">
+                        <div class="name_date col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <span class="username">BottleCapps</span> -<span class="review_date"> 24/10/2015</span></div>
+                        <div class="star_right col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <i class="fa fa-star" *ngFor="let star of [1,2,3,4,5]" ></i>
+                            <!-- [ngClass]="{'checked':star<=val}" -->
+
+                        </div>
+                        <p class="word_break">Lorem Ipsum is simply dummy text of the printing and typesetting
+                            industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and scrambled it to make a type specimen
+                            book. It has survived not only five centuries, but also the leap into electronic
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="reviews">
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                    <div class="circle_bg"></div>
+                </div>
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                    <div class="border">
+                        <div class="name_date col-lg-6 col-md-6 col-sm-6 col-xs-12">Cobus Better - June 7,2018</div>
+                        <div class="star_right col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star last" aria-hidden="true"></i>
+                        </div>
+                        <p class="word_break">loremipsmloremipsmloremipsmloremipsmloremipsmloremipsmloremipsm loremipsmloremipsmloremipsmloremipsmloremipsmloremipsmloremipsmloremipsm
+                        </p>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="add_review common_width">
+                <h4>Add A Review</h4>
+                <p>Your email address wii not be published. Required Field is marked
+                    <span class="mandatory">*</span>
+                </p>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 your_rating">
+                    <h5>Your Ratings</h5>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-sm-9 col-xs-12 star_right">
+
+                    <i class="fa fa-star" *ngFor="let star of [1,2,3,4,5]" ></i>
+                    <!-- [ngClass]="{'checked':star<=val}" (click)="changeStarCount(star)" -->
+
+                </div>
+
+                <form class="common_width">
+                    <div class="form-group row">
+                        <label class="col-lg-2 col-md-2 col-sm-2 col-xs-12 col-form-label">Your Reviews
+                            <span class="mandatory">*</span>
+                        </label>
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Name
+                            <span class="mandatory">*</span>
+                        </label>
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                            <input type="text" class="form-control" id="inputPassword" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Password
+                            <span class="mandatory">*</span>
+                        </label>
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                            <input type="text" class="form-control" id="inputPassword" placeholder="Password">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label"></label>
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                            <button class="btn reviewsubmit" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+</section>

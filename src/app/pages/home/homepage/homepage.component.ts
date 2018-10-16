@@ -21,6 +21,7 @@ export class HomepageComponent implements OnInit {
   storeGetHomeData: any;
 
   constructor(private store: Store<CustomerLoginSession>, private customerService: CustomerService) {
+    console.log('... a new instance of HomepageComponent has been created');
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         this.customerSession = clsd;
@@ -32,7 +33,8 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.openModal.nativeElement.click();
+    console.log('... OnInit hook on HomepageComponent is called');
+    // this.openModal.nativeElement.click();
     this.store.dispatch(new CustomerLogin (this.customerService.getLoginCustomerParams()));
   }
 

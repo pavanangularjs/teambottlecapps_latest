@@ -7,7 +7,7 @@
         <ng-template #favActive>
             <img class="firimg" src="assets/Images/favorites-active.png">
         </ng-template>       
-        <img class="second_img" src="{{item?.ProductImg}}" />
+        <a [routerLink]="['/product-details']"><img class="second_img" src="{{item?.ProductImg}}" /></a>
         <img class="third_img" src="assets/Images/add-cart.png" *ngIf="item?.InCart===0; else cartActive"/>
         <ng-template #cartActive>
             <img class="third_img" src="assets/Images/add-cart-active.png"/>

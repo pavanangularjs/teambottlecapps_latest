@@ -8,7 +8,7 @@ import { CustomerActions } from './state/customer/customer.action';
 import { productStoreReducer  } from './state/product-store/product-store.reducer';
 import { ProductStoreEffects } from './state/product-store/product-store.effects';
 import { ProductStoreActions } from './state/product-store/product-store.action';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,13 +25,16 @@ import { DownloadappComponent } from './pages/home/downloadapp/downloadapp.compo
 import { AgelimitComponent } from './pages/agelimit/agelimit.component';
 import { RecipesComponent } from './pages/recipe/recipes/recipes.component';
 import { RecipeDetailsComponent } from './pages/recipe/recipe-details/recipe-details.component';
-
-
-import { CustomerService } from './services/customer.service';
-import { ProductStoreService } from './services/product-store.service';
+import { ProductDetailsComponent } from './pages/products/product-details/product-details.component';
 import { FilterMenuComponent } from './pages/home/menubar/filter-menu/filter-menu.component';
 import { SearchBarComponent } from './pages/home/menubar/search-bar/search-bar.component';
 import { ProductComponent } from './pages/products/product/product.component';
+
+import { CustomerService } from './services/customer.service';
+import { ProductStoreService } from './services/product-store.service';
+
+import { HttpCacheService } from './cache.service';
+import { CacheInterceptor } from './cacheInterceptor';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,8 @@ import { ProductComponent } from './pages/products/product/product.component';
     SearchBarComponent,
     ProductComponent,
     RecipesComponent,
-    RecipeDetailsComponent
+    RecipeDetailsComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +64,8 @@ import { ProductComponent } from './pages/products/product/product.component';
     StoreModule.forRoot({customer: customerReducer, productStore: productStoreReducer }),
     EffectsModule.forRoot([CustomerEffects, ProductStoreEffects]),
   ],
-  providers: [CustomerService, ProductStoreService],
+  providers: [CustomerService, ProductStoreService,
+    HttpCacheService, { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

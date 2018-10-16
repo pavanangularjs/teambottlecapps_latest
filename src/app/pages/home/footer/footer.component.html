@@ -7,26 +7,21 @@
               </a>
               <div class="margin_left">
                   <address class="storelocation">
-                      <img class="location" src="assets/Images/location.png">Location
+                    <h4>{{storeGetHomeData?.StoreName}}</h4>
+                      <img class="location" src="assets/Images/location.png">{{storeGetHomeData?.Address1}}
                       <br>
-                      <span class="margin_left">storename</span>
-                      <br>
-                      <br>
-                      <span class="margin_left"> Address1</span>
-                      <br>
-                      <br>
-                      <span class="margin_left">City,State</span>
-                      <br>
+                      <span class="margin_left" *ngIf="storeGetHomeData?.Address2">{{storeGetHomeData?.Address2}} <br></span>
+                      <span class="margin_left"> {{storeGetHomeData?.City}}, {{storeGetHomeData?.State}} <br> </span>
                       <br>
                       <div class="contact_text">
                           <img class="contact" src="assets/Images/contact.png">
-                          <span class="call"> Call: Phone</span>
+                          <span class="call"> Call: {{storeGetHomeData?.Phone}}</span>
                           <br>
                           <br>
                       </div>
                       <div>
                           <img class="email" src="assets/Images/email.png">
-                          <span class="call">Email:StoreEmail</span>
+                          <span class="call">Email: {{storeGetHomeData?.StoreEmail}}</span>
                       </div>
 
                   </address>
