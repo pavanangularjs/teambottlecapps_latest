@@ -32,6 +32,8 @@ export class ProductDetailsComponent implements OnInit {
 
   getProductDetails() {
     const productId = +this.route.snapshot.paramMap.get('id');
-    this.store.dispatch(new ProductGetDetails(this.productStoreService.getProductGetDetailsParams(productId)));
+    if ( productId ) {
+      this.store.dispatch(new ProductGetDetails(this.productStoreService.getProductGetDetailsParams(productId)));
+    }
   }
 }
