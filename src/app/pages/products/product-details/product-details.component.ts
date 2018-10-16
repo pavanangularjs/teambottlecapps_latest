@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+
+import { ProductGetDetails } from '../../../state/product-store/product-store.action';
+import { ProductGetDetailsRequestPayload } from '../../../models/product-get-details-request-payload';
+import { ProductStoreService } from '../../../services/product-store.service';
+import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
 
 @Component({
   selector: 'app-product-detail',
@@ -7,9 +14,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  constructor() { }
+  productDetails: any;
 
-  ngOnInit() {
+  constructor(private route: ActivatedRoute,
+    private store: Store<ProductGetDetailsRequestPayload>,
+    private productStoreService: ProductStoreService) {
+
+    this.store.select(ProductStoreSelectors.productGetDetailsData)
+      .subscribe(pgdd => {
+        this.productDetails = pgdd;
+      });
   }
 
+  ngOnInit() {
+    this.getProductDetails();
+  }
+
+  getProductDetails() {
+    const productId = +this.route.snapshot.paramMap.get('id');
+    this.store.dispatch(new ProductGetDetails(this.productStoreService.getProductGetDetailsParams(productId)));
+  }
 }

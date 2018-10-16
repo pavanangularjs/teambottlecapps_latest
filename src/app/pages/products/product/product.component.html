@@ -7,7 +7,7 @@
         <ng-template #favActive>
             <img class="firimg" src="assets/Images/favorites-active.png">
         </ng-template>       
-        <a [routerLink]="['/product-details']"><img class="second_img" src="{{item?.ProductImg}}" /></a>
+        <a routerLink="/product-details/{{item.PID}}"><img class="second_img" src="{{item?.ProductImg}}" /></a>
         <img class="third_img" src="assets/Images/add-cart.png" *ngIf="item?.InCart===0; else cartActive"/>
         <ng-template #cartActive>
             <img class="third_img" src="assets/Images/add-cart-active.png"/>
@@ -17,7 +17,7 @@
       <div class="second_content">
         <div class="">
           <p class="price">{{item?.OfferPriceDisplay}}</p>
-          <h5 class="productname">{{item?.ProductName}}</h5>
+          <h5 class="productname">{{item?.ProductName}} - {{item?.PID}}</h5>
           <p class="product_size">
             <span>{{item?.Size}}</span>
           </p>

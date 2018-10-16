@@ -4,7 +4,7 @@
             <input type="text" placeholder="Product">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active"><a href="#">SearchCategories</a></li>
+                <li class="breadcrumb-item active"><a href="#">Search Categories</a></li>
                 <li class="breadcrumb-item active"><a href="#">Product Details</a></li>
             </ol>
         </div>
@@ -16,21 +16,21 @@
         <div class="row">
             <div class="col-md-6 col-sm-6 col-lg-6 col-xs-12">
                 <div class="product_img">
-                    <img class="second_img" src='../../../../assets/Images/bottele.jpg' />
+                    <img class="second_img" src="{{productDetails?.Product?.ProductImg}}" />
                 </div>
             </div>
             <div class="col-md-6 col-sm-6 col-lg-6 col-xs-12">
                 <div class="product_content">
-                    <h3>Product Name</h3>
+                    <h3>{{productDetails?.Product?.ProductName}}</h3>
                     <div>
                         <ul>
                             <li>
-                                <a> United States
+                                <a> {{productDetails?.Country}}
                                     <i class="fa fa-angle-right" aria-hidden="true"></i>
                                 </a>
                             </li>
                             <li>
-                                <a> California
+                                <a> {{productDetails?.Region}}
                                     <i class="fa fa-angle-right" aria-hidden="true"></i>
                                 </a>
                             </li>
@@ -38,27 +38,22 @@
                         </ul>
                     </div>
                     <div class="customers_review">
-                        <span>$150.49</span>
+                        <span>{{productDetails?.Product?.OfferPriceDisplay}}</span>
                         <ul class="float_right">
                             <li>
 
-                                <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]"></i>(5 Customer reviews)
+                                <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]"></i>({{productDetails?.ReviewTotalCount}} Customer reviews)
 
                             </li>
 
                         </ul>
                     </div>
                     <div class="padding_bottom">
-                        <span class="size_bottle">4pk-150ML Btls</span>
-                        <span class="float_right">SKU:productdetaile.SKU</span>
+                        <span class="size_bottle">{{productDetails?.Product?.Size}}</span>
+                        <span class="float_right">SKU: {{productDetails?.Product?.SKU}}</span>
                     </div>
                     <p class="font_size">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                        but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                        passages,including versions of Lorem Ipsum.
+                        {{productDetails?.ProductDescription}}
                     </p>
                 </div>
                 <!-- <h4 class="size1">Size</h4>  -->

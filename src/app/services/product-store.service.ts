@@ -10,6 +10,7 @@ import { CustomerSelectors } from '../state/customer/customer.selector';
 import { CustomerLoginSession } from '../models/customer-login-session';
 import { StoreGetHome } from '../state/product-store/product-store.action';
 import { ProductGetListRequestPayload } from '../models/product-get-list-request-payload';
+import { ProductGetDetailsRequestPayload } from '../models/product-get-details-request-payload';
 
 @Injectable()
 export class ProductStoreService {
@@ -71,6 +72,9 @@ export class ProductStoreService {
             categoryId?: number, regionId?: number, typeId?: number, varitalId?: number, countryId?: number
         } = {}) {
 
+        if (!this.customerSession) {
+            return null;
+        }
         return {
             StoreId: this.customerSession.StoreId,
             PageSize: pageSize,
@@ -85,6 +89,31 @@ export class ProductStoreService {
             SessionId: this.customerSession.SessionId,
             UserId: this.customerSession.UserId,
             AppId: this.customerSession.AppId
+        };
+    }
+
+    productGetDetails(reqParams: ProductGetDetailsRequestPayload): Observable<any> {
+        return this.http.post<any>(baseUrl + UrlNames.ProductGetDetails, reqParams, { headers: this.headers }).pipe(
+            switchMap((res: any) => {
+                return of(res);
+            }),
+            retry(3),
+            catchError((error: any, caught: Observable<any>) => {
+                return this.processError(error);
+            })
+        );
+    }
+
+    getProductGetDetailsParams(pid: number): ProductGetDetailsRequestPayload {
+        if (!this.customerSession) {
+            return null;
+        }
+        return {
+            StoreId: this.customerSession.StoreId,
+            UserId: this.customerSession.UserId,
+            SessionId: this.customerSession.SessionId,
+            AppId: this.customerSession.AppId,
+            PID: pid
         };
     }
 
