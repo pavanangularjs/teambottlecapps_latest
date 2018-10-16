@@ -7,9 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutusComponent implements OnInit {
 
-  constructor() {
-    console.log('... a new instance of AboutusComponent has been created');
-  }
+  constructor() {}
 
   ngOnInit() {
   }
