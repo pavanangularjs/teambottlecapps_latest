@@ -5,6 +5,7 @@ import { HomepageComponent } from './pages/home/homepage/homepage.component';
 import { AboutusComponent } from './pages/aboutus/aboutuscomponent';
 import { RecipesComponent } from './pages/recipe/recipes/recipes.component';
 import { ProductDetailsComponent } from './pages/products/product-details/product-details.component';
+import { EventDetailsComponent } from './pages/products/event-details/event-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'about', component: AboutusComponent },
   { path: 'recipes', component: RecipesComponent },
   { path: 'product-details/:id', component: ProductDetailsComponent },
+  { path: 'event-details/:id', component: EventDetailsComponent },
   { path: '**', component: HomepageComponent },
 ];
 

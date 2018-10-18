@@ -11,6 +11,7 @@ import { CustomerLoginSession } from '../models/customer-login-session';
 import { StoreGetHome } from '../state/product-store/product-store.action';
 import { ProductGetListRequestPayload } from '../models/product-get-list-request-payload';
 import { ProductGetDetailsRequestPayload } from '../models/product-get-details-request-payload';
+import { EventGetDetailsRequestPayload } from '../models/event-get-details-request-payload';
 
 @Injectable()
 export class ProductStoreService {
@@ -66,10 +67,10 @@ export class ProductStoreService {
     }
 
     getProductGetListParams({ pageSize = 12, pageNumber = 1, isClub = 0, keyWord = '',
-        categoryId = 0, regionId = 0, typeId = 0, varitalId = 0, countryId = 0 }:
+        categoryId = 0, regionId = 0, typeId = 0, varitalId = 0, countryId = 0 , isFeatureProduct = true }:
         {
             pageSize?: number, pageNumber?: number, isClub?: number, keyWord?: string,
-            categoryId?: number, regionId?: number, typeId?: number, varitalId?: number, countryId?: number
+            categoryId?: number, regionId?: number, typeId?: number, varitalId?: number, countryId?: number, isFeatureProduct?: boolean
         } = {}) {
 
         if (!this.customerSession) {
@@ -88,7 +89,8 @@ export class ProductStoreService {
             CountryId: countryId,
             SessionId: this.customerSession.SessionId,
             UserId: this.customerSession.UserId,
-            AppId: this.customerSession.AppId
+            AppId: this.customerSession.AppId,
+            IsFeatureProduct: isFeatureProduct
         };
     }
 
@@ -114,6 +116,31 @@ export class ProductStoreService {
             SessionId: this.customerSession.SessionId,
             AppId: this.customerSession.AppId,
             PID: pid
+        };
+    }
+
+    eventGetDetails(reqParams: EventGetDetailsRequestPayload): Observable<any> {
+        return this.http.post<any>(baseUrl + UrlNames.EventGetDetails, reqParams, { headers: this.headers }).pipe(
+            switchMap((res: any) => {
+                return of(res);
+            }),
+            retry(3),
+            catchError((error: any, caught: Observable<any>) => {
+                return this.processError(error);
+            })
+        );
+    }
+
+    getEventGetDetailsParams(eid: number): EventGetDetailsRequestPayload {
+        if (!this.customerSession) {
+            return null;
+        }
+        return {
+            StoreId: this.customerSession.StoreId,
+            UserId: this.customerSession.UserId,
+            SessionId: this.customerSession.SessionId,
+            AppId: this.customerSession.AppId,
+            EventID: eid
         };
     }
 

@@ -65,4 +65,20 @@ export class ProductStoreEffects {
                 );
             })
         );
+    @Effect()
+    eventGetDetails$ = this.actions$
+        .ofType(fromProductStore.ProductStoreActionTypes.EventGetDetails)
+        .pipe(
+            withLatestFrom<fromProductStore.EventGetDetails, RootStateModel>(this.store),
+            switchMap(([action, state]) => {
+                return this.productStoreService.eventGetDetails(action.payload).pipe(
+                    map(p => {
+                        return new fromProductStore.ProductStoreActions.EventGetDetailsSuccess(p);
+                    }),
+                    catchError(error =>
+                        of(error)
+                    )
+                );
+            })
+        );
 }

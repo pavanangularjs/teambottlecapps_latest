@@ -1,0 +1,290 @@
+<div class="container">
+  <div class="row">
+    <div class="Search_div col-md-12 col-sm-12 col-lg-12 col-xs-12">
+      <input type="text" placeholder="Search Results">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a (click)="gottoHome()">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a>Search Categories</a>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<section class="m_bottom">
+  <div class="container">
+    <div class="row">
+      <!-- <div class= "" *ngFor="let sidebar of landingproduct" >
+               <app-landingproduct ["landingproduct"]=sidebar></app-landingproduct> 
+              </div> -->
+      <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12">
+
+        <ul class="sidebar-menu">
+
+          <li>
+            <a>
+              <span>Filter</span>
+              <i class="fa fa-angle-down pull-right"></i>
+            </a>
+
+            <ul class="sidebar-submenu name_left search-history">
+
+              <li>
+                <a> Option 1 <span class="fa fa-close close-fa"></span></a>
+              </li>
+              <li>
+                <a> Option 2</a>
+              </li>
+              <li>
+                <a> Option 3</a>
+              </li>
+              <li>
+                <a> Option 4</a>
+              </li>
+
+            </ul>
+          </li>
+
+          <li>
+            <a>
+              <span>Category Search</span>
+              <i class="fa fa-angle-down pull-right"></i>
+            </a>
+            <ul class="sidebar-submenu name_left">
+              <li>-- Select --</li>
+
+              <li>
+                <a>Beer</a>
+              </li>
+              <li>
+                <a>Liquor</a>
+              </li>
+              <li>
+                <a>Wine</a>
+              </li>
+              <li>
+                <a>Mixers and More</a>
+              </li>
+
+            </ul>
+          </li>
+
+          <li>
+            <a>
+              <span>Type</span>
+              <i class="fa fa-angle-down pull-right"></i>
+            </a>
+            <ul class="sidebar-submenu name_left">
+              <li>-- Select --</li>
+
+              <li>
+                <a><input type="checkbox" checked> Option 1</a>
+              </li>
+              <li>
+                <a><input type="checkbox" checked> Option 2</a>
+              </li>
+              <li>
+                <a><input type="checkbox" checked> Option 3</a>
+              </li>
+              <li>
+                <a><input type="checkbox" checked> Option 4</a>
+              </li>
+
+            </ul>
+          </li>
+          <li>
+            <a>
+              <span>Varietal</span>
+              <i class="fa fa-angle-down pull-right"></i>
+            </a>
+            <ul class="sidebar-submenu name_left">
+              <li>-- Select --</li>
+
+              <li>
+                <a><input type="checkbox" checked> Option 1</a>
+              </li>
+              <li>
+                <a><input type="checkbox" checked> Option 2</a>
+              </li>
+              <li>
+                <a><input type="checkbox" checked> Option 3</a>
+              </li>
+              <li>
+                <a><input type="checkbox" checked> Option 4</a>
+              </li>
+
+            </ul>
+          </li>
+
+          <li>
+            <a>
+              <span>Country</span>
+              <i class="fa fa-angle-down pull-right"></i>
+            </a>
+            <ul class="sidebar-submenu name_left">
+              <li>-- Select --</li>
+
+              <li>
+                <a><input type="checkbox" checked> Option 1</a>
+              </li>
+              <li>
+                <a><input type="checkbox" checked> Option 2</a>
+              </li>
+              <li>
+                <a><input type="checkbox" checked> Option 3</a>
+              </li>
+              <li>
+                <a><input type="checkbox" checked> Option 4</a>
+              </li>
+
+            </ul>
+          </li>
+
+          <li>
+            <a>
+              <span>Region</span>
+              <i class="fa fa-angle-down pull-right"></i>
+            </a>
+            <ul class="sidebar-submenu name_left">
+              <li>-- Select --</li>
+
+              <li>
+                <a><input type="checkbox" checked> Option 1</a>
+              </li>
+              <li>
+                <a><input type="checkbox" checked> Option 2</a>
+              </li>
+              <li>
+                <a><input type="checkbox" checked> Option 3</a>
+              </li>
+              <li>
+                <a><input type="checkbox" checked> Option 4</a>
+              </li>
+
+            </ul>
+          </li>
+
+          <li>
+            <a>
+              <span>Size</span>
+              <i class="fa fa-angle-down pull-right"></i>
+            </a>
+            <ul class="sidebar-submenu name_left">
+              <li>-- Select --</li>
+
+              <li>
+                <a><input type="checkbox" checked> Option 1</a>
+              </li>
+              <li>
+                <a><input type="checkbox" checked> Option 2</a>
+              </li>
+              <li>
+                <a><input type="checkbox" checked> Option 3</a>
+              </li>
+              <li>
+                <a><input type="checkbox" checked> Option 4</a>
+              </li>
+
+            </ul>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12">
+        <div class="row margin_bottom_35">
+
+          <div class="col-md-6 col-sm-6">
+
+            <p class="text_transform">
+              Showing
+              <ng-container *ngIf="totalcount >=10">
+                {{pageto}}
+              </ng-container>
+              <ng-container *ngIf="totalcount <=10">
+                1
+              </ng-container>
+              -
+              <ng-container *ngIf="totalcount <=10">
+                {{totalcount}}
+              </ng-container>
+
+              <ng-container *ngIf="totalcount >=10">
+                {{pagefrom}}
+              </ng-container>
+
+              of {{totalcount}} Product
+            </p>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <div class="select_box">
+
+              <select #selectedvalue (change)="onChange(selectedvalue)" class="selectBox">
+                <option *ngFor="let page of pages" [value]="page">
+                  {{page}}
+                </option>
+              </select>
+
+              <select>
+                <option>DEFAULT SORTING</option>
+                <option>1</option>
+                <option>1</option>
+                <option>1</option>
+                <option>1</option>
+              </select>
+
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="Main_bottlesection">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 item_img">
+              <div class="img_div">
+
+                <img class="offericon" src='../../assets/Images/offer-icon.png'>
+
+
+                <div class="margin_bottom">
+
+                  <img class="firimg" (click)="favoriteadd(product.PID,true)" src="assets/Images/assets/favorites.png" />
+
+
+                  <img class="second_img" (click)="ProductClick(product.PID)" src='../../assets/Images/bottele.jpg' />
+
+                  <img class="third_img" (click)="addtocart(product.PID)" src="assets/Images/assets/add-cart.png" />
+
+
+                </div>
+                <div class="second_content">
+                  <div class="">
+
+                    <h5>
+                      <p class="strike_text">$15.00</p>
+                      <p class="price">$9.99</p>
+                    </h5>
+
+                    <h5>Vodka</h5>
+                    <p> 4pk 150ml</p>
+                    <p class="rating_star">
+                      <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]"></i>
+                      <span class="first">4 reviews</span>
+                      <span class="reviews"> </span>
+                    </p>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,50 @@
+<section>
+  <div class="container">
+
+    <div class="Search_div ">
+      <input type="text" placeholder="Event Details">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a>Home</a></li>
+
+        <li class="breadcrumb-item active"><a>Event Details</a></li>
+      </ol>
+    </div>
+
+    <div class="details_img col-md-6 col-sm-6 col-lg-6 col-xs-12 animated fadeInLeft">
+      <img src='{{eventDetails?.EventImage}}' class="img-responsive" />
+    </div>
+
+    <div class="details_content col-md-6 col-sm-6 col-lg-6 col-xs-12 animated fadeInRight">
+      <div>
+        <div class="event-details-section">
+          <div class="bottle-caps-red event-details-date text-center">
+            <div class="date-style">{{eventDetails?.EventDateDisplayFirst}}</div>
+            <br><strong>{{eventDetails?.EventDateDisplaySecond}}</strong>
+          </div>
+          <h6 class="event-details-heading">{{eventDetails?.EventName}}</h6>
+        </div>
+        <hr>
+      </div>
+
+      <div class="col-md-12">
+        <ul>
+          <li class="IngredientText"> <span class="fa fa-dollar bottle-caps-red event-icon"></span> <span class="event-para">{{eventDetails?.EventPriceDisplay}}</span>
+          </li>
+          <li class="IngredientText"> <span class="fa fa-history bottle-caps-red event-icon"></span> <span class="event-para">{{eventDetails?.EventStartEndDateDisplay}}
+              <br>{{eventDetails?.EventStartEndTimeDisplay}}</span>
+          </li>
+          <li class="IngredientText"> <span class="fa fa-map-marker bottle-caps-red event-icon"></span> <span class="event-para">{{eventDetails?.Address1}}
+              <br>{{eventDetails?.City}}, {{eventDetails?.State}} {{eventDetails?.Zip}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class=" col-md-12 col-sm-12 col-lg-12 col-xs-12">
+      <div class="Searchrelated_div ">
+        <h4>Description</h4>
+      </div>
+      <div class="instruction_text" [innerHTML]="eventDetails?.EventDescription"></div>
+    </div>
+  </div>
+</section>

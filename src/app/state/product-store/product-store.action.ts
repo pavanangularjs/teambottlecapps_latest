@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
 import { ProductGetListRequestPayload } from '../../models/product-get-list-request-payload';
 import { ProductGetDetailsRequestPayload } from '../../models/product-get-details-request-payload';
+import { EventGetDetailsRequestPayload } from '../../models/event-get-details-request-payload';
 
 export enum ProductStoreActionTypes {
     StoreGetHome = '[Store] StoreGetHome',
@@ -8,7 +9,9 @@ export enum ProductStoreActionTypes {
     ProductGetList = '[Store] ProductGetList',
     ProductGetListSuccess = '[Store] ProductGetListSuccess',
     ProductGetDetails = '[Store] ProductGetDetails',
-    ProductGetDetailsSuccess = '[Store] ProductGetDetailsSuccess'
+    ProductGetDetailsSuccess = '[Store] ProductGetDetailsSuccess',
+    EventGetDetails = '[Store] EventGetDetails',
+    EventGetDetailsSuccess = '[Store] EventGetDetailsSuccess'
 }
 
 export class StoreGetHome implements Action {
@@ -47,13 +50,27 @@ export class ProductGetDetailsSuccess implements Action {
     constructor(public payload: any) { }
 }
 
+export class EventGetDetails implements Action {
+    readonly type = ProductStoreActionTypes.EventGetDetails;
+
+    constructor(public payload: EventGetDetailsRequestPayload) { }
+}
+
+export class EventGetDetailsSuccess implements Action {
+    readonly type = ProductStoreActionTypes.EventGetDetailsSuccess;
+
+    constructor(public payload: any) { }
+}
+
 export const ProductStoreActions = {
     StoreGetHome,
     StoreGetHomeSuccess,
     ProductGetList,
     ProductGetListSuccess,
     ProductGetDetails,
-    ProductGetDetailsSuccess
+    ProductGetDetailsSuccess,
+    EventGetDetails,
+    EventGetDetailsSuccess
 };
 
 export type ProductStoreAction = StoreGetHome |
@@ -61,4 +78,6 @@ StoreGetHomeSuccess |
 ProductGetList |
 ProductGetListSuccess |
 ProductGetDetails |
-ProductGetDetailsSuccess;
+ProductGetDetailsSuccess |
+EventGetDetails |
+EventGetDetailsSuccess;

@@ -1,0 +1,190 @@
+<style>
+  @media only screen and (max-width: 800px) {
+
+table.res_table td:nth-of-type(1):before { content: ""; }
+table.res_table td:nth-of-type(2):before { content: ""; }
+table.res_table td:nth-of-type(3):before { content: ""; }
+table.res_table td:nth-of-type(4):before { content: ""; }
+
+}     
+    </style>
+<div class="container">
+  <div class="row">
+    <div class="Search_div col-md-12 col-sm-12 col-lg-12 col-xs-12">
+      <input type="text" placeholder="My Orders">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a>Home</a></li>
+        <li class="breadcrumb-item active"><a>Account</a></li>
+        <li class="breadcrumb-item active"><a>Myorders</a></li>
+      </ol>
+    </div>
+  </div>
+</div>
+<section>
+  <div class="container">
+    <div class="row">
+
+      <div class=" border_bottom">
+        <div class="delivery-head-section">
+          <div class="col-md-6 col-sm-6 col-lg-6 col-xs-12">
+            <h5>
+              <span>
+                <img class="status" src="../../assets/Images/inprogress.png">
+              </span>
+              <span class="delevary_color" style="color:#ff8a00; vertical-align: middle;">Delivery in Progress</span>
+              <!-- <ng-container *ngIf="myorderdetailes.OrderStatus=='Pending'">
+                  <span class="delevary_color" style="color:#ec1c24;">{{myorderdetailes.OrderStatus}}</span>
+                </ng-container>
+                <ng-container *ngIf="myorderdetailes.OrderStatus=='Cancelled'">
+                    <span class="delevary_color" style="color:#ec1c24;">{{myorderdetailes.OrderStatus}}</span>
+                  </ng-container>
+                  <ng-container *ngIf="myorderdetailes.OrderStatus=='Scheduled for delivery'">
+                      <span class="delevary_color" style="color:#ff8a00;">{{myorderdetailes.OrderStatus}}</span>
+                    </ng-container>
+                    <ng-container *ngIf="myorderdetailes.OrderStatus=='Completed'">
+                        <span class="delevary_color" style="color:#4dbb3c;">{{myorderdetailes.OrderStatus}}</span>
+                      </ng-container> -->
+
+            </h5>
+          </div>
+
+          <div class="float_right col-md-6 col-sm-6 col-lg-6 col-xs-12">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item code" style="padding-top: 15px;"><a>#9966081</a></li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
+          <table class="">
+            <tbody>
+              <tr>
+                <td>
+                  <div class="product-image">
+                    <img class="second_img " src='../../assets/Images/bottele.jpg' />
+                  </div>
+                </td>
+                <td>
+                  <div class="Product_name">
+                    <h5>Vodka is the best </h5>
+                    <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]" [ngClass]="{'checked':star+0.5 <= process.Rating, 'fa-star-half-o':star+0.5 == process.Rating}"></i>
+                    <br><span class="font_size">4pk 150ml</span>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <h5 class="Product_price">$ 3.00</h5>
+                    <h6 class="you_save">You save as 3$</h6>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <h5 class="Product_price"> 5</h5>
+                    <h6 class="you_save">Quantity </h6>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <s>
+                      $ 1.00
+                    </s><br>
+                    <span class="total_price">
+                      $ 9.00
+                    </span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table>
+            <tbody>
+              <tr>
+                <td class="width_30">
+                  <div class="margin_top_25 text-left">
+                    <h5>
+                      <span>
+                        <img src="assets/Images/assets/recipt-date.png">
+                      </span>
+                      <span class="date_time">Jan 20 2018 10:30 AM</span>
+                    </h5>
+
+                  </div>
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+                  <h5 class="summary text-right">Summary</h5>
+                </td>
+                <td>
+
+                  <div class="order_total" id="order_total">
+
+                    <h4>
+                      Order Total
+                      <span class="font_color">$ 12.00</span>
+
+                      <button class="dec_circle toggle">
+                        <img class="plus" src="assets/Images/assets/expand.png" data-toggle="collapse"
+                          [attr.data-target]="'#'+myorderdetailes.OrderId">
+                      </button>
+
+                    </h4>
+
+                    <div>
+                      <div class="bill_summary inner" id={{myorderdetailes.OrderId}}>
+
+                        <table class="text_left">
+                          <tbody>
+                            <tr>
+
+                              <td>Sub Total</td>
+                              <td class="text-right">$ 12.00</td>
+
+                            </tr>
+
+                            <tr>
+                              <td>Tax</td>
+                              <td class="text-right">
+                                $ 0.00
+
+                              </td>
+
+                            </tr>
+                            <tr>
+
+                              <td>Delivery Free</td>
+                              <td class="text-right">
+
+                                $ 0.00
+
+                              </td>
+
+                            </tr>
+                            <tr>
+
+                              <td>Tip</td>
+                              <td class="text-right">
+
+                                $ 0.00
+
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+
+                      </div>
+                    </div>
+
+                  </div>
+
+                </td>
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

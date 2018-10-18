@@ -29,6 +29,7 @@ import { ProductDetailsComponent } from './pages/products/product-details/produc
 import { FilterMenuComponent } from './pages/home/menubar/filter-menu/filter-menu.component';
 import { SearchBarComponent } from './pages/home/menubar/search-bar/search-bar.component';
 import { ProductComponent } from './pages/products/product/product.component';
+import { EventDetailsComponent } from './pages/products/event-details/event-details.component';
 
 import { CustomerService } from './services/customer.service';
 import { ProductStoreService } from './services/product-store.service';
@@ -55,7 +56,8 @@ import { CacheInterceptor } from './cacheInterceptor';
     ProductComponent,
     RecipesComponent,
     RecipeDetailsComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    EventDetailsComponent
   ],
   imports: [
     BrowserModule,
