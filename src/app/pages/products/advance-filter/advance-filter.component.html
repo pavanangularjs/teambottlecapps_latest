@@ -4,7 +4,7 @@
       <input type="text" placeholder="Search Results">
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a (click)="gottoHome()">Home</a>
+          <a>Home</a>
         </li>
         <li class="breadcrumb-item">
           <a>Search Categories</a>
@@ -21,177 +21,113 @@
                <app-landingproduct ["landingproduct"]=sidebar></app-landingproduct> 
               </div> -->
       <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12">
+<!-- Filter Search Left Menu Start -->
 
-        <ul class="sidebar-menu">
+              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel bottle-panel-container">
+                  <div class="left-panel-section" role="tab" id="myFilterHeading">
+                    <h4 class="panel-title left-panel-title">
+                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#myFilter" aria-expanded="true" aria-controls="myFilter">
+                        Filter <span class="fa fa-chevron-down pull-right"></span>
+                      </a>
+                    </h4>
+                  </div>
+                  <ul id="myFilter" class="panel-collapse collapse in search-history" role="tabpanel" aria-labelledby="myFilterHeading">
+                      <li><a href="#">Search by brand <span class="fa fa-close"></span></a></li>
+                      <li><a href="#">Option 1 <span class="fa fa-close"></span></a></li>
+                      <li><a href="#">Option 2 <span class="fa fa-close"></span></a></li>
 
-          <li>
-            <a>
-              <span>Filter</span>
-              <i class="fa fa-angle-down pull-right"></i>
-            </a>
+                  </ul>
+                </div>
+                <div class="panel bottle-panel-container">
+                  <div class="left-panel-section" role="tab" id="myTypeHeading">
+                    <h4 class="panel-title left-panel-title">
+                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#myType" aria-expanded="false" aria-controls="myType">
+                        Type  <span class="fa fa-chevron-up pull-right"></span>
+                      </a>
+                    </h4>
+                  </div>
+                  <ul id="myType" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="myTypeHeading">
+                      <li><a href="#" class="active">Option 1</a></li>
+                      <li><a href="#">Option 1</a></li>
+                      <li><a href="#">Option 1</a></li>
+                      <li><a href="#">Option 1</a></li>
+                      <li><a href="#">Option 1</a></li>
+                  </ul>
+                </div>
+                <div class="panel bottle-panel-container">
+                  <div class="left-panel-section" role="tab" id="myCountryHeading">
+                    <h4 class="panel-title left-panel-title">
+                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#myCountry" aria-expanded="false" aria-controls="myCountry">
+                        Country <span class="fa fa-chevron-up pull-right"></span>
+                      </a>
+                    </h4>
+                  </div>
+                  <ul id="myCountry" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="myCountryHeading">
+                      <li><a href="#">Option 1</a></li>
+                      <li><a href="#">Option 1</a></li>
+                      <li><a href="#">Option 1</a></li>
+                      <li><a href="#">Option 1</a></li>
+                      <li><a href="#">Option 1</a></li>
+                  </ul>
+                </div>
+                <div class="panel bottle-panel-container">
+                  <div class="left-panel-section" role="tab" id="myRegionHeading">
+                    <h4 class="panel-title left-panel-title">
+                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#myRegion" aria-expanded="false" aria-controls="myRegion">
+                        Region <span class="fa fa-chevron-down pull-right"></span>
+                      </a>
+                    </h4>
+                  </div>
+                  <ul id="myRegion" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="myRegionHeading">
+                      <li><a href="#">Option 1</a></li>
+                      <li><a href="#">Option 1</a></li>
+                      <li><a href="#">Option 1</a></li>
+                      <li><a href="#">Option 1</a></li>
+                      <li><a href="#">Option 1</a></li>
+                  </ul>
+                </div>
+                <div class="panel bottle-panel-container">
+                  <div class="left-panel-section" role="tab" id="myPriceHeading">
+                    <h4 class="panel-title left-panel-title">
+                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#myPrice" aria-expanded="false" aria-controls="myPrice">
+                        Price <span class="fa fa-chevron-down pull-right"></span>
+                      </a>
+                    </h4>
+                  </div>
+                  <ul id="myPrice" class="panel-collapse collapse checkbox-list" role="tabpanel" aria-labelledby="myPriceHeading">
+                    <li>  
+                        <label class="custom-checkbox">1 to 10
+                        <input type="checkbox" checked="checked">
+                        <span class="checkmark"></span></label>
+                    </li>
+                      <li>  
+                        <label class="custom-checkbox">10 to 50
+                        <input type="checkbox" checked="">
+                        <span class="checkmark"></span></label>
+                    </li>
+                    <li>  
+                        <label class="custom-checkbox">50 to 100
+                        <input type="checkbox" uncheck="">
+                        <span class="checkmark"></span></label>
+                    </li>
+                    <li>  
+                        <label class="custom-checkbox">100 +
+                        <input type="checkbox" uncheck="">
+                        <span class="checkmark"></span></label>
+                    </li>
+                  </ul>
+                </div>
+                <div class="bottle-panel-container">
+                    <div class="left-panel-section">
+                        <h4 class="left-panel-title">
+                            <a href="#" class="bottles-brand"><span class="icon icon-logout myac-icon"></span> <span class="fa fa-logout myac-icon"></span> Clear Search</a>
+                        </h4>
+                    </div>
+                </div>
+              </div>
 
-            <ul class="sidebar-submenu name_left search-history">
-
-              <li>
-                <a> Option 1 <span class="fa fa-close close-fa"></span></a>
-              </li>
-              <li>
-                <a> Option 2</a>
-              </li>
-              <li>
-                <a> Option 3</a>
-              </li>
-              <li>
-                <a> Option 4</a>
-              </li>
-
-            </ul>
-          </li>
-
-          <li>
-            <a>
-              <span>Category Search</span>
-              <i class="fa fa-angle-down pull-right"></i>
-            </a>
-            <ul class="sidebar-submenu name_left">
-              <li>-- Select --</li>
-
-              <li>
-                <a>Beer</a>
-              </li>
-              <li>
-                <a>Liquor</a>
-              </li>
-              <li>
-                <a>Wine</a>
-              </li>
-              <li>
-                <a>Mixers and More</a>
-              </li>
-
-            </ul>
-          </li>
-
-          <li>
-            <a>
-              <span>Type</span>
-              <i class="fa fa-angle-down pull-right"></i>
-            </a>
-            <ul class="sidebar-submenu name_left">
-              <li>-- Select --</li>
-
-              <li>
-                <a><input type="checkbox" checked> Option 1</a>
-              </li>
-              <li>
-                <a><input type="checkbox" checked> Option 2</a>
-              </li>
-              <li>
-                <a><input type="checkbox" checked> Option 3</a>
-              </li>
-              <li>
-                <a><input type="checkbox" checked> Option 4</a>
-              </li>
-
-            </ul>
-          </li>
-          <li>
-            <a>
-              <span>Varietal</span>
-              <i class="fa fa-angle-down pull-right"></i>
-            </a>
-            <ul class="sidebar-submenu name_left">
-              <li>-- Select --</li>
-
-              <li>
-                <a><input type="checkbox" checked> Option 1</a>
-              </li>
-              <li>
-                <a><input type="checkbox" checked> Option 2</a>
-              </li>
-              <li>
-                <a><input type="checkbox" checked> Option 3</a>
-              </li>
-              <li>
-                <a><input type="checkbox" checked> Option 4</a>
-              </li>
-
-            </ul>
-          </li>
-
-          <li>
-            <a>
-              <span>Country</span>
-              <i class="fa fa-angle-down pull-right"></i>
-            </a>
-            <ul class="sidebar-submenu name_left">
-              <li>-- Select --</li>
-
-              <li>
-                <a><input type="checkbox" checked> Option 1</a>
-              </li>
-              <li>
-                <a><input type="checkbox" checked> Option 2</a>
-              </li>
-              <li>
-                <a><input type="checkbox" checked> Option 3</a>
-              </li>
-              <li>
-                <a><input type="checkbox" checked> Option 4</a>
-              </li>
-
-            </ul>
-          </li>
-
-          <li>
-            <a>
-              <span>Region</span>
-              <i class="fa fa-angle-down pull-right"></i>
-            </a>
-            <ul class="sidebar-submenu name_left">
-              <li>-- Select --</li>
-
-              <li>
-                <a><input type="checkbox" checked> Option 1</a>
-              </li>
-              <li>
-                <a><input type="checkbox" checked> Option 2</a>
-              </li>
-              <li>
-                <a><input type="checkbox" checked> Option 3</a>
-              </li>
-              <li>
-                <a><input type="checkbox" checked> Option 4</a>
-              </li>
-
-            </ul>
-          </li>
-
-          <li>
-            <a>
-              <span>Size</span>
-              <i class="fa fa-angle-down pull-right"></i>
-            </a>
-            <ul class="sidebar-submenu name_left">
-              <li>-- Select --</li>
-
-              <li>
-                <a><input type="checkbox" checked> Option 1</a>
-              </li>
-              <li>
-                <a><input type="checkbox" checked> Option 2</a>
-              </li>
-              <li>
-                <a><input type="checkbox" checked> Option 3</a>
-              </li>
-              <li>
-                <a><input type="checkbox" checked> Option 4</a>
-              </li>
-
-            </ul>
-          </li>
-
-        </ul>
+<!-- Filter Search Left Menu End -->
 
       </div>
 
@@ -202,7 +138,7 @@
 
             <p class="text_transform">
               Showing
-              <ng-container *ngIf="totalcount >=10">
+              <!-- <ng-container *ngIf="totalcount >=10">
                 {{pageto}}
               </ng-container>
               <ng-container *ngIf="totalcount <=10">
@@ -217,15 +153,15 @@
                 {{pagefrom}}
               </ng-container>
 
-              of {{totalcount}} Product
+              of {{totalcount}} Product -->
             </p>
           </div>
           <div class="col-md-6 col-sm-6">
             <div class="select_box">
 
-              <select #selectedvalue (change)="onChange(selectedvalue)" class="selectBox">
-                <option *ngFor="let page of pages" [value]="page">
-                  {{page}}
+              <select #selectedvalue  class="selectBox">
+                <option>
+                  page
                 </option>
               </select>
 
@@ -253,12 +189,12 @@
 
                 <div class="margin_bottom">
 
-                  <img class="firimg" (click)="favoriteadd(product.PID,true)" src="assets/Images/assets/favorites.png" />
+                  <img class="firimg"  src="assets/Images/assets/favorites.png" />
 
 
-                  <img class="second_img" (click)="ProductClick(product.PID)" src='../../assets/Images/bottele.jpg' />
+                  <img class="second_img" ( src='../../assets/Images/bottele.jpg' />
 
-                  <img class="third_img" (click)="addtocart(product.PID)" src="assets/Images/assets/add-cart.png" />
+                  <img class="third_img"  src="assets/Images/assets/add-cart.png" />
 
 
                 </div>

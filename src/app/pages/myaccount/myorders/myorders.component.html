@@ -67,7 +67,8 @@ table.res_table td:nth-of-type(4):before { content: ""; }
                 <td>
                   <div class="Product_name">
                     <h5>Vodka is the best </h5>
-                    <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]" [ngClass]="{'checked':star+0.5 <= process.Rating, 'fa-star-half-o':star+0.5 == process.Rating}"></i>
+                    <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]" ></i>
+                    <!--[ngClass]="{'checked':star+0.5 <= process.Rating, 'fa-star-half-o':star+0.5 == process.Rating}"-->
                     <br><span class="font_size">4pk 150ml</span>
                   </div>
                 </td>
@@ -104,7 +105,7 @@ table.res_table td:nth-of-type(4):before { content: ""; }
                   <div class="margin_top_25 text-left">
                     <h5>
                       <span>
-                        <img src="assets/Images/assets/recipt-date.png">
+                        <img src="assets/Images/recipt-date.png">
                       </span>
                       <span class="date_time">Jan 20 2018 10:30 AM</span>
                     </h5>
@@ -125,14 +126,14 @@ table.res_table td:nth-of-type(4):before { content: ""; }
                       <span class="font_color">$ 12.00</span>
 
                       <button class="dec_circle toggle">
-                        <img class="plus" src="assets/Images/assets/expand.png" data-toggle="collapse"
-                          [attr.data-target]="'#'+myorderdetailes.OrderId">
+                        <img class="plus" src="assets/Images/expand.png" data-toggle="collapse"
+                         >
                       </button>
 
                     </h4>
 
                     <div>
-                      <div class="bill_summary inner" id={{myorderdetailes.OrderId}}>
+                      <div class="bill_summary inner" >
 
                         <table class="text_left">
                           <tbody>

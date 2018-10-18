@@ -16,7 +16,7 @@
                               <img src="assets/Images/profile.png" alt="Battlecapse">
                           </div>
                           <a class="dropdown-toggle username" data-toggle="dropdown">Login/register</a>
-                          <ul class="user-menu dropdown-menu">
+                          <ul class="user-menu dropdown-menu" *ngIf="customerSession?.UserId !== 0">
                               <li [routerLink]="['/myorders']">
                                   <a>
                                       <img class="beer" src="assets/Images/Orders.png"> My Orders

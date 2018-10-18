@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { MyAccountModule } from './pages/myaccount/myaccount.module';
+
 import { customerReducer  } from './state/customer/customer.reducer';
 import { CustomerEffects } from './state/customer/customer.effects';
 import { CustomerActions } from './state/customer/customer.action';
@@ -30,6 +32,10 @@ import { FilterMenuComponent } from './pages/home/menubar/filter-menu/filter-men
 import { SearchBarComponent } from './pages/home/menubar/search-bar/search-bar.component';
 import { ProductComponent } from './pages/products/product/product.component';
 import { EventDetailsComponent } from './pages/products/event-details/event-details.component';
+// import { MyAccountComponent } from './pages/myaccount/myaccount.component';
+import { MyordersComponent } from './pages/myaccount/myorders/myorders.component';
+import { CartComponent } from './pages/cart/cart.component';
+import { AdvanceFilterComponent } from './pages/products/advance-filter/advance-filter.component';
 
 import { CustomerService } from './services/customer.service';
 import { ProductStoreService } from './services/product-store.service';
@@ -57,12 +63,17 @@ import { CacheInterceptor } from './cacheInterceptor';
     RecipesComponent,
     RecipeDetailsComponent,
     ProductDetailsComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    // MyAccountComponent,
+    MyordersComponent,
+    CartComponent,
+    AdvanceFilterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MyAccountModule,
     StoreModule.forRoot({customer: customerReducer, productStore: productStoreReducer }),
     EffectsModule.forRoot([CustomerEffects, ProductStoreEffects]),
   ],

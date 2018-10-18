@@ -13,54 +13,66 @@
             </ol>
         </div>
 
+<!-- My Account Left Menu Start -->
 
         <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12">
-            <ul class="sidebar-menu">
-                <li>
-                    <a>
-                        <img class="beer" src="assets/Images/assets/Orders.png">
-                        <span>My Orders</span>
-                        <i class="fa fa-angle-down pull-right"></i>
-                    </a>
-                
-                </li>
-                <li>
-                    <a>
-                        <img class="beer" src="assets/Images/account.png">
-                        <span>My Account</span>
-                        <i class="fa fa-angle-down pull-right"></i>
-                    </a>
-                    <ul class="sidebar-submenu" style="display: none;">
-                        <li>
-                            <a>Profil Information</a>
-                        </li>
-                        <li>
-                            <a>Manage Addresses</a>
-                        </li>
-                        <li>
-                            <a>Payment methods</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="star_color">
-                    <a>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <span>Favorites</span>
-                        <i class="fa fa-angle-down pull-right"></i>
-                    </a>
-
-                </li>
-
-                <li class="">
-                    <a>
-                        <img class="beer" src="assets/Images/logout.png">
-                        <span>Log Out</span>
-                    </a>
-                </li>
-            </ul>
-
+              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel bottle-panel-container">
+                      <div class="left-panel-section" role="tab" id="myOrdersHeading">
+                        <h4 class="panel-title left-panel-title">
+                          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#myOrders" aria-expanded="true" aria-controls="myOrders">
+                            <span class="fa fa-file-text bottles-brand myac-icon"></span> My Orders <span class="fa fa-chevron-down pull-right"></span>
+                          </a>
+                        </h4>
+                      </div>
+                      <ul id="myOrders" class="panel-collapse collapse in left-panel-body" role="tabpanel" aria-labelledby="myOrdersHeading">
+                          <li><a href="#">Option 1</a></li>
+                          <li><a href="#">Option 1</a></li>
+                          <li><a href="#">Option 1</a></li>
+                          <li><a href="#">Option 1</a></li>
+                          <li><a href="#">Option 1</a></li>
+                      </ul>
+                    </div>
+                    <div class="panel bottle-panel-container">
+                      <div class="left-panel-section" role="tab" id="myAccountHeading">
+                        <h4 class="panel-title left-panel-title">
+                          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#myAccount" aria-expanded="false" aria-controls="myAccount">
+                            <span class="icon icon-user bottles-brand myac-icon"></span> <span class="fa fa-user bottles-brand myac-icon"></span> My Account <span class="fa fa-chevron-down pull-right"></span>
+                          </a>
+                        </h4>
+                      </div>
+                      <ul id="myAccount" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="myAccountHeading">
+                          <li><a routerLink="./profile" class="active">Profile Information</a></li>
+                          <li><a routerLink="./manage-addresses">Manage Addresses</a></li>
+                          <li><a routerLink="./payment-methods">Payment Methods</a></li>
+                      </ul>
+                    </div>
+                    <div class="panel bottle-panel-container">
+                      <div class="left-panel-section" role="tab" id="myFavouriteHeading">
+                        <h4 class="panel-title left-panel-title">
+                          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#myFavourite" aria-expanded="false" aria-controls="myFavourite">
+                            <span class="fa fa-star bottles-brand myac-icon"></span> Favourites  <span class="fa fa-chevron-up pull-right"></span>
+                          </a>
+                        </h4>
+                      </div>
+                      <ul id="myFavourite" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="myFavouriteHeading">
+                          <li><a href="#">Option 1</a></li>
+                          <li><a href="#">Option 1</a></li>
+                          <li><a href="#">Option 1</a></li>
+                          <li><a href="#">Option 1</a></li>
+                          <li><a href="#">Option 1</a></li>
+                      </ul>
+                    </div>
+                    <div class="bottle-panel-container">
+                        <div class="left-panel-section">
+                            <h4 class="left-panel-title">
+                                <a href="#" class="bottles-brand"><span class="fa fa-sign-out myac-icon"></span> Logout</a>
+                            </h4>
+                        </div>
+                    </div>
+                  </div>
         </div>
+<!-- My Account Left Menu End -->
 
         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
             <router-outlet></router-outlet>
