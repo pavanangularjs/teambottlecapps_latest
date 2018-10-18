@@ -8,7 +8,7 @@ import { RecipesComponent } from './pages/recipe/recipes/recipes.component';
 import { ProductDetailsComponent } from './pages/products/product-details/product-details.component';
 import { EventDetailsComponent } from './pages/products/event-details/event-details.component';
 import { MyAccountComponent } from './pages/myaccount/myaccount.component';
-import { MyordersComponent } from './pages/myaccount/myorders/myorders.component';
+import { MyOrdersComponent } from './pages/myaccount/myorders/myorders.component';
 import { CartComponent } from './pages/cart/cart.component';
 
 const routes: Routes = [
@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'product-details/:id', component: ProductDetailsComponent },
   { path: 'event-details/:id', component: EventDetailsComponent },
   { path: 'myaccount', loadChildren: './pages/myaccount/myaccount.module#MyAccountModule' },
-  { path: 'myorders', component: MyordersComponent },
+  { path: 'myorders', component: MyOrdersComponent },
   { path: '**', component: HomepageComponent },
 ];
 

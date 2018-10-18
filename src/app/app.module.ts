@@ -33,7 +33,7 @@ import { SearchBarComponent } from './pages/home/menubar/search-bar/search-bar.c
 import { ProductComponent } from './pages/products/product/product.component';
 import { EventDetailsComponent } from './pages/products/event-details/event-details.component';
 // import { MyAccountComponent } from './pages/myaccount/myaccount.component';
-import { MyordersComponent } from './pages/myaccount/myorders/myorders.component';
+import { MyOrdersComponent } from './pages/myaccount/myorders/myorders.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { AdvanceFilterComponent } from './pages/products/advance-filter/advance-filter.component';
 
@@ -65,7 +65,7 @@ import { CacheInterceptor } from './cacheInterceptor';
     ProductDetailsComponent,
     EventDetailsComponent,
     // MyAccountComponent,
-    MyordersComponent,
+    MyOrdersComponent,
     CartComponent,
     AdvanceFilterComponent
   ],
