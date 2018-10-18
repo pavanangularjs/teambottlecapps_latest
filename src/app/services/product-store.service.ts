@@ -12,6 +12,7 @@ import { StoreGetHome } from '../state/product-store/product-store.action';
 import { ProductGetListRequestPayload } from '../models/product-get-list-request-payload';
 import { ProductGetDetailsRequestPayload } from '../models/product-get-details-request-payload';
 import { EventGetDetailsRequestPayload } from '../models/event-get-details-request-payload';
+import { FavoriteProductUpdateRequestPayload } from '../models/favorite-product-update-payload';
 
 @Injectable()
 export class ProductStoreService {
@@ -67,10 +68,10 @@ export class ProductStoreService {
     }
 
     getProductGetListParams({ pageSize = 12, pageNumber = 1, isClub = 0, keyWord = '',
-        categoryId = 0, regionId = 0, typeId = 0, varitalId = 0, countryId = 0 , isFeatureProduct = true }:
+        categoryId = 0, regionId = 0, typeId = 0, varitalId = 0, countryId = 0, isFeatureProducts = true }:
         {
             pageSize?: number, pageNumber?: number, isClub?: number, keyWord?: string,
-            categoryId?: number, regionId?: number, typeId?: number, varitalId?: number, countryId?: number, isFeatureProduct?: boolean
+            categoryId?: number, regionId?: number, typeId?: number, varitalId?: number, countryId?: number, isFeatureProducts?: boolean
         } = {}) {
 
         if (!this.customerSession) {
@@ -90,7 +91,7 @@ export class ProductStoreService {
             SessionId: this.customerSession.SessionId,
             UserId: this.customerSession.UserId,
             AppId: this.customerSession.AppId,
-            IsFeatureProduct: isFeatureProduct
+            IsFeatureProducts: isFeatureProducts
         };
     }
 
@@ -141,6 +142,24 @@ export class ProductStoreService {
             SessionId: this.customerSession.SessionId,
             AppId: this.customerSession.AppId,
             EventID: eid
+        };
+    }
+
+    favoriteProductUpdate(productId: number, favStatus: boolean): Observable<any> {
+        return this.http.post<any>(baseUrl + UrlNames.FavoriteProductUpdate, this.getFavoriteUpdateObject(productId, favStatus));
+    }
+
+    getFavoriteUpdateObject(productId: number, favStatus: boolean): FavoriteProductUpdateRequestPayload {
+        if (!this.customerSession) {
+            return null;
+        }
+        return {
+            StoreId: this.customerSession.StoreId,
+            UserId: this.customerSession.UserId,
+            SessionId: this.customerSession.SessionId,
+            AppId: this.customerSession.AppId,
+            PID: productId,
+            FavoriteStatus: favStatus
         };
     }
 

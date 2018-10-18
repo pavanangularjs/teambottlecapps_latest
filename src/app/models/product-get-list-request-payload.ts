@@ -12,5 +12,5 @@ export class ProductGetListRequestPayload {
     SessionId: string;
     UserId: number;
     AppId: number;
-    IsFeatureProduct: boolean;
+    IsFeatureProducts: boolean;
 }
