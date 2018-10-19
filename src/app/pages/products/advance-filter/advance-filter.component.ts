@@ -62,12 +62,31 @@ export class AdvanceFilterComponent implements OnInit {
   }
 
   removeFilter(filter) {
-    const index = this.selectedFilters.indexOf(filter);
-    if (index !== -1) {
-      this.selectedFilters.splice(index, 1);
-    }
-  }
 
+    const tindex = this.allFilterOptions.type.findIndex(item => item.value === filter.value);
+    if (tindex !== -1) {
+      this.allFilterOptions.type[tindex].isSelected = false;
+      this.getAllSelectedFilters();
+      this.getFilteredProducts();
+      return;
+    }
+
+    const sindex = this.allFilterOptions.size.findIndex(item => item.value === filter.value);
+    if (sindex !== -1) {
+      this.allFilterOptions.size[sindex].isSelected = false;
+      this.getAllSelectedFilters();
+      this.getFilteredProducts();
+      return;
+    }
+
+    const pindex = this.allFilterOptions.price.findIndex(item => item.value === filter.value);
+    if (pindex !== -1) {
+      this.allFilterOptions.price[pindex].isSelected = false;
+      this.getAllSelectedFilters();
+      this.getFilteredProducts();
+    }
+
+  }
   onPageSizeChange() {
     this.getFilteredProducts();
   }
