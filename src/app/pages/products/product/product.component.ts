@@ -20,16 +20,11 @@ export class ProductComponent implements OnInit {
   }
 
   favoriteProductUpdate(status: boolean) {
-    // this.item.IsFavorite = !this.item.IsFavorite;
-    this.productService.favoriteProductUpdate(this.item.PID, status).pipe(
-      map(p => {
-        this.item.IsFavorite = p.IsFavorite;
-        alert(p.SuccessMessage);
-      }),
-      catchError(error =>
-        of(error)
-      )
-    );
+    this.productService.favoriteProductUpdate(this.item.PID, status).subscribe(
+      (data: any) => {
+        this.item.IsFavorite = data.IsFavorite;
+        alert(data.SuccessMessage);
+      });
   }
 
 }
