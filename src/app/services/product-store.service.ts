@@ -71,16 +71,14 @@ export class ProductStoreService {
         categoryId = '1,2,3,4', sizeId = '',
         typeId = '', varietalId = 0, countryId = 0,
         regionId = 0, isFavorite = 0, isFeatured = 1,
-        maxPrice = 0, minPrice = 0, keyWord = '',
-        deviceId = '610201801@mk.com'
+        maxPrice = 0, minPrice = 0, keyWord = ''
     }:
         {
             pageSize?: number, pageNumber?: number, isClub?: number,
             categoryId?: string, sizeId?: string,
             typeId?: string, varietalId?: number, countryId?: number,
             regionId?: number, isFavorite?: number, isFeatured?: number,
-            maxPrice?: number, minPrice?: number, keyWord?: string,
-            deviceId?: string
+            maxPrice?: number, minPrice?: number, keyWord?: string
         } = {}) {
 
         if (!this.customerSession) {

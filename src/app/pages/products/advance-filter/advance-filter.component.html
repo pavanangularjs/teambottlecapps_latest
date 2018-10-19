@@ -126,7 +126,7 @@
           <div class="col-md-6 col-sm-6">
             <div class="select_box">
 
-              <select #selectedvalue class="selectBox" [(ngModel)]="selectedPageSize">
+              <select #selectedvalue class="selectBox" [(ngModel)]="selectedPageSize" (change)="onPageSizeChange()">
                 <option>Page Size</option>
                 <option *ngFor="let size of PageSize">
                   {{size}}

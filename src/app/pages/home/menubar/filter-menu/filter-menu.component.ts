@@ -73,6 +73,7 @@ export class FilterMenuComponent implements OnInit {
   }
 
   applyFilter() {
+    this.dataservice.categoryId = this.filters.CategoryId;
     this.dataservice.filtersAllData = this.allFilters;
     this.router.navigate(['/advance-filter']);
   }

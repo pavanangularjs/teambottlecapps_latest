@@ -59,10 +59,33 @@ export class AdvanceFilterComponent implements OnInit {
     }
   }
 
+  onPageSizeChange() {
+    this.getFilteredProducts();
+  }
   getFilteredProducts() {
-    //this.selectedTypes
+
+    let types = '';
+    let sizes = '';
+    let minPrice = 0;
+    let maxPrice = 0;
+
+    if (this.selectedTypes && this.selectedTypes.length > 0) {
+      types = this.selectedTypes.map((res: Item) => res.id).join(',');
+    }
+    if (this.selectedSizes && this.selectedSizes.length > 0) {
+      sizes = this.selectedSizes.map((res: Item) => res.id).join(',');
+    }
+    if (this.selectedPrices && this.selectedPrices.length > 0) {
+      const prices = this.selectedPrices.map((res: Item) => res.value);
+      minPrice = +prices[0].split('-')[0].replace(/^\D+/g, '');
+      maxPrice = +prices[prices.length - 1].split('-')[1].replace(/^\D+/g, '');
+    }
+
     this.store.dispatch(new ProductGetList(
-      this.productStoreService.getProductGetListParams({ categoryId: '3', pageSize: this.selectedPageSize })));
+      this.productStoreService.getProductGetListParams(
+        { categoryId: this.dataservice.categoryId , pageSize: this.selectedPageSize, typeId: types,
+          sizeId: sizes, minPrice: minPrice, maxPrice: maxPrice }
+      )));
   }
 
 }
