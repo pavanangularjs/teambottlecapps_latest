@@ -30,10 +30,8 @@
               </h4>
             </div>
             <ul id="myFilter" class="panel-collapse collapse in search-history" role="tabpanel" aria-labelledby="myFilterHeading">
-              <li><a href="#">Search by brand <span class="fa fa-close"></span></a></li>
-              <li><a href="#">Option 1 <span class="fa fa-close"></span></a></li>
-              <li><a href="#">Option 2 <span class="fa fa-close"></span></a></li>
-
+              <li *ngFor="let filter of selectedFilters"><a (click)="removeFilter(filter)"> {{filter.value}} <span
+                    class="fa fa-close"></span></a></li>
             </ul>
           </div>
           <div class="panel bottle-panel-container">
@@ -122,40 +120,24 @@
           <div class="col-md-6 col-sm-6">
 
             <p class="text_transform">
-              Showing
-              <!-- <ng-container *ngIf="totalcount >=10">
-                {{pageto}}
-              </ng-container>
-              <ng-container *ngIf="totalcount <=10">
-                1
-              </ng-container>
-              -
-              <ng-container *ngIf="totalcount <=10">
-                {{totalcount}}
-              </ng-container>
-
-              <ng-container *ngIf="totalcount >=10">
-                {{pagefrom}}
-              </ng-container>
-
-              of {{totalcount}} Product -->
+              Showing 1-{{productsList.length}} of {{productsList.length}} Products
             </p>
           </div>
           <div class="col-md-6 col-sm-6">
             <div class="select_box">
 
-              <select #selectedvalue class="selectBox">
-                <option>
-                  page
+              <select #selectedvalue class="selectBox" [(ngModel)]="selectedPageSize">
+                <option>Page Size</option>
+                <option *ngFor="let size of PageSize">
+                  {{size}}
                 </option>
               </select>
 
               <select>
                 <option>DEFAULT SORTING</option>
-                <option>1</option>
-                <option>1</option>
-                <option>1</option>
-                <option>1</option>
+                <option *ngFor="let type of SortBy">
+                  {{type}}
+                </option>
               </select>
 
             </div>
@@ -166,42 +148,8 @@
 
         <div class="Main_bottlesection">
           <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 item_img">
-              <div class="img_div">
-
-                <img class="offericon" src='assets/Images/offer-icon.png'>
-
-
-                <div class="margin_bottom">
-
-                  <img class="firimg" src="assets/Images/favorites.png" />
-
-
-                  <img class="second_img" src='assets/Images/bottele.jpg' />
-
-                  <img class="third_img" src="assets/Images/add-cart.png" />
-
-
-                </div>
-                <div class="second_content">
-                  <div class="">
-
-                    <h5>
-                      <p class="strike_text">$15.00</p>
-                      <p class="price">$9.99</p>
-                    </h5>
-
-                    <h5>Vodka</h5>
-                    <p> 4pk 150ml</p>
-                    <p class="rating_star">
-                      <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]"></i>
-                      <span class="first">4 reviews</span>
-                      <span class="reviews"> </span>
-                    </p>
-
-                  </div>
-                </div>
-              </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" *ngFor="let product of productsList">
+              <app-product [item]="product"></app-product>
             </div>
           </div>
         </div>

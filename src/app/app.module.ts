@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { MyAccountModule } from './pages/myaccount/myaccount.module';
+import { FormsModule } from '@angular/forms';
 
 import { customerReducer  } from './state/customer/customer.reducer';
 import { CustomerEffects } from './state/customer/customer.effects';
@@ -73,6 +74,7 @@ import { CacheInterceptor } from './cacheInterceptor';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule,
     MyAccountModule,
     StoreModule.forRoot({customer: customerReducer, productStore: productStoreReducer }),
