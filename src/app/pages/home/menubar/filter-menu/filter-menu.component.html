@@ -5,10 +5,11 @@
         <span class="text-uppercase text-white">TYPE</span>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <input type="checkbox" /><label> All </label>
+            <input type="checkbox" [(ngModel)]="isCheckAllTypes"
+            (change)="selectAllTypes($event, isCheckAllTypes)" /><label> All </label>
           </li>
           <li class="nav-item" *ngFor="let type of allFilters?.type">
-            <input (change)="onSelected(type)" type="checkbox" name="{{type.value}}" id="{{type.value}}"/>
+            <input [(ngModel)]="type.isSelected" type="checkbox" name="{{type.value}}" id="{{type.value}}"/>
             <label for="{{type.value}}"> {{type.value}} </label>
           </li>
         </ul>
@@ -18,10 +19,11 @@
         <ul class="nav flex-column">
           <span class="text-uppercase text-white">SIZE</span>
           <li class="nav-item">
-            <input type="checkbox" /> <label> All </label>
+            <input type="checkbox" [(ngModel)]="isCheckAllSizes"
+            (change)="selectAllSizes($event, isCheckAllSizes)"/> <label> All </label>
           </li>
           <li class="nav-item" *ngFor="let size of allFilters?.size">
-              <input (change)="onSelected(size)" type="checkbox" name="{{size.value}}" id="{{size.value}}"/>
+              <input [(ngModel)]="size.isSelected" type="checkbox" name="{{size.value}}" id="{{size.value}}"/>
               <label for="{{size.value}}"> {{size.value}} </label>
             </li>
         </ul>
@@ -31,10 +33,11 @@
         <ul class="nav flex-column">
           <span class="text-uppercase text-white">PRICE</span>
           <li class="nav-item">
-            <input type="checkbox" /> <label> All </label>
+            <input type="checkbox" [(ngModel)]="isCheckAllPrices"
+            (change)="selectAllPrices($event, isCheckAllPrices)"/> <label> All </label>
           </li>
           <li class="nav-item" *ngFor="let range of allFilters?.price">
-              <input (change)="onSelected(range)" type="checkbox" name="{{range.value}}" id="{{range.value}}"/>
+              <input [(ngModel)]="range.isSelected" type="checkbox" name="{{range.value}}" id="{{range.value}}"/>
               <label for="{{range.value}}"> {{range.value}} </label>
             </li>
         </ul>

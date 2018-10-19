@@ -12,6 +12,10 @@ import { Item } from '../../../../models/item';
 export class FilterMenuComponent implements OnInit {
   @Input() filters: any;
 
+  isCheckAllTypes = false;
+  isCheckAllSizes = false;
+  isCheckAllPrices = false;
+
   allFilters: ProductFilters;
   priceRanges = [
     { 'id': '1', 'name': '$1 - $10' },
@@ -68,6 +72,17 @@ export class FilterMenuComponent implements OnInit {
     });
   }
 
+  selectAllTypes(event: any, check: any) {
+    this.allFilters.type.map(type => type.isSelected = check);
+  }
+
+  selectAllSizes(event: any, check: any) {
+    this.allFilters.size.map(size => size.isSelected = check);
+  }
+
+  selectAllPrices(event: any, check: any) {
+    this.allFilters.price.map(price => price.isSelected = check);
+  }
   onSelected(type) {
     type.isSelected = !type.isSelected;
   }

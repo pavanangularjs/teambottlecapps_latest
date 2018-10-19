@@ -44,7 +44,7 @@
               </h4>
             </div>
             <ul id="myType" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="myTypeHeading">
-              <li><a href="#" [ngClass]="{'active' : type.isSelected === true}" *ngFor="let type of allFilterOptions?.type">{{type.value}}</a></li>
+              <li><a (click)="onSelectionChange(type)" [ngClass]="{'active' : type.isSelected === true}" *ngFor="let type of allFilterOptions?.type">{{type.value}}</a></li>
             </ul>
           </div>
           <div class="panel bottle-panel-container">
@@ -57,7 +57,7 @@
               </h4>
             </div>
             <ul id="mySize" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="mySizeHeading">
-              <li><a href="#" [ngClass]="{'active' : size.isSelected === true}" *ngFor="let size of allFilterOptions?.size">{{size.value}}</a></li>
+              <li><a (click)="onSelectionChange(size)" [ngClass]="{'active' : size.isSelected === true}" *ngFor="let size of allFilterOptions?.size">{{size.value}}</a></li>
             </ul>
           </div>
           <div class="panel bottle-panel-container">
@@ -100,13 +100,13 @@
               </h4>
             </div>
             <ul id="myPrice" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="PriceHeading">
-              <li><a href="#" [ngClass]="{'active' : price.isSelected === true}" *ngFor="let price of allFilterOptions?.price">{{price.value}}</a></li>
+              <li><a (click)="onSelectionChange(price)" [ngClass]="{'active' : price.isSelected === true}" *ngFor="let price of allFilterOptions?.price">{{price.value}}</a></li>
             </ul>
           </div>
           <div class="bottle-panel-container">
             <div class="left-panel-section">
               <h4 class="left-panel-title">
-                <a href="#" class="bottles-brand"><span class="icon icon-logout myac-icon"></span> <span class="fa fa-logout myac-icon"></span>
+                <a (click)="clearSearch()" class="bottles-brand">
                   Clear Search</a>
               </h4>
             </div>

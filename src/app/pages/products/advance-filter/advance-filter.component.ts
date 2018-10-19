@@ -21,9 +21,9 @@ export class AdvanceFilterComponent implements OnInit {
   selectedSizes: Item[] = [];
   selectedPrices: Item[] = [];
   productsList: any;
-  PageSize = [20, 40, 60, 80, 100];
+  PageSize = [12, 20, 40, 60, 80, 100];
   SortBy = ['Price', 'Size', 'Type', 'Country', 'Region'];
-  selectedPageSize = 40;
+  selectedPageSize = 12;
 
   constructor(public dataservice: DataService,
     private store: Store<ProductGetListRequestPayload>,
@@ -35,9 +35,11 @@ export class AdvanceFilterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.allFilterOptions = this.dataservice.filtersAllData;
-    this.getAllSelectedFilters();
-    this.getFilteredProducts();
+    if (this.dataservice.filtersAllData) {
+      this.allFilterOptions = this.dataservice.filtersAllData;
+      this.getAllSelectedFilters();
+      this.getFilteredProducts();
+    }
   }
 
   getAllSelectedFilters() {
@@ -46,6 +48,13 @@ export class AdvanceFilterComponent implements OnInit {
     this.selectedPrices = this.getSelectedFilterOptions(this.allFilterOptions.price);
 
     this.selectedFilters = [...this.selectedTypes, ...this.selectedSizes, ...this.selectedPrices];
+  }
+
+  onSelectionChange(item) {
+    item.isSelected = !item.isSelected;
+
+    this.getAllSelectedFilters();
+    this.getFilteredProducts();
   }
 
   getSelectedFilterOptions(filterType): Item[] {
@@ -77,15 +86,33 @@ export class AdvanceFilterComponent implements OnInit {
     }
     if (this.selectedPrices && this.selectedPrices.length > 0) {
       const prices = this.selectedPrices.map((res: Item) => res.value);
-      minPrice = +prices[0].split('-')[0].replace(/^\D+/g, '');
-      maxPrice = +prices[prices.length - 1].split('-')[1].replace(/^\D+/g, '');
+
+      if (prices[0].match(/\d+/g)) {
+        minPrice = prices[0].match(/\d+/g).map(Number)[0];
+      }
+
+      if (prices[prices.length - 1].match(/\d+/g) && prices[prices.length - 1].match(/\d+/g).length > 1) {
+        maxPrice = prices[prices.length - 1].match(/\d+/g).map(Number)[1];
+      } else {
+        maxPrice = 99999;
+      }
     }
 
     this.store.dispatch(new ProductGetList(
       this.productStoreService.getProductGetListParams(
-        { categoryId: this.dataservice.categoryId , pageSize: this.selectedPageSize, typeId: types,
-          sizeId: sizes, minPrice: minPrice, maxPrice: maxPrice }
+        {
+          categoryId: this.dataservice.categoryId, pageSize: this.selectedPageSize, typeId: types,
+          sizeId: sizes, minPrice: minPrice, maxPrice: maxPrice
+        }
       )));
+  }
+
+  clearSearch() {
+    this.allFilterOptions.type.map(type => type.isSelected = false);
+    this.allFilterOptions.size.map(size => size.isSelected = false);
+    this.allFilterOptions.price.map(price => price.isSelected = false);
+    this.getAllSelectedFilters();
+    this.getFilteredProducts();
   }
 
 }
