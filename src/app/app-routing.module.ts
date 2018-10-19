@@ -10,6 +10,7 @@ import { EventDetailsComponent } from './pages/products/event-details/event-deta
 import { MyAccountComponent } from './pages/myaccount/myaccount.component';
 import { MyOrdersComponent } from './pages/myaccount/myorders/myorders.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { AdvanceFilterComponent } from './pages/products/advance-filter/advance-filter.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'event-details/:id', component: EventDetailsComponent },
   { path: 'myaccount', loadChildren: './pages/myaccount/myaccount.module#MyAccountModule' },
   { path: 'myorders', component: MyOrdersComponent },
+  { path: 'advance-filter', component: AdvanceFilterComponent },
   { path: '**', component: HomepageComponent },
 ];
 

@@ -28,8 +28,8 @@ export class FeatureProductsComponent implements OnChanges {
     this.productsList = this.storeGetHomeData ? this.storeGetHomeData.HomeList : [];
   }
 
-  onCategoryChange(catId: number) {
-    this.store.dispatch(new ProductGetList(this.productStoreService.getProductGetListParams({categoryId: catId})));
+  onCategoryChange(catId = '1,2,3,4') {
+    this.store.dispatch(new ProductGetList(this.productStoreService.getProductGetListParams({ categoryId: catId, pageSize: 32 })));
   }
 
 }

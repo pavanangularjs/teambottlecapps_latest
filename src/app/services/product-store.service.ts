@@ -67,11 +67,20 @@ export class ProductStoreService {
         );
     }
 
-    getProductGetListParams({ pageSize = 12, pageNumber = 1, isClub = 0, keyWord = '',
-        categoryId = 0, regionId = 0, typeId = 0, varitalId = 0, countryId = 0, isFeatureProducts = true }:
+    getProductGetListParams({ pageSize = 12, pageNumber = 1, isClub = 0,
+        categoryId = '1,2,3,4', sizeId = '',
+        typeId = '', varietalId = 0, countryId = 0,
+        regionId = 0, isFavorite = 0, isFeatured = 1,
+        maxPrice = 0, minPrice = 0, keyWord = '',
+        deviceId = '610201801@mk.com'
+    }:
         {
-            pageSize?: number, pageNumber?: number, isClub?: number, keyWord?: string,
-            categoryId?: number, regionId?: number, typeId?: number, varitalId?: number, countryId?: number, isFeatureProducts?: boolean
+            pageSize?: number, pageNumber?: number, isClub?: number,
+            categoryId?: string, sizeId?: string,
+            typeId?: string, varietalId?: number, countryId?: number,
+            regionId?: number, isFavorite?: number, isFeatured?: number,
+            maxPrice?: number, minPrice?: number, keyWord?: string,
+            deviceId?: string
         } = {}) {
 
         if (!this.customerSession) {
@@ -79,19 +88,25 @@ export class ProductStoreService {
         }
         return {
             StoreId: this.customerSession.StoreId,
+            AppId: this.customerSession.AppId,
             PageSize: pageSize,
             PageNumber: pageNumber,
             IsClub: isClub,
-            KeyWord: keyWord,
             CategoryId: categoryId,
-            RegionId: regionId,
-            TypeId: typeId,
-            VaritalId: varitalId,
-            CountryId: countryId,
             SessionId: this.customerSession.SessionId,
             UserId: this.customerSession.UserId,
-            AppId: this.customerSession.AppId,
-            IsFeatureProducts: isFeatureProducts
+            SizeId: sizeId,
+            TypeId: typeId,
+            VarietalId: varietalId,
+            CountryId: countryId,
+            RegionId: regionId,
+            IsFavorite: isFavorite,
+            IsFeatured: isFeatured,
+            MaxPrice: maxPrice,
+            MinPrice: minPrice,
+            KeyWord: keyWord,
+            DeviceId: this.customerSession.DeviceId,
+            DeviceType: this.customerSession.DeviceType
         };
     }
 

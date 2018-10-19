@@ -39,6 +39,7 @@ import { AdvanceFilterComponent } from './pages/products/advance-filter/advance-
 
 import { CustomerService } from './services/customer.service';
 import { ProductStoreService } from './services/product-store.service';
+import { DataService } from './services/data.service';
 
 import { HttpCacheService } from './cache.service';
 import { CacheInterceptor } from './cacheInterceptor';
@@ -77,7 +78,7 @@ import { CacheInterceptor } from './cacheInterceptor';
     StoreModule.forRoot({customer: customerReducer, productStore: productStoreReducer }),
     EffectsModule.forRoot([CustomerEffects, ProductStoreEffects]),
   ],
-  providers: [CustomerService, ProductStoreService],
+  providers: [CustomerService, ProductStoreService, DataService],
     // HttpCacheService, { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })

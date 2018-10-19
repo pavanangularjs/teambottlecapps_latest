@@ -17,120 +17,105 @@
 <section class="m_bottom">
   <div class="container">
     <div class="row">
-      <!-- <div class= "" *ngFor="let sidebar of landingproduct" >
-               <app-landingproduct ["landingproduct"]=sidebar></app-landingproduct> 
-              </div> -->
       <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12">
-<!-- Filter Search Left Menu Start -->
+        <!-- Filter Search Left Menu Start -->
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel bottle-panel-container">
+            <div class="left-panel-section" role="tab" id="myFilterHeading">
+              <h4 class="panel-title left-panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#myFilter" aria-expanded="true"
+                  aria-controls="myFilter">
+                  Filter <span class="fa fa-chevron-down pull-right"></span>
+                </a>
+              </h4>
+            </div>
+            <ul id="myFilter" class="panel-collapse collapse in search-history" role="tabpanel" aria-labelledby="myFilterHeading">
+              <li><a href="#">Search by brand <span class="fa fa-close"></span></a></li>
+              <li><a href="#">Option 1 <span class="fa fa-close"></span></a></li>
+              <li><a href="#">Option 2 <span class="fa fa-close"></span></a></li>
 
-              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                <div class="panel bottle-panel-container">
-                  <div class="left-panel-section" role="tab" id="myFilterHeading">
-                    <h4 class="panel-title left-panel-title">
-                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#myFilter" aria-expanded="true" aria-controls="myFilter">
-                        Filter <span class="fa fa-chevron-down pull-right"></span>
-                      </a>
-                    </h4>
-                  </div>
-                  <ul id="myFilter" class="panel-collapse collapse in search-history" role="tabpanel" aria-labelledby="myFilterHeading">
-                      <li><a href="#">Search by brand <span class="fa fa-close"></span></a></li>
-                      <li><a href="#">Option 1 <span class="fa fa-close"></span></a></li>
-                      <li><a href="#">Option 2 <span class="fa fa-close"></span></a></li>
-
-                  </ul>
-                </div>
-                <div class="panel bottle-panel-container">
-                  <div class="left-panel-section" role="tab" id="myTypeHeading">
-                    <h4 class="panel-title left-panel-title">
-                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#myType" aria-expanded="false" aria-controls="myType">
-                        Type  <span class="fa fa-chevron-up pull-right"></span>
-                      </a>
-                    </h4>
-                  </div>
-                  <ul id="myType" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="myTypeHeading">
-                      <li><a href="#" class="active">Option 1</a></li>
-                      <li><a href="#">Option 1</a></li>
-                      <li><a href="#">Option 1</a></li>
-                      <li><a href="#">Option 1</a></li>
-                      <li><a href="#">Option 1</a></li>
-                  </ul>
-                </div>
-                <div class="panel bottle-panel-container">
-                  <div class="left-panel-section" role="tab" id="myCountryHeading">
-                    <h4 class="panel-title left-panel-title">
-                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#myCountry" aria-expanded="false" aria-controls="myCountry">
-                        Country <span class="fa fa-chevron-up pull-right"></span>
-                      </a>
-                    </h4>
-                  </div>
-                  <ul id="myCountry" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="myCountryHeading">
-                      <li><a href="#">Option 1</a></li>
-                      <li><a href="#">Option 1</a></li>
-                      <li><a href="#">Option 1</a></li>
-                      <li><a href="#">Option 1</a></li>
-                      <li><a href="#">Option 1</a></li>
-                  </ul>
-                </div>
-                <div class="panel bottle-panel-container">
-                  <div class="left-panel-section" role="tab" id="myRegionHeading">
-                    <h4 class="panel-title left-panel-title">
-                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#myRegion" aria-expanded="false" aria-controls="myRegion">
-                        Region <span class="fa fa-chevron-down pull-right"></span>
-                      </a>
-                    </h4>
-                  </div>
-                  <ul id="myRegion" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="myRegionHeading">
-                      <li><a href="#">Option 1</a></li>
-                      <li><a href="#">Option 1</a></li>
-                      <li><a href="#">Option 1</a></li>
-                      <li><a href="#">Option 1</a></li>
-                      <li><a href="#">Option 1</a></li>
-                  </ul>
-                </div>
-                <div class="panel bottle-panel-container">
-                  <div class="left-panel-section" role="tab" id="myPriceHeading">
-                    <h4 class="panel-title left-panel-title">
-                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#myPrice" aria-expanded="false" aria-controls="myPrice">
-                        Price <span class="fa fa-chevron-down pull-right"></span>
-                      </a>
-                    </h4>
-                  </div>
-                  <ul id="myPrice" class="panel-collapse collapse checkbox-list" role="tabpanel" aria-labelledby="myPriceHeading">
-                    <li>  
-                        <label class="custom-checkbox">1 to 10
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span></label>
-                    </li>
-                      <li>  
-                        <label class="custom-checkbox">10 to 50
-                        <input type="checkbox" checked="">
-                        <span class="checkmark"></span></label>
-                    </li>
-                    <li>  
-                        <label class="custom-checkbox">50 to 100
-                        <input type="checkbox" uncheck="">
-                        <span class="checkmark"></span></label>
-                    </li>
-                    <li>  
-                        <label class="custom-checkbox">100 +
-                        <input type="checkbox" uncheck="">
-                        <span class="checkmark"></span></label>
-                    </li>
-                  </ul>
-                </div>
-                <div class="bottle-panel-container">
-                    <div class="left-panel-section">
-                        <h4 class="left-panel-title">
-                            <a href="#" class="bottles-brand"><span class="icon icon-logout myac-icon"></span> <span class="fa fa-logout myac-icon"></span> Clear Search</a>
-                        </h4>
-                    </div>
-                </div>
-              </div>
-
-<!-- Filter Search Left Menu End -->
-
+            </ul>
+          </div>
+          <div class="panel bottle-panel-container">
+            <div class="left-panel-section" role="tab" id="myTypeHeading">
+              <h4 class="panel-title left-panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#myType"
+                  aria-expanded="false" aria-controls="myType">
+                  Type <span class="fa fa-chevron-up pull-right"></span>
+                </a>
+              </h4>
+            </div>
+            <ul id="myType" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="myTypeHeading">
+              <li><a href="#" [ngClass]="{'active' : type.isSelected === true}" *ngFor="let type of allFilterOptions?.type">{{type.value}}</a></li>
+            </ul>
+          </div>
+          <div class="panel bottle-panel-container">
+            <div class="left-panel-section" role="tab" id="mySizeHeading">
+              <h4 class="panel-title left-panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#mySize"
+                  aria-expanded="false" aria-controls="mySize">
+                  Size <span class="fa fa-chevron-up pull-right"></span>
+                </a>
+              </h4>
+            </div>
+            <ul id="mySize" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="mySizeHeading">
+              <li><a href="#" [ngClass]="{'active' : size.isSelected === true}" *ngFor="let size of allFilterOptions?.size">{{size.value}}</a></li>
+            </ul>
+          </div>
+          <div class="panel bottle-panel-container">
+            <div class="left-panel-section" role="tab" id="myCountryHeading">
+              <h4 class="panel-title left-panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#myCountry"
+                  aria-expanded="false" aria-controls="myCountry">
+                  Country <span class="fa fa-chevron-up pull-right"></span>
+                </a>
+              </h4>
+            </div>
+            <ul id="myCountry" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="myCountryHeading">
+              <li><a href="#" [ngClass]="{'active' : country.isSelected === true}" *ngFor="let country of allFilterOptions?.countries">{{country.value}}</a></li>
+            </ul>
+          </div>
+          <div class="panel bottle-panel-container">
+            <div class="left-panel-section" role="tab" id="myRegionHeading">
+              <h4 class="panel-title left-panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#myRegion"
+                  aria-expanded="false" aria-controls="myRegion">
+                  Region <span class="fa fa-chevron-down pull-right"></span>
+                </a>
+              </h4>
+            </div>
+            <ul id="myRegion" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="myRegionHeading">
+              <li><a href="#">Option 1</a></li>
+              <li><a href="#">Option 1</a></li>
+              <li><a href="#">Option 1</a></li>
+              <li><a href="#">Option 1</a></li>
+              <li><a href="#">Option 1</a></li>
+            </ul>
+          </div>
+          <div class="panel bottle-panel-container">
+            <div class="left-panel-section" role="tab" id="PriceHeading">
+              <h4 class="panel-title left-panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#myPrice"
+                  aria-expanded="false" aria-controls="myPrice">
+                  price <span class="fa fa-chevron-up pull-right"></span>
+                </a>
+              </h4>
+            </div>
+            <ul id="myPrice" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="PriceHeading">
+              <li><a href="#" [ngClass]="{'active' : price.isSelected === true}" *ngFor="let price of allFilterOptions?.price">{{price.value}}</a></li>
+            </ul>
+          </div>
+          <div class="bottle-panel-container">
+            <div class="left-panel-section">
+              <h4 class="left-panel-title">
+                <a href="#" class="bottles-brand"><span class="icon icon-logout myac-icon"></span> <span class="fa fa-logout myac-icon"></span>
+                  Clear Search</a>
+              </h4>
+            </div>
+          </div>
+        </div>
+        <!-- Filter Search Left Menu End -->
       </div>
-
       <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12">
         <div class="row margin_bottom_35">
 
@@ -159,7 +144,7 @@
           <div class="col-md-6 col-sm-6">
             <div class="select_box">
 
-              <select #selectedvalue  class="selectBox">
+              <select #selectedvalue class="selectBox">
                 <option>
                   page
                 </option>
@@ -184,17 +169,17 @@
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 item_img">
               <div class="img_div">
 
-                <img class="offericon" src='../../assets/Images/offer-icon.png'>
+                <img class="offericon" src='assets/Images/offer-icon.png'>
 
 
                 <div class="margin_bottom">
 
-                  <img class="firimg"  src="assets/Images/assets/favorites.png" />
+                  <img class="firimg" src="assets/Images/favorites.png" />
 
 
-                  <img class="second_img" ( src='../../assets/Images/bottele.jpg' />
+                  <img class="second_img" src='assets/Images/bottele.jpg' />
 
-                  <img class="third_img"  src="assets/Images/assets/add-cart.png" />
+                  <img class="third_img" src="assets/Images/add-cart.png" />
 
 
                 </div>

@@ -7,9 +7,9 @@
           <li class="nav-item">
             <input type="checkbox" /><label> All </label>
           </li>
-          <li class="nav-item" *ngFor="let type of filters?.ListType">
-            <input (change)="onTypeSelected(type)" type="checkbox" name="{{type.TypeName}}" id="{{type.TypeName}}"/>
-            <label for="{{type.TypeName}}"> {{type.TypeName}} </label>
+          <li class="nav-item" *ngFor="let type of allFilters?.type">
+            <input (change)="onSelected(type)" type="checkbox" name="{{type.value}}" id="{{type.value}}"/>
+            <label for="{{type.value}}"> {{type.value}} </label>
           </li>
         </ul>
       </div>
@@ -18,11 +18,11 @@
         <ul class="nav flex-column">
           <span class="text-uppercase text-white">SIZE</span>
           <li class="nav-item">
-            <input type="checkbox" /> All
+            <input type="checkbox" /> <label> All </label>
           </li>
-          <li class="nav-item" *ngFor="let size of filters?.ListSize">
-              <input (change)="onSizeSelected(size)" type="checkbox" name="{{size.UnitSize}}" id="{{size.UnitSize}}"/>
-              <label for="{{size.UnitSize}}"> {{size.UnitSize}} </label>
+          <li class="nav-item" *ngFor="let size of allFilters?.size">
+              <input (change)="onSelected(size)" type="checkbox" name="{{size.value}}" id="{{size.value}}"/>
+              <label for="{{size.value}}"> {{size.value}} </label>
             </li>
         </ul>
       </div>
@@ -31,11 +31,12 @@
         <ul class="nav flex-column">
           <span class="text-uppercase text-white">PRICE</span>
           <li class="nav-item">
-            <input type="checkbox" /> All
+            <input type="checkbox" /> <label> All </label>
           </li>
-          <li class="nav-item">
-            <input type="checkbox"> Dynamic Data Here
-          </li>
+          <li class="nav-item" *ngFor="let range of allFilters?.price">
+              <input (change)="onSelected(range)" type="checkbox" name="{{range.value}}" id="{{range.value}}"/>
+              <label for="{{range.value}}"> {{range.value}} </label>
+            </li>
         </ul>
       </div>
 
@@ -43,6 +44,6 @@
   </div>
   <div class="btn_right">
     <button class="btn btn-default clear">Clear All</button>
-    <button class="btn btn-default filer_go">Filter & Go</button>
+    <button class="btn btn-default filer_go" (click)="applyFilter()" >Filter & Go</button>
   </div>
 </div>
