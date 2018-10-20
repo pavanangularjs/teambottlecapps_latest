@@ -60,7 +60,7 @@
               <li><a (click)="onSelectionChange(size)" [ngClass]="{'active' : size.isSelected === true}" *ngFor="let size of allFilterOptions?.size">{{size.value}}</a></li>
             </ul>
           </div>
-          <div class="panel bottle-panel-container">
+          <div class="panel bottle-panel-container" *ngIf="allFilterOptions?.countries.length > 0">
             <div class="left-panel-section" role="tab" id="myCountryHeading">
               <h4 class="panel-title left-panel-title">
                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#myCountry"
@@ -70,10 +70,10 @@
               </h4>
             </div>
             <ul id="myCountry" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="myCountryHeading">
-              <li><a href="#" [ngClass]="{'active' : country.isSelected === true}" *ngFor="let country of allFilterOptions?.countries">{{country.value}}</a></li>
+              <li><a (click)="onCountrySelectionChange(country)" [ngClass]="{'active' : country.isSelected === true}" *ngFor="let country of allFilterOptions?.countries">{{country.value}}</a></li>
             </ul>
           </div>
-          <div class="panel bottle-panel-container">
+          <div class="panel bottle-panel-container" *ngIf="allFilterOptions?.countries.length > 0">
             <div class="left-panel-section" role="tab" id="myRegionHeading">
               <h4 class="panel-title left-panel-title">
                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#myRegion"
@@ -83,11 +83,7 @@
               </h4>
             </div>
             <ul id="myRegion" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="myRegionHeading">
-              <li><a href="#">Option 1</a></li>
-              <li><a href="#">Option 1</a></li>
-              <li><a href="#">Option 1</a></li>
-              <li><a href="#">Option 1</a></li>
-              <li><a href="#">Option 1</a></li>
+              <li><a (click)="onSelectionChange(region)" [ngClass]="{'active' : region.isSelected === true}" *ngFor="let region of allRegions">{{region.value}}</a></li>
             </ul>
           </div>
           <div class="panel bottle-panel-container">

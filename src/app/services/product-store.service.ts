@@ -69,15 +69,15 @@ export class ProductStoreService {
 
     getProductGetListParams({ pageSize = 12, pageNumber = 1, isClub = 0,
         categoryId = '1,2,3,4', sizeId = '',
-        typeId = '', varietalId = 0, countryId = 0,
-        regionId = 0, isFavorite = 0, isFeatured = 1,
+        typeId = '', varietalId = 0, countryId = '',
+        regionId = '', isFavorite = 0, isFeatured = 1,
         maxPrice = 0, minPrice = 0, keyWord = ''
     }:
         {
             pageSize?: number, pageNumber?: number, isClub?: number,
             categoryId?: string, sizeId?: string,
-            typeId?: string, varietalId?: number, countryId?: number,
-            regionId?: number, isFavorite?: number, isFeatured?: number,
+            typeId?: string, varietalId?: number, countryId?: string,
+            regionId?: string, isFavorite?: number, isFeatured?: number,
             maxPrice?: number, minPrice?: number, keyWord?: string
         } = {}) {
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../../services/data.service';
 import { ProductFilters } from '../../../models/product-filters';
 import { Item } from '../../../models/item';
+import { Country } from '../../../models/country';
 import { Store } from '@ngrx/store';
 
 import { ProductGetListRequestPayload } from '../../../models/product-get-list-request-payload';
@@ -20,6 +21,9 @@ export class AdvanceFilterComponent implements OnInit {
   selectedTypes: Item[] = [];
   selectedSizes: Item[] = [];
   selectedPrices: Item[] = [];
+  selectedCountries: Country[] = [];
+  allRegions: Item[] = [];
+  selectedRegions: Item[] = [];
   productsList: any;
   PageSize = [12, 20, 40, 60, 80, 100];
   SortBy = ['Price', 'Size', 'Type', 'Country', 'Region'];
@@ -49,7 +53,13 @@ export class AdvanceFilterComponent implements OnInit {
     this.selectedSizes = this.getSelectedFilterOptions(this.allFilterOptions.size);
     this.selectedPrices = this.getSelectedFilterOptions(this.allFilterOptions.price);
 
-    this.selectedFilters = [...this.selectedTypes, ...this.selectedSizes, ...this.selectedPrices];
+    if (this.allFilterOptions.countries.length > 0) {
+      this.selectedCountries = this.getSelectedFilterOptions(this.allFilterOptions.countries);
+      this.selectedRegions = this.getSelectedFilterOptions(this.allRegions);
+    }
+
+    this.selectedFilters = [...this.selectedTypes, ...this.selectedSizes, ...this.selectedPrices,
+      ...this.selectedCountries, ...this.selectedRegions];
   }
 
   onSelectionChange(item) {
@@ -59,7 +69,25 @@ export class AdvanceFilterComponent implements OnInit {
     this.getFilteredProducts();
   }
 
-  getSelectedFilterOptions(filterType): Item[] {
+  onCountrySelectionChange(country: Country) {
+    country.isSelected = !country.isSelected;
+
+    if (country.isSelected) {
+      this.allRegions = [...this.allRegions, ...country.regions];
+    } else {
+      country.regions.forEach(region => {
+        const rindex = this.allRegions.indexOf(region);
+        if (rindex !== -1) {
+          this.allRegions.splice(rindex, 1);
+        }
+      });
+    }
+
+    this.getAllSelectedFilters();
+    this.getFilteredProducts();
+  }
+
+  getSelectedFilterOptions(filterType): any[] {
     return filterType.filter(type => type.isSelected === true);
   }
 
@@ -110,6 +138,8 @@ export class AdvanceFilterComponent implements OnInit {
 
     let types = '';
     let sizes = '';
+    let countries = '';
+    let regions = '';
     let minPrice = 0;
     let maxPrice = 0;
 
@@ -133,11 +163,19 @@ export class AdvanceFilterComponent implements OnInit {
       }
     }
 
+    if (this.selectedCountries && this.selectedCountries.length > 0) {
+      countries = this.selectedCountries.map((res: Item) => res.id).join(',');
+    }
+
+    if (this.selectedRegions && this.selectedRegions.length > 0) {
+      regions = this.selectedRegions.map((res: Item) => res.id).join(',');
+    }
     this.store.dispatch(new ProductGetList(
       this.productStoreService.getProductGetListParams(
         {
           categoryId: this.dataservice.categoryId, pageSize: this.selectedPageSize, typeId: types,
-          sizeId: sizes, minPrice: minPrice, maxPrice: maxPrice, keyWord: this.dataservice.searchByText
+          sizeId: sizes, countryId: countries, regionId: regions,
+          minPrice: minPrice, maxPrice: maxPrice, keyWord: this.dataservice.searchByText
         }
       )));
   }

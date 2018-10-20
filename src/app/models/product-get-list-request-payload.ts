@@ -10,8 +10,8 @@ export class ProductGetListRequestPayload {
     SizeId: string;
     TypeId: string;
     VarietalId: number;
-    CountryId: number;
-    RegionId: number;
+    CountryId: string;
+    RegionId: string;
     IsFavorite: number;
     IsFeatured: number;
     MaxPrice: number;
