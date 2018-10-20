@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductStoreService } from '../../../services/product-store.service';
+import { CartService } from '../../../services/cart.service';
 import { withLatestFrom, switchMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
@@ -10,7 +11,7 @@ import { of } from 'rxjs';
 })
 export class ProductComponent implements OnInit {
   @Input() item: any;
-  constructor(private productService: ProductStoreService) { }
+  constructor(private productService: ProductStoreService, private cartService: CartService) { }
 
   ngOnInit() {
   }
@@ -27,4 +28,19 @@ export class ProductComponent implements OnInit {
       });
   }
 
+  addToCart(item: any) {
+    this.cartService.addToCard(item.PID, 1).subscribe(
+      (data: any) => {
+        item.InCart = 1;
+        alert(data.SuccessMessage);
+      });
+  }
+
+  removeFromCart(item: any) {
+    this.cartService.removeFromCart(item.PID).subscribe(
+      (data: any) => {
+        item.InCart = 0;
+        alert(data.SuccessMessage);
+      });
+  }
 }

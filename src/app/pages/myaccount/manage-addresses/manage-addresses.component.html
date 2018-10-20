@@ -1,26 +1,64 @@
 <div class=" col-lg-9 col-md-9 col-sm-9 col-xs-12">
-    <table class="width_100">
-        <thead class="payment_method">
-            <tr>
-                <th>
-                    <h5>Add New Address</h5>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="address-container">
-                <td>
-                    <h4 class="address">AddressName</h4>
-                    <h5 class="city_state">Address1 Address2 City,State,1234</h5>
+    <div class="add-new-address">
+        <a href="#" class="bottles-brand">
+            <h4 class="address-heading"><span class="fa fa-map-marker bottle-brand"></span> Add New Address</h4>
+        </a>
+        <div class="address-table-tile">
+            <table class="table table-responsive">
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="text-muted text-uppercase"><small>Favorite</small></span>
+                        </td>
+                        <td class="text-right">
+                            <div class="dropdown dropdown-favorite">
+                                <a class="text-muted" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <span class="fa fa-ellipsis-v more-icon"></span><span class="icon icon-ellipsis-vert more-icon"></span></a>
 
-                </td>
-                <div class="address-button-container">
-                    <span class="default-add-mark">Active</span>
-                    <button class="btn btn-default make-default">Make Default</button>
-                    <button class="btn btn-default delete" >Delete</button>
+                                <ul class="dropdown-menu dropdown-favorite-open" aria-labelledby="dLabel">
+                                    <li><a href="#">Edit</a></li>
+                                    <li><a href="3">Delete</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="address-container-section">
+                            <h5>AddressName</h5>
+                            <h6>Address1 Address2 City,State,1234</h6>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="address-table-tile">
+            <table class="table table-responsive">
+                <tbody>
+                    <tr>
 
-                </div>
-            </tr>
-        </tbody>
-    </table>
+                        <td class="text-right" colspan="2">
+                            <div class="dropdown dropdown-favorite">
+                                <a class="text-muted" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <span class="fa fa-ellipsis-v more-icon"></span><span class="icon icon-ellipsis-vert more-icon"></span></a>
+
+                                <ul class="dropdown-menu dropdown-favorite-open" aria-labelledby="dLabel">
+                                    <li><a href="#">Add to Favorite</a></li>
+                                    <li><a href="#">Edit</a></li>
+                                    <li><a href="#">Delete</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="address-container-section">
+                            <h5>AddressName</h5>
+                            <h6>Address1 Address2 City,State,1234</h6>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

@@ -1,0 +1,60 @@
+.payment-method {
+    table {
+      width: 100%;
+      th {
+        background-color: #e2e2e2;
+        padding: 10px 15px;
+      }
+      td {
+        padding: 10px 15px;
+      }
+    }
+    .check-icon-payment-container {
+      position: relative;
+      left: -5px;
+      top: -10px;
+    }
+  }
+  
+  .check-icon-payment-container .checkout-icon-style {
+    font-size: 26px;
+    color: #ec1c24;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+  
+  .payment-method {
+    table td {
+      .td-para {
+        margin-left: 30px;
+        vertical-align: middle;
+      }
+      vertical-align: text-top;
+      input.text-cvv {
+        width: 100px;
+        padding: 5px;
+        margin-top: 10px;
+        left: 70px;
+        position: relative;
+      }
+    }
+    a.new-payment-mode {
+      padding: 10px;
+      text-align: center;
+      border: dashed 1px #a8a8a8;
+      color: #a8a8a8;
+      width: 100%;
+      display: block;
+      text-decoration: none;
+      &:hover {
+        padding: 10px;
+        text-align: center;
+        border: dashed 1px #ec1c24;
+        color: #ec1c24;
+        width: 100%;
+        display: block;
+        text-decoration: none;
+      }
+    }
+  }

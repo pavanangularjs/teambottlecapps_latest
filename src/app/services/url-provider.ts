@@ -7,5 +7,8 @@ export enum UrlNames {
     EventGetDetails = 'Event/EventGetDetail',
     FavoriteProductUpdate = 'Product/FavoriteProductUpdate',
     RecipeGetList = 'Recipe/RecipeGetList',
-    RecipeGetDetail = 'Recipe/RecipeGetDetail'
+    RecipeGetDetail = 'Recipe/RecipeGetDetail',
+    CartAddItem = 'Cart/CartAddItem',
+    CartRemoveItem = 'Cart/CartRemoveItem',
+    CartGetDetail = 'Cart/CartGetDetail'
 }

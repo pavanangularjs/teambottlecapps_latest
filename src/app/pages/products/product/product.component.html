@@ -8,9 +8,9 @@
             <img class="firimg" (click)="favoriteProductUpdate(false)" src="assets/Images/favorites-active.png">
         </ng-template>       
         <a routerLink="/product-details/{{item.PID}}"><img class="second_img" src="{{item?.ProductImg}}" /></a>
-        <img class="third_img" src="assets/Images/add-cart.png" *ngIf="item?.InCart===0; else cartActive"/>
+        <img class="third_img" (click)="addToCart(item)" src="assets/Images/add-cart.png" *ngIf="item?.InCart===0; else cartActive"/>
         <ng-template #cartActive>
-            <img class="third_img" src="assets/Images/add-cart-active.png"/>
+            <img class="third_img" (click)="removeFromCart(item)" src="assets/Images/add-cart-active.png"/>
         </ng-template>
         
       </div>

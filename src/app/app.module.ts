@@ -45,6 +45,10 @@ import { DataService } from './services/data.service';
 
 import { HttpCacheService } from './cache.service';
 import { CacheInterceptor } from './cacheInterceptor';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { CheckoutAddressComponent } from './pages/checkout/checkout-address/checkout-address.component';
+import { CheckoutPaymentMethodComponent } from './pages/checkout/checkout-payment-method/checkout-payment-method.component';
+import { CheckoutProductsComponent } from './pages/checkout/checkout-products/checkout-products.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +75,11 @@ import { CacheInterceptor } from './cacheInterceptor';
     // MyAccountComponent,
     MyOrdersComponent,
     CartComponent,
-    AdvanceFilterComponent
+    AdvanceFilterComponent,
+    CheckoutComponent,
+    CheckoutAddressComponent,
+    CheckoutPaymentMethodComponent,
+    CheckoutProductsComponent
   ],
   imports: [
     BrowserModule,

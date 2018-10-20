@@ -1,0 +1,73 @@
+.order-details-panel {
+    background-color: #f7f7f7;
+    padding: 15px 25px;
+    table {
+      width: 100%;
+      .prod-img {
+        width: 60px;
+        height: 60px;
+        border-radius: 5px;
+        border: solid 1px #ccc;
+      }
+      td.img-block {
+        padding-top: 10px;
+        padding-bottom: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        vertical-align: top;
+      }
+      &.first-table {
+        border-bottom: solid 1px #ccc;
+      }
+      td.summary-block {
+        width: 90px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        vertical-align: top;
+        h5 {
+          margin: 0px;
+        }
+      }
+      &.summary-container {
+        margin-top: 10px;
+      }
+    }
+  }
+  
+  .coupon-panel {
+    text-align: center;
+    border-top: solid 1px #efefef;
+    border-bottom: solid 1px #efefef;
+    display: table;
+    width: 100%;
+    background-color: #f7f7f7;
+    padding: 10px 25px;
+    input.coupon {
+      width: 90%;
+      background-color: transparent;
+      outline: none;
+      border: 0px solid transparent;
+      float: right;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+    .icon-coupon {
+      position: relative;
+      top: 7px;
+    }
+    table {
+      width: 100%;
+    }
+  }
+  
+  .submit-button-panel {
+    border-top: solid 1px #efefef;
+    border-bottom: solid 1px #efefef;
+    display: table;
+    width: 70%;
+    background-color: transparent;
+    padding: 10px 25px;
+    float: right;
+  }

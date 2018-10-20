@@ -13,6 +13,7 @@ import { MyOrdersComponent } from './pages/myaccount/myorders/myorders.component
 import { CartComponent } from './pages/cart/cart.component';
 import { AdvanceFilterComponent } from './pages/products/advance-filter/advance-filter.component';
 import { LoginComponent } from './pages/login/login.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -26,6 +27,8 @@ const routes: Routes = [
   { path: 'myaccount', loadChildren: './pages/myaccount/myaccount.module#MyAccountModule' },
   { path: 'myorders', component: MyOrdersComponent },
   { path: 'advance-filter', component: AdvanceFilterComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'checkout', component: CheckoutComponent },
   { path: '**', component: HomepageComponent },
 ];
 
