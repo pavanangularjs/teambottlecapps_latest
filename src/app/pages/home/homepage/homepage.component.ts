@@ -30,7 +30,9 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams()));
+    if (!(this.customerSession && this.customerSession.SessionId)) {
+      this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams()));
+    }
   }
 
 }

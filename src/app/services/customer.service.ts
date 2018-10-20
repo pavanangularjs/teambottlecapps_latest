@@ -24,14 +24,14 @@ export class CustomerService {
     );
   }
 
-  getLoginCustomerParams( email?: string, pwd?: string ) {
+  getLoginCustomerParams( email?: string, pwd?: string, loginType?: string ) {
     return {
       AppId: 10002,
       AppVersion: '8.5',
       DeviceId: 'W',
       DeviceType: 'W',
       EmailId: email || '',
-      LoginType: 'B',
+      LoginType: loginType || 'B',
       Password: pwd || '',
       StoreId: 10002
     };

@@ -11,11 +11,13 @@ import { MyAccountComponent } from './pages/myaccount/myaccount.component';
 import { MyOrdersComponent } from './pages/myaccount/myorders/myorders.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { AdvanceFilterComponent } from './pages/products/advance-filter/advance-filter.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomepageComponent },
   { path: 'about', component: AboutusComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'recipes', component: RecipesComponent },
   { path: 'product-details/:id', component: ProductDetailsComponent },
   { path: 'event-details/:id', component: EventDetailsComponent },

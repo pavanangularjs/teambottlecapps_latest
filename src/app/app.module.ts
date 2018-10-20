@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { MyAccountModule } from './pages/myaccount/myaccount.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { customerReducer  } from './state/customer/customer.reducer';
 import { CustomerEffects } from './state/customer/customer.effects';
@@ -19,6 +19,7 @@ import { HeaderComponent } from './pages/home/header/header.component';
 import { FooterComponent } from './pages/home/footer/footer.component';
 import { HomepageComponent } from './pages/home/homepage/homepage.component';
 import { AboutusComponent } from './pages/aboutus/aboutuscomponent';
+import { LoginComponent } from './pages/login/login.component';
 import { SigninComponent } from './pages/login/signin/signin.component';
 import { SignupComponent } from './pages/login/signup/signup.component';
 import { FeatureProductsComponent } from './pages/products/feature-products/feature-products.component';
@@ -52,6 +53,7 @@ import { CacheInterceptor } from './cacheInterceptor';
     FooterComponent,
     HomepageComponent,
     AboutusComponent,
+    LoginComponent,
     SigninComponent,
     SignupComponent,
     FeatureProductsComponent,
@@ -75,6 +77,7 @@ import { CacheInterceptor } from './cacheInterceptor';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MyAccountModule,
     StoreModule.forRoot({customer: customerReducer, productStore: productStoreReducer }),
