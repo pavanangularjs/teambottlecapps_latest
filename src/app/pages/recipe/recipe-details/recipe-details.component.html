@@ -1,35 +1,35 @@
-
-
 <section>
-  <div class="container" >
-   
-      <div class="Search_div ">
-        <input type="text" placeholder="Recipe Details">
-        <ol class="breadcrumb">
+  <div class="container">
+
+    <div class="Search_div ">
+      <input type="text" placeholder="Recipe Details">
+      <ol class="breadcrumb">
         <li class="breadcrumb-item"><a>Home</a></li>
-       <li class="breadcrumb-item active"><a >Recipes</a></li>
-       <li class="breadcrumb-item active"><a>Recipe Details</a></li>
+        <li class="breadcrumb-item active"><a>Recipes</a></li>
+        <li class="breadcrumb-item active"><a>Recipe Details</a></li>
       </ol>
-       </div>
+    </div>
 
-       <div class="details_img col-md-6 col-sm-6 col-lg-6 col-xs-12 animated fadeInLeft">
-        <img src='assets/Images/mixers-bg.png' />
-       </div>
+    <div class="details_img col-md-8 col-sm-8 col-lg-8 col-xs-12 animated fadeInLeft">
+      <img src='{{recipe?.DetailImage}}' />
+    </div>
 
-       <div class="details_content col-md-6 col-sm-6 col-lg-6 col-xs-12 animated fadeInRight">
-        <h4 class="recipe_name">recipesdetails.Title</h4>
-       <ul>
-         <h4 class="ingredients">Ingredients</h4>
-         <li class="IngredientText">Ingredients Text
-         </li>
-         
-       </ul>
-       </div>
-   
-       <div class=" col-md-12 col-sm-12 col-lg-12 col-xs-12">
-       <div class="Searchrelated_div ">
+    <div class="details_content col-md-4 col-sm-4 col-lg-4 col-xs-12 animated fadeInRight">
+      <h4 class="recipe_name">{{recipe?.Title}}</h4>
+      <ul>
+        <h4 class="ingredients">Ingredients</h4>
+        <div class="IngredientText" [innerHtml]="recipe?.IngredientText">
+        </div>
+
+      </ul>
+    </div>
+
+    <div class=" col-md-12 col-sm-12 col-lg-12 col-xs-12">
+      <div class="Searchrelated_div ">
         <h4>Instructions</h4>
-       </div>
-      
-       <div class="instruction_text"> InstructionText </div>
-       </div>
+      </div>
+
+      <div class="instruction_text" [innerHtml]="recipe?.InstructionText"> </div>
+    </div>
+  </div>
+</section>

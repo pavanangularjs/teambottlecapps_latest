@@ -10,45 +10,13 @@
       </div>
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-        <div class="recipes col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img animated fadeInLeft">
+        <div class="recipes col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img animated fadeInLeft"
+        *ngFor="let recipe of recipeList?.ListRecipe">
           <div class="thumbnail">
-            <a>
-              <img src='assets/Images/mixers-bg.png' />
+            <a (click)="onRecipeSelection(recipe)">
+              <img src='{{recipe?.ThumbNailImage}}' />
               <div class="caption">
-                <h6 class="text_center">recipe.Title</h6>
-              </div>
-            </a>
-          </div>
-
-        </div>
-        <div class="recipes col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img animated fadeInLeft">
-          <div class="thumbnail">
-            <a>
-              <img src='assets/Images/mixers-bg.png' />
-              <div class="caption">
-                <h6 class="text_center">recipe.Title</h6>
-              </div>
-            </a>
-          </div>
-
-        </div>
-        <div class="recipes col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img animated fadeInLeft">
-          <div class="thumbnail">
-            <a>
-              <img src='assets/Images/mixers-bg.png' />
-              <div class="caption">
-                <h6 class="text_center">recipe.Title</h6>
-              </div>
-            </a>
-          </div>
-
-        </div>
-        <div class="recipes col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img animated fadeInLeft">
-          <div class="thumbnail">
-            <a>
-              <img src='assets/Images/mixers-bg.png' />
-              <div class="caption">
-                <h6 class="text_center">recipe.Title</h6>
+                <h6 class="text_center">{{recipe?.Title}}</h6>
               </div>
             </a>
           </div>

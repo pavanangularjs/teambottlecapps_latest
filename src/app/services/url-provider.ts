@@ -6,4 +6,6 @@ export enum UrlNames {
     ProductGetDetails = 'Product/ProductGetDetail',
     EventGetDetails = 'Event/EventGetDetail',
     FavoriteProductUpdate = 'Product/FavoriteProductUpdate',
+    RecipeGetList = 'Recipe/RecipeGetList',
+    RecipeGetDetail = 'Recipe/RecipeGetDetail'
 }

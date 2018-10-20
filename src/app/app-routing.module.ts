@@ -5,6 +5,7 @@ import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { HomepageComponent } from './pages/home/homepage/homepage.component';
 import { AboutusComponent } from './pages/aboutus/aboutuscomponent';
 import { RecipesComponent } from './pages/recipe/recipes/recipes.component';
+import { RecipeDetailsComponent } from './pages/recipe/recipe-details/recipe-details.component';
 import { ProductDetailsComponent } from './pages/products/product-details/product-details.component';
 import { EventDetailsComponent } from './pages/products/event-details/event-details.component';
 import { MyAccountComponent } from './pages/myaccount/myaccount.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'about', component: AboutusComponent },
   { path: 'login', component: LoginComponent },
   { path: 'recipes', component: RecipesComponent },
+  { path: 'recipe-details/:id', component: RecipeDetailsComponent },
   { path: 'product-details/:id', component: ProductDetailsComponent },
   { path: 'event-details/:id', component: EventDetailsComponent },
   { path: 'myaccount', loadChildren: './pages/myaccount/myaccount.module#MyAccountModule' },
