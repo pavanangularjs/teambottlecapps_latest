@@ -35,7 +35,9 @@ export class AdvanceFilterComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.dataservice.filtersAllData) {
+    if (this.dataservice.searchByText !== '') {
+      this.getProductsByKeyword();
+    } else if (this.dataservice.filtersAllData) {
       this.allFilterOptions = this.dataservice.filtersAllData;
       this.getAllSelectedFilters();
       this.getFilteredProducts();
@@ -63,6 +65,11 @@ export class AdvanceFilterComponent implements OnInit {
 
   removeFilter(filter) {
 
+    const index = this.selectedFilters.findIndex(item => item === filter);
+    if (index !== -1) {
+      this.selectedFilters.splice(index, 1);
+    }
+
     const tindex = this.allFilterOptions.type.findIndex(item => item.value === filter.value);
     if (tindex !== -1) {
       this.allFilterOptions.type[tindex].isSelected = false;
@@ -89,6 +96,15 @@ export class AdvanceFilterComponent implements OnInit {
   }
   onPageSizeChange() {
     this.getFilteredProducts();
+  }
+
+  getProductsByKeyword() {
+    this.store.dispatch(new ProductGetList(
+      this.productStoreService.getProductGetListParams(
+        {
+          categoryId: this.dataservice.categoryId, pageSize: this.selectedPageSize, keyWord: this.dataservice.searchByText
+        }
+      )));
   }
   getFilteredProducts() {
 
@@ -121,7 +137,7 @@ export class AdvanceFilterComponent implements OnInit {
       this.productStoreService.getProductGetListParams(
         {
           categoryId: this.dataservice.categoryId, pageSize: this.selectedPageSize, typeId: types,
-          sizeId: sizes, minPrice: minPrice, maxPrice: maxPrice
+          sizeId: sizes, minPrice: minPrice, maxPrice: maxPrice, keyWord: this.dataservice.searchByText
         }
       )));
   }
