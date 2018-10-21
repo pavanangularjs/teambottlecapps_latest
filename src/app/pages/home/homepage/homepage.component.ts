@@ -8,6 +8,7 @@ import { CustomerSelectors } from '../../../state/customer/customer.selector';
 import { CustomerService } from '../../../services/customer.service';
 import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
 import { CartService } from '../../../services/cart.service';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-homepage',
@@ -18,8 +19,10 @@ export class HomepageComponent implements OnInit {
   customerSession: CustomerLoginSession;
   storeGetHomeData: any;
 
-  constructor(private store: Store<CustomerLoginSession>, private customerService: CustomerService,
-    private cartService: CartService) {
+  constructor(private store: Store<CustomerLoginSession>,
+    private customerService: CustomerService,
+    private cartService: CartService,
+    private spinnerService: Ng4LoadingSpinnerService) {
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         this.customerSession = clsd;
@@ -28,10 +31,12 @@ export class HomepageComponent implements OnInit {
       .subscribe(pssd => {
         this.storeGetHomeData = pssd;
         this.updateCartId();
+        this.spinnerService.hide();
       });
   }
 
   ngOnInit() {
+    this.spinnerService.show();
     if (!(this.customerSession && this.customerSession.SessionId)) {
       this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams()));
     }

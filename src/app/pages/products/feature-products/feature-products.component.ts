@@ -5,6 +5,7 @@ import { ProductGetListRequestPayload } from '../../../models/product-get-list-r
 import { ProductGetList } from '../../../state/product-store/product-store.action';
 import { ProductStoreService } from '../../../services/product-store.service';
 import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-feature-products',
@@ -15,12 +16,15 @@ export class FeatureProductsComponent implements OnChanges {
   @Input() storeGetHomeData: any;
   productsList: any;
 
-  constructor(private store: Store<ProductGetListRequestPayload>, private productStoreService: ProductStoreService) {
+  constructor(private store: Store<ProductGetListRequestPayload>,
+    private productStoreService: ProductStoreService,
+    private spinnerService: Ng4LoadingSpinnerService) {
 
 
     this.store.select(ProductStoreSelectors.productGetListData)
       .subscribe(pgld => {
         this.productsList = pgld ? pgld.ListProduct : [];
+        this.spinnerService.hide();
       });
    }
 
@@ -29,6 +33,7 @@ export class FeatureProductsComponent implements OnChanges {
   }
 
   onCategoryChange(catId = '1,2,3,4') {
+    this.spinnerService.show();
     this.store.dispatch(new ProductGetList(this.productStoreService.getProductGetListParams({ categoryId: catId, pageSize: 12 })));
   }
 

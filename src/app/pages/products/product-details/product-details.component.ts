@@ -6,6 +6,7 @@ import { ProductGetDetails } from '../../../state/product-store/product-store.ac
 import { ProductGetDetailsRequestPayload } from '../../../models/product-get-details-request-payload';
 import { ProductStoreService } from '../../../services/product-store.service';
 import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-product-detail',
@@ -18,11 +19,13 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private store: Store<ProductGetDetailsRequestPayload>,
-    private productStoreService: ProductStoreService) {
+    private productStoreService: ProductStoreService,
+    private spinnerService: Ng4LoadingSpinnerService) {
 
     this.store.select(ProductStoreSelectors.productGetDetailsData)
       .subscribe(pgdd => {
         this.productDetails = pgdd;
+        this.spinnerService.hide();
       });
   }
 
@@ -31,6 +34,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   getProductDetails() {
+    this.spinnerService.show();
     const productId = +this.route.snapshot.paramMap.get('id');
     if ( productId ) {
       this.store.dispatch(new ProductGetDetails(this.productStoreService.getProductGetDetailsParams(productId)));

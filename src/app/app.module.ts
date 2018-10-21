@@ -4,6 +4,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { MyAccountModule } from './pages/myaccount/myaccount.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 // import {  SharedModule } from './shared/shared.module';
 
 import { customerReducer  } from './state/customer/customer.reducer';
@@ -96,6 +97,7 @@ import { ProductAddReviewComponent } from './pages/products/product-details/prod
     MyAccountModule,
     StoreModule.forRoot({customer: customerReducer, productStore: productStoreReducer }),
     EffectsModule.forRoot([CustomerEffects, ProductStoreEffects]),
+    Ng4LoadingSpinnerModule.forRoot()
   ],
   providers: [CustomerService, ProductStoreService, DataService],
     // HttpCacheService, { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true }],

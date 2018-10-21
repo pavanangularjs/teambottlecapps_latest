@@ -7,6 +7,7 @@ import { CustomerLogin } from '../../../state/customer/customer.action';
 import { CustomerSelectors } from '../../../state/customer/customer.selector';
 import { CustomerLoginSession } from '../../../models/customer-login-session';
 import { CustomerService } from '../../../services/customer.service';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-signup',
@@ -17,11 +18,14 @@ export class SignupComponent implements OnInit {
   formSignUp: FormGroup;
   customerSession: CustomerLoginSession;
 
-  constructor(private router: Router, private store: Store<CustomerLoginSession>, private customerService: CustomerService) {
+  constructor(private router: Router, private store: Store<CustomerLoginSession>,
+    private customerService: CustomerService,
+    private spinnerService: Ng4LoadingSpinnerService) {
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         if (clsd) {
           this.customerSession = clsd;
+          this.spinnerService.hide();
           if (this.customerSession.IsAccess === true && this.customerSession.UserId !== 0) {
             this.router.navigate(['/']);
           } else if (this.customerSession.ErrorMessage !== '') {
@@ -38,6 +42,7 @@ export class SignupComponent implements OnInit {
     });
   }
   onSignUp() {
+    this.spinnerService.show();
     const email = this.formSignUp.get('semail').value;
     const password = this.formSignUp.get('spassword').value;
 

@@ -8,7 +8,7 @@ import { Component, OnInit, ElementRef, ViewChild  } from '@angular/core';
 export class AppComponent implements OnInit {
   @ViewChild('openModal') openModal: ElementRef;
   title = 'TeamBottlecApps';
-
+  template = `<img src='/assets/Images/loading_icon.gif' />`;
   ngOnInit() {
     this.openModal.nativeElement.click();
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../../../services/recipe.service';
 import { Router } from '@angular/router';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-recipes',
@@ -10,9 +11,12 @@ import { Router } from '@angular/router';
 export class RecipesComponent implements OnInit {
   recipeList: any[];
 
-  constructor(private router: Router, private recipeService: RecipeService) { }
+  constructor(private router: Router,
+    private recipeService: RecipeService,
+    private spinnerService: Ng4LoadingSpinnerService) { }
 
   ngOnInit() {
+    this.spinnerService.show();
     this.getRecipes();
   }
 
@@ -23,6 +27,7 @@ export class RecipesComponent implements OnInit {
     this.recipeService.getRecipeList().subscribe(
       (data: any) => {
         this.recipeList = data ? (data.ListRecipe ? data.ListRecipe : []) : [];
+        this.spinnerService.hide();
       });
     }
   }

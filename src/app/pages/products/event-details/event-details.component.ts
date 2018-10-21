@@ -6,6 +6,7 @@ import { EventGetDetails } from '../../../state/product-store/product-store.acti
 import { EventGetDetailsRequestPayload } from '../../../models/event-get-details-request-payload';
 import { ProductStoreService } from '../../../services/product-store.service';
 import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-event-details',
@@ -18,11 +19,13 @@ export class EventDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private store: Store<EventGetDetailsRequestPayload>,
-    private productStoreService: ProductStoreService) {
+    private productStoreService: ProductStoreService,
+    private spinnerService: Ng4LoadingSpinnerService) {
 
     this.store.select(ProductStoreSelectors.eventGetDetailsData)
       .subscribe(egdd => {
         this.eventDetails = egdd;
+        this.spinnerService.hide();
       });
   }
 
@@ -31,6 +34,7 @@ export class EventDetailsComponent implements OnInit {
   }
 
   getEventDetails() {
+    this.spinnerService.show();
     const eventId = +this.route.snapshot.paramMap.get('id');
     if ( eventId ) {
       this.store.dispatch(new EventGetDetails(this.productStoreService.getEventGetDetailsParams(eventId)));
