@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomerService } from '../../services/customer.service';
 
 @Component({
   selector: 'app-myaccount',
@@ -7,12 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyAccountComponent implements OnInit {
   selectedOption: string;
+  profileDetails: any;
 
-  constructor() { }
+  constructor(private customerService: CustomerService) { }
 
   ngOnInit() {
+    this.getCustomerProfile();
   }
 
+  getCustomerProfile() {
+    this.customerService.getProfileDetails().subscribe(
+      (data: any) => {
+        this.profileDetails = data;
+      });
+  }
   onOptionSelected(option: string) {
     this.selectedOption = option;
   }

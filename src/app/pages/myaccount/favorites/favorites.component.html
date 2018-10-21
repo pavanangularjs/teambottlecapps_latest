@@ -16,9 +16,9 @@
                     <div class="img_div">
                 
                       <div class="margin_bottom">
-                        <img class="firimg" (click)="favoriteProductUpdate(true)" src="assets/Images/favorites.png" *ngIf="item?.IsFavorite===false; else favActive"/>
+                        <img class="firimg" (click)="favoriteProductUpdate(item, true)" src="assets/Images/favorites.png" *ngIf="item?.IsFavorite===false; else favActive"/>
                         <ng-template #favActive>
-                            <img class="firimg" (click)="favoriteProductUpdate(false)" src="assets/Images/favorites-active.png">
+                            <img class="firimg" (click)="favoriteProductUpdate(item, false)" src="assets/Images/favorites-active.png">
                         </ng-template>       
                         <a><img class="second_img" src="{{item?.ProductImg}}" /></a>
                         <img class="third_img" (click)="addToCart(item)" src="assets/Images/add-cart.png" *ngIf="item?.InCart===0; else cartActive"/>
