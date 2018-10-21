@@ -35,9 +35,9 @@
                         </h4>
                       </div>
                       <ul id="myAccount" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="myAccountHeading">
-                          <li><a routerLink="./profile" class="active">Profile Information</a></li>
-                          <li><a routerLink="./manage-addresses">Manage Addresses</a></li>
-                          <li><a routerLink="./payment-methods">Payment Methods</a></li>
+                          <li (click)="onOptionSelected('profile')"><a routerLink="./profile" [ngClass]="{'active': selectedOption === 'profile'}">Profile Information</a></li>
+                          <li (click)="onOptionSelected('address')"><a routerLink="./manage-addresses" [ngClass]="{'active': selectedOption === 'address'}">Manage Addresses</a></li>
+                          <li (click)="onOptionSelected('payment')"><a routerLink="./payment-methods" [ngClass]="{'active': selectedOption === 'payment'}">Payment Methods</a></li>
                       </ul>
                     </div>
                     <div class="panel bottle-panel-container">
@@ -69,5 +69,6 @@
     </div>
 
 </section>
+
 
 

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { SharedModule } from '../../shared/shared.module';
 import { MyAccountRoutingModule  } from './myaccount-routing.module';
 
 import { MyAccountComponent } from './myaccount.component';
@@ -8,18 +8,21 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { ManageAddressesComponent } from './manage-addresses/manage-addresses.component';
 import { PaymentMethodsComponent } from './payment-methods/payment-methods.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    MyAccountRoutingModule
+    MyAccountRoutingModule,
+    SharedModule
   ],
   declarations: [
       MyAccountComponent,
       ProfileComponent,
       ProfileEditComponent,
       ManageAddressesComponent,
-      PaymentMethodsComponent
+      PaymentMethodsComponent,
+      FavoritesComponent
     ]
 })
 export class MyAccountModule { }

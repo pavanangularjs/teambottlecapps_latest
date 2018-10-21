@@ -1,4 +1,4 @@
-import { Component, OnChanges, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { ProductGetListRequestPayload } from '../../../models/product-get-list-request-payload';
@@ -7,29 +7,25 @@ import { ProductStoreService } from '../../../services/product-store.service';
 import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
 
 @Component({
-  selector: 'app-feature-products',
-  templateUrl: './feature-products.component.html',
-  styleUrls: ['./feature-products.component.scss']
+  selector: 'app-favorites',
+  templateUrl: './favorites.component.html',
+  styleUrls: ['./favorites.component.scss']
 })
-export class FeatureProductsComponent implements OnChanges {
-  @Input() storeGetHomeData: any;
-  productsList: any;
-
+export class FavoritesComponent implements OnInit {
+  productsList: any[];
   constructor(private store: Store<ProductGetListRequestPayload>, private productStoreService: ProductStoreService) {
-
-
     this.store.select(ProductStoreSelectors.productGetListData)
       .subscribe(pgld => {
         this.productsList = pgld ? pgld.ListProduct : [];
       });
-   }
-
-  ngOnChanges() {
-    this.productsList = this.storeGetHomeData ? this.storeGetHomeData.HomeList : [];
   }
 
-  onCategoryChange(catId = '1,2,3,4') {
-    this.store.dispatch(new ProductGetList(this.productStoreService.getProductGetListParams({ categoryId: catId, pageSize: 12 })));
+  ngOnInit() {
+    this.store.dispatch(new ProductGetList(this.productStoreService.getProductGetListParams({ isFavorite : 1 })));
+  }
+  
+  getCount(n: number): any[] {
+    return Array(n);
   }
 
 }

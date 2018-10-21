@@ -42,7 +42,8 @@
                         <ul class="float_right">
                             <li>
 
-                                <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]"></i>({{productDetails?.ReviewTotalCount}} Customer reviews)
+                                <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]"></i>({{productDetails?.ReviewTotalCount}}
+                                Customer reviews)
 
                             </li>
 
@@ -142,7 +143,7 @@
                                 <h5>Liqour-rooftop</h5>
                                 <!-- <p> {{product.Size}}</p> -->
                                 <p class="rating_star">
-                                    <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]" ></i>
+                                    <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]"></i>
                                     <!-- [ngClass]="{'checked':star+0.5 <= product.Rating, 'fa-star-half-o':star+0.5 == product.Rating}"-->
                                     <span class="first">4 reviews</span>
                                     <span class="reviews"> </span>
@@ -162,103 +163,9 @@
     <div class="container">
         <div class="total_border">
             <h4 class="review_title">Reviews</h4>
-            <div class="reviews">
-                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                    <!-- <div class="circle_bg"></div> -->
-                    <img src="../../../../assets/Images/beer-bg.png">
-                </div>
-                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
-                    <div class="border">
-                        <div class="name_date col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <span class="username">BottleCapps</span> -<span class="review_date"> 24/10/2015</span></div>
-                        <div class="star_right col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <i class="fa fa-star" *ngFor="let star of [1,2,3,4,5]" ></i>
-                            <!-- [ngClass]="{'checked':star<=val}" -->
-
-                        </div>
-                        <p class="word_break">Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen
-                            book. It has survived not only five centuries, but also the leap into electronic
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- <div class="reviews">
-                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                    <div class="circle_bg"></div>
-                </div>
-                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
-                    <div class="border">
-                        <div class="name_date col-lg-6 col-md-6 col-sm-6 col-xs-12">Cobus Better - June 7,2018</div>
-                        <div class="star_right col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star last" aria-hidden="true"></i>
-                        </div>
-                        <p class="word_break">loremipsmloremipsmloremipsmloremipsmloremipsmloremipsmloremipsm loremipsmloremipsmloremipsmloremipsmloremipsmloremipsmloremipsmloremipsm
-                        </p>
-                    </div>
-                </div>
-            </div> -->
-
-            <div class="add_review common_width">
-                <h4>Add A Review</h4>
-                <p>Your email address wii not be published. Required Field is marked
-                    <span class="mandatory">*</span>
-                </p>
-
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 your_rating">
-                    <h5>Your Ratings</h5>
-                </div>
-                <div class="col-lg-9 col-md-9 col-sm-9 col-sm-9 col-xs-12 star_right">
-
-                    <i class="fa fa-star" *ngFor="let star of [1,2,3,4,5]" ></i>
-                    <!-- [ngClass]="{'checked':star<=val}" (click)="changeStarCount(star)" -->
-
-                </div>
-
-                <form class="common_width">
-                    <div class="form-group row">
-                        <label class="col-lg-2 col-md-2 col-sm-2 col-xs-12 col-form-label">Your Reviews
-                            <span class="mandatory">*</span>
-                        </label>
-                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">Name
-                            <span class="mandatory">*</span>
-                        </label>
-                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" id="inputPassword" placeholder="Name">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">Password
-                            <span class="mandatory">*</span>
-                        </label>
-                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" id="inputPassword" placeholder="Password">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label"></label>
-                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-                            <button class="btn reviewsubmit" type="submit">Submit</button>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-
-
-
+            <p *ngIf="productDetails?.ListReview?.length === 0">There are no customer reviews yet.</p>
+            <app-product-review [review]="review" *ngFor="let review of productDetails?.ListReview"></app-product-review>
+            <app-product-add-review></app-product-add-review>
         </div>
     </div>
-
 </section>

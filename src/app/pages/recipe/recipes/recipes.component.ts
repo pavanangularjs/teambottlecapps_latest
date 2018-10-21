@@ -22,7 +22,7 @@ export class RecipesComponent implements OnInit {
     } else {
     this.recipeService.getRecipeList().subscribe(
       (data: any) => {
-        this.recipeList = data;
+        this.recipeList = data ? (data.ListRecipe ? data.ListRecipe : []) : [];
       });
     }
   }

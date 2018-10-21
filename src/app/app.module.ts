@@ -4,6 +4,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { MyAccountModule } from './pages/myaccount/myaccount.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import {  SharedModule } from './shared/shared.module';
 
 import { customerReducer  } from './state/customer/customer.reducer';
 import { CustomerEffects } from './state/customer/customer.effects';
@@ -49,6 +50,8 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CheckoutAddressComponent } from './pages/checkout/checkout-address/checkout-address.component';
 import { CheckoutPaymentMethodComponent } from './pages/checkout/checkout-payment-method/checkout-payment-method.component';
 import { CheckoutProductsComponent } from './pages/checkout/checkout-products/checkout-products.component';
+import { ProductReviewComponent } from './pages/products/product-details/product-review/product-review.component';
+import { ProductAddReviewComponent } from './pages/products/product-details/product-add-review/product-add-review.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +82,9 @@ import { CheckoutProductsComponent } from './pages/checkout/checkout-products/ch
     CheckoutComponent,
     CheckoutAddressComponent,
     CheckoutPaymentMethodComponent,
-    CheckoutProductsComponent
+    CheckoutProductsComponent,
+    ProductReviewComponent,
+    ProductAddReviewComponent
   ],
   imports: [
     BrowserModule,
@@ -87,6 +92,7 @@ import { CheckoutProductsComponent } from './pages/checkout/checkout-products/ch
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+   // SharedModule,
     MyAccountModule,
     StoreModule.forRoot({customer: customerReducer, productStore: productStoreReducer }),
     EffectsModule.forRoot([CustomerEffects, ProductStoreEffects]),

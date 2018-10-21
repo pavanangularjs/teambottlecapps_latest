@@ -14,6 +14,8 @@ export class HeaderComponent implements OnInit {
   customerSession: CustomerLoginSession;
   storeGetHomeData: any;
   cartItemCount = 0;
+  profileInfo = 'Login / Register';
+  isActive = false;
 
   constructor(private store: Store<CustomerLoginSession>) {
     this.store.select(CustomerSelectors.customerLoginSessionData)
@@ -26,6 +28,11 @@ export class HeaderComponent implements OnInit {
           this.storeGetHomeData = pssd;
           this.cartItemCount = this.storeGetHomeData.CustomerInfo ?
           this.storeGetHomeData.CustomerInfo.CartItemCount : 0;
+
+          if (this.storeGetHomeData.CustomerInfo && this.customerSession.UserId !== 0) {
+            this.profileInfo = `Hi, ${this.storeGetHomeData.CustomerInfo.FirstName}`;
+            this.isActive = true;
+          }
         }
 
       });

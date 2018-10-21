@@ -1,0 +1,45 @@
+<div class="add_review common_width">
+  <h4>Add A Review</h4>
+  <form [formGroup]=formAddProductReview (ngSubmit)="onAddReview()">
+    <p>Your email address will not be published. Required Field is marked
+      <span class="mandatory">*</span>
+    </p>
+
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 your_rating">
+      <h5>Your Ratings</h5>
+    </div>
+    <div class="col-lg-9 col-md-9 col-sm-9 col-sm-9 col-xs-12 star_right">
+
+      <i class="fa fa-star" *ngFor="let star of [1,2,3,4,5]"></i>
+      <!-- [ngClass]="{'checked':star<=val}" (click)="changeStarCount(star)" -->
+
+
+      <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Review Title
+          <span class="mandatory">*</span>
+        </label>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+          <input type="text" class="form-control" formControlName="rTitle" id="inputPassword" placeholder="Review Headline">
+        </div>
+      </div>
+
+      <div class="form-group row">
+          <label class="col-lg-2 col-md-2 col-sm-2 col-xs-12 col-form-label">Your Reviews
+            <span class="mandatory">*</span>
+          </label>
+          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+            <textarea class="form-control" rows="3" formControlName="rDescription"></textarea>
+          </div>
+        </div>
+
+      <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label"></label>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+          <button class="btn reviewsubmit" type="submit">Submit</button>
+        </div>
+      </div>
+
+
+    </div>
+  </form>
+</div>

@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { ManageAddressesComponent } from './manage-addresses/manage-addresses.component';
 import { PaymentMethodsComponent } from './payment-methods/payment-methods.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 const routes: Routes = [
     {
@@ -15,7 +16,8 @@ const routes: Routes = [
             { path: '', redirectTo: 'profile', pathMatch: 'full' },
             { path: 'profile', component: ProfileComponent },
             { path: 'manage-addresses', component: ManageAddressesComponent },
-            { path: 'payment-methods', component: PaymentMethodsComponent }
+            { path: 'payment-methods', component: PaymentMethodsComponent },
+            { path: 'favorites', component: FavoritesComponent }
         ]
     }
 ];

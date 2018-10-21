@@ -1,0 +1,17 @@
+<div class="reviews">
+  <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+    <img class="second_img" src="{{review?.UserImage}}">
+  </div>
+  <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+    <div class="border">
+      <div class="name_date col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <span class="username">{{review?.UserName}}</span> -<span class="review_date"> {{review?.Reviewdate}}</span></div>
+      <div class="star_right col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <i class="fa fa-star" *ngFor="let star of getCount(review?.ReviewRating)"></i>
+      </div>
+      <p class="word_break">
+          {{review?.ReviewDescription}}
+      </p>
+    </div>
+  </div>
+</div>

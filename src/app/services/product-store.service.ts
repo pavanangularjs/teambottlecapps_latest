@@ -13,6 +13,7 @@ import { ProductGetListRequestPayload } from '../models/product-get-list-request
 import { ProductGetDetailsRequestPayload } from '../models/product-get-details-request-payload';
 import { EventGetDetailsRequestPayload } from '../models/event-get-details-request-payload';
 import { FavoriteProductUpdateRequestPayload } from '../models/favorite-product-update-payload';
+import { AddProductReview } from '../models/add-product-review';
 
 @Injectable()
 export class ProductStoreService {
@@ -173,6 +174,29 @@ export class ProductStoreService {
             AppId: this.customerSession.AppId,
             PID: productId,
             FavoriteStatus: favStatus
+        };
+    }
+
+    addProductReview(productId: number, reviewTitle: string, reviewDescription: string, rating: number): Observable<any> {
+        return this.http.post<any>(baseUrl + UrlNames.ReviewRatingInsert,
+            this.getProductReviewParams(productId, reviewTitle, reviewDescription, rating ));
+    }
+
+    getProductReviewParams(productId: number, reviewTitle: string, reviewDescription: string, rating: number): AddProductReview {
+        if (!this.customerSession) {
+            return null;
+        }
+        return {
+            StoreId: this.customerSession.StoreId,
+            UserId: this.customerSession.UserId,
+            SessionId: this.customerSession.SessionId,
+            AppId: this.customerSession.AppId,
+            PID: productId,
+            ReviewTitle: reviewTitle,
+            ReviewDescription: reviewDescription,
+            ReviewRating: rating,
+            DeviceId: 'W',
+            DeviceType: 'W'
         };
     }
 

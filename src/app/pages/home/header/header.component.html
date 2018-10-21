@@ -15,7 +15,7 @@
                           <div class="header_icon">
                               <img src="assets/Images/profile.png" alt="Battlecapse">
                           </div>
-                          <a class="dropdown-toggle username" [routerLink]="['/login']" data-toggle="dropdown">Login/register</a>
+                          <a class="dropdown-toggle username" [ngClass]="{'active': isActive}" [routerLink]="['/login']" data-toggle="dropdown">{{profileInfo}}</a>
                           <ul class="user-menu dropdown-menu" *ngIf="customerSession?.UserId !== 0">
                               <li [routerLink]="['/myorders']">
                                   <a>
@@ -29,7 +29,7 @@
                                   </a>
                               </li>
 
-                              <li class="star_color" [routerLink]="['/myaccount']">
+                              <li class="star_color" [routerLink]="['/myaccount/favorites']">
                                   <a>
                                       <i aria-hidden="true" class="fa fa-star"></i>
                                       Favorites
