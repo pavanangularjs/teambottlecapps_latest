@@ -32,16 +32,16 @@
               <h4 class="font_size">Accounts</h4>
               <ul class="list-unstyled clear-margins">
                   <li>
-                      <a [routerLink]="['/myaccount']">My Orders</a>
+                      <a [routerLink]="['/myorders']">My Orders</a>
                   </li>
                   <li>
-                      <a [routerLink]="['/cart']">My Payment method</a>
+                      <a [routerLink]="['/myaccount/payment-methods']">My Payment method</a>
                   </li>
                   <li>
-                      <a [routerLink]="['/myaccount']" [queryParams]="{'id':2}">My Address</a>
+                      <a [routerLink]="['/myaccount/manage-addresses']">My Address</a>
                   </li>
                   <li>
-                      <a [routerLink]="['/checkout']">My Personal Info</a>
+                      <a [routerLink]="['/myaccount/profile']">My Personal Info</a>
                   </li>
               </ul>
           </div>

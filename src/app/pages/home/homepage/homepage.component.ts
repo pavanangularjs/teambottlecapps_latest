@@ -36,8 +36,8 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.spinnerService.show();
     if (!(this.customerSession && this.customerSession.SessionId)) {
+      this.spinnerService.show();
       this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams()));
     }
   }
