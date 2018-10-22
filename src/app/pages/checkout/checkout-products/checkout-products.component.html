@@ -39,16 +39,105 @@
             <h5>Summary</h5>
           </td>
           <td>
-            <p>Sub Total</p>
-            <p>Delivery<p>
-                <p>Tip</p>
-                <p>Tax</p>
-          </td>
-          <td class="text-right">
-            <p>$ 54.00</p>
-            <p>$ 3.00</p>
-            <p>$ 0.00</p>
-            <p>$ 8.00</p>
+            <table>
+              <tr>
+                <td></td>
+                <td>
+                  <h5>Sub Total</h5>
+                </td>
+                <td class="text-right">
+                  <h4>$ 54.00</h4>
+                </td>
+              </tr>
+              <tr>
+                <td width="15px"> <a href="#" class="exapand-icon"> <span class="fa fa-minus-circle"></span> <span
+                      class="icon icon-minus-circled"></span> </a> </td>
+                <td>
+                  <h5>Savings</h5>
+                </td>
+                <td class="text-right">
+                  <h4>$ -21.00</h4>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td colspan="2">
+                  <table class="exapnded-table">
+                    <tr>
+                      <td><small class="text-muted">Club Savings</small></td>
+                      <td class="text-right"><small class="text-muted">$ 4.00</small></td>
+                    </tr>
+                    <tr>
+                      <td><small class="text-muted">On-Sale Savings</small></td>
+                      <td class="text-right"><small class="text-muted">$ 2.00</small></td>
+                    </tr>
+                    <tr>
+                      <td><small class="text-muted">Case Discounts</small></td>
+                      <td class="text-right"><small class="text-muted">$ 7.20</small></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <h5>Coupon Discout</h5>
+                </td>
+                <td class="text-right">
+                  <h4>$ 0.00</h4>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <h5>Delivery Charge</h5>
+                </td>
+                <td class="text-right">
+                  <h4>$ 8.00</h4>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <h5>Tax</h5>
+                </td>
+                <td class="text-right">
+                  <h4>$ 54.00</h4>
+                </td>
+              </tr>
+              <tr>
+                <td width="15px"><a href="#" class="exapand-icon"><span class="fa fa-plus-circle"></span> <span class="icon icon-plus-circled"></span></a></td>
+                <td>
+                  <h5>Tio for Driver</h5>
+                </td>
+                <td class="text-right">
+                  <h4>$ 54.00</h4>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td colspan="2">
+                  <table class="exapnded-table">
+                    <tr>
+                      <td><small class="text-muted"><input type="checkbox"> $ 45.20 (10%)</small></td>
+                      <td class="text-right"><small class="text-muted"> </small></td>
+                    </tr>
+                    <tr>
+                      <td><small class="text-muted"><input type="checkbox"> $ 90.20 (10%)</small></td>
+                      <td class="text-right"><small class="text-muted"> </small></td>
+                    </tr>
+                    <tr>
+                      <td><small class="text-muted"><input type="checkbox"> $ 135.20 (10%)</small></td>
+                      <td class="text-right"><small class="text-muted"> </small></td>
+                    </tr>
+                    <tr>
+                      <td><small class="text-muted"><input type="checkbox" checked=""> Other</small></td>
+                      <td class="text-right"><small class="text-muted">$ 7.20 <input type="checkbox" checked=""></small></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
       </tbody>
@@ -58,11 +147,17 @@
     <form>
       <i class="fa fa-ticket input-icon"></i> <i class="icon icon-ticket icon-coupon"></i>
       <input type="text" name="coupun" placeholder="Apply Coupon" class="form-control coupon">
+      <i class="fa fa-close input-icon"></i> <i class="icon icon-window-close icon-coupon-close"></i>
     </form>
   </div>
   <div class="coupon-panel">
     <table>
       <tbody>
+        <tr>
+          <td class="text-left">
+            <p class="bottles-brand">Remarks: Order value must be aboer or equal to $35.00 for this coupon</p>
+          </td>
+        </tr>
         <tr>
           <td class="text-left text-uppercase">
             <h3>Total</h3>

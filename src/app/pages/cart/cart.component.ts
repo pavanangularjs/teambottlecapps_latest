@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
+import { CustomerService } from '../../services/customer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -8,7 +10,9 @@ import { CartService } from '../../services/cart.service';
 })
 export class CartComponent implements OnInit {
   cartDetails: any;
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService,
+    private customerService: CustomerService,
+    private router: Router) { }
 
   ngOnInit() {
     this.getCartDetails();
@@ -19,6 +23,14 @@ export class CartComponent implements OnInit {
       (data: any) => {
         this.cartDetails = data;
       });
+  }
+
+  onDelivery() {
+    if (this.customerService.customerSession && this.customerService.customerSession.UserId !== 0) {
+      this.router.navigate(['/checkout']);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 
 }

@@ -44,6 +44,9 @@ export class AdvanceFilterComponent implements OnInit {
   ngOnInit() {
     if (this.dataservice.searchByText !== '') {
       this.getProductsByKeyword();
+    } else if (this.dataservice.isFeatureProduct === 1) {
+      this.selectedFilters = [{id: '001', value: 'Feature Products', isSelected: true}];
+      this.getFeatureProducts();
     } else if (this.dataservice.filtersAllData) {
       this.allFilterOptions = this.dataservice.filtersAllData;
       this.getAllSelectedFilters();
@@ -99,6 +102,12 @@ export class AdvanceFilterComponent implements OnInit {
     const index = this.selectedFilters.findIndex(item => item === filter);
     if (index !== -1) {
       this.selectedFilters.splice(index, 1);
+
+      if (filter.id === '001') {
+        this.dataservice.isFeatureProduct = 0;
+        this.getFeatureProducts();
+        return;
+      }
     }
 
     const tindex = this.allFilterOptions.type.findIndex(item => item.value === filter.value);
@@ -127,6 +136,16 @@ export class AdvanceFilterComponent implements OnInit {
   }
   onPageSizeChange() {
     this.getFilteredProducts();
+  }
+
+  getFeatureProducts() {
+    this.spinnerService.show();
+    this.store.dispatch(new ProductGetList(
+      this.productStoreService.getProductGetListParams(
+        {
+          isFeatured: this.dataservice.isFeatureProduct, pageSize: this.selectedPageSize
+        }
+      )));
   }
 
   getProductsByKeyword() {

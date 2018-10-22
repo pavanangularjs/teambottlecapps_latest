@@ -1,7 +1,8 @@
 import { Component, OnChanges, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
 import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
-
+import { DataService } from '../../../services/data.service';
 @Component({
   selector: 'app-menu',
   templateUrl: './menubar.component.html',
@@ -12,15 +13,14 @@ export class MenubarComponent {
 
   menuItems = [
     { name: 'Home', url: '/' },
-    { name: 'About', url: '/about' },
-    { name: 'Feature Products', url: '/feature-products' }
+    { name: 'About', url: '/about' }
   ];
 
   filterMenuItems = [];
   receipeMenuItem: any;
   couponMenuItem: any;
 
-  constructor(private store: Store<any>) {
+  constructor(private store: Store<any>, private router: Router, public dataservice: DataService) {
     this.store.select(ProductStoreSelectors.productStoreStateData)
       .subscribe(pssd => {
         this.storeGetHomeData = pssd;
@@ -48,6 +48,13 @@ export class MenubarComponent {
         this.couponMenuItem = { name: 'Coupons', url: '/coupons' };
       }
     }
+  }
+
+  onFeatureProductsSelect() {
+    this.dataservice.searchByText = '';
+    // this.dataservice.categoryId = '1,2,3,4';
+    this.dataservice.isFeatureProduct = 1;
+    this.router.navigate(['/advance-filter']);
   }
 }
 

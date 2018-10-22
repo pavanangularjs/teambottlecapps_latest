@@ -1,171 +1,171 @@
 .checkout-section .checkout-table {
-    border: dashed 2px #ccc;
-    background-color: #fcfcfc;
-    padding: 15px 25px 20px 25px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    min-height: 128px;
-    a.link {
+  border: dashed 2px #ccc;
+  background-color: #fcfcfc;
+  padding: 15px 25px 20px 25px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  min-height: 156px;
+  a.link {
+    font-size: 16px;
+    color: #ec1c24;
+    text-decoration: none;
+    color: #222;
+    &:hover, &:focus, &.active {
       font-size: 16px;
       color: #ec1c24;
       text-decoration: none;
-      color: #222;
-      &:hover, &:focus, &.active {
-        font-size: 16px;
-        color: #ec1c24;
-        text-decoration: none;
-        color: #ec1c24;
-      }
-    }
-  }
-  
-  .checkout-table .check-icon-checkout-container {
-    position: absolute;
-    right: 30px;
-    top: 30px;
-  }
-  
-  .check-icon-checkout-container .checkout-icon-style, .checkout-icon-style {
-    font-size: 40px;
-    color: #ec1c24;
-  }
-  
-  .checkout-table .location-icon-container {
-    position: absolute;
-    left: 40%;
-    top: 20%;
-  }
-  
-  .location-icon-container {
-    .icon-1 {
-      font-size: 50px;
-      position: relative;
-      color: #d7d7d7;
-    }
-    .icon-2 {
-      font-size: 26px;
-      position: absolute;
-      top: 10px;
-      left: 17px;
-      color: #d7d7d7;
-    }
-  }
-  
-  .checkout-section .checkout-table a.link:hover {
-    .location-icon-container {
-      .icon-1, .icon-2 {
-        color: #ec1c24;
-      }
-    }
-    .new-address-add tr td h4 {
       color: #ec1c24;
     }
   }
-  
-  table.new-address-add {
-    width: 100%;
-  }
-  
-  .new-address-add h4 {
-    margin-top: 60px;
+}
+
+.checkout-table .check-icon-checkout-container {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+}
+
+.check-icon-checkout-container .checkout-icon-style, .checkout-icon-style {
+  font-size: 40px;
+  color: #ec1c24;
+}
+
+.checkout-table .location-icon-container {
+  position: absolute;
+  left: 40%;
+  top: 20%;
+}
+
+.location-icon-container {
+  .icon-1 {
+    font-size: 50px;
+    position: relative;
     color: #d7d7d7;
   }
-  
-  .checkout-section {
-    .switch {
-      position: relative;
-      display: inline-block;
-      width: 60px;
-      height: 34px;
+  .icon-2 {
+    font-size: 26px;
+    position: absolute;
+    top: 10px;
+    left: 17px;
+    color: #d7d7d7;
+  }
+}
+
+.checkout-section .checkout-table a.link:hover {
+  .location-icon-container {
+    .icon-1, .icon-2 {
+      color: #ec1c24;
     }
-    .delivery-options {
-      .switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-      }
-      .slider {
+  }
+  .new-address-add tr td h4 {
+    color: #ec1c24;
+  }
+}
+
+table.new-address-add {
+  width: 100%;
+}
+
+.new-address-add h4 {
+  margin-top: 60px;
+  color: #d7d7d7;
+}
+
+.checkout-section {
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  .delivery-options {
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+      &:before {
         position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
         -webkit-transition: .4s;
         transition: .4s;
-        &:before {
-          position: absolute;
-          content: "";
-          height: 26px;
-          width: 26px;
-          left: 4px;
-          bottom: 4px;
-          background-color: white;
-          -webkit-transition: .4s;
-          transition: .4s;
-        }
-      }
-      input {
-        &:checked + .slider {
-          background-color: #2196F3;
-        }
-        &:focus + .slider {
-          box-shadow: 0 0 1px #2196F3;
-        }
-        &:checked + .slider:before {
-          -webkit-transform: translateX(26px);
-          -ms-transform: translateX(26px);
-          transform: translateX(26px);
-        }
-      }
-      .slider.round {
-        border-radius: 34px;
-        &:before {
-          border-radius: 50%;
-        }
-      }
-      .input-container {
-        display: -ms-flexbox;
-        display: flex;
-        width: 100%;
-        margin-bottom: 15px;
       }
     }
-    .coupon-panel .input-container {
+    input {
+      &:checked + .slider {
+        background-color: #2196F3;
+      }
+      &:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+      }
+      &:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+      }
+    }
+    .slider.round {
+      border-radius: 34px;
+      &:before {
+        border-radius: 50%;
+      }
+    }
+    .input-container {
       display: -ms-flexbox;
       display: flex;
       width: 100%;
       margin-bottom: 15px;
     }
-    .delivery-options .input-icon, .coupon-panel .input-icon {
-      padding: 10px;
-      background: transparent;
-      color: white;
-      text-align: center;
-      border-bottom: solid 1px #979797;
-      color: #979797;
-    }
-    .delivery-options .input-field, .coupon-panel .input-field {
-      width: 100%;
-      padding: 10px;
-      outline: none;
-      background: transparent;
-      border: 0px;
-      border-bottom: solid 1px #979797;
-    }
-    .delivery-options .input-field:focus, .coupon-panel .input-field:focus {
-      border: 0px solid transparent;
-      border-bottom: solid 1px #979797;
-    }
-    .delivery-options .btn {
-      background-color: transparent;
-      color: white;
-      padding: 15px 20px;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-      opacity: 0.9;
-    }
   }
+  .coupon-panel .input-container {
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .delivery-options .input-icon, .coupon-panel .input-icon {
+    padding: 10px;
+    background: transparent;
+    color: white;
+    text-align: center;
+    border-bottom: solid 1px #979797;
+    color: #979797;
+  }
+  .delivery-options .input-field, .coupon-panel .input-field {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    background: transparent;
+    border: 0px;
+    border-bottom: solid 1px #979797;
+  }
+  .delivery-options .input-field:focus, .coupon-panel .input-field:focus {
+    border: 0px solid transparent;
+    border-bottom: solid 1px #979797;
+  }
+  .delivery-options .btn {
+    background-color: transparent;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+}
