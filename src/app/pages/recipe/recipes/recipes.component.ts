@@ -16,7 +16,6 @@ export class RecipesComponent implements OnInit {
     private spinnerService: Ng4LoadingSpinnerService) { }
 
   ngOnInit() {
-    this.spinnerService.show();
     this.getRecipes();
   }
 
@@ -24,6 +23,7 @@ export class RecipesComponent implements OnInit {
     if (this.recipeService.recipesList) {
       this.recipeList = this.recipeService.recipesList;
     } else {
+    this.spinnerService.show();
     this.recipeService.getRecipeList().subscribe(
       (data: any) => {
         this.recipeList = data ? (data.ListRecipe ? data.ListRecipe : []) : [];
