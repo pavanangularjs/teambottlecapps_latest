@@ -53,6 +53,7 @@ import { CheckoutPaymentMethodComponent } from './pages/checkout/checkout-paymen
 import { CheckoutProductsComponent } from './pages/checkout/checkout-products/checkout-products.component';
 import { ProductReviewComponent } from './pages/products/product-details/product-review/product-review.component';
 import { ProductAddReviewComponent } from './pages/products/product-details/product-add-review/product-add-review.component';
+import { OrderComponent } from './pages/myaccount/myorders/order/order.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { ProductAddReviewComponent } from './pages/products/product-details/prod
     CheckoutPaymentMethodComponent,
     CheckoutProductsComponent,
     ProductReviewComponent,
-    ProductAddReviewComponent
+    ProductAddReviewComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

@@ -28,35 +28,37 @@
         <table class="table table-bordered res_table">
           <thead>
             <tr>
-              <th>Product Details</th>
-              <th>Product Price</th>
-              <th>Quantity</th>
-              <th>Total Price</th>
+              <th width="40%">Product Details</th>
+              <th width="25%">Product Price</th>
+              <th width="20%">Quantity</th>
+              <th width="14%">Total Price</th>
             </tr>
           </thead>
-          <tbody>
-            <tr *ngFor="let cartItem of cartDetails?.ListCartItem">
-              <td>
+        </table>
+        <table class="box-tile" *ngFor="let cartItem of cartDetails?.ListCartItem">
+          <tbody class="bg-transparent">
+            <tr>
+              <td width="40%" style="padding-left: 15px; padding-top: 15px;">
                 <div class="img_div">
                   <img class="second_img" src='{{cartItem?.ProductImage}}' />
                 </div>
-                <div class="Product_name">
-                  <h5>{{cartItem?.ProductName}}</h5>
+                <div class="Product_name text-left">
+                  <h5 class="text-left">{{cartItem?.ProductName}}</h5>
 
                   <span class="font_size">{{cartItem?.UnitSize}}</span>
                 </div>
 
               </td>
-              <td>
+              <td width="25%">
                 <div>
-                  <h5 class="Product_price">{{cartItem?.PriceDisplay}}</h5>
+                  <h5 class="Product_price text-left">{{cartItem?.PriceDisplay}}</h5>
                   <div>
-                    <h6 class="you_save">{{cartItem?.ItemTotalSavingDisplay}}</h6>
+                    <h6 class="you_save text-left">{{cartItem?.ItemTotalSavingDisplay}}</h6>
                   </div>
                 </div>
 
               </td>
-              <td>
+              <td width="20%">
                 <div class="margin_top">
                   <button class="dec_circle">
                     <i class="fa fa-minus" aria-hidden="true"></i>
@@ -68,7 +70,7 @@
                 </div>
 
               </td>
-              <td>
+              <td width="15%">
                 <div>
                   <span class="total_price">{{cartItem?.FinalItemTotalDisplay}} </span>
                   <button class="bg_black">
@@ -76,13 +78,12 @@
                   </button>
                 </div>
               </td>
-
             </tr>
           </tbody>
 
         </table>
 
-        <div class="btn_right">
+        <div class="btn_right buttons-container">
           <button class="btn btn-default">Pickup</button>
           <button class="btn btn-default" (click)="onDelivery()">Delivery</button>
 

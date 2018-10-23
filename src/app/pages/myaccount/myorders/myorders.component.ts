@@ -7,7 +7,7 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
   styleUrls: ['./myorders.component.scss']
 })
 export class MyOrdersComponent implements OnInit {
-  myOrdersList: any[];
+  myOrdersList: any;
 
   constructor(private ordersService: OrdersService,
     private spinnerService: Ng4LoadingSpinnerService) { }

@@ -21,20 +21,21 @@ table tr th {
     font-stretch: normal;
     line-height: 1.29;
     letter-spacing: 0.1px;
-     text-align: center; 
+     text-align: left; 
     color: #222222;
 }
 table tr th:last-child{
     border-right:none; 
 }
 table tr td .img_div{
-    min-width: 30%;
-    max-width: 50%;
+    min-width: 20%;
+    max-width: 30%;
     float: left;
-    border: 1px solid gray;
+    border: 2px solid #ccc;
     padding: 15px;
-    border-radius: 4px;
-    height: 100px;
+    border-radius: 10px;
+    height: 85px;
+    margin-right: 25px;
    
 }
 
@@ -45,7 +46,7 @@ table tr td .img_div{
     font-stretch: normal;
     line-height: normal;
     letter-spacing: -0.5px;
-    text-align: center; 
+    text-align: left; 
     color: #262628;
 }
 table tr td .img_div img{
@@ -72,7 +73,7 @@ table tr td .Product_price{
     font-stretch: normal;
     line-height: normal;
     letter-spacing: 0.5px;
-    text-align: center;
+    text-align: left;
     color: #f11b2e;
 }
 .you_save{
@@ -83,7 +84,7 @@ table tr td .Product_price{
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  text-align: center;
+  text-align: left;
   color: rgba(38, 38, 40, 0.6);
 }
 .Product_name ul li {
@@ -107,6 +108,10 @@ button.dec_circle,button.dec_circle:focus{
     background-color: transparent;
     border: 1px solid #d0d0d0;
     outline: none;
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+    line-height: 28px;
 }
 .margin_top{
     margin-top: 5px;
@@ -236,4 +241,31 @@ table tr td .Product_price,table tr td .you_save,table tr td .total_price{
 
 
 
+}
+
+tbody.bg-transparent table.box-tile tr td {
+    border: solid 1px transparent; 
+    text-align: left;
+    padding-top: 25px;
+    padding-left: 25px;
+}
+
+tbody.bg-transparent tr td {
+    padding-left: 10px;
+    border: solid 1px transparent;
+}
+
+table.box-tile tbody{
+    box-shadow: 0px 2px 5px rgba(0,0,0,.3);
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+table.box-tile {
+    margin-bottom: 20px;
+}
+
+.btn_right.buttons-container button,
+button.btn {
+    margin-left: 15px;
 }
