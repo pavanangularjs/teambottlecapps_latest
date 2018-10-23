@@ -20,13 +20,13 @@ const routes: Routes = [
   { path: 'home', component: HomepageComponent },
   { path: 'about', component: AboutusComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'recipes', component: RecipesComponent },
+  { path: 'recipes', component: RecipesComponent},
   { path: 'recipe-details/:id', component: RecipeDetailsComponent },
   { path: 'product-details/:id', component: ProductDetailsComponent },
   { path: 'event-details/:id', component: EventDetailsComponent },
   { path: 'myaccount', loadChildren: './pages/myaccount/myaccount.module#MyAccountModule' },
   { path: 'myorders', component: MyOrdersComponent },
-  { path: 'advance-filter', component: AdvanceFilterComponent },
+  { path: 'advance-filter', component: AdvanceFilterComponent, runGuardsAndResolvers: 'always' },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: '**', component: HomepageComponent },
@@ -34,7 +34,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'}), HttpClientModule],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled', onSameUrlNavigation: 'reload'}), HttpClientModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

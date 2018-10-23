@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService } from '../../../services/data.service';
 import { ProductFilters } from '../../../models/product-filters';
 import { Item } from '../../../models/item';
@@ -10,13 +10,14 @@ import { ProductGetList } from '../../../state/product-store/product-store.actio
 import { ProductStoreService } from '../../../services/product-store.service';
 import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-advance-filter',
   templateUrl: './advance-filter.component.html',
   styleUrls: ['./advance-filter.component.scss']
 })
-export class AdvanceFilterComponent implements OnInit {
+export class AdvanceFilterComponent implements OnInit, OnDestroy {
   allFilterOptions: ProductFilters;
   selectedFilters: Item[] = [];
   selectedTypes: Item[] = [];
@@ -29,11 +30,19 @@ export class AdvanceFilterComponent implements OnInit {
   PageSize = [12, 20, 40, 60, 80, 100];
   SortBy = ['Price', 'Size', 'Type', 'Country', 'Region'];
   selectedPageSize = 12;
+  navigationSubscription;
 
   constructor(public dataservice: DataService,
     private store: Store<ProductGetListRequestPayload>,
     private productStoreService: ProductStoreService,
-    private spinnerService: Ng4LoadingSpinnerService) {
+    private spinnerService: Ng4LoadingSpinnerService,
+    private router: Router) {
+
+      this.navigationSubscription = this.router.events.subscribe((e: any) => {
+        if (e instanceof NavigationEnd) {
+          this.initialiseSearchFilter();
+        }
+      });
     this.store.select(ProductStoreSelectors.productGetListData)
       .subscribe(pgld => {
         this.productsList = pgld ? pgld.ListProduct : [];
@@ -42,11 +51,13 @@ export class AdvanceFilterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initialiseSearchFilter();
+  }
+
+  initialiseSearchFilter() {
     if (this.dataservice.searchByText !== '') {
+      this.selectedFilters = [{id: '001', value: this.dataservice.searchByText, isSelected: true}];
       this.getProductsByKeyword();
-    } else if (this.dataservice.isFeatureProduct === 1) {
-      this.selectedFilters = [{id: '001', value: 'Feature Products', isSelected: true}];
-      this.getFeatureProducts();
     } else if (this.dataservice.filtersAllData) {
       this.allFilterOptions = this.dataservice.filtersAllData;
       this.getAllSelectedFilters();
@@ -104,8 +115,8 @@ export class AdvanceFilterComponent implements OnInit {
       this.selectedFilters.splice(index, 1);
 
       if (filter.id === '001') {
-        this.dataservice.isFeatureProduct = 0;
-        this.getFeatureProducts();
+        this.dataservice.searchByText = '';
+        this.getProductsByKeyword();
         return;
       }
     }
@@ -138,7 +149,7 @@ export class AdvanceFilterComponent implements OnInit {
     this.getFilteredProducts();
   }
 
-  getFeatureProducts() {
+  /* getFeatureProducts() {
     this.spinnerService.show();
     this.store.dispatch(new ProductGetList(
       this.productStoreService.getProductGetListParams(
@@ -146,7 +157,7 @@ export class AdvanceFilterComponent implements OnInit {
           isFeatured: this.dataservice.isFeatureProduct, pageSize: this.selectedPageSize
         }
       )));
-  }
+  } */
 
   getProductsByKeyword() {
     this.spinnerService.show();
@@ -212,4 +223,9 @@ export class AdvanceFilterComponent implements OnInit {
     this.getFilteredProducts();
   }
 
+  ngOnDestroy() {
+    if (this.navigationSubscription) {
+      this.navigationSubscription.unsubscribe();
+    }
+  }
 }

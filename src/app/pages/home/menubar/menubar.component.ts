@@ -13,7 +13,8 @@ export class MenubarComponent {
 
   menuItems = [
     { name: 'Home', url: '/' },
-    { name: 'About', url: '/about' }
+    { name: 'About', url: '/about' },
+    { name: 'Feature Products', url: '/feature-products' }
   ];
 
   filterMenuItems = [];
