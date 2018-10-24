@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { CustomerService } from '../../services/customer.service';
 import { Router } from '@angular/router';
@@ -11,9 +11,10 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+  @ViewChild('openCartReviewModal') openModal: ElementRef;
   cartDetails: any;
-  quantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-  isCartUpdate = false;
+  quantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  reviewItems: any;
   constructor(private cartService: CartService,
     private customerService: CustomerService,
     private router: Router,
@@ -28,15 +29,31 @@ export class CartComponent implements OnInit {
     this.cartService.getCartDetails().subscribe(
       (data: any) => {
         this.cartDetails = data;
+        this.doStockAvailabilityCheck();
       });
   }
 
+  doStockAvailabilityCheck() {
+    if (!(this.cartDetails && this.cartDetails.ListCartItem)) {
+      return;
+    }
+
+    this.reviewItems = this.cartDetails.ListCartItem.filter(item => item.Quantity !== item.QuantityOrdered);
+
+    if (this.reviewItems && this.reviewItems.length > 0) {
+      this.openModal.nativeElement.click();
+
+      this.cartDetails.ListCartItem = this.cartDetails.ListCartItem.filter(item => item.Quantity !== 0);
+      this.cartDetails.ListCartItem.map(item => item.QuantityOrdered = item.Quantity);
+    }
+
+  }
+
   onQtyChange(item: any) {
-    item.Quantity = +item.Quantity;
-    item.FinalItemTotal = this.decimalPipe.transform(item.FinalPrice * item.Quantity, '1.2-2');
+    item.QuantityOrdered = +item.QuantityOrdered;
+    item.FinalItemTotal = this.decimalPipe.transform(item.FinalPrice * item.QuantityOrdered, '1.2-2');
     item.FinalItemTotalDisplay = '$' + item.FinalItemTotal;
-    item.QuantityOrdered = +item.Quantity;
-    this.isCartUpdate = true;
+    this.updateCart();
   }
 
   removeFromCart(item: any) {
@@ -53,11 +70,36 @@ export class CartComponent implements OnInit {
       });
   }
 
+  updateCart() {
+    this.cartService.updateCart(this.cartDetails).subscribe(
+      (data: any) => {
+        this.cartDetails = data;
+        this.doStockAvailabilityCheck();
+      });
+  }
+
+  onPickup() {
+    this.cartDetails.OrderTypeId = 1;
+    this.navigateURL();
+  }
+
   onDelivery() {
-    if (this.customerService.customerSession && this.customerService.customerSession.UserId !== 0) {
+    this.cartDetails.OrderTypeId = 2;
+
+    const tip = this.cartDetails.ListCharge.filter(charge => charge.ChargeTitle === 'Tip')[0];
+    if (tip) {
+      this.cartDetails.TipForDriver = tip.ChargeAmount;
+    } else {
+      this.cartDetails.TipForDriver = -1;
+    }
+
+    this.navigateURL();
+  }
+
+  navigateURL() {
+    if (this.customerService.customerSession && this.customerService.customerSession.UserId !== 0) {    
       this.cartService.updateCart(this.cartDetails).subscribe(
         (data: any) => {
-          this.cartDetails = data;
           this.router.navigate(['/checkout']);
         });
     } else {

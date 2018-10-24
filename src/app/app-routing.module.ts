@@ -14,6 +14,7 @@ import { CartComponent } from './pages/cart/cart.component';
 import { AdvanceFilterComponent } from './pages/products/advance-filter/advance-filter.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { CouponsComponent } from './pages/coupons/coupons.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'advance-filter', component: AdvanceFilterComponent, runGuardsAndResolvers: 'always' },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'coupons', component: CouponsComponent },
   { path: '**', component: HomepageComponent },
 ];
 

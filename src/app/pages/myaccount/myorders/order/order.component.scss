@@ -291,3 +291,7 @@ table tr td h4,table tr td h5,table tr td span,table tr td .total_price{
     position: absolute;
     top: 15px;
 }
+
+.border_bottom table.table tbody tr td {
+    border-top: solid 0px #ccc !important;
+}

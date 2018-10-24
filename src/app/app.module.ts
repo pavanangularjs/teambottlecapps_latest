@@ -55,6 +55,8 @@ import { CheckoutProductsComponent } from './pages/checkout/checkout-products/ch
 import { ProductReviewComponent } from './pages/products/product-details/product-review/product-review.component';
 import { ProductAddReviewComponent } from './pages/products/product-details/product-add-review/product-add-review.component';
 import { OrderComponent } from './pages/myaccount/myorders/order/order.component';
+import { CartReviewComponent } from './pages/cart-review/cart-review.component';
+import { CouponsComponent } from './pages/coupons/coupons.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +90,9 @@ import { OrderComponent } from './pages/myaccount/myorders/order/order.component
     CheckoutProductsComponent,
     ProductReviewComponent,
     ProductAddReviewComponent,
-    OrderComponent
+    OrderComponent,
+    CartReviewComponent,
+    CouponsComponent
   ],
   imports: [
     BrowserModule,

@@ -6,12 +6,12 @@
           <td class="img-block"><img class="prod-img" src="{{cartItem?.ProductImage}}"></td>
           <td>
             <h4>{{cartItem?.ProductName}}</h4>
-            <h6>{{cartItem?.ItemTotalDisplay}}</h6>
+            <h6>{{cartItem?.PriceDisplay}}</h6>
             <p>Quantity: {{cartItem.QuantityOrdered}}</p>
           </td>
           <td class="text-right">
             <p>Edit Order</p>
-            <h5>{{cartItem?.FinalItemTotalDisplay}}</h5>
+            <h5>{{cartItem?.ItemTotalDisplay}}</h5>
           </td>
         </tr>
       </tbody>
@@ -40,7 +40,7 @@
                   <h5>Savings</h5>
                 </td>
                 <td class="text-right">
-                  <h4>{{cartItem?.TotalSavingsDisplay}}</h4>
+                  <h4>{{cartDetails?.TotalSavingsDisplay}}</h4>
                 </td>
               </tr>
               <tr>
@@ -72,10 +72,10 @@
                   <h4>{{charge?.ChargeAmountDisplay}}</h4>
                 </td>
               </tr>            
-              <tr>
+              <tr *ngIf="cartDetails?.OrderTypeId !== 1">
                 <td width="15px"><a class="exapand-icon"><span class="fa fa-plus-circle"></span> <span class="icon icon-plus-circled"></span></a></td>
                 <td>
-                  <h5>Tip for Driver</h5>
+                  <h5>Tip</h5>
                 </td>
                 <td class="text-right">
                   <h4>{{cartDetails?.TipForDriver}}</h4>
@@ -86,7 +86,7 @@
                 <td colspan="2">
                   <table class="exapnded-table">
                     <tr *ngFor="let tip of cartDetails?.ListTipForDriver">
-                      <td><small class="text-muted"><input type="checkbox" (change)="onTipSelected($event, tip)" [(ngModel)]="tip.IsDeafault"> {{tip?.TipAmountDisplay}} ({{tip?.Percentage}}%)</small></td>
+                      <td><small class="text-muted"><input type="radio" name="tip" (change)="onTipSelected($event, tip)" value="{{tip.TipAmountDisplay}}" [(ngModel)]="tip.IsDeafault"> {{tip?.TipAmountDisplay}} ({{tip?.Percentage}}%)</small></td>
                       <td class="text-right"><small class="text-muted"> </small></td>
                     </tr>
                   </table>

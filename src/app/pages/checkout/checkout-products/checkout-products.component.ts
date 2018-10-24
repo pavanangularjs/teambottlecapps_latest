@@ -14,6 +14,10 @@ export class CheckoutProductsComponent implements OnInit {
 
   ngOnInit() {
     this.cartDetails = this.cartService.cartdetails;
+    this.cartDetails.ListCartItem = this.cartDetails.ListCartItem.filter(item => item.Quantity !== 0);
+    this.cartDetails.ListCartItem.map(item => item.QuantityOrdered = item.Quantity);
+
+    this.cartDetails.ListCharge = this.cartDetails.ListCharge.filter(charge => charge.ChargeTitle !== 'Tip');
   }
 
   onCheckout() {
