@@ -269,3 +269,44 @@ table.box-tile {
 button.btn {
     margin-left: 15px;
 }
+
+select.select-quant {
+    font-size: 14px;
+    width: 130px;
+    height: 40px;
+}
+
+.cart-review .product-image{
+    width: 90px;
+    border-radius: 10px;
+    border: solid 2px #ccc;
+    padding: 10px;
+}
+
+.cart-review .modal-captions {
+    margin: 20px 0px;
+}
+
+.cart-review h4.modal-title {
+    color: #ec1c24;
+}
+
+.cart-review button.btn-primary {
+    text-align: center;
+    outline: none;
+      background-color: #ec1c24;
+      color: #fff;
+      border-color: #ec1c24;
+      margin-right: 8px;
+      border-radius: 5px;
+      box-shadow: 0px 10px 20px 0 rgba(236, 28, 36, 0.3);
+    &:hover, &:focus {
+    text-align: center;
+      outline: none;
+      background-color: #ec1c24;
+      color: #fff;
+      border-color: #ec1c24;
+      border-radius: 5px;
+      box-shadow: 0px 10px 20px 0 rgba(236, 28, 36, 0.3);
+    }
+}

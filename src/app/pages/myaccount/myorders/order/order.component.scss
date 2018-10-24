@@ -256,16 +256,16 @@ table tr td h4,table tr td h5,table tr td span,table tr td .total_price{
 }
 
 .product-image {
-    border: solid 1px #ccc;
-    border-radius: 5px;
+    border: solid 2px #ccc;
+    border-radius: 10px;
     padding: 10px 20px 10px 20px;
     margin-right: 0px;
-    width: 150px;
+    width: 90px;
 }
 
-.product-image img {
-    width: 80px;
-}
+/*.product-image img {
+    width: 32px;
+}*/
 
 .order-summary-expand {
     width: 60%;

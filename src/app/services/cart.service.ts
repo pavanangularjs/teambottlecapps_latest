@@ -20,6 +20,7 @@ export class CartService {
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
   customerSession: CustomerLoginSession;
   cartId = 0;
+  cartdetails: any;
 
 
   constructor(private http: HttpClient, private store: Store<CustomerLoginSession>) {
@@ -97,6 +98,7 @@ export class CartService {
     return this.http.post<any>(baseUrl + UrlNames.CartGetDetail,
       this.getCartDetailsRequestParams(), { headers: this.headers }).pipe(
         switchMap((res: any) => {
+          this.cartdetails = res;
           return of(res);
         }),
         catchError((error: any, caught: Observable<any>) => {
@@ -119,6 +121,31 @@ export class CartService {
       DeviceId: 'A',
       DeviceType: 'A'
     };
+  }
+
+  updateCart(data: any): Observable<any> {
+    return this.http.post<any>(baseUrl + UrlNames.CartUpdate,
+      data, { headers: this.headers }).pipe(
+        switchMap((res: any) => {
+          this.cartdetails = res;
+          return of(res);
+        }),
+        catchError((error: any, caught: Observable<any>) => {
+          return this.processError(error);
+        })
+      );
+  }
+
+  placeOrder(data: any): Observable<any> {
+    return this.http.post<any>(baseUrl + UrlNames.OrderInsert,
+      data, { headers: this.headers }).pipe(
+        switchMap((res: any) => {
+          return of(res);
+        }),
+        catchError((error: any, caught: Observable<any>) => {
+          return this.processError(error);
+        })
+      );
   }
 
   processError(error: any): Observable<any> {

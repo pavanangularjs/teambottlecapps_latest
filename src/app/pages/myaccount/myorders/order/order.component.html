@@ -32,15 +32,15 @@
     </div>
   </div>
   <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" *ngFor="let item of order?.ListOrderItem">
-    <table class="">
+    <table class="table table-condensed">
       <tbody>
         <tr>
-          <td>
+          <td width="15%">
             <div class="product-image">
-              <img class="second_img " src='{{item?.ProductImage}}' />
+              <img class="second_img img-responsive" src='{{item?.ProductImage}}' />
             </div>
           </td>
-          <td>
+          <td width="30%">
             <div class="Product_name">
               <h5> {{item?.ProductName}} </h5>
               <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]"></i>
@@ -48,25 +48,25 @@
               <br><span class="font_size">{{item?.UnitSize}}</span>
             </div>
           </td>
-          <td>
+          <td width="15%">
             <div>
               <h5 class="Product_price">{{item?.PriceDisplay}}</h5>
               <h6 class="you_save" *ngIf="item?.ItemTotalSaving !== 0"> {{item?.ItemTotalSaving}}</h6>
             </div>
           </td>
-          <td>
+          <td width="20%">
             <div>
               <h5 class="Product_price"> {{item?.Quantity}}</h5>
               <h6 class="you_save">Quantity </h6>
             </div>
           </td>
-          <td>
+          <td width="20%">
             <div>
               <s *ngIf="item?.ItemTotalDisplay !== item?.FinalPriceDisplay">
                 {{item?.ItemTotalDisplay}}
               </s><br>
               <span class="total_price">
-                {{item?.FinalPriceDisplay}}
+                {{item?.FinalItemTotalDisplay}}
               </span>
             </div>
           </td>
@@ -121,7 +121,7 @@
                     <td>
                       <h5 class="summary text-right">Summary</h5>
                     </td>
-                    <td>
+                    <td style="padding-right: 35px;">
                       <table class="order-summary-expand pull-right">
                         <tbody>
                           <tr>
@@ -144,8 +144,6 @@
                       </table>
                     </td>
                   </tr>
-
-
                 </tbody>
               </table>
             </div>

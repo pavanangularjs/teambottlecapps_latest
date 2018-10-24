@@ -1,33 +1,17 @@
 <div class="row">
   <div class="order-details-panel">
-    <table class="first-table">
+    <table class="first-table" *ngFor="let cartItem of cartDetails?.ListCartItem">
       <tbody>
         <tr>
-          <td class="img-block"><img class="prod-img" src="#"></td>
+          <td class="img-block"><img class="prod-img" src="{{cartItem?.ProductImage}}"></td>
           <td>
-            <h4>Product Name</h4>
-            <h6>$18.00</h6>
-            <p>Quantity: 3</p>
+            <h4>{{cartItem?.ProductName}}</h4>
+            <h6>{{cartItem?.ItemTotalDisplay}}</h6>
+            <p>Quantity: {{cartItem.QuantityOrdered}}</p>
           </td>
           <td class="text-right">
             <p>Edit Order</p>
-            <h5>$18.00</h5>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <table>
-      <tbody>
-        <tr>
-          <td class="img-block"><img class="prod-img" src="#"></td>
-          <td>
-            <h4>Product Name</h4>
-            <h6>$18.00</h6>
-            <p>Quantity: 3</p>
-          </td>
-          <td class="text-right">
-            <p> </p>
-            <h5>$18.00</h5>
+            <h5>{{cartItem?.FinalItemTotalDisplay}}</h5>
           </td>
         </tr>
       </tbody>
@@ -46,34 +30,26 @@
                   <h5>Sub Total</h5>
                 </td>
                 <td class="text-right">
-                  <h4>$ 54.00</h4>
+                  <h4>{{cartDetails?.SubTotalDisplay}}</h4>
                 </td>
               </tr>
               <tr>
-                <td width="15px"> <a href="#" class="exapand-icon"> <span class="fa fa-minus-circle"></span> <span
+                <td width="15px"> <a class="exapand-icon"> <span class="fa fa-minus-circle"></span> <span
                       class="icon icon-minus-circled"></span> </a> </td>
                 <td>
                   <h5>Savings</h5>
                 </td>
                 <td class="text-right">
-                  <h4>$ -21.00</h4>
+                  <h4>{{cartItem?.TotalSavingsDisplay}}</h4>
                 </td>
               </tr>
               <tr>
                 <td></td>
                 <td colspan="2">
                   <table class="exapnded-table">
-                    <tr>
-                      <td><small class="text-muted">Club Savings</small></td>
-                      <td class="text-right"><small class="text-muted">$ 4.00</small></td>
-                    </tr>
-                    <tr>
-                      <td><small class="text-muted">On-Sale Savings</small></td>
-                      <td class="text-right"><small class="text-muted">$ 2.00</small></td>
-                    </tr>
-                    <tr>
-                      <td><small class="text-muted">Case Discounts</small></td>
-                      <td class="text-right"><small class="text-muted">$ 7.20</small></td>
+                    <tr *ngFor="let discount of cartDetails?.ListDiscount">
+                      <td><small class="text-muted">{{discount?.DiscountTitle}}</small></td>
+                      <td class="text-right"><small class="text-muted">{{discount?.DiscountAmountDisplay}}</small></td>
                     </tr>
                   </table>
                 </td>
@@ -87,52 +63,31 @@
                   <h4>$ 0.00</h4>
                 </td>
               </tr>
-              <tr>
+              <tr *ngFor="let charge of cartDetails?.ListCharge">
                 <td></td>
                 <td>
-                  <h5>Delivery Charge</h5>
+                  <h5>{{charge?.ChargeTitle}}</h5>
                 </td>
                 <td class="text-right">
-                  <h4>$ 8.00</h4>
+                  <h4>{{charge?.ChargeAmountDisplay}}</h4>
                 </td>
-              </tr>
+              </tr>            
               <tr>
-                <td></td>
+                <td width="15px"><a class="exapand-icon"><span class="fa fa-plus-circle"></span> <span class="icon icon-plus-circled"></span></a></td>
                 <td>
-                  <h5>Tax</h5>
+                  <h5>Tip for Driver</h5>
                 </td>
                 <td class="text-right">
-                  <h4>$ 54.00</h4>
-                </td>
-              </tr>
-              <tr>
-                <td width="15px"><a href="#" class="exapand-icon"><span class="fa fa-plus-circle"></span> <span class="icon icon-plus-circled"></span></a></td>
-                <td>
-                  <h5>Tio for Driver</h5>
-                </td>
-                <td class="text-right">
-                  <h4>$ 54.00</h4>
+                  <h4>{{cartDetails?.TipForDriver}}</h4>
                 </td>
               </tr>
               <tr>
                 <td></td>
                 <td colspan="2">
                   <table class="exapnded-table">
-                    <tr>
-                      <td><small class="text-muted"><input type="checkbox"> $ 45.20 (10%)</small></td>
+                    <tr *ngFor="let tip of cartDetails?.ListTipForDriver">
+                      <td><small class="text-muted"><input type="checkbox" (change)="onTipSelected($event, tip)" [(ngModel)]="tip.IsDeafault"> {{tip?.TipAmountDisplay}} ({{tip?.Percentage}}%)</small></td>
                       <td class="text-right"><small class="text-muted"> </small></td>
-                    </tr>
-                    <tr>
-                      <td><small class="text-muted"><input type="checkbox"> $ 90.20 (10%)</small></td>
-                      <td class="text-right"><small class="text-muted"> </small></td>
-                    </tr>
-                    <tr>
-                      <td><small class="text-muted"><input type="checkbox"> $ 135.20 (10%)</small></td>
-                      <td class="text-right"><small class="text-muted"> </small></td>
-                    </tr>
-                    <tr>
-                      <td><small class="text-muted"><input type="checkbox" checked=""> Other</small></td>
-                      <td class="text-right"><small class="text-muted">$ 7.20 <input type="checkbox" checked=""></small></td>
                     </tr>
                   </table>
                 </td>
@@ -153,9 +108,9 @@
   <div class="coupon-panel">
     <table>
       <tbody>
-        <tr>
+        <tr *ngIf="isCouponError">
           <td class="text-left">
-            <p class="bottles-brand">Remarks: Order value must be aboer or equal to $35.00 for this coupon</p>
+            <p class="bottles-brand">Remarks: Order value must be above or equal to $35.00 for this coupon</p>
           </td>
         </tr>
         <tr>
@@ -163,14 +118,14 @@
             <h3>Total</h3>
           </td>
           <td class="text-right">
-            <h3>$ 19.00</h3>
+            <h3>{{cartDetails?.TotalValueDisplay}}</h3>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
-  <div class="submit-button-panel">
+  <div class="btn_right buttons-container">
     <button type="cancel" class="btn btn-default novalue">Cancel</button>
-    <button type="checkout" class="btn btn-default close">Checkout</button>
+    <button type="checkout" class="btn btn-default close" (click)="onCheckout()">Checkout</button>
   </div>
 </div>

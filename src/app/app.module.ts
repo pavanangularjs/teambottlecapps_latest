@@ -44,6 +44,7 @@ import { AdvanceFilterComponent } from './pages/products/advance-filter/advance-
 import { CustomerService } from './services/customer.service';
 import { ProductStoreService } from './services/product-store.service';
 import { DataService } from './services/data.service';
+import { DecimalPipe } from '@angular/common';
 
 import { HttpCacheService } from './cache.service';
 import { CacheInterceptor } from './cacheInterceptor';
@@ -101,7 +102,7 @@ import { OrderComponent } from './pages/myaccount/myorders/order/order.component
     EffectsModule.forRoot([CustomerEffects, ProductStoreEffects]),
     Ng4LoadingSpinnerModule.forRoot()
   ],
-  providers: [CustomerService, ProductStoreService, DataService],
+  providers: [CustomerService, ProductStoreService, DataService, DecimalPipe],
     // HttpCacheService, { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
