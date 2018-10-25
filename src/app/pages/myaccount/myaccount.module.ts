@@ -11,6 +11,7 @@ import { ManageAddressesComponent } from './manage-addresses/manage-addresses.co
 import { PaymentMethodsComponent } from './payment-methods/payment-methods.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { AddNewAddressComponent } from './manage-addresses/add-new-address/add-new-address.component';
+import { AddNewPaymentComponent } from './payment-methods/add-new-payment/add-new-payment.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { AddNewAddressComponent } from './manage-addresses/add-new-address/add-n
       ManageAddressesComponent,
       PaymentMethodsComponent,
       FavoritesComponent,
-      AddNewAddressComponent
+      AddNewAddressComponent,
+      AddNewPaymentComponent
     ]
 })
 export class MyAccountModule { }

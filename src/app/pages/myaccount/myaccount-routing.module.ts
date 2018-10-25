@@ -8,6 +8,7 @@ import { ManageAddressesComponent } from './manage-addresses/manage-addresses.co
 import { PaymentMethodsComponent } from './payment-methods/payment-methods.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { AddNewAddressComponent } from './manage-addresses/add-new-address/add-new-address.component';
+import { AddNewPaymentComponent } from './payment-methods/add-new-payment/add-new-payment.component';
 
 const routes: Routes = [
     {
@@ -19,7 +20,8 @@ const routes: Routes = [
             { path: 'manage-addresses', component: ManageAddressesComponent },
             { path: 'payment-methods', component: PaymentMethodsComponent },
             { path: 'favorites', component: FavoritesComponent },
-            { path: 'add-new-address', component: AddNewAddressComponent }
+            { path: 'add-new-address', component: AddNewAddressComponent },
+            { path: 'add-new-payment-method', component: AddNewPaymentComponent }
         ]
     }
 ];

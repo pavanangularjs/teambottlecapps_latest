@@ -1,132 +1,41 @@
-<div class="container">
-    <div class=" col-lg-8 col-md-8 col-sm-8 col-xs-12">
-      <div class="new-payment-method-section">
-        <div class="row">
-            <div class="col-md-12">
-                <h4>Add New Payment Method</h4>
-                <div class="row">
-                    <div class="col-md-12">
-                      <div class="cards-icons-container">
-                          <a href="#">
-                            <span class="icon icon-cc-amex new-payment-icon"></span> <span class="fa fa-cc-amex new-payment-icon"></span>
-                          </a>
-                       <a href="#">
-                          <span class="icon icon-cc-visa new-payment-icon"></span> <span class="fa fa-cc-visa new-payment-icon"></span>
-                        </a>
-                        <a href="#">
-                          <span class="icon icon-cc-mastercard new-payment-icon"></span> <span class="fa fa-mastercard new-payment-icon new-payment-icon"></span>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <br>
-                        <form class="form-group"> 
-                            <div class="row">
-                                  <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="text-uppercase">Name As on Card <span>*</span>
-                                            <input type="name" name="" class="form-control" placeholder="">
-                                        </label>
-                                    </div>
-                                  </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="text-uppercase">16 Digit Number <span>*</span>
-                                        <input type="name" name="" class="form-control" placeholder="">
-                                    </label>
-                                </div>
-                              </div>
+<div class=" col-lg-9 col-md-9 col-sm-9 col-xs-12">
+    <div class="add-new-address">
+        <a routerLink="../add-new-payment-method" class="bottles-brand">
+            <h4 class="address-heading"><span class="fa fa-map-marker bottle-brand"></span> Add New Payment Method</h4>
+        </a>
+        <div class="address-table-tile" *ngFor="let payment of paymentMethodList">
+            <table class="table table-responsive">
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="text-muted text-uppercase" *ngIf="payment?.IsDefault">
+                                <small>Favorite</small>
+                            </span>
+                        </td>
+                        <td class="text-right">
+                            <div class="dropdown dropdown-favorite">
+                                <a class="text-muted" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <span class="fa fa-ellipsis-v more-icon"></span><span class="icon icon-ellipsis-vert more-icon"></span></a>
 
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="text-uppercase">Expiry Date <span>*</span>
-                                        <input type="name" name="" class="form-control" placeholder="">
-                                    </label>
-                                </div>
-                              </div>
+                                <ul class="dropdown-menu dropdown-favorite-open" aria-labelledby="dLabel">
+                                    <li *ngIf="payment?.IsDefault === false"><a (click)="addToFavorite(payment)">Add to Favorite</a></li>
+                                    <li><a routerLink="./edit-payment">Edit</a></li>
+                                    <li><a>Delete</a></li>
+                                </ul>
                             </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="text-uppercase">CVV code <span>*</span>
-                                        <input type="name" name="" class="form-control" placeholder="">
-                                    </label>
-                                </div>
-                              </div>
-                            </div>
-                        </form>
-                        <hr>
-                    </div>
-                    <div class="col-md-12">
-                      <h4>Billing Address</h4>
-                      <br>
-                        <form class="form-group"> 
-                            <div class="row">
-                                  <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="text-uppercase">Address 1 <span>*</span>
-                                            <input type="name" name="" class="form-control" placeholder="">
-                                        </label>
-                                    </div>
-                                  </div>
-                                  <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="text-uppercase">Address 2 
-                                        <input type="name" name="" class="form-control" placeholder="">
-                                    </label>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="text-uppercase">City <span>*</span>
-                                        <input type="name" name="" class="form-control" placeholder="">
-                                    </label>
-                                </div>
-                              </div>
-
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="text-uppercase">State <span>*</span>
-                                        <input type="name" name="" class="form-control" placeholder="">
-                                    </label>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="text-uppercase">Zip Code <span>*</span>
-                                        <input type="name" name="" class="form-control" placeholder="">
-                                    </label>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="text-uppercase"><input type="checkbox" name="" uncheck=""> Save to Addresses
-                                        
-                                    </label>
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                    <div class="button-container">
-                                      <button type="cancel" class="btn btn-default novalue pull-left">Cancel</button>
-                                      <button type="checkout" class="btn btn-default close">Checkout</button>
-                                    </div>
-                                </div>
-                              </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="address-container-section">
+                            <h6>{{payment?.PaymentType}}</h6>
+                        </td>
+                        <td class="address-container-section">
+                            <h6>{{payment?.Credential1}}</h6>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-      </div>
-  </div>
+    </div>
 </div>

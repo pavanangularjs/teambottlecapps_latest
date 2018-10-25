@@ -17,6 +17,7 @@ export class CustomerService {
   customerSession: CustomerLoginSession;
   private profileDetails: any;
   customerAddressList: any;
+  customerPaymentMethodGetList: any;
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
   constructor(private http: HttpClient) {
   }
@@ -155,6 +156,20 @@ export class CustomerService {
     address.DeviceType = this.customerSession.DeviceType;
 
     return address;
+  }
+
+  getCustomerPaymentMethodGetList(): Observable<any> {
+    return this.http.post<any>(baseUrl + UrlNames.CustomerPaymentMethodGetList,
+      this.getProfileDetailsRequestParams(), { headers: this.headers }).pipe(
+        switchMap((res: any) => {
+          this.customerPaymentMethodGetList = res;
+          return of(res);
+        }),
+        retry(3),
+        catchError((error: any, caught: Observable<any>) => {
+          return this.processError(error);
+        })
+      );
   }
 
   processError(error: any): Observable<any> {
