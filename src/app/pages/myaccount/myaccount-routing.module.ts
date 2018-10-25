@@ -7,6 +7,7 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { ManageAddressesComponent } from './manage-addresses/manage-addresses.component';
 import { PaymentMethodsComponent } from './payment-methods/payment-methods.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { AddNewAddressComponent } from './manage-addresses/add-new-address/add-new-address.component';
 
 const routes: Routes = [
     {
@@ -17,7 +18,8 @@ const routes: Routes = [
             { path: 'profile', component: ProfileComponent },
             { path: 'manage-addresses', component: ManageAddressesComponent },
             { path: 'payment-methods', component: PaymentMethodsComponent },
-            { path: 'favorites', component: FavoritesComponent }
+            { path: 'favorites', component: FavoritesComponent },
+            { path: 'add-new-address', component: AddNewAddressComponent }
         ]
     }
 ];

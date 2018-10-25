@@ -1,14 +1,16 @@
 <div class=" col-lg-9 col-md-9 col-sm-9 col-xs-12">
     <div class="add-new-address">
-        <a href="#" class="bottles-brand">
+        <a routerLink="../add-new-address" class="bottles-brand">
             <h4 class="address-heading"><span class="fa fa-map-marker bottle-brand"></span> Add New Address</h4>
         </a>
-        <div class="address-table-tile">
+        <div class="address-table-tile" *ngFor="let address of addressList">
             <table class="table table-responsive">
                 <tbody>
                     <tr>
                         <td>
-                            <span class="text-muted text-uppercase"><small>Favorite</small></span>
+                            <span class="text-muted text-uppercase" *ngIf="address?.IsDefault">
+                                <small>Favorite</small>
+                            </span>
                         </td>
                         <td class="text-right">
                             <div class="dropdown dropdown-favorite">
@@ -17,44 +19,17 @@
                                     <span class="fa fa-ellipsis-v more-icon"></span><span class="icon icon-ellipsis-vert more-icon"></span></a>
 
                                 <ul class="dropdown-menu dropdown-favorite-open" aria-labelledby="dLabel">
-                                    <li><a href="#">Edit</a></li>
-                                    <li><a href="3">Delete</a></li>
+                                    <li *ngIf="address?.IsDefault === false"><a (click)="addToFavorite(address)">Add to Favorite</a></li>
+                                    <li><a routerLink="./edit-address">Edit</a></li>
+                                    <li><a>Delete</a></li>
                                 </ul>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2" class="address-container-section">
-                            <h5>AddressName</h5>
-                            <h6>Address1 Address2 City,State,1234</h6>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="address-table-tile">
-            <table class="table table-responsive">
-                <tbody>
-                    <tr>
-
-                        <td class="text-right" colspan="2">
-                            <div class="dropdown dropdown-favorite">
-                                <a class="text-muted" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    <span class="fa fa-ellipsis-v more-icon"></span><span class="icon icon-ellipsis-vert more-icon"></span></a>
-
-                                <ul class="dropdown-menu dropdown-favorite-open" aria-labelledby="dLabel">
-                                    <li><a href="#">Add to Favorite</a></li>
-                                    <li><a href="#">Edit</a></li>
-                                    <li><a href="#">Delete</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="address-container-section">
-                            <h5>AddressName</h5>
-                            <h6>Address1 Address2 City,State,1234</h6>
+                            <h5>{{address?.AddressName}}</h5>
+                            <h6>{{address?.Address1}} {{address?.Address2}} {{address?.City}}, {{address?.State}}, {{address?.Zip}}</h6>
                         </td>
                     </tr>
                 </tbody>

@@ -7,17 +7,22 @@ import { CustomerLoginSession } from '../models/customer-login-session';
 import { StoreGetHomeRequestPayload } from '../models/store-get-home-request-payload';
 import { baseUrl, UrlNames } from './url-provider';
 import { BaseRequest } from '../models/base-request';
+import { AddressInsert } from '../models/address-insert';
+import { AddressUpdate } from '../models/address-update';
+import { AddressDelete } from '../models/address-delete';
+import { CustomerProfileUpdate } from '../models/customer-profile-update';
 
 @Injectable()
 export class CustomerService {
   customerSession: CustomerLoginSession;
   private profileDetails: any;
+  customerAddressList: any;
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
   constructor(private http: HttpClient) {
   }
 
-  loginCustomer( reqParams: CustomerLoginRequestPayload ): Observable<any> {
-    return this.http.post<any>(baseUrl + UrlNames.LoginCustomer, reqParams, {headers : this.headers}).pipe(
+  loginCustomer(reqParams: CustomerLoginRequestPayload): Observable<any> {
+    return this.http.post<any>(baseUrl + UrlNames.LoginCustomer, reqParams, { headers: this.headers }).pipe(
       switchMap((res: any) => {
         this.customerSession = res;
         return of(res);
@@ -29,7 +34,7 @@ export class CustomerService {
     );
   }
 
-  getLoginCustomerParams( email?: string, pwd?: string, loginType?: string ) {
+  getLoginCustomerParams(email?: string, pwd?: string, loginType?: string) {
     return {
       AppId: 10002,
       AppVersion: '8.5',
@@ -72,6 +77,84 @@ export class CustomerService {
       DeviceId: this.customerSession.DeviceId,
       DeviceType: this.customerSession.DeviceType
     };
+  }
+
+  updateCustomerProfile(profile: CustomerProfileUpdate ): Observable<any> {
+    return this.http.post<any>(baseUrl + UrlNames.CustomerProfileUpdate,
+      this.updateProfileDetails(profile), { headers: this.headers }).pipe(
+        switchMap((res: any) => {
+          return of(res);
+        }),
+        retry(3),
+        catchError((error: any, caught: Observable<any>) => {
+          return this.processError(error);
+        })
+      );
+  }
+
+  getCustomerAddressList(): Observable<any> {
+    return this.http.post<any>(baseUrl + UrlNames.CustomerAddressGetList,
+      this.getProfileDetailsRequestParams(), { headers: this.headers }).pipe(
+        switchMap((res: any) => {
+          this.customerAddressList = res;
+          return of(res);
+        }),
+        retry(3),
+        catchError((error: any, caught: Observable<any>) => {
+          return this.processError(error);
+        })
+      );
+  }
+
+  AddNewAddress(address: AddressInsert): Observable<any> {
+    return this.http.post<any>(baseUrl + UrlNames.AddressInsert,
+      this.updateProfileDetails(address), { headers: this.headers }).pipe(
+        switchMap((res: any) => {
+          this.customerAddressList = null;
+          return of(res);
+        }),
+        retry(3),
+        catchError((error: any, caught: Observable<any>) => {
+          return this.processError(error);
+        })
+      );
+  }
+
+  UpdateAddress(address: AddressUpdate): Observable<any> {
+    return this.http.post<any>(baseUrl + UrlNames.AddressUpdate,
+      this.updateProfileDetails(address), { headers: this.headers }).pipe(
+        switchMap((res: any) => {
+          return of(res);
+        }),
+        retry(3),
+        catchError((error: any, caught: Observable<any>) => {
+          return this.processError(error);
+        })
+      );
+  }
+
+  DeleteAddress(address: AddressDelete): Observable<any> {
+    return this.http.post<any>(baseUrl + UrlNames.AddressDelete,
+      this.updateProfileDetails(address), { headers: this.headers }).pipe(
+        switchMap((res: any) => {
+          return of(res);
+        }),
+        retry(3),
+        catchError((error: any, caught: Observable<any>) => {
+          return this.processError(error);
+        })
+      );
+  }
+
+  updateProfileDetails(address: any): any {
+    address.StoreId = this.customerSession.StoreId;
+    address.SessionId = this.customerSession.SessionId;
+    address.UserId = this.customerSession.UserId;
+    address.AppId = this.customerSession.AppId;
+    address.DeviceId = this.customerSession.DeviceId;
+    address.DeviceType = this.customerSession.DeviceType;
+
+    return address;
   }
 
   processError(error: any): Observable<any> {
