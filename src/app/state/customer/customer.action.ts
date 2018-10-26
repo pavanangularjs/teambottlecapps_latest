@@ -4,12 +4,7 @@ import { CustomerLoginSession } from '../../models/customer-login-session';
 
 export enum CustomerActionTypes {
     CustomerLogin = '[Customer] Login',
-    CustomerLoginSuccess = '[Customer] LoginSuccess',
-    ClearState = '[Customer] Logout'
-}
-
-export class ClearState implements Action {
-    readonly type = CustomerActionTypes.ClearState;
+    CustomerLoginSuccess = '[Customer] LoginSuccess'
 }
 
 export class CustomerLogin implements Action {
@@ -26,8 +21,7 @@ export class CustomerLoginSuccess implements Action {
 
 export const CustomerActions = {
     CustomerLogin,
-    CustomerLoginSuccess,
-    ClearState
+    CustomerLoginSuccess
 };
 
-export type CustomerAction = CustomerLogin | CustomerLoginSuccess | ClearState;
+export type CustomerAction = CustomerLogin | CustomerLoginSuccess;
