@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
+import { ClearState } from '../../../state/customer/customer.action';
 import { CustomerLoginSession } from '../../../models/customer-login-session';
 import { CustomerSelectors } from '../../../state/customer/customer.selector';
 import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
@@ -41,4 +42,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSignOut() {
+    this.store.dispatch(new ClearState());
+  }
 }
