@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { AuthService, FacebookLoginProvider } from 'angularx-social-login';
 
 import { CustomerLogin } from '../../../state/customer/customer.action';
 import { CustomerSelectors } from '../../../state/customer/customer.selector';
 import { CustomerLoginSession } from '../../../models/customer-login-session';
 import { CustomerService } from '../../../services/customer.service';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+
 
 @Component({
   selector: 'app-signin',
@@ -20,7 +22,8 @@ export class SigninComponent implements OnInit {
 
   constructor(private router: Router, private store: Store<CustomerLoginSession>,
     private customerService: CustomerService,
-    private spinnerService: Ng4LoadingSpinnerService) {
+    private spinnerService: Ng4LoadingSpinnerService,
+    private socialAuthService: AuthService) {
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         if (clsd) {
@@ -42,12 +45,27 @@ export class SigninComponent implements OnInit {
     });
   }
 
+  signInWithFB(): void {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then((user) => {
+      console.log(user);
+      if ( user ) {
+        this.store.dispatch(new CustomerLogin(
+          this.customerService.getLoginCustomerParams(user.email, '', 'F', user.id)));
+      }
+
+    });
+  }
+
   onSignIn() {
     this.spinnerService.show();
     const email = this.formSignIn.get('eemail').value;
     const password = this.formSignIn.get('epassword').value;
 
     this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams(email, password, 'E')));
+  }
+
+  signOut(): void {
+    this.socialAuthService.signOut();
   }
 
 }

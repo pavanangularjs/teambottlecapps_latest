@@ -5,6 +5,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { MyAccountModule } from './pages/myaccount/myaccount.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
 // import {  SharedModule } from './shared/shared.module';
 
 import { customerReducer  } from './state/customer/customer.reducer';
@@ -58,6 +59,19 @@ import { OrderComponent } from './pages/myaccount/myorders/order/order.component
 import { CartReviewComponent } from './pages/cart-review/cart-review.component';
 import { CouponsComponent } from './pages/coupons/coupons.component';
 
+// Configs
+export function getAuthServiceConfigs() {
+  const config = new AuthServiceConfig(
+      [
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider('2187506571532619')
+        }
+      ]
+  );
+  return config;
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -104,9 +118,14 @@ import { CouponsComponent } from './pages/coupons/coupons.component';
     MyAccountModule,
     StoreModule.forRoot({customer: customerReducer, productStore: productStoreReducer }),
     EffectsModule.forRoot([CustomerEffects, ProductStoreEffects]),
-    Ng4LoadingSpinnerModule.forRoot()
+    Ng4LoadingSpinnerModule.forRoot(),
+    SocialLoginModule
   ],
-  providers: [CustomerService, ProductStoreService, DataService, DecimalPipe],
+  providers: [CustomerService, ProductStoreService, DataService, DecimalPipe,
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    }],
     // HttpCacheService, { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })

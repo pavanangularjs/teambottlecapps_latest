@@ -35,7 +35,7 @@ export class CustomerService {
     );
   }
 
-  getLoginCustomerParams(email?: string, pwd?: string, loginType?: string) {
+  getLoginCustomerParams(email?: string, pwd?: string, loginType?: string, sourceId?: string) {
     return {
       AppId: 10002,
       AppVersion: '8.5',
@@ -44,7 +44,11 @@ export class CustomerService {
       EmailId: email || '',
       LoginType: loginType || 'B',
       Password: pwd || '',
-      StoreId: 10002
+      StoreId: 10002,
+      SourceId: sourceId || '',
+      SessionId: '',
+      UserId: '',
+      UserIp: ''
     };
   }
 

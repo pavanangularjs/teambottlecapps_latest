@@ -7,4 +7,9 @@ export class CustomerLoginRequestPayload {
     LoginType: string;
     Password: string;
     StoreId: number;
+    SourceId: string;
+    SessionId: string;
+    UserId: string;
+    UserIp: string;
+
 }
