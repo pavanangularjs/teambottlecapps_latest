@@ -1,0 +1,13 @@
+.carousel-block {
+  min-height: 400px;
+  height: 400px;
+  .carousel-img {
+    height: 350px;
+    width: 100%;
+  }
+  a {
+    &.left, &.right {
+      height: 400px;
+    }
+  }
+}

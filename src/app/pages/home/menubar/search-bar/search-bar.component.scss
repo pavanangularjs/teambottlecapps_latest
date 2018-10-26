@@ -1,0 +1,20 @@
+.search-block .searchby {
+	width: 340px;
+  .search-btn {
+    .btn {
+      width: 35px;
+      height: 34px;
+      position: relative;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      line-height: 20px;
+    }
+    position: absolute;
+    right: 0;
+    z-index: 9;
+  }
+  input {
+    width: 320px;
+    margin-right: 0px;
+  }
+}

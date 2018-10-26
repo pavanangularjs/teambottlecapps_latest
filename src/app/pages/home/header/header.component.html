@@ -1,60 +1,69 @@
 <header class="default" id="menu">
 
-  <div class="container">
-      <div class="header_div">
-          <div class="row">
-              <div class="col-md-4 col-lg-6 col-sm-4 col-xs-12">
-                  <a class="navbar-brand">
-                      <img src="assets/Images/logo.png" [routerLink]="['/']" alt="Battlecapse" height="42" width="42">
-                  </a>
-              </div>
+    <div class="container">
+        <div class="header_div">
+            <div class="row">
+                <div class="col-md-4 col-lg-6 col-sm-4 col-xs-12">
+                    <a class="navbar-brand">
+                        <img src="assets/Images/logo.png" [routerLink]="['/']" alt="Lukas">
+                    </a>
+                </div>
 
-              <div class="col-md-8 col-lg-6 col-sm-8 col-xs-12 mobile_none">
-                  <ul class="nav navbar-nav float_right">
-                      <li class="dropdown text_small">
-                          <div class="header_icon">
-                              <img src="assets/Images/profile.png" alt="Battlecapse">
-                          </div>
-                          <a class="dropdown-toggle username" [ngClass]="{'active': isActive}" [routerLink]="['/login']" data-toggle="dropdown">{{profileInfo}}</a>
-                          <ul class="user-menu dropdown-menu" *ngIf="customerSession?.UserId !== 0">
-                              <li [routerLink]="['/myorders']">
-                                  <a>
-                                      <img class="beer" src="assets/Images/Orders.png"> My Orders
-                                  </a>
+                <div class="col-md-8 col-lg-6 col-sm-8 col-xs-12 mobile_none">
+                    <ul class="nav navbar-nav float_right">
+                        <li class="dropdown text_small">
+                            <div class="cart-block">
+                                <div class="header_icon">
+                                    <img src="assets/Images/profile.png" alt="Battlecapse" class="icon">
+                                </div>
+                                <div class="cart-captions-log">
+                                    <a class="dropdown-toggle username" [ngClass]="{'active': isActive}" [routerLink]="['/login']"
+                                        data-toggle="dropdown">{{profileInfo}}</a>
+                                    <ul class="user-menu dropdown-menu" *ngIf="customerSession?.UserId !== 0">
+                                        <li [routerLink]="['/myorders']">
+                                            <a>
+                                                <img class="beer" src="assets/Images/Orders.png"> My Orders
+                                            </a>
 
-                              </li>
-                              <li [routerLink]="['/myaccount']">
-                                  <a>
-                                      <img class="beer" src="assets/Images/account.png"> My Account
-                                  </a>
-                              </li>
+                                        </li>
+                                        <li [routerLink]="['/myaccount']">
+                                            <a>
+                                                <img class="beer" src="assets/Images/account.png"> My Account
+                                            </a>
+                                        </li>
 
-                              <li class="star_color" [routerLink]="['/myaccount/favorites']">
-                                  <a>
-                                      <i aria-hidden="true" class="fa fa-star"></i>
-                                      Favorites
-                                  </a>
+                                        <li class="star_color" [routerLink]="['/myaccount/favorites']">
+                                            <a>
+                                                <i aria-hidden="true" class="fa fa-star"></i>
+                                                Favorites
+                                            </a>
 
-                              </li>
+                                        </li>
 
-                              <li class="">
-                                  <a (click)="onSignOut()">
-                                      <img class="beer" src="assets/Images/logout.png"> Log Out
-                                  </a>
-                              </li>
-                          </ul>
-                      </li>
-                      <li [routerLink]="['/cart']">
-                          <div class="header_icon">
-                              <img src="assets/Images/cart.png" alt="Battlecapse">
-                          </div>
-                          <a>Shopping Cart</a>
-                          <span class="cart"> {{cartItemCount}} Item (s)</span>
-
-                      </li>
-                  </ul>
-              </div>
-          </div>
-      </div>
-  </div>
+                                        <li class="">
+                                            <a (click)="onSignOut()">
+                                                <img class="beer" src="assets/Images/logout.png"> Log Out
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li [routerLink]="['/cart']">
+                            <div class="cart-block">
+                                <div class="header_icon">
+                                    <img src="assets/Images/cart.png" alt="Battlecapse" class="icon">
+                                    <span class="round-circle">{{cartItemCount}}</span>
+                                </div>
+                                <div class="cart-captions">
+                                    <a>Shopping Cart</a>
+                                    <!-- <span class="cart"> {{cartItemCount}} Item (s) - $578.14</span> -->
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>

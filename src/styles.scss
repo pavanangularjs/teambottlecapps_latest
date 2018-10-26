@@ -23,7 +23,7 @@
     border: none;
     float: left;
     border-left: 5px solid #ec1c24;
-    font-family:poppinsbold;
+    font-family:poppinsregular;
     font-size: 20px;
     font-stretch: normal;
     line-height: normal;
@@ -33,9 +33,8 @@
    
 }
 .Search_div input::placeholder{
-    font-family:poppinsbold;
+    font-family:poppinsregular;
     font-size: 20px;
-    /* font-weight: 600; */
     color: #191919;
 }
 .Search_div input:focus{
@@ -55,7 +54,6 @@ font-family: poppinsregular;
   font-size: 10.6px;
   font-style: normal;
   font-stretch: normal;
-  /* line-height: 5.17; */
   letter-spacing: normal;
   text-align: right;
   color: #555555;  
@@ -104,11 +102,9 @@ font-family: poppinsregular;
 /* about and landing page */
 
 .font_size{
-    /* opacity: 0.5; */
     font-family: poppinsbold;
     font-size: 15.6px;
     font-stretch: normal;
-    /* line-height: 3.75; */
     letter-spacing: normal;
     text-transform: uppercase;
     text-align: left;
@@ -900,8 +896,7 @@ nav ul.navbar-nav li a{
     width: 83%;
     height: 34px;
     border-radius: 0px;
-    font-family: poppinsbold;
-    /* font-size: 9.6px; */
+    font-family: poppinsregular;
     font-style: normal;
     font-stretch: normal;
     line-height: 2.17;
@@ -917,49 +912,7 @@ nav ul.navbar-nav li a{
     padding: 16px 10px;
     text-decoration: none;
 }
-.navbar .dropdown:hover a:after {
-    content: " ";
-    position: absolute;
-    left: 50%;
-    opacity: 1;
-    margin: 0 auto;
-    bottom: -3px;
-    border: 10px solid transparent;
-    border-bottom-color: #ec1c24;
-    -ms-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-    
-}
-/* .float_right .text_small:hover a:after{
-    content: none;
-} */
-.float_right li.text_small:hover:after{
-    /* content: "\f106";
-    font-family: FontAwesome;
-    font-style: normal;
-    font-weight: normal;
-    text-decoration: inherit;
-    color: #ddd;
-    font-size: 24px;
-    padding-right: 0.5em;
-    position: absolute;
-    top: 0px;
-    left: auto; */
 
-    content: " ";
-    position: absolute;
-    left: 8%;
-    opacity: 1;
-    margin: 0 auto;
-    bottom: -9px;
-    border: 10px solid transparent;
-    border-bottom-color: #ec1c24;
-    -ms-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-
-}
 .navbar .dropdown:hover .dropdown-toggle{
    color: #ec1c24; 
 }

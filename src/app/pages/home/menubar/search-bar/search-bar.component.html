@@ -1,12 +1,12 @@
-<ul class="nav navbar-nav navbar-right mobile_none">
+<ul class="nav navbar-nav navbar-right mobile_none search-block">
   <li>
-      <div class="input-group">
-        <input type="text" class="form-control" name="search" [(ngModel)]="searchText" placeholder="Search..">
-
-        <button type="button" class="btn btn-primaray" (click)="searchByText()" >
-          <img src="assets/Images/search.png">
-        </button>
-
+      <div class="input-group searchby">
+        <input type="text" class="form-control" name="search" [(ngModel)]="searchText" placeholder="Find Your Drink...">
+		    <div class="search-btn">
+		    	<button type="button" class="btn btn-primaray" (click)="searchByText()" >
+		        	<img src="assets/Images/search.png">
+		        </button>
+		    </div>
       </div>
   </li>
 </ul>
