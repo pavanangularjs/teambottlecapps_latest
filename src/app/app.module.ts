@@ -65,7 +65,7 @@ export function getAuthServiceConfigs() {
       [
         {
           id: FacebookLoginProvider.PROVIDER_ID,
-          provider: new FacebookLoginProvider('2187506571532619')
+          provider: new FacebookLoginProvider('502181350180492') // 2187506571532619')
         }
       ]
   );
