@@ -17,8 +17,8 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
   }
 
-  getCount(n: number): any[] {
-    return Array(n);
+  getCount(n: string): any[] {
+    return Array(parseInt(n));
   }
 
   favoriteProductUpdate(status: boolean) {

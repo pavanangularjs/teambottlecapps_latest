@@ -15,12 +15,14 @@ import { AdvanceFilterComponent } from './pages/products/advance-filter/advance-
 import { LoginComponent } from './pages/login/login.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CouponsComponent } from './pages/coupons/coupons.component';
+import { FeatureProductsComponent } from './pages/products/feature-products/feature-products.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomepageComponent },
   { path: 'about', component: AboutusComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'feature-products', component: FeatureProductsComponent},
   { path: 'recipes', component: RecipesComponent},
   { path: 'recipe-details/:id', component: RecipeDetailsComponent },
   { path: 'product-details/:id', component: ProductDetailsComponent },

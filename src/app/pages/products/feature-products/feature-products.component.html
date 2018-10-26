@@ -12,13 +12,13 @@
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" *ngFor="let product of productsList">
         <app-product [item]="product"></app-product>
      </div>
-     <div class="col-md-12 btn-container">
+     <div class="col-md-12 btn-container" *ngIf="isFeatureProductsPage">
         <div class="row">
           <div class="col-md-6">
-              <button class="btn btn-default">Previous Page</button>
+              <button class="btn btn-default" *ngIf="isPrevious">Previous Page</button>
           </div>
           <div class="col-md-6">
-              <button class="btn btn-default pull-right">Next Page</button>
+              <button class="btn btn-default pull-right" *ngIf="isNext">Next Page</button>
           </div>
         </div>
      </div>
