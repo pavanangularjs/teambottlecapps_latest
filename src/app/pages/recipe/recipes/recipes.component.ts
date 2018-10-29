@@ -20,8 +20,8 @@ export class RecipesComponent implements OnInit {
   }
 
   getRecipes() {
-    if (this.recipeService.recipesList) {
-      this.recipeList = this.recipeService.recipesList;
+    if (this.recipeService.recipesList && this.recipeService.recipesList.ListRecipe) {
+      this.recipeList = this.recipeService.recipesList.ListRecipe;
     } else {
     this.spinnerService.show();
     this.recipeService.getRecipeList().subscribe(

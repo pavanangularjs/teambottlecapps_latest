@@ -17,7 +17,7 @@ export class RecipeService {
 
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
   customerSession: CustomerLoginSession;
-  recipesList: any[];
+  recipesList: any;
   selectedRecipe: any;
 
   constructor(private http: HttpClient, private store: Store<CustomerLoginSession>) {

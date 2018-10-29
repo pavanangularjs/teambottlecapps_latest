@@ -857,10 +857,10 @@ nav ul.navbar-nav li a{
     text-transform: uppercase;
     color: #191a1c;
     cursor:pointer;
- letter-spacing: 0; 
- position: relative;
- padding: 16px 10px 21px;
-
+    letter-spacing: 0; 
+    position: relative;
+    padding: 0px 5px !important;
+    top: 5px !important;
 }
 
 .input-group{
@@ -1074,7 +1074,6 @@ ul.navbar-nav li a:hover {
      } */
      .navbar .dropdown {position:static;} 
      .navbar .dropdown-menu {
-       width:87%;
        left:0;
        right:0;
        top:48px; 
@@ -1347,3 +1346,6 @@ ul.sidebar-menu,.border_bottom {
     
 }
 
+button {
+    margin-right: 10px;
+}

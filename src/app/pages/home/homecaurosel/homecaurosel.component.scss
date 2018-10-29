@@ -1,13 +1,13 @@
 .carousel-block {
-  min-height: 400px;
-  height: 400px;
+  min-height: 520px;
+  height: 520px;
   .carousel-img {
-    height: 350px;
+    height: 520px;
     width: 100%;
   }
   a {
     &.left, &.right {
-      height: 400px;
+      height: 520px;
     }
   }
 }

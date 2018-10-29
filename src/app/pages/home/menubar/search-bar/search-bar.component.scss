@@ -1,20 +1,25 @@
-.search-block .searchby {
-	width: 340px;
-  .search-btn {
-    .btn {
-      width: 35px;
-      height: 34px;
-      position: relative;
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
-      line-height: 20px;
+.search-block {
+  margin-right: 0px;
+  float: right;
+  .searchby {
+  	width: 200px;
+    .search-btn {
+      .btn {
+        width: 35px;
+        height: 34px;
+        position: relative;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        line-height: 20px;
+        top: -3px;
+      }
+      position: absolute;
+      right: 0;
+      z-index: 9;
     }
-    position: absolute;
-    right: 0;
-    z-index: 9;
-  }
-  input {
-    width: 320px;
-    margin-right: 0px;
+    input {
+      width: 180px;
+      margin-right: 0px;
+    }
   }
 }
