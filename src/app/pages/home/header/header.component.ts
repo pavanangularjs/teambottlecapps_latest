@@ -6,6 +6,7 @@ import { CustomerLoginSession } from '../../../models/customer-login-session';
 import { CustomerSelectors } from '../../../state/customer/customer.selector';
 import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
 import { CustomerService } from '../../../services/customer.service';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,9 @@ export class HeaderComponent implements OnInit {
   profileInfo = 'Login / Register';
   isActive = false;
 
-  constructor(private store: Store<CustomerLoginSession>, private customerService: CustomerService) {
+  constructor(private store: Store<CustomerLoginSession>,
+    private customerService: CustomerService,
+    private cartService: CartService) {
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         this.customerSession = clsd;
@@ -28,8 +31,8 @@ export class HeaderComponent implements OnInit {
       .subscribe(pssd => {
         if (pssd) {
           this.storeGetHomeData = pssd;
-          this.cartItemCount = this.storeGetHomeData.CustomerInfo ?
-            this.storeGetHomeData.CustomerInfo.CartItemCount : 0;
+          //this.cartItemCount = this.storeGetHomeData.CustomerInfo ?
+          //this.storeGetHomeData.CustomerInfo.CartItemCount : 0;
 
           if (this.storeGetHomeData.CustomerInfo && this.customerSession.UserId !== 0) {
             this.profileInfo = `Hi, ${this.storeGetHomeData.CustomerInfo.FirstName}`;
@@ -41,10 +44,15 @@ export class HeaderComponent implements OnInit {
         }
 
       });
+
+    this.cartService.cartItemCount.subscribe((data) => {
+      this.cartItemCount = data;
+    });
   }
 
   ngOnInit() {
   }
+
 
   onSignOut() {
     this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams()));

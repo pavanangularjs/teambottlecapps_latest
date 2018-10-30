@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError, EMPTY } from 'rxjs';
+import { Observable, of, throwError, EMPTY, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { switchMap, catchError, retry } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
@@ -21,6 +21,7 @@ export class CartService {
   customerSession: CustomerLoginSession;
   cartId = 0;
   cartdetails: any;
+  cartItemCount = new Subject<number>();
 
 
   constructor(private http: HttpClient, private store: Store<CustomerLoginSession>) {
@@ -38,6 +39,7 @@ export class CartService {
         switchMap((res: any) => {
           if (res.CartId) {
             this.cartId = res.CartId;
+            this.cartItemCount.next(res.CartItemCount);
           }
           return of(res);
         }),
@@ -69,6 +71,7 @@ export class CartService {
     return this.http.post<any>(baseUrl + UrlNames.CartRemoveItem,
       this.getRemoveFromCartRequestParams(pid), { headers: this.headers }).pipe(
         switchMap((res: any) => {
+          this.cartItemCount.next(res.CartItemCount);
           return of(res);
         }),
         catchError((error: any, caught: Observable<any>) => {
