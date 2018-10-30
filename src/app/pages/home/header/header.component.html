@@ -8,12 +8,12 @@
             <div class="mobile_none">
                 <ul class="nav navbar-nav float_right user-profile-block">
                     <li class="dropdown text_small">
-                        <div class="cart-block">
-                            <div class="header_icon"  [ngClass]="{'active': isActive}" [routerLink]="['/login']"
+                       
+                            <div class="header_icon dropdown-toggle username"  [ngClass]="{'active': isActive}" [routerLink]="['/login']"
                                     data-toggle="dropdown">
                                 <img src="assets/Images/profile.png" alt="Battlecapse" class="icon">
                             </div>
-                            <div class="cart-captions-log" >                               
+                                                        
                                 <ul class="user-menu dropdown-menu" *ngIf="customerSession?.UserId !== 0">
                                     <li [routerLink]="['/myorders']">
                                         <a>
@@ -40,8 +40,8 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </div>
-                        </div>
+                            
+                        
                     </li>
                     <li [routerLink]="['/cart']">
                         <div class="cart-block">
