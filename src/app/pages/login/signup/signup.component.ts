@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 
@@ -17,10 +17,12 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 export class SignupComponent implements OnInit {
   formSignUp: FormGroup;
   customerSession: CustomerLoginSession;
+  submitted = false;
 
   constructor(private router: Router, private store: Store<CustomerLoginSession>,
     private customerService: CustomerService,
-    private spinnerService: Ng4LoadingSpinnerService) {
+    private spinnerService: Ng4LoadingSpinnerService,
+    private formBuilder: FormBuilder) {
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         if (clsd) {
@@ -36,12 +38,22 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.formSignUp = new FormGroup({
-      semail: new FormControl(''),
-      spassword: new FormControl(''),
+    this.formSignUp = this.formBuilder.group({
+      semail: ['', [Validators.required, Validators.email]],
+      spassword: ['', Validators.required, Validators.minLength(6)]
     });
   }
+
+  // convenience getter for easy access to form fields
+  get f() { return this.formSignUp.controls; }
+
   onSignUp() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.formSignUp.invalid) {
+      return;
+    }
     this.spinnerService.show();
     const email = this.formSignUp.get('semail').value;
     const password = this.formSignUp.get('spassword').value;

@@ -13,13 +13,22 @@
       <label for="email" class="email">EMAIL ADDRESS
         <span class="mandatory">*</span>
       </label>
-      <input type="email" class="form-control border_radius" formControlName="eemail" placeholder="Your email">
+      <input type="email" class="form-control border_radius" formControlName="eemail" placeholder="Your email" 
+      required>
+      <div *ngIf="submitted && f.eemail.errors" class="alert alert-danger">
+        <div *ngIf="f.eemail.errors.required">E-Mail is required.</div>
+        <div *ngIf="f.eemail.errors.email">Email must be a valid email address</div>
+      </div>
     </div>
     <div class="form-group">
       <label for="pwd" class="password">PASSWORD
         <span class="mandatory">*</span>
       </label>
-      <input type="password" class="form-control border_radius" formControlName="epassword" placeholder="Password">
+      <input type="password" class="form-control border_radius" formControlName="epassword" placeholder="Password"
+        required [ngClass]="{ 'is-invalid': submitted && f.epassword.errors }">
+        <div *ngIf="submitted && f.epassword.errors" class="alert alert-danger">
+          <div *ngIf="f.epassword.errors.required">Password is required.</div>
+        </div>
     </div>
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
