@@ -58,6 +58,7 @@ import { ProductAddReviewComponent } from './pages/products/product-details/prod
 import { OrderComponent } from './pages/myaccount/myorders/order/order.component';
 import { CartReviewComponent } from './pages/cart-review/cart-review.component';
 import { CouponsComponent } from './pages/coupons/coupons.component';
+import { AuthService } from './auth.service';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -121,7 +122,7 @@ export function getAuthServiceConfigs() {
     Ng4LoadingSpinnerModule.forRoot(),
     SocialLoginModule
   ],
-  providers: [CustomerService, ProductStoreService, DataService, DecimalPipe,
+  providers: [CustomerService, ProductStoreService, DataService, DecimalPipe, AuthService,
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs

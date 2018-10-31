@@ -17,8 +17,9 @@ export class HeaderComponent implements OnInit {
   customerSession: CustomerLoginSession;
   storeGetHomeData: any;
   cartItemCount = 0;
-  profileInfo = 'Login / Register';
   isActive = false;
+  profileFirstLetter = '';
+  profilePic = 'assets/Images/profile.png';
 
   constructor(private store: Store<CustomerLoginSession>,
     private customerService: CustomerService,
@@ -26,20 +27,22 @@ export class HeaderComponent implements OnInit {
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         this.customerSession = clsd;
+
+        if (this.customerSession  && this.customerSession.UserId !== 0) {
+          this.isActive = true;
+        } else {
+          this.isActive = false;
+        }
       });
     this.store.select(ProductStoreSelectors.productStoreStateData)
       .subscribe(pssd => {
         if (pssd) {
           this.storeGetHomeData = pssd;
-          //this.cartItemCount = this.storeGetHomeData.CustomerInfo ?
-          //this.storeGetHomeData.CustomerInfo.CartItemCount : 0;
 
-          if (this.storeGetHomeData.CustomerInfo && this.customerSession.UserId !== 0) {
-            this.profileInfo = `Hi, ${this.storeGetHomeData.CustomerInfo.FirstName}`;
-            this.isActive = true;
-          } else {
-            this.profileInfo = 'Login / Register';
-            this.isActive = false;
+          if (this.storeGetHomeData.CustomerInfo && this.storeGetHomeData.CustomerInfo.ProfileImage !== '') {
+            this.profilePic = this.storeGetHomeData.CustomerInfo.ProfileImage;
+          } else if (this.storeGetHomeData.CustomerInfo && this.storeGetHomeData.CustomerInfo.FirstName) {
+            this.profileFirstLetter = this.storeGetHomeData.CustomerInfo.FirstName.substr(0, 1);
           }
         }
 

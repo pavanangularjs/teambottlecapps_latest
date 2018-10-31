@@ -11,7 +11,9 @@
                        
                             <div class="header_icon dropdown-toggle username"  [ngClass]="{'active': isActive}" [routerLink]="['/login']"
                                     data-toggle="dropdown">
-                                <img src="assets/Images/profile.png" alt="Battlecapse" class="icon">
+                                <img *ngIf="profileFirstLetter === ''; else showProfileName" [src]="profilePic" alt="Battlecapse" class="icon">
+                                <ng-template #showProfileName><span style="color:red">{{profileFirstLetter}}</span></ng-template>
+                                
                             </div>
                                                         
                                 <ul class="user-menu dropdown-menu" *ngIf="customerSession?.UserId !== 0">

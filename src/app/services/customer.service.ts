@@ -11,6 +11,7 @@ import { AddressInsert } from '../models/address-insert';
 import { AddressUpdate } from '../models/address-update';
 import { AddressDelete } from '../models/address-delete';
 import { CustomerProfileUpdate } from '../models/customer-profile-update';
+import { AuthService } from '../auth.service';
 
 @Injectable()
 export class CustomerService {
@@ -19,13 +20,15 @@ export class CustomerService {
   customerAddressList: any;
   customerPaymentMethodGetList: any;
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private authService: AuthService) {
   }
 
   loginCustomer(reqParams: CustomerLoginRequestPayload): Observable<any> {
     return this.http.post<any>(baseUrl + UrlNames.LoginCustomer, reqParams, { headers: this.headers }).pipe(
       switchMap((res: any) => {
         this.customerSession = res;
+        this.authService.setSessionToken(res.SessionId);
+        this.authService.setUserId(res.UserId);
         return of(res);
       }),
       retry(3),

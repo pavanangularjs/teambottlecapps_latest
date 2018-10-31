@@ -17,6 +17,8 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CouponsComponent } from './pages/coupons/coupons.component';
 import { FeatureProductsComponent } from './pages/products/feature-products/feature-products.component';
 
+import { AuthGuard } from './auth.guard';
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomepageComponent },
@@ -27,11 +29,11 @@ const routes: Routes = [
   { path: 'recipe-details/:id', component: RecipeDetailsComponent },
   { path: 'product-details/:id', component: ProductDetailsComponent },
   { path: 'event-details/:id', component: EventDetailsComponent },
-  { path: 'myaccount', loadChildren: './pages/myaccount/myaccount.module#MyAccountModule' },
-  { path: 'myorders', component: MyOrdersComponent },
+  { path: 'myaccount', loadChildren: './pages/myaccount/myaccount.module#MyAccountModule', canActivate: [AuthGuard] },
+  { path: 'myorders', component: MyOrdersComponent, canActivate: [AuthGuard]},
   { path: 'advance-filter', component: AdvanceFilterComponent, runGuardsAndResolvers: 'always' },
   { path: 'cart', component: CartComponent },
-  { path: 'checkout', component: CheckoutComponent },
+  { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
   { path: 'coupons', component: CouponsComponent },
   { path: '**', component: HomepageComponent },
 ];
