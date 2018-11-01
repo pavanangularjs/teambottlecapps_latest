@@ -38,22 +38,22 @@ export class MenubarComponent implements OnInit {
 
   updateMenuItems() {
 
-    if (menuOptions && menuOptions.StoreFilters) {
+    if (menuOptions && menuOptions['StoreFilters']) {
       /*menuOptions.StoreFilters.forEach(element => {
         this.filterMenuItems.push({ name: element.CategoryName });
       });*/
-      this.filterMenuItems = menuOptions.StoreFilters;
+      this.filterMenuItems = menuOptions['StoreFilters'];
     }
 
-    if (menuOptions && menuOptions.IsRecipes !== undefined) {
-      if (menuOptions.IsRecipes) {
+    if (menuOptions && menuOptions['IsRecipes'] !== undefined) {
+      if (menuOptions['IsRecipes']) {
         this.receipeMenuItem = { name: 'Recipes', url: '/recipes' };
       }
     } else {
       this.receipeMenuItem = { name: 'Recipes', url: '/recipes' };
     }
-    if (menuOptions && menuOptions.IsCouponAvailable !== undefined) {
-      if (menuOptions.IsCouponAvailable) {
+    if (menuOptions && menuOptions['IsCouponAvailable'] !== undefined) {
+      if (menuOptions['IsCouponAvailable']) {
         this.couponMenuItem = { name: 'Coupons', url: '/coupons' };
       }
     }
