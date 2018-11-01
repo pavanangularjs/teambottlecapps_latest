@@ -22,16 +22,7 @@
             <span>{{item?.Size}}</span>
           </p>
           <p class="rating_star">
-            <span *ngIf="item?.Rating===0; else starActive">
-                <i class="fa fa-star" *ngFor="let item of getCount(5)"></i>
-            </span>
-            <ng-template #starActive>
-              <span class='active-star'>
-                  <i class="fa fa-star" *ngFor="let item of getCount(item?.Rating)"></i>
-              </span>               
-            </ng-template>
-            
-            
+            <app-rating [rate]='item?.Rating'></app-rating>
             <span class="first">{{item?.ReviewCount}}</span>
             <span class="reviews"> reviews</span>
           </p>

@@ -42,7 +42,7 @@
                         <ul class="float_right">
                             <li>
 
-                                <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]"></i>({{productDetails?.ReviewTotalCount}}
+                                <app-rating [rate]='0' [edit]='true' (rated)="onRated($event)"></app-rating>({{productDetails?.ReviewTotalCount}}
                                 Customer reviews)
 
                             </li>
@@ -62,10 +62,10 @@
                     <div class="size">
 
                         <div class="margin_top col-md-6 col-sm-6 col-lg-6 col-xs-6">
-                            <span class="sizelabel">SIZE</span>
+                            <span class="sizelabel">Qty</span>
                             <select class="selectsize">
                                 <option disabled>Please select</option>
-                                <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20] ">{{i}}</option>
+                                <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10] ">{{i}}</option>
                             </select>
                             <!-- <button  class="dec_circle">
                                 <i class="fa fa-minus" aria-hidden="true"></i>
@@ -143,7 +143,7 @@
                                 <h5>Liqour-rooftop</h5>
                                 <!-- <p> {{product.Size}}</p> -->
                                 <p class="rating_star">
-                                    <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]"></i>
+                                    <app-rating [rate]='productDetails?.Product?.Rating'></app-rating>
                                     <!-- [ngClass]="{'checked':star+0.5 <= product.Rating, 'fa-star-half-o':star+0.5 == product.Rating}"-->
                                     <span class="first">4 reviews</span>
                                     <span class="reviews"> </span>

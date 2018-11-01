@@ -10,7 +10,7 @@
     </div>
     <div class="col-lg-9 col-md-9 col-sm-9 col-sm-9 col-xs-12 star_right">
 
-      <i class="fa fa-star" *ngFor="let star of [1,2,3,4,5]"></i>
+      <app-rating [rate]='0' [edit]='true' (rated)="onRated($event)"></app-rating>
       <!-- [ngClass]="{'checked':star<=val}" (click)="changeStarCount(star)" -->
 
 

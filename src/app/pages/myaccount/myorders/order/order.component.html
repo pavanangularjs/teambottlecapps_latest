@@ -43,7 +43,7 @@
           <td width="30%">
             <div class="Product_name">
               <h5> {{item?.ProductName}} </h5>
-              <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]"></i>
+              <app-rating [rate]='item?.Rating'></app-rating>
               <!--[ngClass]="{'checked':star+0.5 <= process.Rating, 'fa-star-half-o':star+0.5 == process.Rating}"-->
               <br><span class="font_size">{{item?.UnitSize}}</span>
             </div>

@@ -40,4 +40,7 @@ export class ProductDetailsComponent implements OnInit {
       this.store.dispatch(new ProductGetDetails(this.productStoreService.getProductGetDetailsParams(productId)));
     }
   }
+  onRated(rating: number) {
+    console.log(rating);
+  }
 }

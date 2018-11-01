@@ -6,7 +6,7 @@ import { MyAccountModule } from './pages/myaccount/myaccount.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
-// import {  SharedModule } from './shared/shared.module';
+import {  SharedModule } from './shared/shared.module';
 
 import { customerReducer  } from './state/customer/customer.reducer';
 import { CustomerEffects } from './state/customer/customer.effects';
@@ -115,7 +115,7 @@ export function getAuthServiceConfigs() {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-   // SharedModule,
+    SharedModule,
     MyAccountModule,
     StoreModule.forRoot({customer: customerReducer, productStore: productStoreReducer }),
     EffectsModule.forRoot([CustomerEffects, ProductStoreEffects]),
