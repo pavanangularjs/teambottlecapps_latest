@@ -19,21 +19,23 @@
     <div class="row">
       <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12">
         <!-- Filter Search Left Menu Start -->
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-          <div class="panel bottle-panel-container">
-            <div class="left-panel-section" role="tab" id="myFilterHeading">
-              <h4 class="panel-title left-panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#myFilter" aria-expanded="true"
-                  aria-controls="myFilter">
-                  Filter <span class="fa fa-chevron-down pull-right"></span>
-                </a>
-              </h4>
+        <div class="panel-group" id="selectedFiltersAccordion" role="tablist" aria-multiselectable="true">
+            <div class="panel bottle-panel-container">
+              <div class="left-panel-section" role="tab" id="myFilterHeading">
+                <h4 class="panel-title left-panel-title">
+                  <a role="button" data-toggle="collapse" data-parent="#selectedFiltersAccordion" href="#myFilters" aria-expanded="true"
+                    aria-controls="myFilter">
+                    Filter <span class="fa fa-chevron-down pull-right"></span>
+                  </a>
+                </h4>
+              </div>
+              <ul id="myFilters" class="panel-collapse collapse in search-history" role="tabpanel" aria-labelledby="myFilterHeading">
+                <li *ngFor="let filter of selectedFilters"><a (click)="removeFilter(filter)"> {{filter.value}} <span
+                      class="fa fa-close"></span></a></li>
+              </ul>
             </div>
-            <ul id="myFilter" class="panel-collapse collapse in search-history" role="tabpanel" aria-labelledby="myFilterHeading">
-              <li *ngFor="let filter of selectedFilters"><a (click)="removeFilter(filter)"> {{filter.value}} <span
-                    class="fa fa-close"></span></a></li>
-            </ul>
-          </div>
+        </div>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">        
           <div class="panel bottle-panel-container">
             <div class="left-panel-section" role="tab" id="myTypeHeading">
               <h4 class="panel-title left-panel-title">

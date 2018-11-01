@@ -31,13 +31,13 @@ export class HomepageComponent implements OnInit {
       .subscribe(pssd => {
         this.storeGetHomeData = pssd;
         this.updateCartId();
-        this.spinnerService.hide();
+        // this.spinnerService.hide();
       });
   }
 
   ngOnInit() {
     if (!(this.customerSession && this.customerSession.SessionId)) {
-      this.spinnerService.show();
+      // this.spinnerService.show();
       this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams()));
     }
   }
