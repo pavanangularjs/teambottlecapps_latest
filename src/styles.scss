@@ -123,6 +123,12 @@ color: #d4d6da;
     text-align: left;
     color: #c2c4ca;
 }
+
+/*.second_content .rating_star {
+    position: absolute;
+    top: 80px;
+}*/
+
 .information address{
 word-wrap: break-word;
 }
@@ -250,6 +256,7 @@ table tr td .img_div{
     height: 40%;
     border-radius: 0 0 5px 5px;
     cursor: pointer;
+    position: relative;
 }
 .second_content p.product_size{
     /* border-bottom: 1px solid #ddd;
@@ -263,6 +270,7 @@ table tr td .img_div{
     letter-spacing: normal;
     text-align: left;
     color: #262628;
+    position: absolute;
 }
 .second_content p.price{
     font-family:montserratbold;
@@ -273,7 +281,8 @@ table tr td .img_div{
     text-align: left;
     color: #c42629;
     margin: 0;
-    
+    position: relative;
+    top: 0px;
 }
 .second_content h4,.second_content h5{
     font-family:montserratbold;
@@ -287,6 +296,15 @@ table tr td .img_div{
     color: #262628;
     margin: 0;
     padding:5px 0;
+}
+
+.second_content h5{
+    min-height: 40px;
+}
+
+.second_content p.rating_star {
+    position: absolute;
+    bottom: 0px;
 }
 
 .breadcrumb>li.breadcrumb-item a{
@@ -669,6 +687,7 @@ nav.navbar{
     width: 40px;
     height: 40px;
     display: inline-block;
+    line-height: 37px;
  }
 
 .header_div img{
@@ -727,7 +746,7 @@ ul.float_right li{
     vertical-align: middle !important;
     cursor: pointer;
     list-style-type: none;
-    display: inline-block;
+    display: block;
     outline: none;
 }
 ul.float_right li a{
@@ -828,7 +847,7 @@ ul.float_right li a{
 ul.float_right li span{
     cursor: pointer;
     margin-top: -20px;
-    display: block;
+/*    display: block;*/
     color: rgba(186,186,186,255);
     font-size: 12px;
      font-family:poppinssemibold; 
@@ -1008,9 +1027,6 @@ ul.navbar-nav li a:hover {
     .navbar-toggle{
         margin-right: 0px;
     }
-    .mobile_none{
-        display: none;
-    }
 }
 
  #menu,.default {
@@ -1047,7 +1063,7 @@ ul.navbar-nav li a:hover {
  
      .navbar .dropdown-menu {
        border:none;
-       background-color:transparent;
+       background-color: #fff;
        text-align: left;
        padding: 15px;
      }
@@ -1076,35 +1092,63 @@ ul.navbar-nav li a:hover {
        margin:0 .25rem;
      } */
      .navbar .dropdown {position:static;} 
+     .user-profile-block .user-dropmenu {position:relative !important;}
      .navbar .dropdown-menu {
        left:0;
        right:0;
-       top:48px; 
+/*       top:48px; */
        display:block;
        visibility: hidden;
        opacity: 0;
-        transition: visibility 0s, opacity 0.3s linear; 
+        transition: hidden 0s, opacity 0.3s linear; 
        margin: 0 auto;
        
      } 
        /* shows the dropdown menu on hover */
+    .navbar li.droparrow:hover .arrowup{
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid #ec1c24;
+        position: absolute;
+        bottom: 0;
+        margin-left: -10px;
+    }
+
+    .optional-dropmenu {
+        margin: 10px 15px;
+        display: block;
+    }
+
+    .navbar > li > .dropdown-menu {
+        margin-top: -1px;
+    }
+
+    .mid-nav li.nav-item.dropdown.dropdown_menu.droparrow,
+    .mid-nav li.nav-item {
+        height: 40px;
+        margin-top: 7px;
+    }
+
      .navbar .dropdown:hover .dropdown-menu {
+       min-width: 900px !important;
        display:block;
        visibility: visible;
        opacity: 1;
-       transition: visibility 0s, opacity 0.3s linear; 
+       transition: visibility 0s, opacity 0.3s linear;
+       width: 85%;
      }
        .navbar .dropdown-menu {
          border: 1px solid rgba(0,0,0,.15);
          background-color: #fff;
+         box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.3);
        }
      
      /* } */
      .navbar .dropdown-menu.user-menu{
-        margin: 0;
-        min-width: 160px;
-        width: 160px;
-        top: 50px;
+        min-width: 180px !important;
+        width: 160px !important;
+        top: 57px;
+        left: -110px !important;
      }
      .float_right li .user-menu li{
          display: block;
@@ -1351,4 +1395,8 @@ ul.sidebar-menu,.border_bottom {
 
 button {
     margin-right: 10px;
+}
+
+.container {
+    width: 95%;
 }

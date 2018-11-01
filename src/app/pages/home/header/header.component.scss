@@ -21,6 +21,7 @@
   height: 35px;
   margin-right: 10px;
   display: inline-block;
+  line-height: 37px;
   &:focus {
   outline: none;
   }
@@ -111,7 +112,7 @@ ul.float_right li {
   vertical-align: middle !important;
   cursor: pointer;
   list-style-type: none;
-  display: inline-block;
+  display: block;
   outline: none;
   a {
     text-transform: uppercase;
@@ -361,7 +362,7 @@ nav {
   }
 }
 
-.navbar .dropdown:hover a:after {
+/*.navbar .dropdown:hover a:after {
     content: " ";
     position: absolute;
     left: 50%;
@@ -373,7 +374,7 @@ nav {
     -ms-transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
-}
+}*/
 
 /* .float_right .text_small:hover a:after{
     content: none;
@@ -491,9 +492,6 @@ nav {
     .navbar-toggle{
         margin-right: 0px;
     }
-    .mobile_none{
-        display: none;
-    }
 }
 
  #menu,.default {
@@ -531,7 +529,7 @@ nav {
  
      .navbar .dropdown-menu {
        border:none;
-       background-color:transparent;
+       background-color: #fff;
        text-align: left;
        padding: 15px;
      }
@@ -545,9 +543,12 @@ nav {
       
      }
 
-     .navbar .dropdown {position:static;} 
+     /*.navbar .dropdown {
+        position:static;
+        margin: 5px 0px !important;
+     } */
      .navbar .dropdown-menu {
-       width:87%;
+       width:100%;
        left:0;
        right:0;
        top:48px; 
@@ -555,8 +556,7 @@ nav {
        visibility: hidden;
        opacity: 0;
         transition: visibility 0s, opacity 0.3s linear; 
-       margin: 0 auto;
-       
+       margin: 10px auto; 
      } 
 
      .navbar .dropdown:hover .dropdown-menu {
@@ -565,16 +565,17 @@ nav {
        opacity: 1;
        transition: visibility 0s, opacity 0.3s linear; 
      }
-       .navbar .dropdown-menu {
+       /*.navbar .dropdown-menu {
          border: 1px solid rgba(0,0,0,.15);
          background-color: #fff;
-       }
+       }*/
      
      .navbar .dropdown-menu.user-menu{
         margin: 0;
-        min-width: 160px;
-        width: 160px;
-        top: 50px;
+        min-width: 180px !important;
+        width: 160px !important;
+        top: 57px;
+        left: -110px !important;
      }
      .float_right li .user-menu li{
          display: block;
@@ -617,3 +618,13 @@ nav {
     .navbar-collapse ul.nav-block {
       margin-top: 0px !important;
     }
+
+  header {
+    top: 0;
+    left:0;
+    right: 0;
+    position: fixed;
+    z-index: 1;
+    text-align: center;
+    display: block;
+  }

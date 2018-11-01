@@ -8,61 +8,35 @@
     display: none;
   }
   
-   
-  
   #boxes .window {
-  
     position: absolute;
-  
     left: 0;
-  
     top: 0;
-  
+    right: 0;
     width: 440px;
-  
-    height: 200px;
-  
     display: none;
-  
     z-index: 9999;
-  
     padding: 20px;
-  
     border-radius: 15px;
-  
     text-align: center;
-  
   }
   
-  
   #boxes #dialog {
-  
     width: 750px;
-  
     height: auto;
-  
     padding: 10px;
-  
     background-color: #ffffff;
-  
-    font-family: 'Segoe UI Light', sans-serif;
-  
+    font-family: montserratregular;
     font-size: 15pt;
-  
+    margin: 0 auto;
   }
   
   #popupfoot {
-  
     font-size: 16pt;
-  
     position: absolute;
-  
     bottom: 0px;
-  
     width: 250px;
-  
     left: 250px;
-  
   }
 
   .modal-body p.font{
@@ -147,5 +121,4 @@
     display: inline-block;
     text-align: left;
     vertical-align: middle;
-    margin-left: 300px;
   }

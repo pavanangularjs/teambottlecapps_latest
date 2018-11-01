@@ -6,7 +6,7 @@
 
     <div class="carousel-inner carousel-block" role="listbox">
       <div class="item active" *ngIf="!eventList">
-        <img src="../../../../assets/Images/carousel-1.png" alt="" class="carousel-img">
+        <img src="../../../../assets/Images/default-carousel-img.jpg" alt="" class="carousel-img">
       </div>
       <div class="item" [ngClass]="{'active' : i == 0}" *ngFor="let event of eventList; let i = index">
         <a routerLink="/event-details/{{event.EventId}}">

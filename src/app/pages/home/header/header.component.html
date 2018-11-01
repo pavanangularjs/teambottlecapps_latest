@@ -1,49 +1,54 @@
-<header class="default" id="menu">
+<header id="menu">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="header_div row">
+                <!-- Main Logo Starts Here -->
+                <div class="navbar-header">
+                    <a class="navbar-brand lukas-logo">
+                        <img src="assets/Images/logo.png" [routerLink]="['/']" alt="Lukas">
+                    </a>
+                </div>
+                <!-- Main Logo Ends Her -->
 
-    <div class="container">
-        <div class="header_div">
-                <a class="navbar-brand lukas-logo">
-                    <img src="assets/Images/logo.png" [routerLink]="['/']" alt="Lukas">
-                </a>  
-            <div class="mobile_none">
-                <ul class="nav navbar-nav float_right user-profile-block">
+                <!-- User Login icon Starts Here -->
+                <ul class="navbar nav navbar-nav float_right user-profile-block">
                     <li class="dropdown text_small">
-                       
-                            <div class="header_icon dropdown-toggle username"  [ngClass]="{'active': isActive}" [routerLink]="['/login']"
-                                    data-toggle="dropdown">
-                                <img *ngIf="profileFirstLetter === ''; else showProfileName" [src]="profilePic" alt="Battlecapse" class="icon">
-                                <ng-template #showProfileName><span style="color:red">{{profileFirstLetter}}</span></ng-template>
-                                
-                            </div>
-                                                        
-                                <ul class="user-menu dropdown-menu" *ngIf="customerSession?.UserId !== 0">
-                                    <li [routerLink]="['/myorders']">
-                                        <a>
-                                            <img class="beer" src="assets/Images/Orders.png"> My Orders
-                                        </a>
-                                    </li>
-                                    <li [routerLink]="['/myaccount']">
-                                        <a>
-                                            <img class="beer" src="assets/Images/account.png"> My Account
-                                        </a>
-                                    </li>
+                        <!-- <span class="arrowup"></span> -->
+                        <div class="header_icon dropdown-toggle username" [ngClass]="{'active': isActive}" [routerLink]="['/login']"
+                            data-toggle="dropdown">
+                            <img *ngIf="profileFirstLetter === ''; else showProfileName" [src]="profilePic" alt="Battlecapse"
+                                class="icon">
+                            <ng-template #showProfileName><span style="color:red">{{profileFirstLetter}}</span></ng-template>
+                        </div>
 
-                                    <li class="star_color" [routerLink]="['/myaccount/favorites']">
-                                        <a>
-                                            <i aria-hidden="true" class="fa fa-star"></i>
-                                            Favorites
-                                        </a>
+                        <ul class="dropdown-menu user-menu" *ngIf="customerSession?.UserId !== 0">
+                            <li [routerLink]="['/myorders']">
+                                <a>
+                                    <img class="beer" src="assets/Images/Orders.png"> My Orders
+                                </a>
+                            </li>
+                            <li [routerLink]="['/myaccount']">
+                                <a>
+                                    <img class="beer" src="assets/Images/account.png"> My Account
+                                </a>
+                            </li>
 
-                                    </li>
+                            <li class="star_color" [routerLink]="['/myaccount/favorites']">
+                                <a>
+                                    <i aria-hidden="true" class="fa fa-star"></i>
+                                    Favorites
+                                </a>
 
-                                    <li class="">
-                                        <a (click)="onSignOut()">
-                                            <img class="beer" src="assets/Images/logout.png"> Log Out
-                                        </a>
-                                    </li>
-                                </ul>
-                            
-                        
+                            </li>
+
+                            <li class="">
+                                <a (click)="onSignOut()">
+                                    <img class="beer" src="assets/Images/logout.png"> Log Out
+                                </a>
+                            </li>
+                        </ul>
+
+
                     </li>
                     <li [routerLink]="['/cart']">
                         <div class="cart-block">
@@ -58,8 +63,12 @@
                         </div>
                     </li>
                 </ul>
+                <!-- User Login icon Ends Here -->
+
+                <!-- Main Menu Starts Here -->
+                <app-menu></app-menu>
+                <!-- Main Menu Ends Her -->
             </div>
-            <app-menu></app-menu>
         </div>
-    </div>
+    </nav>
 </header>
