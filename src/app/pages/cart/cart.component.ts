@@ -4,6 +4,7 @@ import { CustomerService } from '../../services/customer.service';
 import { Router } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cart',
@@ -19,7 +20,8 @@ export class CartComponent implements OnInit {
     private customerService: CustomerService,
     private router: Router,
     private decimalPipe: DecimalPipe,
-    private spinnerService: Ng4LoadingSpinnerService) { }
+    private spinnerService: Ng4LoadingSpinnerService,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getCartDetails();
@@ -66,7 +68,7 @@ export class CartComponent implements OnInit {
           this.cartDetails.ListCartItem.splice(index, 1);
         }
         this.spinnerService.hide();
-        alert(data.SuccessMessage);
+        this.toastr.success(data.SuccessMessage);
       });
   }
 

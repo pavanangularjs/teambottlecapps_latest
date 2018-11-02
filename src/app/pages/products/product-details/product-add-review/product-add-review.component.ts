@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ProductStoreService } from '../../../../services/product-store.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-add-review',
@@ -15,7 +16,8 @@ export class ProductAddReviewComponent implements OnInit {
   rating = 0;
 
   constructor(private productService: ProductStoreService,
-    private spinnerService: Ng4LoadingSpinnerService) { }
+    private spinnerService: Ng4LoadingSpinnerService,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.formAddProductReview = new FormGroup({
@@ -31,7 +33,7 @@ export class ProductAddReviewComponent implements OnInit {
 
     this.productService.addProductReview(this.productId, title, description, this.rating ).subscribe(
       (data: any) => {
-        alert(data.SuccessMessage);
+        this.toastr.success(data.SuccessMessage);
         this.spinnerService.hide();
       });
   }

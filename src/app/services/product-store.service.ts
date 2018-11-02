@@ -4,7 +4,6 @@ import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { switchMap, catchError, retry } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
-import { CustomerService } from './customer.service';
 import { baseUrl, UrlNames } from './url-provider';
 import { CustomerSelectors } from '../state/customer/customer.selector';
 import { CustomerLoginSession } from '../models/customer-login-session';
@@ -14,13 +13,15 @@ import { ProductGetDetailsRequestPayload } from '../models/product-get-details-r
 import { EventGetDetailsRequestPayload } from '../models/event-get-details-request-payload';
 import { FavoriteProductUpdateRequestPayload } from '../models/favorite-product-update-payload';
 import { AddProductReview } from '../models/add-product-review';
+import { ErrorHandlerService } from '../shared/services/error-handler.service';
 
 @Injectable()
 export class ProductStoreService {
     headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     customerSession: CustomerLoginSession;
 
-    constructor(private http: HttpClient, private store: Store<CustomerLoginSession>, private customerService: CustomerService) {
+    constructor(private http: HttpClient, private store: Store<CustomerLoginSession>,
+        private errorHandler: ErrorHandlerService) {
         this.store.select(CustomerSelectors.customerLoginSessionData)
             .subscribe(clsd => {
                 if (clsd) {
@@ -37,7 +38,7 @@ export class ProductStoreService {
             }),
             retry(3),
             catchError((error: any, caught: Observable<any>) => {
-                return this.processError(error);
+                return this.errorHandler.processError(error);
             })
         );
     }
@@ -63,7 +64,7 @@ export class ProductStoreService {
             }),
             retry(3),
             catchError((error: any, caught: Observable<any>) => {
-                return this.processError(error);
+                return this.errorHandler.processError(error);
             })
         );
     }
@@ -116,7 +117,7 @@ export class ProductStoreService {
             }),
             retry(3),
             catchError((error: any, caught: Observable<any>) => {
-                return this.processError(error);
+                return this.errorHandler.processError(error);
             })
         );
     }
@@ -141,7 +142,7 @@ export class ProductStoreService {
             }),
             retry(3),
             catchError((error: any, caught: Observable<any>) => {
-                return this.processError(error);
+                return this.errorHandler.processError(error);
             })
         );
     }
@@ -179,7 +180,7 @@ export class ProductStoreService {
 
     addProductReview(productId: number, reviewTitle: string, reviewDescription: string, rating: number): Observable<any> {
         return this.http.post<any>(baseUrl + UrlNames.ReviewRatingInsert,
-            this.getProductReviewParams(productId, reviewTitle, reviewDescription, rating ));
+            this.getProductReviewParams(productId, reviewTitle, reviewDescription, rating));
     }
 
     getProductReviewParams(productId: number, reviewTitle: string, reviewDescription: string, rating: number): AddProductReview {
@@ -198,12 +199,5 @@ export class ProductStoreService {
             DeviceId: 'W',
             DeviceType: 'W'
         };
-    }
-
-    processError(error: any): Observable<any> {
-        if (error.status && error.status === 401) {
-            return EMPTY;
-        }
-        return throwError(error);
     }
 }

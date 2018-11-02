@@ -8,6 +8,7 @@ import { CustomerSelectors } from '../../../state/customer/customer.selector';
 import { CustomerLoginSession } from '../../../models/customer-login-session';
 import { CustomerService } from '../../../services/customer.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -22,7 +23,8 @@ export class SignupComponent implements OnInit {
   constructor(private router: Router, private store: Store<CustomerLoginSession>,
     private customerService: CustomerService,
     private spinnerService: Ng4LoadingSpinnerService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService) {
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         if (clsd) {
@@ -31,7 +33,7 @@ export class SignupComponent implements OnInit {
           if (this.customerSession.IsAccess === true && this.customerSession.UserId !== 0) {
             this.router.navigate(['/']);
           } else if (this.customerSession.ErrorMessage !== '') {
-            alert(clsd.ErrorMessage);
+            this.toastr.error(clsd.ErrorMessage);
           }
         }
       });
@@ -40,7 +42,7 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
     this.formSignUp = this.formBuilder.group({
       semail: ['', [Validators.required, Validators.email]],
-      spassword: ['', Validators.required, Validators.minLength(6)]
+      spassword: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 

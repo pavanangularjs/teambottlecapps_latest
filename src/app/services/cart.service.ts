@@ -11,6 +11,7 @@ import { CustomerLoginSession } from '../models/customer-login-session';
 import { CartAddItemRequestPayload } from '../models/cart-add-item-request-payload';
 import { CartRemoveItemRequestPayload } from '../models/cart-remove-item-request-payload';
 import { CartGetDetailsRequestPayload } from '../models/cart-get-details-request-payload';
+import { ErrorHandlerService } from '../shared/services/error-handler.service';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,9 @@ export class CartService {
   cartItemCount = new Subject<number>();
 
 
-  constructor(private http: HttpClient, private store: Store<CustomerLoginSession>) {
+  constructor(private http: HttpClient,
+    private store: Store<CustomerLoginSession>,
+    private errorHandler: ErrorHandlerService) {
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         if (clsd) {
@@ -44,7 +47,7 @@ export class CartService {
           return of(res);
         }),
         catchError((error: any, caught: Observable<any>) => {
-          return this.processError(error);
+          return this.errorHandler.processError(error);
         })
       );
   }
@@ -75,7 +78,7 @@ export class CartService {
           return of(res);
         }),
         catchError((error: any, caught: Observable<any>) => {
-          return this.processError(error);
+          return this.errorHandler.processError(error);
         })
       );
   }
@@ -105,7 +108,7 @@ export class CartService {
           return of(res);
         }),
         catchError((error: any, caught: Observable<any>) => {
-          return this.processError(error);
+          return this.errorHandler.processError(error);
         })
       );
   }
@@ -134,7 +137,7 @@ export class CartService {
           return of(res);
         }),
         catchError((error: any, caught: Observable<any>) => {
-          return this.processError(error);
+          return this.errorHandler.processError(error);
         })
       );
   }
@@ -146,15 +149,8 @@ export class CartService {
           return of(res);
         }),
         catchError((error: any, caught: Observable<any>) => {
-          return this.processError(error);
+          return this.errorHandler.processError(error);
         })
       );
-  }
-
-  processError(error: any): Observable<any> {
-    if (error.status && error.status === 401) {
-      return EMPTY;
-    }
-    return throwError(error);
   }
 }

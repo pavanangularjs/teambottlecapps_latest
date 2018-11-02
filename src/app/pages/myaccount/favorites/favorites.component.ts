@@ -7,6 +7,7 @@ import { ProductStoreService } from '../../../services/product-store.service';
 import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
 import { CartService } from '../../../services/cart.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-favorites',
   templateUrl: './favorites.component.html',
@@ -17,7 +18,8 @@ export class FavoritesComponent implements OnInit {
   constructor(private store: Store<ProductGetListRequestPayload>,
     private productStoreService: ProductStoreService,
     private cartService: CartService,
-    private spinnerService: Ng4LoadingSpinnerService) {
+    private spinnerService: Ng4LoadingSpinnerService,
+    private toastr: ToastrService) {
     this.store.select(ProductStoreSelectors.productGetListData)
       .subscribe(pgld => {
         this.productsList = pgld ? pgld.ListProduct : [];
@@ -36,7 +38,7 @@ export class FavoritesComponent implements OnInit {
       (data: any) => {
         item.IsFavorite = data.IsFavorite;
         this.spinnerService.hide();
-        alert(data.SuccessMessage);
+        this.toastr.success(data.SuccessMessage);
       });
   }
 
@@ -46,7 +48,7 @@ export class FavoritesComponent implements OnInit {
       (data: any) => {
         item.InCart = 1;
         this.spinnerService.hide();
-        alert(data.SuccessMessage);
+        this.toastr.success(data.SuccessMessage);
       });
   }
 
@@ -56,7 +58,7 @@ export class FavoritesComponent implements OnInit {
       (data: any) => {
         item.InCart = 0;
         this.spinnerService.hide();
-        alert(data.SuccessMessage);
+        this.toastr.success(data.SuccessMessage);
       });
   }
   getCount(n: number): any[] {

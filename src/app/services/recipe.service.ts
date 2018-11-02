@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 import { baseUrl, UrlNames } from './url-provider';
 import { CustomerSelectors } from '../state/customer/customer.selector';
 import { CustomerLoginSession } from '../models/customer-login-session';
-
+import { ErrorHandlerService } from '../shared/services/error-handler.service';
 import { RecipeGetListRequestPayload } from '../models/recipe-get-list-request-payload';
 
 @Injectable({
@@ -20,7 +20,9 @@ export class RecipeService {
   recipesList: any;
   selectedRecipe: any;
 
-  constructor(private http: HttpClient, private store: Store<CustomerLoginSession>) {
+  constructor(private http: HttpClient,
+    private store: Store<CustomerLoginSession>,
+    private errorHandler: ErrorHandlerService) {
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         if (clsd) {
@@ -37,7 +39,7 @@ export class RecipeService {
       }),
       retry(3),
       catchError((error: any, caught: Observable<any>) => {
-        return this.processError(error);
+        return this.errorHandler.processError(error);
       })
     );
   }
@@ -55,12 +57,5 @@ export class RecipeService {
       PageNumber: 1,
       PageSize: 12
     };
-  }
-
-  processError(error: any): Observable<any> {
-    if (error.status && error.status === 401) {
-      return EMPTY;
-    }
-    return throwError(error);
   }
 }

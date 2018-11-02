@@ -8,6 +8,7 @@ import { baseUrl, UrlNames } from './url-provider';
 import { CustomerSelectors } from '../state/customer/customer.selector';
 import { CustomerLoginSession } from '../models/customer-login-session';
 import { MyOrders } from '../models/my-orders';
+import { ErrorHandlerService } from '../shared/services/error-handler.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,9 @@ export class OrdersService {
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
   customerSession: CustomerLoginSession;
 
-  constructor(private http: HttpClient, private store: Store<CustomerLoginSession>) {
+  constructor(private http: HttpClient,
+    private store: Store<CustomerLoginSession>,
+    private errorHandler: ErrorHandlerService) {
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         if (clsd) {
@@ -32,7 +35,7 @@ export class OrdersService {
       }),
       retry(3),
       catchError((error: any, caught: Observable<any>) => {
-        return this.processError(error);
+        return this.errorHandler.processError(error);
       })
     );
   }
@@ -52,12 +55,5 @@ export class OrdersService {
       PageNumber: 1,
       PageSize: 10
     };
-  }
-
-  processError(error: any): Observable<any> {
-    if (error.status && error.status === 401) {
-      return EMPTY;
-    }
-    return throwError(error);
   }
 }

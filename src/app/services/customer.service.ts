@@ -12,6 +12,7 @@ import { AddressUpdate } from '../models/address-update';
 import { AddressDelete } from '../models/address-delete';
 import { CustomerProfileUpdate } from '../models/customer-profile-update';
 import { AuthService } from '../auth.service';
+import { ErrorHandlerService } from '../shared/services/error-handler.service';
 
 @Injectable()
 export class CustomerService {
@@ -20,7 +21,9 @@ export class CustomerService {
   customerAddressList: any;
   customerPaymentMethodGetList: any;
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-  constructor(private http: HttpClient, private authService: AuthService) {
+  constructor(private http: HttpClient,
+    private authService: AuthService,
+    private errorHandler: ErrorHandlerService) {
   }
 
   loginCustomer(reqParams: CustomerLoginRequestPayload): Observable<any> {
@@ -33,7 +36,7 @@ export class CustomerService {
       }),
       retry(3),
       catchError((error: any, caught: Observable<any>) => {
-        return this.processError(error);
+        return this.errorHandler.processError(error);
       })
     );
   }
@@ -67,7 +70,7 @@ export class CustomerService {
       }),
       retry(3),
       catchError((error: any, caught: Observable<any>) => {
-        return this.processError(error);
+        return this.errorHandler.processError(error);
       })
     );
   }
@@ -95,7 +98,7 @@ export class CustomerService {
         }),
         retry(3),
         catchError((error: any, caught: Observable<any>) => {
-          return this.processError(error);
+          return this.errorHandler.processError(error);
         })
       );
   }
@@ -109,7 +112,7 @@ export class CustomerService {
         }),
         retry(3),
         catchError((error: any, caught: Observable<any>) => {
-          return this.processError(error);
+          return this.errorHandler.processError(error);
         })
       );
   }
@@ -123,7 +126,7 @@ export class CustomerService {
         }),
         retry(3),
         catchError((error: any, caught: Observable<any>) => {
-          return this.processError(error);
+          return this.errorHandler.processError(error);
         })
       );
   }
@@ -136,7 +139,7 @@ export class CustomerService {
         }),
         retry(3),
         catchError((error: any, caught: Observable<any>) => {
-          return this.processError(error);
+          return this.errorHandler.processError(error);
         })
       );
   }
@@ -149,7 +152,7 @@ export class CustomerService {
         }),
         retry(3),
         catchError((error: any, caught: Observable<any>) => {
-          return this.processError(error);
+          return this.errorHandler.processError(error);
         })
       );
   }
@@ -174,15 +177,8 @@ export class CustomerService {
         }),
         retry(3),
         catchError((error: any, caught: Observable<any>) => {
-          return this.processError(error);
+          return this.errorHandler.processError(error);
         })
       );
-  }
-
-  processError(error: any): Observable<any> {
-    if (error.status && error.status === 401) {
-      return EMPTY;
-    }
-    return throwError(error);
   }
 }

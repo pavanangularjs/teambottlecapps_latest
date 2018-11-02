@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { AddressInsert } from '../../../../models/address-insert';
 import { CustomerService } from '../../../../services/customer.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-add-new-address',
   templateUrl: './add-new-address.component.html',
@@ -10,7 +11,8 @@ import { Router } from '@angular/router';
 })
 export class AddNewAddressComponent implements OnInit {
   formAddNewAddress: FormGroup;
-  constructor(private customerService: CustomerService, private router: Router) { }
+  constructor(private customerService: CustomerService, private router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.formAddNewAddress = new FormGroup({
@@ -45,7 +47,7 @@ export class AddNewAddressComponent implements OnInit {
 
     this.customerService.AddNewAddress(address).subscribe(
       (data) => {
-        alert(data.SuccessMessage);
+        this.toastr.success(data.SuccessMessage);
         this.router.navigate(['myaccount/manage-addresses']);
       });
   }

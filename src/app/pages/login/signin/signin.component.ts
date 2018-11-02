@@ -9,7 +9,7 @@ import { CustomerLogin } from '../../../state/customer/customer.action';
 import { CustomerSelectors } from '../../../state/customer/customer.selector';
 import { CustomerLoginSession } from '../../../models/customer-login-session';
 import { CustomerService } from '../../../services/customer.service';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signin',
@@ -25,7 +25,8 @@ export class SigninComponent implements OnInit {
     private customerService: CustomerService,
     private spinnerService: Ng4LoadingSpinnerService,
     private socialAuthService: AuthService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService) {
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         if (clsd) {
@@ -33,8 +34,6 @@ export class SigninComponent implements OnInit {
           this.spinnerService.hide();
           if (this.customerSession.IsAccess === true && this.customerSession.UserId !== 0) {
             this.router.navigate(['/']);
-          } else if (this.customerSession.ErrorMessage !== '') {
-            alert(clsd.ErrorMessage);
           }
         }
       });
