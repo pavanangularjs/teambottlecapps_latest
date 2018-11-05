@@ -2,10 +2,10 @@
   <div class="container">
       <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img footer_image">
-              <a href="#" class="f-bootlecaps">
-                  <!-- <img src="{{storeGetHomeData?.StoreImage}}" alt="Battlecapse" class="img-responsive"> -->
+              <!-- <a href="#" class="f-bootlecaps">
+                  <img src="{{storeGetHomeData?.StoreImage}}" alt="Battlecapse" class="img-responsive">
                   <img src="../assets/Images/logo-black.png" alt="Lukas" class="img-responsive">
-              </a>
+              </a> -->
               <div class="margin_left">
                   <address class="storelocation">
                     <h4 class="f-h4">{{storeGetHomeData?.StoreName}}</h4>
@@ -45,7 +45,7 @@
 
               </div>
           </div>
-          <div class="accounts col-lg-2 col-md-2 col-sm-2 col-xs-6 item_img">
+<!--           <div class="accounts col-lg-2 col-md-2 col-sm-2 col-xs-6 item_img">
               <h4 class="font_size">Accounts</h4>
               <ul class="list-unstyled clear-margins">
                   <li>
@@ -61,8 +61,8 @@
                       <a [routerLink]="['/myaccount/profile']">My Personal Info</a>
                   </li>
               </ul>
-          </div>
-          <div class="information col-lg-2 col-md-2 col-sm-2 col-xs-6 item_img">
+          </div> -->
+          <!-- <div class="information col-lg-2 col-md-2 col-sm-2 col-xs-6 item_img">
               <h4 class="font_size">Information</h4>
               <ul class="list-unstyled clear-margins">
 
@@ -91,9 +91,9 @@
                       <a [routerLink]="['/']">Our Stores</a>
                   </li>
               </ul>
-          </div>
+          </div> -->
 
-          <div class="about col-lg-2 col-md-2 col-sm-2 col-xs-6 item_img">
+          <!-- <div class="about col-lg-2 col-md-2 col-sm-2 col-xs-6 item_img">
               <h4 class="font_size">About</h4>
               <ul class="list-unstyled clear-margins">
                   <li>
@@ -103,10 +103,60 @@
                       <a [routerLink]="['/']">New Products</a>
                   </li>
               </ul>
+          </div> -->
+
+          <div class="about col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img">
+              <h4 class="font_size">About</h4>
+              <ul class="list-unstyled clear-margins">
+                  <li>
+                      <a [routerLink]="['/']">About Us</a>
+                  </li>
+                  <li>
+                      <a [routerLink]="['/']">Privacy Policy</a>
+                  </li>
+                  <li>
+                      <a [routerLink]="['/']">Terms and Conditions</a>
+                  </li>
+                  <li>
+                      <a [routerLink]="['/']">FAQs</a>
+                  </li>
+                  <li>
+                      <a [routerLink]="['/']">Contact Us</a>
+                  </li>
+              </ul>
+          </div>
+
+          <div class="information col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img">
+              <h4 class="font_size">Hours</h4>
+              <ul class="list-unstyled clear-margins">
+
+                  <li>
+                      <a>Monday 8:00 AM - 5:00 PM</a>
+                  </li>
+                  <li>
+                      <a>Tuesday 8:00 AM - 5:00 PM</a>
+                  </li>
+                  <li>
+                      <a>Wednesday 8:00 AM - 5:00 PM</a>
+                  </li>
+                  <li>
+                      <a>Thursday 8:00 AM - 5:00 PM</a>
+                  </li>
+                  <li>
+                      <a>Friday 4:00 AM - 9:00 AM</a>
+                  </li>
+                  <li>
+                      <a>Saturday 4:00 AM - 5:00 PM</a>
+                  </li>
+                  <li>
+                      <a>Sunday 8:00 AM - 5:00 PM</a>
+                  </li>
+              </ul>
           </div>
 
           <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img">
-              <h4 class="font_size Subscribe">Subscribe Newsletter</h4>
+              <h4 class="font_size Subscribe">Payment options</h4>
+              <!-- <h4 class="font_size Subscribe">Subscribe Newsletter</h4>
               <p class="newslatter">Enter your email address for our mailing list to keep yourself updated</p>
               <div class="input-group subscribe">
                   <input type="text" class="form-control" id="myid" placeholder="ENTER EMAIL ADDRESS ">
@@ -114,11 +164,11 @@
                       <img src="assets/Images/send.png">
                   </button>
 
-              </div>
+              </div> -->
               <div class="cards">
-                  <ul>
+                  <ul class="pull-left">
                       <li>
-                          <img src="assets/Images/paypal.png">
+                          <img src="assets/Images/disocver.png">
                       </li>
                       <li>
                           <img src="assets/Images/mastercard.png">
@@ -127,7 +177,7 @@
                           <img src="assets/Images/visa.png">
                       </li>
                       <li>
-                          <img src="assets/Images/disocver.png">
+                          <img src="assets/Images/paypal-png.png">
                       </li>
                   </ul>
 

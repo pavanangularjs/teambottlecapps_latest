@@ -1,6 +1,11 @@
 @import "~bootstrap3/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.min.css";
 
+body {
+    margin-top: 60px;
+    background-color: #fcfcfc;
+}
+
    h1,h2,h3,h4,h5,h6{
     font-family: poppinsbold;
    }
@@ -17,7 +22,7 @@
     overflow: hidden;
 }
 .Search_div input{
-     width: 50%;
+    width: 50%;
     height: 21px;
     padding-left: 12px;
     border: none;
@@ -29,6 +34,7 @@
     line-height: normal;
     letter-spacing: normal;
     text-align: left;
+    background-color: #fcfcfc;
     color: #191919;
    
 }
@@ -674,7 +680,7 @@ nav.navbar{
     z-index: 9999;
 }
 .dropdownlist{
-    height: 300px;
+    height: 500px;
     overflow-y: scroll;
     overflow-x:hidden;
     display: block;
@@ -1071,6 +1077,7 @@ ul.navbar-nav li a:hover {
      }
      .dropdown-menu ul.flex-column li {
         border-bottom: 1px solid #f4f5f7;
+        padding-left: 10px;
      }
  
      /* .dropdown-menu ul li{
@@ -1119,6 +1126,7 @@ ul.navbar-nav li a:hover {
     .optional-dropmenu {
         margin: 10px 15px;
         display: block;
+        height: 550px;
     }
 
     .navbar > li > .dropdown-menu {
@@ -1401,4 +1409,16 @@ button {
 
 .container {
     width: 95%;
+}
+
+.rating-stars span a {
+    margin-right: 3px;
+}
+
+ul.float_right span a {
+    color: #f8c848;
+}
+
+ul.float_right span a .fa{
+    color: #f8c848 !important;
 }

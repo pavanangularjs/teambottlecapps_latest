@@ -7,6 +7,7 @@ import { CustomerSelectors } from '../../../state/customer/customer.selector';
 import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
 import { CustomerService } from '../../../services/customer.service';
 import { CartService } from '../../../services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -23,7 +24,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(private store: Store<CustomerLoginSession>,
     private customerService: CustomerService,
-    private cartService: CartService) {
+    private cartService: CartService,
+    private router: Router) {
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         this.customerSession = clsd;
@@ -59,5 +61,6 @@ export class HeaderComponent implements OnInit {
 
   onSignOut() {
     this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams()));
+    this.router.navigate(['/']);
   }
 }

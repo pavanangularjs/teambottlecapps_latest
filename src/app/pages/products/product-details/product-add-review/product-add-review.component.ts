@@ -37,4 +37,8 @@ export class ProductAddReviewComponent implements OnInit {
         this.spinnerService.hide();
       });
   }
+
+  onRated(rating) {
+
+  }
 }

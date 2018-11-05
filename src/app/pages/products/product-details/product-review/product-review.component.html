@@ -6,7 +6,7 @@
     <div class="border">
       <div class="name_date col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <span class="username">{{review?.UserName}}</span> -<span class="review_date"> {{review?.Reviewdate}}</span></div>
-      <div class="star_right col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="star_right col-lg-6 col-md-6 col-sm-6 col-xs-12 rating-stars">
           <app-rating [rate]='review?.ReviewRating'></app-rating>
       </div>
       <p class="word_break">

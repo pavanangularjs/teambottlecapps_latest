@@ -1,11 +1,11 @@
 
 .product_img{
-    border: 1px solid #d0d0d0;
+    border-right: 1px solid #d0d0d0;
     height: auto;
     min-height: 325px;
     position: relative;
 }
-.product_img img{
+/*.product_img img{
     max-width:40vh;
     width: auto;
     height: auto;
@@ -16,7 +16,22 @@
     right: 0;
     margin: auto;
     max-height: 40vh;
+}*/
+
+.product_img img{
+    width: 50%;
+    height: auto;
+    /* position: relative; */
+    /* top: 0; */
+    margin: 0px;
+    /* bottom: 0; */
+    /* left: 25%; */
+    /* right: 0; */
+    padding: 30px 0px;
+    margin: 0 auto;
+    /* max-height: 100%; */
 }
+
 .product_content ul {
 padding-left: 0;
 }
@@ -122,16 +137,36 @@ button.dec_circle,button.dec_circle:focus{
     outline: none;
 }
 .sizelabel{
-font-size: 20px;
+font-size: 18px;
 font-weight: normal;
+font-family: montserratregular;
 }
-.selectsize{
-    border: 1px solid;
+.selectsize {
+    border: 1px solid transparent;
     font-size: 15px;
     padding: 0px;
     margin: 0px;
-    margin-left:20px;
+    margin-left: 0px;
+    min-width: 265px;
+    border-radius: 0px !important;
+    outline: none;
+    background: transparent;
+    font-family: montserratregular;
 }
+
+.size .select-bg {
+    background-color: #fff;
+    border-radius: 0px;
+    border: solid 1px #d7d7d7;
+    display: block;
+    color: #999;
+    font-weight: normal;
+}
+
+.size .sizelabel {
+
+}
+
 .value{
     margin: 0 10px 0 10px;
 }
@@ -347,7 +382,7 @@ form button.btn{
 .customers_review span{
     color: #ec1c24;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 18px;
 }
 
 .customers_review ul li a{
@@ -355,6 +390,44 @@ form button.btn{
     font-weight: bolder;
     color: #d0d0d0;
 }
+
+.customers_review {
+    ul.float_right {
+        margin-top: 0px;
+    }
+    small.review-caption {
+        margin-left: 5px;
+        color: #777777;
+    }
+}
+
+.write-review {
+    padding: 20px 50px !important;
+    margin: 0px !important;
+    p {
+        font-size: 16px !important;
+    }
+    .review_title {
+        font-size: 28px !important;
+        line-height: normal !important;
+        padding-top: 10px;
+    }
+    .add_review  {
+        padding: 10px 0px;
+        h4 {
+            font-size: 22px !important;
+            padding-bottom: 10px;
+            }
+        p {
+            font-size: 16px !important;
+        }
+    }
+    .review-form-right {
+            margin-top: 20px !important;
+            padding-left: 0 !important;
+        }
+}
+
 p{
     font-size: 12px;
     color: #8d8d8d;

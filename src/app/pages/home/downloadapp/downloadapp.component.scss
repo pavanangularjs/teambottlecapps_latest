@@ -1,7 +1,7 @@
 section.bgr_img{
     background-image: url("/assets/Images/download-bg.png");
     background-repeat: no-repeat;
-    height: 300px;
+    height: 330px;
     float: left;
     width: 100%;
     overflow: hidden;
@@ -14,20 +14,41 @@ section.bgr_img{
     font-stretch: normal;
     line-height: 1.22;
     /* letter-spacing: 1.4px; */
-    text-align: center;
+    text-align: left;
     color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 15px 0px 5px 0px;
 } 
+
+.display_center a {
+    margin-right: 25px;
+    float: left;
+    margin-top: 30px;
+}
+
 .display_center h2.download_app{
     font-family: montserratbold;
     font-size: 36px;
     font-stretch: normal;
     line-height: 1.11;
-    /* letter-spacing: 1.8px; */
-    text-align: center;
+    letter-spacing: 1.8px;
     color: #ffffff;
+    padding: 5px 0px 15px 0px;
+    text-align: left !important;
       }
   
       .display_center {
           transform: translateY(20%);
           text-align: center;
       }
+.barcode-container {
+    border-radius: 25px;
+    -o-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    padding: 25px;
+    margin: 15px;
+    background-color: #fff;
+    width: 200px;
+}
