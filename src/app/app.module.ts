@@ -15,7 +15,7 @@ import { productStoreReducer  } from './state/product-store/product-store.reduce
 import { ProductStoreEffects } from './state/product-store/product-store.effects';
 import { ProductStoreActions } from './state/product-store/product-store.action';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -112,6 +112,7 @@ export function getAuthServiceConfigs() {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
