@@ -14,11 +14,13 @@ import { EventGetDetailsRequestPayload } from '../models/event-get-details-reque
 import { FavoriteProductUpdateRequestPayload } from '../models/favorite-product-update-payload';
 import { AddProductReview } from '../models/add-product-review';
 import { ErrorHandlerService } from '../shared/services/error-handler.service';
+import { BaseRequest } from '../models/base-request';
 
 @Injectable()
 export class ProductStoreService {
     headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     customerSession: CustomerLoginSession;
+    couponsList: any;
 
     constructor(private http: HttpClient, private store: Store<CustomerLoginSession>,
         private errorHandler: ErrorHandlerService) {
@@ -198,6 +200,35 @@ export class ProductStoreService {
             ReviewRating: rating,
             DeviceId: 'W',
             DeviceType: 'W'
+        };
+    }
+
+    couponsGetDetails(): Observable<any> {
+        return this.http.post<any>(baseUrl + UrlNames.CouponGetList,
+            this.getProfileDetailsRequestParams(), { headers: this.headers }).pipe(
+            switchMap((res: any) => {
+                this.couponsList = res;
+                return of(res);
+            }),
+            retry(3),
+            catchError((error: any, caught: Observable<any>) => {
+                return this.errorHandler.processError(error);
+            })
+        );
+    }
+
+    private getProfileDetailsRequestParams(): BaseRequest {
+        if (!this.customerSession) {
+            return null;
+        }
+
+        return {
+            StoreId: this.customerSession.StoreId,
+            SessionId: this.customerSession.SessionId,
+            UserId: this.customerSession.UserId,
+            AppId: this.customerSession.AppId,
+            DeviceId: this.customerSession.DeviceId,
+            DeviceType: this.customerSession.DeviceType
         };
     }
 }

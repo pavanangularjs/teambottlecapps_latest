@@ -21,5 +21,6 @@ export enum UrlNames {
     AddressUpdate = 'Customer/AddressUpdate',
     ProfileGetDetail = 'Customer/ProfileGetDetail',
     CustomerProfileUpdate = 'Customer/CustomerProfileUpdate',
-    CustomerPaymentMethodGetList = 'Customer/CustomerPaymentMethodGetList'
+    CustomerPaymentMethodGetList = 'Customer/CustomerPaymentMethodGetList',
+    CouponGetList = 'Coupon/CouponGetList'
 }

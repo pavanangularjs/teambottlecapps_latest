@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProductStoreService } from '../../../../services/product-store.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ProductAddReviewComponent implements OnInit {
   @Input() productId: number;
+  @Output() addReview = new EventEmitter<any>();
 
   formAddProductReview: FormGroup;
   rating = 0;
@@ -26,6 +27,10 @@ export class ProductAddReviewComponent implements OnInit {
     });
   }
 
+  onRated(rating) {
+    this.rating = rating;
+  }
+
   onAddReview() {
     this.spinnerService.show();
     const title = this.formAddProductReview.get('rTitle').value;
@@ -34,11 +39,8 @@ export class ProductAddReviewComponent implements OnInit {
     this.productService.addProductReview(this.productId, title, description, this.rating ).subscribe(
       (data: any) => {
         this.toastr.success(data.SuccessMessage);
+        this.addReview.emit();
         this.spinnerService.hide();
       });
-  }
-
-  onRated(rating) {
-
   }
 }

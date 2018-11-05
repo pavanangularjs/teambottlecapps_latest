@@ -9,7 +9,7 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
   styleUrls: ['./recipes.component.scss']
 })
 export class RecipesComponent implements OnInit {
-  recipeList: any[];
+  recipeList: any;
 
   constructor(private router: Router,
     private recipeService: RecipeService,

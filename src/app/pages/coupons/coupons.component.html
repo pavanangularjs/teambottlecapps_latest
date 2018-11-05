@@ -1,55 +1,40 @@
-<div class="container">
-  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-    <div class="coupon-tile" style="background-image: url(../../assets/Images/coupons-border.png);">
-      <div class="thumbnail">
-        <div class="img-container"><img src="../../assets/images/liqour-bg.png"></div>
-        <div class="caption">
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <h5 class="text-muted">Code</h5>
-                </td>
-                <td class="text-right">Expres <span class="highlight">9/30/19</span></td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <h4 class="text-uppercase">Free Delivery</h4>
-                  <p>Take 10% off your next purchase of $50 or more using the coupon code FREE DELIVERY! Limit one per
-                    customer.</p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="Searchrelated_div col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h4>Coupons</h4>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a>Home</a></li>
+          <li class="breadcrumb-item active"><a>Coupons</a></li>
+        </ol>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" *ngFor="let coupon of couponsList">
+          <div class="coupon-tile" style="background-image: url(../../assets/Images/coupons-border.png);">
+            <div class="thumbnail">
+              <div class="img-container"><img class="img-container" [src]="coupon?.CouponImage"></div>
+              <div class="caption">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <h5 class="text-muted">{{coupon?.CouponCode}}</h5>
+                      </td>
+                      <td class="text-right">Expires on <span class="highlight">{{coupon?.CouponEndDt | date}}</span></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        <h4 class="text-uppercase">{{coupon?.CouponTitle}}</h4>
+                        <p>{{coupon?.CouponDescription}}</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-    <div class="coupon-tile" style="background-image: url(../../assets/Images/coupons-border.png);">
-      <div class="thumbnail">
-        <div class="img-container"><img src="../../assets/images/liqour-bg.png"></div>
-        <div class="caption">
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <h5 class="text-muted">Code</h5>
-                </td>
-                <td class="text-right">Expres <span class="highlight">9/30/19</span></td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <h4 class="text-uppercase">Free Delivery</h4>
-                  <p>Take 10% off your next purchase of $50 or more using the coupon code FREE DELIVERY! Limit one per
-                    customer.</p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+</section>

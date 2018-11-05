@@ -43,14 +43,14 @@ export class CustomerService {
 
   getLoginCustomerParams(email?: string, pwd?: string, loginType?: string, sourceId?: string) {
     return {
-      AppId: 10002,
+      AppId: 10002, // 10275,
       AppVersion: '8.5',
       DeviceId: 'W',
       DeviceType: 'W',
       EmailId: email || '',
       LoginType: loginType || 'B',
       Password: pwd || '',
-      StoreId: 10002,
+      StoreId: 10002, // 10275,
       SourceId: sourceId || '',
       SessionId: '',
       UserId: '',

@@ -16,6 +16,7 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 export class ProductDetailsComponent implements OnInit {
 
   productDetails: any;
+  userReviews: any;
 
   constructor(private route: ActivatedRoute,
     private store: Store<ProductGetDetailsRequestPayload>,
@@ -24,7 +25,23 @@ export class ProductDetailsComponent implements OnInit {
 
     this.store.select(ProductStoreSelectors.productGetDetailsData)
       .subscribe(pgdd => {
+
         this.productDetails = pgdd;
+
+        if (pgdd) {
+          this.userReviews = [...pgdd.ListReview];
+
+          if (pgdd && pgdd.UserReview && pgdd.UserReview.ReviewId !== 0) {
+            this.userReviews = [...this.userReviews, ...pgdd.UserReview];
+          }
+        }
+
+        /* if (pgdd && pgdd.ListReview && pgdd.ListReview.length > 0) {
+          this.userReviews = pgdd.ListReview;
+        }
+        if (pgdd && pgdd.UserReview && pgdd.UserReview.ReviewId !== 0) {
+          this.userReviews.push(pgdd.UserReview);
+        } */
         this.spinnerService.hide();
       });
   }
@@ -36,9 +53,13 @@ export class ProductDetailsComponent implements OnInit {
   getProductDetails() {
     this.spinnerService.show();
     const productId = +this.route.snapshot.paramMap.get('id');
-    if ( productId ) {
+    if (productId) {
       this.store.dispatch(new ProductGetDetails(this.productStoreService.getProductGetDetailsParams(productId)));
     }
+  }
+
+  onAddReview() {
+    this.getProductDetails();
   }
   onRated(rating: number) {
     console.log(rating);
