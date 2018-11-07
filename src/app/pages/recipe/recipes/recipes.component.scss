@@ -7,8 +7,9 @@
 
 .thumbnail{
     padding: 0;
-    height: auto;
-    min-height: 318px;
+    /*height: auto;*/
+    /*min-height: 318px;*/
+    display: inline-block;
  
 }
 .thumbnail:hover{
@@ -62,7 +63,7 @@
     max-width: 352px;
     display: block;
     margin: auto;
-    height: auto;
+    height: 220px;
     width: 100%;
 }
 

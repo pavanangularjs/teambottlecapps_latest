@@ -20,11 +20,12 @@
 .button_feature button{
     border-radius: 20px;
     padding:4px 25px;
-    border-color: #c2c4ca;
-    color: #c2c4ca;
+    border-color: #9a9a9a;
+    color: #9a9a9a;
     font-family: poppinsregular !important;
     font-size: 12px !important;
     margin-right:8px;
+    background: transparent;
 }
 .button_feature button:focus,.button_feature button:hover{
     font-family: poppinsregular !important;

@@ -15,4 +15,8 @@ nav.lu-menu {
     }
 .mid-nav {
 	display: block;
+  ul.nav.navbar.navbar-nav {
+    position: absolute;
+    left: 130px;
+  }
 }

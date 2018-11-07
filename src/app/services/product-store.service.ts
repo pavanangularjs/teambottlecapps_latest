@@ -54,8 +54,7 @@ export class ProductStoreService {
             StoreId: this.customerSession.StoreId,
             SessionId: this.customerSession.SessionId,
             UserId: this.customerSession.UserId,
-            AppId: this.customerSession.AppId,
-            IsFeatureProduct: true
+            AppId: this.customerSession.AppId
         };
     }
 

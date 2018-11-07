@@ -1,13 +1,31 @@
 .carousel-block {
   min-height: 520px;
-  height: 520px;
+  height: auto;
   .carousel-img {
-    height: 520px;
+    height: auto;
     width: 100%;
   }
   a {
     &.left, &.right {
-      height: 520px;
+      height: 100%;
     }
   }
+}
+
+@media screen and (min-width:1599px) and (max-width:2080px){
+    .carousel-block {
+      min-height: 720px;
+      height: 768px;
+      .carousel-img {
+        height: 768px;
+        width: 100%;
+        background-size: cover !important;
+      }
+      a {
+        &.left, &.right {
+          height: 100%;
+        }
+      }
+    }
+
 }
