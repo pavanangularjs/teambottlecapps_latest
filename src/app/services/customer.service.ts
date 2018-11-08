@@ -11,6 +11,7 @@ import { AddressInsert } from '../models/address-insert';
 import { AddressUpdate } from '../models/address-update';
 import { AddressDelete } from '../models/address-delete';
 import { CustomerProfileUpdate } from '../models/customer-profile-update';
+import { CustomerPaymentInsert } from '../models/customer-payment-insert';
 import { AuthService } from '../auth.service';
 import { ErrorHandlerService } from '../shared/services/error-handler.service';
 
@@ -43,14 +44,14 @@ export class CustomerService {
 
   getLoginCustomerParams(email?: string, pwd?: string, loginType?: string, sourceId?: string) {
     return {
-      AppId: 10002, // 10275,
+      AppId: 10060, // 10275,
       AppVersion: '8.5',
       DeviceId: 'W',
       DeviceType: 'W',
       EmailId: email || '',
       LoginType: loginType || 'B',
       Password: pwd || '',
-      StoreId: 10002, // 10275,
+      StoreId: 10060, // 10275,
       SourceId: sourceId || '',
       SessionId: '',
       UserId: '',
@@ -180,5 +181,36 @@ export class CustomerService {
           return this.errorHandler.processError(error);
         })
       );
+  }
+  customerPaymentInsert(userProfileId: string, isDefault: number, paymentTypeId: number): Observable<any> {
+    return this.http.post<any>(baseUrl + UrlNames.CustomerPaymentInsert,
+      this.getCustomerPaymentInsertRequestParams(userProfileId, isDefault, paymentTypeId), { headers: this.headers }).pipe(
+        switchMap((res: any) => {
+          return of(res);
+        }),
+        retry(3),
+        catchError((error: any, caught: Observable<any>) => {
+          return this.errorHandler.processError(error);
+        })
+      );
+  }
+
+  getCustomerPaymentInsertRequestParams(userProfileId: string, isDefault: number, paymentTypeId: number): CustomerPaymentInsert {
+    if (!this.customerSession) {
+      return null;
+    }
+
+    return {
+      StoreId: this.customerSession.StoreId,
+      SessionId: this.customerSession.SessionId,
+      UserId: this.customerSession.UserId,
+      AppId: this.customerSession.AppId,
+      DeviceId: this.customerSession.DeviceId,
+      DeviceType: this.customerSession.DeviceType,
+      UserProfileId: userProfileId,
+      IsDefault: isDefault,
+      PaymentTypeId: paymentTypeId
+    };
+
   }
 }

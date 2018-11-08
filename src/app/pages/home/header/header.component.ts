@@ -45,6 +45,8 @@ export class HeaderComponent implements OnInit {
             this.profilePic = this.storeGetHomeData.CustomerInfo.ProfileImage;
           } else if (this.storeGetHomeData.CustomerInfo && this.storeGetHomeData.CustomerInfo.FirstName) {
             this.profileFirstLetter = this.storeGetHomeData.CustomerInfo.FirstName.substr(0, 1);
+          } else if (this.storeGetHomeData.CustomerInfo && this.storeGetHomeData.CustomerInfo.EmailId) {
+            this.profileFirstLetter = this.storeGetHomeData.CustomerInfo.EmailId.substr(0, 1);
           }
         }
 

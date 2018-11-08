@@ -21,7 +21,7 @@
                     <li *ngIf="isActive" class="dropdown text_small">
                         <div class="header_icon dropdown-toggle " [ngClass]="{'active': isActive}" data-toggle="dropdown">
                             <img *ngIf="profileFirstLetter === ''; else showProfileName" [src]="profilePic" class="img-responsive useralpha-icon">
-                            <ng-template #showProfileName><span class="text-dp">{{profileFirstLetter}}</span></ng-template>
+                            <ng-template #showProfileName><span class="text-dp">{{profileFirstLetter | uppercase}}</span></ng-template>
                         </div>
 
                         <ul class="dropdown-menu user-menu" *ngIf="isActive">
