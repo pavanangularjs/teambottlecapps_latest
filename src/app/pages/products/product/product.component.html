@@ -16,7 +16,8 @@
       </div>
       <div class="second_content">
         <div class="">
-          <p class="price">{{item?.OfferPriceDisplay}}</p>
+          <p class="strike_text" *ngIf="item?.PriceDisplay !== item?.OfferPriceDisplay">{{item?.PriceDisplay}}</p>
+          <p class="price">{{item?.OfferPriceDisplay}}</p>  
           <h5 class="productname">{{item?.ProductName}}</h5>
           <p class="product_size">
             <span>{{item?.Size}}</span>
