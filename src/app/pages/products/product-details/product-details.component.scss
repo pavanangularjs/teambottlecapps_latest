@@ -88,14 +88,24 @@ customers_review ul.float_right li a{
 .padding_bottom{
     padding-bottom: 15px;
 }
-.padding_bottom span.size_bottle,span.float_right{
+.padding_bottom span.size_bottle{
     font-family: poppinsbold !important;
-    font-size: 10px;
     font-stretch: normal;
     line-height: 2.11;
     letter-spacing: 0.3px;
     text-align: left;
     color: #777777;
+    font-weight: bold;
+    font-size: 18px;
+}
+.padding_bottom span.float_right{
+    font-family: poppinsbold !important;
+    font-stretch: normal;
+    line-height: 2.11;
+    letter-spacing: 0.3px;
+    text-align: left;
+    color: #777777;
+    font-size: 10px;
 }
 p.font_size{
     font-family: poppinsregular !important;
