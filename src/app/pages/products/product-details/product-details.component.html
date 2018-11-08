@@ -43,19 +43,15 @@
                             <li>
                                 <app-rating [rate]='0' [edit]='true' (rated)="onRated($event)"></app-rating>
                                 <small class="review-caption">({{productDetails?.ReviewTotalCount}}
-                                    Customer reviews)</small>
+                                Customer reviews)</small>
                             </li>
 
                         </ul>
                     </div>
                     <div class="padding_bottom">
                         <span class="size_bottle">{{productDetails?.Product?.Size}}</span>
+                        <span class="float_right">SKU: {{productDetails?.Product?.SKU}} | UPC: {{productDetails?.Product?.UPC}}</span>
                     </div>
-                    <div class="padding_bottom">
-                        <span>UPC: {{productDetails?.Product?.UPC}}</span>
-                        <span class="float_right">SKU: {{productDetails?.Product?.SKU}}</span>
-                    </div>
-
                     <p class="font_size">
                         {{productDetails?.ProductDescription}}
                     </p>
@@ -179,7 +175,7 @@
             </div>
             <div>
                 <app-product-add-review [productId]="productDetails?.Product?.PID" (addReview)="onAddReview()"></app-product-add-review>
-            </div>
+            </div>            
         </div>
     </div>
 </section>
