@@ -59,10 +59,9 @@ export class MenubarComponent implements OnInit {
     }
   }
 
-  onFeatureProductsSelect() {
+  showProducts(catId) {
     this.dataservice.searchByText = '';
-    // this.dataservice.categoryId = '1,2,3,4';
-    this.dataservice.isFeatureProduct = 1;
+    this.dataservice.categoryId = catId;
     this.router.navigate(['/advance-filter']);
   }
 }

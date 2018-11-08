@@ -71,6 +71,7 @@ export class FilterMenuComponent implements OnInit {
       });
       this.allFilters.countries.push({ id: country.CountryId, value: country.CountryName, isSelected: false, regions: listOfRegions });
     });
+    this.dataservice.filtersAllData = this.allFilters;
   }
 
   selectAllTypes(event: any, check: any) {

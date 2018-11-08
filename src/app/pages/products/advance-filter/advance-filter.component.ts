@@ -27,9 +27,9 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
   allRegions: Item[] = [];
   selectedRegions: Item[] = [];
   productsList: any;
-  PageSize = [12, 20, 40, 60, 80, 100];
+  PageSize = [15, 30, 45, 60, 75, 90];
   SortBy = ['Price', 'Size', 'Type', 'Country', 'Region'];
-  selectedPageSize = 12;
+  selectedPageSize = 15;
   navigationSubscription;
 
   constructor(public dataservice: DataService,

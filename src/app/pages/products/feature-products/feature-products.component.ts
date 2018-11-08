@@ -55,6 +55,7 @@ export class FeatureProductsComponent implements OnInit {
       this.onCategoryChange();
     } else {
       this.isFeatureProductsPage = false;
+      this.getProductsList();
     }
   }
 
@@ -69,7 +70,8 @@ export class FeatureProductsComponent implements OnInit {
 
   onCategoryChange(catId = '1,2,3,4') {
     this.spinnerService.show();
-    this.store.dispatch(new ProductGetList(this.productStoreService.getProductGetListParams({ categoryId: catId, pageSize: 12 })));
+    this.store.dispatch(new ProductGetList(
+      this.productStoreService.getProductGetListParams({ categoryId: catId, pageSize: 12, isFeatured: 1})));
   }
 
 }

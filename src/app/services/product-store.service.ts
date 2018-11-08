@@ -73,7 +73,7 @@ export class ProductStoreService {
     getProductGetListParams({ pageSize = 12, pageNumber = 1, isClub = 0,
         categoryId = '1,2,3,4', sizeId = '',
         typeId = '', varietalId = 0, countryId = '',
-        regionId = '', isFavorite = 0, isFeatured = 1,
+        regionId = '', isFavorite = 0, isFeatured = 0,
         maxPrice = 0, minPrice = 0, keyWord = ''
     }:
         {
