@@ -17,6 +17,7 @@ export class RatingComponent implements OnInit {
   }
 
   setStar(rate: number) {
+    rate = +rate;
     this.rated.emit(rate);
     this.starList = [0, 0, 0, 0, 0];
 

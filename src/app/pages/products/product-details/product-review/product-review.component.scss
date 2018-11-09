@@ -1,5 +1,49 @@
-img.second_img {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
+
+.reviews {
+	width: 100%;
+	margin-bottom: 40px;
+    display: flex;
+	.user-review-dp {
+		width: 54px;
+		height: 54px;
+		border-radius: 50%;
+		-o-border-radius: 50%;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+		background-color: #222;
+		color: #fff;
+		cursor: pointer;
+		float: left;
+		margin-top: 1%;
+
+		img {
+			width: 54px;
+			height: auto;
+			border-radius: 50%;
+		}
+	}
+	.user-review-content {
+	    margin-left: 15px;
+	    border: solid 1px #ccc;
+	    float: right;
+	    width: 90%;
+	    padding: 15px;
+			.title {
+				font-size: 14px;
+				color: #222;
+				font-weight: 700;
+			}
+			.caption {
+				font-size: 14px;
+				color: #222;
+				font-weight: normal !important;
+			}
+	}
+
+	.rating-stars {
+		float: right;
+	    position: relative;
+	    top: -12px;
+	    right: 20px;
+	}
 }

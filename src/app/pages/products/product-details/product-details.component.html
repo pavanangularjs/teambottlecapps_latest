@@ -168,8 +168,8 @@
     <div class="container">
         <div class="total_border write-review">
             <h4 class="review_title">Reviews</h4>
-            <p *ngIf="userReviews?.length === 0">There are no customer reviews yet.</p>
-            <br>
+            <p *ngIf="userReviews?.length === 0" class="no-reviews">There are no customer reviews yet.</p>
+            
             <div>
                 <app-product-review [review]="review" *ngFor="let review of userReviews"></app-product-review>
             </div>

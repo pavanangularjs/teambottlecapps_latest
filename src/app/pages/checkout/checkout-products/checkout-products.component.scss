@@ -4,10 +4,11 @@
   table {
     width: 100%;
     .prod-img {
-      width: 60px;
+      /*width: 60px;*/
       height: 60px;
       border-radius: 5px;
       border: solid 1px #ccc;
+      padding: 5px 10px;
     }
     td.img-block {
       padding-top: 10px;

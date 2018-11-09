@@ -28,11 +28,11 @@ table tr th:last-child{
     border-right:none; 
 }
 table tr td .img_div{
-    min-width: 20%;
+    min-width: 15%;
     max-width: 30%;
     float: left;
-    border: 2px solid #ccc;
-    padding: 15px;
+    /*border: 2px solid #ccc;*/
+    padding: 10px;
     border-radius: 10px;
     height: 85px;
     margin-right: 25px;
@@ -50,7 +50,7 @@ table tr td .img_div{
     color: #262628;
 }
 table tr td .img_div img{
-    height: 50px;
+    height: 60px;
     width: auto;
     max-width: 66px;
     margin: 0 auto;

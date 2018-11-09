@@ -1,9 +1,7 @@
 .coupon-tile {
   margin-top: 20px;
   background-position: bottom;
-  min-height: 420px;
-  max-height: 435px;
-  height: 350px;
+  height: 100%;
   h4, span.highlight {
     color: #ec1c24;
   }
@@ -18,9 +16,9 @@
       padding: 0px;
       border: 1px solid rgba(204,204,204,0.12);
       border-bottom: 0px solid #ccc;
-      min-height: 385px;
+      min-height: 295px;
       max-height: 420px;
-      height: 335px;
+      height: 295px;
       .caption {
       padding: 15px;
       }
