@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError, EMPTY } from 'rxjs';
+import { Observable, of, throwError, EMPTY, Subject } from 'rxjs';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { switchMap, catchError, retry } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
@@ -21,6 +21,7 @@ export class ProductStoreService {
     headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     customerSession: CustomerLoginSession;
     couponsList: any;
+    customerInfo: any;
 
     constructor(private http: HttpClient, private store: Store<CustomerLoginSession>,
         private errorHandler: ErrorHandlerService) {
@@ -36,6 +37,9 @@ export class ProductStoreService {
     getStoreHome(): Observable<any> {
         return this.http.post<any>(baseUrl + UrlNames.GetStoreHome, this.getStoreObject()).pipe(
             switchMap((res: any) => {
+                if (res && res.CustomerInfo) {
+                    this.customerInfo = res.CustomerInfo;
+                }
                 return of(res);
             }),
             retry(3),

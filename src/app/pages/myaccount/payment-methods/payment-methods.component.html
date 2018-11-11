@@ -3,13 +3,12 @@
         <a routerLink="../add-new-payment-method" class="bottles-brand">
             <h4 class="address-heading"><span class="fa fa-map-marker bottle-brand"></span> Add New Payment Method</h4>
         </a>
-        <div class="address-table-tile" *ngFor="let payment of paymentMethodList">
+        <div class="address-table-tile" *ngFor="let paymentProfile of paymentProfiles">
             <table class="table table-responsive">
                 <tbody>
                     <tr>
                         <td>
-                            <span class="text-muted text-uppercase" *ngIf="payment?.IsDefault">
-                                <small>Favorite</small>
+                            <span class="text-muted text-uppercase">
                             </span>
                         </td>
                         <td class="text-right">
@@ -19,19 +18,17 @@
                                     <span class="fa fa-ellipsis-v more-icon"></span><span class="icon icon-ellipsis-vert more-icon"></span></a>
 
                                 <ul class="dropdown-menu dropdown-favorite-open" aria-labelledby="dLabel">
-                                    <li *ngIf="payment?.IsDefault === false"><a (click)="addToFavorite(payment)">Add to Favorite</a></li>
-                                    <li><a routerLink="./edit-payment">Edit</a></li>
-                                    <li><a>Delete</a></li>
+                                    <li><a (click)="deletePaymentMethod(paymentProfile)">Delete</a></li>
                                 </ul>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td class="address-container-section">
-                            <h6>{{payment?.PaymentType}}</h6>
+                            <img [src]="getCardType(paymentProfile)">
                         </td>
                         <td class="address-container-section">
-                            <h6>{{payment?.Credential1}}</h6>
+                            <h6>{{paymentProfile?.payment?.creditCard?.cardNumber}}</h6>
                         </td>
                     </tr>
                 </tbody>

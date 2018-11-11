@@ -4,37 +4,28 @@
       <div class="row">
         <div class="col-md-12">
           <h4>Add New Payment Method</h4>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="cards-icons-container">
-                <a href="#">
-                  <span class="icon icon-cc-amex new-payment-icon"></span> <span class="fa fa-cc-amex new-payment-icon"></span>
-                </a>
-                <a href="#">
-                  <span class="icon icon-cc-visa new-payment-icon"></span> <span class="fa fa-cc-visa new-payment-icon"></span>
-                </a>
-                <a href="#">
-                  <span class="icon icon-cc-mastercard new-payment-icon"></span> <span class="fa fa-mastercard new-payment-icon new-payment-icon"></span>
-                </a>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <br>
-              <form class="form-group">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="text-uppercase">Name As on Card <span>*</span>
-                        <input type="name" name="" class="form-control" placeholder="">
-                      </label>
-                    </div>
-                  </div>
+          <form [formGroup]=formAddNewPayment (ngSubmit)="onSaveCard()">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="cards-icons-container">
+                  <a href="#">
+                    <span class="icon icon-cc-amex new-payment-icon"></span> <span class="fa fa-cc-amex new-payment-icon"></span>
+                  </a>
+                  <a href="#">
+                    <span class="icon icon-cc-visa new-payment-icon"></span> <span class="fa fa-cc-visa new-payment-icon"></span>
+                  </a>
+                  <a href="#">
+                    <span class="icon icon-cc-mastercard new-payment-icon"></span> <span class="fa fa-mastercard new-payment-icon new-payment-icon"></span>
+                  </a>
                 </div>
+              </div>
+              <div class="col-md-12">
+                <br>
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="text-uppercase">16 Digit Number <span>*</span>
-                        <input type="name" name="" class="form-control" placeholder="">
+                      <label class="text-uppercase">Card Number <span>*</span>
+                        <input type="name" formControlName="sixteenDigitNumber" class="form-control" placeholder="">
                       </label>
                     </div>
                   </div>
@@ -42,7 +33,28 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="text-uppercase">Expiry Date <span>*</span>
-                        <input type="name" name="" class="form-control" placeholder="">
+                        <input type="name" formControlName="expiryDate" class="form-control" placeholder="">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="col-md-12">
+                <h4>Billing Address</h4>
+                <br>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="text-uppercase">First Name <span>*</span>
+                        <input type="name" formControlName="firstName" class="form-control" placeholder="">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="text-uppercase">Last Name
+                        <input type="name" formControlName="lastName" class="form-control" placeholder="">
                       </label>
                     </div>
                   </div>
@@ -50,48 +62,15 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="text-uppercase">CVV code <span>*</span>
-                        <input type="name" name="" class="form-control" placeholder="">
+                      <label class="text-uppercase">Address<span>*</span>
+                        <input type="name" formControlName="address" class="form-control" placeholder="">
                       </label>
                     </div>
                   </div>
-                </div>
-              </form>
-              <hr>
-            </div>
-            <div class="col-md-12">
-              <h4>Billing Address</h4>
-              <br>
-              <form class="form-group">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="text-uppercase">Address 1 <span>*</span>
-                        <input type="name" name="" class="form-control" placeholder="">
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="text-uppercase">Address 2
-                        <input type="name" name="" class="form-control" placeholder="">
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="text-uppercase">City <span>*</span>
-                        <input type="name" name="" class="form-control" placeholder="">
-                      </label>
-                    </div>
-                  </div>
-
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="text-uppercase">State <span>*</span>
-                        <input type="name" name="" class="form-control" placeholder="">
+                        <input type="name" formControlName="city" class="form-control" placeholder="">
                       </label>
                     </div>
                   </div>
@@ -99,8 +78,31 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
+                      <label class="text-uppercase">State <span>*</span>
+                        <input type="name" formControlName="state" class="form-control" placeholder="">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
                       <label class="text-uppercase">Zip Code <span>*</span>
-                        <input type="name" name="" class="form-control" placeholder="">
+                        <input type="name" formControlName="zipCode" class="form-control" placeholder="">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="text-uppercase">Country <span>*</span>
+                        <input type="name" formControlName="country" class="form-control" placeholder="">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="text-uppercase">Phone Number <span>*</span>
+                        <input type="name" formControlName="phoneNumber" class="form-control" placeholder="">
                       </label>
                     </div>
                   </div>
@@ -113,18 +115,20 @@
                       </label>
                     </div>
                   </div>
+                </div>
+                <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <div class="button-container">
                         <button type="cancel" class="btn btn-default novalue pull-left">Cancel</button>
-                        <button type="checkout" class="btn btn-default close">Checkout</button>
+                        <button type="submit" class="btn submit">Save</button>
                       </div>
                     </div>
                   </div>
                 </div>
-              </form>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
