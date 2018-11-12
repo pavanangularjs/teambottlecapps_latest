@@ -15,9 +15,11 @@
                                 <img class="location" src="assets/Images/location.png">
                               </div>
                               <div class="address-captions">
-                                {{storeGetHomeData?.Address1}}
-                                <span *ngIf="storeGetHomeData?.Address2"> {{storeGetHomeData?.Address2}}</span>
-                                <span> {{storeGetHomeData?.City}}, {{storeGetHomeData?.State}} </span>
+                                <a href="" target="_blank">
+                                  {{storeGetHomeData?.Address1}}
+                                  <span *ngIf="storeGetHomeData?.Address2"> {{storeGetHomeData?.Address2}}</span>
+                                  <span> {{storeGetHomeData?.City}}, {{storeGetHomeData?.State}} </span>
+                                </a>
                               </div>
                           </div>
                       </div>
@@ -27,7 +29,7 @@
                                 <img class="img-responsive" src="assets/Images/contact.png">
                             </div>
                             <div class="address-captions">
-                                <span> Call: {{storeGetHomeData?.Phone}}</span>
+                                <span> <a href="tel:">Call: {{storeGetHomeData?.Phone}}</a></span>
                             </div>
                           </div>
                       </div>
@@ -37,7 +39,7 @@
                                 <img class="img-responsive" src="assets/Images/email.png">
                             </div>
                             <div class="address-captions">
-                                <span>Email: {{storeGetHomeData?.StoreEmail}}</span>
+                                <span><a href="mailto:">Email: {{storeGetHomeData?.StoreEmail}}</a></span>
                             </div>
                           </div>
                       </div>
@@ -131,25 +133,25 @@
               <ul class="list-unstyled clear-margins">
 
                   <li>
-                      <a>Monday 8:00 AM - 5:00 PM</a>
+                      Monday 8:00 AM - 5:00 PM
                   </li>
                   <li>
-                      <a>Tuesday 8:00 AM - 5:00 PM</a>
+                      Tuesday 8:00 AM - 5:00 PM
                   </li>
                   <li>
-                      <a>Wednesday 8:00 AM - 5:00 PM</a>
+                      Wednesday 8:00 AM - 5:00 PM
                   </li>
                   <li>
-                      <a>Thursday 8:00 AM - 5:00 PM</a>
+                      Thursday 8:00 AM - 5:00 PM
                   </li>
                   <li>
-                      <a>Friday 4:00 AM - 9:00 AM</a>
+                      Friday 4:00 AM - 9:00 AM
                   </li>
                   <li>
-                      <a>Saturday 4:00 AM - 5:00 PM</a>
+                      Saturday 4:00 AM - 5:00 PM
                   </li>
                   <li>
-                      <a>Sunday 8:00 AM - 5:00 PM</a>
+                      Sunday 8:00 AM - 5:00 PM
                   </li>
               </ul>
           </div>

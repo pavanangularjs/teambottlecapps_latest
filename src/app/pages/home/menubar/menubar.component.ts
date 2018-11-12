@@ -23,13 +23,17 @@ export class MenubarComponent implements OnInit {
   filterMenuItems: any;
   receipeMenuItem: any;
   couponMenuItem: any;
+  eventsList: any;
 
   constructor(private store: Store<any>, private router: Router, public dataservice: DataService) {
-    /*this.store.select(ProductStoreSelectors.productStoreStateData)
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.store.select(ProductStoreSelectors.productStoreStateData)
       .subscribe(pssd => {
         this.storeGetHomeData = pssd;
-        this.updateMenuItems();
-      });*/
+        if (pssd && pssd.EventList) {
+          this.eventsList = pssd.EventList;
+        }
+      });
    }
 
    ngOnInit() {

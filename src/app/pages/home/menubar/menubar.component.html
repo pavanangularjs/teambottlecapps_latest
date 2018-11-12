@@ -23,8 +23,14 @@
         <li *ngIf="couponMenuItem" class="nav-item" [routerLink]="couponMenuItem.url">
             <a class="nav-link">{{couponMenuItem.name}}</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link">Events</a>
+        <li class="nav-item dropdown dropdown_menu droparrow">
+            <span class="arrowup"></span>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events</a>
+            <ul class="dropdown-menu">
+                <li class="nav-item" routerLink="/event-details/{{event.EventId}}" *ngFor="let event of eventsList">
+                    <a class="nav-link">{{event.EventName}}</a>
+                </li>
+            </ul>
         </li>
       </ul>
       <app-search-bar></app-search-bar>

@@ -16,7 +16,7 @@ body {
        outline: none;
    }
 .Search_div {
-    margin: 15px 0px 40px 0;
+    margin: 10px 0px 40px 0;
     border-bottom: 1px solid #ddd;
     border-radius: 0px;
     overflow: hidden;
@@ -177,13 +177,14 @@ color: rgba(255,255,255,255) !important;
     border: none;
     float: left;
     border-left: 5px solid #ec1c24;
-    font-family: poppinsbold;
-    font-size: 30px;
+    font-family: poppinsregular;
+    font-size: 18px !important;
     font-stretch: normal;
-    /* line-height: 2.93; */
+    /*line-height: 1.7;*/
     letter-spacing: normal;
     text-align: left;
     color: #191919;
+    line-height: 21px;
 }
 
 .img_div{
@@ -539,7 +540,8 @@ nav .navbar-nav ul li a{
     text-align: left;
     color: #c2c4ca;
     float: left;
-    padding-right: 35px;
+    padding-right: 10px;
+    margin-bottom: 0px;
    
 }
 
@@ -556,6 +558,7 @@ nav .navbar-nav ul li a{
 section.m_bottom{
     margin-bottom: 30px;
     overflow: hidden;
+    margin-top: 10px;
 }
 
 .toast-top-right {
@@ -744,8 +747,8 @@ ul.user-menu li.star_color i.fa-star{
     font-size: 22px;
 }
 nav ul.user-menu li{
-background-color: transparent; 
-   border: solid 1px none; 
+    background-color: transparent; 
+    border: solid 1px transparent; 
 }
 nav ul.float_right li.display_mobile{
     display: none;

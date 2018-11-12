@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'recipes', component: RecipesComponent},
   { path: 'recipe-details/:id', component: RecipeDetailsComponent },
   { path: 'product-details/:id', component: ProductDetailsComponent },
-  { path: 'event-details/:id', component: EventDetailsComponent },
+  { path: 'event-details/:id', component: EventDetailsComponent, runGuardsAndResolvers: 'always' },
   { path: 'myaccount', loadChildren: './pages/myaccount/myaccount.module#MyAccountModule', canActivate: [AuthGuard] },
   { path: 'myorders', component: MyOrdersComponent, canActivate: [AuthGuard]},
   { path: 'advance-filter', component: AdvanceFilterComponent, runGuardsAndResolvers: 'always' },

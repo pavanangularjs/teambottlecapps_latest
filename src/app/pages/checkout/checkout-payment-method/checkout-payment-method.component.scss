@@ -37,6 +37,13 @@
     .td-para {
       margin-left: 30px;
       vertical-align: middle;
+      span.fa {
+        font-size: 24px;
+      }
+      span.fa:hover {
+        font-size: 24px;
+        color: #ec1c24;
+      }
     }
     vertical-align: text-top;
     input.text-cvv {
@@ -94,4 +101,10 @@
     left: 45%;
     top: 7px;
   }
+}
+
+.pickup-tile {
+    margin-bottom: 15px;
+    display: inline-block;
+    margin-top: 20px;
 }

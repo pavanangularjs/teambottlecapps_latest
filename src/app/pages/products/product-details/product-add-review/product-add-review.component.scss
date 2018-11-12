@@ -1,5 +1,9 @@
 
-
-    .rating-stars span a {
+.rating-stars {
+    font-size: 22px;
+    margin-top: -5px;
+    span a {
        margin-right: 5px !important;
+       color: #555555;
     }
+}

@@ -5,10 +5,12 @@
     width: 100%;
     .prod-img {
       /*width: 60px;*/
-      height: 60px;
+      height: 70px;
       border-radius: 5px;
       border: solid 1px #ccc;
-      padding: 5px 10px;
+      padding: 5px 15px;
+      margin-top: -3px;
+      margin-right: 5px;
     }
     td.img-block {
       padding-top: 10px;
@@ -19,6 +21,32 @@
     }
     &.first-table {
       border-bottom: solid 1px #ccc;
+      h4 {
+        margin-bottom: 0px;
+      }
+      h6 {
+        font-size: 16px;
+        margin-bottom: 5px;
+        margin-top: 10px;
+        color: #ec1c24;
+      }
+      p {
+        font-size: 14px;
+      }
+      .totalprice-right {
+        margin: 0px;
+        padding: 0px;
+        p {
+          margin-top: 10px;
+          margin-bottom: 30px;
+          font-weight: bold;
+          font-size: 13px;
+        }
+        h5 {
+          font-size: 20px;
+          color: #ec1c24;
+        }
+      }
     }
     td.summary-block {
       width: 90px;
@@ -57,13 +85,13 @@
   }
   .icon-coupon {
     position: relative;
-    top: 0px;
+    top: 1px;
     font-size: 22px;
     color: #ccc;
   }
   .icon-coupon-close {
     position: absolute;
-    top: 12px;
+    top: 17px;
     font-size: 22px;
     color: #ccc;
     right: 25px;
@@ -88,6 +116,7 @@
     font-size: 22px;
     position: relative;
     top: 0px;
+    color: #222;
   }
   table {
     td p {
@@ -142,31 +171,34 @@
 }
 
 
-.btn_right button.novalue{
-  background: #d7d7d7 !important;
-  color:#fff;
-  padding: 10px 25px;
-  box-shadow: 0px 10px 20px 0 rgba(135, 135, 135, 0.3);
-  font-family: montserratbold;
-  font-size: 11.2px;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #ffffff;
-  opacity: 1;
-}
-
-.btn_right button.close{
-  background-color: #ec1c24 !important;
-  box-shadow: 0px 10px 20px 0 rgba(236, 28, 36, 0.3);
-  font-family: montserratbold;
-  font-size: 11.2px;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #ffffff;
-  padding:10px 30px;
-  opacity: 1;
+.btn_right {
+  margin-top: 20px;
+  button.novalue{
+    background: #d7d7d7 !important;
+    color:#fff;
+    padding: 10px 25px;
+    box-shadow: 0px 10px 20px 0 rgba(135, 135, 135, 0.3);
+    font-family: montserratbold;
+    font-size: 11.2px;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    opacity: 1;
+  }
+  
+  button.close{
+    background-color: #ec1c24 !important;
+    box-shadow: 0px 10px 20px 0 rgba(236, 28, 36, 0.3);
+    font-family: montserratbold;
+    font-size: 11.2px;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    padding:10px 30px;
+    opacity: 1;
+  }
 }

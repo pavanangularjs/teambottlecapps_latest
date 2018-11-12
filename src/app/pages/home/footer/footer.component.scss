@@ -409,8 +409,15 @@ address .contact_text {
     float: left;
 }
 
-.storelocation .address-captions {
+.storelocation .address-captions a {
     float: left;
+    font-size: 12.7px;
+    color: #333333;
+    text-decoration: none !important;
+    &hover, &focus {
+      color: #333333;
+      text-decoration: none !important;
+    }
 }
 
 .storelocation .address-captions span {

@@ -9,7 +9,7 @@
             <h6>{{cartItem?.PriceDisplay}}</h6>
             <p>Quantity: {{cartItem.QuantityOrdered}}</p>
           </td>
-          <td class="text-right">
+          <td class="text-right totalprice-right">
             <p>Edit Order</p>
             <h5>{{cartItem?.ItemTotalDisplay}}</h5>
           </td>
@@ -34,7 +34,7 @@
                 </td>
               </tr>
               <tr>
-                <td width="15px"> <a class="exapand-icon"> <span class="fa fa-minus-circle"></span> <span
+                <td width="25px"> <a class="exapand-icon"> <span class="fa fa-minus-circle"></span> <span
                       class="icon icon-minus-circled"></span> </a> </td>
                 <td>
                   <h5>Savings</h5>
@@ -73,7 +73,7 @@
                 </td>
               </tr>            
               <tr *ngIf="cartDetails?.OrderTypeId !== 1">
-                <td width="15px"><a class="exapand-icon"><span class="fa fa-plus-circle"></span> <span class="icon icon-plus-circled"></span></a></td>
+                <td width="25px"><a class="exapand-icon"><span class="fa fa-plus-circle"></span></a></td>
                 <td>
                   <h5>Tip</h5>
                 </td>
@@ -100,9 +100,9 @@
   </div>
   <div class="coupon-panel">
     <form>
-      <i class="fa fa-ticket input-icon"></i> <i class="icon icon-ticket icon-coupon"></i>
+      <i class="icon-coupon"><img src="../assets/Images/coupon.png"></i>
       <input type="text" name="coupun" placeholder="Apply Coupon" class="form-control coupon">
-      <i class="fa fa-close input-icon"></i> <i class="icon icon-window-close icon-coupon-close"></i>
+      <i class="fa fa-close icon-coupon-close"></i>
     </form>
   </div>
   <div class="coupon-panel">

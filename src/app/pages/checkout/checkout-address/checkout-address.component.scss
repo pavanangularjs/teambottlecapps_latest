@@ -1,21 +1,24 @@
-.checkout-section .checkout-table {
-  border: dashed 2px #ccc;
-  background-color: #fcfcfc;
-  padding: 15px 25px 20px 25px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  min-height: 156px;
-  a.link {
-    font-size: 16px;
-    color: #ec1c24;
-    text-decoration: none;
-    color: #222;
-    &:hover, &:focus, &.active {
+.checkout-section{
+  margin-top: 15px;
+  .checkout-table {
+    border: dashed 2px #ccc;
+    background-color: #fcfcfc;
+    padding: 15px 25px 20px 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    min-height: 156px;
+    a.link {
       font-size: 16px;
       color: #ec1c24;
       text-decoration: none;
-      color: #ec1c24;
+      color: #222;
+      &:hover, &:focus, &.active {
+        font-size: 16px;
+        color: #ec1c24;
+        text-decoration: none;
+        color: #ec1c24;
+      }
     }
   }
 }
@@ -144,7 +147,7 @@ table.new-address-add {
     background: transparent;
     color: white;
     text-align: center;
-    border-bottom: solid 1px #979797;
+    border-bottom: solid 1px #ccc;
     color: #979797;
   }
   .delivery-options .input-field, .coupon-panel .input-field {
@@ -153,11 +156,11 @@ table.new-address-add {
     outline: none;
     background: transparent;
     border: 0px;
-    border-bottom: solid 1px #979797;
+    border-bottom: solid 1px #ccc;
   }
   .delivery-options .input-field:focus, .coupon-panel .input-field:focus {
     border: 0px solid transparent;
-    border-bottom: solid 1px #979797;
+    border-bottom: solid 1px #ccc;
   }
   .delivery-options .btn {
     background-color: transparent;
@@ -207,6 +210,7 @@ table.new-address-add {
 }
 
 .add-address-new {
+  margin-bottom: 15px;
   a {
     border: dashed 1px #acacac;
     color: #acacac;

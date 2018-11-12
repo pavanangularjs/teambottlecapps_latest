@@ -57,6 +57,7 @@
     font-size: 15px;
     font-weight: bold;
     color: #333;
+    line-height: 21px;
    
 }
 /* .details_content ul li::before{
@@ -98,8 +99,8 @@
 }
 
 .details_img{
-    border: 1px solid #d7d7d7;
-    padding: 25px 0;
+    border-right: 1px solid #d7d7d7;
+    /*padding: 0px 0;*/
 }
 .details_img img{
     margin: 0 auto;
@@ -110,7 +111,7 @@
 }
 .details_content ul li{
     list-style-type: none;
-    padding: 5px;
+    padding: 10px 5px 10px 5px;
 }
 .details_content ul li ul li::before{
     content: '\f061';
@@ -152,15 +153,19 @@
     position: absolute;
     top: 0;
     left: 10px;
+    font-family: poppinsregular;
 }
 
 .event-details-date strong {
     text-align: center;
-    font-size: 18px;
+    font-size: 28px;
     color: #232323;
     margin: 0px;
     padding: 0px;
     line-height: normal;
+    display: inline-block;
+    margin-top: -10px;
+    font-family: poppinsregular;
 }
 
 .event-details-date .date-style {
@@ -169,16 +174,18 @@
     font-size: 14px;
     text-align: center;
     float: left;
+    font-family: poppinsregular;
 }
 
 .event-details-heading {
     position: absolute;
     left: 60px;
-    top: 0px;
+    top: -5px;
+    font-size: 18px;
 }
 
 .event-icon {
-    font-size: 20px;
+    font-size: 30px;
     width: 20px;
     text-align: center;
     padding: 0px;
@@ -186,8 +193,10 @@
 }
 
 .event-para {
-    font-size: 12px;
+    font-size: 14px;
     vertical-align: middle;
-    margin-left: 15px;
+    margin-left: 20px;
     display: inline-block;
+    margin-top: -10px;
+    font-family: poppinsregular;
 }
