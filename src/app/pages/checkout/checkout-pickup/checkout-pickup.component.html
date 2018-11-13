@@ -1,0 +1,25 @@
+<div class="checkout-section">
+    <div class="row">
+        <div class="pickup-tile">
+            <div class="col-md-12">
+                <h4>Pick-Up Address</h4>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="pickup-section">
+                        <div class="col-md-6">
+                            <h5 class="text-uppercase">{{storeGetHomeData?.StoreName}}</h5>
+                            <p>{{storeGetHomeData?.Address1}}</p>
+                            <p *ngIf="storeGetHomeData?.Address2"> {{storeGetHomeData?.Address2}}</p>
+                            <p>{{storeGetHomeData?.City}}, {{storeGetHomeData?.State}} - {{storeGetHomeData?.Zipcode}}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-uppercase">Phone {{storeGetHomeData?.Phone}}</h5>
+                            <h5 class="text-uppercase">Email <a href="mailto:{{storeGetHomeData?.StoreEmail}}">{{storeGetHomeData?.StoreEmail}}</a></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

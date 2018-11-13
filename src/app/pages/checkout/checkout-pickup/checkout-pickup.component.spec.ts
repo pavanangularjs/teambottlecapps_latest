@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CheckoutAddressComponent } from './checkout-address.component';
+import { CheckoutPickupComponent } from './checkout-pickup.component';
 
-describe('CheckoutAddressComponent', () => {
-  let component: CheckoutAddressComponent;
-  let fixture: ComponentFixture<CheckoutAddressComponent>;
+describe('CheckoutPickupComponent', () => {
+  let component: CheckoutPickupComponent;
+  let fixture: ComponentFixture<CheckoutPickupComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CheckoutAddressComponent ]
+      declarations: [ CheckoutPickupComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CheckoutAddressComponent);
+    fixture = TestBed.createComponent(CheckoutPickupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

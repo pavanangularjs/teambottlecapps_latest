@@ -1,46 +1,10 @@
 <div class="checkout-section">
   <div class="row">
-    <!-- Pickup Section -->
-    <div class="pickup-tile">
-        <div class="col-md-12">
-          <h4>Pick-Up Address</h4>
-        </div>
-        <div class="col-md-12">
-            <div class="row">
-                <div class="pickup-section">
-                    <div class="col-md-6">
-                        <h5 class="text-uppercase">Store Name</h5>
-                        <p>Address Line 1</p>
-                        <p>Address Line 2</p>
-                        <p>City, state - Zipcode</p>
-                    </div>
-                    <div class="col-md-6">
-                        <h5 class="text-uppercase">Phone +05 6666 555</h5>
-                        <h5 class="text-uppercase">Email <a href="mailto:address@domain.com">address@domain.com</a></h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<!-- Payment Method -->
     <div class="col-md-12">
       <h4>Payment Method</h4>
     </div>
     <div class="col-md-12">
       <div class="payment-method">
-        <!-- <div class="row">
-          <div class="payment-option-select">
-            <div class="col-md-6">
-              <a href="" class="pay-opt-1"><span class="fa fa-check-circle"></span> <span class="icon icon-ok-circled"></span></a>
-            </div>
-            <div class="col-md-6">
-              <a href="">
-                <h5 class="text-right">Pay at Store</h5>
-              </a>
-            </div>
-            <span class="pay-or-store">OR</span>
-          </div>
-        </div> -->
         <table>
           <thead>
             <th>Your Saved Card</th>
@@ -48,29 +12,18 @@
             <th style="border-left: solid 2px #fff;">Expires On</th>
           </thead>
           <tbody>
-            <tr>
+            <tr *ngFor="let paymentProfile of paymentProfiles; index as i" (click)="selectedCard=i">
               <td>
                 <div class="check-icon-payment-container">
-                  <span class="fa fa-check-circle checkout-icon-style"></span>
+                  <span [ngClass]="{'fa fa-check-circle checkout-icon-style':selectedCard===i}"></span>
                 </div>
-                <div class="td-para"> <span class="fa fa-cc-visa"></span> XXXX XXXX XXXX 2379
-                  <form><input type="text" name="cvv" class="text-cvv form-control" placeholder="Enter CVV"></form>
-                </div>
-              </td>
-              <td>John Smith</td>
-              <td>06/2025</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="check-icon-payment-container">
-
-                </div>
-                <div class="td-para"> <span class="fa fa-cc-mastercard"></span> XXXX XXXX XXXX 2379
+                <div class="td-para"> <span class="fa fa-cc-{{paymentProfile.payment.creditCard.cardType | lowercase }}"></span> {{paymentProfile?.payment?.creditCard?.cardNumber}}
+                  <form *ngIf="selectedCard===i"><input type="text" name="cvv" class="text-cvv form-control" placeholder="Enter CVV"></form>
                 </div>
               </td>
-              <td>John Smith</td>
-              <td>06/2025</td>
-            </tr>
+              <td></td>
+              <td>{{paymentProfile?.payment?.creditCard?.expirationDate}}</td>
+            </tr>            
           </tbody>
         </table>
         <br>

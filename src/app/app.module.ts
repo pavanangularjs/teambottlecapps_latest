@@ -51,7 +51,7 @@ import { DecimalPipe } from '@angular/common';
 import { HttpCacheService } from './cache.service';
 import { CacheInterceptor } from './cacheInterceptor';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
-import { CheckoutAddressComponent } from './pages/checkout/checkout-address/checkout-address.component';
+import { CheckoutDeliveryComponent } from './pages/checkout/checkout-delivery/checkout-delivery.component';
 import { CheckoutPaymentMethodComponent } from './pages/checkout/checkout-payment-method/checkout-payment-method.component';
 import { CheckoutProductsComponent } from './pages/checkout/checkout-products/checkout-products.component';
 import { ProductReviewComponent } from './pages/products/product-details/product-review/product-review.component';
@@ -60,6 +60,7 @@ import { OrderComponent } from './pages/myaccount/myorders/order/order.component
 import { CartReviewComponent } from './pages/cart-review/cart-review.component';
 import { CouponsComponent } from './pages/coupons/coupons.component';
 import { AuthService } from './auth.service';
+import { CheckoutPickupComponent } from './pages/checkout/checkout-pickup/checkout-pickup.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -101,14 +102,15 @@ export function getAuthServiceConfigs() {
     CartComponent,
     AdvanceFilterComponent,
     CheckoutComponent,
-    CheckoutAddressComponent,
+    CheckoutDeliveryComponent,
     CheckoutPaymentMethodComponent,
     CheckoutProductsComponent,
     ProductReviewComponent,
     ProductAddReviewComponent,
     OrderComponent,
     CartReviewComponent,
-    CouponsComponent
+    CouponsComponent,
+    CheckoutPickupComponent
   ],
   imports: [
     BrowserModule,

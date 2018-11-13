@@ -29,7 +29,7 @@ export class PaymentMethodsComponent implements OnInit {
       this.spinnerService.show();
       this.customerService.getCustomerPaymentMethodGetList().subscribe(
         data => {
-          this.paymentMethodList = data ? (data.ListPaymentItem ? data.ListPaymentItem : []) : [];          
+          this.paymentMethodList = data ? (data.ListPaymentItem ? data.ListPaymentItem : []) : [];
           this.getPaymentList();
         });
     }
