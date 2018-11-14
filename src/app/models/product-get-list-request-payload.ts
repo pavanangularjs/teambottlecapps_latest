@@ -13,7 +13,7 @@ export class ProductGetListRequestPayload {
     CountryId: string;
     RegionId: string;
     IsFavorite: number;
-    IsFeatured: number;
+    IsFeatureProduct: number;
     MaxPrice: number;
     MinPrice: number;
     KeyWord: string;

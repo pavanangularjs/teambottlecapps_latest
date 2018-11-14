@@ -99,14 +99,10 @@ export class CartComponent implements OnInit {
   }
 
   navigateURL() {
-    // if (this.customerService.customerSession && this.customerService.customerSession.UserId !== 0) {    
     this.cartService.updateCart(this.cartDetails).subscribe(
       (data: any) => {
         this.router.navigate(['/checkout']);
       });
-    /* } else {
-      this.router.navigate(['/login']);
-    } */
   }
 
 }
