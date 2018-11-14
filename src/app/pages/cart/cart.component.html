@@ -1,18 +1,29 @@
 <style>
   @media only screen and (max-width: 800px) {
-  
-  table.res_table td:nth-of-type(1):before { content: "Product Details"; }
-  table.res_table td:nth-of-type(2):before { content: "Product Price"; }
-  table.res_table td:nth-of-type(3):before { content: "Quantity"; }
-  table.res_table td:nth-of-type(4):before { content: "Total Price"; }
-  
-  }     
-      </style>
+
+    table.res_table td:nth-of-type(1):before {
+      content: "Product Details";
+    }
+
+    table.res_table td:nth-of-type(2):before {
+      content: "Product Price";
+    }
+
+    table.res_table td:nth-of-type(3):before {
+      content: "Quantity";
+    }
+
+    table.res_table td:nth-of-type(4):before {
+      content: "Total Price";
+    }
+
+  }
+</style>
 
 <div class="container">
   <div class="row">
-      <div class="Searchrelated_div col-md-12 col-sm-12 col-lg-12 col-xs-12">
-          <h4>Cart</h4>
+    <div class="Searchrelated_div col-md-12 col-sm-12 col-lg-12 col-xs-12">
+      <h4>Cart</h4>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a>Home</a></li>
         <li class="breadcrumb-item active"><a>Cart</a></li>
@@ -23,7 +34,7 @@
 
 <section>
   <div class="container">
-    <div class="row">
+    <div class="row" *ngIf="cartDetails?.ListCartItem && cartDetails?.ListCartItem?.length > 0; else emptyCart">
       <div id="no-more-tables" class="col-md-12 col-sm-12 col-lg-12 col-xs-12 slideInUP wow delay-05s  animated">
         <table class="table table-bordered res_table">
           <thead>
@@ -61,8 +72,8 @@
               <td width="15%">
                 <div class="margin_top">
                   <select class="select-quant" [(ngModel)]="cartItem.QuantityOrdered" (change)="onQtyChange(cartItem)">
-                      <option>Please select</option>
-                      <option *ngFor="let qty of quantity">{{qty}}</option>                    
+                    <option>Please select</option>
+                    <option *ngFor="let qty of quantity">{{qty}}</option>
                   </select>
                   <!-- <button class="dec_circle">
                     <i class="fa fa-minus" aria-hidden="true"></i>
@@ -87,30 +98,30 @@
 
         </table>
 
-<!-- Empty Cart UI -->
-        <div class="empty-cart">
-            <div class="col-md-5">
-                <div class="icon-float">
-                    <span class="notification-circle">0</span>
-                    <span class="fa fa-shopping-cart cart-view-icon"></span>
-                </div>
-            </div>
-            <div class="col-md-6 col-md-offset-1">
-                <h3>No Items !</h3>
-                <p>You have not added any items. Add an item to place order.</p>
-                <button class="btn btn-default btn-botcaps" [routerLink]="['/']">Continue Shopping</button>
-            </div>
-        </div>
-<!-- Empty Cart UI End -->
-
         <div class="btn_right buttons-container">
           <button class="btn btn-default" (click)="onPickup()">Pickup</button>
           <button class="btn btn-default" (click)="onDelivery()">Delivery</button>
 
         </div>
-           <button id="openCartReviewModal" #openCartReviewModal [hidden]="true" data-toggle="modal" data-target="#gridSystemModal">Review Cart</button>
-           <app-cart-review [cartItems]="reviewItems"></app-cart-review>
+        <button id="openCartReviewModal" #openCartReviewModal [hidden]="true" data-toggle="modal" data-target="#gridSystemModal">Review
+          Cart</button>
+        <app-cart-review [cartItems]="reviewItems"></app-cart-review>
       </div>
     </div>
+    <ng-template #emptyCart>
+      <div class="empty-cart">
+        <div class="col-md-5">
+          <div class="icon-float">
+            <span class="notification-circle">0</span>
+            <span class="fa fa-shopping-cart cart-view-icon"></span>
+          </div>
+        </div>
+        <div class="col-md-6 col-md-offset-1">
+          <h3>No Items !</h3>
+          <p>You have not added any items. Add an item to place order.</p>
+          <button class="btn btn-default btn-botcaps" [routerLink]="['/']">Continue Shopping</button>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </section>

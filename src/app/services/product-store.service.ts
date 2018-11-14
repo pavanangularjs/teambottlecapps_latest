@@ -58,7 +58,8 @@ export class ProductStoreService {
             StoreId: this.customerSession.StoreId,
             SessionId: this.customerSession.SessionId,
             UserId: this.customerSession.UserId,
-            AppId: this.customerSession.AppId
+            AppId: this.customerSession.AppId,
+            IsFeatureProduct: 1
         };
     }
 
@@ -106,7 +107,7 @@ export class ProductStoreService {
             CountryId: countryId,
             RegionId: regionId,
             IsFavorite: isFavorite,
-            IsFeatured: isFeatured,
+            IsFeatureProduct: isFeatured,
             MaxPrice: maxPrice,
             MinPrice: minPrice,
             KeyWord: keyWord,
