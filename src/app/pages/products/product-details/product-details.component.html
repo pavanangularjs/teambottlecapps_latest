@@ -24,17 +24,35 @@
                     <h3>{{productDetails?.Product?.ProductName}}</h3>
                     <div>
                         <ul>
-                            <li>
-                                <a> {{productDetails?.Country}}
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            <li *ngIf="productDetails?.Category">
+                                <a> {{productDetails?.Category}}
                                 </a>
                             </li>
-                            <li>
-                                <a> {{productDetails?.Region}}
+                            <li *ngIf="productDetails?.Type">
+                                <a> 
                                     <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    {{productDetails?.Type}}
                                 </a>
                             </li>
-
+                            <li *ngIf="productDetails?.Varietal">
+                                <a> 
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    {{productDetails?.Varietal}}
+                                </a>
+                            </li>
+                            <li *ngIf="productDetails?.Region">
+                                <a> 
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    {{productDetails?.Region}}
+                                </a>
+                            </li>
+                            <li *ngIf="productDetails?.Country">
+                                <a> 
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    {{productDetails?.Country}}
+                                </a>
+                            </li>
+                        
                         </ul>
                     </div>
                     <div class="customers_review">
