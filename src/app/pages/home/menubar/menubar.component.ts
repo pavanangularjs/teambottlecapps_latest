@@ -66,6 +66,7 @@ export class MenubarComponent implements OnInit {
   showProducts(catId) {
     this.dataservice.searchByText = '';
     this.dataservice.categoryId = catId;
+    this.dataservice.getFiltersByCategory();
     this.router.navigate(['/advance-filter']);
   }
 }
