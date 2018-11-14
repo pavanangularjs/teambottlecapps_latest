@@ -28,7 +28,7 @@
 
       <div class="col-md-12">
         <ul>
-          <li class="IngredientText"> <span class="fa fa-dollar bottle-caps-red event-icon"></span> <span class="event-para">{{eventDetails?.EventPriceDisplay}}</span>
+          <li class="IngredientText"> <span class="fa fa-dollar bottle-caps-red event-icon"></span> <span class="event-para">{{eventDetails?.EventPrice !== 0 ? eventDetails?.EventPriceDisplay : "FREE"}}</span>
           </li>
           <li class="IngredientText"> <span class="fa fa-history bottle-caps-red event-icon"></span> <span class="event-para">{{eventDetails?.EventStartEndDateDisplay}}
               <br>{{eventDetails?.EventStartEndTimeDisplay}}</span>

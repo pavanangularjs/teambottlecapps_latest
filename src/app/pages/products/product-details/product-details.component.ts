@@ -7,6 +7,8 @@ import { ProductGetDetailsRequestPayload } from '../../../models/product-get-det
 import { ProductStoreService } from '../../../services/product-store.service';
 import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { CartService } from '../../../services/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-detail',
@@ -17,11 +19,14 @@ export class ProductDetailsComponent implements OnInit {
 
   productDetails: any;
   userReviews: any;
+  qty: number;
 
   constructor(private route: ActivatedRoute,
     private store: Store<ProductGetDetailsRequestPayload>,
     private productStoreService: ProductStoreService,
-    private spinnerService: Ng4LoadingSpinnerService) {
+    private spinnerService: Ng4LoadingSpinnerService,
+    private cartService: CartService,
+    private toastr: ToastrService) {
 
     this.store.select(ProductStoreSelectors.productGetDetailsData)
       .subscribe(pgdd => {
@@ -63,5 +68,16 @@ export class ProductDetailsComponent implements OnInit {
   }
   onRated(rating: number) {
     console.log(rating);
+  }
+
+  addToCart() {
+    if (this.productDetails && this.productDetails.Product &&
+      this.productDetails.Product.PID && this.qty) {
+      this.cartService.addToCard(this.productDetails.Product.PID, this.qty).subscribe(
+        (data: any) => {
+          this.toastr.success(data.SuccessMessage);
+        });
+    }
+
   }
 }
