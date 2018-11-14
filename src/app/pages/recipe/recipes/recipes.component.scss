@@ -76,3 +76,17 @@ text-decoration: none;
         width: 100%;
     }
 }
+
+@media screen and (min-width:1600px) and (max-width:2480px) {
+    
+    .thumbnail {
+        width: 100%;
+    }
+    .thumbnail a img {
+        max-width: 420px;
+        display: block;
+        margin: auto;
+        height: 300px;
+        width: 100%;
+    }
+}
