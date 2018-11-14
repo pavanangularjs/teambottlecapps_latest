@@ -40,7 +40,8 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled', onSameUrlNavigation: 'reload'}), HttpClientModule],
+  imports: [RouterModule.forRoot(routes, {useHash: true,
+    scrollPositionRestoration: 'enabled', onSameUrlNavigation: 'reload'}), HttpClientModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

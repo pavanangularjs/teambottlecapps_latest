@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./agelimit.component.scss']
 })
 export class AgelimitComponent implements OnInit {
-
+  sorryPopup = false;
   constructor() { }
 
   ngOnInit() {

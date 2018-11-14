@@ -1,50 +1,36 @@
 <div id="boxes">
 
-<!-- Home Page Popup For Age confirmation -->
+  <!-- Home Page Popup For Age confirmation -->
 
   <div id="dialog" class="window modal-content">
     <div class="modal-header">
-
       <img src='assets/Images/logo-popup.png' />
     </div>
     <div class="modal-body">
-      <p class="font">As a retailer of wine, spirits and beer. We require all shoppers to be atleast 21 years of age</p>
-      <h4 class="bold">Were you born before this date ?</h4>
-      <h2 class="popins_bold">January 12 | 1995</h2>
-      <div>
-        <button type="button" class="btn btn-default novalue">No</button>
-        <button type="button" class="btn btn-default close" style="float: none;" data-dismiss="modal">Yes</button>
+      <div *ngIf="!sorryPopup; else sorryDialogBody">
+          <p class="font">As a retailer of wine, spirits and beer. We require all shoppers to be atleast 21 years of age</p>
+          <h4 class="bold">Were you born before this date ?</h4>
+          <h2 class="popins_bold">January 12 | 1995</h2>
+          <div>
+            <button type="button" class="btn btn-default novalue" (click)="sorryPopup = true">No</button>
+            <button type="button" class="btn btn-default close" style="float: none;" data-dismiss="modal">Yes</button>
+          </div>
       </div>
+      <ng-template #sorryDialogBody>
+          <span class="fa fa-ban popicon-block"></span>
+          <h2 class="popins_bold">Sorry!</h2>
+      </ng-template>
+
     </div>
     <div class="modal-footer">
-      <p>You must be of legal drinking age to enter and use this site. To find out more about responsible consumption, visit
-        the Foundation for Advancing Alcohol Responsibility and www.responsibility.org </p>
+      <p *ngIf="!sorryPopup; else sorryDialogFooter">You must be of legal drinking age to enter and use this site. To find out more about responsible consumption,
+        visit the Foundation for Advancing Alcohol Responsibility and www.responsibility.org </p>
+        <ng-template #sorryDialogFooter>
+            <p>You must be 21 years of age or older to view this site. </p>
+            <div class="btncenter-block">
+              <button type="button" class="btn btn-default close">Leave Site!</button>
+            </div>
+        </ng-template>
     </div>
   </div>
-
-  <div id="mask"></div>
-
-
-<!-- Popup For Age Restricted -->
-
-<!--    <div id="dialog" class="window modal-content">
-    <div class="modal-header">
-
-      <img src='assets/Images/logo-popup.png' />
-    </div>
-    <div class="modal-body">
-      <span class="fa fa-ban popicon-block"></span>
-      <h2 class="popins_bold">Sorry!</h2>
-    </div>
-    <div class="modal-footer">
-      <p>You must be 21 years of age or older to view this site. </p>
-      <div class="btncenter-block">
-        <button type="button" class="btn btn-default close" data-dismiss="modal">Leave Site!</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="mask"></div> -->
-
 </div>
-
