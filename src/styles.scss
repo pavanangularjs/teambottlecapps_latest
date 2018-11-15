@@ -1209,12 +1209,19 @@ ul.navbar-nav li a:hover {
 ul li.star_color i.fa-star{
     color: #ec1c24;
 }
-.profile span.img_class img{
-    height: 85px;
+.profile span.img_class img {
+    height: 70px;
     width: 70px;
     border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    -moz-border-radius: 50%;
     float: left;
     margin-right: 30px;
+    border: solid 1px #ccc;
+    color: #222;
+    font-size: 24px;
+    text-align: center;
 }
 .border_bottom{
     border-bottom: 1px solid #d7d7d7;
@@ -1424,4 +1431,9 @@ ul.float_right span a {
 
 ul.float_right span a .fa{
     color: #f8c848 !important;
+}
+
+nav ul.user-menu li {
+    background-color: transparent;
+    border: 1px solid transparent;
 }

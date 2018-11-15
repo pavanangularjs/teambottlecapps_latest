@@ -231,3 +231,18 @@ h4.left-panel-title a.bottles-brand {
     transform: rotate(45deg);
   }
 }
+
+.profile span.img_class img {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    -moz-border-radius: 50%;
+    float: left;
+    margin-right: 30px;
+    border: solid 1px #ccc;
+    color: #222;
+    font-size: 24px;
+    text-align: center;
+}

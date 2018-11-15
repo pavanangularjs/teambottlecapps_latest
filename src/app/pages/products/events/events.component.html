@@ -9,7 +9,36 @@
           </ol>
       </div>
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="row">
+              <div class="event-tiles" *ngFor="let eventDetails of storeGetHomeData?.EventList">
+                    <div class="details_img col-md-8 col-sm-8 col-lg-8 col-xs-12 animated fadeInLeft">
+                      <img src='{{eventDetails?.EventImage}}' class="img-responsive" />
+                    </div>
 
+                    <div class="details_content col-md-4 col-sm-4 col-lg-4 col-xs-12 animated fadeInRight">
+                      <div>
+                        <div class="event-details-section">
+                          <div class="bottle-caps-red event-details-date text-center">
+                            <div class="date-style">{{eventDetails?.EventDateDisplayFirst}}</div>
+                            <br><strong>{{eventDetails?.EventDateDisplaySecond}}</strong>
+                          </div>
+                          <h6 class="event-details-heading">{{eventDetails?.EventName}}</h6>
+                        </div>
+                        <hr>
+                      </div>
+
+                      <div class="col-md-12">
+                        <ul>
+                          <li class="IngredientText"> <span class="fa fa-dollar bottle-caps-red event-icon"></span> <span class="event-para">{{eventDetails?.EventPrice !== 0 ? eventDetails?.EventPriceDisplay : "FREE"}}</span>
+                          </li>
+                          <li class="IngredientText"> <span class="fa fa-history bottle-caps-red event-icon"></span> <span class="event-para">{{eventDetails?.EventStartDt}} &nbsp; {{eventDetails?.EventStartTime}}
+                            <br>{{eventDetails?.EventEndDt}} &nbsp; {{eventDetails?.EventEndTime}}</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+              </div>
+          </div>
       </div>
     </div>
   </div>
