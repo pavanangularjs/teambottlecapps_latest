@@ -15,7 +15,7 @@
                                 <img class="location" src="assets/Images/location.png">
                               </div>
                               <div class="address-captions">
-                                <a href="" target="_blank">
+                                <a href="https://www.google.com/maps/place/{{storeGetHomeData?.Latitude}},{{storeGetHomeData?.Longitude}}" target="_blank">
                                   {{storeGetHomeData?.Address1}}
                                   <span *ngIf="storeGetHomeData?.Address2"> {{storeGetHomeData?.Address2}}</span>
                                   <span> {{storeGetHomeData?.City}}, {{storeGetHomeData?.State}} </span>
