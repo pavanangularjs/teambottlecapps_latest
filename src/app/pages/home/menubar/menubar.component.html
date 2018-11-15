@@ -3,12 +3,12 @@
     <div class="collapse mid-nav" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar navbar-nav">
 	    <li class="nav-item" *ngFor="let item of menuItems" >
-			<a class="nav-link" [routerLink]="item.url" [ngClass]="{'active' : activeMenu === item.name}" (click)="setActive(item.name)">{{item.name}}</a>
+			<a class="nav-link" [routerLink]="item.url" [ngClass]="{'active' : activeURL === item.url}">{{item.name}}</a>
 		</li>
         <li class="nav-item dropdown dropdown_menu droparrow" *ngFor="let fitem of filterMenuItems">
             <span class="arrowup"></span>
             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-               [ngClass]="{'active' : activeMenu === fitem.CategoryName}" aria-expanded="false" (click)="showProducts(fitem.CategoryId, fitem.CategoryName)">
+               [ngClass]="{'active' : (activeMenu === fitem.CategoryName && activeURL === '/advance-filter')}" aria-expanded="false" (click)="showProducts(fitem.CategoryId, fitem.CategoryName)">
                 {{fitem.CategoryName}}
             </a>
             <ul class="dropdown-menu">
@@ -18,13 +18,13 @@
             </ul>
         </li>
         <li *ngIf="receipeMenuItem" class="nav-item">
-            <a class="nav-link" [ngClass]="{'active' : activeMenu === receipeMenuItem.name}" (click)="setActive(receipeMenuItem.name)" [routerLink]="receipeMenuItem.url">{{receipeMenuItem.name}}</a>
+            <a class="nav-link" [ngClass]="{'active' : activeURL === receipeMenuItem.url}" [routerLink]="receipeMenuItem.url">{{receipeMenuItem.name}}</a>
         </li>
         <li *ngIf="couponMenuItem" class="nav-item">
-            <a class="nav-link" [ngClass]="{'active' : activeMenu === couponMenuItem.name}" (click)="setActive(couponMenuItem.name)"  [routerLink]="couponMenuItem.url">{{couponMenuItem.name}}</a>
+            <a class="nav-link" [ngClass]="{'active' : activeURL === couponMenuItem.url}" [routerLink]="couponMenuItem.url">{{couponMenuItem.name}}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" [ngClass]="{'active' : activeMenu === eventsMenuItem.name}" (click)="setActive(eventsMenuItem.name)" [routerLink]="eventsMenuItem.url">{{eventsMenuItem.name}}</a>
+            <a class="nav-link" [ngClass]="{'active' : activeURL === eventsMenuItem.url}" [routerLink]="eventsMenuItem.url">{{eventsMenuItem.name}}</a>
         </li>
       </ul>
       <app-search-bar></app-search-bar>

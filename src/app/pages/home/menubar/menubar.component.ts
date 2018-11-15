@@ -12,6 +12,7 @@ import * as menuOptions from '../../../shared/store-filters.json';
 })
 export class MenubarComponent implements OnInit {
   storeGetHomeData: any;
+  activeURL: string;
   activeMenu: string;
   menuItems = [
     { name: 'Featured Products', url: '/feature-products' }
@@ -32,6 +33,10 @@ export class MenubarComponent implements OnInit {
           this.eventsList = pssd.EventList;
         }
       });
+
+      this.router.events.subscribe((val) => {
+        this.activeURL = this.router.url;
+     });
   }
 
   ngOnInit() {
@@ -66,10 +71,6 @@ export class MenubarComponent implements OnInit {
     this.dataservice.categoryId = catId;
     this.dataservice.getFiltersByCategory();
     this.router.navigate(['/advance-filter']);
-  }
-
-  setActive(menuName) {
-    this.activeMenu = menuName;
   }
 }
 
