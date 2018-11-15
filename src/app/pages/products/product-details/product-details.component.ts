@@ -125,7 +125,9 @@ export class ProductDetailsComponent implements OnInit {
 
   getVarietalId(varietalName: string) {
     if (this.allFilters && this.allFilters.type) {
-      const varietal = this.allFilters.type.filter(item => item.value === varietalName)[0];
+      const varietal = this.allFilters.type.reduce((acc, item) => [...acc, ...item.varietals], [])
+      .filter(varietalItem => varietalItem.value === varietalName)[0];
+      // const varietal = this.allFilters.type.filter(item => item.value === varietalName)[0];
       if (varietal) {
         return varietal.id;
       }

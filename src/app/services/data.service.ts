@@ -34,9 +34,21 @@ export class DataService {
 
         if (!filters && !filters.ListType) {
             allFilters.type = [];
-        }
+        }/*
         filters.ListType.forEach(element => {
             allFilters.type.push({ id: element.TypeId, value: element.TypeName, isSelected: false });
+        });*/
+
+        filters.ListType.forEach(type => {
+            let listOfVarietals: Item[] = [];
+
+            if (!type.ListVarietal) {
+                listOfVarietals = [];
+            }
+            type.ListVarietal.forEach(element => {
+                listOfVarietals.push({ id: element.VarietalId, value: element.VarietalName, isSelected: false });
+            });
+            allFilters.type.push({ id: type.TypeId, value: type.TypeName, isSelected: false, varietals: listOfVarietals });
         });
 
         if (!filters && !filters.ListSize) {

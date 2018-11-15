@@ -3,6 +3,7 @@ import { DataService } from '../../../services/data.service';
 import { ProductFilters } from '../../../models/product-filters';
 import { Item } from '../../../models/item';
 import { Country } from '../../../models/country';
+import { ProductType } from '../../../models/product-type';
 import { Store } from '@ngrx/store';
 
 import { ProductGetListRequestPayload } from '../../../models/product-get-list-request-payload';
@@ -20,12 +21,14 @@ import { Router, NavigationEnd } from '@angular/router';
 export class AdvanceFilterComponent implements OnInit, OnDestroy {
   allFilterOptions: ProductFilters;
   selectedFilters: Item[] = [];
-  selectedTypes: Item[] = [];
+  selectedTypes: ProductType[] = [];
   selectedSizes: Item[] = [];
   selectedPrices: Item[] = [];
   selectedCountries: Country[] = [];
   allRegions: Item[] = [];
   selectedRegions: Item[] = [];
+  allVarietals: Item[] = [];
+  selectedVarietals: Item[] = [];
   productsList: any;
   PageSize = [15, 30, 45, 60, 75, 90];
   SortBy = ['Price', 'Size', 'Type', 'Country', 'Region'];
