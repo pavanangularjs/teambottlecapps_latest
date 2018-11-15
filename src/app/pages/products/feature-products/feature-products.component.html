@@ -5,7 +5,7 @@
         <h4>Featured Products</h4>
       </div>
       <div class="button_feature col-lg-7 col-md-7 col-sm-7 col-xs-12">
-        <button class="btn btn-default" (click)="onCategoryChange()" *ngIf="storeGetHomeData?.StoreFilters">All</button>
+        <button class="btn btn-default active" (click)="onCategoryChange()" *ngIf="storeGetHomeData?.StoreFilters">All</button>
         <button class="btn btn-default" (click)="onCategoryChange(fitem.CategoryId)" *ngFor="let fitem of storeGetHomeData?.StoreFilters">{{fitem.CategoryName}}</button>
       </div>
     </div>

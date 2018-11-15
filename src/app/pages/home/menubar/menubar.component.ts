@@ -23,6 +23,7 @@ export class MenubarComponent implements OnInit {
   filterMenuItems: any;
   receipeMenuItem: any;
   couponMenuItem: any;
+  eventsMenuItem: any;
   eventsList: any;
 
   constructor(private store: Store<any>, private router: Router, public dataservice: DataService) {
@@ -61,6 +62,8 @@ export class MenubarComponent implements OnInit {
         this.couponMenuItem = { name: 'Coupons', url: '/coupons' };
       }
     }
+
+    this.eventsMenuItem = { name: 'Events', url: '/events' };
   }
 
   showProducts(catId) {

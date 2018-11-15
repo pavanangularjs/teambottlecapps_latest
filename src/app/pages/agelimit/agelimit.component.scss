@@ -86,8 +86,20 @@
     letter-spacing: normal;
     text-align: center;
     color: #ec1c24;
-    padding-bottom: 34px;
+    padding-bottom: 30px;
   }
+
+  .modal-body h2.popins_bold-2{
+    font-family: poppinsbold;
+    font-size: 48px;
+    font-stretch: normal;
+    line-height: 0.38;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ec1c24;
+    padding-bottom: 0px;
+  }
+
   .modal-body button.novalue{
       background: #d7d7d7 !important;
       color:#fff;
@@ -127,7 +139,7 @@
   /* - - - - - - - - icon block - - - - - - - - - */
 
   .popicon-block {
-    font-size: 11em;
+    font-size: 10em;
     color: #fff;
   }
 

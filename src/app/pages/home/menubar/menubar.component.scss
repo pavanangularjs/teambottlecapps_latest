@@ -18,5 +18,8 @@ nav.lu-menu {
   ul.nav.navbar.navbar-nav {
     position: absolute;
     left: 130px;
+      a:hover, a.active {
+          color: #ec1c24 !important;
+        }
   }
 }

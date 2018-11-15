@@ -3,6 +3,9 @@
     <div class="img_div">
 
       <div class="margin_bottom">
+        <div class="sale-tag" *ngIf="item?.OfferType === 'SALE'">
+            <img [src]="item?.OfferIcon" class="img-responsive">
+        </div>
         <img class="firimg" (click)="favoriteProductUpdate(true)" src="assets/Images/favorites.png" *ngIf="item?.IsFavorite===false; else favActive"/>
         <ng-template #favActive>
             <img class="firimg" (click)="favoriteProductUpdate(false)" src="assets/Images/favorites-active.png">

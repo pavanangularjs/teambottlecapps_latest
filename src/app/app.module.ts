@@ -61,6 +61,7 @@ import { CartReviewComponent } from './pages/cart-review/cart-review.component';
 import { CouponsComponent } from './pages/coupons/coupons.component';
 import { AuthService } from './auth.service';
 import { CheckoutPickupComponent } from './pages/checkout/checkout-pickup/checkout-pickup.component';
+import { EventsComponent } from './pages/products/events/events.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -110,7 +111,8 @@ export function getAuthServiceConfigs() {
     OrderComponent,
     CartReviewComponent,
     CouponsComponent,
-    CheckoutPickupComponent
+    CheckoutPickupComponent,
+    EventsComponent
   ],
   imports: [
     BrowserModule,

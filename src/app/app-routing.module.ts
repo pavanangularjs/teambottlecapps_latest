@@ -16,6 +16,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CouponsComponent } from './pages/coupons/coupons.component';
 import { FeatureProductsComponent } from './pages/products/feature-products/feature-products.component';
+import { EventsComponent } from './pages/products/events/events.component';
 
 import { AuthGuard } from './auth.guard';
 
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
   { path: 'coupons', component: CouponsComponent },
+  { path: 'events', component: EventsComponent, runGuardsAndResolvers: 'always' },
   { path: '**', component: HomepageComponent },
 ];
 

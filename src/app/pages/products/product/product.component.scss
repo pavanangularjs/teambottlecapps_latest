@@ -14,3 +14,13 @@
     padding-right: 35px;
    
 }
+
+.sale-tag {
+    position: relative;
+    img {
+        position: absolute;
+        right: 0px;
+        top: -5px;
+        border-top-right-radius: 5px;
+    }
+}
