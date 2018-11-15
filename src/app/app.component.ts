@@ -10,6 +10,8 @@ export class AppComponent implements OnInit {
   title = 'TeamBottlecApps';
   template = `<img src='/assets/Images/loading_icon.gif' />`;
   ngOnInit() {
-    this.openModal.nativeElement.click();
+    if (localStorage.getItem('isAgeVerified') !== 'true') {
+      this.openModal.nativeElement.click();
+    }
   }
 }

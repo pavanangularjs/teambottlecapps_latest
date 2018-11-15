@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Title } from '@angular/platform-browser';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { CustomerLoginSession } from '../../../models/customer-login-session';
 import { CustomerLogin } from '../../../state/customer/customer.action';
@@ -18,8 +19,11 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 export class HomepageComponent implements OnInit {
   customerSession: CustomerLoginSession;
   storeGetHomeData: any;
+  returnUrl: string;
 
-  constructor(private store: Store<CustomerLoginSession>,
+  constructor(private route: ActivatedRoute,
+    private router: Router,
+    private store: Store<CustomerLoginSession>,
     private customerService: CustomerService,
     private cartService: CartService,
     private spinnerService: Ng4LoadingSpinnerService,
@@ -34,11 +38,15 @@ export class HomepageComponent implements OnInit {
           this.storeGetHomeData = pssd;
           this.titleService.setTitle(this.storeGetHomeData.StoreName);
           this.updateCartId();
+          if (this.returnUrl !== '/') {
+            this.router.navigate([this.returnUrl]);
+          }
         }
       });
   }
 
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     if (!(this.customerSession && this.customerSession.SessionId)) {
       // this.spinnerService.show();
       this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams()));

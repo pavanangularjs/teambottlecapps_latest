@@ -27,7 +27,7 @@ export class GeneralGuard implements CanActivate {
         if ((this.customerSession && this.customerSession.SessionId)) {
             return true;
         }
-        this.route.navigate(['/']);
+        this.route.navigate(['/home'], { queryParams: { returnUrl: state.url } });
         return false;
     }
 }

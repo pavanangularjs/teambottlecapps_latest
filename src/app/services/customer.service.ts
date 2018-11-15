@@ -22,9 +22,13 @@ export class CustomerService {
   customerAddressList: any;
   customerPaymentMethodGetList: any;
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+  deviceID = '';
   constructor(private http: HttpClient,
     private authService: AuthService,
     private errorHandler: ErrorHandlerService) {
+      if (this.deviceID === '') {
+        this.deviceID = Math.random().toString(36).substring(2);
+      }
   }
 
   loginCustomer(reqParams: CustomerLoginRequestPayload): Observable<any> {
@@ -46,8 +50,8 @@ export class CustomerService {
     return {
       AppId: 10060, // 10275,
       AppVersion: '8.5',
-      DeviceId: 'W',
-      DeviceType: 'W',
+      DeviceId: this.deviceID,
+      DeviceType: this.deviceID,
       EmailId: email || '',
       LoginType: loginType || 'B',
       Password: pwd || '',
