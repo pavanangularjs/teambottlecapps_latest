@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { AuthService, FacebookLoginProvider } from 'angularx-social-login';
 
@@ -20,8 +20,9 @@ export class SigninComponent implements OnInit {
   formSignIn: FormGroup;
   customerSession: CustomerLoginSession;
   submitted = false;
+  returnUrl: string;
 
-  constructor(private router: Router, private store: Store<CustomerLoginSession>,
+  constructor(private route: ActivatedRoute, private router: Router, private store: Store<CustomerLoginSession>,
     private customerService: CustomerService,
     private spinnerService: Ng4LoadingSpinnerService,
     private socialAuthService: AuthService,
@@ -33,13 +34,15 @@ export class SigninComponent implements OnInit {
           this.customerSession = clsd;
           this.spinnerService.hide();
           if (this.customerSession.IsAccess === true && this.customerSession.UserId !== 0) {
-            this.router.navigate(['/']);
+            // this.router.navigateByUrl(this.returnUrl);
+            this.router.navigate([this.returnUrl]);
           }
         }
       });
   }
 
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     this.formSignIn = this.formBuilder.group({
       eemail: ['', [Validators.required, Validators.email]],
       epassword: ['', Validators.required]

@@ -19,24 +19,25 @@ import { FeatureProductsComponent } from './pages/products/feature-products/feat
 import { EventsComponent } from './pages/products/events/events.component';
 
 import { AuthGuard } from './auth.guard';
+import { GeneralGuard } from './general.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomepageComponent, runGuardsAndResolvers: 'always' },
   { path: 'about', component: AboutusComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'feature-products', component: FeatureProductsComponent},
-  { path: 'recipes', component: RecipesComponent},
-  { path: 'recipe-details/:id', component: RecipeDetailsComponent },
-  { path: 'product-details/:id', component: ProductDetailsComponent },
-  { path: 'event-details/:id', component: EventDetailsComponent, runGuardsAndResolvers: 'always' },
+  { path: 'feature-products', component: FeatureProductsComponent, canActivate: [GeneralGuard]},
+  { path: 'recipes', component: RecipesComponent, canActivate: [GeneralGuard]},
+  { path: 'recipe-details/:id', component: RecipeDetailsComponent, canActivate: [GeneralGuard] },
+  { path: 'product-details/:id', component: ProductDetailsComponent, canActivate: [GeneralGuard] },
+  { path: 'event-details/:id', component: EventDetailsComponent, runGuardsAndResolvers: 'always', canActivate: [GeneralGuard] },
   { path: 'myaccount', loadChildren: './pages/myaccount/myaccount.module#MyAccountModule', canActivate: [AuthGuard] },
   { path: 'myorders', component: MyOrdersComponent, canActivate: [AuthGuard]},
   { path: 'advance-filter', component: AdvanceFilterComponent, runGuardsAndResolvers: 'always' },
-  { path: 'cart', component: CartComponent },
+  { path: 'cart', component: CartComponent, canActivate: [GeneralGuard] },
   { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
-  { path: 'coupons', component: CouponsComponent },
-  { path: 'events', component: EventsComponent, runGuardsAndResolvers: 'always' },
+  { path: 'coupons', component: CouponsComponent, canActivate: [GeneralGuard] },
+  { path: 'events', component: EventsComponent, runGuardsAndResolvers: 'always', canActivate: [GeneralGuard] },
   { path: '**', component: HomepageComponent },
 ];
 

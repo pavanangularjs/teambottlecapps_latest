@@ -29,9 +29,8 @@ export class CheckoutProductsComponent implements OnInit {
     this.cartService.placeOrder(this.cartDetails).subscribe(
       (data: any) => {
         this.cartDetails = data;
+        this.router.navigate(['/myorders']);
       });
-
-    this.router.navigate(['/myorders']);
   }
 
   onTipSelected(event: any, tip: any) {
