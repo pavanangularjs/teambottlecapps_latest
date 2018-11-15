@@ -29,30 +29,30 @@
                                 </a>
                             </li>
                             <li *ngIf="productDetails?.Type">
-                                <a> 
+                                <a>
                                     <i class="fa fa-angle-right" aria-hidden="true"></i>
                                     {{productDetails?.Type}}
                                 </a>
                             </li>
                             <li *ngIf="productDetails?.Varietal">
-                                <a> 
+                                <a>
                                     <i class="fa fa-angle-right" aria-hidden="true"></i>
                                     {{productDetails?.Varietal}}
                                 </a>
                             </li>
                             <li *ngIf="productDetails?.Region">
-                                <a> 
+                                <a>
                                     <i class="fa fa-angle-right" aria-hidden="true"></i>
                                     {{productDetails?.Region}}
                                 </a>
                             </li>
                             <li *ngIf="productDetails?.Country">
-                                <a> 
+                                <a>
                                     <i class="fa fa-angle-right" aria-hidden="true"></i>
                                     {{productDetails?.Country}}
                                 </a>
                             </li>
-                        
+
                         </ul>
                     </div>
                     <div class="customers_review">
@@ -61,14 +61,15 @@
                             <li>
                                 <app-rating [rate]='0' [edit]='true' (rated)="onRated($event)"></app-rating>
                                 <small class="review-caption">({{productDetails?.ReviewTotalCount}}
-                                Customer reviews)</small>
+                                    Customer reviews)</small>
                             </li>
 
                         </ul>
                     </div>
                     <div class="padding_bottom">
                         <span class="size_bottle">{{productDetails?.Product?.Size}}</span>
-                        <span class="float_right">SKU: {{productDetails?.Product?.SKU}} | UPC: {{productDetails?.Product?.UPC}}</span>
+                        <span class="float_right">SKU: {{productDetails?.Product?.SKU}} | UPC:
+                            {{productDetails?.Product?.UPC}}</span>
                     </div>
                     <p class="font_size">
                         {{productDetails?.ProductDescription}}
@@ -122,7 +123,7 @@
                     </div>
 
                     <div class="col-md-2 col-sm-2 col-lg-2 col-xs-12">
-                        <h4 class="view_more"><span> View More
+                        <h4 class="view_more" (click)="getProductList()"><span> View More
                                 <span class="arrow_right">
                                     <img src="../../../../assets/Images/viewmore.png">
                                 </span>
@@ -132,51 +133,9 @@
                 </div>
             </ng-container>
             <div class="Main_bottlesection">
-
-
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img">
-                    <div class="img_div">
-
-
-
-                        <div class="margin_bottom">
-                            <!-- <img class="firimg" (click)="favoriteadd(product.PID)" src="assets/Images/assets/favorites.png" /> -->
-                            <ng-container>
-                                <img class="firimg" src="../../../../assets/Images/favorites.png" />
-                            </ng-container>
-
-                            <img class="second_img" src='../../../../assets/Images/bottele.jpg' />
-                            <!-- <img class="third_img" (click)="addtocart(product.PID)" src="assets/Images/assets/add-cart.png" /> -->
-
-                            <ng-container>
-                                <img class="third_img" src="../../../../assets/Images/add-cart.png" />
-                            </ng-container>
-
-
-                        </div>
-                        <div class="second_content">
-                            <div class="">
-
-                                <ng-container>
-                                    <h5>
-                                        <p class="strike_text">$11.23</p>
-                                        <p class="price">$9.99</p>
-                                    </h5>
-                                </ng-container>
-                                <h5>Liqour-rooftop</h5>
-                                <!-- <p> {{product.Size}}</p> -->
-                                <p class="rating_star">
-                                    <app-rating [rate]='productDetails?.Product?.Rating'></app-rating>
-                                    <!-- [ngClass]="{'checked':star+0.5 <= product.Rating, 'fa-star-half-o':star+0.5 == product.Rating}"-->
-                                    <span class="first">4 reviews</span>
-                                    <span class="reviews"> </span>
-                                </p>
-
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" *ngFor="let product of productsList">
+                    <app-product [item]="product"></app-product>
                 </div>
-
             </div>
         </div>
     </div>
@@ -187,13 +146,13 @@
         <div class="total_border write-review">
             <h4 class="review_title">Reviews</h4>
             <p *ngIf="userReviews?.length === 0" class="no-reviews">There are no customer reviews yet.</p>
-            
+
             <div>
                 <app-product-review [review]="review" *ngFor="let review of userReviews"></app-product-review>
             </div>
             <div>
                 <app-product-add-review [productId]="productDetails?.Product?.PID" (addReview)="onAddReview()"></app-product-add-review>
-            </div>            
+            </div>
         </div>
     </div>
 </section>
