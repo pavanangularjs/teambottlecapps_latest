@@ -20,6 +20,7 @@ export class FeatureProductsComponent implements OnInit {
   isFeatureProductsPage = false;
   isPrevious = false;
   isNext = false;
+  currentCategoryId = '0';
 
   constructor(private store: Store<ProductGetListRequestPayload>,
     private productStoreService: ProductStoreService,
@@ -69,6 +70,7 @@ export class FeatureProductsComponent implements OnInit {
   } */
 
   onCategoryChange(catId = '1,2,3,4') {
+    this.currentCategoryId = catId;
     this.spinnerService.show();
     this.store.dispatch(new ProductGetList(
       this.productStoreService.getProductGetListParams({ categoryId: catId, pageSize: 12, isFeatured: 1})));

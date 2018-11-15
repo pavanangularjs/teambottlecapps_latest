@@ -3,9 +3,8 @@ import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
 import { DataService } from '../../../services/data.service';
-
-// const menuOptions = require('../../../shared/store-filters.json');
 import * as menuOptions from '../../../shared/store-filters.json';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menubar.component.html',
@@ -13,10 +12,8 @@ import * as menuOptions from '../../../shared/store-filters.json';
 })
 export class MenubarComponent implements OnInit {
   storeGetHomeData: any;
-
+  activeMenu: string;
   menuItems = [
-    /* { name: 'Home', url: '/' },
-    { name: 'About', url: '/about' }, */
     { name: 'Featured Products', url: '/feature-products' }
   ];
 
@@ -35,18 +32,15 @@ export class MenubarComponent implements OnInit {
           this.eventsList = pssd.EventList;
         }
       });
-   }
+  }
 
-   ngOnInit() {
+  ngOnInit() {
     this.updateMenuItems();
-   }
+  }
 
   updateMenuItems() {
 
     if (menuOptions && menuOptions['StoreFilters']) {
-      /*menuOptions.StoreFilters.forEach(element => {
-        this.filterMenuItems.push({ name: element.CategoryName });
-      });*/
       this.filterMenuItems = menuOptions['StoreFilters'];
     }
 
@@ -66,11 +60,16 @@ export class MenubarComponent implements OnInit {
     this.eventsMenuItem = { name: 'Events', url: '/events' };
   }
 
-  showProducts(catId) {
+  showProducts(catId, catName) {
+    this.activeMenu = catName;
     this.dataservice.searchByText = '';
     this.dataservice.categoryId = catId;
     this.dataservice.getFiltersByCategory();
     this.router.navigate(['/advance-filter']);
+  }
+
+  setActive(menuName) {
+    this.activeMenu = menuName;
   }
 }
 
