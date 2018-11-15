@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 import { CustomerLoginSession } from '../../../models/customer-login-session';
 import { CustomerLogin } from '../../../state/customer/customer.action';
@@ -22,16 +22,19 @@ export class HomepageComponent implements OnInit {
   constructor(private store: Store<CustomerLoginSession>,
     private customerService: CustomerService,
     private cartService: CartService,
-    private spinnerService: Ng4LoadingSpinnerService) {
+    private spinnerService: Ng4LoadingSpinnerService,
+    private titleService: Title) {
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         this.customerSession = clsd;
       });
     this.store.select(ProductStoreSelectors.productStoreStateData)
       .subscribe(pssd => {
-        this.storeGetHomeData = pssd;
-        this.updateCartId();
-        // this.spinnerService.hide();
+        if (pssd) {
+          this.storeGetHomeData = pssd;
+          this.titleService.setTitle(this.storeGetHomeData.StoreName);
+          this.updateCartId();
+        }
       });
   }
 

@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title  } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -128,7 +128,7 @@ export function getAuthServiceConfigs() {
     Ng4LoadingSpinnerModule.forRoot(),
     SocialLoginModule
   ],
-  providers: [CustomerService, ProductStoreService, DataService, DecimalPipe, AuthService,
+  providers: [CustomerService, ProductStoreService, DataService, DecimalPipe, AuthService, Title,
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
