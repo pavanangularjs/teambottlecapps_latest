@@ -24,6 +24,7 @@ export class CartComponent implements OnInit {
     private toastr: ToastrService) { }
 
   ngOnInit() {
+    this.spinnerService.show();
     this.getCartDetails();
   }
 
@@ -32,6 +33,7 @@ export class CartComponent implements OnInit {
       (data: any) => {
         this.cartDetails = data;
         this.doStockAvailabilityCheck();
+        this.spinnerService.hide();
       });
   }
 

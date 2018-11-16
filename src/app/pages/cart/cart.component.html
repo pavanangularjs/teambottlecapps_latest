@@ -32,7 +32,7 @@
   </div>
 </div>
 
-<section>
+<section *ngIf="this.cartDetails">
   <div class="container">
     <div class="row" *ngIf="cartDetails?.ListCartItem && cartDetails?.ListCartItem?.length > 0; else emptyCart">
       <div id="no-more-tables" class="col-md-12 col-sm-12 col-lg-12 col-xs-12 slideInUP wow delay-05s  animated">
