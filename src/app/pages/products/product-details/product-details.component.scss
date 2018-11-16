@@ -97,7 +97,7 @@ customers_review ul.float_right li a{
     text-align: left;
     color: #777777;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 12px;
 }
 .padding_bottom span.float_right{
     font-family: poppinsbold !important;
@@ -148,9 +148,10 @@ button.dec_circle,button.dec_circle:focus{
     outline: none;
 }
 .sizelabel{
-font-size: 18px;
+font-size: 12px;
 font-weight: normal;
 font-family: montserratregular;
+text-transform: uppercase;
 }
 .selectsize {
     border: 1px solid transparent;
@@ -159,7 +160,7 @@ font-family: montserratregular;
     margin: 0px;
     margin-left: 0px;
     /*min-width: 265px;*/
-    width: 60px;
+    width: 95px;
     border-radius: 0px !important;
     outline: none;
     background: transparent;
@@ -173,7 +174,9 @@ font-family: montserratregular;
     display: block;
     color: #999;
     font-weight: normal;
-    width: 70px;
+    width: 120px;
+    padding: 5px 10px;
+    float: left;
 }
 
 .size .sizelabel {
@@ -185,7 +188,7 @@ font-family: montserratregular;
 }
 button.addtocart{
     background-color: #A61455;
-    padding: 10px 35px;
+    padding: 15px 35px;
     font-family: montserratbold !important;
     font-size: 11.2px;
     font-weight: bold;

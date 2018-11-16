@@ -82,13 +82,16 @@
                         <div class="margin_top col-md-6 col-sm-6 col-lg-6 col-xs-6">
                             <div class="row">
                                 <div class="col-md-12"><label class="sizelabel">Qty</label></div>
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="select-bg">
                                         <select class="selectsize" [(ngModel)]="qty">
-                                            <option disabled>Please select</option>
+                                            <!-- <option disabled>Please select</option> -->
                                             <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10] ">{{i}}</option>
                                         </select>
                                     </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn btn-default addtocart" (click)="addToCart()">Add to Cart</button>
                                 </div>
                             </div>
                             <!-- <button  class="dec_circle">
@@ -102,7 +105,7 @@
                     </div>
                 </div>
 
-                <button class="btn btn-default addtocart" (click)="addToCart()">Add to Cart</button>
+                
 
             </div>
 

@@ -334,16 +334,19 @@ select.select-quant {
 }
 /*Emty Cart UI*/
 .empty-cart {
+    min-height: 768px;
     padding: 15px;
     display: flex;
     h3 {
-        font-family: poppinsbold;
+        font-family: poppinsregular;
         font-size: 20px;
         color: #222;
         margin-bottom: 15px;
     }
     p {
-        font-size: 16px;
+        font-size: 14px;
+        font-family: poppinsregular;
+        color: rgba(51, 51, 51, 0.5);
     }
     button.btn-botcaps {
         padding: 10px 25px;
@@ -353,6 +356,7 @@ select.select-quant {
         font-weight: bold;
         float: right;
         margin: 35px 0px 0px 0px;
+        min-width: 290px;
     }
     .icon-float {
         span.notification-circle {
