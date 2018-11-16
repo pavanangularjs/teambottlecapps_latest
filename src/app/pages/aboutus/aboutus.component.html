@@ -1,12 +1,17 @@
 <div class="container">
   <div class="Searchrelated_div col-md-12 col-sm-12 col-lg-12 col-xs-12">
-    <h4>About</h4>
+    <h4>About Us</h4>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a>Home</a></li>
-      <li class="breadcrumb-item active"><a>About</a></li>
+      <li class="breadcrumb-item active"><a>About Us</a></li>
     </ol>
   </div>
 
+  <div id="myCarousel">
+      <img [src]="storeDetails?.StoreLargeImage" alt="">
+  </div>
+
+  <!-- 
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -15,9 +20,8 @@
       <li data-target="#myCarousel" data-slide-to="3"></li>
     </ol>
 
-    <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
-
+      <img src="assets/Images/cover.png" alt="Chania">
       <div class="item active">
         <img src="assets/Images/cover.png" alt="Chania">
       </div>
@@ -34,51 +38,55 @@
         <img src="assets/Images/cover.png" alt="Flower">
       </div>
     </div>
-  </div>
+  </div>-->
 
   <p class="font_size">
-    We've served and worked in different domains both within and outside of
-    the liquor industry. Our team brings together their expertise to provide
-    the most functional and cutting-edge technology to our business partners.
-    Our solutions empower our partners to remain focused on what they do best and let us take care of keeping them
-    ahead of the technology curve.
+      Thank you for supporting our family-owned, Colorado business!
+      Run by a father daughter team, Lukas Liquor Superstore is the largest liquor and wine store in Lone Tree. We've been in business since 1997 and we remain committed to our founding principles: honesty, fair prices and exceptional customer service.
+      <br><br>
+      Our long term relationships with local and world renowned distilleries, vineyards and breweries, allow us first pick of special and unique products at exclusive discounts. We happily pass these savings onto our customers. It's a win for everyone.
+      <br><br>
+      Stop in today. We look forward to sharing our exciting range of wine, spirits and beer with you.
+      Charity & Community
+      We are actively engaged members of the community where we live and work, and proudly support many local charities and non-profit organizations, including: 
+      <br><br>
+      Children's Hospital 
+      <br><br>
+      Craig Hospital 
+      <br><br>
+      Inner City Health Center 
+      <br><br>
+      Jessie's Heart Foundation 
+      <br><br>
+      Men For The Cure 
+      <br><br>
+      Scleroderma Foundation 
+      <br><br>
+      Spina Bifida Association 
+      <br><br>
+      The Leukemia & Lymphoma Society
   </p>
-  <p class="font_size">
-    Our professional teams consist of both business and technology
-    experts. We have been working closely over the years with business
-    owners in various industries to understand their quest to serve their
-    customers better, know more about their customers, and meet their growing demands and expectations.
-  </p>
+
   <div class="information">
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-      <h4 class="">information</h4>
-      <address class="font_family_Montserrat-SemiBold">
-        <h5>Address</h5>
-        <h5>loresipsmloresipsmloresipsm</h5>
-        <h5>Get Direction</h5>
-      </address>
     </div>
 
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img font_family_Montserrat-SemiBold">
       <h5>Pickup Hours</h5>
-      <h5>Monday 8:00 AM - 5:00 PM</h5>
-      <h5>Tuesday 8:00 AM - 5:00 PM</h5>
-      <h5>Wednesday 8:00 AM - 5:00 PM</h5>
-      <h5>Thursday 8:00 AM - 5:00 PM</h5>
-      <h5>Friday 4:00 AM - 9:00 AM</h5>
-      <h5>Saturday 4:00 AM - 5:00 PM</h5>
-      <h5>Sunday 8:00 AM - 5:00 PM</h5>
+      <ul class="list-unstyled clear-margins">
+          <li *ngFor="let time of storeDetails?.ListStoreTime">
+              <span>{{time.DayID}}</span> {{time.StoreOpenTime}} - {{time.StoreCloseTime}}
+          </li>
+      </ul>
     </div>
 
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img font_family_Montserrat-SemiBold">
       <h5>Delivery Hours</h5>
-      <h5>Monday 8:00 AM - 5:00 PM</h5>
-      <h5>Tuesday 8:00 AM - 5:00 PM</h5>
-      <h5>Wednesday 8:00 AM - 5:00 PM</h5>
-      <h5>Thursday 8:00 AM - 5:00 PM</h5>
-      <h5>Friday 4:00 AM - 9:00 AM</h5>
-      <h5>Saturday 4:00 AM - 5:00 PM</h5>
-      <h5>Sunday 8:00 AM - 5:00 PM</h5>
+      <ul class="list-unstyled clear-margins">
+          <li *ngFor="let time of storeDetails?.ListStoreTimeDelivery">
+              <span>{{time.DayID}}</span> {{time.StoreOpenTime}} - {{time.StoreCloseTime}}
+          </li>
+      </ul>
     </div>
   </div>
 </div>

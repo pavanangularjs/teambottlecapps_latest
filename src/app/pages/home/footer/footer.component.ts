@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
 import { ProductStoreService } from '../../../services/product-store.service';
 import { CustomerLoginSession } from '../../../models/customer-login-session';
 import { CustomerSelectors } from '../../../state/customer/customer.selector';

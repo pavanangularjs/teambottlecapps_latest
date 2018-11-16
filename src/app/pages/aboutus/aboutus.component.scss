@@ -10,7 +10,10 @@
     color: #444444;
     text-transform: capitalize;
 }
-
+ul li span { 
+	float: left;
+	width: 100px;
+}
 .font_family_Montserrat-SemiBold h5{
     font-family:montserratbold;
     font-size: 12px;

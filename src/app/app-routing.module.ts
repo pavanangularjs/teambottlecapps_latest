@@ -26,7 +26,7 @@ import { GeneralGuard } from './general.guard';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomepageComponent, runGuardsAndResolvers: 'always' },
-  { path: 'about', component: AboutusComponent },
+  { path: 'aboutus', component: AboutusComponent, canActivate: [GeneralGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'feature-products', component: FeatureProductsComponent, canActivate: [GeneralGuard]},
   { path: 'recipes', component: RecipesComponent, canActivate: [GeneralGuard]},

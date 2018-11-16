@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductStoreService } from '../../services/product-store.service';
 
 @Component({
   selector: 'app-aboutus',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutusComponent implements OnInit {
 
-  constructor() {}
+  storeDetails: any;
+  constructor(private storeService: ProductStoreService) {}
 
   ngOnInit() {
+    this.getStoreDetails();
+  }
+
+  getStoreDetails() {
+    this.storeService.getStoreDetails().subscribe(data => {
+      if (data && data.GetStoredetails) {
+        this.storeDetails = data.GetStoredetails;
+      }
+    });
   }
 
 }

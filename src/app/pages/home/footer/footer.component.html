@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img footer_image">
                 <div class="margin_left">
-                    <address class="storelocation">
+                    <address class="storelocation" *ngIf="storeDetails">
                         <h4 class="f-h4">{{storeDetails?.StoreName}}</h4>
                         <div class="col-xs-12">
                             <div class="row">
@@ -50,7 +50,7 @@
                 <h4 class="font_size">About</h4>
                 <ul class="list-unstyled clear-margins">
                     <li>
-                        <a [routerLink]="['/about']">About Us</a>
+                        <a [routerLink]="['/aboutus']">About Us</a>
                     </li>
                     <li>
                         <a [routerLink]="['/privacy-policy']">Privacy Policy</a>
