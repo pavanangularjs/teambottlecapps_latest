@@ -39,9 +39,9 @@
         <table class="table table-bordered res_table">
           <thead>
             <tr>
-              <th width="50%">Product Details</th>
+              <th width="53%">Product Details</th>
               <th width="15%">Product Price</th>
-              <th width="15%">Quantity</th>
+              <th width="12%">Quantity</th>
               <th width="20%">Total Price</th>
             </tr>
           </thead>
@@ -49,7 +49,7 @@
         <table class="box-tile" *ngFor="let cartItem of cartDetails?.ListCartItem">
           <tbody class="bg-transparent">
             <tr>
-              <td width="50%" style="padding-left: 15px; padding-top: 15px;">
+              <td width="53%" style="padding-left: 15px; padding-top: 15px;">
                 <div class="img_div">
                   <img class="second_img" src='{{cartItem?.ProductImage}}' />
                 </div>
@@ -60,7 +60,7 @@
                 </div>
 
               </td>
-              <td width="15%">
+              <td width="15%" style="padding-top: 15px; vertical-align: top;">
                 <div>
                   <h5 class="Product_price text-left">{{cartItem?.PriceDisplay}}</h5>
                   <div>
@@ -69,7 +69,7 @@
                 </div>
 
               </td>
-              <td width="15%">
+              <td width="12%">
                 <div class="margin_top">
                   <select class="select-quant" [(ngModel)]="cartItem.QuantityOrdered" (change)="onQtyChange(cartItem)">
                     <option>Please select</option>
@@ -86,7 +86,7 @@
 
               </td>
               <td width="20%">
-                <div>
+                <div class="text-left">
                   <span class="total_price">{{cartItem?.FinalItemTotalDisplay}} </span>
                   <button class="bg_black" (click)="removeFromCart(cartItem)">
                     <img src="assets/Images/cancel.png">
@@ -118,7 +118,11 @@
         </div>
         <div class="col-md-6 col-md-offset-1">
           <h3>No Items !</h3>
-          <p>You have not added any items. Add an item to place order.</p>
+          <div class="row">
+              <div class="col-md-6">
+                  <p>You have not added any items. Add an item to place order.</p>
+              </div>
+          </div>
           <button class="btn btn-default btn-botcaps" [routerLink]="['/']">Continue Shopping</button>
         </div>
       </div>

@@ -2,7 +2,7 @@
 footer {
   border-top: 2px solid #d8d5d5;
   padding: 30px 0px;
-  margin-top: 25px;
+  margin-top: 0px !important;
   float: left;
   width: 100%;
   ul {
@@ -98,7 +98,7 @@ footer {
       text-align: left;
       color: #333333;
       &:hover {
-        color: #ec1c24;
+        color: #A61455;
       }
     }
   }
@@ -418,11 +418,17 @@ address .contact_text {
     float: left;
 }
 
+.storelocation .address-captions {
+  display: table;
+}
+
+
 .storelocation .address-captions a {
     float: left;
     font-size: 12.7px;
     color: #333333;
     text-decoration: none !important;
+    display: table-cell;
     &hover, &focus {
       color: #333333;
       text-decoration: none !important;

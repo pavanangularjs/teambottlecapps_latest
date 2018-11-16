@@ -4,7 +4,7 @@
     padding-left: 12px;
     border: none;
     float: left;
-    border-left: 5px solid #ec1c24;
+    border-left: 5px solid #A61455;
     font-family: poppinsbold;
     font-size: 30px;
     font-stretch: normal;
@@ -30,12 +30,12 @@
 .button_feature button:focus, .button_feature button:hover, .button_feature button.active{
     font-family: poppinsregular !important;
     outline: none;
-    background-color: #ec1c24;
+    background-color: #A61455;
     color: #fff !important;
-    border-color: #ec1c24;
+    border-color: #A61455;
     padding:4px 25px;
     margin-right:8px;
-    /* box-shadow: 3px 6px #ec1c24; */
+    /* box-shadow: 3px 6px #A61455; */
 }
 
 .bottom{
@@ -48,9 +48,9 @@
     width: 130px;
     text-align: center;
     outline: none;
-      background-color: #ec1c24;
+      background-color: #A61455;
       color: #fff;
-      border-color: #ec1c24;
+      border-color: #A61455;
       margin-right: 8px;
       border-radius: 5px;
       box-shadow: 0px 10px 20px 0 rgba(236, 28, 36, 0.3);
@@ -58,9 +58,9 @@
     width: 130px;
     text-align: center;
       outline: none;
-      background-color: #ec1c24;
+      background-color: #A61455;
       color: #fff;
-      border-color: #ec1c24;
+      border-color: #A61455;
       border-radius: 5px;
       box-shadow: 0px 10px 20px 0 rgba(236, 28, 36, 0.3);
     }

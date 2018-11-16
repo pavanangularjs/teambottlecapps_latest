@@ -74,7 +74,7 @@ table tr td .Product_price{
     line-height: normal;
     letter-spacing: 0.5px;
     text-align: left;
-    color: #f11b2e;
+    color: #A61455;
 }
 .you_save{
     opacity: 0.6;
@@ -255,7 +255,7 @@ table tr td .Product_price,table tr td .you_save,table tr td .total_price{
     line-height: normal;
     letter-spacing: 0.5px;
     text-align: left;
-    color: #f11b2e;
+    color: #A61455;
 }
 
 
@@ -272,6 +272,7 @@ tbody.bg-transparent table.box-tile tr td {
 tbody.bg-transparent tr td {
     padding-left: 10px;
     border: solid 1px transparent;
+    vertical-align: middle;
 }
 
 table.box-tile tbody{
@@ -291,8 +292,10 @@ button.btn {
 
 select.select-quant {
     font-size: 14px;
-    width: 130px;
+    width: 70px;
     height: 40px;
+    text-align: left;
+    float: left;
 }
 
 .cart-review .product-image{
@@ -337,18 +340,19 @@ select.select-quant {
         font-family: poppinsbold;
         font-size: 20px;
         color: #222;
+        margin-bottom: 15px;
     }
     p {
         font-size: 16px;
     }
     button.btn-botcaps {
-        padding: 5px 25px;
+        padding: 10px 25px;
         background-color: #A61455;
         color: #fff;
         text-align: center;
         font-weight: bold;
         float: right;
-        margin: 25px 0px 0px 0px;
+        margin: 35px 0px 0px 0px;
     }
     .icon-float {
         span.notification-circle {
@@ -370,4 +374,8 @@ select.select-quant {
             float: right;
         }
     }
+}
+
+section {
+    margin-bottom: 20px;
 }

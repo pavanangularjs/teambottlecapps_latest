@@ -7,10 +7,10 @@
         </span>
 
         <ng-container *ngIf="order?.OrderStatus=='Pending'">
-          <span class="delevary_color" style="color:#ec1c24;">{{order?.OrderStatus}}</span>
+          <span class="delevary_color" style="color:#A61455;">{{order?.OrderStatus}}</span>
         </ng-container>
         <ng-container *ngIf="order?.OrderStatus=='Cancelled'">
-          <span class="delevary_color" style="color:#ec1c24;">{{order?.OrderStatus}}</span>
+          <span class="delevary_color" style="color:#A61455;">{{order?.OrderStatus}}</span>
         </ng-container>
         <ng-container *ngIf="order?.OrderStatus=='Scheduled for delivery'">
           <span class="delevary_color" style="color:#ff8a00;">{{order?.OrderStatus}}</span>
