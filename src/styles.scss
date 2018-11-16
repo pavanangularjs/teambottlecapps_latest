@@ -27,8 +27,8 @@ body {
     padding-left: 12px;
     border: none;
     float: left;
-    border-left: 5px solid #ec1c24;
-    font-family:poppinsregular;
+    border-left: 5px solid #A61455;
+    font-family:poppinsbold;
     font-size: 20px;
     font-stretch: normal;
     line-height: normal;
@@ -53,7 +53,7 @@ ol.breadcrumb{
     margin: 0;
     background-color: transparent;
     font-weight: 500;
-    padding: 0px 15px 15px;
+    padding: 6px 0px 15px 15px;
 }
 .breadcrumb li a{
 font-family: poppinsregular;
@@ -78,7 +78,7 @@ font-family: poppinsregular;
  
     .fixed {
     position: fixed;
-    background: #ec1c24 !important;
+    background: #A61455 !important;
     top: -5px;
     left: 0;
     width: 100%;
@@ -163,11 +163,11 @@ color: rgba(255,255,255,255) !important;
 }
 
 .Searchrelated_div{
-    /* margin: 15px 0px 40px 0; 
+    margin: 15px 0px 40px 0;
     border-bottom: 1px solid #d7d7d7;
-    */
+    
     border-radius: 0px;
-    overflow: hidden;   
+    overflow: hidden; 
     
 }
 .Searchrelated_div h4{
@@ -176,15 +176,15 @@ color: rgba(255,255,255,255) !important;
     padding-left: 12px;
     border: none;
     float: left;
-    border-left: 5px solid #ec1c24;
-    font-family: poppinsregular;
-    font-size: 18px !important;
+    border-left: 5px solid #A61455;
+    font-family: poppinsbold;
+    font-size: 20px !important;
     font-stretch: normal;
     /*line-height: 1.7;*/
     letter-spacing: normal;
     text-align: left;
     color: #191919;
-    line-height: 21px;
+    line-height: 25px;
 }
 
 .img_div{
@@ -251,7 +251,7 @@ table tr td .img_div{
     width:100%;
 }
 .checked{
-    color: #ec1c24!important;
+    color: #A61455!important;
 }
 
 .second_content{
@@ -286,7 +286,7 @@ table tr td .img_div{
     line-height: normal;
     letter-spacing: normal;
     text-align: left;
-    color: #c42629;
+    color: #A61455;
     margin: 0;
     position: relative;
     top: 0px;
@@ -503,16 +503,16 @@ nav .navbar-nav ul li a{
 }
 
 .multiselect-item-checkbox input[type=checkbox]:checked + div:before{
-    background: #ec1c24 !important;  
+    background: #A61455 !important;  
 }
 
 .multiselect-item-checkbox input[type=checkbox] + div:before{
-    border: 2px solid #ec1c24 !important;
+    border: 2px solid #A61455 !important;
 }
 
 .multiselect-dropdown .dropdown-btn .selected-item {
-    border: 1px solid #ec1c24 !important;
-    background: #ec1c24 !important;
+    border: 1px solid #A61455 !important;
+    background: #A61455 !important;
 }
 
 /* .multiselect-dropdown .dropdown-btn{
@@ -552,7 +552,7 @@ nav .navbar-nav ul li a{
 } 
 
 .sidebar-menu .sidebar-submenu > li > a{
-    color: #ec1c24 !important;   
+    color: #A61455 !important;   
 }
 
 section.m_bottom{
@@ -567,7 +567,7 @@ section.m_bottom{
 /*  Login Css  */
 
 form .mandatory{
-    color: #ec1c24;
+    color: #A61455;
 }
  form .form-group .border_radius{
      border-radius: 0px !important;
@@ -589,7 +589,7 @@ button.facebook i{
     padding-right: 5px;
 }
 span.border{
-    border-bottom: 1px solid #ec1c24;
+    border-bottom: 1px solid #A61455;
     padding-bottom: 3px;
 }
 .form-group label{
@@ -631,7 +631,7 @@ h5.color{
     line-height: 1.88;
     letter-spacing: 0.4px;
     text-align: left;
-    color: #ec1c24;
+    color: #A61455;
     cursor: pointer;
   }
   h5.color:focus{
@@ -647,7 +647,7 @@ h5.color{
     color: #666666;
   }
   button.submit{
-    background-color: #ec1c24;
+    background-color: #A61455;
     font-family: poppinsbold;
     font-size: 12.7px;
     font-stretch: normal;
@@ -659,12 +659,12 @@ h5.color{
     border-radius: 0px;
     width:128px;
     text-align: center;
-    border: #ec1c24;
+    border: #A61455;
     box-shadow: none;
  
   }
   button.submit:focus{
-      border:#ec1c24;
+      border:#A61455;
       outline: none;
   }
 section.padding_top{
@@ -743,7 +743,7 @@ ul.navbar-nav {
     text-transform: uppercase;
 }
 ul.user-menu li.star_color i.fa-star{
-    color: #ec1c24;
+    color: #A61455;
     font-size: 22px;
 }
 nav ul.user-menu li{
@@ -805,7 +805,7 @@ ul.float_right,.fixed ul.float_right  {
 } */
 
 .active{
-    color:#ec1c24 !important;
+    color:#A61455 !important;
 }
 .padding_left {
     padding-left: 0px;
@@ -839,7 +839,7 @@ ul.float_right li a{
   line-height: normal;
   letter-spacing: normal;
   text-align: left;
-  color: #ec1c24 !important;
+  color: #A61455 !important;
   /* position: relative;
   bottom: 10px; */
   margin-left: 6px;
@@ -906,7 +906,7 @@ nav ul.navbar-nav li a{
     box-shadow: none;
 }
 .fixed .input-group button {
-    background-color: #ec1c24 !important;
+    background-color: #A61455 !important;
     margin-left: -3px !important;
     /* margin-top: 1px !important; */
 }
@@ -914,14 +914,14 @@ nav ul.navbar-nav li a{
     width:10%;
 }
  .input-group button {
-    background-color: #ec1c24 !important;
+    background-color: #A61455 !important;
     border-radius: 0;
     margin-left: -3px !important;
     /* margin-top: 1px !important; */
 }
 .input-group button:focus {
     outline: none;
-    background-color: #ec1c24 !important;
+    background-color: #A61455 !important;
     border-radius: 0;
     margin-left: -3px !important;
 }
@@ -947,11 +947,11 @@ nav ul.navbar-nav li a{
 }
 
 .navbar .dropdown:hover .dropdown-toggle{
-   color: #ec1c24; 
+   color: #A61455; 
 }
 
 ul.navbar-nav li a:hover {
-    color: #ec1c24; 
+    color: #A61455; 
  }
 
 .collapse{
@@ -1120,7 +1120,7 @@ ul.navbar-nav li a:hover {
     .navbar li.droparrow:hover .arrowup{
         border-left: 10px solid transparent;
         border-right: 10px solid transparent;
-        border-bottom: 10px solid #ec1c24;
+        border-bottom: 10px solid #A61455;
         position: absolute;
         bottom: 0;
         margin-left: -10px;
@@ -1175,7 +1175,7 @@ ul.navbar-nav li a:hover {
        margin-right: 10px;
    }
     .btn_right button.filer_go{
-        background: #ec1c24;
+        background: #A61455;
         font-family: montserratbold;
         font-size: 11.2px;
         font-style: normal;
@@ -1187,7 +1187,7 @@ ul.navbar-nav li a:hover {
         width: 131px;
         text-align: center;
         padding: 12px 0 12px; 
-        border:#ec1c24;
+        border:#A61455;
         box-shadow: none;
     }
     .btn_right button.clear{
@@ -1199,7 +1199,7 @@ ul.navbar-nav li a:hover {
         font-size: 11.2px;
     }
     .btn_right button:focus{
-        border:#ec1c24;
+        border:#A61455;
         outline: none;
         box-shadow: none;
     }
@@ -1207,7 +1207,7 @@ ul.navbar-nav li a:hover {
 
 
 ul li.star_color i.fa-star{
-    color: #ec1c24;
+    color: #A61455;
 }
 .profile span.img_class img {
     height: 70px;

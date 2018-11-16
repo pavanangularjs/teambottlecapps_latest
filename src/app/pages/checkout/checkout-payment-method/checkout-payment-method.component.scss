@@ -26,7 +26,7 @@
 
 .check-icon-payment-container .checkout-icon-style {
   font-size: 26px;
-  color: #ec1c24;
+  color: #A61455;
   position: absolute;
   top: 8px;
   left: 0px;
@@ -42,7 +42,7 @@
       }
       span.fa:hover {
         font-size: 24px;
-        color: #ec1c24;
+        color: #A61455;
       }
     }
     vertical-align: text-top;
@@ -65,8 +65,8 @@
     &:hover {
       padding: 10px;
       text-align: center;
-      border: dashed 1px #ec1c24;
-      color: #ec1c24;
+      border: dashed 1px #A61455;
+      color: #A61455;
       width: 100%;
       display: block;
       text-decoration: none;
@@ -78,11 +78,11 @@
   a {
     &.pay-opt-1 {
       font-size: 20px;
-      color: #ec1c24;
+      color: #A61455;
     }
     color: #222;
     &:hover, &.active {
-      color: #ec1c24;
+      color: #A61455;
       text-decoration: none;
     }
   }

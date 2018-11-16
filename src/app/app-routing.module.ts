@@ -17,6 +17,8 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CouponsComponent } from './pages/coupons/coupons.component';
 import { FeatureProductsComponent } from './pages/products/feature-products/feature-products.component';
 import { EventsComponent } from './pages/products/events/events.component';
+import { PrivacyPolicyComponent } from './pages/home/privacy-policy/privacy-policy.component';
+import { TermsAndConditionsComponent } from './pages/home/terms-and-conditions/terms-and-conditions.component';
 
 import { AuthGuard } from './auth.guard';
 import { GeneralGuard } from './general.guard';
@@ -42,6 +44,8 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
   { path: 'coupons', component: CouponsComponent, canActivate: [GeneralGuard] },
   { path: 'events', component: EventsComponent, runGuardsAndResolvers: 'always', canActivate: [GeneralGuard] },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent, runGuardsAndResolvers: 'always', canActivate: [GeneralGuard] },
+  { path: 'terms-conditions', component: TermsAndConditionsComponent, runGuardsAndResolvers: 'always', canActivate: [GeneralGuard] },
   { path: '**', component: HomepageComponent },
 ];
 

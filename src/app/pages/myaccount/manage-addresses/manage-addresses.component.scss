@@ -2,14 +2,14 @@
     h4.address-heading {
       background-color: #f4f4f4;
       padding: 10px 20px 10px 20px;
-      color: #ec1c24;
+      color: #A61455;
     }
     &.bottles-brand {
       text-decoration: none;
-      color: #ec1c24;
+      color: #A61455;
       &:hover {
         text-decoration: none;
-        color: #ec1c24;
+        color: #A61455;
       }
     }
   }
@@ -36,7 +36,7 @@
         position: absolute;
         right: 0px;
         &:hover {
-          color: #ec1c24;
+          color: #A61455;
         }
       }
     }
@@ -50,9 +50,9 @@
   }
   
   .bottles-brand {
-    color: #ec1c24;
+    color: #A61455;
     &:hover {
-      color: #ec1c24;
+      color: #A61455;
       text-decoration: none;
     }
   }

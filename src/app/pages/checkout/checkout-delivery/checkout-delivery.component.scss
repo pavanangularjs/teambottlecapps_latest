@@ -10,14 +10,14 @@
     min-height: 156px;
     a.link {
       font-size: 16px;
-      color: #ec1c24;
+      color: #A61455;
       text-decoration: none;
       color: #222;
       &:hover, &:focus, &.active {
         font-size: 16px;
-        color: #ec1c24;
+        color: #A61455;
         text-decoration: none;
-        color: #ec1c24;
+        color: #A61455;
       }
     }
   }
@@ -31,7 +31,7 @@
 
 .check-icon-checkout-container .checkout-icon-style, .checkout-icon-style {
   font-size: 40px;
-  color: #ec1c24;
+  color: #A61455;
 }
 
 .checkout-table .location-icon-container, .location-icon-container {
@@ -58,11 +58,11 @@
 .checkout-section .checkout-table a.link:hover, .checkout-section .add-new-checkout-address a.link:hover {
   .location-icon-container {
     .icon-1, .icon-2 {
-      color: #ec1c24;
+      color: #A61455;
     }
   }
   .new-address-add tr td h4 {
-    color: #ec1c24;
+    color: #A61455;
   }
 }
 
@@ -186,7 +186,7 @@ table.new-address-add {
   margin-bottom: 15px;
   .checkout-icon-style {
       font-size: 54px;
-      color: #ec1c24;
+      color: #A61455;
       margin-right: 15px;
       float: left;
       height: 100%;
@@ -219,8 +219,8 @@ table.new-address-add {
     width: 100%;
     background-color: transparent;
     &:hover, &:focus, &.active {
-      border: dashed 1px #ec1c24;
-      color: #ec1c24;
+      border: dashed 1px #A61455;
+      color: #A61455;
       outline: 0px;
       text-decoration: none;
     }
@@ -228,5 +228,5 @@ table.new-address-add {
 }
 
 .bottles-brand {
-  color: #ec1c24;
+  color: #A61455;
 }
