@@ -38,7 +38,7 @@ export class HomepageComponent implements OnInit {
           this.storeGetHomeData = pssd;
           this.titleService.setTitle(this.storeGetHomeData.StoreName);
           this.updateCartId();
-          if (this.returnUrl !== '/') {
+          if (this.returnUrl !== '/' && this.returnUrl !== '/home') {
             this.router.navigate([this.returnUrl]);
           }
         }

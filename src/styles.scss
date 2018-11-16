@@ -1142,7 +1142,7 @@ ul.navbar-nav li a:hover {
         margin-top: 7px;
     }
 
-     .navbar .dropdown:hover .dropdown-menu {
+     .navbar .dropdown:not(.nohover):hover .dropdown-menu {
        min-width: 900px !important;
        display:block;
        visibility: visible;

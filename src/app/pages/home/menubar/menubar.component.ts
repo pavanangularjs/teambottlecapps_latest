@@ -18,6 +18,7 @@ export class MenubarComponent implements OnInit {
     { name: 'Featured Products', url: '/feature-products' }
   ];
 
+  isClicked = false;
   filterMenuItems: any;
   receipeMenuItem: any;
   couponMenuItem: any;
@@ -66,11 +67,13 @@ export class MenubarComponent implements OnInit {
   }
 
   showProducts(catId, catName) {
+    this.isClicked = true;
     this.activeMenu = catName;
     this.dataservice.searchByText = '';
     this.dataservice.categoryId = catId;
     this.dataservice.getFiltersByCategory();
     this.router.navigate(['/advance-filter']);
   }
+
 }
 
