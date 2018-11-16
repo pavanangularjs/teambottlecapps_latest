@@ -118,7 +118,7 @@
           <div class="col-md-6 col-sm-6">
 
             <p class="text_transform">
-              Showing 1-{{productsList.length}} of {{productsList.length}} Products
+              Showing 1-{{productsList.length}} of {{totalProducts}} Products
             </p>
           </div>
           <div class="col-md-6 col-sm-6">
@@ -131,7 +131,7 @@
                 </option>
               </select>
 
-              <select>
+              <select *ngIf="false">
                 <option>DEFAULT SORTING</option>
                 <option *ngFor="let type of SortBy">
                   {{type}}

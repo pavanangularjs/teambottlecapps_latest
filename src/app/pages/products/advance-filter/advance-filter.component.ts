@@ -30,6 +30,7 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
   allVarietals: Item[] = [];
   selectedVarietals: Item[] = [];
   productsList: any;
+  totalProducts = 0;
   PageSize = [15, 30, 45, 60, 75, 90];
   SortBy = ['Price', 'Size', 'Type', 'Country', 'Region'];
   selectedPageSize = 15;
@@ -49,6 +50,7 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
     this.store.select(ProductStoreSelectors.productGetListData)
       .subscribe(pgld => {
         this.productsList = pgld ? pgld.ListProduct : [];
+        this.totalProducts = pgld ? pgld.TotalCount : 0;
         this.spinnerService.hide();
       });
   }
