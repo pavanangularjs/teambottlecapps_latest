@@ -13,13 +13,21 @@
                     </div>
                     <div class="col-md-6">
                       <div class="input-container">
-                        <input type="date" placeholder="Date" name="Date">
+                        <select [(ngModel)]="selectedDeliveryDate" (change)="getDeliveryTimings()">
+                          <option *ngFor="let ddate of deliveryDatesList">
+                            {{ddate}}
+                          </option>
+                        </select>
                         <i class="fa fa-calendar input-icon"></i>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="input-container">
-                        <input class="input-field" type="text" placeholder="Time" name="Time">
+                          <select [(ngModel)]="selectedDeliveryTime">
+                              <option *ngFor="let dtime of deliveryTimingsList">
+                                {{dtime}}
+                              </option>
+                            </select>
                         <i class="fa fa-clock-o input-icon"></i>
                       </div>
                     </div>

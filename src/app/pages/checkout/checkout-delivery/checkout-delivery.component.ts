@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../../services/customer.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-checkout-delivery',
@@ -10,12 +11,43 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 export class CheckoutDeliveryComponent implements OnInit {
   addressList: any;
   selectedAddress: number;
-
+  cartDetails: any;
+  deliveryDatesList: any;
+  deliveryTimingsList: any;
+  selectedDeliveryDate: any;
+  selectedDeliveryTime: any;
   constructor(private customerService: CustomerService,
-    private spinnerService: Ng4LoadingSpinnerService) { }
+    private spinnerService: Ng4LoadingSpinnerService,
+    private cartService: CartService) { }
 
   ngOnInit() {
-   this.getAddressList();
+    this.cartDetails = this.cartService.cartdetails;
+    if (this.cartDetails) {
+      this.selectedDeliveryDate = this.cartDetails.DoPDate;
+      this.selectedDeliveryTime = this.cartDetails.DoPTimeSlot;
+      this.getDeliveryDates();
+      this.getDeliveryTimings();
+    }
+    this.getAddressList();
+  }
+
+  getDeliveryDates() {
+    this.deliveryDatesList = [];
+    if (this.cartDetails && this.cartDetails.ListDoPTimeSlot) {
+      this.cartDetails.ListDoPTimeSlot.forEach(slot => {
+        if (this.deliveryDatesList.indexOf(slot.DoPDate) === -1) {
+          this.deliveryDatesList.push(slot.DoPDate);
+        }
+      });
+    }
+  }
+
+  getDeliveryTimings() {
+    this.deliveryTimingsList = [];
+    if (this.cartDetails && this.cartDetails.ListDoPTimeSlot) {
+      this.deliveryTimingsList = this.cartDetails.ListDoPTimeSlot.filter(slot => slot.DoPDate === this.selectedDeliveryDate)
+      .map(item => item.DoPSlot);
+    }
   }
 
   getAddressList() {

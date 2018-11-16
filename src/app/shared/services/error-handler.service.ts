@@ -32,8 +32,14 @@ export class ErrorHandlerService {
 
         return EMPTY;
       } else if (error.status === 400) {
-        if (error.error && error.error.ErrorMessage) {
+        if (error.error && error.error.ErrorMessage && error.error.ErrorMessage !== 'Invalid Request.') {
           this.toastr.error(error.error.ErrorMessage);
+        } else {
+          if ((this.customerSession && this.customerSession.UserId === 0)) {
+            this.route.navigate(['/home'], { queryParams: { returnUrl: this.route.url } });
+          } else {
+            this.route.navigate(['/login'], { queryParams: { returnUrl: this.route.url } });
+          }
         }
         return EMPTY;
       }
