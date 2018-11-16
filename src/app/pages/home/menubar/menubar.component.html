@@ -8,7 +8,7 @@
         <li class="nav-item dropdown dropdown_menu droparrow" [ngClass]="{'nohover': isClicked}" *ngFor="let fitem of filterMenuItems" (mouseleave)="isClicked=false">
             <span class="arrowup" *ngIf="!isClicked"></span>
             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-               [ngClass]="{'active' : (activeMenu === fitem.CategoryName && activeURL === '/advance-filter')}" aria-expanded="false" (click)="showProducts(fitem.CategoryId, fitem.CategoryName)">
+               [ngClass]="{'active' : activeURL === getMenuName(fitem.CategoryName)}" aria-expanded="false" (click)="showProducts(fitem.CategoryId, fitem.CategoryName)">
                 {{fitem.CategoryName}}
             </a>
             <ul class="dropdown-menu">

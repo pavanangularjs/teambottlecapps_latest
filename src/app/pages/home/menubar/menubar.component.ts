@@ -35,9 +35,9 @@ export class MenubarComponent implements OnInit {
         }
       });
 
-      this.router.events.subscribe((val) => {
-        this.activeURL = this.router.url;
-     });
+    this.router.events.subscribe((val) => {
+      this.activeURL = this.router.url;
+    });
   }
 
   ngOnInit() {
@@ -68,11 +68,20 @@ export class MenubarComponent implements OnInit {
 
   showProducts(catId, catName) {
     this.isClicked = true;
-    this.activeMenu = catName;
     this.dataservice.searchByText = '';
     this.dataservice.categoryId = catId;
     this.dataservice.getFiltersByCategory();
-    this.router.navigate(['/advance-filter']);
+    if (catName === 'Mixers & More') {
+      catName = 'mixers-more';
+    }
+    this.router.navigate([`/${catName.toLowerCase()}`]);
+  }
+
+  getMenuName(catName) {
+    if (catName === 'Mixers & More') {
+      catName = 'mixers-more';
+    }
+    return `/${catName.toLowerCase()}`;
   }
 
 }
