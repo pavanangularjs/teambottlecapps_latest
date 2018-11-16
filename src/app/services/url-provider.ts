@@ -1,6 +1,7 @@
 export const baseUrl = 'https://staging.liquorapps.com/Bcapi/api/';
 export enum UrlNames {
     GetStoreHome = 'Store/StoreGetHome',
+    StoreGetDetail = 'Store/StoreGetDetail',
     LoginCustomer = 'Login/LoginCustomer',
     ProductGetList = 'Product/ProductGetList',
     ProductGetDetails = 'Product/ProductGetDetail',

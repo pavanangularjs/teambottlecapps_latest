@@ -20,6 +20,7 @@ import { BaseRequest } from '../models/base-request';
 export class ProductStoreService {
     headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     customerSession: CustomerLoginSession;
+    storeDetails: any;
     couponsList: any;
     customerInfo: any;
 
@@ -61,6 +62,26 @@ export class ProductStoreService {
             AppId: this.customerSession.AppId,
             IsFeatureProduct: 1
         };
+    }
+
+    getStoreDetails(): Observable<any> {
+
+        if (this.storeDetails) {
+            return of(this.storeDetails);
+          }
+
+        return this.http.post<any>(baseUrl + UrlNames.StoreGetDetail, this.getProfileDetailsRequestParams()).pipe(
+            switchMap((res: any) => {
+                if (res) {
+                    this.storeDetails = res;
+                }
+                return of(res);
+            }),
+            retry(3),
+            catchError((error: any, caught: Observable<any>) => {
+                return this.errorHandler.processError(error);
+            })
+        );
     }
 
     productGetList(reqParams: ProductGetListRequestPayload): Observable<any> {

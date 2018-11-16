@@ -1,191 +1,162 @@
 <footer>
-  <div class="container">
-      <div class="row">
-          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img footer_image">
-              <!-- <a href="#" class="f-bootlecaps">
-                  <img src="{{storeGetHomeData?.StoreImage}}" alt="Battlecapse" class="img-responsive">
-                  <img src="../assets/Images/logo-black.png" alt="Lukas" class="img-responsive">
-              </a> -->
-              <div class="margin_left">
-                  <address class="storelocation">
-                    <h4 class="f-h4">{{storeGetHomeData?.StoreName}}</h4>
-                      <div class="col-xs-12">
-                          <div class="row">
-                              <div class="f-image">
-                                <img class="location" src="assets/Images/location.png">
-                              </div>
-                              <div class="address-captions">
-                                <a href="https://www.google.com/maps/place/{{storeGetHomeData?.Latitude}},{{storeGetHomeData?.Longitude}}" target="_blank">
-                                  {{storeGetHomeData?.Address1}}
-                                  <span *ngIf="storeGetHomeData?.Address2"> {{storeGetHomeData?.Address2}}</span>
-                                  <span> {{storeGetHomeData?.City}}, {{storeGetHomeData?.State}} </span>
-                                </a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-xs-12">
-                          <div class="row">
-                            <div class="f-image">
-                                <img class="img-responsive" src="assets/Images/contact.png">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img footer_image">
+                <div class="margin_left">
+                    <address class="storelocation">
+                        <h4 class="f-h4">{{storeDetails?.StoreName}}</h4>
+                        <div class="col-xs-12">
+                            <div class="row">
+                                <div class="f-image">
+                                    <img class="location" src="assets/Images/location.png">
+                                </div>
+                                <div class="address-captions">
+                                    <a href="https://www.google.com/maps/place/{{storeDetails?.Latitude}},{{storeDetails?.Longitude}}"
+                                        target="_blank">
+                                        {{storeDetails?.Address1}}
+                                        <span *ngIf="storeDetails?.Address2"> {{storeDetails?.Address2}}</span>
+                                        <span> {{storeDetails?.City}}, {{storeDetails?.State}} - {{storeDetails?.Zip}}
+                                        </span>
+                                    </a>
+                                </div>
                             </div>
-                            <div class="address-captions">
-                                <span> <a href="tel:">Call: {{storeGetHomeData?.Phone}}</a></span>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="row">
+                                <div class="f-image">
+                                    <img class="img-responsive" src="assets/Images/contact.png">
+                                </div>
+                                <div class="address-captions">
+                                    <span> <a href="tel:">Call: {{storeDetails?.Phone}}</a></span>
+                                </div>
                             </div>
-                          </div>
-                      </div>
-                      <div class="col-xs-12">
-                          <div class="row">
-                            <div class="f-image">
-                                <img class="img-responsive" src="assets/Images/email.png">
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="row">
+                                <div class="f-image">
+                                    <img class="img-responsive" src="assets/Images/email.png">
+                                </div>
+                                <div class="address-captions">
+                                    <span><a href="mailto:{{storeDetails?.StoreEmail}}">Email:
+                                            {{storeDetails?.StoreEmail}}</a></span>
+                                </div>
                             </div>
-                            <div class="address-captions">
-                                <span><a href="mailto:{{storeGetHomeData?.StoreEmail}}">Email: {{storeGetHomeData?.StoreEmail}}</a></span>
-                            </div>
-                          </div>
-                      </div>
-                  </address>
+                        </div>
+                    </address>
 
-              </div>
-          </div>
-          <div class="about col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img">
-              <h4 class="font_size">About</h4>
-              <ul class="list-unstyled clear-margins">
-                  <li>
-                      <a [routerLink]="['/about']">About Us</a>
-                  </li>
-                  <li>
-                      <a [routerLink]="['/']">Privacy Policy</a>
-                  </li>
-                  <li>
-                      <a [routerLink]="['/']">Terms and Conditions</a>
-                  </li>
-                  <li>
-                      <a [routerLink]="['/']">FAQs</a>
-                  </li>
-                  <li>
-                      <a [routerLink]="['/']">Contact Us</a>
-                  </li>
-              </ul>
-          </div>
+                </div>
+            </div>
+            <div class="about col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img aboutus">
+                <h4 class="font_size">About</h4>
+                <ul class="list-unstyled clear-margins">
+                    <li>
+                        <a [routerLink]="['/about']">About Us</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/']">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/']">Terms and Conditions</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/']">FAQs</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/']">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
 
-          <div class="information col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img">
-              <h4 class="font_size">Hours</h4>
-              <ul class="list-unstyled clear-margins">
+            <div class="information col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img">
+                <h4 class="font_size">Hours</h4>
+                <ul class="list-unstyled clear-margins">
+                    <li *ngFor="let time of storeDetails?.ListStoreTime">
+                        <span>{{time.DayID}}</span> {{time.StoreOpenTime}} - {{time.StoreCloseTime}}
+                    </li>
+                </ul>
+            </div>
 
-                  <li>
-                      Monday 8:00 AM - 5:00 PM
-                  </li>
-                  <li>
-                      Tuesday 8:00 AM - 5:00 PM
-                  </li>
-                  <li>
-                      Wednesday 8:00 AM - 5:00 PM
-                  </li>
-                  <li>
-                      Thursday 8:00 AM - 5:00 PM
-                  </li>
-                  <li>
-                      Friday 4:00 AM - 9:00 AM
-                  </li>
-                  <li>
-                      Saturday 4:00 AM - 5:00 PM
-                  </li>
-                  <li>
-                      Sunday 8:00 AM - 5:00 PM
-                  </li>
-              </ul>
-          </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img">
+                <h4 class="font_size Subscribe">Payment options</h4>
+                <div class="cards">
+                    <ul class="pull-left">
+                        <li>
+                            <img src="assets/Images/disocver.png">
+                        </li>
+                        <li>
+                            <img src="assets/Images/mastercard.png">
+                        </li>
+                        <li>
+                            <img src="assets/Images/visa.png">
+                        </li>
+                        <li>
+                            <img src="assets/Images/paypal-png.png">
+                        </li>
+                    </ul>
 
-          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img">
-              <h4 class="font_size Subscribe">Payment options</h4>
-              <!-- <h4 class="font_size Subscribe">Subscribe Newsletter</h4>
-              <p class="newslatter">Enter your email address for our mailing list to keep yourself updated</p>
-              <div class="input-group subscribe">
-                  <input type="text" class="form-control" id="myid" placeholder="ENTER EMAIL ADDRESS ">
-                  <button type="button" class="btn btn-primaray">
-                      <img src="assets/Images/send.png">
-                  </button>
-
-              </div> -->
-              <div class="cards">
-                  <ul class="pull-left">
-                      <li>
-                          <img src="assets/Images/disocver.png">
-                      </li>
-                      <li>
-                          <img src="assets/Images/mastercard.png">
-                      </li>
-                      <li>
-                          <img src="assets/Images/visa.png">
-                      </li>
-                      <li>
-                          <img src="assets/Images/paypal-png.png">
-                      </li>
-                  </ul>
-
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="pull-right hidden">
-      <a href="" id="return-to-top"  class="scrollTop">
-          <i><img src="../assets/Images/goto-top-png.svg" width="50" height="50"></i>
-      </a>
-  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pull-right hidden">
+        <a href="" id="return-to-top" class="scrollTop">
+            <i><img src="../assets/Images/goto-top-png.svg" width="50" height="50"></i>
+        </a>
+    </div>
 </footer>
 <div class="footer-bottom">
-  <div class="container">
-      <div class="row">
-          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text_center">
-              <div class="copyright">
-                  <p class="made_with">Made With
-                      <i class="fa fa-heart" aria-hidden="true"></i>
-                      &
-                      <img class="beer" src="assets/Images/drink.png">
-                      <span class="allrights">&copy; 2018. All rights reserved</span>
-                  </p>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text_center">
+                <div class="copyright">
+                    <p class="made_with">Made With
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                        &
+                        <img class="beer" src="assets/Images/drink.png">
+                        <span class="allrights">&copy; 2018. All rights reserved</span>
+                    </p>
 
-              </div>
-          </div>
-          <div class="col-md-4 col-sm-4 col-lg-4">
-              <ul class="social-network social-circle">
-                     <li>
-                      <a class="icoFacebook" title="Facebook">
-                          <img src="assets/Images/facebook.png">
-                      </a>
-                  </li>
-                  <li>
-                      <a class="icoTwitter" title="Twitter">
-                          <img src="assets/Images/twitter.png">
-                      </a>
-                  </li>
-                  <li>
-                      <a class="icoLinkedin" title="Linkedin">
-                          <img src="assets/Images/linkedin.png">
-                      </a>
-                  </li>
-                  <li>
-                      <a class="youtube" title="Youtube">
-                          <img src="assets/Images/youtube.png">
-                      </a>
-                  </li>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-lg-4">
+                <ul class="social-network social-circle">
+                    <li>
+                        <a class="icoFacebook" title="Facebook">
+                            <img src="assets/Images/facebook.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="icoTwitter" title="Twitter">
+                            <img src="assets/Images/twitter.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="icoLinkedin" title="Linkedin">
+                            <img src="assets/Images/linkedin.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="youtube" title="Youtube">
+                            <img src="assets/Images/youtube.png">
+                        </a>
+                    </li>
 
-                  <li>
-                      <a class="instagram" title="instagram">
-                          <img src="assets/Images/Insta.png">
-                      </a>
-                  </li>
-              </ul>
-          </div>
-          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <div class="design text_center">
-                  <a>PoweredBy </a>
-                  <img src="assets/Images/powered-by.png" alt="Battlecapse" class="first_imge">
-              </div>
+                    <li>
+                        <a class="instagram" title="instagram">
+                            <img src="assets/Images/Insta.png">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="design text_center">
+                    <a>PoweredBy </a>
+                    <img src="assets/Images/powered-by.png" alt="Battlecapse" class="first_imge">
+                </div>
 
-          </div>
+            </div>
 
-      </div>
+        </div>
 
-  </div>
+    </div>
 </div>

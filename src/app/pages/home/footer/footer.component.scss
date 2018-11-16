@@ -16,6 +16,14 @@ footer {
   }
 }
 
+ul li span { 
+	float: left;
+	width: 100px;
+}
+
+.aboutus{
+  padding-left: 100px !important;
+}
 .active {
   color: red !important;
 }
