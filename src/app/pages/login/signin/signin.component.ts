@@ -4,12 +4,14 @@ import { Store } from '@ngrx/store';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { AuthService, FacebookLoginProvider } from 'angularx-social-login';
+import { ToastrService } from 'ngx-toastr';
+import * as CryptoJS from 'crypto-js';
 
 import { CustomerLogin } from '../../../state/customer/customer.action';
 import { CustomerSelectors } from '../../../state/customer/customer.selector';
 import { CustomerLoginSession } from '../../../models/customer-login-session';
 import { CustomerService } from '../../../services/customer.service';
-import { ToastrService } from 'ngx-toastr';
+import { baseUrl } from '../../../services/url-provider';
 
 @Component({
   selector: 'app-signin',
@@ -21,6 +23,8 @@ export class SigninComponent implements OnInit {
   customerSession: CustomerLoginSession;
   submitted = false;
   returnUrl: string;
+  email: string;
+  password: string;
 
   constructor(private route: ActivatedRoute, private router: Router, private store: Store<CustomerLoginSession>,
     private customerService: CustomerService,
@@ -34,7 +38,14 @@ export class SigninComponent implements OnInit {
           this.customerSession = clsd;
           this.spinnerService.hide();
           if (this.customerSession.IsAccess === true && this.customerSession.UserId !== 0) {
-            // this.router.navigateByUrl(this.returnUrl);
+
+            if (this.email && this.password && baseUrl) {
+              const email = CryptoJS.AES.encrypt(this.email, baseUrl.substr(3)).toString();
+              const password = CryptoJS.AES.encrypt(this.password, baseUrl.substr(3)).toString();
+
+              localStorage.setItem('email', email);
+              localStorage.setItem('password', password);
+            }
             this.router.navigate([this.returnUrl]);
           }
         }
@@ -71,10 +82,10 @@ export class SigninComponent implements OnInit {
       return;
     }
     this.spinnerService.show();
-    const email = this.formSignIn.get('eemail').value;
-    const password = this.formSignIn.get('epassword').value;
+    this.email = this.formSignIn.get('eemail').value;
+    this.password = this.formSignIn.get('epassword').value;
 
-    this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams(email, password, 'E')));
+    this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams(this.email, this.password, 'E')));
   }
 
   signOut(): void {

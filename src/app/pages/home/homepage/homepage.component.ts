@@ -10,6 +10,8 @@ import { CustomerService } from '../../../services/customer.service';
 import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
 import { CartService } from '../../../services/cart.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import * as CryptoJS from 'crypto-js';
+import { baseUrl } from '../../../services/url-provider';
 
 @Component({
   selector: 'app-homepage',
@@ -49,7 +51,18 @@ export class HomepageComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     if (!(this.customerSession && this.customerSession.SessionId)) {
       // this.spinnerService.show();
-      this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams()));
+
+      let demail = localStorage.getItem('email');
+      let dpass = localStorage.getItem('password');
+
+      if (demail && dpass) {
+        demail = CryptoJS.AES.decrypt(demail, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
+        dpass = CryptoJS.AES.decrypt(dpass, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
+
+        this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams(demail, dpass, 'E')));
+      } else {
+        this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams()));
+      }
     }
   }
 

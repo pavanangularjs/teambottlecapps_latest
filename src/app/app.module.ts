@@ -49,8 +49,6 @@ import { ProductStoreService } from './services/product-store.service';
 import { DataService } from './services/data.service';
 import { DecimalPipe } from '@angular/common';
 
-import { HttpCacheService } from './cache.service';
-import { CacheInterceptor } from './cacheInterceptor';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CheckoutDeliveryComponent } from './pages/checkout/checkout-delivery/checkout-delivery.component';
 import { CheckoutPaymentMethodComponent } from './pages/checkout/checkout-payment-method/checkout-payment-method.component';
