@@ -2,7 +2,7 @@
   <div class="container">
 
     <div class="Search_div ">
-      <!-- <h4>Recipe Details</h4> --><input type="text" placeholder="Recipe Details">
+      <h4>Recipe Details</h4> <!-- <input type="text" placeholder="Recipe Details">-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a>Home</a></li>
         <li class="breadcrumb-item active"><a>Recipes</a></li>
@@ -18,18 +18,19 @@
       <h4 class="recipe_name">{{recipe?.Title}}</h4>
       <ul>
         <h4 class="ingredients">Ingredients</h4>
-        <div class="IngredientText" [innerHtml]="recipe?.IngredientText">
+        <div class="IngredientText recipe-ingredients" [innerHtml]="recipe?.IngredientText">
         </div>
 
       </ul>
     </div>
 
     <div class=" col-md-12 col-sm-12 col-lg-12 col-xs-12">
-      <div class="Searchrelated_div ">
+      <div class="Searchrelated_div no-b-border">
         <h5>Instructions</h5>
       </div>
 
-      <div class="instruction_text" [innerHtml]="recipe?.InstructionText"> </div>
+      <div style="font-size: 14px;" class="instruction_text" [innerHtml]="recipe?.InstructionText"> </div>
+      <br>
     </div>
   </div>
 </section>

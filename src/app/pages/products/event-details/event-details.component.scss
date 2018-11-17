@@ -41,6 +41,10 @@
     text-decoration: none;
 } */
 
+.Search_div {
+        padding-bottom: 10px;
+}
+
 .Search_div h4{
     width: 50%;
     height: 27px;
@@ -48,9 +52,10 @@
     border: none;
     float: left;
     border-left: 5px solid #A61455;
-    font-size: 28px;
+    font-size: 21px;
     font-weight: bold;
     color: #333;
+    line-height: 30px;
 }
 
 .Searchrelated_div{
@@ -159,6 +164,7 @@
     position: relative;
     padding-top: 30px;
     width: 100%;
+    padding-bottom: 15px;
 }
 
 .event-details-date {
@@ -193,7 +199,18 @@
     position: absolute;
     left: 60px;
     top: -5px;
-    font-size: 18px;
+    font-family: montserratbold !important;
+    font-size: 20px;
+}
+
+.no-b-border {
+    border-bottom: 0px solid transparent;
+}
+
+.detailed-events-section {
+    position: absolute;
+    width: 100%;
+    top: 0;
 }
 
 .event-icon {

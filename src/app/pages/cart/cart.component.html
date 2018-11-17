@@ -49,7 +49,7 @@
         <table class="box-tile" *ngFor="let cartItem of cartDetails?.ListCartItem">
           <tbody class="bg-transparent">
             <tr>
-              <td width="53%" style="padding-left: 15px; padding-top: 15px;">
+              <td width="53%" class="cart-item">
                 <div class="img_div">
                   <img class="second_img" src='{{cartItem?.ProductImage}}' />
                 </div>
@@ -60,32 +60,24 @@
                 </div>
 
               </td>
-              <td width="15%" style="padding-top: 15px; vertical-align: top;">
+              <td width="15%" class="cart-item">
                 <div>
-                  <h5 class="Product_price text-left">{{cartItem?.PriceDisplay}}</h5>
-                  <div>
-                    <h6 class="you_save text-left">{{cartItem?.ItemTotalSavingDisplay}}</h6>
+                  <h5 class="Product_price text-left">{{cartItem?.OfferPriceDisplay}}</h5>
+                  <div *ngIf="cartItem?.OfferPriceDisplay !== cartItem?.PriceDisplay">
+                    <h6 class="price-strike-through text-left">{{cartItem?.PriceDisplay}}</h6>
                   </div>
                 </div>
 
               </td>
-              <td width="12%">
+              <td width="12%" class="cart-item">
                 <div class="margin_top">
-                  <select class="select-quant" [(ngModel)]="cartItem.QuantityOrdered" (change)="onQtyChange(cartItem)">
-                    <option>Please select</option>
+                  <select class="select-quant form-control" [(ngModel)]="cartItem.QuantityOrdered" (change)="onQtyChange(cartItem)">
                     <option *ngFor="let qty of quantity">{{qty}}</option>
                   </select>
-                  <!-- <button class="dec_circle">
-                    <i class="fa fa-minus" aria-hidden="true"></i>
-                  </button>
-                  <span class="value">{{cartItem?.Quantity}}</span>
-                  <button class="dec_circle">
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                  </button> -->
                 </div>
 
               </td>
-              <td width="20%">
+              <td width="20%" class="cart-item">
                 <div class="text-left">
                   <span class="total_price">{{cartItem?.FinalItemTotalDisplay}} </span>
                   <button class="bg_black" (click)="removeFromCart(cartItem)">
@@ -119,9 +111,9 @@
         <div class="col-md-6 col-md-offset-1">
           <h3>No Items !</h3>
           <div class="row">
-              <div class="col-md-6">
-                  <p>You have not added any items. Add an item to place order.</p>
-              </div>
+            <div class="col-md-6">
+              <p>You have not added any items. Add an item to place order.</p>
+            </div>
           </div>
           <button class="btn btn-default btn-botcaps" [routerLink]="['/']">Continue Shopping</button>
         </div>

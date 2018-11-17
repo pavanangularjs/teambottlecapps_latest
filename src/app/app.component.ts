@@ -1,4 +1,5 @@
-import { Component, OnInit, ElementRef, ViewChild  } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,14 @@ export class AppComponent implements OnInit {
   @ViewChild('openModal') openModal: ElementRef;
   title = 'TeamBottlecApps';
   template = `<img src='/assets/Images/loading_icon.gif' />`;
+  isMobile: boolean;
+
+  constructor(private deviceService: DeviceDetectorService) { }
+
   ngOnInit() {
-    if (localStorage.getItem('isAgeVerified') !== 'true') {
+    this.isMobile = this.deviceService.isMobile();
+
+    if (!this.isMobile && localStorage.getItem('isAgeVerified') !== 'true') {
       this.openModal.nativeElement.click();
     }
   }

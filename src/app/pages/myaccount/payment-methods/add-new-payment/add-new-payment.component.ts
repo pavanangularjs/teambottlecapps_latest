@@ -80,12 +80,12 @@ export class AddNewPaymentComponent implements OnInit {
     if (cardProfile.customerProfileId) {
       this.paymentService.createCustomerPaymentProfileRequest(cardProfile).subscribe(data => {
         if (data && data.customerProfileId) {
-          this.customerService.customerPaymentInsert(data.customerProfileId, 1, 1).subscribe(res => {
-            if (res && res.SuccessMessage !== '') {
-              this.toastr.success(res.SuccessMessage);
+          // this.customerService.customerPaymentInsert(data.customerProfileId, 1, 1).subscribe(res => {
+          //  if (res && res.SuccessMessage !== '') {
+              this.toastr.success('New Card added Successfully');
               this.router.navigate(['/myaccount/payment-methods']);
-            }
-          });
+          //  }
+          // });
         }
       });
     } else {

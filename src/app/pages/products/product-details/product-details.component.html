@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="Search_div col-md-12 col-sm-12 col-lg-12 col-xs-12">
-            <input type="text" placeholder="Product">
+            <h4>Product</h4><!-- <input type="text" placeholder="Product"> -->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item active"><a href="#">Search Categories</a></li>
@@ -84,7 +84,7 @@
                                 <div class="col-md-12"><label class="sizelabel">Qty</label></div>
                                 <div class="col-md-6">
                                     <div class="select-bg">
-                                        <select class="selectsize" [(ngModel)]="qty">
+                                        <select class="selectsize form-control" [(ngModel)]="qty">
                                             <!-- <option disabled>Please select</option> -->
                                             <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10] ">{{i}}</option>
                                         </select>
@@ -120,18 +120,15 @@
             <ng-container>
                 <div class="related_product">
 
-                    <div class="Searchrelated_div col-md-10 col-sm-10 col-lg-10 col-xs-12">
+                    <div class="Searchrelated_div col-md-10 col-sm-10 col-lg-10 col-xs-12 no-b-border">
                         <!-- <input type="text" placeholder="Related Product"> -->
                         <h4>Related Product</h4>
                     </div>
 
                     <div class="col-md-2 col-sm-2 col-lg-2 col-xs-12">
-                        <h4 class="view_more" (click)="getProductList()"><span> View More
-                                <span class="arrow_right">
-                                    <img src="../../../../assets/Images/viewmore.png">
-                                </span>
-                            </span>
-                        </h4>
+                        <a class="view_more" (click)="getProductList()">
+                            <span>View More</span>
+                        </a>
                     </div>
                 </div>
             </ng-container>

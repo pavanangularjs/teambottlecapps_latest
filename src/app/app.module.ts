@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
 import {  SharedModule } from './shared/shared.module';
+import { DeviceDetectorModule } from 'ngx-device-detector';
 
 import { customerReducer  } from './state/customer/customer.reducer';
 import { CustomerEffects } from './state/customer/customer.effects';
@@ -130,7 +131,8 @@ export function getAuthServiceConfigs() {
     StoreModule.forRoot({customer: customerReducer, productStore: productStoreReducer }),
     EffectsModule.forRoot([CustomerEffects, ProductStoreEffects]),
     Ng4LoadingSpinnerModule.forRoot(),
-    SocialLoginModule
+    SocialLoginModule,
+    DeviceDetectorModule.forRoot()
   ],
   providers: [CustomerService, ProductStoreService, DataService, DecimalPipe, AuthService, Title,
     {

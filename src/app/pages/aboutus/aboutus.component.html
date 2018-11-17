@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container about-us">
   <div class="Searchrelated_div col-md-12 col-sm-12 col-lg-12 col-xs-12">
     <h4>About Us</h4>
     <ol class="breadcrumb">
@@ -6,87 +6,40 @@
       <li class="breadcrumb-item active"><a>About Us</a></li>
     </ol>
   </div>
-
-  <div id="myCarousel">
-      <img [src]="storeDetails?.StoreLargeImage" alt="" class="img-responsive">
-  </div>
-
-  <!-- 
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-      <li data-target="#myCarousel" data-slide-to="3"></li>
-    </ol>
-
-    <div class="carousel-inner" role="listbox">
-      <img src="assets/Images/cover.png" alt="Chania">
-      <div class="item active">
-        <img src="assets/Images/cover.png" alt="Chania">
+  <div class="col-md-12 col-xs-12">
+    <div class="row">
+      <div class="col-md-3 col-xs-12">
+        <img src="../assets/Images/outside-lukas-liquor-superstore.jpg" class="img-responsive">
+        <br>
+        <img src="../assets/Images/we-id.jpg" class="img-responsive">
       </div>
+      <div class="col-md-9 col-xs-12">
+        <h4>Thank you for supporting our family-owned, Colorado business!</h4>
+        <p>
+          Run by a father daughter team, Lukas Liquor Superstore is the largest liquor and wine store in Lone Tree.
+          We've been in business since 1997 and we remain committed to our founding principles: honesty, fair prices
+          and exceptional customer service.</p>
 
-      <div class="item">
-        <img src="assets/Images/cover.png" alt="Chania">
+        <p>Our long term relationships with local and world renowned distilleries, vineyards and breweries, allow us
+          first pick of special and unique products at exclusive discounts. We happily pass these savings onto our
+          customers. It's a win for everyone.</p>
+
+        <p>Stop in today. We look forward to sharing our exciting range of wine, spirits and beer with you.</p>
+        <br>
+        <h5>Charity & Community</h5>
+        <p>We are actively engaged members of the community where we live and work, and proudly support many local
+          charities and non-profit organizations, including:</p>
+
+        <p><span class="fa fa-angle-right"></span> Children's Hospital</p>
+        <p><span class="fa fa-angle-right"></span> Craig Hospital</p>
+        <p><span class="fa fa-angle-right"></span> Inner City Health Center</p>
+        <p><span class="fa fa-angle-right"></span> Jessie's Heart Foundation</p>
+        <p><span class="fa fa-angle-right"></span> Men For The Cure</p>
+        <p><span class="fa fa-angle-right"></span> Scleroderma Foundation</p>
+        <p><span class="fa fa-angle-right"></span> Spina Bifida Association</p>
+        <p><span class="fa fa-angle-right"></span> The Leukemia & Lymphoma Society</p>
+        <br><br>
       </div>
-
-      <div class="item">
-        <img src="assets/Images/cover.png" alt="Flower">
-      </div>
-
-      <div class="item">
-        <img src="assets/Images/cover.png" alt="Flower">
-      </div>
-    </div>
-  </div>-->
-
-  <p class="font_size"><br>
-      Thank you for supporting our family-owned, Colorado business!
-      Run by a father daughter team, Lukas Liquor Superstore is the largest liquor and wine store in Lone Tree. We've been in business since 1997 and we remain committed to our founding principles: honesty, fair prices and exceptional customer service.
-      <br><br>
-      Our long term relationships with local and world renowned distilleries, vineyards and breweries, allow us first pick of special and unique products at exclusive discounts. We happily pass these savings onto our customers. It's a win for everyone.
-      <br><br>
-      Stop in today. We look forward to sharing our exciting range of wine, spirits and beer with you.
-      Charity & Community
-      We are actively engaged members of the community where we live and work, and proudly support many local charities and non-profit organizations, including: 
-      <br><br>
-      Children's Hospital 
-      <br><br>
-      Craig Hospital 
-      <br><br>
-      Inner City Health Center 
-      <br><br>
-      Jessie's Heart Foundation 
-      <br><br>
-      Men For The Cure 
-      <br><br>
-      Scleroderma Foundation 
-      <br><br>
-      Spina Bifida Association 
-      <br><br>
-      The Leukemia & Lymphoma Society
-  </p>
-
-  <div class="information">
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-    </div>
-
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img font_family_Montserrat-SemiBold">
-      <h5>Pickup Hours</h5>
-      <ul class="list-unstyled clear-margins">
-          <li *ngFor="let time of storeDetails?.ListStoreTime">
-              <span>{{time.DayID}}</span> {{time.StoreOpenTime}} - {{time.StoreCloseTime}}
-          </li>
-      </ul>
-    </div>
-
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img font_family_Montserrat-SemiBold">
-      <h5>Delivery Hours</h5>
-      <ul class="list-unstyled clear-margins">
-          <li *ngFor="let time of storeDetails?.ListStoreTimeDelivery">
-              <span>{{time.DayID}}</span> {{time.StoreOpenTime}} - {{time.StoreCloseTime}}
-          </li>
-      </ul>
     </div>
   </div>
 </div>

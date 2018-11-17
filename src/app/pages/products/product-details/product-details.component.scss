@@ -76,7 +76,7 @@ ul.float_right li i{
 }
 customers_review ul.float_right li a{
     font-family: poppinsbold;
-  font-size: 10.6px;
+  font-size: 16px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
@@ -165,6 +165,7 @@ text-transform: uppercase;
     outline: none;
     background: transparent;
     font-family: montserratregular;
+    box-shadow: none;
 }
 
 .size .select-bg {
@@ -198,6 +199,7 @@ button.addtocart{
     letter-spacing: normal;
     text-align: left;
     color: #ffffff;
+    box-shadow: 0px 10px 20px 0 rgba(166, 20, 85, 0.2);
 }
 button.addtocart:focus,button.addtocart:active{
     outline: none;
@@ -270,12 +272,13 @@ margin_bottom img{
 }
 .total_border h4.review_title{
     font-family: poppinsbold !important;
-    font-size: 15.8px;
+    font-size: 15.8px !important;
     font-stretch: normal;
     line-height: 3.44;
     letter-spacing: 0.5px;
     text-align: left;
     color: #222222;
+    text-transform: uppercase;
 }
 .total_border .reviews{
     float: left;
@@ -348,6 +351,10 @@ margin_bottom img{
     letter-spacing: 0.5px;
     text-align: left;
     color: #222222;
+    text-transform: uppercase;
+}
+.your_rating {
+    color: #777;
 }
 .your_rating h5,form.common_width label{
     font-family: 'Roboto', sans-serif;
@@ -358,7 +365,7 @@ margin_bottom img{
     line-height: 1.71;
     letter-spacing: 0.4px;
     text-align: left;
-    color: #777777;
+    color: #777777 ;
 }
 .add_review p{
     font-family: 'Roboto', sans-serif;
@@ -433,6 +440,7 @@ form button.btn{
         h4 {
             font-size: 22px !important;
             padding-bottom: 10px;
+            text-transform: uppercase;
             }
         p {
             font-size: 16px !important;
@@ -486,4 +494,57 @@ form label{
 
 .no-reviews {
     margin-bottom: 40px;
+}
+
+.no-b-border {
+    border-bottom: 0px solid transparent;
+}
+
+.Search_div {
+    margin: 15px 0px 40px 0;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0px;
+    overflow: hidden;
+}
+
+.Search_div h4{
+    width: 50%;
+    height: 27px;
+    padding-left: 12px;
+    border: none;
+    float: left;
+    border-left: 5px solid #A61455;
+    font-size: 15px;
+    font-weight: bold;
+    font-size: 21px;
+    color: #333;
+}
+
+
+
+.related_product {
+    margin: 45px 0px 40px 0;
+    .Searchrelated_div{
+        margin: 0;
+        padding-bottom: 10px;
+        border-radius: 0px;
+        overflow: hidden; 
+        
+    h4{
+        width: 50%;
+        height: 21px;
+        padding-left: 12px;
+        border: none;
+        float: left;
+        border-left: 5px solid #A61455;
+        font-family: poppinsbold;
+        font-size: 20px !important;
+        font-stretch: normal;
+        /*line-height: 1.7;*/
+        letter-spacing: normal;
+        text-align: left;
+        color: #191919;
+        line-height: 25px;
+    }
+     }
 }

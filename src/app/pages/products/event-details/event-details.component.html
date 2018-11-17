@@ -17,11 +17,13 @@
     <div class="details_content col-md-4 col-sm-4 col-lg-4 col-xs-12 animated fadeInRight">
       <div>
         <div class="event-details-section">
-          <div class="bottle-caps-red event-details-date text-center">
-            <div class="date-style">{{eventDetails?.EventDateDisplayFirst}}</div>
-            <br><strong>{{eventDetails?.EventDateDisplaySecond}}</strong>
+          <div class="detailed-events-section">
+              <div class="bottle-caps-red event-details-date text-center">
+                <div class="date-style">{{eventDetails?.EventDateDisplayFirst}}</div>
+                <br><strong>{{eventDetails?.EventDateDisplaySecond}}</strong>
+              </div>
+              <h6 class="event-details-heading">{{eventDetails?.EventName}}</h6>
           </div>
-          <h6 class="event-details-heading">{{eventDetails?.EventName}}</h6>
         </div>
         <hr>
       </div>
@@ -35,13 +37,14 @@
           </li>
           <li class="IngredientText"> <span class="fa fa-map-marker bottle-caps-red event-icon"></span> <span class="event-para">{{eventDetails?.Address1}}
               <br>{{eventDetails?.City}}, {{eventDetails?.State}} {{eventDetails?.Zip}}</span>
+              <span class="pull-right"><img src="../assets/Images/navigate-png.png"></span>
           </li>
         </ul>
       </div>
     </div>
 
     <div class=" col-md-12 col-sm-12 col-lg-12 col-xs-12">
-      <div class="Searchrelated_div ">
+      <div class="Searchrelated_div no-b-border">
         <h4>Description</h4>
       </div>
       <div class="instruction_text" [innerHTML]="eventDetails?.EventDescription"></div>

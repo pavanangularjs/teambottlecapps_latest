@@ -87,6 +87,21 @@ table tr td .Product_price{
   text-align: left;
   color: rgba(38, 38, 40, 0.6);
 }
+.price-strike-through {
+    font-family: poppinsregular;
+    font-size: 18px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.5px;
+    text-align: left;
+    text-decoration: line-through;
+}
+
+.cart-item {
+    padding-top: 15px !important; 
+    vertical-align: top !important;
+}
 .Product_name ul li {
     list-style-type: none;
     display: inline-block;

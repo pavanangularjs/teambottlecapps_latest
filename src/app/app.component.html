@@ -1,7 +1,13 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
-<app-agelimit></app-agelimit>
-<button id="openModal" #openModal [hidden]="true" data-toggle="modal" data-target="#dialog"></button>
-<ng4-loading-spinner [threshold]="2000" [timeout]="4000" [template]="template"  style= "margin:0 auto; text-align: center;"[zIndex]="9999"> </ng4-loading-spinner>
+<div *ngIf="!isMobile; else mobileView">
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+    <app-agelimit></app-agelimit>
+    <button id="openModal" #openModal [hidden]="true" data-toggle="modal" data-target="#dialog"></button>
+    <ng4-loading-spinner [threshold]="2000" [timeout]="4000" [template]="template" style="margin:0 auto; text-align: center;"
+        [zIndex]="9999"> </ng4-loading-spinner>
+</div>
 
+<ng-template #mobileView>
+    <img src="../assets/Images/Lukas.png">
+</ng-template>
