@@ -438,15 +438,16 @@ nav {
   left: auto; */
   content: " ";
   position: absolute;
-  left: 20%;
+  left: 0%;
   opacity: 1;
   margin: 0 auto;
   bottom: -9px;
-  border: 10px solid transparent;
-  border-bottom-color: #A61455;
+  border: 18px solid transparent;
+  border-bottom-color: #FFF;
   -ms-transform: rotate(0deg);
   -webkit-transform: rotate(0deg);
   transform: rotate(0deg);
+  z-index: 9999;
 }
 
 .navbar .dropdown:hover .dropdown-toggle {

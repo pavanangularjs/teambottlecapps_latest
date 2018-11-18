@@ -55,7 +55,7 @@ table tr td .total_price{
     line-height: normal;
     letter-spacing: normal;
     text-align: right;
-    color: #ea1c2d;
+    color: #A61455;
 }
 .Product_price{
     font-family: poppinsbold;
@@ -64,7 +64,7 @@ table tr td .total_price{
     line-height: normal;
     letter-spacing: 0.5px;
     text-align: center;
-    color: #f11b2e;
+    color: #A61455;
 }
 .you_save{
     opacity: 0.6;
@@ -152,12 +152,13 @@ button.dec_circle,button.dec_circle:focus{
 .order_total h4{
     text-align: right;
     /* font-family: Poppins-SemiBold; */
-    font-family: montserratbold !important;
+    font-family: poppinsregular !important;
     color: rgba(91,91,91,255);
 }
 .order_total span.font_color{
-    color: rgba(234,28,45,255);
+    color: #A61455;
     font-size: 20px;
+    font-family: poppinsbold !important;
 }
 .margin_top_25{
     margin: 25px 0 25px 0;
@@ -217,7 +218,7 @@ table tr td.width_20{
 } */
 
 .border_bottom {
-    padding-top: 10px;
+    padding-top: 0px;
 }
 .border_bottom table tr{
     cursor: pointer;
@@ -248,11 +249,13 @@ table tr td h4,table tr td h5,table tr td span,table tr td .total_price{
 
 }
 
+
+
 .delivery-head-section {
     width: 100%;
     border-bottom: solid 1px #ccc;
     display: inline-block;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .product-image {
@@ -269,6 +272,35 @@ table tr td h4,table tr td h5,table tr td span,table tr td .total_price{
 
 .order-summary-expand {
     width: 60%;
+    td.text-right {
+        font-size: 14px !important;
+        font-family: poppinsregular !important;
+        color: #222;
+    }
+    td.text-left {
+        font-size: 11px;
+        font-family: poppinsregular;
+        color: #333;
+    }
+    h5.summary {
+        text-transform: uppercase;
+    }
+}
+
+.bill_summary {
+        td.text-right {
+        font-size: 14px;
+        font-family: poppinsregular;
+        color: #222;
+        }
+        td.text-left {
+            font-size: 11px;
+            font-family: poppinsregular;
+            color: #333;
+        }
+        h5.summary {
+            text-transform: uppercase;
+        }
 }
 
 .tfoot-order-summary {
@@ -289,9 +321,44 @@ table tr td h4,table tr td h5,table tr td span,table tr td .total_price{
     background-color: #222;
     color: #fff;
     position: absolute;
-    top: 15px;
+    top: 10px;
+    margin-left: -30px;
 }
 
 .border_bottom table.table tbody tr td {
     border-top: solid 0px #ccc !important;
+}
+
+.Searchrelated_div{
+    margin: 0px 0px 40px 0;
+    border-radius: 0px;
+    /* padding-bottom: 10px; */
+    overflow: hidden;   
+}
+.Searchrelated_div h4{
+    width: 50%;
+    height: 21px;
+    padding-left: 12px;
+    border: none;
+    float: left;
+    border-left: 5px solid #A61455;
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+   
+}
+
+.myorder-details {
+    font-family: poppinsregular;
+    padding: 0px 0px 0px 15px !important;
+        .myorder-status {
+            margin-right: 5px !important;
+            width: auto !important;
+            font-family: poppinsregular;
+        }
+        strong {
+            line-height: 45px;
+            font-size: 16px;
+            font-family: poppinsregular;
+        }
 }

@@ -58,9 +58,13 @@ export class HomepageComponent implements OnInit {
       if (demail && dpass) {
         demail = CryptoJS.AES.decrypt(demail, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
         dpass = CryptoJS.AES.decrypt(dpass, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
+      }
 
+      if (demail && dpass) {
         this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams(demail, dpass, 'E')));
       } else {
+        localStorage.removeItem('email');
+        localStorage.removeItem('password');
         this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams()));
       }
     }

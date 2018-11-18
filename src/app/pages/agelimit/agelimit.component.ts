@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgelimitComponent implements OnInit {
   sorryPopup = false;
+  legalDate: Date;
   constructor() { }
 
   ngOnInit() {
+    this.legalDate = new Date(new Date().getFullYear() - 21, new Date().getMonth(), new Date().getDate());
   }
 
   onAgeVarify() {

@@ -64,7 +64,7 @@ table tr td .total_price{
     line-height: normal;
     letter-spacing: normal;
     text-align: right;
-    color: #ea1c2d;
+    color: #A61455;
 }
 table tr td .Product_price{
     font-family: poppinsregular;
@@ -89,13 +89,14 @@ table tr td .Product_price{
 }
 .price-strike-through {
     font-family: poppinsregular;
-    font-size: 18px;
+    font-size: 14px;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: 0.5px;
     text-align: left;
     text-decoration: line-through;
+    color: #777;
 }
 
 .cart-item {
@@ -144,6 +145,8 @@ button.bg_black {
     border: 0;
     background-color: transparent;
     padding: 10px;
+    float: right;
+    margin-right: 30px;
 }
 .bg_black img{
     margin-top: -5px;
@@ -303,6 +306,7 @@ table.box-tile {
 .btn_right.buttons-container button,
 button.btn {
     margin-left: 15px;
+    box-shadow: 0px 10px 20px 0 rgba(166, 20, 85, 0.2);
 }
 
 select.select-quant {
@@ -397,4 +401,6 @@ select.select-quant {
 
 section {
     margin-bottom: 20px;
+    min-height: 768px;
+    display: block;
 }

@@ -93,11 +93,13 @@ h5.color{
     text-align: center;
     border: #A61455;
     box-shadow: none;
+    box-shadow: 0px 10px 20px 0 rgba(166, 20, 85, 0.2);
  
   }
   button.submit:focus{
       border:#A61455;
       outline: none;
+      box-shadow: 0px 10px 20px 0 rgba(166, 20, 85, 0.2);
   }
 section.padding_top{
     padding-top: 15px;

@@ -12,3 +12,66 @@
     font-size: 24px;
     text-align: center;
 }
+
+    .profileset-container {
+        margin: 25px 0px;
+        h4, h5 {
+            margin: 0px;
+            padding: 0px;
+        }
+    }
+
+.profile {
+    h4.margin_top {
+        font-family: Poppinsbold;
+        font-size: 26px;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: left;
+        color: #191919;
+        margin-bottom: 0px;
+    }
+
+    h5.email {
+        font-family: Montserratregular;
+        font-size: 18px;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: left;
+        color: #191919;
+        padding: 0px;
+        margin: 0px 0px 10px 0px;
+    }
+
+    span.img_class{
+            height: 90px;
+            width: 90px;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -o-border-radius: 50%;
+            -moz-border-radius: 50%;
+            float: left;
+            margin-right: 30px;
+            border: solid 1px #ccc;
+            color: #222;
+            font-size: 24px;
+            text-align: center;
+            background-color: #777;
+        img {
+            height: 90px;
+            width: 90px;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -o-border-radius: 50%;
+            -moz-border-radius: 50%;
+            float: left;
+            margin-right: 30px;
+            border: solid 1px #ccc;
+            color: #222;
+            font-size: 24px;
+            text-align: center;
+        }
+    }
+}

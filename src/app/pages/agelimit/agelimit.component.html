@@ -10,7 +10,7 @@
       <div *ngIf="!sorryPopup; else sorryDialogBody">
           <p class="font">As a retailer of wine, spirits and beer. We require all shoppers to be atleast 21 years of age</p>
           <h4 class="bold">Were you born before this date ?</h4>
-          <h2 class="popins_bold">January 12 | 1995</h2>
+          <h2 class="popins_bold">{{legalDate | date: 'MMMM dd | yyyy'}}</h2>
           <div>
             <button type="button" class="btn btn-default novalue" (click)="sorryPopup = true">No</button>
             <button type="button" class="btn btn-default close" style="float: none;" data-dismiss="modal" (click)="onAgeVarify()">Yes</button>

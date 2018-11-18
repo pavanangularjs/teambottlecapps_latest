@@ -23,11 +23,11 @@
     </div>
 
     <div class="float_right col-md-6 col-sm-6 col-lg-6 col-xs-12">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item code" style="padding-top: 15px; margin-right: 5px;width: 120px; text-align: right;"><a>
-            <div class="repeat-circle"><span class="fa fa-repeat"></span></div> Reorder
+      <ol class="breadcrumb myorder-details">
+        <li class="breadcrumb-item code myorder-status" style="margin-right: 5px;width: 120px; text-align: right;"><a>
+            <div class="repeat-circle"><span class="fa fa-repeat"></span></div> <strong>Reorder</strong>
           </a></li>
-        <li class="breadcrumb-item code" style="padding-top: 15px;"><a>#{{order?.OrderNo}}</a></li>
+        <li class="breadcrumb-item code"><a>#{{order?.OrderNo}}</a></li>
       </ol>
     </div>
   </div>
@@ -118,7 +118,7 @@
               <table class="text_left">
                 <tbody>
                   <tr>
-                    <td>
+                    <td valign="top">
                       <h5 class="summary text-right">Summary</h5>
                     </td>
                     <td style="padding-right: 35px;">
