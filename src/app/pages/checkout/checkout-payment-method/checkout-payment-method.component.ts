@@ -3,6 +3,7 @@ import { CustomerService } from '../../../services/customer.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { PaymentService } from '../../../services/payment.service';
 import { ToastrService } from 'ngx-toastr';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-checkout-payment-method',
@@ -16,7 +17,8 @@ export class CheckoutPaymentMethodComponent implements OnInit {
   userProfileId: string;
   selectedCard: number;
   constructor(private customerService: CustomerService, private paymentService: PaymentService,
-    private spinnerService: Ng4LoadingSpinnerService, private toastr: ToastrService) { }
+    private spinnerService: Ng4LoadingSpinnerService, private toastr: ToastrService,
+    private cartService: CartService) { }
 
   ngOnInit() {
     this.getPaymentMethodGetList();
@@ -52,14 +54,18 @@ export class CheckoutPaymentMethodComponent implements OnInit {
     if (userProfileId !== '') {
       this.paymentService.getExistingCards(userProfileId).subscribe(
         data => {
-          if ( data && data.profile && data.profile.paymentProfiles) {
+          if (data && data.profile && data.profile.paymentProfiles) {
             this.paymentProfiles = data.profile.paymentProfiles;
           }
-        this.spinnerService.hide();
+          this.spinnerService.hide();
         });
     } else {
       this.spinnerService.hide();
     }
+  }
+
+  updateSelectedPayment(paymentProfile) {
+    this.cartService.cartdetails.PaymentTypeId = paymentProfile.customerPaymentProfileId;
   }
 
 }

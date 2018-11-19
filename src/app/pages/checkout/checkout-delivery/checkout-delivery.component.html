@@ -13,8 +13,8 @@
                     </div>
                     <div class="col-md-6">
                       <div class="input-container">
-                        <select [(ngModel)]="selectedDeliveryDate" (change)="getDeliveryTimings()">
-                          <option *ngFor="let ddate of deliveryDatesList">
+                        <select id="dateList" name="dateList" [(ngModel)]="selectedDeliveryDate" (ngModelChange)="getDeliveryTimings()">
+                          <option [value]="ddate" *ngFor="let ddate of deliveryDatesList">
                             {{ddate}}
                           </option>
                         </select>
@@ -23,8 +23,8 @@
                     </div>
                     <div class="col-md-6">
                       <div class="input-container">
-                          <select [(ngModel)]="selectedDeliveryTime">
-                              <option *ngFor="let dtime of deliveryTimingsList">
+                          <select id="timeList" name="timeList" [(ngModel)]="selectedDeliveryTime" (ngModelChange)="updateDeliveryTime()">
+                              <option [value]="dtime" *ngFor="let dtime of deliveryTimingsList">
                                 {{dtime}}
                               </option>
                             </select>
@@ -45,7 +45,7 @@
               <h4>Address</h4>
               <div class="checkout-tile" *ngFor="let address of addressList" (click)="onSelectAddress(address)">
                 <div class="checkout-icon-style">
-                  <span [ngClass]="{'fa fa-check-circle' : selectedAddress===address.AddressId}"></span>
+                  <span [ngClass]="{'fa fa-check-circle' : cartService?.cartdetails?.AddressId===address.AddressId}"></span>
                 </div>
                 <div class="checkout-content">
                   <small class="text-uppercase" *ngIf="address?.IsDefault">Favorite</small>

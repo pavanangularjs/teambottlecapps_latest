@@ -43,6 +43,7 @@ export class CheckoutDeliveryComponent implements OnInit {
   }
 
   getDeliveryTimings() {
+    this.cartService.cartdetails.DoPDate = this.selectedDeliveryDate;
     this.deliveryTimingsList = [];
     if (this.cartDetails && this.cartDetails.ListDoPTimeSlot) {
       this.deliveryTimingsList = this.cartDetails.ListDoPTimeSlot.filter(slot => slot.DoPDate === this.selectedDeliveryDate)
@@ -50,6 +51,9 @@ export class CheckoutDeliveryComponent implements OnInit {
     }
   }
 
+  updateDeliveryTime() {
+    this.cartService.cartdetails.DoPTimeSlot = this.selectedDeliveryTime;
+  }
   getAddressList() {
     if (this.customerService.customerAddressList && this.customerService.customerAddressList.ListAddress) {
       this.addressList = this.customerService.customerAddressList.ListAddress;
@@ -58,15 +62,14 @@ export class CheckoutDeliveryComponent implements OnInit {
       this.customerService.getCustomerAddressList().subscribe(
         data => {
           this.addressList = data ? (data.ListAddress ? data.ListAddress : []) : [];
+          this.cartService.cartdetails.AddressId = this.addressList.filter(address => address.IsDefault === true)[0].AddressId;
           this.spinnerService.hide();
         });
     }
-
-    this.selectedAddress = this.addressList.filter(address => address.IsDefault === true)[0].AddressId;
   }
 
   onSelectAddress(address) {
-    this.selectedAddress = address.AddressId;
+    this.cartService.cartdetails.AddressId = address.AddressId;
   }
 
 }

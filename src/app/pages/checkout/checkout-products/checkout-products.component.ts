@@ -22,9 +22,9 @@ export class CheckoutProductsComponent implements OnInit {
 
   onCheckout() {
 
-    this.cartDetails.OrderTypeId = 1;
+    /* this.cartDetails.OrderTypeId = 1;
     this.cartDetails.AddressId = 0;
-    this.cartDetails.PaymentTypeId = 0;
+    this.cartDetails.PaymentTypeId = 0; */
 
     this.cartService.placeOrder(this.cartDetails).subscribe(
       (data: any) => {

@@ -12,7 +12,7 @@
             <th style="border-left: solid 2px #fff;">Expires On</th>
           </thead>
           <tbody>
-            <tr *ngFor="let paymentProfile of paymentProfiles; index as i" (click)="selectedCard=i">
+            <tr *ngFor="let paymentProfile of paymentProfiles; index as i" (click)="updateSelectedPayment(paymentProfile); selectedCard=i">
               <td>
                 <div class="check-icon-payment-container">
                   <span [ngClass]="{'fa fa-check-circle checkout-icon-style':selectedCard===i}"></span>

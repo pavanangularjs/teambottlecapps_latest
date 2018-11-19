@@ -58,6 +58,20 @@ export class SigninComponent implements OnInit {
       eemail: ['', [Validators.required, Validators.email]],
       epassword: ['', Validators.required]
     });
+
+    if (!(this.customerSession && this.customerSession.SessionId)) {
+      let demail = localStorage.getItem('email');
+      let dpass = localStorage.getItem('password');
+
+      if (demail && dpass) {
+        demail = CryptoJS.AES.decrypt(demail, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
+        dpass = CryptoJS.AES.decrypt(dpass, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
+      }
+
+      if (demail && dpass) {
+        this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams(demail, dpass, 'E')));
+      }
+    }
   }
 
   // convenience getter for easy access to form fields
