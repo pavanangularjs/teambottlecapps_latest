@@ -77,6 +77,9 @@ export class MenubarComponent implements OnInit {
     this.router.navigate([`/${catName.toLowerCase()}`]);
   }
 
+  onApplyFilter() {
+    this.isClicked = true;
+  }
   getMenuName(catName) {
     if (catName === 'Mixers & More') {
       catName = 'mixers-more';

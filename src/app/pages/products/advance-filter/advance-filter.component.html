@@ -46,7 +46,20 @@
               </h4>
             </div>
             <ul id="myType" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="myTypeHeading">
-              <li><a (click)="onSelectionChange(type)" [ngClass]="{'active' : type.isSelected === true}" *ngFor="let type of allFilterOptions?.type">{{type.value}}</a></li>
+              <li><a (click)="onTypeSelectionChange(type)" [ngClass]="{'active' : type.isSelected === true}" *ngFor="let type of allFilterOptions?.type">{{type.value}}</a></li>
+            </ul>
+          </div>
+          <div class="panel bottle-panel-container"  *ngIf="allVarietals?.length > 0">
+            <div class="left-panel-section" role="tab" id="myVarietalHeading">
+              <h4 class="panel-title left-panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#myVarietal"
+                  aria-expanded="false" aria-controls="myVarietal">
+                  Varietal <span class="fa fa-chevron-up pull-right"></span>
+                </a>
+              </h4>
+            </div>
+            <ul id="myVarietal" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="myVarietalHeading">
+              <li><a (click)="onSelectionChange(varietal)" [ngClass]="{'active' : varietal.isSelected === true}" *ngFor="let varietal of allVarietals">{{varietal.value}}</a></li>
             </ul>
           </div>
           <div class="panel bottle-panel-container">

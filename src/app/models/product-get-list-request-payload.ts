@@ -9,7 +9,7 @@ export class ProductGetListRequestPayload {
     UserId: number;
     SizeId: string;
     TypeId: string;
-    VarietalId: number;
+    VarietalId: string;
     CountryId: string;
     RegionId: string;
     IsFavorite: number;

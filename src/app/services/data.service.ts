@@ -7,6 +7,7 @@ export class DataService {
     public searchByText: string;
     public isFeatureProduct: number;
     public filtersAllData: ProductFilters;
+    public allVarietals: Item[];
 
     public priceRanges = [
         { 'id': '1', 'name': '$0 - $10' },

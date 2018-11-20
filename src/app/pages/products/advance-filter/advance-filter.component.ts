@@ -42,11 +42,11 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
     private spinnerService: Ng4LoadingSpinnerService,
     private router: Router) {
 
-      this.navigationSubscription = this.router.events.subscribe((e: any) => {
-        if (e instanceof NavigationEnd) {
-          this.initialiseSearchFilter();
-        }
-      });
+    this.navigationSubscription = this.router.events.subscribe((e: any) => {
+      if (e instanceof NavigationEnd) {
+        this.initialiseSearchFilter();
+      }
+    });
     this.store.select(ProductStoreSelectors.productGetListData)
       .subscribe(pgld => {
         this.productsList = pgld ? pgld.ListProduct : [];
@@ -56,15 +56,18 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.productsList = [];
     this.initialiseSearchFilter();
+    this.getAllRegions();
   }
 
   initialiseSearchFilter() {
     if (this.dataservice.searchByText !== '') {
-      this.selectedFilters = [{id: '001', value: this.dataservice.searchByText, isSelected: true}];
+      this.selectedFilters = [{ id: '001', value: this.dataservice.searchByText, isSelected: true }];
       this.getProductsByKeyword();
     } else if (this.dataservice.filtersAllData) {
       this.allFilterOptions = this.dataservice.filtersAllData;
+      this.allVarietals = this.dataservice.allVarietals;
       this.getAllSelectedFilters();
       this.getFilteredProducts();
     }
@@ -75,13 +78,15 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
     this.selectedSizes = this.getSelectedFilterOptions(this.allFilterOptions.size);
     this.selectedPrices = this.getSelectedFilterOptions(this.allFilterOptions.price);
 
+    this.selectedVarietals = this.getSelectedFilterOptions(this.allVarietals);
+
     if (this.allFilterOptions.countries.length > 0) {
       this.selectedCountries = this.getSelectedFilterOptions(this.allFilterOptions.countries);
       this.selectedRegions = this.getSelectedFilterOptions(this.allRegions);
     }
 
-    this.selectedFilters = [...this.selectedTypes, ...this.selectedSizes, ...this.selectedPrices,
-      ...this.selectedCountries, ...this.selectedRegions];
+    this.selectedFilters = [...this.selectedTypes, ...this.selectedVarietals, ...this.selectedSizes, ...this.selectedPrices,
+    ...this.selectedCountries, ...this.selectedRegions];
   }
 
   onSelectionChange(item) {
@@ -93,8 +98,8 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
 
   onCountrySelectionChange(country: Country) {
     country.isSelected = !country.isSelected;
-
-    if (country.isSelected) {
+    this.getRegions();
+    /* if (country.isSelected) {
       this.allRegions = [...this.allRegions, ...country.regions];
     } else {
       country.regions.forEach(region => {
@@ -106,7 +111,65 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
     }
 
     this.getAllSelectedFilters();
+    this.getFilteredProducts(); */
+  }
+
+  onTypeSelectionChange(type: ProductType) {
+    type.isSelected = !type.isSelected;
+    this.getVarietals();
+
+    /* if (type.isSelected) {
+     this.allVarietals = [...this.allVarietals, ...type.varietals];
+   } else {
+     type.varietals.forEach(varietal => {
+       const rindex = this.allVarietals.indexOf(varietal);
+       if (rindex !== -1) {
+         this.allVarietals.splice(rindex, 1);
+       }
+     });
+   }
+
+   this.getAllSelectedFilters();
+   this.getFilteredProducts();*/
+  }
+
+  getVarietals() {
+    this.allVarietals = [];
+    this.allFilterOptions.type.filter(type => type.isSelected === true).forEach(item => {
+      this.allVarietals = [...this.allVarietals, ...item.varietals];
+    });
+
+    if (this.allFilterOptions.type.filter(type => type.isSelected === true).length === 0) {
+      this.getAllVarietals();
+    }
+
+    this.getAllSelectedFilters();
     this.getFilteredProducts();
+  }
+  getAllVarietals() {
+    if (this.allFilterOptions && this.allFilterOptions.type) {
+      this.allVarietals = this.allFilterOptions.type.reduce((acc, item) => [...acc, ...item.varietals], []);
+    }
+  }
+
+  getRegions() {
+    this.allRegions = [];
+    this.allFilterOptions.countries.filter(country => country.isSelected === true).forEach(item => {
+      this.allRegions = [...this.allRegions, ...item.regions];
+    });
+
+    if (this.allFilterOptions.countries.filter(country => country.isSelected === true).length === 0) {
+      this.getAllRegions();
+    }
+
+    this.getAllSelectedFilters();
+    this.getFilteredProducts();
+  }
+
+  getAllRegions() {
+    if (this.allFilterOptions && this.allFilterOptions.countries) {
+      this.allRegions = this.allFilterOptions.countries.reduce((acc, item) => [...acc, ...item.regions], []);
+    }
   }
 
   getSelectedFilterOptions(filterType): any[] {
@@ -149,6 +212,13 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
       this.getFilteredProducts();
     }
 
+    const vindex = this.allVarietals.findIndex(item => item.value === filter.value);
+    if (vindex !== -1) {
+      this.allVarietals[vindex].isSelected = false;
+      this.getAllSelectedFilters();
+      this.getFilteredProducts();
+    }
+
   }
   onPageSizeChange() {
     this.getFilteredProducts();
@@ -176,6 +246,7 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
   getFilteredProducts() {
 
     let types = '';
+    let varietals = '';
     let sizes = '';
     let countries = '';
     let regions = '';
@@ -185,6 +256,11 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
     if (this.selectedTypes && this.selectedTypes.length > 0) {
       types = this.selectedTypes.map((res: Item) => res.id).join(',');
     }
+
+    if (this.selectedVarietals && this.selectedVarietals.length > 0) {
+      varietals = this.selectedVarietals.map((res: Item) => res.id).join(',');
+    }
+
     if (this.selectedSizes && this.selectedSizes.length > 0) {
       sizes = this.selectedSizes.map((res: Item) => res.id).join(',');
     }
@@ -214,7 +290,7 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
       this.productStoreService.getProductGetListParams(
         {
           categoryId: this.dataservice.categoryId, pageSize: this.selectedPageSize, typeId: types,
-          sizeId: sizes, countryId: countries, regionId: regions,
+          sizeId: sizes, countryId: countries, regionId: regions, varietalId: varietals,
           minPrice: minPrice, maxPrice: maxPrice, keyWord: this.dataservice.searchByText
         }
       )));
@@ -224,6 +300,7 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
     this.allFilterOptions.type.map(type => type.isSelected = false);
     this.allFilterOptions.size.map(size => size.isSelected = false);
     this.allFilterOptions.price.map(price => price.isSelected = false);
+    this.allVarietals.map(varietal => varietal.isSelected = false);
     this.getAllSelectedFilters();
     this.getFilteredProducts();
   }

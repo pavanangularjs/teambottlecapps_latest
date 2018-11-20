@@ -26,7 +26,7 @@ export class ProductDetailsComponent implements OnInit {
   allFilters: ProductFilters;
   productsList: any;
   pageNumber = 0;
-  varietalId = 0;
+  varietalId = '';
   typeId = '';
 
   constructor(private route: ActivatedRoute,
@@ -65,6 +65,9 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.qty = 1;
+    this.productDetails = null;
+    this.productsList = [];
     this.getProductDetails();
   }
 
@@ -87,7 +90,7 @@ export class ProductDetailsComponent implements OnInit {
 
     this.getMenuFilters();
     if ((this.productDetails.CategoryId === 3 || this.productDetails.CategoryId === 1) && this.productDetails.Varietal !== '') {
-      this.varietalId = +this.getVarietalId(this.productDetails.Varietal);
+      this.varietalId = this.getVarietalId(this.productDetails.Varietal);
     } else {
       this.typeId = this.getTypeId(this.productDetails.Type);
     }
