@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-md-6">
                       <div class="input-container">
-                        <select id="dateList" name="dateList" [(ngModel)]="selectedDeliveryDate" (ngModelChange)="getDeliveryTimings()">
+                        <select id="dateList" name="dateList" class="form-control dateinput" [(ngModel)]="selectedDeliveryDate" (ngModelChange)="getDeliveryTimings()">
                           <option [value]="ddate" *ngFor="let ddate of deliveryDatesList">
                             {{ddate}}
                           </option>
@@ -23,7 +23,7 @@
                     </div>
                     <div class="col-md-6">
                       <div class="input-container">
-                          <select id="timeList" name="timeList" [(ngModel)]="selectedDeliveryTime" (ngModelChange)="updateDeliveryTime()">
+                          <select id="timeList" name="timeList" class="form-control dateinput" [(ngModel)]="selectedDeliveryTime" (ngModelChange)="updateDeliveryTime()">
                               <option [value]="dtime" *ngFor="let dtime of deliveryTimingsList">
                                 {{dtime}}
                               </option>
@@ -44,6 +44,15 @@
             <div class="row">
               <h4>Address</h4>
               <div class="checkout-tile" *ngFor="let address of addressList" (click)="onSelectAddress(address)">
+                <div class="dropdown dropdown-favorite">
+                  <a class="text-muted" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="fa fa-ellipsis-v more-icon"></span><span class="icon icon-ellipsis-vert more-icon"></span></a>
+                
+                  <ul class="dropdown-menu dropdown-favorite-open" aria-labelledby="dLabel">
+                    <li><a href="#">Edit</a></li>
+                    <li><a href="3">Delete</a></li>
+                  </ul>
+                </div>
                 <div class="checkout-icon-style">
                   <span [ngClass]="{'fa fa-check-circle' : cartService?.cartdetails?.AddressId===address.AddressId}"></span>
                 </div>

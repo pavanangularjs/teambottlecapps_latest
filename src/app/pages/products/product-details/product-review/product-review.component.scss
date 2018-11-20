@@ -3,6 +3,21 @@
 	width: 100%;
 	margin-bottom: 40px;
     display: flex;
+    .review-edit {
+    position: relative;
+    width: 100%;
+    	.edit-icon {
+	    	color: #fff;
+		    font-size: 16px;
+		    position: absolute;
+		    background-color: #A61455;
+		    border-radius: 50%;
+		    text-align: center;
+		    padding: 10px;
+		    right: -20px;
+		    top: -55px;
+	    }
+    }
 	.user-review-dp {
 		width: 54px;
 		height: 54px;
@@ -43,6 +58,7 @@
 				color: #777;
 				font-weight: normal !important;
 				font-family: poppinssemiregular;
+				margin-right: 70px;
 			}
 			.name_date {
 				font-family: poppinssemiregular;

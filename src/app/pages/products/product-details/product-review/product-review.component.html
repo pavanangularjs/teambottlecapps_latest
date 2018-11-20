@@ -8,7 +8,8 @@
           <div class="user-review-content">
               <div class="name_date">
                 <span class="title">{{review?.UserName}}</span> - <small class="text-muted"> {{review?.Reviewdate}}</small>
-              </div>
+              </div> 
+              <div class="review-edit"><span class="fa fa-pencil edit-icon"></span></div>
               <div class="star_right rating-stars">
                   <app-rating [rate]='review?.ReviewRating'></app-rating>
               </div>

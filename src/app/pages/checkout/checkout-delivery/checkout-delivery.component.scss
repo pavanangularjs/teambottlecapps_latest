@@ -21,6 +21,13 @@
       }
     }
   }
+  .dateinput {
+    background: transparent !important;
+    outline: none;
+    box-shadow: none;
+    border: solid 0px transparent;
+    width: auto;
+  }
 }
 
 .checkout-table .check-icon-checkout-container {
@@ -134,6 +141,7 @@ table.new-address-add {
       display: flex;
       width: 100%;
       margin-bottom: 15px;
+      border-bottom: solid 1px #ccc;
     }
   }
   .coupon-panel .input-container {
@@ -149,6 +157,7 @@ table.new-address-add {
     text-align: center;
     border-bottom: solid 1px #ccc;
     color: #979797;
+    margin-bottom: -1px;
   }
   .delivery-options .input-field, .coupon-panel .input-field {
     width: 100%;
@@ -190,9 +199,19 @@ table.new-address-add {
       margin-right: 15px;
       float: left;
       height: 100%;
-      margin: 1% 30px 10px 10px;
-  }
+      /*margin: 1% 30px 10px 10px;*/
+    }
 }
+
+  .dropdown-favorite {
+      position: absolute !important;
+      right: 30px;
+  }
+
+  .dropdown-favorite-open {
+      position: relative !important;
+      left: 0px !important;
+  }
 
 .add-new-checkout-address .location-icon-container{
     .icon-1 {

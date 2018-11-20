@@ -28,6 +28,7 @@ export class ProductDetailsComponent implements OnInit {
   pageNumber = 0;
   varietalId = '';
   typeId = '';
+  reviewAdded = false;
 
   constructor(private route: ActivatedRoute,
     private store: Store<ProductGetDetailsRequestPayload>,
@@ -80,6 +81,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   onAddReview() {
+    this.reviewAdded = true;
     this.getProductDetails();
   }
   onRated(rating: number) {
@@ -142,5 +144,15 @@ export class ProductDetailsComponent implements OnInit {
     this.dataservice.categoryId = this.productDetails.CategoryId;
     this.dataservice.getFiltersByCategory();
     this.allFilters = this.dataservice.filtersAllData;
+  }
+
+  favoriteProductUpdate(status: boolean) {
+    // this.spinnerService.show();
+    this.productStoreService.favoriteProductUpdate(this.productDetails.Product.PID, status).subscribe(
+      (data: any) => {
+        this.productDetails.Product.IsFavorite = data.IsFavorite;
+        // this.spinnerService.hide();
+        this.toastr.success(data.SuccessMessage);
+      });
   }
 }
