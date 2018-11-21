@@ -173,7 +173,11 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
   }
 
   getSelectedFilterOptions(filterType): any[] {
-    return filterType.filter(type => type.isSelected === true);
+    if (filterType) {
+      return filterType.filter(type => type.isSelected === true);
+    } else {
+      return [];
+    }
   }
 
   removeFilter(filter) {

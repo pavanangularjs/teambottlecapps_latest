@@ -50,13 +50,13 @@
           <tbody class="bg-transparent">
             <tr>
               <td width="53%" class="cart-item">
-                <div class="img_div">
+                <div class="img_div" routerLink="/product-details/{{cartItem.PID}}">
                   <img class="second_img" src='{{cartItem?.ProductImage}}' />
                 </div>
                 <div class="Product_name text-left">
                   <h5 class="text-left">{{cartItem?.ProductName}}</h5>
 
-                  <span class="font_size">{{cartItem?.UnitSize}}</span>
+                  <span class="font_size">{{cartItem?.UnitSize}} | SKU: {{cartItem?.SKU}} | UPC: {{cartItem?.UPC}}</span>
                 </div>
 
               </td>
@@ -91,8 +91,8 @@
         </table>
 
         <div class="btn_right buttons-container">
-          <button class="btn btn-default" (click)="onPickup()">Pickup</button>
-          <button class="btn btn-default" (click)="onDelivery()">Delivery</button>
+          <button class="btn btn-default" *ngIf="storeDetails?.IsPickup" (click)="onPickup()">Pickup</button>
+          <button class="btn btn-default" *ngIf="storeDetails?.IsDelivery" (click)="onDelivery()">Delivery</button>
 
         </div>
         <button id="openCartReviewModal" #openCartReviewModal [hidden]="true" data-toggle="modal" data-target="#gridSystemModal">Review

@@ -17,7 +17,7 @@
         </ng-template>
         
       </div>
-      <div class="second_content">
+      <div class="second_content" routerLink="/product-details/{{item.PID}}">
         <div class="">
           <p class="strike_text" *ngIf="item?.PriceDisplay !== item?.OfferPriceDisplay">{{item?.PriceDisplay}}</p>
           <p class="price">{{item?.OfferPriceDisplay}}</p>  

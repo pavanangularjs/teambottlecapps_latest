@@ -15,7 +15,7 @@ export class DataService {
         { 'id': '3', 'name': '$25 - $50' },
         { 'id': '4', 'name': '$50 - $100' },
         { 'id': '5', 'name': '$100 & Above' }
-      ];
+    ];
 
     getFiltersByCategory() {
         const allFilters = {
@@ -23,8 +23,9 @@ export class DataService {
             type: [],
             price: [],
             countries: []
-          };
+        };
         let filters: any;
+        this.allVarietals = [];
 
         if (menuOptions && menuOptions['StoreFilters']) {
             filters = menuOptions['StoreFilters'];
@@ -51,6 +52,10 @@ export class DataService {
             });
             allFilters.type.push({ id: type.TypeId, value: type.TypeName, isSelected: false, varietals: listOfVarietals });
         });
+
+        if (allFilters && allFilters.type) {
+            this.allVarietals = allFilters.type.reduce((acc, item) => [...acc, ...item.varietals], []);
+        }
 
         if (!filters && !filters.ListSize) {
             allFilters.size = [];

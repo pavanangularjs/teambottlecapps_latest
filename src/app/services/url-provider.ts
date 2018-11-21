@@ -13,6 +13,7 @@ export enum UrlNames {
     CartRemoveItem = 'Cart/CartRemoveItem',
     CartGetDetail = 'Cart/CartGetDetail',
     ReviewRatingInsert = 'Review/ReviewRatingInsert',
+    ReviewRatingUpdate = 'Review/ReviewRatingUpdate',
     OrderGetList = 'Order/OrderGetList',
     OrderInsert = 'Cart/OrderInsert',
     CartUpdate = 'Cart/CartUpdate',

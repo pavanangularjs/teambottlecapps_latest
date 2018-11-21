@@ -15,7 +15,7 @@
                                         target="_blank">
                                         {{storeDetails?.Address1}}
                                         <span *ngIf="storeDetails?.Address2"> {{storeDetails?.Address2}}</span>
-                                        <span> {{storeDetails?.City}}, {{storeDetails?.State}} - {{storeDetails?.Zip}}
+                                        <span> {{storeDetails?.City}}, {{storeDetails?.State}} {{storeDetails?.Zip}}
                                         </span>
                                     </a>
                                 </div>
@@ -150,8 +150,8 @@
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                 <div class="design text_center">
-                    <a>PoweredBy </a>
-                    <img src="assets/Images/powered-by.png" alt="Battlecapse" class="first_imge">
+                    Powered By
+                    <a href="http://www.bottlecapps.com/" target="_blank"><img src="assets/Images/powered-by.png" alt="Battlecapse" class="first_imge"> </a>
                 </div>
 
             </div>

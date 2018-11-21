@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { ProductStoreService } from '../../services/product-store.service';
 
 @Component({
   selector: 'app-cart',
@@ -16,15 +17,19 @@ export class CartComponent implements OnInit {
   cartDetails: any;
   quantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   reviewItems: any;
+  storeDetails: any;
+
   constructor(private cartService: CartService,
     private customerService: CustomerService,
     private router: Router,
     private decimalPipe: DecimalPipe,
     private spinnerService: Ng4LoadingSpinnerService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private storeService: ProductStoreService) { }
 
   ngOnInit() {
     this.spinnerService.show();
+    this.getStoreDetails();
     this.getCartDetails();
   }
 
@@ -107,6 +112,14 @@ export class CartComponent implements OnInit {
       (data: any) => {
         this.router.navigate(['/checkout']);
       });
+  }
+
+  getStoreDetails() {
+    this.storeService.getStoreDetails().subscribe(data => {
+      if (data && data.GetStoredetails) {
+        this.storeDetails = data.GetStoredetails;
+      }
+    });
   }
 
 }

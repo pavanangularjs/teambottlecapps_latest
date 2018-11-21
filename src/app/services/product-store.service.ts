@@ -13,6 +13,7 @@ import { ProductGetDetailsRequestPayload } from '../models/product-get-details-r
 import { EventGetDetailsRequestPayload } from '../models/event-get-details-request-payload';
 import { FavoriteProductUpdateRequestPayload } from '../models/favorite-product-update-payload';
 import { AddProductReview } from '../models/add-product-review';
+import { UpdateProductReview } from '../models/update-product-review';
 import { ErrorHandlerService } from '../shared/services/error-handler.service';
 import { BaseRequest } from '../models/base-request';
 
@@ -210,6 +211,12 @@ export class ProductStoreService {
             this.getProductReviewParams(productId, reviewTitle, reviewDescription, rating));
     }
 
+    updateProductReview(
+        productId: number, reviewTitle: string, reviewDescription: string, rating: number, reviewId: number): Observable<any> {
+        return this.http.post<any>(baseUrl + UrlNames.ReviewRatingUpdate,
+            this.getUpdateProductReviewParams(productId, reviewTitle, reviewDescription, rating, reviewId));
+    }
+
     getProductReviewParams(productId: number, reviewTitle: string, reviewDescription: string, rating: number): AddProductReview {
         if (!this.customerSession) {
             return null;
@@ -223,8 +230,28 @@ export class ProductStoreService {
             ReviewTitle: reviewTitle,
             ReviewDescription: reviewDescription,
             ReviewRating: rating,
-            DeviceId: 'W',
-            DeviceType: 'W'
+            DeviceId: this.customerSession.DeviceId,
+            DeviceType: this.customerSession.DeviceType
+        };
+    }
+
+    getUpdateProductReviewParams(
+        productId: number, reviewTitle: string, reviewDescription: string, rating: number, reviewId: number): UpdateProductReview {
+        if (!this.customerSession) {
+            return null;
+        }
+        return {
+            StoreId: this.customerSession.StoreId,
+            UserId: this.customerSession.UserId,
+            SessionId: this.customerSession.SessionId,
+            AppId: this.customerSession.AppId,
+            PID: productId,
+            ReviewTitle: reviewTitle,
+            ReviewDescription: reviewDescription,
+            ReviewRating: rating,
+            DeviceId: this.customerSession.DeviceId,
+            DeviceType: this.customerSession.DeviceType,
+            ReviewID: reviewId
         };
     }
 

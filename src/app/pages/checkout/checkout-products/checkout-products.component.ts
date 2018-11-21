@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class CheckoutProductsComponent implements OnInit {
   cartDetails: any;
   isCouponError = false;
+  isExpand = false;
+  isTipExpand = true;
   constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit() {

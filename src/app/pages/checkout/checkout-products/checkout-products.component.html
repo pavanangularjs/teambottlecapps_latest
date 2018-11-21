@@ -7,10 +7,10 @@
           <td>
             <h4>{{cartItem?.ProductName}}</h4>
             <h6>{{cartItem?.PriceDisplay}}</h6>
-            <p>Quantity: {{cartItem.QuantityOrdered}}</p>
+            <p>Quantity: {{cartItem?.QuantityOrdered}} | {{cartItem?.UnitSize}}</p>
+            <p>SKU: {{cartItem?.SKU}} | UPC: {{cartItem?.UPC}}</p>
           </td>
           <td class="text-right totalprice-right">
-            <p>Edit Order</p>
             <h5>{{cartItem?.ItemTotalDisplay}}</h5>
           </td>
         </tr>
@@ -34,8 +34,9 @@
                 </td>
               </tr>
               <tr>
-                <td width="25px"> <a class="exapand-icon"> <span class="fa fa-minus-circle"></span> <span
-                      class="icon icon-minus-circled"></span> </a> </td>
+                <td width="25px"> 
+                  <a *ngIf="cartDetails?.ListDiscount?.length > 0" class="exapand-icon" (click)="isExpand = !isExpand"> <span class="fa" [ngClass]="isExpand ? 'fa-minus-circle' : 'fa-plus-circle'"></span> </a> 
+                </td>
                 <td>
                   <h5>Savings</h5>
                 </td>
@@ -43,7 +44,7 @@
                   <h4>{{cartDetails?.TotalSavingsDisplay}}</h4>
                 </td>
               </tr>
-              <tr>
+              <tr *ngIf="cartDetails?.ListDiscount?.length > 0" >
                 <td></td>
                 <td colspan="2">
                   <table class="exapnded-table">
@@ -57,7 +58,7 @@
               <tr>
                 <td></td>
                 <td>
-                  <h5>Coupon Discout</h5>
+                  <h5>Coupon Discount</h5>
                 </td>
                 <td class="text-right">
                   <h4>$ 0.00</h4>
@@ -73,7 +74,9 @@
                 </td>
               </tr>            
               <tr *ngIf="cartDetails?.OrderTypeId !== 1">
-                <td width="25px"><a class="exapand-icon"><span class="fa fa-plus-circle"></span></a></td>
+                <td width="25px">
+                  <a class="exapand-icon" (click)="isTipExpand = !isTipExpand"><span class="fa" [ngClass]="isTipExpand ? 'fa-minus-circle' : 'fa-plus-circle'"></span></a>
+                </td>
                 <td>
                   <h5>Tip</h5>
                 </td>
@@ -83,7 +86,7 @@
               </tr>
               <tr>
                 <td></td>
-                <td colspan="2">
+                <td colspan="2" *ngIf="isTipExpand">
                   <table class="exapnded-table">
                     <tr *ngFor="let tip of cartDetails?.ListTipForDriver">
                       <td><small class="text-muted"><input type="radio" name="tip" (change)="onTipSelected($event, tip)" value="{{tip.TipAmountDisplay}}" [(ngModel)]="tip.IsDeafault"> {{tip?.TipAmountDisplay}} ({{tip?.Percentage}}%)</small></td>
@@ -125,7 +128,7 @@
     </table>
   </div>
   <div class="btn_right buttons-container">
-    <button type="cancel" class="btn btn-default novalue">Cancel</button>
+    <button type="cancel" class="btn btn-default novalue" [routerLink]="['/cart']" >Cancel</button>
     <button type="checkout" class="btn btn-default close" (click)="onCheckout()">Checkout</button>
   </div>
 </div>

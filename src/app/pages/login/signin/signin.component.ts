@@ -25,6 +25,7 @@ export class SigninComponent implements OnInit {
   returnUrl: string;
   email: string;
   password: string;
+  rememberMe = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private store: Store<CustomerLoginSession>,
     private customerService: CustomerService,
@@ -39,12 +40,13 @@ export class SigninComponent implements OnInit {
           this.spinnerService.hide();
           if (this.customerSession.IsAccess === true && this.customerSession.UserId !== 0) {
 
-            if (this.email && this.password && baseUrl) {
+            if (this.rememberMe && this.email && this.password && baseUrl) {
               const email = CryptoJS.AES.encrypt(this.email, baseUrl.substr(3)).toString();
               const password = CryptoJS.AES.encrypt(this.password, baseUrl.substr(3)).toString();
 
               localStorage.setItem('email', email);
               localStorage.setItem('password', password);
+              localStorage.setItem('rememberMe', this.rememberMe.toString());
             }
             this.router.navigate([this.returnUrl]);
           }
@@ -56,14 +58,20 @@ export class SigninComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     this.formSignIn = this.formBuilder.group({
       eemail: ['', [Validators.required, Validators.email]],
-      epassword: ['', Validators.required]
+      epassword: ['', Validators.required],
+      rememberMe: [false]
     });
 
     if (!(this.customerSession && this.customerSession.SessionId)) {
       let demail = localStorage.getItem('email');
       let dpass = localStorage.getItem('password');
+      const rememberMe = localStorage.getItem('rememberMe');
 
-      if (demail && dpass) {
+      if (rememberMe === 'true') {
+        this.rememberMe = true;
+      }
+
+      if (demail && dpass && this.rememberMe) {
         demail = CryptoJS.AES.decrypt(demail, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
         dpass = CryptoJS.AES.decrypt(dpass, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
       }
@@ -98,6 +106,7 @@ export class SigninComponent implements OnInit {
     this.spinnerService.show();
     this.email = this.formSignIn.get('eemail').value;
     this.password = this.formSignIn.get('epassword').value;
+    this.rememberMe = this.formSignIn.get('rememberMe').value;
 
     this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams(this.email, this.password, 'E')));
   }
