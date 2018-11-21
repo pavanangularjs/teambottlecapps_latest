@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-product-review',
@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProductReviewComponent implements OnInit {
   @Input() review: any;
+  @Output() edit = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit() {
@@ -14,6 +15,9 @@ export class ProductReviewComponent implements OnInit {
 
   getCount(n: number): any[] {
     return Array(n);
+  }
+  onEdit() {
+    this.edit.emit(this.review);
   }
 
 }

@@ -18,10 +18,11 @@
                 <div class="product_img">
                     <div class="favorite-container">
                         <div class="favorite-selection" *ngIf="productDetails">
-                            <img class="firimg img-responsive" (click)="favoriteProductUpdate(true)" src="assets/Images/favorites.png" *ngIf="productDetails?.Product?.IsFavorite===false; else favActive"/>
+                            <img class="firimg img-responsive" (click)="favoriteProductUpdate(true)" src="assets/Images/favorites.png"
+                                *ngIf="productDetails?.Product?.IsFavorite===false; else favActive" />
                             <ng-template #favActive>
                                 <img class="firimg img-responsive" (click)="favoriteProductUpdate(false)" src="assets/Images/favorites-active.png">
-                            </ng-template> 
+                            </ng-template>
                         </div>
                     </div>
                     <img class="second_img img-responsive" src="{{productDetails?.Product?.ProductImg}}" />
@@ -113,7 +114,7 @@
                     </div>
                 </div>
 
-                
+
 
             </div>
 
@@ -153,13 +154,17 @@
     <div class="container">
         <div class="total_border write-review">
             <h4 class="review_title">Reviews</h4>
-            <p *ngIf="userReviews?.length === 0" class="no-reviews">There are no customer reviews yet.</p>
+            <p *ngIf="userReviews?.length === 0 && productDetails?.UserReview?.UserId === 0" class="no-reviews">There
+                are no customer reviews yet.</p>
 
             <div>
-                <app-product-review [review]="review" *ngFor="let review of userReviews"></app-product-review>
+                <app-product-review [review]="review" (edit)="onEdit($event)" *ngFor="let review of userReviews"></app-product-review>
             </div>
             <div *ngIf="productDetails?.UserReview?.UserId === 0 && !reviewAdded">
                 <app-product-add-review [productId]="productDetails?.Product?.PID" (addReview)="onAddReview()"></app-product-add-review>
+            </div>
+            <div *ngIf="productDetails?.UserReview?.UserId !== 0 && isEdit">
+                <app-product-edit-review [productId]="productDetails?.Product?.PID" [edit]="isEdit" [review]="review" (updateReview)="onUpdateReview()"></app-product-edit-review>
             </div>
         </div>
     </div>

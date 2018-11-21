@@ -29,6 +29,8 @@ export class ProductDetailsComponent implements OnInit {
   varietalId = '';
   typeId = '';
   reviewAdded = false;
+  isEdit = false;
+  review: any;
 
   constructor(private route: ActivatedRoute,
     private store: Store<ProductGetDetailsRequestPayload>,
@@ -57,7 +59,7 @@ export class ProductDetailsComponent implements OnInit {
         this.spinnerService.hide();
       });
 
-      this.store.select(ProductStoreSelectors.productGetListData)
+    this.store.select(ProductStoreSelectors.productGetListData)
       .subscribe(pgld => {
         if (pgld) {
           this.productsList = pgld ? pgld.ListProduct : [];
@@ -80,8 +82,16 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
+  onEdit(review: any) {
+    this.isEdit = true;
+    this.review = review;
+  }
   onAddReview() {
     this.reviewAdded = true;
+    this.getProductDetails();
+  }
+  onUpdateReview() {
+    this.isEdit = false;
     this.getProductDetails();
   }
   onRated(rating: number) {
@@ -103,8 +113,10 @@ export class ProductDetailsComponent implements OnInit {
   getProductList() {
     this.store.dispatch(new ProductGetList(
       this.productStoreService.getProductGetListParams(
-        {categoryId: this.productDetails.CategoryId, varietalId: this.varietalId,
-          typeId: this.typeId, pageSize: 4, pageNumber: ++this.pageNumber})));
+        {
+          categoryId: this.productDetails.CategoryId, varietalId: this.varietalId,
+          typeId: this.typeId, pageSize: 4, pageNumber: ++this.pageNumber
+        })));
   }
 
   addToCart() {
@@ -131,7 +143,7 @@ export class ProductDetailsComponent implements OnInit {
   getVarietalId(varietalName: string) {
     if (this.allFilters && this.allFilters.type) {
       const varietal = this.allFilters.type.reduce((acc, item) => [...acc, ...item.varietals], [])
-      .filter(varietalItem => varietalItem.value === varietalName)[0];
+        .filter(varietalItem => varietalItem.value === varietalName)[0];
       // const varietal = this.allFilters.type.filter(item => item.value === varietalName)[0];
       if (varietal) {
         return varietal.id;

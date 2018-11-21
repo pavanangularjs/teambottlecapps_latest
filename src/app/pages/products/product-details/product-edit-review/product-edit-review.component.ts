@@ -13,8 +13,9 @@ import { Router } from '@angular/router';
 })
 export class ProductEditReviewComponent implements OnInit {
   @Input() productId: number;
+  @Input() review: any;
   @Input() edit: boolean;
-  @Output() addReview = new EventEmitter<any>();
+  @Output() updateReview = new EventEmitter<any>();
 
   formAddProductReview: FormGroup;
   rating = 0;
@@ -27,16 +28,19 @@ export class ProductEditReviewComponent implements OnInit {
 
   ngOnInit() {
     this.formAddProductReview = new FormGroup({
-      rTitle: new FormControl(''),
-      rDescription: new FormControl(''),
+      rTitle: new FormControl(this.review.ReviewTitle),
+      rDescription: new FormControl(this.review.ReviewDescription)
     });
+    if (this.review) {
+      this.rating = +this.review.ReviewRating;
+    }
   }
 
   onRated(rating) {
     this.rating = rating;
   }
 
-  onAddReview() {
+  onUpdateReview() {
 
     if (this.authService.getUserId() === '0') {
       this.router.navigate(['/login']);
@@ -45,11 +49,12 @@ export class ProductEditReviewComponent implements OnInit {
     this.spinnerService.show();
     const title = this.formAddProductReview.get('rTitle').value;
     const description = this.formAddProductReview.get('rDescription').value;
+    const reviewId = this.review.ReviewId;
 
-    this.productService.addProductReview(this.productId, title, description, this.rating ).subscribe(
+    this.productService.updateProductReview(this.productId, title, description, this.rating, reviewId).subscribe(
       (data: any) => {
         // this.toastr.success(data.SuccessMessage);
-        this.addReview.emit();
+        this.updateReview.emit();
         this.spinnerService.hide();
       });
   }

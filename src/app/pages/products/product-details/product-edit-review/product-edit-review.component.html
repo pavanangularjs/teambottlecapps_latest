@@ -1,6 +1,6 @@
 <div class="add_review common_width">
-    <h4>Add A Review</h4>
-    <form [formGroup]=formAddProductReview (ngSubmit)="onAddReview()">
+    <h4>Edit Review</h4>
+    <form [formGroup]=formAddProductReview (ngSubmit)="onUpdateReview()">
       <p>Your email address will not be published. Required Field is marked
         <span class="mandatory">*</span>
       </p>
@@ -23,7 +23,7 @@
                     <label for="inputPassword" class="col-form-label">Ratings</label>
                   </div>
                   <div class="star_right col-lg-10 col-md-10 col-sm-10 col-xs-12 rating-stars">
-                      <app-rating [rate]='0' [edit]='true' (rated)="onRated($event)"></app-rating>
+                      <app-rating [rate]='rating' [edit]='true' (rated)="onRated($event)"></app-rating>
                       <!-- [ngClass]="{'checked':star<=val}" (click)="changeStarCount(star)" -->
                   </div>
               </div>
