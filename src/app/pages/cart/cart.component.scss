@@ -35,12 +35,12 @@ table tr td .img_div{
     padding: 10px;
     border-radius: 10px;
     height: 85px;
-    margin-right: 25px;
+    margin-right: 10px;
    
 }
 
 .Product_name h5{
-    font-family: poppinsregular;
+    font-family: poppinsbold;
     font-size: 20px;
     font-style: normal;
     font-stretch: normal;
@@ -65,9 +65,15 @@ table tr td .total_price{
     letter-spacing: normal;
     text-align: right;
     color: #A61455;
+    margin-top: 8px;
 }
+
+.totalprice {
+    margin-top: 3px;
+}
+
 table tr td .Product_price{
-    font-family: poppinsregular;
+    font-family: poppinsbold;
     font-size: 18px;
     font-style: normal;
     font-stretch: normal;
@@ -75,6 +81,7 @@ table tr td .Product_price{
     letter-spacing: 0.5px;
     text-align: left;
     color: #A61455;
+    margin-top: 10px;
 }
 .you_save{
     opacity: 0.6;
@@ -113,7 +120,7 @@ table tr td .Product_price{
 } */
 .Product_name .font_size {
     font-family: poppinsregular;
-    font-size: 10px;
+    font-size: 13px;
     line-height: 2.11;
     letter-spacing: 0.3px;
     text-align: left;
@@ -133,7 +140,7 @@ button.dec_circle,button.dec_circle:focus{
     cursor: pointer;
 }
 .margin_top{
-    margin-top: 5px;
+    margin-top: 0px;
 }
 .margin_top .value{
     margin: 0 10px 0 10px;
@@ -150,6 +157,7 @@ button.bg_black {
     padding: 10px;
     float: right;
     margin-right: 30px;
+    margin-top: -5px;
 }
 .bg_black img{
     margin-top: -5px;
@@ -379,6 +387,7 @@ select.select-quant {
         float: right;
         margin: 35px 0px 0px 0px;
         min-width: 290px;
+        font-family: poppinsbold;
     }
     .icon-float {
         span.notification-circle {

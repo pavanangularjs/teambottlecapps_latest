@@ -29,22 +29,29 @@
         margin-bottom: 5px;
         margin-top: 10px;
         color: #A61455;
+        font-family: poppinsbold;
       }
       p {
         font-size: 14px;
+        margin-bottom: 5px;
+        font-family: poppinsregular;
       }
       .totalprice-right {
         margin: 0px;
         padding: 0px;
+        vertical-align: bottom;
+        font-family: poppinsbold;
         p {
           margin-top: 10px;
           margin-bottom: 30px;
           font-weight: bold;
           font-size: 13px;
+          font-family: poppinsregular;
         }
         h5 {
           font-size: 20px;
           color: #A61455;
+          font-family: poppinsbold;
         }
       }
     }
@@ -57,6 +64,7 @@
       vertical-align: top;
       h5 {
         margin: 0px;
+        font-family: poppinsbold;
       }
     }
     &.summary-container {
@@ -82,6 +90,7 @@
     float: right;
     -webkit-box-shadow: none;
     box-shadow: none;
+    font-family: poppinsregular;
   }
   .icon-coupon {
     position: relative;
@@ -89,12 +98,24 @@
     font-size: 22px;
     color: #ccc;
   }
+  .icon-coupon-success {
+    position: absolute;
+    top: 17px;
+    font-size: 22px;
+    color: #A61455;
+    right: 55px;
+    cursor: pointer;
+  }
   .icon-coupon-close {
     position: absolute;
     top: 17px;
     font-size: 22px;
     color: #ccc;
     right: 25px;
+    cursor: pointer;
+    &:hover {
+      color: #A61455;
+    }
   }
   table {
     width: 100%;
@@ -173,6 +194,7 @@
 
 .btn_right {
   margin-top: 20px;
+  margin-bottom: 20px;
   button.novalue{
     background: #d7d7d7 !important;
     color:#fff;
@@ -201,4 +223,15 @@
     padding:10px 30px;
     opacity: 1;
   }
+}
+td .checkout-product-details {
+          padding-top: 10px !important;
+          padding-bottom: 10px !important;
+        }
+.text-muted, .td-para, .payment-method table td, p {
+  font-family: poppinsregular;
+}
+
+.payment-method table th {
+  font-family: poppinsbold;
 }

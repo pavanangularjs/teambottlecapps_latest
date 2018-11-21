@@ -185,6 +185,7 @@ table.new-address-add {
 /* New Layout Checkout */
 
 .checkout-tile {
+  min-height: 90px;
   border-radius: 10px;
   -o-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -194,12 +195,21 @@ table.new-address-add {
   padding: 15px;
   margin-bottom: 15px;
   .checkout-icon-style {
-      font-size: 54px;
+      font-size: 30px;
       color: #A61455;
-      margin-right: 15px;
       float: left;
-      height: 100%;
       /*margin: 1% 30px 10px 10px;*/
+      margin: 0px;
+      padding: 0px;
+      line-height: 0;
+    }
+    .checkout-content {
+      margin-left: 40px;
+      font-family: poppinsregular;
+    }
+    .more-icon {
+      cursor: pointer;
+      font-size: 18px;
     }
 }
 
@@ -237,11 +247,13 @@ table.new-address-add {
     text-align: center;
     width: 100%;
     background-color: transparent;
+    font-family: poppinsregular;
     &:hover, &:focus, &.active {
       border: dashed 1px #A61455;
       color: #A61455;
       outline: 0px;
       text-decoration: none;
+      font-family: poppinsregular;
     }
   }
 }

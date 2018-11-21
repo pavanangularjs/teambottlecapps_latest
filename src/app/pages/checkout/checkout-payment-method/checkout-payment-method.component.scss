@@ -55,6 +55,7 @@
     }
   }
   a.new-payment-mode {
+    font-family: poppinsregular;
     padding: 10px;
     text-align: center;
     border: dashed 1px #a8a8a8;
@@ -102,4 +103,10 @@
     top: 7px;
   }
 }
+.checkout-dotted-btn {
+  font-family: poppinsregular;
+}
 
+.text-muted, .checkout-content  {
+  font-family: poppinsregular;
+}

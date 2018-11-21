@@ -3,15 +3,21 @@
     <table class="first-table" *ngFor="let cartItem of cartDetails?.ListCartItem">
       <tbody>
         <tr>
-          <td class="img-block"><img class="prod-img img-responsive" src="{{cartItem?.ProductImage}}"></td>
-          <td>
-            <h4>{{cartItem?.ProductName}}</h4>
-            <h6>{{cartItem?.PriceDisplay}}</h6>
-            <p>Quantity: {{cartItem?.QuantityOrdered}} | {{cartItem?.UnitSize}}</p>
-            <p>SKU: {{cartItem?.SKU}} | UPC: {{cartItem?.UPC}}</p>
+          <td width="16%" class="img-block">
+            <div class="checkout-product-details">
+              <img class="prod-img img-responsive" src="{{cartItem?.ProductImage}}">
+            </div>
           </td>
-          <td class="text-right totalprice-right">
-            <h5>{{cartItem?.ItemTotalDisplay}}</h5>
+          <td width="70%">
+            <div class="checkout-product-details">
+              <h4>{{cartItem?.ProductName}}</h4>
+              <h6>{{cartItem?.PriceDisplay}}</h6>
+              <p>Quantity: {{cartItem?.QuantityOrdered}} | {{cartItem?.UnitSize}}</p>
+              <p>SKU: {{cartItem?.SKU}} | UPC: {{cartItem?.UPC}}</p>
+            </div>
+          </td>
+          <td width="16%" class="text-right totalprice-right">
+            <div class="checkout-product-details"><h5>{{cartItem?.ItemTotalDisplay}}</h5></div>
           </td>
         </tr>
       </tbody>
@@ -105,7 +111,7 @@
     <form>
       <i class="icon-coupon"><img src="../assets/Images/coupon.png"></i>
       <input type="text" name="coupun" placeholder="Apply Coupon" class="form-control coupon">
-      <i class="fa fa-close icon-coupon-close"></i>
+      <i class="fa fa-check-circle icon-coupon-success"></i> <i class="fa fa-close icon-coupon-close"></i>
     </form>
   </div>
   <div class="coupon-panel">

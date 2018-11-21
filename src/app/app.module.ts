@@ -55,6 +55,7 @@ import { CheckoutPaymentMethodComponent } from './pages/checkout/checkout-paymen
 import { CheckoutProductsComponent } from './pages/checkout/checkout-products/checkout-products.component';
 import { ProductReviewComponent } from './pages/products/product-details/product-review/product-review.component';
 import { ProductAddReviewComponent } from './pages/products/product-details/product-add-review/product-add-review.component';
+import { ProductEditReviewComponent } from './pages/products/product-details/product-edit-review/product-edit-review.component';
 import { OrderComponent } from './pages/myaccount/myorders/order/order.component';
 import { CartReviewComponent } from './pages/cart-review/cart-review.component';
 import { CouponsComponent } from './pages/coupons/coupons.component';
@@ -109,6 +110,7 @@ export function getAuthServiceConfigs() {
     CheckoutProductsComponent,
     ProductReviewComponent,
     ProductAddReviewComponent,
+    ProductEditReviewComponent,
     OrderComponent,
     CartReviewComponent,
     CouponsComponent,

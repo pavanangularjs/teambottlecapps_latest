@@ -7,10 +7,10 @@
         </span>
 
         <ng-container *ngIf="order?.OrderStatus=='Pending'">
-          <span class="delevary_color" style="color:#A61455;">{{order?.OrderStatus}}</span>
+          <span class="delevary_color" style="color:#f11b2e;">{{order?.OrderStatus}}</span>
         </ng-container>
         <ng-container *ngIf="order?.OrderStatus=='Cancelled'">
-          <span class="delevary_color" style="color:#A61455;">{{order?.OrderStatus}}</span>
+          <span class="delevary_color" style="color:#f11b2e;">{{order?.OrderStatus}}</span>
         </ng-container>
         <ng-container *ngIf="order?.OrderStatus=='Scheduled for delivery'">
           <span class="delevary_color" style="color:#ff8a00;">{{order?.OrderStatus}}</span>
@@ -23,7 +23,7 @@
     </div>
 
     <div class="float_right col-md-6 col-sm-6 col-lg-6 col-xs-12">
-      <ol class="breadcrumb myorder-details">
+      <ol class="breadcrumb myorder-details no-border">
         <li  *ngIf="order?.OrderStatus=='Completed'" class="breadcrumb-item code myorder-status" style="margin-right: 5px;width: 120px; text-align: right;"><a>
             <div class="repeat-circle"><span class="fa fa-repeat"></span></div> <strong>Reorder</strong>
           </a></li>
@@ -31,20 +31,20 @@
           <li *ngIf="order?.OrderStatus=='Pending'" class="breadcrumb-item code myorder-status" style="margin-right: 5px;width: 120px; text-align: right;"><a>
             <div class="repeat-circle"><span class="fa fa-close"></span></div> <strong>Cancel</strong>
           </a></li>
-        <li class="breadcrumb-item code"><a>#{{order?.OrderNo}}</a></li>
+        <li class="breadcrumb-item code myorder-status"><a>#{{order?.OrderNo}}</a></li>
       </ol>
     </div>
   </div>
-  <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" *ngFor="let item of order?.ListOrderItem">
-    <table class="table table-condensed">
+  <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 myorder-details" *ngFor="let item of order?.ListOrderItem">
+    <table class="table table-condensed myorder-table">
       <tbody>
         <tr>
-          <td width="15%">
+          <td width="5%">
             <div class="product-image">
               <img class="second_img img-responsive" src='{{item?.ProductImage}}' />
             </div>
           </td>
-          <td width="30%">
+          <td width="40%">
             <div class="Product_name">
               <h5> {{item?.ProductName}} </h5>
               <app-rating [rate]='item?.Rating'></app-rating>
@@ -66,7 +66,7 @@
           </td>
           <td width="20%">
             <div>
-              <s *ngIf="item?.ItemTotalDisplay !== item?.FinalPriceDisplay">
+              <s class="text-muted" *ngIf="item?.ItemTotalDisplay !== item?.FinalPriceDisplay">
                 {{item?.ItemTotalDisplay}}
               </s><br>
               <span class="total_price">
