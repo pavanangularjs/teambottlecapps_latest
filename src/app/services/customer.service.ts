@@ -154,6 +154,7 @@ export class CustomerService {
     return this.http.post<any>(baseUrl + UrlNames.AddressUpdate,
       this.updateProfileDetails(address), { headers: this.headers }).pipe(
         switchMap((res: any) => {
+          this.customerAddressList = null;
           return of(res);
         }),
         retry(3),
@@ -163,9 +164,9 @@ export class CustomerService {
       );
   }
 
-  DeleteAddress(address: AddressDelete): Observable<any> {
+  DeleteAddress(addressId: number): Observable<any> {
     return this.http.post<any>(baseUrl + UrlNames.AddressDelete,
-      this.updateProfileDetails(address), { headers: this.headers }).pipe(
+      this.getDeleteAddressParams(addressId), { headers: this.headers }).pipe(
         switchMap((res: any) => {
           return of(res);
         }),
@@ -174,6 +175,18 @@ export class CustomerService {
           return this.errorHandler.processError(error);
         })
       );
+  }
+
+  getDeleteAddressParams(addressId: number): AddressDelete {
+    return {
+      StoreId: this.customerSession.StoreId,
+      SessionId: this.customerSession.SessionId,
+      UserId: this.customerSession.UserId,
+      AppId: this.customerSession.AppId,
+      DeviceId: this.customerSession.DeviceId,
+      DeviceType: this.customerSession.DeviceType,
+      AddressId: addressId
+    };
   }
 
   updateProfileDetails(address: any): any {
