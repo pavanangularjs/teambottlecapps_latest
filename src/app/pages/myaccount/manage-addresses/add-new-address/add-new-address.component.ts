@@ -24,7 +24,7 @@ export class AddNewAddressComponent implements OnInit {
       aCity: new FormControl(''),
       aState: new FormControl(''),
       aZip: new FormControl(''),
-      aCountry: new FormControl(''),
+      // aCountry: new FormControl(''),
       aIsDefault: new FormControl(false),
     });
   }
@@ -42,7 +42,7 @@ export class AddNewAddressComponent implements OnInit {
     address.City = this.formAddNewAddress.get('aCity').value;
     address.State = this.formAddNewAddress.get('aState').value;
     address.Zip = this.formAddNewAddress.get('aZip').value;
-    address.Country = this.formAddNewAddress.get('aCountry').value;
+    // address.Country = this.formAddNewAddress.get('aCountry').value;
     address.IsDefault = this.formAddNewAddress.get('aIsDefault').value === true ? 1 : 0;
 
     this.customerService.AddNewAddress(address).subscribe(
