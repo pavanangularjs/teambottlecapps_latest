@@ -75,20 +75,15 @@ export class ProfileEditComponent implements OnInit {
     profile.EmailId = this.formEditProfile.get('pEmail').value;
     profile.DOB = this.formEditProfile.get('pDOB').value;
     profile.Gender = this.formEditProfile.get('pGender').value;
-    profile.ProfileImage = this.formEditProfile.get('pImage').value;
+    // profile.ProfileImage = this.formEditProfile.get('pImage').value;
     // profile.UserIpAddress = '';
 
 
-    this.customerService.UploadImage(profile.ProfileImage).subscribe(data => {
-      if (data && data.SuccessMessage) {
-        this.profileImage = data.SuccessMessage;
+    this.customerService.updateCustomerProfile(profile).subscribe(
+      (res) => {
+        this.router.navigate(['myaccount/profile']);
+      });
 
-        this.customerService.updateCustomerProfile(profile).subscribe(
-          (res) => {
-            this.router.navigate(['myaccount/profile']);
-          });
-      }
-    });
   }
 
 }

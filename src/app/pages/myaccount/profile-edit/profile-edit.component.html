@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <h4>Edit Profile</h4>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 profile-edit-section">
                         <form [formGroup]=formEditProfile (ngSubmit)="onProfileUpdate()">
                             <div class="row">
                                 <div class="col-md-12">
@@ -12,8 +12,10 @@
                                         <span class="img_class" *ngIf="profileImage">
                                             <img class="img-responsive" [src]="profileImage" />
                                         </span>
-                                        <div class="inputWrapper">
-                                            <input class="fileInput" formControlName="pImage" type="file" capture="camera" accept="image/*" (change)="uploadPicture($event)"/>
+                                        <div class="inputWrapper profileupload">
+                                            <input class="fileInput" formControlName="pImage" type="file" capture="camera"
+                                                accept="image/*" (change)="uploadPicture($event)" />
+                                            <span class="fa fa-plus"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -65,10 +67,17 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="text-uppercase">Gender
-                                            <input type="radio" name="gender" formControlName="pGender" value="M" />
-                                            Male
-                                            <input type="radio" name="gender" formControlName="pGender" value="F" />Female
                                         </label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input type="radio" name="gender" formControlName="pGender" value="M" />
+                                                Male
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="radio" name="gender" formControlName="pGender" value="F" />
+                                                Female
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

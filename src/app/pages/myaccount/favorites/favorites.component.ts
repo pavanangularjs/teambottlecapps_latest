@@ -28,6 +28,7 @@ export class FavoritesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.productsList = [];
     this.spinnerService.show();
     this.store.dispatch(new ProductGetList(this.productStoreService.getProductGetListParams({ isFavorite: 1 })));
   }
@@ -39,6 +40,7 @@ export class FavoritesComponent implements OnInit {
         item.IsFavorite = data.IsFavorite;
         this.spinnerService.hide();
         this.toastr.success(data.SuccessMessage);
+        this.store.dispatch(new ProductGetList(this.productStoreService.getProductGetListParams({ isFavorite: 1 })));
       });
   }
 

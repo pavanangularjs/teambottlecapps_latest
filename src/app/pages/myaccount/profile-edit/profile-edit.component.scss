@@ -29,25 +29,78 @@ span.img_class{
 }
 
 .inputWrapper {
-    height: 32px;
-    width: 64px;
+    height: 60px;
+    width: 60px;
     overflow: hidden;
     position: relative;
     cursor: pointer;
     /*Using a background color, but you can use a background image to represent a button*/
-    background-color: #DDF;
+    background-color: #777;
+    border-radius: 50%;
+    color: #fff;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    span {
+        font-size: 22px;
+        padding: 20px 20px 20px 21px;
+    }
 }
 .fileInput {
+    width: 60px;
+    height: 60px;
+    background-image: none;
+    opacity: 1;
+    color: #fff;
     cursor: pointer;
-    height: 100%;
-    position:absolute;
-    top: 0;
-    right: 0;
-    z-index: 99;
-    /*This makes the button huge. If you want a bigger button, increase the font size*/
-    font-size:50px;
-    /*Opacity settings for all browsers*/
-    opacity: 0;
-    -moz-opacity: 0;
-    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0)
+    visibility: hidden;
+    font-size: 0px;
 }
+
+.profile-edit-section {
+        h4 {
+          font-family: poppinsbold;
+        }
+        button.novalue{
+        background: #d7d7d7 !important;
+        color:#fff;
+        padding: 10px 25px;
+        box-shadow: 0px 10px 20px 0 rgba(135, 135, 135, 0.3);
+        font-family: montserratbold;
+        font-size: 11.2px;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: left;
+        color: #ffffff;
+        opacity: 1;
+      }
+      
+      button.close{
+        background-color: #A61455 !important;
+        box-shadow: 0px 10px 20px 0 rgba(236, 28, 36, 0.3);
+        font-family: montserratbold;
+        font-size: 11.2px;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: left;
+        color: #ffffff;
+        padding:10px 30px;
+        opacity: 1;
+      }
+    .form-control {
+      border-radius: 0px;
+      height: 45px;
+      border: solid 1px #e6e6e6;
+    }
+    form label {
+    font-family: poppinsregular;
+      span {
+        color: #A61455;
+      }
+      width: 90%;
+    }
+    .button-container {
+      width: 90%;
+    }
+  }

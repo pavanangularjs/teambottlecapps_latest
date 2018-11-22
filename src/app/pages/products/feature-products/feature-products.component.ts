@@ -50,6 +50,7 @@ export class FeatureProductsComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.productsList = [];
     // console.log(this.router.url);
     if (this.router.url === '/feature-products') {
       this.isFeatureProductsPage = true;

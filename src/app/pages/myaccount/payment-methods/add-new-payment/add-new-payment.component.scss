@@ -1,5 +1,12 @@
 .new-payment-method-section {
     padding: 20px 0px;
+    .form-group label.country {
+    margin-bottom: 0px;
+    }
+    .saveaddress {
+      margin-top: 33px;
+      font-family: poppinsregular;
+    }
         h4 {
           font-family: poppinsbold;
         }
@@ -42,6 +49,10 @@
       display: inline-flex;
       color: #ccc;
       border-radius: 10px;
+      height: 50px;
+      margin: 5px 5px 5px 0px;
+      float: left;
+      padding: 5px 5px 5px 5px;
       &:hover, &:focus, &.active {
         border: solid 2px #A61455;
         color: #222;
@@ -61,6 +72,6 @@
       width: 90%;
     }
     .button-container {
-      width: 90%;
+      width: 97%;
     }
   }
