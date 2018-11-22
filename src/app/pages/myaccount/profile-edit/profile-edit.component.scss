@@ -1,0 +1,53 @@
+span.img_class{
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    -moz-border-radius: 50%;
+    float: left;
+    margin-right: 30px;
+    border: solid 1px #ccc;
+    color: #222;
+    font-size: 24px;
+    text-align: center;
+    background-color: #777;
+    img {
+        height: 90px;
+        width: 90px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -o-border-radius: 50%;
+        -moz-border-radius: 50%;
+        float: left;
+        margin-right: 30px;
+        border: solid 1px #ccc;
+        color: #222;
+        font-size: 24px;
+        text-align: center;
+    }
+}
+
+.inputWrapper {
+    height: 32px;
+    width: 64px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    /*Using a background color, but you can use a background image to represent a button*/
+    background-color: #DDF;
+}
+.fileInput {
+    cursor: pointer;
+    height: 100%;
+    position:absolute;
+    top: 0;
+    right: 0;
+    z-index: 99;
+    /*This makes the button huge. If you want a bigger button, increase the font size*/
+    font-size:50px;
+    /*Opacity settings for all browsers*/
+    opacity: 0;
+    -moz-opacity: 0;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0)
+}

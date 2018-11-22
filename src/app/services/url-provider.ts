@@ -23,6 +23,7 @@ export enum UrlNames {
     AddressUpdate = 'Customer/AddressUpdate',
     ProfileGetDetail = 'Customer/ProfileGetDetail',
     CustomerProfileUpdate = 'Customer/CustomerProfileUpdate',
+    UploadImage = 'Customer/UploadImage',
     CustomerPaymentMethodGetList = 'Customer/CustomerPaymentMethodGetList',
     CustomerPaymentInsert = 'Customer/CustomerPaymentInsert',
     CouponGetList = 'Coupon/CouponGetList'

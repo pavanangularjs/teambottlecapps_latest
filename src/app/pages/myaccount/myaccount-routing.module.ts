@@ -17,6 +17,7 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'profile', pathMatch: 'full' },
             { path: 'profile', component: ProfileComponent },
+            { path: 'profile-edit', component: ProfileEditComponent },
             { path: 'manage-addresses', component: ManageAddressesComponent },
             { path: 'payment-methods', component: PaymentMethodsComponent },
             { path: 'favorites', component: FavoritesComponent },

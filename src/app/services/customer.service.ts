@@ -99,6 +99,20 @@ export class CustomerService {
     return this.http.post<any>(baseUrl + UrlNames.CustomerProfileUpdate,
       this.updateProfileDetails(profile), { headers: this.headers }).pipe(
         switchMap((res: any) => {
+          this.profileDetails = res;
+          return of(res);
+        }),
+        retry(3),
+        catchError((error: any, caught: Observable<any>) => {
+          return this.errorHandler.processError(error);
+        })
+      );
+  }
+
+  UploadImage(image: any): Observable<any> {
+    return this.http.post<any>(baseUrl + UrlNames.UploadImage,
+      {path: image}, { headers: this.headers }).pipe(
+        switchMap((res: any) => {
           return of(res);
         }),
         retry(3),
