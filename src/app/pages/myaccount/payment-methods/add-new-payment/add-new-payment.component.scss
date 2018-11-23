@@ -74,4 +74,22 @@
     .button-container {
       width: 97%;
     }
+    .img-disabled {
+        opacity:0.1 !important;
+    }
+
+    .cards {
+      margin-top: 0px !important;
+      text-align: right;
+      margin-right: 38px;
+      ul {
+        padding-left: 0;
+        li {
+          display: inline-block;
+          list-style-type: none;
+          margin-right: 5px;
+          float: right;
+        }
+      }
+    }
   }

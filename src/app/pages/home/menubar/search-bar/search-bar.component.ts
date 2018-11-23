@@ -17,6 +17,7 @@ export class SearchBarComponent implements OnInit {
     this.dataservice.searchByText = this.searchText;
     this.dataservice.categoryId = '1,2,3,4';
     this.router.navigate(['/advance-filter']);
+    this.searchText = '';
   }
 
 }

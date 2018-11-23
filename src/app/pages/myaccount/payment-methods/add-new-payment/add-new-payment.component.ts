@@ -7,6 +7,7 @@ import { ProductStoreService } from '../../../../services/product-store.service'
 import { CustomerService } from '../../../../services/customer.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { CreditcardTypeService } from '../../../../shared/services/creditcard-type.service';
 @Component({
   selector: 'app-add-new-payment',
   templateUrl: './add-new-payment.component.html',
@@ -16,6 +17,7 @@ export class AddNewPaymentComponent implements OnInit {
   formAddNewPayment: FormGroup;
   submitted = false;
   customerInfo: any;
+  cardType = '';
 
   constructor(private formBuilder: FormBuilder,
     private spinnerService: Ng4LoadingSpinnerService,
@@ -23,17 +25,18 @@ export class AddNewPaymentComponent implements OnInit {
     private productService: ProductStoreService,
     private customerService: CustomerService,
     private toastr: ToastrService,
-    private router: Router) {
-      if (this.productService.customerInfo) {
-        this.customerInfo = this.productService.customerInfo;
-      }
+    private router: Router,
+    private cardService: CreditcardTypeService) {
+    if (this.productService.customerInfo) {
+      this.customerInfo = this.productService.customerInfo;
     }
+  }
 
   ngOnInit() {
     this.formAddNewPayment = this.formBuilder.group({
       firstName: [this.customerInfo && this.customerInfo.FirstName || '', [Validators.required]],
       lastName: [this.customerInfo && this.customerInfo.LastName || '', [Validators.required]],
-      sixteenDigitNumber: ['', [Validators.required]],
+      sixteenDigitNumber: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(16)]],
       expiryDate: ['', [Validators.required]],
       address: ['', [Validators.required]],
       city: ['', [Validators.required]],
@@ -42,6 +45,13 @@ export class AddNewPaymentComponent implements OnInit {
       country: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required]]
     });
+  }
+
+  showCardType(isValid) {
+    this.cardType = '';
+    if (isValid && this.formAddNewPayment.get('sixteenDigitNumber').value) {
+      this.cardType = this.cardService.getCardType(this.formAddNewPayment.get('sixteenDigitNumber').value);
+    }
   }
 
   onSaveCard() {
@@ -74,16 +84,16 @@ export class AddNewPaymentComponent implements OnInit {
     if (paymentMethodList && paymentMethodList.ListPaymentItem
       && paymentMethodList.ListPaymentItem.length > 0
       && paymentMethodList.ListPaymentItem[0].UserProfileId) {
-        cardProfile.customerProfileId = paymentMethodList.ListPaymentItem[0].UserProfileId;
-      }
+      cardProfile.customerProfileId = paymentMethodList.ListPaymentItem[0].UserProfileId;
+    }
 
     if (cardProfile.customerProfileId) {
       this.paymentService.createCustomerPaymentProfileRequest(cardProfile).subscribe(data => {
         if (data && data.customerProfileId) {
           // this.customerService.customerPaymentInsert(data.customerProfileId, 1, 1).subscribe(res => {
           //  if (res && res.SuccessMessage !== '') {
-              this.toastr.success('New Card added Successfully');
-              this.router.navigate(['/myaccount/payment-methods']);
+          this.toastr.success('New Card added Successfully');
+          this.router.navigate(['/myaccount/payment-methods']);
           //  }
           // });
         }

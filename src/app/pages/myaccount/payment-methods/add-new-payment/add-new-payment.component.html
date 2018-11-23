@@ -7,23 +7,26 @@
           <form [formGroup]=formAddNewPayment (ngSubmit)="onSaveCard()">
             <div class="row">
               <div class="col-md-12">
-                <div class="cards-icons-container">
-                  <a href="#">
-                        <img alt="Amex" title="Amex" src="../../assets/Images/american_express_logo_.gif" width="43" height="36" border="0" style="padding-left: 0px;" />
-                  <!-- Amex -->
-                  </a>
-                  <a href="#">
-                    <!-- Discover -->
-                      <img alt="Discover" title="Discover" src="../../assets/Images/discover-card.jpg" width="57" height="36" border="0" />
-                  </a>
-                  <a href="#">
-                      <!-- Master -->
-                      <img alt="Master" title="Master" src="../../assets/Images/mastercard_logo_.gif" width="57" height="36" border="0" />
-                  </a>
-                  <a href="#">
-                        <!-- Visa -->
-                      <img alt="Visa" title="Visa" src="../../assets/Images/new_visa_.gif" style="padding-top: 7px;" width="57" height="28" border="0" />
-                  </a>
+                <div class="cards">
+                  <ul class="pull-left">
+                    <li>
+                      <img [ngClass]="{'img-disabled' : cardType !== 'Discover'}" alt="Discover" title="Discover" src="../assets/Images/discover-card.jpg"
+                        width="57" height="36" border="0" />
+                    </li>
+                    <li>
+                      <img [ngClass]="{'img-disabled' : cardType !== 'MasterCard'}" alt="Master" title="Master" src="../assets/Images/mastercard_logo_.gif"
+                        width="57" height="36" border="0" />
+                    </li>
+                    <li>
+                      <img [ngClass]="{'img-disabled' : cardType !== 'Visa'}" style="padding-top: 5px;" alt="Visa"
+                        title="Visa" src="../assets/Images/new_visa_.gif" width="57" height="26" border="0" />
+                    </li>
+                    <li>
+                      <img [ngClass]="{'img-disabled' : cardType !== 'Amex'}" alt="Amex" title="Amex" src="../assets/Images/american_express_logo_.gif"
+                        width="43" height="36" border="0" />
+                    </li>
+                  </ul>
+
                 </div>
               </div>
               <div class="col-md-12">
@@ -32,7 +35,8 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="text-uppercase">Card Number <span>*</span>
-                        <input type="name" formControlName="sixteenDigitNumber" class="form-control" placeholder="">
+                        <input type="name" formControlName="sixteenDigitNumber" (keyup)="showCardType(formAddNewPayment.controls['sixteenDigitNumber'].valid)"
+                          class="form-control" placeholder="">
                       </label>
                     </div>
                   </div>
@@ -87,10 +91,10 @@
                     <div class="form-group">
                       <label class="text-uppercase country">State <span>*</span>
                       </label>
-                        <select class="form-control" formControlName="state">
-                          <option>State 1</option>
-                          <option>State 2</option>
-                        </select>
+                      <select class="form-control" formControlName="state">
+                        <option>State 1</option>
+                        <option>State 2</option>
+                      </select>
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -121,7 +125,8 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="text-uppercase saveaddress"><input type="checkbox" name="" uncheck=""> Save to Addresses
+                      <label class="text-uppercase saveaddress"><input type="checkbox" name="" uncheck=""> Save to
+                        Addresses
                       </label>
                     </div>
                   </div>
