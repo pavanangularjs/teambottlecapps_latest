@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../../services/cart.service';
+import { PaymentService } from '../../../services/payment.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +13,8 @@ export class CheckoutProductsComponent implements OnInit {
   isCouponError = false;
   isExpand = false;
   isTipExpand = true;
-  constructor(private cartService: CartService, private router: Router) { }
+  constructor(private cartService: CartService, private router: Router,
+    private paymentService: PaymentService) { }
 
   ngOnInit() {
     this.cartDetails = this.cartService.cartdetails;
@@ -28,11 +30,20 @@ export class CheckoutProductsComponent implements OnInit {
     this.cartDetails.AddressId = 0;
     this.cartDetails.PaymentTypeId = 0; */
 
-    this.cartService.placeOrder(this.cartDetails).subscribe(
-      (data: any) => {
-        this.cartDetails = data;
-        this.router.navigate(['/myorders']);
-      });
+    const data = {
+      amount: this.cartDetails.TotalValue,
+      taxAmount: this.cartDetails.ListCharge.filter(item => item.ChargeTitle === 'Tax')[0].ChargeAmount,
+      taxType: 'Sales Tax'
+    };
+
+    this.paymentService.createTransactionRequest(data).subscribe(paymentResponse => {
+      this.cartService.placeOrder(this.cartDetails).subscribe(
+        (orderResponse: any) => {
+          this.cartDetails = orderResponse;
+          this.router.navigate(['/myorders']);
+        });
+    });
+
   }
 
   onTipSelected(event: any, tip: any) {

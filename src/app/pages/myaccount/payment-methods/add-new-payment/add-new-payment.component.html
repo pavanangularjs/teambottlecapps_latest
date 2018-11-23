@@ -35,7 +35,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="text-uppercase">Card Number <span>*</span>
-                        <input type="name" formControlName="sixteenDigitNumber" (keyup)="showCardType(formAddNewPayment.controls['sixteenDigitNumber'].valid)"
+                        <input type="text" formControlName="sixteenDigitNumber" (keyup)="showCardType(formAddNewPayment.controls['sixteenDigitNumber'].valid)"
                           class="form-control" placeholder="">
                       </label>
                     </div>
@@ -44,7 +44,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="text-uppercase">Expiry Date <span>*</span>
-                        <input type="name" formControlName="expiryDate" class="form-control" placeholder="">
+                        <input type="text" formControlName="expiryDate" class="form-control" placeholder="">
                       </label>
                     </div>
                   </div>
@@ -58,14 +58,14 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="text-uppercase">First Name <span>*</span>
-                        <input type="name" formControlName="firstName" class="form-control" placeholder="">
+                        <input type="text" formControlName="firstName" class="form-control" placeholder="">
                       </label>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="text-uppercase">Last Name
-                        <input type="name" formControlName="lastName" class="form-control" placeholder="">
+                        <input type="text" formControlName="lastName" class="form-control" placeholder="">
                       </label>
                     </div>
                   </div>
@@ -74,14 +74,14 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="text-uppercase">Address<span>*</span>
-                        <input type="name" formControlName="address" class="form-control" placeholder="">
+                        <input type="text" formControlName="address" class="form-control" placeholder="">
                       </label>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="text-uppercase">City <span>*</span>
-                        <input type="name" formControlName="city" class="form-control" placeholder="">
+                        <input type="text" formControlName="city" class="form-control" placeholder="">
                       </label>
                     </div>
                   </div>
@@ -90,43 +90,30 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="text-uppercase country">State <span>*</span>
+                        <input type="text" formControlName="state" class="form-control" placeholder="">
                       </label>
-                      <select class="form-control" formControlName="state">
-                        <option>State 1</option>
-                        <option>State 2</option>
-                      </select>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="text-uppercase">Zip Code <span>*</span>
-                        <input type="name" formControlName="zipCode" class="form-control" placeholder="">
+                        <input type="text" formControlName="zipCode" class="form-control" placeholder="">
                       </label>
                     </div>
                   </div>
                 </div>
                 <div class="row">
-                  <!-- <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="text-uppercase">Country <span>*</span>
-                      </label>
-                      <select class="form-control">
-                          <option>Country 1</option>
-                          <option>Country 2</option>
-                      </select>
-                    </div>
-                  </div> -->
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="text-uppercase">Phone Number <span>*</span>
-                        <input type="name" formControlName="phoneNumber" class="form-control" placeholder="">
+                        <input type="text" formControlName="phoneNumber" class="form-control" placeholder="">
                       </label>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="text-uppercase saveaddress"><input type="checkbox" name="" uncheck=""> Save to
-                        Addresses
+                      <label class="text-uppercase saveaddress">
+                        <input type="checkbox" name="" (change)="saveFlag()" uncheck=""> Save to Addresses
                       </label>
                     </div>
                   </div>

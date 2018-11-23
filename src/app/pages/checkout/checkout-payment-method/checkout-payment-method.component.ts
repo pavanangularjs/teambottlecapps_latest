@@ -4,6 +4,7 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { PaymentService } from '../../../services/payment.service';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from '../../../services/cart.service';
+import { ProductStoreService } from '../../../services/product-store.service';
 
 @Component({
   selector: 'app-checkout-payment-method',
@@ -16,12 +17,18 @@ export class CheckoutPaymentMethodComponent implements OnInit {
   paymentProfiles: any;
   userProfileId: string;
   selectedCard: number;
+  cardCVV: number;
+  storeDetails: any;
+  orderTypeId: number;
+
   constructor(private customerService: CustomerService, private paymentService: PaymentService,
     private spinnerService: Ng4LoadingSpinnerService, private toastr: ToastrService,
-    private cartService: CartService) { }
+    private cartService: CartService, private storeService: ProductStoreService) { }
 
   ngOnInit() {
     this.getPaymentMethodGetList();
+    this.getStoreDetails();
+    this.orderTypeId = this.cartService.cartdetails.OrderTypeId;
   }
 
   getPaymentMethodGetList() {
@@ -42,6 +49,7 @@ export class CheckoutPaymentMethodComponent implements OnInit {
     if (this.paymentMethodList && this.paymentMethodList.length > 0 &&
       this.paymentMethodList[0].UserProfileId) {
       this.userProfileId = this.paymentMethodList[0].UserProfileId;
+      this.paymentService.createTransaction.customerProfileId = this.paymentMethodList[0].UserProfileId;
       this.getExistingCardDetails(this.paymentMethodList[0].UserProfileId);
     } else {
       this.spinnerService.hide();
@@ -64,8 +72,23 @@ export class CheckoutPaymentMethodComponent implements OnInit {
     }
   }
 
+  getStoreDetails() {
+    this.storeService.getStoreDetails().subscribe(data => {
+      if (data && data.GetStoredetails) {
+        this.storeDetails = data.GetStoredetails;
+      }
+    });
+  }
+
+  saveCVV() {
+    this.paymentService.createTransaction.cvv = this.cardCVV;
+  }
+
   updateSelectedPayment(paymentProfile) {
     this.cartService.cartdetails.PaymentTypeId = paymentProfile.customerPaymentProfileId;
+
+    this.paymentService.createTransaction.customerPaymentProfileId = paymentProfile.customerPaymentProfileId;
+
   }
 
 }

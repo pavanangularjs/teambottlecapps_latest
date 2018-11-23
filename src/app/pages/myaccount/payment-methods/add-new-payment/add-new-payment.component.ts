@@ -18,6 +18,8 @@ export class AddNewPaymentComponent implements OnInit {
   submitted = false;
   customerInfo: any;
   cardType = '';
+  cardProfile: PaymentProfile;
+  isSaveAddress: boolean;
 
   constructor(private formBuilder: FormBuilder,
     private spinnerService: Ng4LoadingSpinnerService,
@@ -33,6 +35,7 @@ export class AddNewPaymentComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isSaveAddress = false;
     this.formAddNewPayment = this.formBuilder.group({
       firstName: [this.customerInfo && this.customerInfo.FirstName || '', [Validators.required]],
       lastName: [this.customerInfo && this.customerInfo.LastName || '', [Validators.required]],
@@ -63,33 +66,37 @@ export class AddNewPaymentComponent implements OnInit {
       return;
     }
     // this.spinnerService.show();
-    const cardProfile = new PaymentProfile();
+    this.cardProfile = new PaymentProfile();
 
-    cardProfile.firstName = this.formAddNewPayment.get('firstName').value;
-    cardProfile.lastName = this.formAddNewPayment.get('lastName').value;
-    cardProfile.customerType = 'individual';
-    cardProfile.address = this.formAddNewPayment.get('address').value;
-    cardProfile.city = this.formAddNewPayment.get('city').value;
-    cardProfile.state = this.formAddNewPayment.get('state').value;
-    cardProfile.zip = this.formAddNewPayment.get('zipCode').value;
-    cardProfile.country = this.formAddNewPayment.get('country').value;
-    cardProfile.phoneNumber = this.formAddNewPayment.get('phoneNumber').value;
+    this.cardProfile.firstName = this.formAddNewPayment.get('firstName').value;
+    this.cardProfile.lastName = this.formAddNewPayment.get('lastName').value;
+    this.cardProfile.customerType = 'individual';
+    this.cardProfile.address = this.formAddNewPayment.get('address').value;
+    this.cardProfile.city = this.formAddNewPayment.get('city').value;
+    this.cardProfile.state = this.formAddNewPayment.get('state').value;
+    this.cardProfile.zip = this.formAddNewPayment.get('zipCode').value;
+    this.cardProfile.country = this.formAddNewPayment.get('country').value;
+    this.cardProfile.phoneNumber = this.formAddNewPayment.get('phoneNumber').value;
 
-    cardProfile.cardNumber = this.formAddNewPayment.get('sixteenDigitNumber').value;
-    cardProfile.expirationDate = this.formAddNewPayment.get('expiryDate').value;
-    cardProfile.defaultPaymentProfile = false;
-    cardProfile.validationMode = 'testMode';
+    this.cardProfile.cardNumber = this.formAddNewPayment.get('sixteenDigitNumber').value;
+    this.cardProfile.expirationDate = this.formAddNewPayment.get('expiryDate').value;
+    this.cardProfile.defaultPaymentProfile = false;
+    this.cardProfile.validationMode = 'testMode';
+
+    if (this.isSaveAddress) {
+      this.saveAddress();
+    }
 
     const paymentMethodList = this.customerService.customerPaymentMethodGetList;
 
     if (paymentMethodList && paymentMethodList.ListPaymentItem
       && paymentMethodList.ListPaymentItem.length > 0
       && paymentMethodList.ListPaymentItem[0].UserProfileId) {
-      cardProfile.customerProfileId = paymentMethodList.ListPaymentItem[0].UserProfileId;
+      this.cardProfile.customerProfileId = paymentMethodList.ListPaymentItem[0].UserProfileId;
     }
 
-    if (cardProfile.customerProfileId) {
-      this.paymentService.createCustomerPaymentProfileRequest(cardProfile).subscribe(data => {
+    if (this.cardProfile.customerProfileId) {
+      this.paymentService.createCustomerPaymentProfileRequest(this.cardProfile).subscribe(data => {
         if (data && data.customerProfileId) {
           // this.customerService.customerPaymentInsert(data.customerProfileId, 1, 1).subscribe(res => {
           //  if (res && res.SuccessMessage !== '') {
@@ -100,7 +107,7 @@ export class AddNewPaymentComponent implements OnInit {
         }
       });
     } else {
-      this.paymentService.createCustomerProfile(cardProfile).subscribe(data => {
+      this.paymentService.createCustomerProfile(this.cardProfile).subscribe(data => {
         if (data && data.customerProfileId) {
           this.customerService.customerPaymentInsert(data.customerProfileId, 1, 1).subscribe(res => {
             if (res && res.SuccessMessage !== '') {
@@ -113,4 +120,28 @@ export class AddNewPaymentComponent implements OnInit {
     }
   }
 
+  saveFlag() {
+    this.isSaveAddress = !this.isSaveAddress;
+  }
+
+  saveAddress() {
+    const address = {
+      FirstName: '', LastName: '', AddressName: '',
+      Address1: '', Address2: '', City: '', State: '', Zip: '', Country: '', IsDefault: 0,
+      StoreId: 0, SessionId: '', UserId: 0, AppId: 0, DeviceId: '', DeviceType: ''
+    };
+
+    address.FirstName = this.cardProfile.firstName;
+    address.LastName = this.cardProfile.lastName;
+    address.Address1 = this.cardProfile.address;
+    address.City = this.cardProfile.city;
+    address.State = this.cardProfile.state;
+    address.Zip = this.cardProfile.zip;
+    address.IsDefault = 0;
+
+    this.customerService.AddNewAddress(address).subscribe(
+      (data) => {
+        this.toastr.success(data.SuccessMessage);
+      });
+  }
 }

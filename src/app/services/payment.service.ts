@@ -22,6 +22,11 @@ export class PaymentService {
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
   customerSession: CustomerLoginSession;
   customerInfo: any;
+  createTransaction = {
+    customerProfileId: '',
+    customerPaymentProfileId: '',
+    cvv: 0
+  };
 
   constructor(private http: HttpClient, private store: Store<CustomerLoginSession>,
     private errorHandler: ErrorHandlerService, private productService: ProductStoreService) {
@@ -189,9 +194,9 @@ export class PaymentService {
     };
   }
 
-  createTransactionRequest(): Observable<any> {
+  createTransactionRequest(data): Observable<any> {
     return this.http.post<any>(this.URL,
-      this.createTransactionRequestPayload(), { headers: this.headers }).pipe(
+      this.createTransactionRequestPayload(data), { headers: this.headers }).pipe(
         switchMap((res: any) => {
           return of(res);
         }),
@@ -202,7 +207,7 @@ export class PaymentService {
       );
   }
 
-  createTransactionRequestPayload() {
+  createTransactionRequestPayload(data) {
     return {
       'createTransactionRequest': {
         'merchantAuthentication': {
@@ -212,18 +217,18 @@ export class PaymentService {
         'refId': '{{vRefId}}',
         'transactionRequest': {
           'transactionType': 'authOnlyTransaction',
-          'amount': 22.09,
+          'amount': data.amount, // 22.09
           'profile': {
-            'customerProfileId': '{{vCustomerProfileId}}',
+            'customerProfileId': this.createTransaction.customerProfileId,  // '{{vCustomerProfileId}}',
             'paymentProfile': {
-              'paymentProfileId': '{{vCustomerPaymentProfileIdList}}',
-              'cardCode': '353'
+              'paymentProfileId': this.createTransaction.customerPaymentProfileId, // '{{vCustomerPaymentProfileIdList}}',
+              'cardCode': this.createTransaction.cvv // '353'
             }
           },
           'tax': {
-            'amount': 3.11,
-            'name': 'Sale Tax',
-            'description': 'Sale Tax'
+            'amount': data.taxAmount, // 3.11,
+            'name': data.taxType, // 'Sale Tax',
+            'description': data.taxType // 'Sale Tax'
           }
         }
       }

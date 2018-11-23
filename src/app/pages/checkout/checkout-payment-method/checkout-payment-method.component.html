@@ -5,7 +5,7 @@
     </div>
     <div class="col-md-12">
       <div class="payment-method">
-        <div class="row">
+        <div class="row" *ngIf="storeDetails?.IsPickUp && orderTypeId === 1">
             <div class="payment-option-select">
                   <div class="col-md-6">
                       <a href="" class="pay-opt-1"><span class="fa fa-check-circle"></span> <span class="payonline">Pay Online</span></a>
@@ -29,12 +29,14 @@
                   <span [ngClass]="{'fa fa-check-circle checkout-icon-style':selectedCard===i}"></span>
                 </div>
                 <div class="td-para">
-                  <img *ngIf="paymentProfile.payment.creditCard.cardType === 'Discover'" alt="Discover" title="Discover" src="../../assets/Images/discover_logo_.gif" width="57" height="36" border="0" />
-                  <img *ngIf="paymentProfile.payment.creditCard.cardType === 'MasterCard'" alt="Master" title="Master" src="../../assets/Images/mastercard_logo_.gif" width="57" height="36" border="0" />
-                  <img *ngIf="paymentProfile.payment.creditCard.cardType === 'Visa'" style="padding-top: 5px;" alt="Visa" title="Visa" src="../../assets/Images/new_visa_.gif" width="57" height="26" border="0" />
-                  <img *ngIf="paymentProfile.payment.creditCard.cardType === 'Amex'" alt="Amex" title="Amex" src="../../assets/Images/american_express_logo_.gif" width="43" height="36" border="0" />
+                  <img *ngIf="paymentProfile?.payment?.creditCard?.cardType === 'Discover'" alt="Discover" title="Discover" src="../../assets/Images/discover_logo_.gif" width="57" height="36" border="0" />
+                  <img *ngIf="paymentProfile?.payment?.creditCard?.cardType === 'MasterCard'" alt="Master" title="Master" src="../../assets/Images/mastercard_logo_.gif" width="57" height="36" border="0" />
+                  <img *ngIf="paymentProfile?.payment?.creditCard?.cardType === 'Visa'" style="padding-top: 5px;" alt="Visa" title="Visa" src="../../assets/Images/new_visa_.gif" width="57" height="26" border="0" />
+                  <img *ngIf="paymentProfile?.payment?.creditCard?.cardType === 'AmericanExpress'" alt="Amex" title="Amex" src="../../assets/Images/american_express_logo_.gif" width="43" height="36" border="0" />
                   {{paymentProfile?.payment?.creditCard?.cardNumber}}
-                  <form *ngIf="selectedCard===i"><input type="text" name="cvv" class="text-cvv form-control" placeholder="Enter CVV"></form>
+                  <div *ngIf="selectedCard===i">
+                    <input type="password" name="cvv" [(ngModel)]="cardCVV" (keyup)="saveCVV()" class="text-cvv form-control">
+                  </div>
                 </div>
               </td>
               <td></td>
