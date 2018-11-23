@@ -4,3 +4,7 @@
 .fa-star-half-o {
     color: red !important;
 }
+
+span.rating-icon a .fa {
+    margin-right: 3px;
+}

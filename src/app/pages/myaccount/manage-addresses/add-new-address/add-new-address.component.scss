@@ -41,3 +41,21 @@
     padding:10px 30px;
     opacity: 1;
   }
+
+  .add-newaddress {
+    h4 {
+      font-family: poppinsbold;
+    }
+    .form-control {
+      border-radius: 0px;
+      height: 45px;
+      border: solid 1px #e6e6e6;
+    }
+    form label {
+    font-family: poppinsregular;
+      span {
+        color: #A61455;
+      }
+      width: 90%;
+    }
+  }

@@ -2,14 +2,15 @@
     <div class="border_bottom">
         <div class="profile col-lg-8 col-md-8 col-sm-8 col-xs-8">
             <span class="img_class">
-                <img class="img-responsive" src='{{profile?.ProfileImage}}' />
+                <img *ngIf="profileFirstLetter === ''; else showProfileName" [src]="profilePic" class="img-responsive useralpha-icon">
+                <ng-template #showProfileName><span class="text-dp">{{profileFirstLetter | uppercase}}</span></ng-template>
             </span>
 
             <h4 class="margin_top">{{profile?.FirstName}} {{profile?.LastName}}</h4>
             <h5 class="email">{{profile?.EmailId}}</h5>
         </div>
         <div class="float_right col-lg-4 col-md-4 col-sm-4 col-xs-4">
-            <button class="btn" routerLink="../profile-edit">
+            <button class="btn btn-profile" routerLink="../profile-edit">
                 <img src='assets/Images/Edit.png' /> Edit Profile
             </button>
         </div>

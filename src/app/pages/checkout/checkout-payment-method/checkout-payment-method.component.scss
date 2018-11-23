@@ -21,7 +21,44 @@
     tbody tr {
       border-bottom: solid 1px rgba(168, 168, 168, 0.16);
     }
-  } 
+  }
+  .payment-option-select a.pay-opt-1{
+    font-size: 20px;
+    color: #A61455;
+  }
+
+  .payment-option-select a{
+      color: #222;
+  }
+  .payment-option-select a:hover,
+  .payment-option-select a.active{
+      color: #A61455;
+      text-decoration: none;
+  }
+
+  .payment-option-select {
+      border-bottom: solid 1px #ccc;
+      margin-bottom: 25px;
+      margin-top: 10px;
+  span.payonline {
+      font-size: 15px;
+      font-family: poppinsbold;
+      vertical-align: middle;
+    }
+  }
+
+  .payment-option-select .pay-or-store {
+      border-radius: 50%;
+      -moz-border-radius: 50%;
+      -webkit-border-radius: 50%;
+      text-align: center;
+      color: #222;
+      background-color: #ccc;
+      padding: 15px;
+      position: relative;
+      left: 45%;
+      top: 7px;
+  }
 }
 
 .check-icon-payment-container .checkout-icon-style {

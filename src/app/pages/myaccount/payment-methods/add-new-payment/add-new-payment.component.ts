@@ -36,11 +36,11 @@ export class AddNewPaymentComponent implements OnInit {
     this.formAddNewPayment = this.formBuilder.group({
       firstName: [this.customerInfo && this.customerInfo.FirstName || '', [Validators.required]],
       lastName: [this.customerInfo && this.customerInfo.LastName || '', [Validators.required]],
-      sixteenDigitNumber: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(16)]],
+      sixteenDigitNumber: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(15)]],
       expiryDate: ['', [Validators.required]],
       address: ['', [Validators.required]],
       city: ['', [Validators.required]],
-      state: ['', [Validators.required]],
+      state: ['', [Validators.required], Validators.maxLength(2), Validators.minLength(2)],
       zipCode: ['', [Validators.required]],
       country: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required]]
@@ -59,6 +59,7 @@ export class AddNewPaymentComponent implements OnInit {
 
     // stop here if form is invalid
     if (this.formAddNewPayment.invalid) {
+      this.toastr.error('Please enter valid data');
       return;
     }
     // this.spinnerService.show();

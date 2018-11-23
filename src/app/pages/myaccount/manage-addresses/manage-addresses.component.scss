@@ -56,6 +56,11 @@
     }
     p {
       font-family: poppinsregular;
+      font-size: 14px;
+    }
+    h6 {
+      font-family: poppinsregular;
+      font-size: 14px;
     }
   }
   
@@ -79,4 +84,10 @@
 
 p {
       font-family: poppinsregular;
+      font-size: 14px;
+  }
+
+  span.fa.fa-ellipsis-v.more-icon {
+    font-size: 18px !important;
+    right: 10px !important;
   }
