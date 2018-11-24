@@ -21,6 +21,7 @@ export class FeatureProductsComponent implements OnInit {
   isPrevious = false;
   isNext = false;
   currentCategoryId = '0';
+  totalCount = 0;
 
   constructor(private store: Store<ProductGetListRequestPayload>,
     private productStoreService: ProductStoreService,
@@ -40,9 +41,10 @@ export class FeatureProductsComponent implements OnInit {
         .subscribe(pgld => {
           if (pgld) {
             this.productsList = pgld ? pgld.ListProduct : [];
+            this.totalCount = pgld.TotalCount;
             this.spinnerService.hide();
 
-            if (this.productsList.length > 0) {
+            if (this.productsList.length > 0 && this.totalCount > 12) {
               this.isNext = true;
             }
           }

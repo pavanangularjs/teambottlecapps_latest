@@ -22,12 +22,12 @@
         </div>
         <div class="profileset-container">
             <h5 class="mobile_number">Gender</h5>
-            <h5 class="contact">{{(profile?.Gender) === 'M' ? 'Male' : 'Female'}}</h5>
+            <h5 class="contact">{{profile?.Gender === 'M' ? 'Male' : (profile?.Gender === 'F' ? 'Female' : '' )}}</h5>
         </div>
 
         <div class="profileset-container">
             <h5 class="mobile_number">Date Of Birth</h5>
-            <h5 class="contact">{{profile?.DOBDt}}</h5>
+            <h5 class="contact">{{profile?.DOBDt | date:'MM/dd/yyyy'}}</h5>
         </div>
     </div>
 
