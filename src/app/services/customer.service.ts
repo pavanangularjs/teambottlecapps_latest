@@ -217,6 +217,7 @@ export class CustomerService {
     return this.http.post<any>(baseUrl + UrlNames.CustomerPaymentInsert,
       this.getCustomerPaymentInsertRequestParams(userProfileId, isDefault, paymentTypeId), { headers: this.headers }).pipe(
         switchMap((res: any) => {
+          this.customerPaymentMethodGetList = null;
           return of(res);
         }),
         retry(3),

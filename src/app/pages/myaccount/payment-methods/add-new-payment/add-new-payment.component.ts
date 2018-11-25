@@ -115,6 +115,11 @@ export class AddNewPaymentComponent implements OnInit {
               this.router.navigate(['/myaccount/payment-methods']);
             }
           });
+        } else {
+          if (data && data.messages && data.messages.message &&
+            data.messages.message.length > 0 && data.messages.message[0].text) {
+              this.toastr.error(data.messages.message[0].text);
+          }
         }
       });
     }
