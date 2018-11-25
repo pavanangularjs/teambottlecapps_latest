@@ -42,6 +42,11 @@ export class ErrorHandlerService {
           }
         }
         return EMPTY;
+      } else {
+        if (error.statusText) {
+          this.toastr.error(error.statusText);
+        }
+        return EMPTY;
       }
     }
     return throwError(error);

@@ -52,7 +52,7 @@
               </tr>
               <tr *ngIf="cartDetails?.ListDiscount?.length > 0" >
                 <td></td>
-                <td colspan="2">
+                <td colspan="2"  *ngIf="isExpand">
                   <table class="exapnded-table">
                     <tr *ngFor="let discount of cartDetails?.ListDiscount">
                       <td><small class="text-muted">{{discount?.DiscountTitle}}</small></td>
@@ -61,16 +61,7 @@
                   </table>
                 </td>
               </tr>
-              <tr>
-                <td></td>
-                <td>
-                  <h5>Coupon Discount</h5>
-                </td>
-                <td class="text-right">
-                  <h4>$ 0.00</h4>
-                </td>
-              </tr>
-              <tr *ngFor="let charge of cartDetails?.ListCharge">
+              <tr *ngFor="let charge of listCharges">
                 <td></td>
                 <td>
                   <h5>{{charge?.ChargeTitle}}</h5>
@@ -87,7 +78,7 @@
                   <h5>Tip</h5>
                 </td>
                 <td class="text-right">
-                  <h4>{{cartDetails?.TipForDriver | number:'1.2-2' }}</h4>
+                  <h4>{{tipAmount}}</h4>
                 </td>
               </tr>
               <tr>
@@ -95,7 +86,11 @@
                 <td colspan="2" *ngIf="isTipExpand">
                   <table class="exapnded-table">
                     <tr *ngFor="let tip of cartDetails?.ListTipForDriver">
-                      <td><small class="text-muted"><input type="radio" name="tip" (change)="onTipSelected($event, tip)" value="{{tip.TipAmountDisplay}}" [(ngModel)]="tip.IsDeafault"> {{tip?.TipAmountDisplay}} ({{tip?.Percentage}}%)</small></td>
+                      <td>
+                        <small class="text-muted">
+                          <input type="radio" name="tip" (change)="onTipSelected($event, tip)" [checked]="tip.IsDeafault === true"> {{tip?.TipAmountDisplay}} ({{tip?.Percentage !== 0 ? tip?.Percentage : 'Other'}}%)
+                        </small>
+                      </td>
                       <td class="text-right"><small class="text-muted"> </small></td>
                     </tr>
                   </table>
@@ -110,16 +105,16 @@
   <div class="coupon-panel">
     <form>
       <i class="icon-coupon"><img src="../assets/Images/coupon.png"></i>
-      <input type="text" name="coupun" placeholder="Apply Coupon" class="form-control coupon">
-      <i class="fa fa-check-circle icon-coupon-success"></i> <i class="fa fa-close icon-coupon-close"></i>
+      <input type="text" name="coupun" (keydown.Enter)="applyCoupon()" placeholder="Apply Coupon" [(ngModel)]="couponCode" class="form-control coupon">
+      <i (click)="applyCoupon()" class="fa fa-check-circle icon-coupon-success"></i> <i (click)="clearCoupon()" class="fa fa-close icon-coupon-close"></i>
     </form>
   </div>
   <div class="coupon-panel">
     <table>
       <tbody>
-        <tr *ngIf="isCouponError">
+        <tr *ngIf="cartDetails?.Remark">
           <td class="text-left">
-            <p class="bottles-brand">Remarks: Order value must be above or equal to $35.00 for this coupon</p>
+            <p class="bottles-brand">{{cartDetails?.Remark}}</p>
           </td>
         </tr>
         <tr>

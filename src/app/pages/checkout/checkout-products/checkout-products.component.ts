@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../../services/cart.service';
 import { PaymentService } from '../../../services/payment.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-checkout-products',
@@ -13,22 +14,43 @@ export class CheckoutProductsComponent implements OnInit {
   isCouponError = false;
   isExpand = false;
   isTipExpand = true;
+  couponCode: string;
+  tipAmount: string;
+  listCharges: any;
   constructor(private cartService: CartService, private router: Router,
-    private paymentService: PaymentService) { }
+    private paymentService: PaymentService, private toastr: ToastrService) { }
 
   ngOnInit() {
+    this.couponCode = '';
+    this.tipAmount = '';
     this.cartDetails = this.cartService.cartdetails;
+    this.filterCartDetails();
+  }
+
+  filterCartDetails() {
     this.cartDetails.ListCartItem = this.cartDetails.ListCartItem.filter(item => item.Quantity !== 0);
     this.cartDetails.ListCartItem.map(item => item.QuantityOrdered = item.Quantity);
 
-    this.cartDetails.ListCharge = this.cartDetails.ListCharge.filter(charge => charge.ChargeTitle !== 'Tip');
+    const tip = this.cartDetails.ListCharge.filter(charge => charge.ChargeTitle === 'Tip')[0];
+    if (tip) {
+      this.tipAmount = tip.ChargeAmountDisplay;
+    }
+    this.listCharges = this.cartDetails.ListCharge.filter(charge => charge.ChargeTitle !== 'Tip');
   }
-
   onCheckout() {
 
     /* this.cartDetails.OrderTypeId = 1;
     this.cartDetails.AddressId = 0;
     this.cartDetails.PaymentTypeId = 0; */
+
+    if (this.cartDetails.AddressId === 0) {
+      this.toastr.error('Please Select Address');
+      return;
+    }
+    if (this.cartDetails.PaymentTypeId === 1 ) {
+      this.toastr.error('Please Select Payment Method');
+      return;
+    }
 
     const data = {
       amount: this.cartDetails.TotalValue,
@@ -37,18 +59,59 @@ export class CheckoutProductsComponent implements OnInit {
     };
 
     this.paymentService.createTransactionRequest(data).subscribe(paymentResponse => {
-      this.cartService.placeOrder(this.cartDetails).subscribe(
-        (orderResponse: any) => {
-          this.cartDetails = orderResponse;
-          this.router.navigate(['/myorders']);
-        });
+      if (paymentResponse.messages.message[0].text === 'Successful.'
+      || paymentResponse.messages.message[0].code === 'I00001') {
+        this.cartService.placeOrder(this.cartDetails).subscribe(
+          (orderResponse: any) => {
+            this.cartDetails = orderResponse;
+            this.router.navigate(['/myorders']);
+          });
+      }
     });
 
   }
 
-  onTipSelected(event: any, tip: any) {
-    if (tip.IsDeafault) {
-      this.cartDetails.TipForDriver = tip.TipAmount;
+  applyCoupon() {
+    if (this.couponCode.trim() !== '') {
+      this.cartDetails.CouponCode = this.couponCode;
+      this.cartService.updateCart(this.cartDetails).subscribe(
+        (data: any) => {
+          this.cartDetails = data;
+          this.toastr.success('Coupon Applied Successfully.');
+          this.filterCartDetails();
+        });
     }
+  }
+
+  updateCart() {
+    this.cartService.updateCart(this.cartDetails).subscribe(
+      (data: any) => {
+        this.cartDetails = data;
+        this.filterCartDetails();
+      });
+  }
+
+  clearCoupon() {
+    this.couponCode = '';
+    if (this.cartDetails.CouponCode !== '') {
+      this.cartDetails.CouponCode = this.couponCode;
+      this.cartService.updateCart(this.cartDetails).subscribe(
+        (data: any) => {
+          this.cartDetails = data;
+          this.filterCartDetails();
+        });
+    }
+  }
+  onTipSelected(event: any, tip: any) {
+    this.cartDetails.ListTipForDriver.forEach(item => {
+      if (item.Percentage === tip.Percentage) {
+        item.IsDeafault = true;
+        // this.tipAmount = tip.TipAmountDisplay;
+        this.cartDetails.TipForDriver = tip.TipAmount;
+        this.updateCart();
+      } else {
+        item.IsDeafault = false;
+      }
+    });
   }
 }
