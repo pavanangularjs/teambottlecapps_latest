@@ -76,7 +76,7 @@
     }
 }
 
-button.btn-profile {
+button.btn-profile, button.btn-profile:focus, button.btn-profile:hover {
     outline: 0px;
     box-shadow: none;
 }

@@ -32,6 +32,7 @@ export class ProductDetailsComponent implements OnInit {
   isEdit = false;
   review: any;
   quantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+  rating = 0;
 
   constructor(private route: ActivatedRoute,
     private store: Store<ProductGetDetailsRequestPayload>,
@@ -55,6 +56,10 @@ export class ProductDetailsComponent implements OnInit {
           if (pgdd && pgdd.UserReview && pgdd.UserReview.ReviewId !== 0) {
             this.userReviews = [...this.userReviews, ...pgdd.UserReview];
           }
+        }
+
+        if (this.productDetails.RatingAverage) {
+          this.rating = +this.productDetails.RatingAverage;
         }
         this.getRelatedProducts();
         this.spinnerService.hide();

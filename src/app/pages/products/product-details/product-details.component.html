@@ -67,7 +67,7 @@
                         <span>{{productDetails?.Product?.OfferPriceDisplay}}</span>
                         <ul class="float_right">
                             <li>
-                                <app-rating [rate]='0' [edit]='true' (rated)="onRated($event)"></app-rating>
+                                <app-rating [rate]='rating'></app-rating>
                                 <small class="review-caption">({{productDetails?.ReviewTotalCount}}
                                     Customer reviews)</small>
                             </li>
