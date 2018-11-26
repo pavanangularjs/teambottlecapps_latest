@@ -22,6 +22,8 @@ export class FeatureProductsComponent implements OnInit {
   isNext = false;
   currentCategoryId = '0';
   totalCount = 0;
+  currentPageNo = 1;
+  pageSize = 12;
 
   constructor(private store: Store<ProductGetListRequestPayload>,
     private productStoreService: ProductStoreService,
@@ -44,8 +46,16 @@ export class FeatureProductsComponent implements OnInit {
             this.totalCount = pgld.TotalCount;
             this.spinnerService.hide();
 
-            if (this.productsList.length > 0 && this.totalCount > 12) {
+            if (this.productsList.length > 0 && this.totalCount > (this.currentPageNo * this.pageSize)) {
               this.isNext = true;
+            } else {
+              this.isNext = false;
+            }
+
+            if (this.productsList.length > 0 && this.currentPageNo > 1) {
+              this.isPrevious = true;
+            } else {
+              this.isPrevious = false;
             }
           }
         });
@@ -76,7 +86,20 @@ export class FeatureProductsComponent implements OnInit {
     this.currentCategoryId = catId;
     this.spinnerService.show();
     this.store.dispatch(new ProductGetList(
-      this.productStoreService.getProductGetListParams({ categoryId: catId, pageSize: 12, isFeatured: 1})));
+      this.productStoreService.getProductGetListParams(
+        { categoryId: catId, pageSize: this.pageSize, isFeatured: 1, pageNumber: this.currentPageNo})));
+  }
+
+  showMoreProducts() {
+    this.currentPageNo += 1;
+    this.onCategoryChange();
+  }
+
+  showPreviousProducts() {
+    if (this.currentPageNo > 1) {
+      this.currentPageNo -= 1;
+      this.onCategoryChange();
+    }
   }
 
 }

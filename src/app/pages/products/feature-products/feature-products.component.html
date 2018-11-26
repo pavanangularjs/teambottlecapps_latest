@@ -13,12 +13,12 @@
         <app-product [item]="product"></app-product>
      </div>
      <div class="col-md-12 btn-container" *ngIf="isFeatureProductsPage">
-        <div class="row">
+        <div class="row margin-bottom-20">
           <div class="col-md-6">
-              <button class="btn btn-default" *ngIf="isPrevious">Previous Page</button>
+              <button class="btn btn-default" (click)="showPreviousProducts()" *ngIf="isPrevious">Previous Page</button>
           </div>
           <div class="col-md-6">
-              <button class="btn btn-default pull-right" *ngIf="isNext">Next Page</button>
+              <button class="btn btn-default pull-right" *ngIf="isNext" (click)="showMoreProducts()" >Next Page</button>
           </div>
         </div>
      </div>
