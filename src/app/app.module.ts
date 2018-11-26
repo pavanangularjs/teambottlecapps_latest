@@ -17,6 +17,7 @@ import { ProductStoreEffects } from './state/product-store/product-store.effects
 import { ProductStoreActions } from './state/product-store/product-store.action';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -132,7 +133,8 @@ export function getAuthServiceConfigs() {
     EffectsModule.forRoot([CustomerEffects, ProductStoreEffects]),
     Ng4LoadingSpinnerModule.forRoot(),
     SocialLoginModule,
-    DeviceDetectorModule.forRoot()
+    DeviceDetectorModule.forRoot(),
+    NgbPaginationModule
   ],
   providers: [CustomerService, ProductStoreService, DataService, DecimalPipe, AuthService, Title,
     {

@@ -35,6 +35,8 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
   SortBy = ['Price', 'Size', 'Type', 'Country', 'Region'];
   selectedPageSize = 15;
   navigationSubscription;
+  page = 1;
+  fromProductNo = 1;
 
   constructor(public dataservice: DataService,
     private store: Store<ProductGetListRequestPayload>,
@@ -51,6 +53,7 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
       .subscribe(pgld => {
         this.productsList = pgld ? pgld.ListProduct : [];
         this.totalProducts = pgld ? pgld.TotalCount : 0;
+        this.fromProductNo = ((this.page - 1) * this.selectedPageSize ) + 1;
         this.spinnerService.hide();
       });
   }
@@ -96,6 +99,10 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
     this.getFilteredProducts();
   }
 
+  onPageChange(pageNo) {
+    this.page = pageNo;
+    this.getFilteredProducts();
+  }
   onCountrySelectionChange(country: Country) {
     country.isSelected = !country.isSelected;
     this.getRegions();
@@ -293,7 +300,7 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
     this.store.dispatch(new ProductGetList(
       this.productStoreService.getProductGetListParams(
         {
-          categoryId: this.dataservice.categoryId, pageSize: this.selectedPageSize, typeId: types,
+          categoryId: this.dataservice.categoryId, pageNumber: this.page, pageSize: this.selectedPageSize, typeId: types,
           sizeId: sizes, countryId: countries, regionId: regions, varietalId: varietals,
           minPrice: minPrice, maxPrice: maxPrice, keyWord: this.dataservice.searchByText
         }
