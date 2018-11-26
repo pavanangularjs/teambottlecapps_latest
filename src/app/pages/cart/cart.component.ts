@@ -15,7 +15,7 @@ import { ProductStoreService } from '../../services/product-store.service';
 export class CartComponent implements OnInit {
   @ViewChild('openCartReviewModal') openModal: ElementRef;
   cartDetails: any;
-  quantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  quantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
   reviewItems: any;
   storeDetails: any;
 

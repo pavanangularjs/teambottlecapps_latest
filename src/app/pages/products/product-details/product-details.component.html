@@ -94,8 +94,7 @@
                                 <div class="col-md-4">
                                     <div class="select-bg">
                                         <select class="selectsize form-control" [(ngModel)]="qty">
-                                            <!-- <option disabled>Please select</option> -->
-                                            <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10] ">{{i}}</option>
+                                                <option *ngFor="let qty of quantity">{{qty}}</option>
                                         </select>
                                     </div>
                                 </div>
