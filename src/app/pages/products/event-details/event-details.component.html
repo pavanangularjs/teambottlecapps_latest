@@ -37,7 +37,12 @@
           </li>
           <li class="IngredientText"> <span class="fa fa-map-marker bottle-caps-red event-icon"></span> <span class="event-para">{{eventDetails?.Address1}}
               <br>{{eventDetails?.City}}, {{eventDetails?.State}} {{eventDetails?.Zip}}</span>
-              <span class="pull-right"><img src="../assets/Images/navigate-png.png"></span>
+              <span class="pull-right">
+                <a href="https://www.google.com/maps/dir//{{eventDetails?.StoreLatitude}},{{eventDetails?.StoreLongitude}}/data=!4m2!4m1!3e0"
+                  target="_blank">
+                  <img src="../assets/Images/navigate-png.png">
+                </a>
+              </span>
           </li>
         </ul>
       </div>
