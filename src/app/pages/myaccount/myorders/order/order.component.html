@@ -24,12 +24,12 @@
 
     <div class="float_right col-md-6 col-sm-6 col-lg-6 col-xs-12">
       <ol class="breadcrumb myorder-details no-border">
-        <li class="breadcrumb-item code myorder-status" style="width: 120px !important;"><a>
-            <div class="repeat-circle"><span class="fa fa-repeat"></span></div> <strong>Reorder</strong>
+        <li class="breadcrumb-item code myorder-status" style="width: 105px !important;"><a>
+            <!-- <div class="repeat-circle"><span class="fa fa-repeat"></span></div> --> <strong><img src="../assets/Images/Reorder.png" class="status-img" alt="Reorder"> Reorder</strong>
           </a></li>
           <!-- Cancel -->
-          <li *ngIf="order?.OrderStatus=='Pending'" class="breadcrumb-item code myorder-status" style="margin-right: 5px;width: 120px; text-align: right;"><a>
-            <div class="repeat-circle"><span class="fa fa-close"></span></div> <strong>Cancel</strong>
+          <li *ngIf="order?.OrderStatus=='Pending'" class="breadcrumb-item code myorder-status" style="margin-right: 5px;width: 105px; text-align: right;"><a>
+            <!-- <div class="repeat-circle"><span class="fa fa-close"></span></div> --> <strong><img src="../assets/Images/cancel.png" class="status-img" alt="Cancel"> Cancel</strong>
           </a></li>
         <li class="breadcrumb-item code myorder-status"><a>#{{order?.OrderNo}}</a></li>
       </ol>

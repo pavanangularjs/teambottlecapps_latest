@@ -16,9 +16,9 @@ section.m_bottom{
 }
 
 select.form-control {
-    -moz-appearance: none;
-     -webkit-appearance: none;
-     appearance: none;
+    -moz-appearance: menulist !important;
+     -webkit-appearance: menulist !important;
+     appearance: menulist !important;
   }
 .select_box{
     text-align: right;

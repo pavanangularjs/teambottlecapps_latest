@@ -364,6 +364,11 @@ table tr td h4,table tr td h5,table tr td span,table tr td .total_price{
             margin-right: 5px !important;
             width: auto !important;
             font-family: poppinsregular;
+            .status-img {
+                width: 25px;
+                margin: 0px;
+                padding: 0px;
+            }
         }
         strong {
             line-height: 45px;

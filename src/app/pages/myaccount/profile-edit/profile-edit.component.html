@@ -9,18 +9,25 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <span class="img_class" *ngIf="profileImage">
+                                        <!-- <span class="img_class" *ngIf="profileImage">
                                             <img class="img-responsive" [src]="profileImage" />
+                                        </span> -->
+                                        <span class="img_class">
+                                            <img *ngIf="profileImage; else showProfileName" [src]="profileImage" class="img-responsive useralpha-icon">
+                                            <ng-template #showProfileName>
+                                                <span class="text-dp">{{profileFirstLetter | uppercase}}
+                                                </span>
+                                            </ng-template>
                                         </span>
                                         <div class="inputWrapper profileupload">
                                             <input class="fileInput" formControlName="pImage" type="file" capture="camera"
                                                 accept="image/*" (change)="uploadPicture($event)" />
-                                            <span class="fa fa-plus"></span>
+                                            <span class="fa fa-camera"></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row"><br>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="text-uppercase">First Name <span>*</span>

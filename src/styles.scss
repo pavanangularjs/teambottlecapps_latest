@@ -721,10 +721,10 @@ ul.user-menu{
     margin-top: 10px;
 }
 ul.user-menu li{
-    padding: 5px;
+    padding: 8px 8px 8px 0px;
     margin-right:0px;
 }
-ul.user-menu li a image{
+ul.user-menu li a img{
     margin-right: 10px !important;
 }
 ul.navbar-nav {
@@ -738,13 +738,15 @@ ul.navbar-nav {
     letter-spacing: 0.3px;
     text-align: left;
     color: #222222 !important;
-    padding: 4px 5px 5px 12px;
+    padding: 0px 0px 0px 0px !important;
     display: block;
     text-transform: uppercase;
+    margin-left: 0px;
 }
 ul.user-menu li.star_color i.fa-star{
     color: #A61455;
     font-size: 22px;
+    margin-right: 10px !important;
 }
 nav ul.user-menu li{
     background-color: transparent; 
@@ -1449,4 +1451,46 @@ nav ul.user-menu li {
             margin-left: 3%;
         }
     }
+}
+
+.page-navigation, .f-page-navigation {
+    ul.pagination {
+        margin: 0px 0px;
+    }
+          
+          .pagination>li>a, .pagination>li>span {
+                color: #A61455;
+                font-family: poppinsregular;
+              }
+            .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+              background-color: #A61455;
+              border-color: #A61455;
+              color: #fff;
+              font-family: poppinsbold;
+            }
+            .pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
+              color: #ccc;
+            }
+            .pagination>li>a, .pagination>li>span {
+              color: #A61455;
+            }
+
+            .pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover {
+              color: #fff;
+              background-color: #A61455;
+              border-color: #A61455;
+              font-family: poppinsregular;
+            }
+}
+
+.f-page-navigation {
+    ul.pagination {
+        margin: 10px 0px 10px 0px;
+    }
+    width: 50%;
+    margin: 0px auto;
+}
+select.form-control {
+    -webkit-appearance: menulist !important;
+    appearance:  menulist !important;
 }
