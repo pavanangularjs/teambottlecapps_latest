@@ -12,6 +12,7 @@ import { ProductStoreService } from '../../../services/product-store.service';
 import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { Router, NavigationEnd } from '@angular/router';
+import { ProgressBarService } from '../../../shared/services/progress-bar.service';
 
 @Component({
   selector: 'app-advance-filter',
@@ -42,7 +43,8 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
     private store: Store<ProductGetListRequestPayload>,
     private productStoreService: ProductStoreService,
     private spinnerService: Ng4LoadingSpinnerService,
-    private router: Router) {
+    private router: Router,
+    private progressBarService: ProgressBarService) {
 
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
       if (e instanceof NavigationEnd) {
@@ -54,7 +56,8 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
         this.productsList = pgld ? pgld.ListProduct : [];
         this.totalProducts = pgld ? pgld.TotalCount : 0;
         this.fromProductNo = ((this.page - 1) * this.selectedPageSize ) + 1;
-        this.spinnerService.hide();
+        // this.spinnerService.hide();
+        this.progressBarService.hide();
       });
   }
 
@@ -246,7 +249,8 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
   } */
 
   getProductsByKeyword() {
-    this.spinnerService.show();
+    // this.spinnerService.show();
+    this.progressBarService.show();
     this.store.dispatch(new ProductGetList(
       this.productStoreService.getProductGetListParams(
         {
@@ -296,7 +300,8 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
     if (this.selectedRegions && this.selectedRegions.length > 0) {
       regions = this.selectedRegions.map((res: Item) => res.id).join(',');
     }
-    this.spinnerService.show();
+    // this.spinnerService.show();
+    this.progressBarService.show();
     this.store.dispatch(new ProductGetList(
       this.productStoreService.getProductGetListParams(
         {

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RatingComponent } from './components/rating/rating.component';
 
 import { ToastrModule } from 'ngx-toastr';
+import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 
 @NgModule({
 imports: [
@@ -10,10 +11,12 @@ imports: [
     ToastrModule.forRoot({positionClass: 'toast-top-right'})
 ],
 declarations: [
-    RatingComponent
+    RatingComponent,
+    ProgressBarComponent
 ],
 exports: [
-    RatingComponent
+    RatingComponent,
+    ProgressBarComponent
 ]
 })
 export class SharedModule {}
