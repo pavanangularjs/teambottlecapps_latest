@@ -168,6 +168,7 @@ export class CustomerService {
     return this.http.post<any>(baseUrl + UrlNames.AddressDelete,
       this.getDeleteAddressParams(addressId), { headers: this.headers }).pipe(
         switchMap((res: any) => {
+          this.customerAddressList = null;
           return of(res);
         }),
         retry(3),
