@@ -826,7 +826,8 @@ ul.float_right li.text_small a{
 }
 li.text_small ul.user-menu li{
     margin-right: 0;
-    padding:8px;
+    padding:0px;
+    margin-left: -10px;
 }
 
 .nav>li>a:hover, .nav>li>a:focus{
@@ -1083,6 +1084,9 @@ ul.navbar-nav li a:hover {
      .dropdown-menu ul.flex-column li {
         border-bottom: 1px solid #f4f5f7;
         padding-left: 10px;
+        margin-top: 0px;
+        font-family: poppinsregular;
+        letter-spacing: 0.3px;
      }
  
      /* .dropdown-menu ul li{
@@ -1130,7 +1134,7 @@ ul.navbar-nav li a:hover {
     }
 
     .optional-dropmenu {
-        margin: 10px 15px;
+        margin: 0px;
         display: block;
         height: 550px;
     }
@@ -1141,7 +1145,7 @@ ul.navbar-nav li a:hover {
 
     .mid-nav li.nav-item.dropdown.dropdown_menu.droparrow,
     .mid-nav li.nav-item {
-        height: 40px;
+        height: 36px;
         margin-top: 7px;
     }
 
