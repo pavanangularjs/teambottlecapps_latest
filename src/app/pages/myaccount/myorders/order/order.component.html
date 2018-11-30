@@ -28,7 +28,7 @@
             <!-- <div class="repeat-circle"><span class="fa fa-repeat"></span></div> --> <strong><img src="../assets/Images/Reorder.png" class="status-img" alt="Reorder"> Reorder</strong>
           </a></li>
           <!-- Cancel -->
-          <li *ngIf="order?.OrderStatus=='Pending'" class="breadcrumb-item code myorder-status" style="margin-right: 5px;width: 105px; text-align: right;"><a>
+          <li *ngIf="order?.OrderStatus=='Pending'" class="breadcrumb-item code myorder-status" style="margin-right: 5px;width: 105px; text-align: right;" (click)="cancelOrder(order.OrderId)"><a>
             <!-- <div class="repeat-circle"><span class="fa fa-close"></span></div> --> <strong><img src="../assets/Images/cancel.png" class="status-img" alt="Cancel"> Cancel</strong>
           </a></li>
         <li class="breadcrumb-item code myorder-status"><a>#{{order?.OrderNo}}</a></li>

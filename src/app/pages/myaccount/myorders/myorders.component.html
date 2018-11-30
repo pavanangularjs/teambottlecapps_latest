@@ -29,7 +29,7 @@
 <section>
   <div class="container">
     <div class="row" *ngFor="let myorder of myOrdersList?.ListOrder">
-      <app-order [order]="myorder"></app-order>
+      <app-order [order]="myorder" (canceled)="onOrderCancelled()"></app-order>
     </div>
   </div>
 </section>

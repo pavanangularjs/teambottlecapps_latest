@@ -25,4 +25,8 @@ export class MyOrdersComponent implements OnInit {
       });
   }
 
+  onOrderCancelled() {
+    this.getMyOrders();
+  }
+
 }

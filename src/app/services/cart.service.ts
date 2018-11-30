@@ -65,8 +65,8 @@ export class CartService {
       PID: pid,
       Quantity: qty,
       CartId: this.cartId,
-      DeviceId: 'A',
-      DeviceType: 'A'
+      DeviceId: this.customerSession.DeviceId,
+      DeviceType: this.customerSession.DeviceType
     };
   }
 
@@ -95,8 +95,8 @@ export class CartService {
       AppId: this.customerSession.AppId,
       PID: pid,
       CartId: this.cartId,
-      DeviceId: 'A',
-      DeviceType: 'A'
+      DeviceId: this.customerSession.DeviceId,
+      DeviceType: this.customerSession.DeviceType
     };
   }
 
@@ -124,8 +124,8 @@ export class CartService {
       UserId: this.customerSession.UserId,
       AppId: this.customerSession.AppId,
       CartId: this.cartId,
-      DeviceId: 'A',
-      DeviceType: 'A'
+      DeviceId: this.customerSession.DeviceId,
+      DeviceType: this.customerSession.DeviceType
     };
   }
 

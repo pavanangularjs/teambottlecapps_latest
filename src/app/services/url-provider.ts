@@ -16,6 +16,7 @@ export enum UrlNames {
     ReviewRatingUpdate = 'Review/ReviewRatingUpdate',
     OrderGetList = 'Order/OrderGetList',
     OrderInsert = 'Cart/OrderInsert',
+    OrderCancel = 'Order/OrderCancel',
     CartUpdate = 'Cart/CartUpdate',
     CustomerAddressGetList = 'Customer/CustomerAddressGetList',
     AddressInsert = 'Customer/AddressInsert',
