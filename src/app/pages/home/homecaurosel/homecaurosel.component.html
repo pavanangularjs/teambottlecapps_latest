@@ -5,7 +5,7 @@
     </ol> -->
 
     <div class="carousel-inner carousel-block" role="listbox">
-      <div class="item active" *ngIf="eventList?.length > 0">
+      <div class="item active" *ngIf="!(eventList?.length > 0)">
         <img src="../../../../assets/Images/default-carousel-img.jpg" alt="" class="carousel-img">
       </div>
       <div class="item" [ngClass]="{'active' : i == 0}" *ngFor="let event of eventList; let i = index">

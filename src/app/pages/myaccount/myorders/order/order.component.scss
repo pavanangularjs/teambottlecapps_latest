@@ -162,14 +162,15 @@ button.dec_circle,button.dec_circle:focus{
     color: #A61455;
     font-size: 20px;
     font-family: poppinsbold !important;
+    margin-right: 10px;
 }
 .margin_top_25{
-    margin: 25px 0 25px 0;
+    margin: 0px 0 0px 0;
     float: left;
     width: 100%;
 }
 .margin_top_25 .date_time{
-    /* font-family: Poppins-Regular; */
+    font-family: Poppins-Regular;
     font-family:montserratbold !important;
     vertical-align: middle;
     margin-left: 10px;
@@ -202,7 +203,7 @@ button.dec_circle,button.dec_circle:focus{
 table.text_left tr td{
     font-size: 11px;
     font-weight: 600;
-    padding-bottom: 8px;
+    padding-bottom: 0px;
 }
 .bill_summary h5.summary{
     font-size: 14px;
@@ -313,7 +314,7 @@ table tr td h4,table tr td h5,table tr td span,table tr td .total_price{
 
 .tfoot-order-summary {
     border-top: solid 1px #ccc;
-    padding: 0px 20px;
+    padding: 3px 20px 0px 20px;
     display: inline-block;
     margin-top: -1px;
     width: 100%;
@@ -395,4 +396,15 @@ table tr td h4,table tr td h5,table tr td span,table tr td .total_price{
 
 .no-border {
     border-bottom: 0px solid transparent !important;
+}
+
+.border_bottom {
+    border-bottom: 1px solid #d7d7d7;
+    padding-bottom: 0px !important; 
+    float: left;
+    width: 100%;
+}
+
+button.dec_circle.toggle {
+    margin-right: -10px;
 }

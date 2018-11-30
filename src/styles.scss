@@ -122,7 +122,7 @@ color: #d4d6da;
 .second_content .rating_star span.first,.second_content .rating_star span.reviews{
     /* margin-left: 25px; */
     font-family: montserratregular;
-    font-size: 14.4px;
+    font-size: 13.4px;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
@@ -697,8 +697,8 @@ nav.navbar{
     text-align: center;
     width: 40px;
     height: 40px;
-    display: inline-block;
-    line-height: 37px;
+    display: block;
+    /*line-height: 37px;*/
  }
 
 .header_div img{
@@ -1134,7 +1134,7 @@ ul.navbar-nav li a:hover {
     }
 
     .optional-dropmenu {
-        margin: 0px;
+        margin: 5px;
         display: block;
         height: 550px;
     }
@@ -1497,4 +1497,176 @@ nav ul.user-menu li {
 select.form-control {
     -webkit-appearance: menulist !important;
     appearance:  menulist !important;
+}
+
+/*menu drodown checkboxes*/
+.nav-item, .checkbox {
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.nav-item {
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 20px;
+    width: 15px;
+    z-index: 1;
+    left: 0px;
+  }
+  .checkmark {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    height: 15px;
+    width: 15px;
+  }
+  &:hover input ~ .checkmark {
+    background-color: transparent;
+    border: solid 1px #777;
+  }
+  input:checked ~ .checkmark {
+    background-color: transparent;
+    border: solid 1px transparent;
+  }
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+}
+
+.checkbox .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.nav-item {
+  input:checked ~ .checkmark:after {
+    display: block;
+  }
+  .checkmark:after {
+    left: 3px;
+    top: 0px;
+    width: 7px;
+    height: 13px;
+    border: solid #A61455;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  label.active {
+    color: #A61455;
+  }
+}
+/*Login page*/
+.checkbox {
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 20px;
+    width: 15px;
+    z-index: 1;
+    left: 20px;
+  }
+  .checkmark {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    height: 15px;
+    width: 15px;
+  }
+  input ~ .checkmark {
+    background-color: transparent;
+    border: solid 1px #777;
+  }
+  .checkmark:after {
+    left: 3px;
+    top: 0px;
+    width: 7px;
+    height: 13px;
+    border: solid #A61455;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  input:checked ~ .checkmark:after {
+    display: block;
+  }
+  &:hover input ~ .checkmark {
+    background-color: transparent;
+    border: solid 1px #777;
+  }
+  input:checked ~ .checkmark {
+    background-color: transparent;
+    border: solid 1px transparent;
+  }
+}
+
+/*checkout radio*/
+
+.radiobox {
+  position: relative;
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 20px;
+    width: 15px;
+    z-index: 1;
+    left: -20px;
+  }
+  .checkmark {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    height: 15px;
+    width: 15px;
+  }
+  input ~ .checkmark {
+    background-color: transparent;
+    border: solid 1px #777;
+    border-radius: 50%;
+    left: -20px;
+  }
+  .checkmark:after {
+    left: 3px;
+    top: 0px;
+    width: 7px;
+    height: 13px;
+    border: solid #A61455;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  input:checked ~ .checkmark:after {
+    display: block;
+  }
+  &:hover input ~ .checkmark {
+    background-color: transparent;
+    border: solid 1px #777;
+    border-radius: 50%;
+  }
+}
+
+.radiobox input:checked ~ .checkmark {
+    background-color: transparent;
+    border: solid #A61455;
+    /*border-width: 0 3px 3px 0;*/
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/*General Styles*/
+
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+    background-color: transparent;
 }

@@ -168,6 +168,7 @@ ul.left-panel-body {
       padding: 15px 20px;
       display: block;
       text-align: left;
+      cursor: pointer;
       &:hover, &:focus, &.active {
         text-decoration: none;
         color: #222;
