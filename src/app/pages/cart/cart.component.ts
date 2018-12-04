@@ -51,11 +51,16 @@ export class CartComponent implements OnInit {
 
     if (this.reviewItems && this.reviewItems.length > 0) {
       this.openModal.nativeElement.click();
-
-      this.cartDetails.ListCartItem = this.cartDetails.ListCartItem.filter(item => item.Quantity !== 0);
-      this.cartDetails.ListCartItem.map(item => item.QuantityOrdered = item.Quantity);
     }
 
+  }
+
+  onPopupClose() {
+
+    this.cartDetails.ListCartItem = this.cartDetails.ListCartItem.filter(item => item.Quantity !== 0);
+    this.cartDetails.ListCartItem.map(item => item.QuantityOrdered = item.Quantity);
+
+    this.updateCart();
   }
 
   onQtyChange(item: any) {
@@ -83,6 +88,9 @@ export class CartComponent implements OnInit {
     this.cartService.updateCart(this.cartDetails).subscribe(
       (data: any) => {
         this.cartDetails = data;
+        if (this.cartDetails && this.cartDetails.ListCartItem) {
+          this.cartService.cartItemCount.next(this.cartDetails.ListCartItem.length);
+        }
         this.doStockAvailabilityCheck();
       });
   }

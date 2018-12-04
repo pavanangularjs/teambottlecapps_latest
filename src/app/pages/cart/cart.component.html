@@ -95,9 +95,7 @@
           <button class="btn btn-default" *ngIf="storeDetails?.IsDelivery" (click)="onDelivery()">Delivery</button>
 
         </div>
-        <button id="openCartReviewModal" #openCartReviewModal [hidden]="true" data-toggle="modal" data-target="#gridSystemModal">Review
-          Cart</button>
-        <app-cart-review [cartItems]="reviewItems"></app-cart-review>
+
       </div>
     </div>
     <ng-template #emptyCart>
@@ -121,3 +119,7 @@
     </ng-template>
   </div>
 </section>
+
+<button id="openCartReviewModal" #openCartReviewModal [hidden]="true" data-toggle="modal" data-target="#gridSystemModal">Review
+    Cart</button>
+<app-cart-review [cartItems]="reviewItems" (close)="onPopupClose()"></app-cart-review>

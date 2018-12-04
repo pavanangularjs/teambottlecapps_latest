@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-cart-review',
@@ -7,9 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CartReviewComponent implements OnInit {
   @Input() cartItems: any;
+  @Output() close = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
 
+  onClose() {
+    this.close.emit();
+  }
 }
