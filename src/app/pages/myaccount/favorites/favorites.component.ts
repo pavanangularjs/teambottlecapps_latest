@@ -15,6 +15,12 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class FavoritesComponent implements OnInit {
   productsList: any[];
+  isPrevious = false;
+  isNext = false;
+  currentPageNo = 1;
+  pageSize = 12;
+  totalCount = 0;
+
   constructor(private store: Store<ProductGetListRequestPayload>,
     private productStoreService: ProductStoreService,
     private cartService: CartService,
@@ -22,17 +28,37 @@ export class FavoritesComponent implements OnInit {
     private toastr: ToastrService) {
     this.store.select(ProductStoreSelectors.productGetListData)
       .subscribe(pgld => {
-        this.productsList = pgld ? pgld.ListProduct : [];
-        this.spinnerService.hide();
+        if (pgld) {
+          this.productsList = pgld ? pgld.ListProduct : [];
+          this.totalCount = pgld.TotalCount || 0;
+
+          if (this.productsList.length > 0 && this.totalCount > (this.currentPageNo * this.pageSize)) {
+            this.isNext = true;
+          } else {
+            this.isNext = false;
+          }
+
+          if (this.productsList.length > 0 && this.currentPageNo > 1) {
+            this.isPrevious = true;
+          } else {
+            this.isPrevious = false;
+          }
+          this.spinnerService.hide();
+        }
       });
   }
 
   ngOnInit() {
     this.productsList = [];
     this.spinnerService.show();
-    this.store.dispatch(new ProductGetList(this.productStoreService.getProductGetListParams({ isFavorite: 1 })));
+    this.getFavoriteProducts();
   }
 
+  getFavoriteProducts() {
+    this.store.dispatch(new ProductGetList(this.productStoreService.getProductGetListParams({
+      isFavorite: 1, pageSize: this.pageSize, pageNumber: this.currentPageNo
+    })));
+  }
   favoriteProductUpdate(item: any, status: boolean) {
     this.spinnerService.show();
     this.productStoreService.favoriteProductUpdate(item.PID, status).subscribe(
@@ -40,7 +66,10 @@ export class FavoritesComponent implements OnInit {
         item.IsFavorite = data.IsFavorite;
         this.spinnerService.hide();
         this.toastr.success(data.SuccessMessage);
-        this.store.dispatch(new ProductGetList(this.productStoreService.getProductGetListParams({ isFavorite: 1 })));
+        if ((this.totalCount - 1) <= this.pageSize) {
+          this.currentPageNo -= 1;
+        }
+        this.getFavoriteProducts();
       });
   }
 
@@ -65,6 +94,18 @@ export class FavoritesComponent implements OnInit {
   }
   getCount(n: number): any[] {
     return Array(n);
+  }
+
+  showMoreProducts() {
+    this.currentPageNo += 1;
+    this.getFavoriteProducts();
+  }
+
+  showPreviousProducts() {
+    if (this.currentPageNo > 1) {
+      this.currentPageNo -= 1;
+      this.getFavoriteProducts();
+    }
   }
 
 }
