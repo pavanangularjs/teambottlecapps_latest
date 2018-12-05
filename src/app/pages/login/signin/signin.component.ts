@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+// import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { AuthService, FacebookLoginProvider } from 'angularx-social-login';
 import { ToastrService } from 'ngx-toastr';
 import * as CryptoJS from 'crypto-js';
+import { ProgressBarService } from '../../../shared/services/progress-bar.service';
 
 import { CustomerLogin } from '../../../state/customer/customer.action';
 import { CustomerSelectors } from '../../../state/customer/customer.selector';
@@ -29,15 +30,17 @@ export class SigninComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router, private store: Store<CustomerLoginSession>,
     private customerService: CustomerService,
-    private spinnerService: Ng4LoadingSpinnerService,
+    // private spinnerService: Ng4LoadingSpinnerService,
     private socialAuthService: AuthService,
     private formBuilder: FormBuilder,
-    private toastr: ToastrService) {
+    private toastr: ToastrService,
+    private progressBarService: ProgressBarService) {
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         if (clsd) {
           this.customerSession = clsd;
-          this.spinnerService.hide();
+          // this.spinnerService.hide();
+          this.progressBarService.hide();
           if (this.customerSession.IsAccess === true && this.customerSession.UserId !== 0) {
 
             if (this.rememberMe && this.email && this.password && baseUrl) {
@@ -103,7 +106,8 @@ export class SigninComponent implements OnInit {
     if (this.formSignIn.invalid) {
       return;
     }
-    this.spinnerService.show();
+    // this.spinnerService.show();
+    this.progressBarService.show();
     this.email = this.formSignIn.get('eemail').value;
     this.password = this.formSignIn.get('epassword').value;
     this.rememberMe = this.formSignIn.get('rememberMe').value;

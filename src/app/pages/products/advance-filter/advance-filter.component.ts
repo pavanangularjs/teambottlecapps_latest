@@ -10,7 +10,7 @@ import { ProductGetListRequestPayload } from '../../../models/product-get-list-r
 import { ProductGetList } from '../../../state/product-store/product-store.action';
 import { ProductStoreService } from '../../../services/product-store.service';
 import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+// import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { Router, NavigationEnd } from '@angular/router';
 import { ProgressBarService } from '../../../shared/services/progress-bar.service';
 
@@ -42,7 +42,7 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
   constructor(public dataservice: DataService,
     private store: Store<ProductGetListRequestPayload>,
     private productStoreService: ProductStoreService,
-    private spinnerService: Ng4LoadingSpinnerService,
+    // private spinnerService: Ng4LoadingSpinnerService,
     private router: Router,
     private progressBarService: ProgressBarService) {
 

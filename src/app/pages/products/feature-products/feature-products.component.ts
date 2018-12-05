@@ -6,7 +6,8 @@ import { ProductGetListRequestPayload } from '../../../models/product-get-list-r
 import { ProductGetList } from '../../../state/product-store/product-store.action';
 import { ProductStoreService } from '../../../services/product-store.service';
 import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+// import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { ProgressBarService } from '../../../shared/services/progress-bar.service';
 
 @Component({
   selector: 'app-feature-products',
@@ -27,15 +28,17 @@ export class FeatureProductsComponent implements OnInit {
 
   constructor(private store: Store<ProductGetListRequestPayload>,
     private productStoreService: ProductStoreService,
-    private spinnerService: Ng4LoadingSpinnerService,
-    private router: Router) {
+    // private spinnerService: Ng4LoadingSpinnerService,
+    private router: Router,
+    private progressBarService: ProgressBarService) {
 
       this.store.select(ProductStoreSelectors.productStoreStateData)
       .subscribe(pssd => {
         if (pssd) {
           this.storeGetHomeData = pssd;
           this.getProductsList();
-          this.spinnerService.hide();
+          // this.spinnerService.hide();
+          this.progressBarService.hide();
         }
       });
 
@@ -44,7 +47,8 @@ export class FeatureProductsComponent implements OnInit {
           if (pgld) {
             this.productsList = pgld ? pgld.ListProduct : [];
             this.totalCount = pgld.TotalCount;
-            this.spinnerService.hide();
+            // this.spinnerService.hide();
+            this.progressBarService.hide();
 
             if (this.productsList.length > 0 && this.totalCount > (this.currentPageNo * this.pageSize)) {
               this.isNext = true;
@@ -84,7 +88,8 @@ export class FeatureProductsComponent implements OnInit {
 
   onCategoryChange(catId = '1,2,3,4') {
     this.currentCategoryId = catId;
-    this.spinnerService.show();
+    // this.spinnerService.show();
+    this.progressBarService.show();
     this.store.dispatch(new ProductGetList(
       this.productStoreService.getProductGetListParams(
         { categoryId: catId, pageSize: this.pageSize, isFeatured: 1, pageNumber: this.currentPageNo})));

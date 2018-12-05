@@ -9,7 +9,8 @@ import { CustomerSelectors } from '../../../state/customer/customer.selector';
 import { CustomerService } from '../../../services/customer.service';
 import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
 import { CartService } from '../../../services/cart.service';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+// import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { ProgressBarService } from '../../../shared/services/progress-bar.service';
 import * as CryptoJS from 'crypto-js';
 import { baseUrl } from '../../../services/url-provider';
 
@@ -28,11 +29,13 @@ export class HomepageComponent implements OnInit {
     private store: Store<CustomerLoginSession>,
     private customerService: CustomerService,
     private cartService: CartService,
-    private spinnerService: Ng4LoadingSpinnerService,
-    private titleService: Title) {
+    // private spinnerService: Ng4LoadingSpinnerService,
+    private titleService: Title,
+    private progressBarService: ProgressBarService) {
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         this.customerSession = clsd;
+        this.progressBarService.hide();
       });
     this.store.select(ProductStoreSelectors.productStoreStateData)
       .subscribe(pssd => {
@@ -60,6 +63,7 @@ export class HomepageComponent implements OnInit {
         dpass = CryptoJS.AES.decrypt(dpass, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
       }
 
+      this.progressBarService.show();
       if (demail && dpass) {
         this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams(demail, dpass, 'E')));
       } else {

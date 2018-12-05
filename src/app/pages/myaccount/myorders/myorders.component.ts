@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdersService } from '../../../services/orders.service';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+// import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { ProgressBarService } from '../../../shared/services/progress-bar.service';
 @Component({
   selector: 'app-myorders',
   templateUrl: './myorders.component.html',
@@ -10,18 +11,21 @@ export class MyOrdersComponent implements OnInit {
   myOrdersList: any;
 
   constructor(private ordersService: OrdersService,
-    private spinnerService: Ng4LoadingSpinnerService) { }
+    // private spinnerService: Ng4LoadingSpinnerService,
+    private progressBarService: ProgressBarService) { }
 
   ngOnInit() {
     this.getMyOrders();
   }
 
   getMyOrders() {
-    this.spinnerService.show();
+    // this.spinnerService.show();
+    this.progressBarService.show();
     this.ordersService.getMyOrdersList().subscribe(
       (data: any) => {
         this.myOrdersList = data;
-        this.spinnerService.hide();
+        // this.spinnerService.hide();
+        this.progressBarService.hide();
       });
   }
 

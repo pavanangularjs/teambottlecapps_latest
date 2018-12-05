@@ -7,11 +7,12 @@ import { ProductGetDetails } from '../../../state/product-store/product-store.ac
 import { ProductGetDetailsRequestPayload } from '../../../models/product-get-details-request-payload';
 import { ProductStoreService } from '../../../services/product-store.service';
 import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+// import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { CartService } from '../../../services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { DataService } from '../../../services/data.service';
 import { ProductFilters } from '../../../models/product-filters';
+import { ProgressBarService } from '../../../shared/services/progress-bar.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -37,10 +38,11 @@ export class ProductDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private store: Store<ProductGetDetailsRequestPayload>,
     private productStoreService: ProductStoreService,
-    private spinnerService: Ng4LoadingSpinnerService,
+    // private spinnerService: Ng4LoadingSpinnerService,
     private cartService: CartService,
     private toastr: ToastrService,
-    public dataservice: DataService) {
+    public dataservice: DataService,
+    private progressBarService: ProgressBarService) {
 
     this.store.select(ProductStoreSelectors.productGetDetailsData)
       .subscribe(pgdd => {
@@ -62,13 +64,15 @@ export class ProductDetailsComponent implements OnInit {
           this.rating = +this.productDetails.RatingAverage;
         }
         this.getRelatedProducts();
-        this.spinnerService.hide();
+        // this.spinnerService.hide();
+        this.progressBarService.hide();
       });
 
     this.store.select(ProductStoreSelectors.productGetListData)
       .subscribe(pgld => {
         if (pgld) {
           this.productsList = pgld ? pgld.ListProduct : [];
+          this.progressBarService.hide();
         }
       });
   }
@@ -81,7 +85,8 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   getProductDetails() {
-    this.spinnerService.show();
+    // this.spinnerService.show();
+    this.progressBarService.show();
     const productId = +this.route.snapshot.paramMap.get('id');
     if (productId) {
       this.store.dispatch(new ProductGetDetails(this.productStoreService.getProductGetDetailsParams(productId)));
@@ -117,6 +122,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   getProductList() {
+    this.progressBarService.show();
     this.store.dispatch(new ProductGetList(
       this.productStoreService.getProductGetListParams(
         {
@@ -128,9 +134,11 @@ export class ProductDetailsComponent implements OnInit {
   addToCart() {
     if (this.productDetails && this.productDetails.Product &&
       this.productDetails.Product.PID && this.qty) {
+      this.progressBarService.show();
       this.cartService.addToCard(this.productDetails.Product.PID, this.qty).subscribe(
         (data: any) => {
           this.toastr.success(data.SuccessMessage);
+          this.progressBarService.hide();
         });
     }
 
@@ -166,10 +174,12 @@ export class ProductDetailsComponent implements OnInit {
 
   favoriteProductUpdate(status: boolean) {
     // this.spinnerService.show();
+    this.progressBarService.show();
     this.productStoreService.favoriteProductUpdate(this.productDetails.Product.PID, status).subscribe(
       (data: any) => {
         this.productDetails.Product.IsFavorite = data.IsFavorite;
         // this.spinnerService.hide();
+        this.progressBarService.hide();
         this.toastr.success(data.SuccessMessage);
       });
   }

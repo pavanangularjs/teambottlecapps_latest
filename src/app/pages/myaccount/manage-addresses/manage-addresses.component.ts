@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../../services/customer.service';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+// import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { ProgressBarService } from '../../../shared/services/progress-bar.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -11,8 +12,9 @@ import { ToastrService } from 'ngx-toastr';
 export class ManageAddressesComponent implements OnInit {
 addressList: any;
   constructor(private customerService: CustomerService,
-    private spinnerService: Ng4LoadingSpinnerService,
-    private toastr: ToastrService) { }
+    // private spinnerService: Ng4LoadingSpinnerService,
+    private toastr: ToastrService,
+    private progressBarService: ProgressBarService) { }
 
   ngOnInit() {
    this.getAddressList();
@@ -22,11 +24,13 @@ addressList: any;
     if (this.customerService.customerAddressList && this.customerService.customerAddressList.ListAddress) {
       this.addressList = this.customerService.customerAddressList.ListAddress;
     } else {
-      this.spinnerService.show();
+      // this.spinnerService.show();
+      this.progressBarService.show();
       this.customerService.getCustomerAddressList().subscribe(
         data => {
           this.addressList = data ? (data.ListAddress ? data.ListAddress : []) : [];
-          this.spinnerService.hide();
+          // this.spinnerService.hide();
+          this.progressBarService.hide();
         });
     }
   }
@@ -48,24 +52,28 @@ addressList: any;
 
     this.addressList.map(item => item.IsDefault = false);
 
-    this.spinnerService.show();
+    // this.spinnerService.show();
+    this.progressBarService.show();
     this.customerService.UpdateAddress(updatedAddress).subscribe(
       data => {
         if (data) {
           this.toastr.success(data.SuccessMessage);
           address.IsDefault = data.IsDefault;
         }
-        this.spinnerService.hide();
+        // this.spinnerService.hide();
+        this.progressBarService.hide();
       });
   }
 
   deleteAddress(address: any) {
-    this.spinnerService.show();
+    // this.spinnerService.show();
+    this.progressBarService.show();
     this.customerService.DeleteAddress(address.AddressId).subscribe(
       data => {
         this.toastr.success(data.SuccessMessage);
         this.addressList.splice(this.addressList.indexOf(address), 1);
-        this.spinnerService.hide();
+        // this.spinnerService.hide();
+        this.progressBarService.hide();
       });
   }
 

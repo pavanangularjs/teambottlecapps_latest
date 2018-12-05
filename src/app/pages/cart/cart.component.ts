@@ -3,12 +3,13 @@ import { CartService } from '../../services/cart.service';
 import { CustomerService } from '../../services/customer.service';
 import { Router } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+// import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { ProductStoreService } from '../../services/product-store.service';
 import { Store } from '@ngrx/store';
 import { ProductStoreSelectors } from '../../state/product-store/product-store.selector';
 import { CustomerLoginSession } from '../../models/customer-login-session';
+import { ProgressBarService } from '../../shared/services/progress-bar.service';
 
 @Component({
   selector: 'app-cart',
@@ -27,9 +28,10 @@ export class CartComponent implements OnInit {
     private customerService: CustomerService,
     private router: Router,
     private decimalPipe: DecimalPipe,
-    private spinnerService: Ng4LoadingSpinnerService,
+    // private spinnerService: Ng4LoadingSpinnerService,
     private toastr: ToastrService,
-    private storeService: ProductStoreService) {
+    private storeService: ProductStoreService,
+    private progressBarService: ProgressBarService) {
       this.store.select(ProductStoreSelectors.productStoreStateData)
       .subscribe(pssd => {
         if (pssd) {
@@ -39,16 +41,18 @@ export class CartComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.spinnerService.show();
+    // this.spinnerService.show();
     this.getCartDetails();
   }
 
   getCartDetails() {
+    this.progressBarService.show();
     this.cartService.getCartDetails().subscribe(
       (data: any) => {
         this.cartDetails = data;
         this.doStockAvailabilityCheck();
-        this.spinnerService.hide();
+        // this.spinnerService.hide();
+        this.progressBarService.hide();
       });
   }
 
@@ -81,7 +85,8 @@ export class CartComponent implements OnInit {
   }
 
   removeFromCart(item: any) {
-    this.spinnerService.show();
+    // this.spinnerService.show();
+    this.progressBarService.show();
     this.cartService.removeFromCart(item.PID).subscribe(
       (data: any) => {
         item.InCart = 0;
@@ -89,15 +94,18 @@ export class CartComponent implements OnInit {
           const index = this.cartDetails.ListCartItem.indexOf(item);
           this.cartDetails.ListCartItem.splice(index, 1);
         }
-        this.spinnerService.hide();
+        // this.spinnerService.hide();
+        this.progressBarService.hide();
         this.toastr.success(data.SuccessMessage);
       });
   }
 
   updateCart() {
+    this.progressBarService.show();
     this.cartService.updateCart(this.cartDetails).subscribe(
       (data: any) => {
         this.cartDetails = data;
+        this.progressBarService.hide();
         if (this.cartDetails && this.cartDetails.ListCartItem) {
           this.cartService.cartItemCount.next(this.cartDetails.ListCartItem.length);
         }
@@ -126,8 +134,10 @@ export class CartComponent implements OnInit {
   }
 
   navigateURL() {
+    this.progressBarService.show();
     this.cartService.updateCart(this.cartDetails).subscribe(
       (data: any) => {
+        this.progressBarService.hide();
         this.router.navigate(['/checkout']);
       });
   }

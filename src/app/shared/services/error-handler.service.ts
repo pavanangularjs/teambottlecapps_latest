@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { CustomerLoginSession } from '../../models/customer-login-session';
 import { CustomerSelectors } from '../../state/customer/customer.selector';
+import { ProgressBarService } from '../../shared/services/progress-bar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class ErrorHandlerService {
   customerSession: CustomerLoginSession;
 
   constructor(private toastr: ToastrService, private store: Store<CustomerLoginSession>,
-    private route: Router) {
+    private route: Router,
+    private progressBarService: ProgressBarService) {
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         this.customerSession = clsd;
@@ -22,6 +24,7 @@ export class ErrorHandlerService {
 
   processError(error: any): Observable<any> {
     if (error.status) {
+      this.progressBarService.hide();
       if (error.status === 401) {
 
         if ((this.customerSession && this.customerSession.UserId === 0)) {

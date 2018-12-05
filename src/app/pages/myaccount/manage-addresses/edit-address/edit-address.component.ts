@@ -4,6 +4,7 @@ import { AddressInsert } from '../../../../models/address-insert';
 import { CustomerService } from '../../../../services/customer.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ProgressBarService } from '../../../../shared/services/progress-bar.service';
 
 @Component({
   selector: 'app-edit-address',
@@ -13,28 +14,47 @@ import { ToastrService } from 'ngx-toastr';
 export class EditAddressComponent implements OnInit {
   editAddress: any;
   formEditAddress: FormGroup;
-  constructor(private route: ActivatedRoute, private customerService: CustomerService, private router: Router,
-    private toastr: ToastrService) {
-      this.formEditAddress = new FormGroup({
-        aFirstName: new FormControl(''),
-        aLastName: new FormControl(''),
-        aAddressName: new FormControl(''),
-        aAddress1: new FormControl(''),
-        aAddress2: new FormControl(''),
-        aCity: new FormControl(''),
-        aState: new FormControl(''),
-        aZip: new FormControl(''),
-        // aCountry: new FormControl(''),
-        aIsDefault: new FormControl(false),
-      });
-     }
+  constructor(private route: ActivatedRoute, private customerService: CustomerService,
+    private router: Router,
+    private toastr: ToastrService,
+    private progressBarService: ProgressBarService) {
+    this.formEditAddress = new FormGroup({
+      aFirstName: new FormControl(''),
+      aLastName: new FormControl(''),
+      aAddressName: new FormControl(''),
+      aAddress1: new FormControl(''),
+      aAddress2: new FormControl(''),
+      aCity: new FormControl(''),
+      aState: new FormControl(''),
+      aZip: new FormControl(''),
+      // aCountry: new FormControl(''),
+      aIsDefault: new FormControl(false),
+    });
+  }
 
   ngOnInit() {
     const addressId = +this.route.snapshot.paramMap.get('id');
-    this.editAddress = this.customerService.customerAddressList.ListAddress.filter(item => item.AddressId === addressId)[0];
 
-    if (this.editAddress) {
-      this.initializeAddress();
+    if (this.customerService.customerAddressList && this.customerService.customerAddressList.ListAddress) {
+      this.editAddress = this.customerService.customerAddressList.ListAddress.filter(item => item.AddressId === addressId)[0];
+
+      if (this.editAddress) {
+        this.initializeAddress();
+      }
+    } else {
+      this.progressBarService.show();
+      this.customerService.getCustomerAddressList().subscribe(
+        data => {
+          if (data) {
+            const addressList = data ? (data.ListAddress ? data.ListAddress : []) : [];
+            this.progressBarService.hide();
+            this.editAddress = addressList.filter(item => item.AddressId === addressId)[0];
+
+            if (this.editAddress) {
+              this.initializeAddress();
+            }
+          }
+        });
     }
   }
 
@@ -53,9 +73,11 @@ export class EditAddressComponent implements OnInit {
     });
   }
   onAddressUpdate() {
-    const address = {AddressId: this.editAddress.AddressId, FirstName: '', LastName: '', AddressName: '',
-    Address1: '', Address2: '', City: '', State: '', Zip: '', Country: '', IsDefault: 0,
-    StoreId: 0, SessionId: '', UserId: 0, AppId: 0, DeviceId: '', DeviceType: ''};
+    const address = {
+      AddressId: this.editAddress.AddressId, FirstName: '', LastName: '', AddressName: '',
+      Address1: '', Address2: '', City: '', State: '', Zip: '', Country: '', IsDefault: 0,
+      StoreId: 0, SessionId: '', UserId: 0, AppId: 0, DeviceId: '', DeviceType: ''
+    };
 
     address.FirstName = this.formEditAddress.get('aFirstName').value;
     address.LastName = this.formEditAddress.get('aLastName').value;

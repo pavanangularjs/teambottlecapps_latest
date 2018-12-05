@@ -1,10 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProductStoreService } from '../../../../services/product-store.service';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+// import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../../../auth.service';
 import { Router } from '@angular/router';
+import { ProgressBarService } from '../../../../shared/services/progress-bar.service';
 
 @Component({
   selector: 'app-product-edit-review',
@@ -21,10 +22,11 @@ export class ProductEditReviewComponent implements OnInit {
   rating = 0;
 
   constructor(private productService: ProductStoreService,
-    private spinnerService: Ng4LoadingSpinnerService,
+    // private spinnerService: Ng4LoadingSpinnerService,
     private toastr: ToastrService,
     private authService: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private progressBarService: ProgressBarService) { }
 
   ngOnInit() {
     this.formAddProductReview = new FormGroup({
@@ -46,7 +48,8 @@ export class ProductEditReviewComponent implements OnInit {
       this.router.navigate(['/login']);
       return;
     }
-    this.spinnerService.show();
+    // this.spinnerService.show();
+    this.progressBarService.show();
     const title = this.formAddProductReview.get('rTitle').value;
     const description = this.formAddProductReview.get('rDescription').value;
     const reviewId = this.review.ReviewId;
@@ -55,7 +58,8 @@ export class ProductEditReviewComponent implements OnInit {
       (data: any) => {
         // this.toastr.success(data.SuccessMessage);
         this.updateReview.emit();
-        this.spinnerService.hide();
+        // this.spinnerService.hide();
+        this.progressBarService.hide();
       });
   }
 }

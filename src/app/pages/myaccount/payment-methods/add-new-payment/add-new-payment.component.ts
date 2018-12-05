@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+// import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { PaymentProfile } from '../../../../models/payment-profile';
 import { PaymentService } from '../../../../services/payment.service';
 import { ProductStoreService } from '../../../../services/product-store.service';
@@ -8,6 +8,7 @@ import { CustomerService } from '../../../../services/customer.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { CreditcardTypeService } from '../../../../shared/services/creditcard-type.service';
+import { ProgressBarService } from '../../../../shared/services/progress-bar.service';
 @Component({
   selector: 'app-add-new-payment',
   templateUrl: './add-new-payment.component.html',
@@ -22,13 +23,14 @@ export class AddNewPaymentComponent implements OnInit {
   isSaveAddress: boolean;
 
   constructor(private formBuilder: FormBuilder,
-    private spinnerService: Ng4LoadingSpinnerService,
+    // private spinnerService: Ng4LoadingSpinnerService,
     private paymentService: PaymentService,
     private productService: ProductStoreService,
     private customerService: CustomerService,
     private toastr: ToastrService,
     private router: Router,
-    private cardService: CreditcardTypeService) {
+    private cardService: CreditcardTypeService,
+    private progressBarService: ProgressBarService) {
     if (this.productService.customerInfo) {
       this.customerInfo = this.productService.customerInfo;
     }
@@ -95,12 +97,14 @@ export class AddNewPaymentComponent implements OnInit {
       this.cardProfile.customerProfileId = paymentMethodList.ListPaymentItem[0].UserProfileId;
     }
 
+    this.progressBarService.show();
     if (this.cardProfile.customerProfileId) {
       this.paymentService.createCustomerPaymentProfileRequest(this.cardProfile).subscribe(data => {
         if (data && data.customerProfileId) {
           // this.customerService.customerPaymentInsert(data.customerProfileId, 1, 1).subscribe(res => {
           //  if (res && res.SuccessMessage !== '') {
           this.toastr.success('Card Added Successfully');
+          this.progressBarService.hide();
           this.router.navigate(['/myaccount/payment-methods']);
           //  }
           // });
@@ -108,6 +112,7 @@ export class AddNewPaymentComponent implements OnInit {
           if (data && data.messages && data.messages.message &&
             data.messages.message.length > 0 && data.messages.message[0].text) {
               this.toastr.error(data.messages.message[0].text);
+              this.progressBarService.hide();
           }
         }
       });
@@ -117,6 +122,7 @@ export class AddNewPaymentComponent implements OnInit {
           this.customerService.customerPaymentInsert(data.customerProfileId, 1, 1).subscribe(res => {
             if (res && res.SuccessMessage !== '') {
               this.toastr.success(res.SuccessMessage);
+              this.progressBarService.hide();
               this.router.navigate(['/myaccount/payment-methods']);
             }
           });
@@ -124,6 +130,7 @@ export class AddNewPaymentComponent implements OnInit {
           if (data && data.messages && data.messages.message &&
             data.messages.message.length > 0 && data.messages.message[0].text) {
               this.toastr.error(data.messages.message[0].text);
+              this.progressBarService.hide();
           }
         }
       });
@@ -149,9 +156,11 @@ export class AddNewPaymentComponent implements OnInit {
     address.Zip = this.cardProfile.zip;
     address.IsDefault = 0;
 
+    this.progressBarService.show();
     this.customerService.AddNewAddress(address).subscribe(
       (data) => {
         this.toastr.success(data.SuccessMessage);
+        this.progressBarService.hide();
       });
   }
 }

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../../services/customer.service';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+// import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { PaymentService } from '../../../services/payment.service';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from '../../../services/cart.service';
 import { ProductStoreService } from '../../../services/product-store.service';
+import { ProgressBarService } from '../../../shared/services/progress-bar.service';
 
 @Component({
   selector: 'app-checkout-payment-method',
@@ -22,8 +23,11 @@ export class CheckoutPaymentMethodComponent implements OnInit {
   orderTypeId: number;
 
   constructor(private customerService: CustomerService, private paymentService: PaymentService,
-    private spinnerService: Ng4LoadingSpinnerService, private toastr: ToastrService,
-    private cartService: CartService, private storeService: ProductStoreService) { }
+    // private spinnerService: Ng4LoadingSpinnerService,
+    private toastr: ToastrService,
+    private cartService: CartService,
+    private storeService: ProductStoreService,
+    private progressBarService: ProgressBarService) { }
 
   ngOnInit() {
     this.getPaymentMethodGetList();
@@ -36,7 +40,8 @@ export class CheckoutPaymentMethodComponent implements OnInit {
       this.paymentMethodList = this.customerService.customerPaymentMethodGetList.ListPaymentItem;
       this.getPaymentList();
     } else {
-      this.spinnerService.show();
+      // this.spinnerService.show();
+      this.progressBarService.show();
       this.customerService.getCustomerPaymentMethodGetList().subscribe(
         data => {
           this.paymentMethodList = data ? (data.ListPaymentItem ? data.ListPaymentItem : []) : [];
@@ -52,7 +57,8 @@ export class CheckoutPaymentMethodComponent implements OnInit {
       this.paymentService.createTransaction.customerProfileId = this.paymentMethodList[0].UserProfileId;
       this.getExistingCardDetails(this.paymentMethodList[0].UserProfileId);
     } else {
-      this.spinnerService.hide();
+      // this.spinnerService.hide();
+      this.progressBarService.hide();
     }
   }
 
@@ -65,10 +71,12 @@ export class CheckoutPaymentMethodComponent implements OnInit {
           if (data && data.profile && data.profile.paymentProfiles) {
             this.paymentProfiles = data.profile.paymentProfiles;
           }
-          this.spinnerService.hide();
+          // this.spinnerService.hide();
+          this.progressBarService.hide();
         });
     } else {
-      this.spinnerService.hide();
+      // this.spinnerService.hide();
+      this.progressBarService.hide();
     }
   }
 

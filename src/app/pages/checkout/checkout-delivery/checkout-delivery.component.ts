@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../../services/customer.service';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+// import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { CartService } from '../../../services/cart.service';
+import { ProgressBarService } from '../../../shared/services/progress-bar.service';
 
 @Component({
   selector: 'app-checkout-delivery',
@@ -17,8 +18,9 @@ export class CheckoutDeliveryComponent implements OnInit {
   selectedDeliveryDate: any;
   selectedDeliveryTime: any;
   constructor(private customerService: CustomerService,
-    private spinnerService: Ng4LoadingSpinnerService,
-    private cartService: CartService) { }
+    // private spinnerService: Ng4LoadingSpinnerService,
+    private cartService: CartService,
+    private progressBarService: ProgressBarService) { }
 
   ngOnInit() {
     this.cartDetails = this.cartService.cartdetails;
@@ -58,14 +60,16 @@ export class CheckoutDeliveryComponent implements OnInit {
     if (this.customerService.customerAddressList && this.customerService.customerAddressList.ListAddress) {
       this.addressList = this.customerService.customerAddressList.ListAddress;
     } else {
-      this.spinnerService.show();
+      // this.spinnerService.show();
+      this.progressBarService.show();
       this.customerService.getCustomerAddressList().subscribe(
         data => {
           this.addressList = data ? (data.ListAddress ? data.ListAddress : []) : [];
           if (this.addressList && this.addressList.filter(address => address.IsDefault === true).length > 0) {
             this.cartService.cartdetails.AddressId = this.addressList.filter(address => address.IsDefault === true)[0].AddressId;
           }
-          this.spinnerService.hide();
+          // this.spinnerService.hide();
+          this.progressBarService.hide();
         });
     }
   }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../../services/customer.service';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+// import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { PaymentService } from '../../../services/payment.service';
 import { ToastrService } from 'ngx-toastr';
+import { ProgressBarService } from '../../../shared/services/progress-bar.service';
 
 @Component({
   selector: 'app-payment-methods',
@@ -15,7 +16,9 @@ export class PaymentMethodsComponent implements OnInit {
   paymentProfiles: any;
   userProfileId: string;
   constructor(private customerService: CustomerService, private paymentService: PaymentService,
-    private spinnerService: Ng4LoadingSpinnerService, private toastr: ToastrService) { }
+    // private spinnerService: Ng4LoadingSpinnerService,
+    private toastr: ToastrService,
+    private progressBarService: ProgressBarService) { }
 
   ngOnInit() {
     this.getPaymentMethodGetList();
@@ -26,7 +29,8 @@ export class PaymentMethodsComponent implements OnInit {
       this.paymentMethodList = this.customerService.customerPaymentMethodGetList.ListPaymentItem;
       this.getPaymentList();
     } else {
-      this.spinnerService.show();
+      // this.spinnerService.show();
+      this.progressBarService.show();
       this.customerService.getCustomerPaymentMethodGetList().subscribe(
         data => {
           this.paymentMethodList = data ? (data.ListPaymentItem ? data.ListPaymentItem : []) : [];
@@ -41,12 +45,14 @@ export class PaymentMethodsComponent implements OnInit {
       this.userProfileId = this.paymentMethodList[0].UserProfileId;
       this.getExistingCardDetails(this.paymentMethodList[0].UserProfileId);
     } else {
-      this.spinnerService.hide();
+      // this.spinnerService.hide();
+      this.progressBarService.hide();
     }
   }
 
   getExistingCardDetails(userProfileId: string) {
     // vAppLoginId: 5Pj5hE6a   vTransactionKey: 77Za8R4Wnx988xQs
+    this.progressBarService.show();
     this.paymentProfiles = [];
     if (userProfileId !== '') {
       this.paymentService.getExistingCards(userProfileId).subscribe(
@@ -54,10 +60,12 @@ export class PaymentMethodsComponent implements OnInit {
           if ( data && data.profile && data.profile.paymentProfiles) {
             this.paymentProfiles = data.profile.paymentProfiles;
           }
-        this.spinnerService.hide();
+        // this.spinnerService.hide();
+        this.progressBarService.hide();
         });
     } else {
-      this.spinnerService.hide();
+      // this.spinnerService.hide();
+      this.progressBarService.hide();
     }
   }
   addToFavorite(card: any) {
@@ -71,9 +79,11 @@ export class PaymentMethodsComponent implements OnInit {
   }
 
   deletePaymentMethod(paymentProfile) {
+    this.progressBarService.show();
     this.paymentService.deleteCustomerPaymentProfile(this.userProfileId,
       paymentProfile.customerPaymentProfileId).subscribe(data => {
         this.paymentProfiles.splice(this.paymentProfiles.indexOf(paymentProfile), 1);
+        this.progressBarService.hide();
         // this.toastr.success(data.SuccessMessage);
     });
   }
