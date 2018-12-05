@@ -91,8 +91,8 @@
         </table>
 
         <div class="btn_right buttons-container">
-          <button class="btn btn-default" *ngIf="storeDetails?.IsPickUp" (click)="onPickup()">Pickup</button>
-          <button class="btn btn-default" *ngIf="storeDetails?.IsDelivery" (click)="onDelivery()">Delivery</button>
+          <button class="btn btn-default" *ngIf="storeGetHomeData?.IsPickUp" (click)="onPickup()">Pickup</button>
+          <button class="btn btn-default" *ngIf="storeGetHomeData?.IsDelivery" (click)="onDelivery()">Delivery</button>
 
         </div>
 
