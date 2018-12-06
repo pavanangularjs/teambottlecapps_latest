@@ -43,11 +43,11 @@ export class CheckoutProductsComponent implements OnInit {
     this.cartDetails.AddressId = 0;
     this.cartDetails.PaymentTypeId = 0; */
 
-    if (this.cartDetails.AddressId === 0) {
+    if (this.cartDetails.OrderTypeId === 2 &&  this.cartDetails.AddressId === 0) {
       this.toastr.error('Please Select Address');
       return;
     }
-    if (this.cartDetails.PaymentTypeId === 1 ) {
+    if (!this.cartDetails.PaymentTypeId) {
       this.toastr.error('Please Select Payment Method');
       return;
     }

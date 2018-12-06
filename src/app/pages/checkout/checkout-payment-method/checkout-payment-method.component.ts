@@ -51,11 +51,13 @@ export class CheckoutPaymentMethodComponent implements OnInit {
   }
 
   getPaymentList() {
-    if (this.paymentMethodList && this.paymentMethodList.length > 0 &&
-      this.paymentMethodList[0].UserProfileId) {
-      this.userProfileId = this.paymentMethodList[0].UserProfileId;
-      this.paymentService.createTransaction.customerProfileId = this.paymentMethodList[0].UserProfileId;
-      this.getExistingCardDetails(this.paymentMethodList[0].UserProfileId);
+
+    const cardType = this.paymentMethodList.filter(type => type.PaymentType === 'Card Payment')[0];
+
+    if (cardType && cardType.UserProfileId) {
+      this.userProfileId = cardType.UserProfileId;
+      this.paymentService.createTransaction.customerProfileId = cardType.UserProfileId;
+      this.getExistingCardDetails(cardType.UserProfileId);
     } else {
       // this.spinnerService.hide();
       this.progressBarService.hide();
@@ -93,7 +95,7 @@ export class CheckoutPaymentMethodComponent implements OnInit {
   }
 
   updateSelectedPayment(paymentProfile) {
-    this.cartService.cartdetails.PaymentTypeId = paymentProfile.customerPaymentProfileId;
+    this.cartService.cartdetails.PaymentTypeId = 1; // paymentProfile.customerPaymentProfileId;
 
     this.paymentService.createTransaction.customerPaymentProfileId = paymentProfile.customerPaymentProfileId;
 

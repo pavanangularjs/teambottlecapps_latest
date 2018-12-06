@@ -3,6 +3,7 @@ import { CustomerService } from '../../../services/customer.service';
 // import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { CartService } from '../../../services/cart.service';
 import { ProgressBarService } from '../../../shared/services/progress-bar.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-checkout-delivery',
@@ -20,7 +21,8 @@ export class CheckoutDeliveryComponent implements OnInit {
   constructor(private customerService: CustomerService,
     // private spinnerService: Ng4LoadingSpinnerService,
     private cartService: CartService,
-    private progressBarService: ProgressBarService) { }
+    private progressBarService: ProgressBarService,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.cartDetails = this.cartService.cartdetails;
@@ -46,6 +48,7 @@ export class CheckoutDeliveryComponent implements OnInit {
 
   getDeliveryTimings() {
     this.cartService.cartdetails.DoPDate = this.selectedDeliveryDate;
+    this.updateCart();
     this.deliveryTimingsList = [];
     if (this.cartDetails && this.cartDetails.ListDoPTimeSlot) {
       this.deliveryTimingsList = this.cartDetails.ListDoPTimeSlot.filter(slot => slot.DoPDate === this.selectedDeliveryDate)
@@ -55,6 +58,7 @@ export class CheckoutDeliveryComponent implements OnInit {
 
   updateDeliveryTime() {
     this.cartService.cartdetails.DoPTimeSlot = this.selectedDeliveryTime;
+    this.updateCart();
   }
   getAddressList() {
     if (this.customerService.customerAddressList && this.customerService.customerAddressList.ListAddress) {
@@ -76,6 +80,21 @@ export class CheckoutDeliveryComponent implements OnInit {
 
   onSelectAddress(address) {
     this.cartService.cartdetails.AddressId = address.AddressId;
+    this.updateCart();
+  }
+
+  updateCart() {
+    this.progressBarService.show();
+    this.cartService.updateCart(this.cartService.cartdetails).subscribe(
+      (data: any) => {
+        this.cartDetails = data;
+        this.progressBarService.hide();
+
+        if ( this.cartDetails && this.cartDetails.DeliveryAddress
+          && this.cartDetails.DeliveryAddress.Remark !== '') {
+          this.toastr.error(this.cartDetails.DeliveryAddress.Remark);
+        }
+      });
   }
 
 }

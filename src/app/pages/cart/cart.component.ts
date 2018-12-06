@@ -106,6 +106,10 @@ export class CartComponent implements OnInit {
       (data: any) => {
         this.cartDetails = data;
         this.progressBarService.hide();
+
+        if ( this.cartDetails && this.cartDetails.Remark !== '') {
+          this.toastr.error(this.cartDetails.Remark);
+        }
         if (this.cartDetails && this.cartDetails.ListCartItem) {
           this.cartService.cartItemCount.next(this.cartDetails.ListCartItem.length);
         }
@@ -138,7 +142,14 @@ export class CartComponent implements OnInit {
     this.cartService.updateCart(this.cartDetails).subscribe(
       (data: any) => {
         this.progressBarService.hide();
-        this.router.navigate(['/checkout']);
+
+        if ( data && data.Remark !== '') {
+          this.toastr.error(data.Remark);
+          return;
+        } else {
+          this.router.navigate(['/checkout']);
+        }
+
       });
   }
 
