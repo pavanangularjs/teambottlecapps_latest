@@ -21,6 +21,7 @@ export class CheckoutPaymentMethodComponent implements OnInit {
   cardCVV: number;
   storeDetails: any;
   orderTypeId: number;
+  paymentTypeId: number;
 
   constructor(private customerService: CustomerService, private paymentService: PaymentService,
     // private spinnerService: Ng4LoadingSpinnerService,
@@ -33,6 +34,7 @@ export class CheckoutPaymentMethodComponent implements OnInit {
     this.getPaymentMethodGetList();
     this.getStoreDetails();
     this.orderTypeId = this.cartService.cartdetails.OrderTypeId;
+    this.paymentTypeId = this.cartService.cartdetails.PaymentTypeId;
   }
 
   getPaymentMethodGetList() {
@@ -61,6 +63,16 @@ export class CheckoutPaymentMethodComponent implements OnInit {
     } else {
       // this.spinnerService.hide();
       this.progressBarService.hide();
+    }
+  }
+
+  changePaymentType(paymentType) {
+    if (paymentType === 'payOnline') {
+      this.cartService.cartdetails.PaymentTypeId = 1;
+      this.paymentTypeId = 1;
+    } else if (paymentType === 'payAtStore') {
+      this.cartService.cartdetails.PaymentTypeId = 0;
+      this.paymentTypeId = 0;
     }
   }
 

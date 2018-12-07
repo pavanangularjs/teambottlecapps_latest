@@ -47,7 +47,7 @@ export class CheckoutProductsComponent implements OnInit {
       this.toastr.error('Please Select Address');
       return;
     }
-    if (!this.cartDetails.PaymentTypeId) {
+    if (this.cartDetails.PaymentTypeId !== 0 && this.cartDetails.PaymentTypeId !== 1 ) {
       this.toastr.error('Please Select Payment Method');
       return;
     }
@@ -58,17 +58,25 @@ export class CheckoutProductsComponent implements OnInit {
       taxType: 'Sales Tax'
     };
 
-    this.paymentService.createTransactionRequest(data).subscribe(paymentResponse => {
-      if (paymentResponse.messages.message[0].text === 'Successful.'
-      || paymentResponse.messages.message[0].code === 'I00001') {
-        this.cartService.placeOrder(this.cartDetails).subscribe(
-          (orderResponse: any) => {
-            this.cartDetails = orderResponse;
-            this.router.navigate(['/myorders']);
-          });
-      }
-    });
+    if (this.cartDetails.PaymentTypeId === 0 ) {
+      this.placeOrder();
+    } else {
+      this.paymentService.createTransactionRequest(data).subscribe(paymentResponse => {
+        if (paymentResponse.messages.message[0].text === 'Successful.'
+        || paymentResponse.messages.message[0].code === 'I00001') {
+          this.placeOrder();
+        }
+      });
+    }
+  }
 
+  placeOrder() {
+    this.cartService.placeOrder(this.cartDetails).subscribe(
+      (orderResponse: any) => {
+        this.cartDetails = orderResponse;
+        this.toastr.success('Order Placed Successfully.');
+        this.router.navigate(['/myaccount/myorders']);
+      });
   }
 
   applyCoupon() {

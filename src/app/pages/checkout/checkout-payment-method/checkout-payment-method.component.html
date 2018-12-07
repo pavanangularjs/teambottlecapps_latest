@@ -5,50 +5,64 @@
     </div>
     <div class="col-md-12">
       <div class="payment-method">
-        <div class="row" *ngIf="storeDetails?.IsPickUp && orderTypeId === 1">
-            <div class="payment-option-select">
-                  <div class="col-md-6">
-                      <a href="" class="pay-opt-1"><span class="fa fa-check-circle"></span> <span class="payonline">Pay Online</span></a>
-                  </div>
-                  <div class="col-md-6">
-                      <a href=""><h5 class="text-right">Pay at Store</h5></a>
-                  </div>
-                  <span class="pay-or-store">OR</span>
+        <div class="row" *ngIf="orderTypeId === 1">
+          <div class="payment-option-select">
+            <div class="col-md-6">
+              <a (click)="changePaymentType('payOnline')" [ngClass]="{'pay-opt-1' : paymentTypeId === 1}">
+                <span class="fa fa-check-circle" *ngIf="paymentTypeId === 1"></span> 
+                <span class="payonline"> Pay Online</span>
+              </a>
             </div>
+            <div class="col-md-6">
+              <a (click)="changePaymentType('payAtStore')" [ngClass]="{'pay-opt-1' : paymentTypeId === 0}">
+                <h5 class="text-right"> 
+                  <span class="fa fa-check-circle" *ngIf="paymentTypeId === 0"></span> 
+                  Pay at Store
+                </h5>
+              </a>
+            </div>
+            <span class="pay-or-store">OR</span>
+          </div>
         </div>
-        <table>
-          <thead>
-            <th>Your Saved Card</th>
-            <th></th>
-            <th style="border-left: solid 2px #fff;">Expires On</th>
-          </thead>
-          <tbody>
-            <tr *ngFor="let paymentProfile of paymentProfiles; index as i" (click)="updateSelectedPayment(paymentProfile); selectedCard=i">
-              <td>
-                <div class="check-icon-payment-container">
-                  <span [ngClass]="{'fa fa-check-circle checkout-icon-style':selectedCard===i}"></span>
-                </div>
-                <div class="td-para">
-                  <img *ngIf="paymentProfile?.payment?.creditCard?.cardType === 'Discover'" alt="Discover" title="Discover" src="../../assets/Images/discover_logo_.gif" width="57" height="36" border="0" />
-                  <img *ngIf="paymentProfile?.payment?.creditCard?.cardType === 'MasterCard'" alt="Master" title="Master" src="../../assets/Images/mastercard_logo_.gif" width="57" height="36" border="0" />
-                  <img *ngIf="paymentProfile?.payment?.creditCard?.cardType === 'Visa'" style="padding-top: 5px;" alt="Visa" title="Visa" src="../../assets/Images/new_visa_.gif" width="57" height="26" border="0" />
-                  <img *ngIf="paymentProfile?.payment?.creditCard?.cardType === 'AmericanExpress'" alt="Amex" title="Amex" src="../../assets/Images/american_express_logo_.gif" width="43" height="36" border="0" />
-                  {{paymentProfile?.payment?.creditCard?.cardNumber}}
-                  <div *ngIf="selectedCard===i">
-                    <input type="password" name="cvv" [(ngModel)]="cardCVV" (keyup)="saveCVV()" class="text-cvv form-control">
+        <div *ngIf="paymentTypeId === 1">
+          <table>
+            <thead>
+              <th>Your Saved Card</th>
+              <th></th>
+              <th style="border-left: solid 2px #fff;">Expires On</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let paymentProfile of paymentProfiles; index as i" (click)="updateSelectedPayment(paymentProfile); selectedCard=i">
+                <td>
+                  <div class="check-icon-payment-container">
+                    <span [ngClass]="{'fa fa-check-circle checkout-icon-style':selectedCard===i}"></span>
                   </div>
-                </div>
-              </td>
-              <td></td>
-              <td>{{paymentProfile?.payment?.creditCard?.expirationDate}}</td>
-            </tr>            
-          </tbody>
-        </table>
-        <br>
-        <div class="col-md-12">
+                  <div class="td-para">
+                    <img *ngIf="paymentProfile?.payment?.creditCard?.cardType === 'Discover'" alt="Discover" title="Discover"
+                      src="../../assets/Images/discover_logo_.gif" width="57" height="36" border="0" />
+                    <img *ngIf="paymentProfile?.payment?.creditCard?.cardType === 'MasterCard'" alt="Master" title="Master"
+                      src="../../assets/Images/mastercard_logo_.gif" width="57" height="36" border="0" />
+                    <img *ngIf="paymentProfile?.payment?.creditCard?.cardType === 'Visa'" style="padding-top: 5px;" alt="Visa"
+                      title="Visa" src="../../assets/Images/new_visa_.gif" width="57" height="26" border="0" />
+                    <img *ngIf="paymentProfile?.payment?.creditCard?.cardType === 'AmericanExpress'" alt="Amex" title="Amex"
+                      src="../../assets/Images/american_express_logo_.gif" width="43" height="36" border="0" />
+                    {{paymentProfile?.payment?.creditCard?.cardNumber}}
+                    <div *ngIf="selectedCard===i">
+                      <input type="password" name="cvv" [(ngModel)]="cardCVV" (keyup)="saveCVV()" class="text-cvv form-control">
+                    </div>
+                  </div>
+                </td>
+                <td></td>
+                <td>{{paymentProfile?.payment?.creditCard?.expirationDate}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+          <div class="col-md-12">
             <div class="row">
               <a [routerLink]="['/myaccount/add-new-payment-method']" class="new-payment-mode">Add New Payment Method</a>
             </div>
+          </div>
         </div>
       </div>
     </div>
