@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CartService } from '../../../services/cart.service';
 import { PaymentService } from '../../../services/payment.service';
 import { Router } from '@angular/router';
@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./checkout-products.component.scss']
 })
 export class CheckoutProductsComponent implements OnInit {
+  @Output() orderplace = new EventEmitter();
   cartDetails: any;
   isCouponError = false;
   isExpand = false;
@@ -43,11 +44,11 @@ export class CheckoutProductsComponent implements OnInit {
     this.cartDetails.AddressId = 0;
     this.cartDetails.PaymentTypeId = 0; */
 
-    if (this.cartDetails.OrderTypeId === 2 &&  this.cartDetails.AddressId === 0) {
+    if (this.cartDetails.OrderTypeId === 2 && this.cartDetails.AddressId === 0) {
       this.toastr.error('Please Select Address');
       return;
     }
-    if (this.cartDetails.PaymentTypeId !== 0 && this.cartDetails.PaymentTypeId !== 1 ) {
+    if (this.cartDetails.PaymentTypeId !== 0 && this.cartDetails.PaymentTypeId !== 1) {
       this.toastr.error('Please Select Payment Method');
       return;
     }
@@ -58,12 +59,12 @@ export class CheckoutProductsComponent implements OnInit {
       taxType: 'Sales Tax'
     };
 
-    if (this.cartDetails.PaymentTypeId === 0 ) {
+    if (this.cartDetails.PaymentTypeId === 0) {
       this.placeOrder();
     } else {
       this.paymentService.createTransactionRequest(data).subscribe(paymentResponse => {
         if (paymentResponse.messages.message[0].text === 'Successful.'
-        || paymentResponse.messages.message[0].code === 'I00001') {
+          || paymentResponse.messages.message[0].code === 'I00001') {
           this.placeOrder();
         }
       });
@@ -75,7 +76,7 @@ export class CheckoutProductsComponent implements OnInit {
       (orderResponse: any) => {
         this.cartDetails = orderResponse;
         this.toastr.success('Order Placed Successfully.');
-        this.router.navigate(['/myaccount/myorders']);
+        this.orderplace.emit(this.cartDetails);
       });
   }
 

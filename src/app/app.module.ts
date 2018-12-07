@@ -65,6 +65,7 @@ import { CheckoutPickupComponent } from './pages/checkout/checkout-pickup/checko
 import { EventsComponent } from './pages/products/events/events.component';
 import { PrivacyPolicyComponent } from './pages/home/privacy-policy/privacy-policy.component';
 import { TermsAndConditionsComponent } from './pages/home/terms-and-conditions/terms-and-conditions.component';
+import { PlaceOrderResultComponent } from './pages/checkout/place-order-result/place-order-result.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -118,7 +119,8 @@ export function getAuthServiceConfigs() {
     CheckoutPickupComponent,
     EventsComponent,
     PrivacyPolicyComponent,
-    TermsAndConditionsComponent
+    TermsAndConditionsComponent,
+    PlaceOrderResultComponent
   ],
   imports: [
     BrowserModule,
