@@ -15,6 +15,23 @@
 
 <body>
   <app-root></app-root>
+
+
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script>
+      $('document').ready(function() {
+                $(".mobile-menu-filter").click(function() {
+                    $(this).toggleClass("fa-times");
+                    $(this).next(".dropdown-menu").toggleClass("show");
+                }); 
+                $(".menu-toggle").click(function() {
+                    //$(this).toggleClass("fa-times");
+                    $(".mid-nav .navbar").toggleClass("show");
+                }); 
+        });
+  </script>
+
 </body>
 
 </html>

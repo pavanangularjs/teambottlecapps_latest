@@ -11,6 +11,8 @@
                [ngClass]="{'active' : activeURL === getMenuName(fitem.CategoryName)}" aria-expanded="false" (click)="showProducts(fitem.CategoryId, fitem.CategoryName)">
                 {{fitem.CategoryName}}
             </a>
+            <i class="fa fa-filter mobile-menu-filter"></i>
+
             <ul class="dropdown-menu">
                 <div class="optional-dropmenu">
                     <app-filter-menu [filters]="fitem" (filterApply)="onApplyFilter()"></app-filter-menu>
