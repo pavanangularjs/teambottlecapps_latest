@@ -29,6 +29,7 @@ addressList: any;
       this.customerService.getCustomerAddressList().subscribe(
         data => {
           this.addressList = data ? (data.ListAddress ? data.ListAddress : []) : [];
+          this.addressList = this.addressList.sort((x, y) => x.IsDefault > y.IsDefault ? -1 : 1 );
           // this.spinnerService.hide();
           this.progressBarService.hide();
         });
@@ -59,6 +60,7 @@ addressList: any;
         if (data) {
           this.toastr.success(data.SuccessMessage);
           address.IsDefault = data.IsDefault;
+          this.addressList = this.addressList.sort((x, y) => x.IsDefault > y.IsDefault ? -1 : 1 );
         }
         // this.spinnerService.hide();
         this.progressBarService.hide();

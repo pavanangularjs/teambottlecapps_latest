@@ -69,6 +69,7 @@ export class CheckoutDeliveryComponent implements OnInit {
       this.customerService.getCustomerAddressList().subscribe(
         data => {
           this.addressList = data ? (data.ListAddress ? data.ListAddress : []) : [];
+          this.addressList = this.addressList.sort((x, y) => x.IsDefault > y.IsDefault ? -1 : 1 );
           if (this.addressList && this.addressList.filter(address => address.IsDefault === true).length > 0) {
             this.cartService.cartdetails.AddressId = this.addressList.filter(address => address.IsDefault === true)[0].AddressId;
           }

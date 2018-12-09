@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AddressInsert } from '../../../../models/address-insert';
 import { CustomerService } from '../../../../services/customer.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -14,21 +14,23 @@ import { ProgressBarService } from '../../../../shared/services/progress-bar.ser
 export class EditAddressComponent implements OnInit {
   editAddress: any;
   formEditAddress: FormGroup;
+  submitted = false;
   constructor(private route: ActivatedRoute, private customerService: CustomerService,
     private router: Router,
     private toastr: ToastrService,
-    private progressBarService: ProgressBarService) {
-    this.formEditAddress = new FormGroup({
-      aFirstName: new FormControl(''),
-      aLastName: new FormControl(''),
-      aAddressName: new FormControl(''),
-      aAddress1: new FormControl(''),
-      aAddress2: new FormControl(''),
-      aCity: new FormControl(''),
-      aState: new FormControl(''),
-      aZip: new FormControl(''),
-      // aCountry: new FormControl(''),
-      aIsDefault: new FormControl(false),
+    private progressBarService: ProgressBarService,
+    private formBuilder: FormBuilder) {
+
+    this.formEditAddress = this.formBuilder.group({
+      aFirstName: ['', [Validators.required, Validators.minLength(2)]],
+      aLastName: ['', []],
+      aAddressName: ['', []],
+      aAddress1: ['', [Validators.required]],
+      aAddress2: ['', []],
+      aCity: ['', [Validators.required]],
+      aState: ['', [Validators.required, Validators.maxLength(2)]],
+      aZip: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(6)]],
+      aIsDefault: [false, []],
     });
   }
 
@@ -59,20 +61,31 @@ export class EditAddressComponent implements OnInit {
   }
 
   initializeAddress() {
-    this.formEditAddress = new FormGroup({
-      aFirstName: new FormControl(this.editAddress.FirstName),
-      aLastName: new FormControl(this.editAddress.LastName),
-      aAddressName: new FormControl(this.editAddress.AddressName),
-      aAddress1: new FormControl(this.editAddress.Address1),
-      aAddress2: new FormControl(this.editAddress.Address2),
-      aCity: new FormControl(this.editAddress.City),
-      aState: new FormControl(this.editAddress.State),
-      aZip: new FormControl(this.editAddress.Zip),
-      // aCountry: new FormControl(''),
-      aIsDefault: new FormControl(this.editAddress.IsDefault),
+
+    this.formEditAddress = this.formBuilder.group({
+      aFirstName: [this.editAddress.FirstName, [Validators.required, Validators.minLength(2)]],
+      aLastName: [this.editAddress.LastName, []],
+      aAddressName: [this.editAddress.AddressName, []],
+      aAddress1: [this.editAddress.Address1, [Validators.required]],
+      aAddress2: [this.editAddress.Address2, []],
+      aCity: [this.editAddress.City, [Validators.required]],
+      aState: [this.editAddress.State, [Validators.required, Validators.maxLength(2)]],
+      aZip: [this.editAddress.Zip, [Validators.required, Validators.minLength(5), Validators.maxLength(6)]],
+      aIsDefault: [this.editAddress.IsDefault, []],
     });
   }
+
+  // convenience getter for easy access to form fields
+  get f() { return this.formEditAddress.controls; }
+
   onAddressUpdate() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.formEditAddress.invalid) {
+      return;
+    }
+
     const address = {
       AddressId: this.editAddress.AddressId, FirstName: '', LastName: '', AddressName: '',
       Address1: '', Address2: '', City: '', State: '', Zip: '', Country: '', IsDefault: 0,
