@@ -23,6 +23,7 @@ addressList: any;
   getAddressList() {
     if (this.customerService.customerAddressList && this.customerService.customerAddressList.ListAddress) {
       this.addressList = this.customerService.customerAddressList.ListAddress;
+      this.addressList = this.addressList.sort((x, y) => x.IsDefault > y.IsDefault ? -1 : 1 );
     } else {
       // this.spinnerService.show();
       this.progressBarService.show();

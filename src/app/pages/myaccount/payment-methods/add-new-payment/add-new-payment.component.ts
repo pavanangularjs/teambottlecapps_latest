@@ -21,6 +21,7 @@ export class AddNewPaymentComponent implements OnInit {
   cardType = '';
   cardProfile: PaymentProfile;
   isSaveAddress: boolean;
+  addressList: any;
 
   constructor(private formBuilder: FormBuilder,
     // private spinnerService: Ng4LoadingSpinnerService,
@@ -45,11 +46,55 @@ export class AddNewPaymentComponent implements OnInit {
       expiryDate: ['', [Validators.required]],
       address: ['', [Validators.required]],
       city: ['', [Validators.required]],
-      state: ['', [Validators.required], Validators.maxLength(2), Validators.minLength(2)],
+      state: ['', [Validators.required, Validators.maxLength(2), Validators.minLength(2)]],
       zipCode: ['', [Validators.required]],
-      country: ['', [Validators.required]],
-      phoneNumber: ['', [Validators.required]]
+      // country: ['', [Validators.required]],
+      phoneNumber: [this.customerInfo && this.customerInfo.ContactNo || '', [Validators.required]]
     });
+    this.getAddressList();
+  }
+
+  getAddressList() {
+    if (this.customerService.customerAddressList && this.customerService.customerAddressList.ListAddress) {
+      this.addressList = this.customerService.customerAddressList.ListAddress;
+      this.addressList = this.addressList.sort((x, y) => x.IsDefault > y.IsDefault ? -1 : 1);
+
+      if (this.addressList && this.addressList.length > 0) {
+        this.initializeAddress(this.addressList[0]);
+      }
+
+    } else {
+      // this.spinnerService.show();
+      this.progressBarService.show();
+      this.customerService.getCustomerAddressList().subscribe(
+        data => {
+          this.addressList = data ? (data.ListAddress ? data.ListAddress : []) : [];
+          this.addressList = this.addressList.sort((x, y) => x.IsDefault > y.IsDefault ? -1 : 1);
+          // this.spinnerService.hide();
+          this.progressBarService.hide();
+
+          if (this.addressList && this.addressList.length > 0) {
+            this.initializeAddress(this.addressList[0]);
+          }
+        });
+    }
+  }
+
+  initializeAddress(address) {
+
+    this.formAddNewPayment = this.formBuilder.group({
+      firstName: [this.customerInfo && this.customerInfo.FirstName || '', [Validators.required]],
+      lastName: [this.customerInfo && this.customerInfo.LastName || '', [Validators.required]],
+      sixteenDigitNumber: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(15)]],
+      expiryDate: ['', [Validators.required]],
+      address: [address.Address1, [Validators.required]],
+      city: [address.City, [Validators.required]],
+      state: [address.State, [Validators.required, Validators.maxLength(2), Validators.minLength(2)]],
+      zipCode: [address.Zip, [Validators.required]],
+      // country: ['', [Validators.required]],
+      phoneNumber: [this.customerInfo && this.customerInfo.ContactNo || '', [Validators.required]]
+    });
+
   }
 
   showCardType(isValid) {
@@ -111,8 +156,8 @@ export class AddNewPaymentComponent implements OnInit {
         } else {
           if (data && data.messages && data.messages.message &&
             data.messages.message.length > 0 && data.messages.message[0].text) {
-              this.toastr.error(data.messages.message[0].text);
-              this.progressBarService.hide();
+            this.toastr.error(data.messages.message[0].text);
+            this.progressBarService.hide();
           }
         }
       });
@@ -129,8 +174,8 @@ export class AddNewPaymentComponent implements OnInit {
         } else {
           if (data && data.messages && data.messages.message &&
             data.messages.message.length > 0 && data.messages.message[0].text) {
-              this.toastr.error(data.messages.message[0].text);
-              this.progressBarService.hide();
+            this.toastr.error(data.messages.message[0].text);
+            this.progressBarService.hide();
           }
         }
       });
