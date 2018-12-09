@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AddressInsert } from '../../../../models/address-insert';
 import { CustomerService } from '../../../../services/customer.service';
 import { Router } from '@angular/router';
@@ -11,11 +11,27 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AddNewAddressComponent implements OnInit {
   formAddNewAddress: FormGroup;
-  constructor(private customerService: CustomerService, private router: Router,
-    private toastr: ToastrService) { }
+  submitted = false;
+  constructor(private customerService: CustomerService,
+    private router: Router,
+    private toastr: ToastrService,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.formAddNewAddress = new FormGroup({
+
+    this.formAddNewAddress = this.formBuilder.group({
+      aFirstName: ['', [Validators.required, Validators.minLength(2)]],
+      aLastName: ['', []],
+      aAddressName: ['', []],
+      aAddress1: ['', [Validators.required]],
+      aAddress2: ['', []],
+      aCity: ['', [Validators.required]],
+      aState: ['', [Validators.required, Validators.maxLength(2)]],
+      aZip: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(6)]],
+      aIsDefault: [false, []],
+    });
+
+    /* this.formAddNewAddress = new FormGroup({
       aFirstName: new FormControl(''),
       aLastName: new FormControl(''),
       aAddressName: new FormControl(''),
@@ -26,10 +42,21 @@ export class AddNewAddressComponent implements OnInit {
       aZip: new FormControl(''),
       // aCountry: new FormControl(''),
       aIsDefault: new FormControl(false),
-    });
+    }); */
   }
 
+    // convenience getter for easy access to form fields
+  get f() { return this.formAddNewAddress.controls; }
+
   onAddressSave() {
+
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.formAddNewAddress.invalid) {
+      return;
+    }
+
     const address = {FirstName: '', LastName: '', AddressName: '',
     Address1: '', Address2: '', City: '', State: '', Zip: '', Country: '', IsDefault: 0,
     StoreId: 0, SessionId: '', UserId: 0, AppId: 0, DeviceId: '', DeviceType: ''};
