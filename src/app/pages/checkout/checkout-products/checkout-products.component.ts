@@ -3,6 +3,8 @@ import { CartService } from '../../../services/cart.service';
 import { PaymentService } from '../../../services/payment.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { PlaceOrderForOnlinePayment } from '../../../models/place-order-onlinepayment';
+import { CustomerService } from '../../../services/customer.service';
 
 @Component({
   selector: 'app-checkout-products',
@@ -19,7 +21,9 @@ export class CheckoutProductsComponent implements OnInit {
   tipAmount: string;
   listCharges: any;
   constructor(private cartService: CartService, private router: Router,
-    private paymentService: PaymentService, private toastr: ToastrService) { }
+    private paymentService: PaymentService,
+    private toastr: ToastrService,
+    private customerService: CustomerService) { }
 
   ngOnInit() {
     this.couponCode = '';
@@ -65,7 +69,7 @@ export class CheckoutProductsComponent implements OnInit {
       this.paymentService.createTransactionRequest(data).subscribe(paymentResponse => {
         if (paymentResponse.messages.message[0].text === 'Successful.'
           || paymentResponse.messages.message[0].code === 'I00001') {
-          this.placeOrder();
+          this.placeOrderForOnlinePayment(paymentResponse);
         }
       });
     }
@@ -78,6 +82,44 @@ export class CheckoutProductsComponent implements OnInit {
         this.toastr.success('Order Placed Successfully.');
         this.orderplace.emit(this.cartDetails);
       });
+  }
+
+  placeOrderForOnlinePayment(data) {
+    const placeOrderReq = this.getPlaceOrderRequestParamsForOnlinePayment(data);
+
+    if (placeOrderReq) {
+      this.cartService.placeOrder(placeOrderReq).subscribe(
+        (orderResponse: any) => {
+          this.cartDetails = orderResponse;
+          this.toastr.success('Order Placed Successfully.');
+          this.orderplace.emit(this.cartDetails);
+        });
+    } else {
+      this.toastr.error('Invalid Session, Please ReLogin ...');
+    }
+
+  }
+
+  private getPlaceOrderRequestParamsForOnlinePayment(data: any): PlaceOrderForOnlinePayment {
+    if (!this.customerService.customerSession) {
+      return null;
+    }
+
+    return {
+      StoreId: this.customerService.customerSession.StoreId,
+      SessionId: this.customerService.customerSession.SessionId,
+      UserId: this.customerService.customerSession.UserId,
+      AppId: this.customerService.customerSession.AppId,
+      DeviceId: this.customerService.customerSession.DeviceId,
+      DeviceType: this.customerService.customerSession.DeviceType,
+      DoPDate: (this.cartDetails.OrderTypeId === 2) ? this.cartDetails.DoPDate : '',
+      DoPSlot: (this.cartDetails.OrderTypeId === 2) ? this.cartDetails.DoPTimeSlot : '',
+      CartId: this.cartDetails.CartId,
+      CardInfo: data,
+      UserRemarks: this.cartDetails.Remark,
+      OrderTypeId: this.cartDetails.OrderTypeId,
+      PaymentTypeId: this.cartDetails.PaymentTypeId
+    };
   }
 
   applyCoupon() {
