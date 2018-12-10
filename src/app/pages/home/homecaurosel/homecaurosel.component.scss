@@ -29,3 +29,13 @@
     }
 
 }
+
+a.left.carousel-control,
+a.right.carousel-control {
+  top: 45%;
+  margin: 15px;
+}
+
+.carousel-control.right, .carousel-control.left, a.carousel-control {
+  background-image: none;
+}

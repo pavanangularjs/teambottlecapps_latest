@@ -1,3 +1,5 @@
+@import "~src/variable.scss";
+
 /*breadcrumb */
 
 /* 
@@ -13,7 +15,7 @@
     padding-left: 12px;
     border: none;
     float: left;
-    border-left: 5px solid #A61455;
+    border-left: 5px solid $lukas-color;
     font-size: 15px;
     font-weight: bold;
     color: #333;
@@ -51,7 +53,7 @@
     padding-left: 12px;
     border: none;
     float: left;
-    border-left: 5px solid #A61455;
+    border-left: 5px solid $lukas-color;
     font-size: 21px;
     font-weight: bold;
     color: #333;
@@ -70,7 +72,7 @@
     padding-left: 12px;
     border: none;
     float: left;
-    border-left: 5px solid #A61455;
+    border-left: 5px solid $lukas-color;
     font-size: 24px !important;
     font-weight: bold;
     color: #333;
@@ -83,7 +85,7 @@
 } */
 
 .details_content ul h4.ingredients{
-    border-left: 5px solid #A61455;
+    border-left: 5px solid $lukas-color;
     padding-left: 10px;
     font-family: Montserrat !important;
     font-size: 18px;
@@ -97,7 +99,7 @@
     color: #c2c4ca;
 }
 .instruction_text{
-    font-family: poppinsregular !important;
+    font-family: $poppins-regular !important;
     font-size: 14px;
     font-stretch: normal;
     line-height: 2.14;
@@ -106,7 +108,7 @@
     color: #444444;
 }
 .details_content ul li.IngredientText ul li{
-    font-family:montserratbold !important;
+    font-family:$montserrat-bold !important;
     font-size: 14.4px;
     font-stretch: normal;
     line-height: 1.67;
@@ -135,10 +137,10 @@
   font-family: 'FontAwesome';
   float: left;
   margin-left: -1.5em;
-    color: #A61455;
+    color: $lukas-color;
 }
 .details_content h4.recipe_name{
-    font-family: poppinsbold;
+    font-family: $poppins-bold;
     font-size: 26.4px;
     font-stretch: normal;
     line-height: 2.07;
@@ -156,7 +158,7 @@
 }
 
 .bottle-caps-red {
-    color: #A61455;
+    color: $lukas-color;
 }
 
 .event-details-section {
@@ -171,7 +173,7 @@
     position: absolute;
     top: 0;
     left: 10px;
-    font-family: poppinsregular;
+    font-family: $poppins-regular;
 }
 
 .event-details-date strong {
@@ -183,7 +185,7 @@
     line-height: normal;
     display: inline-block;
     margin-top: -3px;
-    font-family: poppinsregular;
+    font-family: $poppins-regular;
 }
 
 .event-details-date .date-style {
@@ -192,14 +194,14 @@
     font-size: 14px;
     text-align: center;
     float: left;
-    font-family: poppinsregular;
+    font-family: $poppins-regular;
 }
 
 .event-details-heading {
     position: absolute;
     left: 60px;
     top: -5px;
-    font-family: montserratbold !important;
+    font-family: $montserrat-bold !important;
     font-size: 20px;
 }
 
@@ -227,7 +229,7 @@
     margin-left: 20px;
     display: inline-block;
     margin-top: -10px;
-    font-family: poppinsregular;
+    font-family: $poppins-regular;
 }
 
 .btn-container button.btn {
@@ -235,9 +237,9 @@
     width: 130px;
     text-align: center;
     outline: none;
-    background-color: #A61455;
+    background-color: $lukas-color;
     color: #fff;
-    border-color: #A61455;
+    border-color: $lukas-color;
     margin-right: 8px;
     border-radius: 5px;
     box-shadow: 0px 10px 20px 0 rgba(236, 28, 36, 0.3);
@@ -245,14 +247,14 @@
         width: 130px;
         text-align: center;
         outline: none;
-        background-color: #A61455;
+        background-color: $lukas-color;
         color: #fff;
-        border-color: #A61455;
+        border-color: $lukas-color;
         border-radius: 5px;
         box-shadow: 0px 10px 20px 0 rgba(236, 28, 36, 0.3);
     }
 }
 p {
-    font-family: poppinsregular;
+    font-family: $poppins-regular;
     font-size: 14px;
 }

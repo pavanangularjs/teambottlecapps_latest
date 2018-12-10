@@ -17,10 +17,9 @@
                 <div class="product_img">
                     <div class="favorite-container">
                         <div class="favorite-selection" *ngIf="productDetails">
-                            <img class="firimg img-responsive" (click)="favoriteProductUpdate(true)" src="assets/Images/favorites.png"
-                                *ngIf="productDetails?.Product?.IsFavorite===false; else favActive" />
+                            <i class="icon icon-favorites pro-detail" (click)="favoriteProductUpdate(true)" *ngIf="productDetails?.Product?.IsFavorite===false; else favActive"></i>
                             <ng-template #favActive>
-                                <img class="firimg img-responsive" (click)="favoriteProductUpdate(false)" src="assets/Images/favorites-active.png">
+                                <i class="icon icon-favorites pro-detail active" (click)="favoriteProductUpdate(false)"></i>
                             </ng-template>
                         </div>
                     </div>

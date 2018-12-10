@@ -1,12 +1,14 @@
+@import "~src/variable.scss";
+
 .about-us {
     h4{
-        font-family: Poppinsbold;
+        font-family: $poppins-bold;
     }
     h5{
-        font-family: Poppinsbold;
+        font-family: $poppins-bold;
     }
     p{
-        font-family: Poppinsregular;
+        font-family: $poppins-regular;
         font-size: 14px;
         font-style: normal;
         font-stretch: normal;
@@ -18,7 +20,7 @@
     }
 
     .font_family_Montserrat-SemiBold h5{
-        font-family:montserratbold;
+        font-family:$montserrat-bold;
         font-size: 12px;
         font-style: normal;
         font-stretch: normal;
@@ -29,7 +31,7 @@
     }
 
     .information address{
-        font-family:montserratbold;
+        font-family:$montserrat-bold;
         font-size: 12px;
 
         font-style: normal;

@@ -1,3 +1,4 @@
+@import "~src/variable.scss";
 
 footer {
   border-top: 2px solid #d8d5d5;
@@ -33,7 +34,7 @@ footer .footer_image address img {
 }
 
 h3.Subscribe {
-  font-family: poppinsregular;
+  font-family: $poppins-regular;
   font-size: 14.7px;
   font-stretch: normal;
   line-height: 1.3;
@@ -43,7 +44,7 @@ h3.Subscribe {
 }
 
 p.newslatter {
-  font-family: poppinsregular;
+  font-family: $poppins-regular;
   font-stretch: normal;
   font-size: 11.8px;
   line-height: 1.63;
@@ -53,7 +54,7 @@ p.newslatter {
 }
 
 .footer_image address {
-  font-family: poppinsregular;
+  font-family: $poppins-regular;
   font-size: 10px;
   font-stretch: normal;
   line-height: 1.5;
@@ -62,7 +63,7 @@ p.newslatter {
   color: #333333;
   span {
     &.storename {
-      font-family: poppinsregular;
+      font-family: $poppins-regular;
       font-size: 17px;
       font-stretch: normal;
       line-height: normal;
@@ -86,7 +87,7 @@ footer {
   ul li {
     text-decoration: none;
     margin: 0 0 8px 0;
-    font-family: poppinsregular;
+    font-family: $poppins-regular;
     font-size: 12.7px;
     color: #333333;
     letter-spacing: normal;
@@ -94,7 +95,7 @@ footer {
     a {
       text-decoration: none;
       cursor: pointer;
-      font-family: poppinsregular;
+      font-family: $poppins-regular;
       font-size: 12.7px;
       font-stretch: normal;
       line-height: 1.92;
@@ -102,7 +103,7 @@ footer {
       text-align: left;
       color: #333333;
       &:hover {
-        color: #A61455;
+        color: $lukas-color;
       }
     }
   }
@@ -185,7 +186,7 @@ ul.social-network {
     color: #fff;
     height: 41px !important;
     &::placeholder {
-      font-family: poppinsregular;
+      font-family: $poppins-regular;
       font-size: 8.8px;
       font-stretch: normal;
       line-height: 2.17;
@@ -235,7 +236,7 @@ ul.social-network {
 }
 
 .copyright p.made_with {
-  font-family: poppinsregular;
+  font-family: $poppins-regular;
   font-size: 12.3px;
   font-stretch: normal;
   letter-spacing: 0.5px;
@@ -248,11 +249,13 @@ ul.social-network {
 .made_with .beer {
   height: auto;
   margin-top: -5px;
+  font-size: 15px;
+  margin-left: -7px;
 }
 
 span {
   &.made_with, &.allrights {
-    font-family: poppinsregular;
+    font-family: $poppins-regular;
     font-size: 12px;
     font-stretch: normal;
     color: rgba(255, 255, 255, 0.3);
@@ -261,7 +264,7 @@ span {
 }
 
 .design a {
-  font-family: poppinsregular;
+  font-family: $poppins-regular;
   font-size: 12.7px;
   font-stretch: normal;
   line-height: 1.92;
@@ -427,6 +430,7 @@ address .contact_text {
     margin-right: 10px;
     margin-bottom: 10px;
     float: left;
+    font-size: 16px;
 }
 
 .storelocation .address-captions {

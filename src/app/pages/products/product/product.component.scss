@@ -1,9 +1,11 @@
+@import "~src/variable.scss";
+
 .active-star i.fa-star{
-    color: #A61455;
+    color: $lukas-color;
 }
 .strike_text{
     text-decoration: line-through;
-    font-family:montserratbold;
+    font-family:$montserrat-bold;
     font-size: 18px !important;
     font-stretch: normal;
     line-height: normal;

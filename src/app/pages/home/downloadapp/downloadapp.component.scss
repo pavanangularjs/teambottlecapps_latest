@@ -1,3 +1,5 @@
+@import "~src/variable.scss";
+
 section.bgr_img{
     background-image: url("/assets/Images/download-bg.png");
     background-repeat: no-repeat;
@@ -9,7 +11,7 @@ section.bgr_img{
     background-size: cover;
 }
 .bgr_img .display_center h4{
-    font-family: montserratbold;
+    font-family: $montserrat-bold;
     font-size: 18px;
     font-stretch: normal;
     line-height: 1.22;
@@ -28,7 +30,7 @@ section.bgr_img{
 }
 
 .display_center h2.download_app{
-    font-family: montserratbold;
+    font-family: $montserrat-bold;
     font-size: 36px;
     font-stretch: normal;
     line-height: 1.11;

@@ -1,8 +1,10 @@
+@import "~src/variable.scss";
+
 .add-new-address a {
     h4.address-heading {
       background-color: #f4f4f4;
       padding: 10px 20px 10px 20px;
-      color: #A61455;
+      color: $lukas-color;
       span {
           font-size: 24px;
           margin-right: 5px;
@@ -10,10 +12,10 @@
     }
     &.bottles-brand {
       text-decoration: none;
-      color: #A61455;
+      color: $lukas-color;
       &:hover {
         text-decoration: none;
-        color: #A61455;
+        color: $lukas-color;
       }
     }
   }
@@ -37,7 +39,7 @@
           right: 10px !important;
           cursor: pointer;
           &:hover {
-            color: #A61455;
+            color: $lukas-color;
           }
       }
       &:first-child td {
@@ -52,22 +54,22 @@
     border-top: 0px solid transparent;
     h5 {
       font-size: 20px;
-      font-family: poppinsbold;
+      font-family: $poppins-bold;
     }
     p {
-      font-family: poppinsregular;
+      font-family: $poppins-regular;
       font-size: 14px;
     }
     h6 {
-      font-family: poppinsregular;
+      font-family: $poppins-regular;
       font-size: 14px;
     }
   }
   
   .bottles-brand {
-    color: #A61455;
+    color: $lukas-color;
     &:hover {
-      color: #A61455;
+      color: $lukas-color;
       text-decoration: none;
     }
   }
@@ -83,7 +85,7 @@
   }
 
 p {
-      font-family: poppinsregular;
+      font-family: $poppins-regular;
       font-size: 14px;
   }
 

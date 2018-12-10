@@ -15,7 +15,8 @@
                     <li *ngIf="!isActive">
                         <!-- <span class="arrowup"></span> -->
                         <div class="header_icon username" [routerLink]="['/login']">
-                            <img src="assets/Images/profile.png" alt="default" class="icon img-responsive userdp">
+                            <i class="icon icon-profile usericondp"></i>
+                            <!-- <img src="assets/Images/profile.png" alt="default" class="icon img-responsive userdp"> -->
                         </div>
                     </li>
                     <li *ngIf="isActive" class="dropdown text_small">
@@ -54,7 +55,8 @@
                     <li [routerLink]="['/cart']">
                         <div class="cart-block">
                             <div class="header_icon">
-                                <img src="assets/Images/cart.png" alt="Battlecapse" class="icon">
+                                <!-- <img src="assets/Images/cart.png" alt="Battlecapse" class="icon"> -->
+                                <i class="icon icon-no-items"></i>
                                 <span class="round-circle">{{cartItemCount}}</span>
                             </div>
                             <div class="cart-captions">
@@ -62,6 +64,20 @@
                                 <!-- <span class="cart"> {{cartItemCount}} Item (s) - $578.14</span> -->
                             </div>
                         </div>
+                    </li>
+                    <li *ngIf="isActive" class="dropdown text_small store-dropmenu">
+                        <div class="cart-block">
+                            <div class="header_icon" data-toggle="modal" data-target="#exampleModal">
+                                <i class="icon icon-distance"></i>
+                                <span class="round-circle hidden">{{cartItemCount}}</span>
+                            </div>
+                        </div>
+                        <ul class="dropdown-menu user-menu store-menu" *ngIf="isActive">
+                            <li>
+                                <h6 class="">1597 East Main Street Torrington</h6>
+                                <small class="text-muted">CT 06790</small>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <!-- User Login icon Ends Here -->
@@ -73,3 +89,47 @@
         </div>
     </nav>
 </header>
+
+<!-- Mutli Store Select -->
+<div class="modal fade store-picker-container" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+     <!--  <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+      </div> -->
+      <div class="modal-body">
+        <form>
+          <div class="form-inline-lg">
+            <div class="input-group">
+              <div class="input-group-addon"><i class="icon icon-search"></i></div>
+              <input type="text" class="form-control" id="exampleInputAmount" placeholder="Search by City, Zip Code or Name">
+              <div class="input-group-addon"><i class="icon icon-location-picker"></i></div>
+            </div>
+          </div>
+        </form>
+          <div class="form-group">
+            <div class="store-tile-container">
+                <div class="store-thumbnail">
+                </div>
+                <div class="store-info">
+                    <div class="store-details">
+                        <h3>Bottlecapps - Dallas</h3>
+                        <small class="text-muted">300 E Royal Ln, Irving TX 75039</small>
+                    </div>
+                    <div class="store-distance-info">
+                        <div class="store-distance">
+                            <i class="icon icon-location-picker"></i> 0.1 mi
+                        </div>
+                        <div class="select-store">
+                            <button class="btn btn-default active">Select Store</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Mutli Store Select End  -->

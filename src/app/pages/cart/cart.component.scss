@@ -1,3 +1,5 @@
+@import "~src/variable.scss";
+
 .cart_image{
     border:1px solid #d7d7d7;
     border-radius: 6px;
@@ -15,7 +17,7 @@ table tr th {
     background: #e5e5e5;
     padding: 10px;
     border-right: 2px solid #fff;
-    font-family: poppinsbold;
+    font-family: $poppins-bold;
     font-size: 12px;
     font-style: normal;
     font-stretch: normal;
@@ -40,7 +42,7 @@ table tr td .img_div{
 }
 
 .Product_name h5{
-    font-family: poppinsbold;
+    font-family: $poppins-bold;
     font-size: 20px;
     font-style: normal;
     font-stretch: normal;
@@ -57,14 +59,14 @@ table tr td .img_div img{
     display: block;
 }
 table tr td .total_price{
-    font-family: poppinsbold;
+    font-family: $poppins-bold;
     font-size: 24px;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
     text-align: right;
-    color: #A61455;
+    color: $lukas-color;
     margin-top: 8px;
 }
 
@@ -73,19 +75,19 @@ table tr td .total_price{
 }
 
 table tr td .Product_price{
-    font-family: poppinsbold;
+    font-family: $poppins-bold;
     font-size: 18px;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: 0.5px;
     text-align: left;
-    color: #A61455;
+    color: $lukas-color;
     margin-top: 10px;
 }
 .you_save{
     opacity: 0.6;
-  font-family: poppinsregular;
+  font-family: $poppins-regular;
   font-size: 12px;
   font-style: normal;
   font-stretch: normal;
@@ -95,7 +97,7 @@ table tr td .Product_price{
   color: rgba(38, 38, 40, 0.6);
 }
 .price-strike-through {
-    font-family: poppinsregular;
+    font-family: $poppins-regular;
     font-size: 14px;
     font-style: normal;
     font-stretch: normal;
@@ -119,7 +121,7 @@ table tr td .Product_price{
     font-size: 10px;
 } */
 .Product_name .font_size {
-    font-family: poppinsregular;
+    font-family: $poppins-regular;
     font-size: 13px;
     line-height: 2.11;
     letter-spacing: 0.3px;
@@ -144,7 +146,7 @@ button.dec_circle,button.dec_circle:focus{
 }
 .margin_top .value{
     margin: 0 10px 0 10px;
-    font-family: poppinsbold;
+    font-family: $poppins-bold;
     font-size: 12.7px;
     line-height: 1.25;
     letter-spacing: normal;
@@ -171,8 +173,8 @@ button.bg_black:focus{
     float: right;
  }
 .btn_right button{
-    background: #A61455;
-    font-family: montserratbold;
+    background: $lukas-color;
+    font-family: $montserrat-bold;
     font-size: 11.2px;
     font-style: normal;
     font-stretch: normal;
@@ -183,11 +185,11 @@ button.bg_black:focus{
     width: 131px;
     text-align: center;
     padding: 15px 0 15px; 
-    border:#A61455;
+    border:$lukas-color;
     box-shadow: none;
 }
 .btn_right button:focus{
-    border:#A61455;
+    border:$lukas-color;
     outline: none;
     box-shadow: none;
 }
@@ -204,7 +206,7 @@ button.bg_black:focus{
     padding-left: 12px;
     border: none;
     float: left;
-    border-left: 5px solid #A61455;
+    border-left: 5px solid $lukas-color;
     font-size: 15px;
     font-weight: bold;
     color: #333;
@@ -213,7 +215,7 @@ button.bg_black:focus{
 .Search_div input, .Search_div input::placeholder{
     color:rgba(25,25,25,255);
     /* font-family: Poppins-SemiBold; */
-    font-family: montserratbold!important;
+    font-family: $montserrat-bold!important;
     font-size: 20px;
 }
 .Search_div input:focus{
@@ -278,13 +280,13 @@ table.res_table td:before {
 }
 
 table tr td .Product_price,table tr td .you_save,table tr td .total_price{
-    font-family: poppinsbold;
+    font-family: $poppins-bold;
     font-size: 18px;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: 0.5px;
     text-align: left;
-    color: #A61455;
+    color: $lukas-color;
 }
 
 
@@ -340,24 +342,24 @@ select.select-quant {
 }
 
 .cart-review h4.modal-title {
-    color: #A61455;
+    color: $lukas-color;
 }
 
 .cart-review button.btn-primary {
     text-align: center;
     outline: none;
-      background-color: #A61455;
+      background-color: $lukas-color;
       color: #fff;
-      border-color: #A61455;
+      border-color: $lukas-color;
       margin-right: 8px;
       border-radius: 5px;
       box-shadow: 0px 10px 20px 0 rgba(236, 28, 36, 0.3);
     &:hover, &:focus {
     text-align: center;
       outline: none;
-      background-color: #A61455;
+      background-color: $lukas-color;
       color: #fff;
-      border-color: #A61455;
+      border-color: $lukas-color;
       border-radius: 5px;
       box-shadow: 0px 10px 20px 0 rgba(236, 28, 36, 0.3);
     }
@@ -368,26 +370,26 @@ select.select-quant {
     padding: 15px;
     display: flex;
     h3 {
-        font-family: poppinsregular;
+        font-family: $poppins-regular;
         font-size: 20px;
         color: #222;
         margin-bottom: 15px;
     }
     p {
         font-size: 14px;
-        font-family: poppinsregular;
+        font-family: $poppins-regular;
         color: rgba(51, 51, 51, 0.5);
     }
     button.btn-botcaps {
         padding: 10px 25px;
-        background-color: #A61455;
+        background-color: $lukas-color;
         color: #fff;
         text-align: center;
         font-weight: bold;
         float: right;
         margin: 35px 0px 0px 0px;
         min-width: 290px;
-        font-family: poppinsbold;
+        font-family: $poppins-bold;
     }
     .icon-float {
         span.notification-circle {
@@ -396,7 +398,7 @@ select.select-quant {
             border-radius: 50%;
             text-align: center;
             position: absolute;
-            background-color: #A61455;
+            background-color: $lukas-color;
             color: #fff;
             top: 18px;
             right: 10px;

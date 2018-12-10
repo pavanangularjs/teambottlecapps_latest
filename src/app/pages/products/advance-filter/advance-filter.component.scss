@@ -1,3 +1,4 @@
+@import "~src/variable.scss";
 
 .seach input {
     width: 100%;
@@ -9,7 +10,7 @@ section.m_bottom{
     margin-bottom: 30px;
 }
 /* .sidebar-menu .sidebar-submenu > li > a:active, .sidebar-menu .sidebar-submenu > li > a:focus {
-    color: #A61455 !important;
+    color: $lukas-color !important;
 } */
 .red_color{
     color: #ff0000;
@@ -40,14 +41,14 @@ select.form-control {
 }
 
 /* .active{
-    color: #A61455 !important;
+    color: $lukas-color !important;
 } */
 /* ul.sidebar-menu li ul.sidebar-submenu > li > a{
-    color: #A61455 !important;   
+    color: $lukas-color !important;   
 } */
 
 /* .sidebar-menu .sidebar-submenu > li > a:active,.sidebar-menu .sidebar-submenu > li > a:focus{
-    color: #A61455 !important;
+    color: $lukas-color !important;
   }  */
 /* li.dropdown-btn .multiselect-dropdown span.dropdown-btn{
     border-radius:0 !important;
@@ -222,7 +223,7 @@ ul.search-history {
       text-decoration: none;
       color: #222;
       font-size: 14px;
-      background-color: #A61455;
+      background-color: $lukas-color;
       color: #fff;
       padding: 5px 10px;
       display: block;
@@ -259,7 +260,7 @@ ul.search-history {
   padding: 5px 10px;
   .product-price {
     font-weight: bolder;
-    color: #A61455;
+    color: $lukas-color;
     font-size: 22px;
     display: block;
   }
@@ -280,14 +281,14 @@ ul.search-history {
 }
 
 h4.left-panel-title a.bottles-brand {
-  color: #A61455;
+  color: $lukas-color;
   &:hover {
-    color: #A61455;
+    color: $lukas-color;
   }
 }
 
 .bottles-brand {
-  color: #A61455;
+  color: $lukas-color;
 }
 
 .myac-icon {
@@ -360,8 +361,8 @@ h4.left-panel-title a.bottles-brand {
     padding-left: 12px;
     border: none;
     float: left;
-    border-left: 5px solid #A61455;
-    font-family: poppinsbold;
+    border-left: 5px solid $lukas-color;
+    font-family: $poppins-bold;
     font-size: 30px !important;
     font-stretch: normal;
     line-height: 1.7;

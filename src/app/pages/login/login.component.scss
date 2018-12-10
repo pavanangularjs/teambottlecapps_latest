@@ -1,12 +1,14 @@
+@import "~src/variable.scss";
+
 form .mandatory{
-    color: #A61455;
+    color: $lukas-color;
 }
  form .form-group .border_radius{
      border-radius: 0px !important;
  }
 button.facebook{
     background-color: #4363a1;
-    font-family: poppinsbold;
+    font-family: $poppins-bold;
     font-size: 10.9px;
     line-height: 2.5;
     letter-spacing: 0.3px;
@@ -21,14 +23,14 @@ button.facebook i{
     padding-right: 5px;
 }
 span.border{
-    border-bottom: 1px solid #A61455;
+    border-bottom: 1px solid $lukas-color;
     padding-bottom: 3px;
 }
 .form-group label{
  margin-bottom: 15px;
 }
 h4.font_size span,form .form-group label.email,form .form-group label.password{
-    font-family: poppinsbold;
+    font-family: $poppins-bold;
     font-size: 14.5px;
     line-height: normal;
     letter-spacing: 0.4px;
@@ -39,7 +41,7 @@ h4.font_size{
     padding: 20px 0 20px;   
 }
 h6.padding_top{
-    font-family: poppinsregular;
+    font-family: $poppins-regular;
     font-size: 12.7px;
     line-height: normal;
     letter-spacing: 0.3px;
@@ -48,7 +50,7 @@ h6.padding_top{
     padding: 10px 0 10px;
 }
 h6.color_text{
-    font-family: poppinsregular;
+    font-family: $poppins-regular;
     font-size: 14.5px;
     line-height: normal;
     letter-spacing: 0.4px;
@@ -57,20 +59,20 @@ h6.color_text{
     color: #666666;
 }
 h5.color{
-    font-family: poppinsregular;
+    font-family: $poppins-regular;
     font-size: 14.5px;
     font-stretch: normal;
     line-height: 1.88;
     letter-spacing: 0.4px;
     text-align: left;
-    color: #A61455;
+    color: $lukas-color;
     cursor: pointer;
   }
   h5.color:focus{
       outline: none;
   }
   .checkbox label{
-    font-family: poppinsregular;
+    font-family: $poppins-regular;
     font-size: 14.5px;
     font-stretch: normal;
     line-height: 1.88;
@@ -79,8 +81,8 @@ h5.color{
     color: #666666;
   }
   button.submit{
-    background-color: #A61455;
-    font-family: poppinsbold;
+    background-color: $lukas-color;
+    font-family: $poppins-bold;
     font-size: 12.7px;
     font-stretch: normal;
     line-height: normal;
@@ -91,12 +93,12 @@ h5.color{
     border-radius: 0px;
     width:128px;
     text-align: center;
-    border: #A61455;
+    border: $lukas-color;
     box-shadow: none;
  
   }
   button.submit:focus{
-      border:#A61455;
+      border:$lukas-color;
       outline: none;
   }
 section.padding_top{

@@ -1,3 +1,5 @@
+@import "~src/variable.scss";
+
 .bottle-panel-container {
   border: solid 1px #e5e5e5 !important;
   border-radius: 2px !important;
@@ -99,7 +101,7 @@ ul.search-history {
       text-decoration: none;
       color: #222;
       font-size: 14px;
-      background-color: #A61455;
+      background-color: $lukas-color;
       color: #fff;
       padding: 5px 10px;
       display: block;
@@ -136,7 +138,7 @@ ul.search-history {
   padding: 5px 10px;
   .product-price {
     font-weight: bolder;
-    color: #A61455;
+    color: $lukas-color;
     font-size: 22px;
     display: block;
   }
@@ -157,14 +159,14 @@ ul.search-history {
 }
 
 h4.left-panel-title a.bottles-brand {
-  color: #A61455;
+  color: $lukas-color;
   &:hover {
-    color: #A61455;
+    color: $lukas-color;
   }
 }
 
 .bottles-brand {
-  color: #A61455;
+  color: $lukas-color;
 }
 
 .myac-icon {

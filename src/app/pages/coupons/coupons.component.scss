@@ -1,9 +1,11 @@
+@import "~src/variable.scss";
+
 .coupon-tile {
   margin-top: 20px;
   background-position: bottom;
   height: 100%;
   h4, span.highlight {
-    color: #A61455;
+    color: $lukas-color;
   }
   .img-container {
     border-top-right-radius: 5px;

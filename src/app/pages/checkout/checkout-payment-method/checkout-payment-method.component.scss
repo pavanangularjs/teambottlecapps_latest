@@ -1,3 +1,5 @@
+@import "~src/variable.scss";
+
 .payment-method {
   margin-top: 15px;
   margin-bottom: 15px;
@@ -24,7 +26,7 @@
   }
   .payment-option-select a.pay-opt-1{
     font-size: 20px;
-    color: #A61455;
+    color: $lukas-color;
   }
 
   .payment-option-select a{
@@ -32,7 +34,7 @@
   }
   .payment-option-select a:hover,
   .payment-option-select a.active{
-      color: #A61455;
+      color: $lukas-color;
       text-decoration: none;
   }
 
@@ -42,7 +44,7 @@
       margin-top: 10px;
   span.payonline {
       font-size: 15px;
-      font-family: poppinsbold;
+      font-family: $poppins-bold;
       vertical-align: middle;
     }
   }
@@ -63,7 +65,7 @@
 
 .check-icon-payment-container .checkout-icon-style {
   font-size: 26px;
-  color: #A61455;
+  color: $lukas-color;
   position: absolute;
   top: 8px;
   left: 0px;
@@ -79,7 +81,7 @@
       }
       span.fa:hover {
         font-size: 24px;
-        color: #A61455;
+        color: $lukas-color;
       }
     }
     vertical-align: text-top;
@@ -92,7 +94,7 @@
     }
   }
   a.new-payment-mode {
-    font-family: poppinsregular;
+    font-family: $poppins-regular;
     padding: 10px;
     text-align: center;
     border: dashed 1px #a8a8a8;
@@ -103,8 +105,8 @@
     &:hover {
       padding: 10px;
       text-align: center;
-      border: dashed 1px #A61455;
-      color: #A61455;
+      border: dashed 1px $lukas-color;
+      color: $lukas-color;
       width: 100%;
       display: block;
       text-decoration: none;
@@ -116,11 +118,11 @@
   a {
     &.pay-opt-1 {
       font-size: 20px;
-      color: #A61455;
+      color: $lukas-color;
     }
     color: #222;
     &:hover, &.active {
-      color: #A61455;
+      color: $lukas-color;
       text-decoration: none;
     }
   }
@@ -141,9 +143,9 @@
   }
 }
 .checkout-dotted-btn {
-  font-family: poppinsregular;
+  font-family: $poppins-regular;
 }
 
 .text-muted, .checkout-content  {
-  font-family: poppinsregular;
+  font-family: $poppins-regular;
 }

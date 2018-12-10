@@ -4,23 +4,24 @@
 
       <div class="margin_bottom">
         <div class="sale-tag" *ngIf="item?.OfferType === 'SALE'">
-            <img [src]="item?.OfferIcon" class="img-responsive">
+          <img [src]="item?.OfferIcon" class="img-responsive">
         </div>
-        <img class="firimg" (click)="favoriteProductUpdate(true)" src="assets/Images/favorites.png" *ngIf="item?.IsFavorite===false; else favActive"/>
+
+        <i class="icon icon-favorites" (click)="favoriteProductUpdate(true)" *ngIf="item?.IsFavorite===false; else favActive"></i>
         <ng-template #favActive>
-            <img class="firimg" (click)="favoriteProductUpdate(false)" src="assets/Images/favorites-active.png">
-        </ng-template>       
-        <a routerLink="/product-details/{{item.PID}}"><img class="second_img" src="{{item?.ProductImg}}" /></a>
-        <img class="third_img" (click)="addToCart(item)" src="assets/Images/add-cart.png" *ngIf="item?.InCart===0; else cartActive"/>
-        <ng-template #cartActive>
-            <img class="third_img" (click)="removeFromCart(item)" src="assets/Images/add-cart-active.png"/>
+          <i class="icon icon-favorites active" (click)="favoriteProductUpdate(false)"></i>
         </ng-template>
-        
+        <a routerLink="/product-details/{{item.PID}}"><img class="second_img" src="{{item?.ProductImg}}" /></a>
+        <i class="icon icon-add-cart" (click)="addToCart(item)" *ngIf="item?.InCart===0; else cartActive"></i>
+        <ng-template #cartActive>
+          <i class="icon icon-add-cart active" (click)="removeFromCart(item)"></i>
+        </ng-template>
+
       </div>
       <div class="second_content" routerLink="/product-details/{{item.PID}}">
         <div class="">
           <p class="strike_text" *ngIf="item?.PriceDisplay !== item?.OfferPriceDisplay">{{item?.PriceDisplay}}</p>
-          <p class="price">{{item?.OfferPriceDisplay}}</p>  
+          <p class="price">{{item?.OfferPriceDisplay}}</p>
           <h5 class="productname">{{item?.ProductName}}</h5>
           <p class="product_size">
             <span>{{item?.Size}}</span>

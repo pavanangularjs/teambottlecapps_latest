@@ -2,7 +2,7 @@
   margin-right: 0px;
   float: right;
   .searchby {
-  	width: 260px;
+    width: 260px;
     .search-btn {
       .btn {
         width: 35px;
@@ -12,6 +12,12 @@
         border-bottom-right-radius: 5px;
         line-height: 20px;
         top: -3px;
+        text-align: center;
+          .icon {
+            color: #fff;
+            width: 20px;
+            margin-left: -5px;
+          }
       }
       position: absolute;
       right: 0;

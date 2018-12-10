@@ -1,3 +1,4 @@
+@import "~src/variable.scss";
 
 #mask {
     position: absolute; 
@@ -26,7 +27,7 @@
     height: auto;
     padding: 10px;
     background-color: #f0f0f1;
-    font-family: montserratregular;
+    font-family: $montserrat-regular;
     font-size: 15pt;
     margin: 0 auto;
   }
@@ -40,7 +41,7 @@
   }
 
   .modal-body p.font{
-  font-family: montserratregular;
+  font-family: $montserrat-regular;
   font-size: 12px;
   font-stretch: normal;
   line-height: 1.5;
@@ -49,7 +50,7 @@
   color: #222222;
   }
   .modal-body h4.bold{
-    font-family: montserratbold;
+    font-family: $montserrat-bold;
     font-size: 16px;
     font-stretch: normal;
     line-height: 1.13;
@@ -67,7 +68,7 @@
   }
   .modal-footer p{
       text-align: center;
-      font-family: montserratregular;
+      font-family: $montserrat-regular;
       font-size: 12px;
       font-stretch: normal;
       line-height: 2;
@@ -79,24 +80,24 @@
 }
 
   .modal-body h2.popins_bold{
-    font-family: poppinsbold;
+    font-family: $poppins-bold;
     font-size: 48px;
     font-stretch: normal;
     line-height: 0.38;
     letter-spacing: normal;
     text-align: center;
-    color: #A61455;
+    color: $lukas-color;
     padding-bottom: 30px;
   }
 
   .modal-body h2.popins_bold-2{
-    font-family: poppinsbold;
+    font-family: $poppins-bold;
     font-size: 48px;
     font-stretch: normal;
     line-height: 0.38;
     letter-spacing: normal;
     text-align: center;
-    color: #A61455;
+    color: $lukas-color;
     padding-bottom: 0px;
   }
 
@@ -105,7 +106,7 @@
       color:#fff;
       padding: 10px 25px;
       box-shadow: 0px 10px 20px 0 rgba(166, 20, 85, 0.2);
-      font-family: montserratbold;
+      font-family: $montserrat-bold;
       font-size: 11.2px;
       font-stretch: normal;
       line-height: normal;
@@ -116,9 +117,9 @@
   }
   .modal-body button.close,
   .modal-footer button.close{
-    background-color: #A61455 !important;
+    background-color: $lukas-color !important;
     box-shadow: 0px 10px 20px 0 rgba(166, 20, 85, 0.2);
-    font-family: montserratbold;
+    font-family: $montserrat-bold;
     font-size: 11.2px;
     font-stretch: normal;
     line-height: normal;

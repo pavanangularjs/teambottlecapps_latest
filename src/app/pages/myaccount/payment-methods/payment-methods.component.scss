@@ -1,17 +1,17 @@
-
+@import "~src/variable.scss";
 
   .add-new-address a {
     h4.address-heading {
       background-color: #f4f4f4;
       padding: 10px 20px 10px 20px;
-      color: #A61455;
+      color: $lukas-color;
     }
     &.bottles-brand {
       text-decoration: none;
-      color: #A61455;
+      color: $lukas-color;
       &:hover {
         text-decoration: none;
-        color: #A61455;
+        color: $lukas-color;
       }
     }
   }
@@ -38,7 +38,7 @@
         position: absolute;
         right: 10px;
         &:hover {
-          color: #A61455;
+          color: $lukas-color;
         }
       }
     }
@@ -52,9 +52,9 @@
   }
   
   .bottles-brand {
-    color: #A61455;
+    color: $lukas-color;
     &:hover {
-      color: #A61455;
+      color: $lukas-color;
       text-decoration: none;
     }
   }

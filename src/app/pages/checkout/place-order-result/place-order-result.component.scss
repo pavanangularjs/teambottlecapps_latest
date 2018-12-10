@@ -1,10 +1,11 @@
+@import "~src/variable.scss";
 
 .success-failed-order-section {
     margin: 0px auto 15px auto;
     display: block;
     .order-details-section {
         h2 {
-            font-family: poppinsbold;
+            font-family: $poppins-bold;
             font-size: 32px;
             color: #333;
             display: block;
@@ -14,7 +15,7 @@
             margin-top: 0px;
         }
         h4 {
-            font-family: poppinsregular;
+            font-family: $poppins-regular;
             font-size: 20px;
             color: #333;
             display: block;
@@ -26,7 +27,7 @@
     }
     .success-order-section {
         h2 {
-            font-family: montserratbold;
+            font-family: $montserrat-bold;
             font-size: 38px;
             color: #027923;
             display: block;
@@ -35,7 +36,7 @@
             letter-spacing: 0.6px;
         }
         h4 {
-            font-family: poppinsregular;
+            font-family: $poppins-regular;
             font-size: 18px;
             color: #333;
             display: block;
@@ -45,7 +46,7 @@
     }
     .failed-order-section {
         h2 {
-            font-family: montserratbold;
+            font-family: $montserrat-bold;
             font-size: 38px;
             color: #ed0000;
             display: block;
@@ -53,7 +54,7 @@
             letter-spacing: 0.6px;
         }
         h4 {
-            font-family: poppinsregular;
+            font-family: $poppins-regular;
             font-size: 18px;
             color: #333;
             display: block;
@@ -63,11 +64,11 @@
     }
 
     button.continue-shop {
-        font-family: poppinsregular !important;
+        font-family: $poppins-regular !important;
         outline: none;
-        background-color: #A61455;
+        background-color: $lukas-color;
         color: #fff !important;
-        border-color: #A61455;
+        border-color: $lukas-color;
         padding: 10px 50px;
         margin-top: 15px;
         margin-bottom: 15px;

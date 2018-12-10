@@ -1,5 +1,11 @@
+@import "~src/variable.scss";
+
 @import "~bootstrap3/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.min.css";
+
+@import "assets/fontello-css/fontello-codes.css";
+@import "assets/fontello-css/fontello-embedded.css";
+@import "assets/fontello-css/fontello.css";
 
 body {
     margin-top: 60px;
@@ -27,7 +33,7 @@ body {
     padding-left: 12px;
     border: none;
     float: left;
-    border-left: 5px solid #A61455;
+    border-left: 5px solid $lukas-color;
     font-family:poppinsbold;
     font-size: 20px;
     font-stretch: normal;
@@ -78,7 +84,7 @@ font-family: poppinsregular;
  
     .fixed {
     position: fixed;
-    background: #A61455 !important;
+    background: $lukas-color !important;
     top: -5px;
     left: 0;
     width: 100%;
@@ -176,7 +182,7 @@ color: rgba(255,255,255,255) !important;
     padding-left: 12px;
     border: none;
     float: left;
-    border-left: 5px solid #A61455;
+    border-left: 5px solid $lukas-color;
     font-family: poppinsbold;
     font-size: 20px !important;
     font-stretch: normal;
@@ -251,7 +257,7 @@ table tr td .img_div{
     width:100%;
 }
 .checked{
-    color: #A61455!important;
+    color: $lukas-color!important;
 }
 
 .second_content{
@@ -286,7 +292,7 @@ table tr td .img_div{
     line-height: normal;
     letter-spacing: normal;
     text-align: left;
-    color: #A61455;
+    color: $lukas-color;
     margin: 0;
     position: relative;
     top: 0px;
@@ -503,16 +509,16 @@ nav .navbar-nav ul li a{
 }
 
 .multiselect-item-checkbox input[type=checkbox]:checked + div:before{
-    background: #A61455 !important;  
+    background: $lukas-color !important;  
 }
 
 .multiselect-item-checkbox input[type=checkbox] + div:before{
-    border: 2px solid #A61455 !important;
+    border: 2px solid $lukas-color !important;
 }
 
 .multiselect-dropdown .dropdown-btn .selected-item {
-    border: 1px solid #A61455 !important;
-    background: #A61455 !important;
+    border: 1px solid $lukas-color !important;
+    background: $lukas-color !important;
 }
 
 /* .multiselect-dropdown .dropdown-btn{
@@ -552,7 +558,7 @@ nav .navbar-nav ul li a{
 } 
 
 .sidebar-menu .sidebar-submenu > li > a{
-    color: #A61455 !important;   
+    color: $lukas-color !important;   
 }
 
 section.m_bottom{
@@ -567,7 +573,7 @@ section.m_bottom{
 /*  Login Css  */
 
 form .mandatory{
-    color: #A61455;
+    color: $lukas-color;
 }
  form .form-group .border_radius{
      border-radius: 0px !important;
@@ -589,7 +595,7 @@ button.facebook i{
     padding-right: 5px;
 }
 span.border{
-    border-bottom: 1px solid #A61455;
+    border-bottom: 1px solid $lukas-color;
     padding-bottom: 3px;
 }
 .form-group label{
@@ -631,7 +637,7 @@ h5.color{
     line-height: 1.88;
     letter-spacing: 0.4px;
     text-align: left;
-    color: #A61455;
+    color: $lukas-color;
     cursor: pointer;
   }
   h5.color:focus{
@@ -647,7 +653,7 @@ h5.color{
     color: #666666;
   }
   button.submit{
-    background-color: #A61455;
+    background-color: $lukas-color;
     font-family: poppinsbold;
     font-size: 12.7px;
     font-stretch: normal;
@@ -659,12 +665,12 @@ h5.color{
     border-radius: 0px;
     width:128px;
     text-align: center;
-    border: #A61455;
+    border: $lukas-color;
     box-shadow: none;
  
   }
   button.submit:focus{
-      border:#A61455;
+      border:$lukas-color;
       outline: none;
   }
 section.padding_top{
@@ -744,7 +750,7 @@ ul.navbar-nav {
     margin-left: 0px;
 }
 ul.user-menu li.star_color i.fa-star{
-    color: #A61455;
+    color: $lukas-color;
     font-size: 22px;
     margin-right: 10px !important;
 }
@@ -807,7 +813,7 @@ ul.float_right,.fixed ul.float_right  {
 } */
 
 .active{
-    color:#A61455 !important;
+    color:$lukas-color !important;
 }
 .padding_left {
     padding-left: 0px;
@@ -842,7 +848,7 @@ ul.float_right li a{
   line-height: normal;
   letter-spacing: normal;
   text-align: left;
-  color: #A61455 !important;
+  color: $lukas-color !important;
   /* position: relative;
   bottom: 10px; */
   margin-left: 6px;
@@ -909,7 +915,7 @@ nav ul.navbar-nav li a{
     box-shadow: none;
 }
 .fixed .input-group button {
-    background-color: #A61455 !important;
+    background-color: $lukas-color !important;
     margin-left: -3px !important;
     /* margin-top: 1px !important; */
 }
@@ -917,14 +923,14 @@ nav ul.navbar-nav li a{
     width:10%;
 }
  .input-group button {
-    background-color: #A61455 !important;
+    background-color: $lukas-color !important;
     border-radius: 0;
     margin-left: -3px !important;
     /* margin-top: 1px !important; */
 }
 .input-group button:focus {
     outline: none;
-    background-color: #A61455 !important;
+    background-color: $lukas-color !important;
     border-radius: 0;
     margin-left: -3px !important;
 }
@@ -950,11 +956,11 @@ nav ul.navbar-nav li a{
 }
 
 .navbar .dropdown:hover .dropdown-toggle{
-   color: #A61455; 
+   color: $lukas-color; 
 }
 
 ul.navbar-nav li a:hover {
-    color: #A61455; 
+    color: $lukas-color; 
  }
 
 .collapse{
@@ -1182,7 +1188,7 @@ ul.navbar-nav li a:hover {
        margin-right: 10px;
    }
     .btn_right button.filer_go{
-        background: #A61455;
+        background: $lukas-color;
         font-family: montserratbold;
         font-size: 11.2px;
         font-style: normal;
@@ -1194,7 +1200,7 @@ ul.navbar-nav li a:hover {
         width: 131px;
         text-align: center;
         padding: 12px 0 12px; 
-        border:#A61455;
+        border:$lukas-color;
         box-shadow: none;
     }
     .btn_right button.clear{
@@ -1206,7 +1212,7 @@ ul.navbar-nav li a:hover {
         font-size: 11.2px;
     }
     .btn_right button:focus{
-        border:#A61455;
+        border:$lukas-color;
         outline: none;
         box-shadow: none;
     }
@@ -1214,7 +1220,7 @@ ul.navbar-nav li a:hover {
 
 
 ul li.star_color i.fa-star{
-    color: #A61455;
+    color: $lukas-color;
 }
 
 .border_bottom{
@@ -1417,6 +1423,7 @@ button {
 
 .rating-stars span a {
     margin-right: 3px;
+    color: #777;
 }
 
 ul.float_right span a {
@@ -1463,12 +1470,12 @@ nav ul.user-menu li {
     }
           
           .pagination>li>a, .pagination>li>span {
-                color: #A61455;
+                color: $lukas-color;
                 font-family: poppinsregular;
               }
             .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
-              background-color: #A61455;
-              border-color: #A61455;
+              background-color: $lukas-color;
+              border-color: $lukas-color;
               color: #fff;
               font-family: poppinsbold;
             }
@@ -1476,13 +1483,13 @@ nav ul.user-menu li {
               color: #ccc;
             }
             .pagination>li>a, .pagination>li>span {
-              color: #A61455;
+              color: $lukas-color;
             }
 
             .pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover {
               color: #fff;
-              background-color: #A61455;
-              border-color: #A61455;
+              background-color: $lukas-color;
+              border-color: $lukas-color;
               font-family: poppinsregular;
             }
 }
@@ -1556,14 +1563,14 @@ select.form-control {
     top: 0px;
     width: 7px;
     height: 13px;
-    border: solid #A61455;
+    border: solid $lukas-color;
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
   label.active {
-    color: #A61455;
+    color: $lukas-color;
   }
 }
 /*Login page*/
@@ -1593,7 +1600,7 @@ select.form-control {
     top: 0px;
     width: 7px;
     height: 13px;
-    border: solid #A61455;
+    border: solid $lukas-color;
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
@@ -1642,7 +1649,7 @@ select.form-control {
     top: 0px;
     width: 7px;
     height: 13px;
-    border: solid #A61455;
+    border: solid $lukas-color;
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
@@ -1659,7 +1666,7 @@ select.form-control {
 
 .radiobox input:checked ~ .checkmark {
     background-color: transparent;
-    border: solid #A61455;
+    border: solid $lukas-color;
     /*border-width: 0 3px 3px 0;*/
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
@@ -1669,4 +1676,28 @@ select.form-control {
 
 .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
     background-color: transparent;
+}
+
+/* ICON  Styles*/
+
+i.icon-favorites {
+    font-size: 26px;
+    color: #777;
+}
+
+i.icon-add-cart {
+    font-size: 32px;
+    color: #777;
+}
+
+i.active {
+    color: $lukas-color;
+}
+
+a img.second_img {
+    margin: 0 5% !important;
+}
+
+.pro-detail {
+    margin-right: 10px;
 }

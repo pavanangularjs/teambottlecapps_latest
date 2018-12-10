@@ -1,3 +1,4 @@
+@import "~src/variable.scss";
 
 .reviews {
 	width: 100%;
@@ -11,7 +12,7 @@
 	    	color: #fff;
 		    font-size: 16px;
 		    position: absolute;
-		    background-color: #A61455;
+		    background-color: $lukas-color;
 		    border-radius: 50%;
 		    text-align: center;
 		    padding: 10px;
@@ -50,7 +51,7 @@
 				font-size: 14px;
 				color: #222;
 				font-weight: 700;
-				font-family: poppinsregular;
+				font-family: $poppins-regular;
 
 			}
 			.caption {
