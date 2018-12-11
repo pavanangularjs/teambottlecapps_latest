@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomerService } from '../../../services/customer.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -11,19 +11,23 @@ import { ToastrService } from 'ngx-toastr';
 export class ProfileEditComponent implements OnInit {
   profile: any;
   profileImage: string;
+  submitted = false;
 
   formEditProfile: FormGroup;
-  constructor(private customerService: CustomerService, private router: Router,
-    private toastr: ToastrService) {
+  constructor(
+    private customerService: CustomerService,
+    private router: Router,
+    private toastr: ToastrService,
+    private formBuilder: FormBuilder) {
 
-    this.formEditProfile = new FormGroup({
-      pFirstName: new FormControl('', [Validators.required]),
-      pLastName: new FormControl(''),
-      pContactNo: new FormControl('', [Validators.required]),
-      pEmail: new FormControl('', [Validators.required, Validators.email]),
-      pDOB: new FormControl(''),
-      pGender: new FormControl('', [Validators.required]),
-      pImage: new FormControl(''),
+    this.formEditProfile = this.formBuilder.group({
+      pFirstName: ['', [Validators.required]],
+      pLastName: ['', []],
+      pContactNo: ['', [Validators.required]],
+      pEmail: ['', [Validators.required, Validators.email]],
+      pDOB: ['', []],
+      pGender: ['', [Validators.required]],
+      pImage: ['', []]
     });
 
     this.customerService.getProfileDetails().subscribe(
@@ -41,16 +45,19 @@ export class ProfileEditComponent implements OnInit {
   }
 
   initializeProfile() {
-    this.formEditProfile = new FormGroup({
-      pFirstName: new FormControl(this.profile.FirstName, [Validators.required]),
-      pLastName: new FormControl(this.profile.LastName),
-      pContactNo: new FormControl(this.profile.ContactNo, [Validators.required]),
-      pEmail: new FormControl(this.profile.EmailId, [Validators.required, Validators.email]),
-      pDOB: new FormControl(this.profile.DOBDt),
-      pGender: new FormControl(this.profile.Gender, [Validators.required]),
-      pImage: new FormControl(this.profile.ProfileImage),
+    this.formEditProfile = this.formBuilder.group({
+      pFirstName: [this.profile.FirstName, [Validators.required]],
+      pLastName: [this.profile.LastName, []],
+      pContactNo: [this.profile.ContactNo, [Validators.required]],
+      pEmail: [this.profile.EmailId, [Validators.required, Validators.email]],
+      pDOB: [this.profile.DOBDt, []],
+      pGender: [this.profile.Gender, []],
+      pImage: [this.profile.ProfileImage, []]
     });
   }
+
+  // convenience getter for easy access to form fields
+  get f() { return this.formEditProfile.controls; }
 
   uploadPicture(fileInput) {
     if (fileInput.target.files && fileInput.target.files[0]) {
@@ -63,6 +70,14 @@ export class ProfileEditComponent implements OnInit {
   }
 
   onProfileUpdate() {
+
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.formEditProfile.invalid) {
+      return;
+    }
+
     const profile = {
       FirstName: '', LastName: '', EmailId: '',
       ContactNo: '', DOB: '', Gender: '', UserIpAddress: '', ProfileImage: '',
@@ -81,6 +96,9 @@ export class ProfileEditComponent implements OnInit {
 
     this.customerService.updateCustomerProfile(profile).subscribe(
       (res) => {
+        if (res) {
+          this.toastr.success(res.SuccessMessage);
+        }
         this.router.navigate(['myaccount/profile']);
       });
 

@@ -31,8 +31,10 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="text-uppercase">First Name <span>*</span>
-                                            <input type="text" formControlName="pFirstName" class="form-control"
-                                                placeholder="First Name" />
+                                            <input type="text" formControlName="pFirstName" class="form-control" placeholder="First Name" />
+                                            <div *ngIf="submitted && f.pFirstName.errors" class="alert alert-danger">
+                                                <div *ngIf="f.pFirstName.errors.required">FirstName is required.</div>
+                                              </div>
                                         </label>
                                     </div>
                                 </div>
@@ -49,16 +51,21 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="text-uppercase">Phone Number <span>*</span>
-                                            <input type="text" formControlName="pContactNo" class="form-control"
-                                                placeholder="Phone Number" />
+                                            <input type="text" formControlName="pContactNo" class="form-control" placeholder="Phone Number" />
+                                            <div *ngIf="submitted && f.pContactNo.errors" class="alert alert-danger">
+                                                <div *ngIf="f.pContactNo.errors.required">Phone Number is required.</div>
+                                            </div>
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="text-uppercase">Email
-                                            <input type="email" formControlName="pEmail" class="form-control"
-                                                placeholder="Email" />
+                                        <label class="text-uppercase">E-Mail <span>*</span>
+                                            <input type="email" formControlName="pEmail" class="form-control" placeholder="Email" />
+                                            <div *ngIf="submitted && f.pEmail.errors" class="alert alert-danger">
+                                                <div *ngIf="f.pEmail.errors.required">E-Mail is required.</div>
+                                                <div *ngIf="f.pEmail.errors.email">E-Mail must be a valid email address</div>
+                                            </div>
                                         </label>
                                     </div>
                                 </div>
