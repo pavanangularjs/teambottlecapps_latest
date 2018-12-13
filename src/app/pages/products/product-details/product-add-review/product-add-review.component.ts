@@ -43,6 +43,12 @@ export class ProductAddReviewComponent implements OnInit {
       this.router.navigate(['/login']);
       return;
     }
+
+    if (this.rating === 0) {
+      this.toastr.error('Please Add Rating');
+      return;
+    }
+
     // this.spinnerService.show();
     this.progressBarService.show();
     const title = this.formAddProductReview.get('rTitle').value;

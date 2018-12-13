@@ -14,8 +14,8 @@
                                 <div class="address-captions">
                                     <a href="https://www.google.com/maps/place/{{storeDetails?.Latitude}},{{storeDetails?.Longitude}}"
                                         target="_blank">
-                                        {{storeDetails?.Address1}}
-                                        <span *ngIf="storeDetails?.Address2"> {{storeDetails?.Address2}}</span>
+                                        {{storeDetails?.Address1}},
+                                        <span *ngIf="storeDetails?.Address2"> {{storeDetails?.Address2}}, </span>
                                         <span> {{storeDetails?.City}}, {{storeDetails?.State}} {{storeDetails?.Zip}}
                                         </span>
                                     </a>
