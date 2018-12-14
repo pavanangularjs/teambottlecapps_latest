@@ -1,5 +1,119 @@
+<div class="container visible-xs visible-sm hidden-md hidden-lg">
+  <div class="row">
+      <div class="input-group searchby visible-xs visible-sm hidden-md hidden-lg">
+        <input type="text" class="form-control" name="search" [(ngModel)]="searchText" placeholder="Find Your Drink...">
+          <div class="search-btn">
+              <button type="button" class="btn btn-primaray" (click)="searchByText()" >
+                  <!-- <img src="assets/Images/search.png"> -->
+                  <i class="icon icon-search"></i>
+              </button>
+          </div>
+    </div>
+
+    <div class="m-menu-tabs">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+          <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+            <img src="../assets/Images/beer-m.png" class="img-responsive">
+          </a>
+        </li>
+        <li role="presentation">
+            <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+              <img src="../assets/Images/liquor-m.png" class="img-responsive">
+            </a>
+        </li>
+        <li role="presentation">
+            <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">
+              <img src="../assets/Images/wine-m.png" class="img-responsive">
+            </a>
+        </li>
+        <li role="presentation">
+            <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">
+              <img src="../assets/Images/mixer-more.png" class="img-responsive">
+            </a>
+        </li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content m-tab-section">
+        <div role="tabpanel" class="tab-pane m-tab-content active" id="home">
+            <div [ngClass]="allVarietals && allVarietals.length > 0 ? 'col-md-3' : 'col-xs-6'">
+              <span class="text-uppercase text-white">TYPE</span>
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <input type="checkbox" [(ngModel)]="isCheckAllTypes"
+                  (change)="selectAllTypes(isCheckAllTypes)" /> <span class="checkmark"></span> <label> All </label>
+                </li>
+                <li class="nav-item" *ngFor="let type of allFilters?.type">
+                  <input [(ngModel)]="type.isSelected" type="checkbox" name="{{type.value}}" id="{{type.value}}" (change)="onTypeSelectionChange(type)"/>
+                  <span class="checkmark"></span> <label for="{{type.value}}" class="active"> {{type.value}} </label>
+                </li>
+              </ul>
+            </div>
+
+            <!-- <div [ngClass]="allVarietals && allVarietals.length > 0 ? 'col-md-3' : 'col-md-4'">
+              <ul class="nav flex-column">
+                <span class="text-uppercase text-white">SIZE</span>
+                <li class="nav-item">
+                  <input type="checkbox" [(ngModel)]="isCheckAllSizes"
+                  (change)="selectAllSizes(isCheckAllSizes)"/> <span class="checkmark"></span><label> All </label>
+                </li>
+                <li class="nav-item" *ngFor="let size of allFilters?.size">
+                    <input [(ngModel)]="size.isSelected" type="checkbox" name="{{size.value}}" id="{{size.value}}"/>
+                    <span class="checkmark"></span> <label for="{{size.value}}"> {{size.value}} </label>
+                  </li>
+              </ul>
+            </div>
+
+            <div class="col-md-3" *ngIf="allVarietals && allVarietals.length > 0">
+              <ul class="nav flex-column">
+                <span class="text-uppercase text-white">VARIETAL</span>
+                <li class="nav-item">
+                  <input type="checkbox" [(ngModel)]="isCheckAllVarietals"
+                  (change)="selectAllVarietals(isCheckAllVarietals)"/> <span class="checkmark"></span> <label> All </label>
+                </li>
+                <li class="nav-item" *ngFor="let varietal of allVarietals">
+                    <input [(ngModel)]="varietal.isSelected" type="checkbox" name="{{varietal.value}}" id="{{varietal.value}}"/>
+                    <span class="checkmark"></span> <label for="{{varietal.value}}"> {{varietal.value}} </label>
+                  </li>
+              </ul>
+            </div> -->
+
+            <div [ngClass]="allVarietals && allVarietals.length > 0 ? 'col-md-3' : 'col-xs-6'">
+              <ul class="nav flex-column">
+                <span class="text-uppercase text-white">PRICE</span>
+                <li class="nav-item">
+                  <input type="checkbox" [(ngModel)]="isCheckAllPrices"
+                  (change)="selectAllPrices(isCheckAllPrices)"/> <span class="checkmark"></span> <label> All </label>
+                </li>
+                <li class="nav-item" *ngFor="let range of allFilters?.price">
+                    <input [(ngModel)]="range.isSelected" type="checkbox" name="{{range.value}}" id="{{range.value}}"/>
+                    <span class="checkmark"></span> <label for="{{range.value}}"> {{range.value}} </label>
+                  </li>
+              </ul>
+            </div>
+            <div class="btn_right">
+              <button class="btn btn-default clear" (click)="clearAll()">Clear All</button>
+              <button class="btn btn-default filer_go" (click)="applyFilter()" >Filter & Go</button>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane m-tab-content" id="profile">
+            Profile
+        </div>
+        <div role="tabpanel" class="tab-pane m-tab-content" id="messages">
+            Messages
+        </div>
+        <div role="tabpanel" class="tab-pane m-tab-content" id="settings">
+          Settings
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 <div class="container">
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <div id="myCarousel" class="carousel slide row" data-ride="carousel">
     <!-- <ol class="carousel-indicators">
       <li data-target="#myCarousel"   [ngClass]="{'active' : i == 0}" *ngFor="let event of eventList; let i = index"></li>
     </ol> -->

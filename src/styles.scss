@@ -429,7 +429,7 @@ nav .navbar-nav ul li a{
 
 
     .img_div{
-        margin-right: 10px;
+        margin-right: 0px;
     }
     .Product_name h5,table.res_table tr thead th{
         font-size: 7px !important;
@@ -1700,4 +1700,93 @@ a img.second_img {
 
 .pro-detail {
     margin-right: 10px;
+}
+
+   /* M Header */
+@media only screen and (max-width: 1024px) {
+   .m-header {
+    width: 100%;
+   }
+   .carousel-inner.carousel-block {
+    min-height: auto !important;
+    height: auto;
+   }
+   a.left.carousel-control,
+   a.right.carousel-control {
+    width: 8%;
+    top: 37% !important;
+   }
+   nav ul.float_right li {
+    display: inline-block !important;
+   }
+   .navbar-header {
+    width: 25%;
+    float: left;
+   }
+   nav ul.float_right {
+    width: auto;
+    margin: 0;
+    padding: 0px;
+    float: right !important;
+   }
+   button.m-menu {
+    background-color: transparent !important;
+    border: transparent;
+    color: #777;
+    font-size: 22px;
+    padding: 4px 5px;
+    margin: 0px 5px 0px 0px !important;
+    &:focus {
+        padding: 4px 5px !important;
+        margin: 0px 5px 0px 0px !important;
+    }
+   }
+   .header_icon i.search-icon {
+    font-size: 14px !important;
+   }
+   .float_right li.text_small.search-dropmenu:hover:after {
+      content: " ";
+      position: absolute;
+      left: 50% !important;
+      opacity: 1;
+      margin: 0 auto;
+      bottom: -9px;
+      border: 18px solid transparent;
+      border-bottom-color: #FFF;
+      -ms-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+      z-index: 9999;
+    }
+    .float_right li.text_small.store-dropmenu:hover:after {
+      content: " ";
+      position: absolute;
+      left: 75% !important;
+      opacity: 1;
+      margin: 0 auto;
+      bottom: -9px;
+      border: 18px solid transparent;
+      border-bottom-color: #FFF;
+      -ms-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+      z-index: 9999;
+    }
+    .search-dropmenu {
+        font-family: poppinsregular;
+          h6 {
+            color: $lukas-color;
+            padding: 0px;
+            margin: 0px;
+            font-size: 14px;
+            font-family: montserratbold;
+          }
+          small {
+            font-size: 12px;
+            font-family: poppinsregular;
+          }
+    }
+    .user-menu.user-m-menu li {
+        display: block !important;
+      }
 }

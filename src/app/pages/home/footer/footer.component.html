@@ -1,7 +1,7 @@
 <footer>
     <div class="container" *ngIf="storeDetails">
         <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img footer_image">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 item_img footer_image">
                 <div class="margin_left">
                     <address class="storelocation" *ngIf="storeDetails">
                         <h4 class="f-h4">{{storeDetails?.StoreName}}</h4>
@@ -49,6 +49,7 @@
 
                 </div>
             </div>
+
             <div class="about col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img aboutus">
                 <h4 class="font_size">About</h4>
                 <ul class="list-unstyled clear-margins">
@@ -70,7 +71,7 @@
                 </ul>
             </div>
 
-            <div class="information col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img">
+            <div class="information col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img hours">
                 <h4 class="font_size">Hours</h4>
                 <ul class="list-unstyled clear-margins">
                     <li *ngFor="let time of storeDetails?.ListStoreTime">
@@ -79,7 +80,7 @@
                 </ul>
             </div>
 
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img">
+            <div class="col-lg-3 col-md-3 col-sm-3 item_img payments hidden-xs hidden-sm visible-lg visible-md">
                 <h4 class="font_size Subscribe">Payment options</h4>
                 <div class="cards">
                     <ul class="pull-left">
@@ -100,6 +101,29 @@
                 </div>
             </div>
         </div>
+        <div class="row hidden-md hidden-lg visible-xs visible-sm">
+            <div class="col-xs-12 item_img payments">
+                <h4 class="font_size Subscribe">Payment options</h4>
+                <div class="cards">
+                    <ul class="pull-left">
+                        <li>
+                            <img alt="Discover" title="Discover" src="../assets/Images/discover-card.jpg" width="57" height="36" border="0" />
+                        </li>
+                        <li>
+                            <img alt="Master" title="Master" src="../assets/Images/mastercard_logo_.gif" width="57" height="36" border="0" />
+                        </li>
+                        <li>
+                            <img style="padding-top: 5px;" alt="Visa" title="Visa" src="../assets/Images/new_visa_.gif" width="57" height="26" border="0" />
+                        </li>
+                        <li>
+                            <img alt="Amex" title="Amex" src="../assets/Images/american_express_logo_.gif" width="43" height="36" border="0" />
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        
     </div>
     <div class="pull-right hidden">
         <a href="" id="return-to-top" class="scrollTop">
@@ -110,7 +134,7 @@
 <div class="footer-bottom">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text_center">
+            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
                 <div class="copyright">
                     <p class="made_with">Made With
                         <i class="fa fa-heart" aria-hidden="true"></i>
@@ -122,7 +146,7 @@
 
                 </div>
             </div>
-            <div class="col-md-4 col-sm-4 col-lg-4">
+            <div class="col-md-4 col-sm-4 col-lg-4 col-xs-6">
                 <ul class="social-network social-circle">
                     <li>
                         <a href="https://www.facebook.com/LukasLiquorSuperstore" target="_blank" class="icoFacebook" title="Facebook">

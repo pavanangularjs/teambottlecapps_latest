@@ -44,6 +44,7 @@ export class ProductStoreService {
                     this.customerInfo = res.CustomerInfo;
                 }
                 this.storeDetails = null;
+                this.couponsList = null;
                 return of(res);
             }),
             retry(3),
@@ -69,9 +70,9 @@ export class ProductStoreService {
 
     getStoreDetails(): Observable<any> {
 
-        if (this.storeDetails) {
+        /* if (this.storeDetails) {
             return of(this.storeDetails);
-          }
+          } */
 
         return this.http.post<any>(baseUrl + UrlNames.StoreGetDetail, this.getProfileDetailsRequestParams()).pipe(
             switchMap((res: any) => {

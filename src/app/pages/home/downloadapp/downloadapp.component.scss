@@ -41,8 +41,10 @@ section.bgr_img{
       }
   
       .display_center {
-          transform: translateY(20%);
-          text-align: center;
+        transform: translateY(20%);
+        text-align: center;
+        display: flex;
+        padding-top: 1.5%;
       }
 .barcode-container {
     border-radius: 25px;
@@ -53,4 +55,39 @@ section.bgr_img{
     margin: 15px;
     background-color: #fff;
     width: 174px;
+}
+@media screen and (max-width: 767px) {
+    section.bgr_img{
+        height: 70vh !important;
+        float: left;
+        width: 100%;
+        overflow: hidden;
+        margin: 20px 0 0px;
+        padding-top: 25px;
+        background-size: cover;
+            h4, h2 {
+                text-align: center !important;
+            }
+    }
+    .barcode-container {
+        display: inline-block;
+    }
+    .display_center h2.download_app {
+        text-align: center !important;
+        font-size: 26px;
+        padding-top: 0px;
+        margin-top: 0px;
+        padding-bottom: 10px;
+    }
+    .display_center a {
+        margin-right: 10px;
+        width: 46%;
+    }
+    .app-links-container {
+        width: 70% !important;
+        margin: 0 auto;
+    }
+    .display_center {
+        display: inline;
+    }
 }

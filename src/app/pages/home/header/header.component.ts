@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 import { CustomerLogin } from '../../../state/customer/customer.action';
 import { CustomerLoginSession } from '../../../models/customer-login-session';
@@ -27,13 +28,16 @@ export class HeaderComponent implements OnInit {
   profileFirstLetter = '';
   profilePic = 'assets/Images/profile.png';
   storeList: any;
+  isMobile: boolean;
+  storeDetails: any;
 
   constructor(private store: Store<CustomerLoginSession>,
     private customerService: CustomerService,
     private cartService: CartService,
     private router: Router,
     private storeService: ProductStoreService,
-    private progressBarService: ProgressBarService) {
+    private progressBarService: ProgressBarService,
+    private deviceService: DeviceDetectorService) {
 
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
@@ -52,6 +56,7 @@ export class HeaderComponent implements OnInit {
       .subscribe(pssd => {
         if (pssd) {
           this.storeGetHomeData = pssd;
+          this.getStoreDetails();
           this.getStoreList();
 
           if (this.storeGetHomeData.CustomerInfo && this.storeGetHomeData.CustomerInfo.ProfileImage !== '') {
@@ -71,6 +76,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isMobile = this.deviceService.isMobile();
   }
 
   openMultiLocationDialog() {
@@ -83,6 +89,14 @@ export class HeaderComponent implements OnInit {
       if (data && data.ListStore) {
         this.storeList = data.ListStore;
         this.progressBarService.hide();
+      }
+    });
+  }
+
+  getStoreDetails() {
+    this.storeService.getStoreDetails().subscribe(data => {
+      if (data && data.GetStoredetails) {
+        this.storeDetails = data.GetStoredetails;
       }
     });
   }

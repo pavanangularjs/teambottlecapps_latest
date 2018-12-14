@@ -22,9 +22,6 @@ ul li span {
 	width: 100px;
 }
 
-.aboutus{
-  padding-left: 100px !important;
-}
 .active {
   color: red !important;
 }
@@ -358,17 +355,12 @@ address .contact_text {
 }
 
 @media screen and (max-width:767px){
-    .information {
+/*    .information {
         clear: left;
-    }
+    }*/
     .cards{
         margin-top: 15px;
         text-align: center;
-    }
-}
-@media screen and (min-width:320px) and (max-width:500px){
-    .item_img{
-        width: 100%;
     }
 }
 .social-circle li {
@@ -473,4 +465,25 @@ address .contact_text {
     -ms-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
+}
+@media screen and (max-width: 767px) {
+    .aboutus, .aboutus ul li,
+    .hours, .hours ul li,
+    .payments, .payments ul li{
+      text-align: left;
+    }
+    .hours ul{
+      width: 126px;
+    }
+    .payments, .payments ul li {
+      display: inline-block;
+    }
+    .margin_left  .f-h4 {
+        margin-bottom: 20px !important;
+      }
+    .footer-bottom span {
+        text-align: left;
+        line-height: normal;
+        width: 170px;
+    }
 }
