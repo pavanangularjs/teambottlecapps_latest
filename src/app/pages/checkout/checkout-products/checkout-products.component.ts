@@ -20,6 +20,7 @@ export class CheckoutProductsComponent implements OnInit {
   couponCode: string;
   tipAmount: string;
   listCharges: any;
+  isCouponApplied: boolean;
   constructor(private cartService: CartService, private router: Router,
     private paymentService: PaymentService,
     private toastr: ToastrService,
@@ -28,6 +29,7 @@ export class CheckoutProductsComponent implements OnInit {
   ngOnInit() {
     this.couponCode = '';
     this.tipAmount = '';
+    this.isCouponApplied = false;
     this.cartDetails = this.cartService.cartdetails;
     this.filterCartDetails();
   }
@@ -128,6 +130,7 @@ export class CheckoutProductsComponent implements OnInit {
       this.cartService.updateCart(this.cartDetails).subscribe(
         (data: any) => {
           this.cartDetails = data;
+          this.isCouponApplied = true;
           this.toastr.success('Coupon Applied Successfully.');
           this.filterCartDetails();
         });
@@ -144,6 +147,7 @@ export class CheckoutProductsComponent implements OnInit {
 
   clearCoupon() {
     this.couponCode = '';
+    this.isCouponApplied = false;
     if (this.cartDetails.CouponCode !== '') {
       this.cartDetails.CouponCode = this.couponCode;
       this.cartService.updateCart(this.cartDetails).subscribe(

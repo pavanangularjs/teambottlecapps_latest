@@ -66,6 +66,7 @@ import { EventsComponent } from './pages/products/events/events.component';
 import { PrivacyPolicyComponent } from './pages/home/privacy-policy/privacy-policy.component';
 import { TermsAndConditionsComponent } from './pages/home/terms-and-conditions/terms-and-conditions.component';
 import { PlaceOrderResultComponent } from './pages/checkout/place-order-result/place-order-result.component';
+import { MultiStoreComponent } from './pages/home/multi-store/multi-store.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -120,7 +121,8 @@ export function getAuthServiceConfigs() {
     EventsComponent,
     PrivacyPolicyComponent,
     TermsAndConditionsComponent,
-    PlaceOrderResultComponent
+    PlaceOrderResultComponent,
+    MultiStoreComponent
   ],
   imports: [
     BrowserModule,

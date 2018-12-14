@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { CustomerLogin } from '../../../state/customer/customer.action';
@@ -8,6 +8,10 @@ import { ProductStoreSelectors } from '../../../state/product-store/product-stor
 import { CustomerService } from '../../../services/customer.service';
 import { CartService } from '../../../services/cart.service';
 import { Router } from '@angular/router';
+import { ProductStoreService } from '../../../services/product-store.service';
+import { ProgressBarService } from '../../../shared/services/progress-bar.service';
+import * as CryptoJS from 'crypto-js';
+import { baseUrl } from '../../../services/url-provider';
 
 @Component({
   selector: 'app-header',
@@ -15,31 +19,40 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  @ViewChild('openMultiLocationModal') openModal: ElementRef;
   customerSession: CustomerLoginSession;
   storeGetHomeData: any;
   cartItemCount = 0;
   isActive = false;
   profileFirstLetter = '';
   profilePic = 'assets/Images/profile.png';
+  storeList: any;
 
   constructor(private store: Store<CustomerLoginSession>,
     private customerService: CustomerService,
     private cartService: CartService,
-    private router: Router) {
+    private router: Router,
+    private storeService: ProductStoreService,
+    private progressBarService: ProgressBarService) {
+
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
-        this.customerSession = clsd;
+        if (clsd) {
+          this.customerSession = clsd;
+          this.progressBarService.hide();
 
-        if (this.customerSession  && this.customerSession.UserId !== 0) {
-          this.isActive = true;
-        } else {
-          this.isActive = false;
+          if (this.customerSession && this.customerSession.UserId !== 0) {
+            this.isActive = true;
+          } else {
+            this.isActive = false;
+          }
         }
       });
     this.store.select(ProductStoreSelectors.productStoreStateData)
       .subscribe(pssd => {
         if (pssd) {
           this.storeGetHomeData = pssd;
+          this.getStoreList();
 
           if (this.storeGetHomeData.CustomerInfo && this.storeGetHomeData.CustomerInfo.ProfileImage !== '') {
             this.profilePic = this.storeGetHomeData.CustomerInfo.ProfileImage;
@@ -60,6 +73,44 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  openMultiLocationDialog() {
+    this.openModal.nativeElement.click();
+  }
+
+  getStoreList() {
+    this.progressBarService.show();
+    this.storeService.storeGetList().subscribe(data => {
+      if (data && data.ListStore) {
+        this.storeList = data.ListStore;
+        this.progressBarService.hide();
+      }
+    });
+  }
+
+  onStoreChange(storeId) {
+    this.customerService.storeID = storeId;
+
+    if (this.customerSession && this.customerSession.SessionId) {
+      // this.spinnerService.show();
+
+      let demail = localStorage.getItem('email');
+      let dpass = localStorage.getItem('password');
+
+      if (demail && dpass) {
+        demail = CryptoJS.AES.decrypt(demail, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
+        dpass = CryptoJS.AES.decrypt(dpass, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
+      }
+
+      this.progressBarService.show();
+      if (demail && dpass) {
+        this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams(demail, dpass, 'E')));
+      } else {
+        localStorage.removeItem('email');
+        localStorage.removeItem('password');
+        this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams()));
+      }
+    }
+  }
 
   onSignOut() {
     localStorage.clear();

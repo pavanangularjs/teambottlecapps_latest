@@ -1,0 +1,47 @@
+<div class="modal fade store-picker-container" id="multiLocationDialog" tabindex="-1" role="dialog" aria-labelledby="multiLocationDialogLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+     <!--  <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+      </div> -->
+      <div class="modal-body">
+        <form>
+          <div class="form-inline-lg">
+            <div class="input-group">
+              <div class="input-group-addon"><i class="icon icon-search"></i></div>
+              <input type="text" class="form-control" placeholder="Search by City, Zip Code or Name">
+              <div class="input-group-addon"><i class="icon icon-location-picker"></i></div>
+            </div>
+          </div>
+        </form>
+          <div class="form-group">
+            <div class="store-tile-container" *ngFor="let store of stores">
+                <div class="store-thumbnail" *ngIf="false">
+                  <img [src]="store?.StoreImage" height="75px" width="75px">
+                </div>
+                <div class="store-info">
+                    <div class="store-details">
+                        <h3>{{store?.StoreName}}</h3>
+                        <small class="text-muted">{{store?.Address1}}, 
+                          <span *ngIf="store?.Address2"> {{store.Address2}},</span>
+                          <span *ngIf="store?.City"> {{store.City}},</span>
+                          <span *ngIf="store?.State"> {{store.State}}</span>
+                        </small>
+                        <small class="text-muted">{{store?.Phone}}</small>
+                    </div>
+                    <div class="store-distance-info">
+                        <div class="store-distance">
+                            <i *ngIf="false" class="icon icon-location-picker"></i> 0.1 mi
+                        </div>
+                        <div class="select-store">
+                            <button class="btn btn-default active" data-dismiss="modal" (click)="onStoreSelect(store.StoreId)">Select Store</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -23,6 +23,7 @@ export class ProductStoreService {
     customerSession: CustomerLoginSession;
     storeDetails: any;
     couponsList: any;
+    storeList: any;
     customerInfo: any;
 
     constructor(private http: HttpClient, private store: Store<CustomerLoginSession>,
@@ -260,6 +261,25 @@ export class ProductStoreService {
             this.getProfileDetailsRequestParams(), { headers: this.headers }).pipe(
             switchMap((res: any) => {
                 this.couponsList = res;
+                return of(res);
+            }),
+            retry(3),
+            catchError((error: any, caught: Observable<any>) => {
+                return this.errorHandler.processError(error);
+            })
+        );
+    }
+
+    storeGetList(): Observable<any> {
+
+        if (this.storeList) {
+            return of(this.storeList);
+        }
+
+        return this.http.post<any>(baseUrl + UrlNames.StoreGetList,
+            this.getProfileDetailsRequestParams(), { headers: this.headers }).pipe(
+            switchMap((res: any) => {
+                this.storeList = res;
                 return of(res);
             }),
             retry(3),

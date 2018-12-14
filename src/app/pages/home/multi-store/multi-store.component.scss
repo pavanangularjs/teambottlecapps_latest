@@ -1,0 +1,108 @@
+@import "~src/variable.scss";
+
+.store-picker-container {
+    .modal-body {
+      padding: 30px;
+    }
+    .input-group .form-control {
+      width: 100%;
+      border-right: transparent;
+      border-left: transparent;
+      padding: 20px 5px;
+      font-family: poppinsregular !important;
+      input.form-control {
+        font-family: poppinsregular !important;
+      }
+    }
+    .input-group-addon {
+      background: transparent;
+      padding: 5px;
+      font-size: 18px;
+      color: #777;
+    }
+    .store-tile-container {
+      border-bottom: solid 1px #ccc;
+      margin: 15px 0px;
+      min-height: 150px;
+      padding: 15px 0px;
+      position: relative;
+        .store-thumbnail {
+            width: 100px;
+            height: 100px;
+            border: solid 1px #ccc;
+            margin-right: 15px; 
+            margin: 0px;
+            padding: 10px;
+            display: inline-block;
+            border-radius: 5px;
+        }
+        .store-info {
+          min-height: 100px;
+          display: inline-block;
+          margin-left: 15px;
+          width: 78%;
+          .store-details {
+              display: block;
+              float: left;
+              width: 75%;
+            h3 {
+                font-family: montserratbold;
+                padding-top: 0px;
+                margin-top: 5px;
+                font-size: 18px;
+            }
+            small {
+                font-family: poppinsregular;
+                color: #999;
+            }
+          }
+          .store-distance-info {
+            float: right;
+            .store-distance {
+                color: #777;
+                font-family: poppinsregular;
+                position: absolute;
+                right: 0;
+                top: 18px;
+                font-size: 11px;
+                i.icon {
+                  color: $lukas-color !important;
+                  font-size: 16px !important;
+                }
+            }
+            .select-store {
+              position: absolute;
+              bottom: 20px;
+              right: 0;
+              button.active {
+                background-color: $lukas-color !important;
+/*                position: absolute;
+                right: 0;
+                bottom: -60px !important;*/
+                color: #fff !important;
+                margin: 0;
+                font-family: poppinsbold;
+                font-size: 12.7px;
+                font-stretch: normal;
+                line-height: normal;
+                letter-spacing: 0.3px;
+                text-align: left;
+                color: #ffffff;
+                padding: 10px 20px;
+                border-radius: 0px;
+                text-align: center;
+                border: $lukas-color;
+                box-shadow: none;
+                box-shadow: 0px 10px 20px 0 rgba(166, 20, 85, 0.2);
+
+
+              }
+            }
+          }
+        }
+    }
+  }
+
+  .store-tile-container:last-child {
+    border-bottom: solid 0px transparent !important;
+  }

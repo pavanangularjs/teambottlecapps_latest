@@ -23,6 +23,7 @@ export class CustomerService {
   customerPaymentMethodGetList: any;
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
   deviceID = '';
+  storeID = 10135;
   constructor(private http: HttpClient,
     private authService: AuthService,
     private errorHandler: ErrorHandlerService) {
@@ -48,14 +49,14 @@ export class CustomerService {
 
   getLoginCustomerParams(email?: string, pwd?: string, loginType?: string, sourceId?: string) {
     return {
-      AppId: 10060, // 10275,
+      AppId: 10135, // 10275,
       AppVersion: '8.5',
       DeviceId: this.deviceID,
       DeviceType: this.deviceID,
       EmailId: email || '',
       LoginType: loginType || 'B',
       Password: pwd || '',
-      StoreId: 10060, // 10275,
+      StoreId: this.storeID, // 10275,
       SourceId: sourceId || '',
       SessionId: '',
       UserId: '',
