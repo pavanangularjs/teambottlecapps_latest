@@ -43,6 +43,7 @@ export class ProductStoreService {
                 if (res && res.CustomerInfo) {
                     this.customerInfo = res.CustomerInfo;
                 }
+                this.storeDetails = null;
                 return of(res);
             }),
             retry(3),
