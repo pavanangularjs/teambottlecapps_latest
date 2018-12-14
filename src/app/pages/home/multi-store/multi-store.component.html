@@ -27,12 +27,15 @@
                           <span *ngIf="store?.Address2"> {{store.Address2}},</span>
                           <span *ngIf="store?.City"> {{store.City}},</span>
                           <span *ngIf="store?.State"> {{store.State}}</span>
+                        </small> <br>
+                        <small class="text-muted">
+                          <i class="icon icon-footer-contact"></i> 
+                          <span> <a href="tel:{{store?.Phone}}">Call: {{store?.Phone}}</a></span>
                         </small>
-                        <small class="text-muted">{{store?.Phone}}</small>
                     </div>
                     <div class="store-distance-info">
-                        <div class="store-distance">
-                            <i *ngIf="false" class="icon icon-location-picker"></i> 0.1 mi
+                        <div class="store-distance" *ngIf="false">
+                            <i class="icon icon-location-picker"></i> 0.1 mi
                         </div>
                         <div class="select-store">
                             <button class="btn btn-default active" data-dismiss="modal" (click)="onStoreSelect(store.StoreId)">Select Store</button>
