@@ -100,18 +100,18 @@
     font-size: 22px;
     color: #ccc;
   }
-  .icon-coupon-success {
+  .icon-selected {
     position: absolute;
-    top: 17px;
-    font-size: 22px;
+    top: 15px;
+    font-size: 24px;
     color: $lukas-color;
     right: 55px;
     cursor: pointer;
   }
-  .icon-coupon-close {
+  .icon-cancel2 {
     position: absolute;
     top: 17px;
-    font-size: 22px;
+    font-size: 20px;
     color: #ccc;
     right: 25px;
     cursor: pointer;
@@ -166,7 +166,7 @@
 
 .payment-option-select {
   a {
-    &.pay-opt-1 {
+    &.pay-opt-1, .pay-or-store {
       font-size: 20px;
       color: $lukas-color;
     }
@@ -180,6 +180,7 @@
   margin-bottom: 25px;
   margin-top: 10px;
   .pay-or-store {
+    font-size: 20px;
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -236,4 +237,18 @@ td .checkout-product-details {
 
 .payment-method table th {
   font-family: $poppins-bold;
+}
+
+@media only screen and (max-width: 1024px) {
+    .order-details-panel {
+      padding: 15px !important;
+        table {
+          .prod-img {
+              padding: 5px 10px !important;
+          }
+        }
+    }
+    .checkout-info {
+      margin-left: 5px;
+    }
 }

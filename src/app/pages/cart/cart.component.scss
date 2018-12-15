@@ -418,3 +418,31 @@ section {
     min-height: 768px;
     display: block;
 }
+
+/*M Cart*/
+
+@media only screen and (max-width: 1024px) {
+    .empty-cart {
+        display: block;
+            button.btn-botcaps {
+                min-width: 100%;
+            }
+            .icon-float {
+                width: 145px;
+                margin: 0 auto;
+                float: left;
+                position: relative;
+                span.notification-circle {
+                    right: -10px;
+                }
+            }
+            .cart-m {
+                display: block;
+                width: 100%;
+            }
+            cart-m-details {
+                display: block;
+                width: 100%;
+            }
+    }
+}

@@ -196,3 +196,42 @@
 .no-b-border {
     border-bottom: 0px solid transparent;
 }
+
+/*M Events*/
+
+@media only screen and (max-width: 1024px) {
+    .event-tiles {
+        background-color: #fff;
+        border: solid 1px #ccc;
+        padding: 20px 10px;
+        margin-bottom: 20px;
+        display: inline-block;
+        a {
+            color: #ccc;
+            font-family: $poppins-bold;
+            font-size: 24px;
+        &:hover {
+            color: $lukas-color;
+        }
+        }
+        .details_img {
+            border-right: 0px solid transparent;
+            padding: 0px 5px;
+            margin-bottom: 30px;
+        }
+        .details_content {
+            padding: 0px;
+        }
+        .event-icon {
+            font-size: 26px;
+        }
+    }
+    .event-details-date strong {
+            font-size: 24px;
+        }
+    .instruction_text {
+        p {
+            text-align: left;
+        }
+    }
+}

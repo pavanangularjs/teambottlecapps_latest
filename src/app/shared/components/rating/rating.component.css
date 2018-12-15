@@ -8,3 +8,16 @@
 span.rating-icon a .fa, .Product_name span.rating-icon a .fa, .myorder-table span.rating-icon a .fa {
     margin-right: 3px;
 }
+
+@media screen and (min-width:320px) and (max-width:768px){
+ 	span.rating-icon {
+            margin-left: -7px !important;
+            float: left;
+        }
+        span.rating-icon a {
+                margin-top: 19px !important;
+            }
+        small.review-caption {
+            float: right;
+        }
+}

@@ -86,17 +86,17 @@
                 <div class="row">
                     <div class="size">
 
-                        <div class="margin_top col-md-8 col-sm-8 col-lg-8 col-xs-8">
+                        <div class="margin_top col-md-8 col-sm-8 col-lg-8 col-xs-12">
                             <div class="row">
-                                <div class="col-md-12"><label class="sizelabel">Qty</label></div>
-                                <div class="col-md-4">
+                                <div class="col-md-12 col-xs-12"><label class="sizelabel">Qty</label></div>
+                                <div class="col-md-4 col-xs-5">
                                     <div class="select-bg">
                                         <select class="selectsize form-control" [(ngModel)]="qty">
                                                 <option *ngFor="let qty of quantity">{{qty}}</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-5 col-xs-7">
                                     <button class="btn btn-default addtocart" (click)="addToCart()">Add to Cart</button>
                                 </div>
                             </div>
@@ -131,7 +131,7 @@
                         <h4>Related Products</h4>
                     </div>
 
-                    <div class="col-md-2 col-sm-2 col-lg-2 col-xs-12">
+                    <div class="col-md-2 col-sm-2 col-lg-2 hidden-xs hidden-sm visible-md visible-lg">
                         <a class="view_more" (click)="getProductList()">
                             <span>View More</span>
                         </a>
@@ -142,6 +142,11 @@
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" *ngFor="let product of productsList | slice:0:4">
                     <app-product [item]="product"></app-product>
                 </div>
+                <div class="col-xs-12 hidden-md hidden-lg visible-xs visible-xs">
+                        <a class="view_more pull-right" (click)="getProductList()">
+                            <span>View More</span>
+                        </a><br>
+                    </div>
             </div>
         </div>
     </div>

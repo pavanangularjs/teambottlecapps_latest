@@ -9,7 +9,7 @@
             </div>
           </td>
           <td width="70%">
-            <div class="checkout-product-details">
+            <div class="checkout-product-details checkout-info">
               <h4>{{cartItem?.ProductName}}</h4>
               <h6>{{cartItem?.PriceDisplay}}</h6>
               <p>Quantity: {{cartItem?.QuantityOrdered}} | {{cartItem?.UnitSize}}</p>
@@ -107,9 +107,9 @@
   </div>
   <div class="coupon-panel">
     <form>
-      <i class="icon-coupon"><img src="../assets/Images/coupon.png"></i>
+      <i class="icon icon-coupon"></i><!-- <img src="../assets/Images/coupon.png"> -->
       <input type="text" name="coupun" (keydown.Enter)="applyCoupon()" placeholder="Apply Coupon" [(ngModel)]="couponCode" class="form-control coupon">
-      <i (click)="applyCoupon()" class="fa fa-check-circle icon-coupon-success"></i> <i (click)="clearCoupon()" class="fa fa-close icon-coupon-close"></i>
+      <i (click)="applyCoupon()" class="icon icon-selected"></i> <i (click)="clearCoupon()" class="icon icon-cancel2"></i>
     </form>
   </div>
   <div class="coupon-panel">
