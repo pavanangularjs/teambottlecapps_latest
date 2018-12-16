@@ -50,7 +50,7 @@ export class ProfileEditComponent implements OnInit {
       pLastName: [this.profile.LastName, []],
       pContactNo: [this.profile.ContactNo, [Validators.required]],
       pEmail: [this.profile.EmailId, [Validators.required, Validators.email]],
-      pDOB: [this.profile.DOBDt, []],
+      pDOB: [this.profile.DOBDt ? new Date (this.profile.DOBDt) : '', []],
       pGender: [this.profile.Gender, []],
       pImage: [this.profile.ProfileImage, []]
     });
@@ -88,7 +88,9 @@ export class ProfileEditComponent implements OnInit {
     profile.LastName = this.formEditProfile.get('pLastName').value;
     profile.ContactNo = this.formEditProfile.get('pContactNo').value;
     profile.EmailId = this.formEditProfile.get('pEmail').value;
-    profile.DOB = this.formEditProfile.get('pDOB').value;
+    if (this.formEditProfile.get('pDOB').value) {
+      profile.DOB = this.formEditProfile.get('pDOB').value.toLocaleDateString();
+    }
     profile.Gender = this.formEditProfile.get('pGender').value;
     // profile.ProfileImage = this.formEditProfile.get('pImage').value;
     // profile.UserIpAddress = '';

@@ -31,10 +31,11 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="text-uppercase">First Name <span>*</span>
-                                            <input type="text" formControlName="pFirstName" class="form-control" placeholder="First Name" />
+                                            <input type="text" formControlName="pFirstName" class="form-control"
+                                                placeholder="First Name" />
                                             <div *ngIf="submitted && f.pFirstName.errors" class="alert alert-danger">
                                                 <div *ngIf="f.pFirstName.errors.required">FirstName is required.</div>
-                                              </div>
+                                            </div>
                                         </label>
                                     </div>
                                 </div>
@@ -51,7 +52,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="text-uppercase">Phone Number <span>*</span>
-                                            <input type="text" formControlName="pContactNo" class="form-control" placeholder="Phone Number" />
+                                            <input type="text" formControlName="pContactNo" class="form-control"
+                                                placeholder="Phone Number" />
                                             <div *ngIf="submitted && f.pContactNo.errors" class="alert alert-danger">
                                                 <div *ngIf="f.pContactNo.errors.required">Phone Number is required.</div>
                                             </div>
@@ -61,7 +63,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="text-uppercase">E-Mail <span>*</span>
-                                            <input type="email" formControlName="pEmail" class="form-control" placeholder="Email" />
+                                            <input type="email" formControlName="pEmail" class="form-control"
+                                                placeholder="Email" />
                                             <div *ngIf="submitted && f.pEmail.errors" class="alert alert-danger">
                                                 <div *ngIf="f.pEmail.errors.required">E-Mail is required.</div>
                                                 <div *ngIf="f.pEmail.errors.email">E-Mail must be a valid email address</div>
@@ -74,8 +77,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="text-uppercase">Date of Birth
-                                            <input type="date" formControlName="pDOB" class="form-control" />
+                                            <!-- <input type="date" formControlName="pDOB" class="form-control" /> -->
                                         </label>
+                                        <mat-form-field>
+                                            <input formControlName="pDOB" matInput [matDatepicker]="picker">
+                                            <mat-datepicker-toggle name="pDOB" matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                        </mat-form-field>
+
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -84,11 +93,11 @@
                                         </label>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <input type="radio" name="gender" formControlName="pGender" value="M" />
+                                                <input type="radio" name="pGender" formControlName="pGender" value="M" />
                                                 Male
                                             </div>
                                             <div class="col-md-6">
-                                                <input type="radio" name="gender" formControlName="pGender" value="F" />
+                                                <input type="radio" name="pGender" formControlName="pGender" value="F" />
                                                 Female
                                             </div>
                                         </div>
@@ -99,7 +108,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <div class="btn_right">
-                                            <button type="cancel" routerLink="../profile"  class="btn btn-default novalue">Cancel</button>
+                                            <button type="cancel" routerLink="../profile" class="btn btn-default novalue">Cancel</button>
                                             <button type="submit" class="btn btn-default close">Save</button>
                                         </div>
                                     </div>

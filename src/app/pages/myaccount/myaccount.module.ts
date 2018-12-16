@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
 import { MyAccountRoutingModule  } from './myaccount-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 
 import { MyAccountComponent } from './myaccount.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -15,12 +16,22 @@ import { AddNewPaymentComponent } from './payment-methods/add-new-payment/add-ne
 import { EditAddressComponent } from './manage-addresses/edit-address/edit-address.component';
 
 @NgModule({
+  exports: [
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule
+  ],
   imports: [
     CommonModule,
     MyAccountRoutingModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   declarations: [
       MyAccountComponent,
