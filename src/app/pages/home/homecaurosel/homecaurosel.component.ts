@@ -7,10 +7,19 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HomecauroselComponent implements OnInit {
 @Input() eventList: any;
+isShowFilters = false;
+categoryFilters: any;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  showFilters(categoryId) {
+    this.isShowFilters = true;
+    this.categoryFilters = { 'CategoryId': categoryId};
+  }
+  onApplyFilter() {
+    this.isShowFilters = false;
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { DataService } from '../../../../services/data.service';
 import { ProductFilters } from '../../../../models/product-filters';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { ProductType } from '../../../../models/product-type';
   templateUrl: './filter-menu.component.html',
   styleUrls: ['./filter-menu.component.scss']
 })
-export class FilterMenuComponent implements OnInit {
+export class FilterMenuComponent implements OnChanges {
   @Input() filters: any;
   @Output() filterApply = new EventEmitter();
 
@@ -31,7 +31,7 @@ export class FilterMenuComponent implements OnInit {
     };
   }
 
-  ngOnInit() {
+  ngOnChanges() {
     this.dataservice.categoryId = this.filters.CategoryId;
     this.dataservice.getFiltersByCategory();
     this.allFilters = this.dataservice.filtersAllData;
