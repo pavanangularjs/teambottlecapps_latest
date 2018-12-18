@@ -23,7 +23,7 @@ export class EditAddressComponent implements OnInit {
 
     this.formEditAddress = this.formBuilder.group({
       aFirstName: ['', [Validators.required, Validators.minLength(2)]],
-      aLastName: ['', []],
+      aLastName: ['', [Validators.required]],
       aAddressName: ['', []],
       aAddress1: ['', [Validators.required]],
       aAddress2: ['', []],

@@ -46,6 +46,8 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
     private router: Router,
     private progressBarService: ProgressBarService) {
 
+
+
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
       if (e instanceof NavigationEnd) {
         this.initialiseSearchFilter();
@@ -63,6 +65,8 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.productsList = [];
+    this.totalProducts = 0;
+    this.fromProductNo = 0;
     this.initialiseSearchFilter();
     this.getAllRegions();
   }

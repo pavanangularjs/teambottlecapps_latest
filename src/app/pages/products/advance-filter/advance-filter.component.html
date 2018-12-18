@@ -134,7 +134,7 @@
             </p>
           </div>
           <div class="col-md-6 col-sm-6">
-            <div class="page-navigation">
+            <div class="page-navigation" *ngIf="totalProducts > 0">
               <ngb-pagination [collectionSize]="totalProducts" (pageChange)="onPageChange($event)" [(page)]="page" [pageSize]="selectedPageSize" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
             </div>
           </div>
@@ -170,7 +170,7 @@
         </div>
         <div class="row">
           <div class="col-md-12 col-xs-12">
-              <div class="f-page-navigation">
+              <div class="f-page-navigation" *ngIf="totalProducts > 0">
                 <ngb-pagination [collectionSize]="totalProducts" (pageChange)="onPageChange($event)" [(page)]="page" [pageSize]="selectedPageSize" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
               </div>
           </div>

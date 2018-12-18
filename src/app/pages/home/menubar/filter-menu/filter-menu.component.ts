@@ -65,6 +65,18 @@ export class FilterMenuComponent implements OnChanges {
     this.getVarietals();
   }
 
+  onVarietalSelected(varietal) {
+    if (!varietal.isSelected && this.isCheckAllVarietals ) {
+      this.isCheckAllVarietals = false;
+    }
+  }
+
+  onTypeSelected(type) {
+    if (!type.isSelected && this.isCheckAllTypes ) {
+      this.isCheckAllTypes = false;
+    }
+  }
+
   getVarietals() {
     this.allVarietals = [];
     this.allFilters.type.filter(type => type.isSelected === true).forEach(item => {

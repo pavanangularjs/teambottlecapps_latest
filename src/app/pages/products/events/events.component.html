@@ -37,9 +37,8 @@
                       !== 0 ? event?.EventPriceDisplay : "FREE"}}</span>
                   </li>
                   <li class="IngredientText"> <span class="fa fa-history bottle-caps-red event-icon"></span>
-                    <span class="event-para">{{event?.EventStartDt | date: 'MMM dd, yyyy'}} - {{event?.EventEndDt |
-                      date: 'MMM dd, yyyy'}}
-                      <br> {{event?.EventStartTime}} - {{event?.EventEndTime}}</span>
+                    <span class="event-para">{{event?.EventStartEndDateDisplay}}
+                      <br> {{event?.EventStartEndTimeDisplay}}</span>
                     <span class="pull-right">
                       <a href="https://www.google.com/maps/dir//{{event?.StoreLatitude}},{{event?.StoreLongitude}}/data=!4m2!4m1!3e0"
                         target="_blank">

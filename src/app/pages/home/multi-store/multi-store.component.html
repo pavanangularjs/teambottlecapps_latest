@@ -27,10 +27,11 @@
                           <span *ngIf="store?.Address2"> {{store.Address2}},</span>
                           <span *ngIf="store?.City"> {{store.City}},</span>
                           <span *ngIf="store?.State"> {{store.State}}</span>
+                          <span *ngIf="store?.Zip"> {{store.Zip}}</span>
                         </small> <br>
                         <small class="text-muted">
                           <i class="icon icon-footer-contact"></i> 
-                          <span> <a href="tel:{{store?.Phone}}">Call: {{store?.Phone}}</a></span>
+                          <span> <a href="tel:{{store?.ContactNo}}">Call: {{store?.ContactNo}}</a></span>
                         </small>
                     </div>
                     <div class="store-distance-info">

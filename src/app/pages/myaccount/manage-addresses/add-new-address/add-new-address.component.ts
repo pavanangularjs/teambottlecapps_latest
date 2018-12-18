@@ -21,7 +21,7 @@ export class AddNewAddressComponent implements OnInit {
 
     this.formAddNewAddress = this.formBuilder.group({
       aFirstName: ['', [Validators.required, Validators.minLength(2)]],
-      aLastName: ['', []],
+      aLastName: ['', [Validators.required]],
       aAddressName: ['', []],
       aAddress1: ['', [Validators.required]],
       aAddress2: ['', []],
