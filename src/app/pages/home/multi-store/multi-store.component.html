@@ -10,7 +10,7 @@
           <div class="form-inline-lg">
             <div class="input-group">
               <div class="input-group-addon"><i class="icon icon-search"></i></div>
-              <input type="text" class="form-control" placeholder="Search by City, Zip Code or Name">
+              <input name="search" type="text" [(ngModel)]="searchText" (keyup)="filterBySearchText()" class="form-control" placeholder="Search by City, Zip Code or Name">
               <div class="input-group-addon"><i class="icon icon-location-picker"></i></div>
             </div>
           </div>

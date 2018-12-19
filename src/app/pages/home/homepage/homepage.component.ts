@@ -75,7 +75,7 @@ export class HomepageComponent implements OnInit {
   }
 
   updateCartId() {
-    if (this.storeGetHomeData && this.storeGetHomeData.CustomerInfo && this.storeGetHomeData.CustomerInfo.CartId) {
+    if (this.storeGetHomeData && this.storeGetHomeData.CustomerInfo && this.storeGetHomeData.CustomerInfo.CartId >= 0) {
       this.cartService.cartId = this.storeGetHomeData.CustomerInfo.CartId;
       this.cartService.cartItemCount.next(this.storeGetHomeData.CustomerInfo.CartItemCount);
     }

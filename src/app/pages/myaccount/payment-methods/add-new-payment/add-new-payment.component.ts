@@ -122,7 +122,7 @@ export class AddNewPaymentComponent implements OnInit {
     this.cardProfile.city = this.formAddNewPayment.get('city').value;
     this.cardProfile.state = this.formAddNewPayment.get('state').value;
     this.cardProfile.zip = this.formAddNewPayment.get('zipCode').value;
-    this.cardProfile.country = this.formAddNewPayment.get('country').value;
+    // this.cardProfile.country = this.formAddNewPayment.get('country').value;
     this.cardProfile.phoneNumber = this.formAddNewPayment.get('phoneNumber').value;
 
     this.cardProfile.cardNumber = this.formAddNewPayment.get('sixteenDigitNumber').value;

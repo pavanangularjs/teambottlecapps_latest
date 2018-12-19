@@ -14,6 +14,8 @@ import { CustomerProfileUpdate } from '../models/customer-profile-update';
 import { CustomerPaymentInsert } from '../models/customer-payment-insert';
 import { AuthService } from '../auth.service';
 import { ErrorHandlerService } from '../shared/services/error-handler.service';
+import { CustomerLogin } from '../state/customer/customer.action';
+import { Store } from '@ngrx/store';
 
 @Injectable()
 export class CustomerService {
@@ -26,7 +28,8 @@ export class CustomerService {
   storeID = 10135;
   constructor(private http: HttpClient,
     private authService: AuthService,
-    private errorHandler: ErrorHandlerService) {
+    private errorHandler: ErrorHandlerService,
+    private store: Store<CustomerLoginSession>) {
       if (this.deviceID === '') {
         this.deviceID = Math.random().toString(36).substring(2);
       }
@@ -35,10 +38,16 @@ export class CustomerService {
   loginCustomer(reqParams: CustomerLoginRequestPayload): Observable<any> {
     return this.http.post<any>(baseUrl + UrlNames.LoginCustomer, reqParams, { headers: this.headers }).pipe(
       switchMap((res: any) => {
-        this.customerSession = res;
-        this.authService.setSessionToken(res.SessionId);
-        this.authService.setUserId(res.UserId);
-        return of(res);
+        if (res.ErrorDetail !== '' || res.ErrorMessage !== '') {
+          localStorage.removeItem('email');
+          localStorage.removeItem('password');
+          this.store.dispatch(new CustomerLogin(this.getLoginCustomerParams()));
+        } else {
+          this.customerSession = res;
+          this.authService.setSessionToken(res.SessionId);
+          this.authService.setUserId(res.UserId);
+          return of(res);
+        }
       }),
       retry(3),
       catchError((error: any, caught: Observable<any>) => {
