@@ -44,7 +44,12 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="text-uppercase">Expiry Date <span>*</span>
-                        <input type="text" formControlName="expiryDate" class="form-control" placeholder="">
+                        <select class="selectsize form-control" formControlName="expiryMonth">
+                          <option *ngFor="let month of months">{{month}}</option>
+                        </select>
+                        <select class="selectsize form-control" formControlName="expiryYear">
+                          <option *ngFor="let year of years">{{year}}</option>
+                        </select>
                       </label>
                     </div>
                   </div>

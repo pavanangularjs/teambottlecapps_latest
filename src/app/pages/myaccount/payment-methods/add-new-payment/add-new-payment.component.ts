@@ -22,6 +22,8 @@ export class AddNewPaymentComponent implements OnInit {
   cardProfile: PaymentProfile;
   isSaveAddress: boolean;
   addressList: any;
+  months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+  years: any;
 
   constructor(private formBuilder: FormBuilder,
     // private spinnerService: Ng4LoadingSpinnerService,
@@ -35,6 +37,14 @@ export class AddNewPaymentComponent implements OnInit {
     if (this.productService.customerInfo) {
       this.customerInfo = this.productService.customerInfo;
     }
+
+    this.years = [];
+    const year = new Date().getFullYear();
+
+    for (let i = 0; i < 20; i++) {
+      this.years.push(year + i);
+    }
+
   }
 
   ngOnInit() {
@@ -43,7 +53,8 @@ export class AddNewPaymentComponent implements OnInit {
       firstName: [this.customerInfo && this.customerInfo.FirstName || '', [Validators.required]],
       lastName: [this.customerInfo && this.customerInfo.LastName || '', [Validators.required]],
       sixteenDigitNumber: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(15)]],
-      expiryDate: ['', [Validators.required]],
+      expiryMonth: ['', [Validators.required]],
+      expiryYear: ['', [Validators.required]],
       address: ['', [Validators.required]],
       city: ['', [Validators.required]],
       state: ['', [Validators.required, Validators.maxLength(2), Validators.minLength(2)]],
@@ -86,7 +97,8 @@ export class AddNewPaymentComponent implements OnInit {
       firstName: [this.customerInfo && this.customerInfo.FirstName || '', [Validators.required]],
       lastName: [this.customerInfo && this.customerInfo.LastName || '', [Validators.required]],
       sixteenDigitNumber: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(15)]],
-      expiryDate: ['', [Validators.required]],
+      expiryMonth: ['', [Validators.required]],
+      expiryYear: ['', [Validators.required]],
       address: [address.Address1, [Validators.required]],
       city: [address.City, [Validators.required]],
       state: [address.State, [Validators.required, Validators.maxLength(2), Validators.minLength(2)]],
@@ -126,7 +138,8 @@ export class AddNewPaymentComponent implements OnInit {
     this.cardProfile.phoneNumber = this.formAddNewPayment.get('phoneNumber').value;
 
     this.cardProfile.cardNumber = this.formAddNewPayment.get('sixteenDigitNumber').value;
-    this.cardProfile.expirationDate = this.formAddNewPayment.get('expiryDate').value;
+    this.cardProfile.expirationDate =
+    `${this.formAddNewPayment.get('expiryYear').value}-${this.formAddNewPayment.get('expiryMonth').value}`;
     this.cardProfile.defaultPaymentProfile = false;
     this.cardProfile.validationMode = 'testMode';
 

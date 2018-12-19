@@ -16,6 +16,8 @@ import { AuthService } from '../auth.service';
 import { ErrorHandlerService } from '../shared/services/error-handler.service';
 import { CustomerLogin } from '../state/customer/customer.action';
 import { Store } from '@ngrx/store';
+import { ToastrService } from 'ngx-toastr';
+import { ProgressBarService } from '../shared/services/progress-bar.service';
 
 @Injectable()
 export class CustomerService {
@@ -25,11 +27,13 @@ export class CustomerService {
   customerPaymentMethodGetList: any;
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
   deviceID = '';
-  storeID = 10135;
+  storeID = 10060;
   constructor(private http: HttpClient,
     private authService: AuthService,
     private errorHandler: ErrorHandlerService,
-    private store: Store<CustomerLoginSession>) {
+    private store: Store<CustomerLoginSession>,
+    private toastr: ToastrService,
+    private progressBarService: ProgressBarService) {
       if (this.deviceID === '') {
         this.deviceID = Math.random().toString(36).substring(2);
       }
@@ -39,9 +43,17 @@ export class CustomerService {
     return this.http.post<any>(baseUrl + UrlNames.LoginCustomer, reqParams, { headers: this.headers }).pipe(
       switchMap((res: any) => {
         if (res.ErrorDetail !== '' || res.ErrorMessage !== '') {
-          localStorage.removeItem('email');
-          localStorage.removeItem('password');
-          this.store.dispatch(new CustomerLogin(this.getLoginCustomerParams()));
+          this.toastr.error(res.ErrorDetail);
+          this.progressBarService.hide();
+
+          const demail = localStorage.getItem('email');
+          const dpass = localStorage.getItem('password');
+
+          if (demail && dpass) {
+            localStorage.removeItem('email');
+            localStorage.removeItem('password');
+            this.store.dispatch(new CustomerLogin(this.getLoginCustomerParams()));
+          }
         } else {
           this.customerSession = res;
           this.authService.setSessionToken(res.SessionId);
@@ -58,7 +70,7 @@ export class CustomerService {
 
   getLoginCustomerParams(email?: string, pwd?: string, loginType?: string, sourceId?: string) {
     return {
-      AppId: 10135, // 10275,
+      AppId: 10060, // 10275,
       AppVersion: '8.5',
       DeviceId: this.deviceID,
       DeviceType: this.deviceID,
