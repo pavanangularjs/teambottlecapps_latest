@@ -1,8 +1,8 @@
 <div>
   <div class="dropdownlist">
     <div class="row">
-      <div [ngClass]="allVarietals && allVarietals.length > 0 ? 'col-md-3' : 'col-md-4'">
-        <span class="text-uppercase text-white">TYPE</span>
+      <div [ngClass]="allVarietals && allVarietals.length > 0 ? 'col-md-3 col-xs-6' : 'col-md-4 col-xs-6'">
+        <span class="text-uppercase text-white d-block">TYPE</span>
         <ul class="nav flex-column">
           <li class="nav-item">
             <input type="checkbox" [(ngModel)]="isCheckAllTypes" id="allTypes{{filters.CategoryId}}"
@@ -15,9 +15,9 @@
         </ul>
       </div>
 
-      <div *ngIf="false" [ngClass]="allVarietals && allVarietals.length > 0 ? 'col-md-3' : 'col-md-4'">
+      <div *ngIf="false" [ngClass]="allVarietals && allVarietals.length > 0 ? 'col-md-3 col-xs-6' : 'col-md-4 col-xs-6'">
         <ul class="nav flex-column">
-          <span class="text-uppercase text-white">SIZE</span>
+          <span class="text-uppercase text-white d-block">SIZE</span>
           <li class="nav-item">
             <input type="checkbox" [(ngModel)]="isCheckAllSizes"
             (change)="selectAllSizes(isCheckAllSizes)"/> <span class="checkmark"></span><label> All </label>
@@ -31,7 +31,7 @@
 
       <div class="col-md-3" *ngIf="allVarietals && allVarietals.length > 0">
         <ul class="nav flex-column">
-          <span class="text-uppercase text-white">VARIETAL</span>
+          <span class="text-uppercase text-white d-block">VARIETAL</span>
           <li class="nav-item">
             <input type="checkbox" [(ngModel)]="isCheckAllVarietals" id="allVarietals{{filters.CategoryId}}"
             (change)="selectAllVarietals(isCheckAllVarietals)"/> <span class="checkmark"></span> <label for="allVarietals{{filters.CategoryId}}" [ngClass]="{'active': isCheckAllVarietals}"> All </label>
@@ -43,9 +43,9 @@
         </ul>
       </div>
 
-      <div *ngIf="false" [ngClass]="allVarietals && allVarietals.length > 0 ? 'col-md-3' : 'col-md-4'">
+      <div *ngIf="false" [ngClass]="allVarietals && allVarietals.length > 0 ? 'col-md-3 col-xs-6' : 'col-md-4 col-xs-6'">
         <ul class="nav flex-column">
-          <span class="text-uppercase text-white">PRICE</span>
+          <span class="text-uppercase text-white d-block">PRICE</span>
           <li class="nav-item">
             <input type="checkbox" [(ngModel)]="isCheckAllPrices"
             (change)="selectAllPrices(isCheckAllPrices)"/> <span class="checkmark"></span> <label> All </label>

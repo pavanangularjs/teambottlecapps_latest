@@ -20,9 +20,10 @@
                 <div class="store-thumbnail" *ngIf="false">
                   <img [src]="store?.StoreImage" height="75px" width="75px">
                 </div>
+                <h3>{{store?.StoreName}}</h3>
                 <div class="store-info">
                     <div class="store-details">
-                        <h3>{{store?.StoreName}}</h3>
+                        
                         <small class="text-muted">{{store?.Address1}}, 
                           <span *ngIf="store?.Address2"> {{store.Address2}},</span>
                           <span *ngIf="store?.City"> {{store.City}},</span>

@@ -14,3 +14,10 @@ label {
 	height: 35px;
     line-height: normal;
 }
+
+ul.nav.flex-column {
+	display: table;
+	span.text-white {
+		margin-bottom: 5px;
+	}
+}

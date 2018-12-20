@@ -36,6 +36,13 @@
             display: inline-block;
             border-radius: 5px;
         }
+        h3 {
+            font-family: montserratbold;
+            padding-top: 0px;
+            margin-top: 5px;
+            font-size: 18px;
+            margin-left: 15px;
+        }
         .store-info {
           min-height: 100px;
           display: inline-block;
@@ -45,12 +52,6 @@
               display: block;
               float: left;
               width: 75%;
-            h3 {
-                font-family: montserratbold;
-                padding-top: 0px;
-                margin-top: 5px;
-                font-size: 18px;
-            }
             small {
                 font-family: poppinsregular;
                 color: #999;

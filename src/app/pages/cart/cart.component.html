@@ -36,7 +36,9 @@
   <div class="container">
     <div class="row" *ngIf="cartDetails?.ListCartItem && cartDetails?.ListCartItem?.length > 0; else emptyCart">
       <div id="no-more-tables" class="col-md-12 col-sm-12 col-lg-12 col-xs-12 slideInUP wow delay-05s  animated">
-        <table class="table table-bordered res_table">
+<!-- Destok Cart -->
+        
+        <table class="table table-bordered res_table hidden-xs hidden-sm visible-lg visible-md">
           <thead>
             <tr>
               <th width="53%">Product Details</th>
@@ -46,7 +48,7 @@
             </tr>
           </thead>
         </table>
-        <table class="box-tile" *ngFor="let cartItem of cartDetails?.ListCartItem">
+        <table class="box-tile hidden-xs hidden-sm visible-lg visible-md" *ngFor="let cartItem of cartDetails?.ListCartItem">
           <tbody class="bg-transparent">
             <tr>
               <td width="53%" class="cart-item">
@@ -89,6 +91,47 @@
           </tbody>
 
         </table>
+
+<!-- Destok Cart -->
+<!-- M Cart -->
+      <div class="box-tile hidden-md hidden-lg visible-xs visible-sm" *ngFor="let cartItem of cartDetails?.ListCartItem">
+        <div class="col-xs-12">
+          <div class="cart-item">
+
+              <div class="img_div" routerLink="/product-details/{{cartItem.PID}}">
+                  <img class="second_img img-responsive" src='{{cartItem?.ProductImage}}' />
+                </div>
+                <div class="Product_name text-left">
+                  <h5 class="text-left">{{cartItem?.ProductName}}</h5>
+
+                  <span class="font_size">{{cartItem?.UnitSize}} | SKU: {{cartItem?.SKU}} | UPC: {{cartItem?.UPC}}</span>
+                </div>
+
+                <div>
+                  <h5 class="Product_price text-left">{{cartItem?.OfferPriceDisplay}}</h5>
+                  <div *ngIf="cartItem?.OfferPriceDisplay !== cartItem?.PriceDisplay">
+                    <h6 class="price-strike-through text-left">{{cartItem?.PriceDisplay}}</h6>
+                  </div>
+                </div>
+
+                <div class="margin_top">
+                  <select class="select-quant form-control" [(ngModel)]="cartItem.QuantityOrdered" (change)="onQtyChange(cartItem)">
+                    <option *ngFor="let qty of quantity">{{qty}}                    <input type="text" name="quantity" class="form-control"></option>
+
+                  </select>
+                </div>
+
+                <div class="text-left totalprice">
+                  <span class="total_price">{{cartItem?.FinalItemTotalDisplay}} </span>
+                  <button class="bg_black" (click)="removeFromCart(cartItem)">
+                    <img src="assets/Images/cancel.png">
+                  </button>
+                </div>
+
+          </div>
+        </div>
+      </div>
+<!-- M Cart -->
 
         <div class="btn_right buttons-container">
           <button class="btn btn-default" *ngIf="storeGetHomeData?.IsPickUp" (click)="onPickup()">Pickup</button>

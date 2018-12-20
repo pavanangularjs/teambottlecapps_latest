@@ -263,3 +263,14 @@ table.new-address-add {
 .bottles-brand {
   color: $lukas-color;
 }
+
+
+@media only screen and (max-width: 1024px) {
+  .dateinput {
+      background: transparent !important;
+      outline: none;
+      box-shadow: none;
+      border: solid 0px transparent;
+      width: 100% !important;
+    }
+  }

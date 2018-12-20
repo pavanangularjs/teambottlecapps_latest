@@ -1,4 +1,4 @@
-<header *ngIf="!isMobile" id="menu" class="hidden-xs hidden-sm visible-lg visible-md">
+<header id="menu" class="hidden-xs hidden-sm visible-lg visible-md">
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="header_div row">
@@ -92,12 +92,12 @@
 </header>
 
 <!-- M Header -->
-<header *ngIf="isMobile" id="menu" class="hidden-md hidden-ld visible-xs visible-sm m-header">
+<header id="menu" class="hidden-md hidden-ld visible-xs visible-sm m-header">
     <nav>
         <div class="navbar-header">
             <button class="pull-left m-menu"> <span class="fa fa-bars"> </span></button>
             <a class="navbar-brand lukas-logo">
-                <img src="assets/Images/logo-.png" class="img-responsive" [routerLink]="['/']" alt="Lukas">
+                <img src="assets/Images/logo.png" class="img-responsive" [routerLink]="['/']" alt="Lukas">
             </a>
         </div>
         <!-- User Login icon Starts Here -->
@@ -155,7 +155,7 @@
                     </div>
                 </div>
             </li>
-            <li class="dropdown text_small search-dropmenu">
+<!--             <li class="dropdown text_small search-dropmenu">
                 <div class="cart-block">
                     <div class="header_icon">
                         <i class="icon icon-search search-icon"></i>
@@ -167,14 +167,14 @@
                             <input type="text" class="form-control" name="search" [(ngModel)]="searchText" placeholder="Find Your Drink...">
                             <div class="search-btn">
                                 <button type="button" class="btn btn-primaray" (click)="searchByText()">
-                                    <!-- <img src="assets/Images/search.png"> -->
+                                    
                                     <i class="icon icon-search"></i>
                                 </button>
                             </div>
                         </div>
                     </li>
                 </ul>
-            </li>
+            </li> -->
             <li class="dropdown text_small store-dropmenu">
                 <div class="cart-block">
                     <div class="header_icon">

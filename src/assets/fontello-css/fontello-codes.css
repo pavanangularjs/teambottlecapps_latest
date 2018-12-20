@@ -60,3 +60,7 @@
 .icon-distance:before { content: '\eaee'; } /* '' */
 .icon-location-picker:before { content: '\eaef'; } /* '' */
 .icon-store-location:before { content: '\eaf0'; } /* '' */
+.icon-beer:before { content: '\eaf1'; } /* '' */
+.icon-liquor:before { content: '\eaf2'; } /* '' */
+.icon-mixer:before { content: '\eaf3'; } /* '' */
+.icon-wine:before { content: '\eaf4'; } /* '' */

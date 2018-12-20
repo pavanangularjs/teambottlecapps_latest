@@ -205,10 +205,10 @@ table tr td .img_div{
     height: 80px;
    }
 .margin_bottom{
-    border: 2px solid #d7d7d7;
+    border: 1px solid #d7d7d7;
     min-height: 60%;
     text-align: center;
-    border-radius: 5px 5px 0 0;
+    border-radius: 10px 10px 0 0;
     height: 60%;
     -webkit-transition: .3s ease-in-out;
     transition: .3s ease-in-out;
@@ -257,6 +257,11 @@ table tr td .img_div{
     /* width: auto; */
     width:100%;
 }
+
+.img_div{
+    margin-right: 0px !important;
+}
+
 .checked{
     color: $lukas-color!important;
 }
@@ -430,7 +435,7 @@ nav .navbar-nav ul li a{
 
 
     .img_div{
-        margin-right: 0px;
+        margin-right: 10px;
     }
     .Product_name h5,table.res_table tr thead th{
         font-size: 7px !important;
@@ -1683,12 +1688,12 @@ select.form-control {
 
 i.icon-favorites {
     font-size: 26px;
-    color: #777;
+    color: #c2c4ca;
 }
 
 i.icon-add-cart {
     font-size: 32px;
-    color: #777;
+    color: #c2c4ca;
 }
 
 i.active {
@@ -1705,6 +1710,11 @@ a img.second_img {
 
    /* M Header */
 @media only screen and (max-width: 1024px) {
+
+    ul.search-block {
+        width: 100%;
+    }
+
    .m-header {
     width: 100%;
    }
@@ -1721,7 +1731,7 @@ a img.second_img {
     display: inline-block !important;
    }
    .navbar-header {
-    width: 25%;
+    width: 50%;
     float: left;
    }
    nav ul.float_right {
@@ -1790,4 +1800,95 @@ a img.second_img {
     .user-menu.user-m-menu li {
         display: block !important;
       }
+
+      .navbar-brand {
+            width: 130px;
+            img {
+                height: auto !important;
+                width: 100%;
+            }
+      }
+
+
+    /*menu drodown checkboxes*/
+    .nav-item, .checkbox {
+        position: relative;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .dropdownlist {
+        min-height: 420px;
+        height: auto;
+    }
+
+    .nav-item {
+        padding-left: 15px;
+      input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 20px;
+        width: 15px;
+        z-index: 1;
+        left: 0px;
+      }
+      span {
+        background-color: transparent;
+        border: solid 1px #777;
+        .text-white {
+            margin-bottom: 5px;
+            display: block;
+        }
+      }
+      .checkmark {
+        position: absolute;
+        top: 2px;
+        left: 0;
+        height: 15px;
+        width: 15px;
+      }
+      &:hover input ~ .checkmark {
+        background-color: transparent;
+        border: solid 1px #777;
+      }
+      input:checked ~ .checkmark {
+        background-color: transparent;
+        border: solid 1px transparent;
+      }
+      .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+    }
+
+    .checkbox .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    .nav-item {
+      input:checked ~ .checkmark:after {
+        display: block;
+      }
+      .checkmark:after {
+        left: 3px;
+        top: 0px;
+        width: 7px;
+        height: 13px;
+        border: solid $lukas-color;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+      label.active {
+        color: $lukas-color;
+      }
+    }
 }

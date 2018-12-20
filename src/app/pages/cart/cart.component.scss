@@ -445,4 +445,56 @@ section {
                 width: 100%;
             }
     }
+
+    .box-tile {
+        border: solid 1px transparent; 
+        text-align: left;
+        padding-top: 0px;
+        padding-left: 0px;
+        box-shadow: 0px 2px 5px rgba(0,0,0,.3);
+        border-radius: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        min-height: 360px;
+        max-height: 450px;
+        .img_div{
+            margin-bottom: 20px;
+            text-align: center;
+            min-height: 120px;
+            height: auto;
+        }
+    }
+
+    .btn_right.buttons-container button,
+    button.btn {
+        margin-left: 15px;
+        box-shadow: 0px 10px 20px 0 rgba(166, 20, 85, 0.2);
+    }
+
+    select.select-quant {
+        font-size: 14px;
+        width: 70px;
+        height: 40px;
+        text-align: left;
+        float: left;
+    }
+
+    button.bg_black {
+        position: absolute;
+        right: 10px;
+        top: 30px;
+        margin-right: 0px;
+    }
+
+    .total_price {
+        float: right;
+        font-family: poppinsbold;
+        color: $lukas-color;
+        font-size: 20px;
+    }
+
+    .second_img {
+        height: 120px;
+        margin: 0 auto;
+    }
 }
