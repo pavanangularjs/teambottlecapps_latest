@@ -1,10 +1,10 @@
-<div *ngIf="!isMobile; else mobileView">
-    <app-header></app-header>
-    <app-progress-bar></app-progress-bar>
-    <router-outlet></router-outlet>
-    <app-footer></app-footer>
-    <ng4-loading-spinner [threshold]="2000" [timeout]="4000" [template]="template" style="margin:0 auto; text-align: center;"
-        [zIndex]="9999"> </ng4-loading-spinner>
+<!--<div *ngIf="!isMobile; else mobileView">-->
+<app-header></app-header>
+<app-progress-bar></app-progress-bar>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
+<!--<ng4-loading-spinner [threshold]="2000" [timeout]="4000" [template]="template" style="margin:0 auto; text-align: center;"
+    [zIndex]="9999"> </ng4-loading-spinner>
 </div>
 
 <ng-template #mobileView>
@@ -16,5 +16,6 @@
             </div>
         </div>
 </ng-template>
-<app-agelimit></app-agelimit>  
+-->
+<app-agelimit></app-agelimit>
 <button id="openModal" #openModal [hidden]="true" data-toggle="modal" data-target="#dialog"></button>
