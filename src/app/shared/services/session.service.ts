@@ -8,6 +8,7 @@ import { CustomerLoginSession } from '../../models/customer-login-session';
 // import { CustomerService } from '../../services/customer.service';
 import { Router } from '@angular/router';
 import { AppConfigService } from '../../app-config.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class SessionService {
     private progressBarService: ProgressBarService,
     // private customerService: CustomerService,
     private route: Router,
-    private appConfig: AppConfigService) { }
+    private appConfig: AppConfigService,
+    private toastr: ToastrService) { }
 
   createNewSession() {
     let demail = localStorage.getItem('email');
@@ -31,6 +33,7 @@ export class SessionService {
     }
 
     this.progressBarService.show();
+    this.toastr.info('Refreshing');
     if (demail && dpass) {
       this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams(demail, dpass, 'E')));
     } else {
