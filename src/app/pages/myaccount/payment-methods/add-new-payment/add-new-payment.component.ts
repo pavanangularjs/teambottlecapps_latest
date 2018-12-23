@@ -24,6 +24,7 @@ export class AddNewPaymentComponent implements OnInit {
   addressList: any;
   months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
   years: any;
+  isValidCard = false;
 
   constructor(private formBuilder: FormBuilder,
     // private spinnerService: Ng4LoadingSpinnerService,
@@ -111,9 +112,54 @@ export class AddNewPaymentComponent implements OnInit {
 
   showCardType(isValid) {
     this.cardType = '';
-    if (isValid && this.formAddNewPayment.get('sixteenDigitNumber').value) {
+    const cardNumber = this.formAddNewPayment.get('sixteenDigitNumber').value;
+
+    if (isValid && cardNumber) {
+
       this.cardType = this.cardService.getCardType(this.formAddNewPayment.get('sixteenDigitNumber').value);
+
+      if (this.cardType !== undefined) {
+        this.isValidCard = this.isValidateCardNumber(cardNumber);
+
+        if (!this.isValidCard) {
+          this.toastr.error('Please Enter Valid Card Number');
+        }
+      }
     }
+  }
+
+  isValidateCardNumber(cardNumber): boolean {
+    let cardDigits = cardNumber.split('').map(Number);
+    const nonDigits = cardDigits.filter(item => isNaN(item));
+
+    if (nonDigits.length > 0) {
+      return false;
+    }
+
+    const lastDigit = cardDigits.pop();
+    nonDigits.reverse();
+
+    cardDigits = cardDigits.map((num) => {
+      if (num % 2 !== 0) {
+        return num * 2;
+      }
+      return num;
+    });
+
+    cardDigits = cardDigits.map((num) => {
+      if (num > 9) {
+        return num - 9;
+      }
+      return num;
+    });
+
+    const sum = cardDigits.reduce((a, b) => a + b, 0);
+
+    if (sum % 10 === lastDigit) {
+      return true;
+    }
+
+    return false;
   }
 
   onSaveCard() {
@@ -124,6 +170,12 @@ export class AddNewPaymentComponent implements OnInit {
       this.toastr.error('Please enter valid data');
       return;
     }
+
+    if (!this.isValidCard) {
+      this.toastr.error('Please Enter Valid Card Number');
+      return;
+    }
+
     // this.spinnerService.show();
     this.cardProfile = new PaymentProfile();
 
@@ -139,7 +191,7 @@ export class AddNewPaymentComponent implements OnInit {
 
     this.cardProfile.cardNumber = this.formAddNewPayment.get('sixteenDigitNumber').value;
     this.cardProfile.expirationDate =
-    `${this.formAddNewPayment.get('expiryYear').value}-${this.formAddNewPayment.get('expiryMonth').value}`;
+      `${this.formAddNewPayment.get('expiryYear').value}-${this.formAddNewPayment.get('expiryMonth').value}`;
     this.cardProfile.defaultPaymentProfile = false;
     this.cardProfile.validationMode = 'testMode';
 
