@@ -89,9 +89,13 @@
                       <td>
                         <div class="radiobox">
                             <small class="text-muted">
-                                  <input type="radio" name="tip" (change)="onTipSelected($event, tip)" [checked]="tip.IsDeafault === true"> {{tip?.TipAmountDisplay}} ({{tip?.Percentage !== 0 ? tip?.Percentage : 'Other'}}%)
+                                  <input type="radio" name="tip" (change)="onTipSelected($event, tip)" [checked]="tip?.IsDeafault === true"> {{tip?.Percentage !== 0 ? tip?.TipAmountDisplay + '(' + tip?.Percentage + ')%' : 'Other'}}
                                   <span class="checkmark"></span>
                             </small>
+                        </div>
+                        <div *ngIf="tip?.Percentage === 0 && tip?.IsDeafault === true">
+                          <input type="text" [(ngModel)]="tip.TipAmount">
+                          <i (click)="onTipSelected($event, tip)" class="icon icon-selected"></i>
                         </div>
                       </td>
                       <td class="text-right"><small class="text-muted"> </small></td>

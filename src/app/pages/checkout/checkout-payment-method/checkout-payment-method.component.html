@@ -48,7 +48,7 @@
                       src="../../assets/Images/american_express_logo_.gif" width="43" height="36" border="0" />
                     {{paymentProfile?.payment?.creditCard?.cardNumber}}
                     <div *ngIf="selectedCard===i">
-                      <input type="password" name="cvv" [(ngModel)]="cardCVV" (keyup)="saveCVV()" class="text-cvv form-control">
+                      CVV: <input type="password" name="cvv" [(ngModel)]="cardCVV" (keyup)="saveCVV()" class="text-cvv form-control">
                     </div>
                   </div>
                 </td>
