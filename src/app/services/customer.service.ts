@@ -18,6 +18,7 @@ import { CustomerLogin } from '../state/customer/customer.action';
 import { Store } from '@ngrx/store';
 import { ToastrService } from 'ngx-toastr';
 import { ProgressBarService } from '../shared/services/progress-bar.service';
+import { AppConfigService } from '../app-config.service';
 
 @Injectable()
 export class CustomerService {
@@ -26,16 +27,16 @@ export class CustomerService {
   customerAddressList: any;
   customerPaymentMethodGetList: any;
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-  deviceID = '';
-  storeID = 10060;
+
   constructor(private http: HttpClient,
     private authService: AuthService,
     private errorHandler: ErrorHandlerService,
     private store: Store<CustomerLoginSession>,
     private toastr: ToastrService,
-    private progressBarService: ProgressBarService) {
-      if (this.deviceID === '') {
-        this.deviceID = Math.random().toString(36).substring(2);
+    private progressBarService: ProgressBarService,
+    private appConfig: AppConfigService) {
+      if (this.appConfig.deviceID === '') {
+        this.appConfig.deviceID = Math.random().toString(36).substring(2);
       }
   }
 
@@ -52,7 +53,7 @@ export class CustomerService {
           if (demail && dpass) {
             localStorage.removeItem('email');
             localStorage.removeItem('password');
-            this.store.dispatch(new CustomerLogin(this.getLoginCustomerParams()));
+            this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams()));
           }
         } else {
           this.customerSession = res;
@@ -66,23 +67,6 @@ export class CustomerService {
         return this.errorHandler.processError(error);
       })
     );
-  }
-
-  getLoginCustomerParams(email?: string, pwd?: string, loginType?: string, sourceId?: string) {
-    return {
-      AppId: 10060, // 10275,
-      AppVersion: '8.5',
-      DeviceId: this.deviceID,
-      DeviceType: this.deviceID,
-      EmailId: email || '',
-      LoginType: loginType || 'B',
-      Password: pwd || '',
-      StoreId: this.storeID, // 10275,
-      SourceId: sourceId || '',
-      SessionId: '',
-      UserId: '',
-      UserIp: ''
-    };
   }
 
   getProfileDetails(): Observable<any> {

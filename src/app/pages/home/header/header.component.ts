@@ -13,6 +13,7 @@ import { ProductStoreService } from '../../../services/product-store.service';
 import { ProgressBarService } from '../../../shared/services/progress-bar.service';
 import * as CryptoJS from 'crypto-js';
 import { baseUrl } from '../../../services/url-provider';
+import { AppConfigService } from '../../../app-config.service';
 
 @Component({
   selector: 'app-header',
@@ -37,7 +38,8 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private storeService: ProductStoreService,
     private progressBarService: ProgressBarService,
-    private deviceService: DeviceDetectorService) {
+    private deviceService: DeviceDetectorService,
+    private appConfig: AppConfigService) {
 
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
@@ -102,7 +104,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onStoreChange(storeId) {
-    this.customerService.storeID = storeId;
+    this.appConfig.storeID = storeId;
 
     if (this.customerSession && this.customerSession.SessionId) {
       // this.spinnerService.show();
@@ -117,11 +119,11 @@ export class HeaderComponent implements OnInit {
 
       this.progressBarService.show();
       if (demail && dpass) {
-        this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams(demail, dpass, 'E')));
+        this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams(demail, dpass, 'E')));
       } else {
         localStorage.removeItem('email');
         localStorage.removeItem('password');
-        this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams()));
+        this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams()));
       }
     }
   }
@@ -130,7 +132,7 @@ export class HeaderComponent implements OnInit {
     localStorage.clear();
     // localStorage.removeItem(key);  for removing a single item
     location.reload();
-    this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams()));
+    this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams()));
     this.router.navigate(['/']);
   }
 }

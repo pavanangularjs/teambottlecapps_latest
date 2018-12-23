@@ -6,10 +6,11 @@ import { Router } from '@angular/router';
 import { CustomerLogin } from '../../../state/customer/customer.action';
 import { CustomerSelectors } from '../../../state/customer/customer.selector';
 import { CustomerLoginSession } from '../../../models/customer-login-session';
-import { CustomerService } from '../../../services/customer.service';
+// import { CustomerService } from '../../../services/customer.service';
 // import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { ProgressBarService } from '../../../shared/services/progress-bar.service';
+import { AppConfigService } from '../../../app-config.service';
 
 @Component({
   selector: 'app-signup',
@@ -21,12 +22,14 @@ export class SignupComponent implements OnInit {
   customerSession: CustomerLoginSession;
   submitted = false;
 
-  constructor(private router: Router, private store: Store<CustomerLoginSession>,
-    private customerService: CustomerService,
+  constructor(private router: Router,
+    private store: Store<CustomerLoginSession>,
+    // private customerService: CustomerService,
     // private spinnerService: Ng4LoadingSpinnerService,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private progressBarService: ProgressBarService) {
+    private progressBarService: ProgressBarService,
+    private appConfig: AppConfigService) {
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         if (clsd) {
@@ -64,7 +67,7 @@ export class SignupComponent implements OnInit {
     const email = this.formSignUp.get('semail').value;
     const password = this.formSignUp.get('spassword').value;
 
-    this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams(email, password, 'S')));
+    this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams(email, password, 'S')));
   }
 
 }

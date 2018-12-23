@@ -11,8 +11,9 @@ import { ProgressBarService } from '../../../shared/services/progress-bar.servic
 import { CustomerLogin } from '../../../state/customer/customer.action';
 import { CustomerSelectors } from '../../../state/customer/customer.selector';
 import { CustomerLoginSession } from '../../../models/customer-login-session';
-import { CustomerService } from '../../../services/customer.service';
+// import { CustomerService } from '../../../services/customer.service';
 import { baseUrl } from '../../../services/url-provider';
+import { AppConfigService } from '../../../app-config.service';
 
 @Component({
   selector: 'app-signin',
@@ -29,12 +30,13 @@ export class SigninComponent implements OnInit {
   rememberMe = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private store: Store<CustomerLoginSession>,
-    private customerService: CustomerService,
+    // private customerService: CustomerService,
     // private spinnerService: Ng4LoadingSpinnerService,
     private socialAuthService: AuthService,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private progressBarService: ProgressBarService) {
+    private progressBarService: ProgressBarService,
+    private appConfig: AppConfigService) {
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         if (clsd) {
@@ -80,7 +82,7 @@ export class SigninComponent implements OnInit {
       }
 
       if (demail && dpass) {
-        this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams(demail, dpass, 'E')));
+        this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams(demail, dpass, 'E')));
       }
     }
   }
@@ -93,7 +95,7 @@ export class SigninComponent implements OnInit {
       console.log(user);
       if (user) {
         this.store.dispatch(new CustomerLogin(
-          this.customerService.getLoginCustomerParams(user.email, '', 'F', user.id)));
+          this.appConfig.getLoginCustomerParams(user.email, '', 'F', user.id)));
       }
 
     });
@@ -112,7 +114,7 @@ export class SigninComponent implements OnInit {
     this.password = this.formSignIn.get('epassword').value;
     this.rememberMe = this.formSignIn.get('rememberMe').value;
 
-    this.store.dispatch(new CustomerLogin(this.customerService.getLoginCustomerParams(this.email, this.password, 'E')));
+    this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams(this.email, this.password, 'E')));
   }
 
   signOut(): void {
