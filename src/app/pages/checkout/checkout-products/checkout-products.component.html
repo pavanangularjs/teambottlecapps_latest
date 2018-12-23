@@ -137,6 +137,6 @@
   </div>
   <div class="btn_right buttons-container">
     <button type="cancel" class="btn btn-default novalue" [routerLink]="['/cart']" >Cancel</button>
-    <button type="checkout" class="btn btn-default close" (click)="onCheckout()">Checkout</button>
+    <button type="checkout" [disabled]="cartDetails?.DeliveryAddress?.Remark !== ''" class="btn btn-default" [ngClass]= "cartDetails?.DeliveryAddress?.Remark !== '' ? 'novalue' : 'close'" (click)="onCheckout()">Checkout</button>
   </div>
 </div>

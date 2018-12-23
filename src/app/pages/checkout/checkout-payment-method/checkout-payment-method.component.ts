@@ -23,7 +23,8 @@ export class CheckoutPaymentMethodComponent implements OnInit {
   orderTypeId: number;
   paymentTypeId: number;
 
-  constructor(private customerService: CustomerService, private paymentService: PaymentService,
+  constructor(private customerService: CustomerService,
+    private paymentService: PaymentService,
     // private spinnerService: Ng4LoadingSpinnerService,
     private toastr: ToastrService,
     private cartService: CartService,

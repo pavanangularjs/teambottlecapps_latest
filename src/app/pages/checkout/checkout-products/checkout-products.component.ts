@@ -60,8 +60,15 @@ export class CheckoutProductsComponent implements OnInit {
       this.toastr.error('Please Select Address');
       return;
     }
-    if (this.cartDetails.PaymentTypeId !== 0 && this.cartDetails.PaymentTypeId !== 1) {
+    if (this.cartDetails.PaymentTypeId === 1 &&
+      this.paymentService.createTransaction.customerPaymentProfileId === '') {
       this.toastr.error('Please Select Payment Method');
+      return;
+    }
+
+    if (this.cartDetails.PaymentTypeId === 1 &&
+      this.paymentService.createTransaction.cvv === 0) {
+      this.toastr.error('Please Enter CVV');
       return;
     }
 
@@ -177,9 +184,5 @@ export class CheckoutProductsComponent implements OnInit {
         item.IsDeafault = false;
       }
     });
-  }
-
-  onOtherTipSelected() {
-
   }
 }
