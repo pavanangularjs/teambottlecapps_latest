@@ -68,7 +68,7 @@ export class CheckoutProductsComponent implements OnInit {
     }
 
     if (this.cartDetails.PaymentTypeId === 1 &&
-      this.paymentService.createTransaction.cvv === 0) {
+      this.paymentService.createTransaction.cvv === 0 || this.paymentService.createTransaction.cvv.toString() === '') {
       this.toastr.error('Please Enter CVV');
       return;
     }
@@ -96,6 +96,7 @@ export class CheckoutProductsComponent implements OnInit {
       (orderResponse: any) => {
         this.cartDetails = orderResponse;
         this.toastr.success('Order Placed Successfully.');
+        this.clearPaymentCache();
         this.orderplace.emit(this.cartDetails);
       });
   }
@@ -108,6 +109,7 @@ export class CheckoutProductsComponent implements OnInit {
         (orderResponse: any) => {
           this.cartDetails = orderResponse;
           this.toastr.success('Order Placed Successfully.');
+          this.clearPaymentCache();
           this.orderplace.emit(this.cartDetails);
         });
     } else {
@@ -116,6 +118,13 @@ export class CheckoutProductsComponent implements OnInit {
 
   }
 
+  clearPaymentCache() {
+    this.paymentService.createTransaction = {
+      customerProfileId: '',
+      customerPaymentProfileId: '',
+      cvv: 0
+    };
+  }
   private getPlaceOrderRequestParamsForOnlinePayment(data: any): PlaceOrderForOnlinePayment {
     if (!this.customerService.customerSession) {
       return null;

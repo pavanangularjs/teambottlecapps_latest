@@ -42,7 +42,7 @@ export class SessionService {
     }
 
     this.progressBarService.show();
-    this.toastr.info('Refreshing');
+    // this.toastr.info('Refreshing');
     if (demail && dpass) {
       this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams(demail, dpass, 'E')));
     } else {
