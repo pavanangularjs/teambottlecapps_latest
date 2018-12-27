@@ -65,8 +65,10 @@ export class HomepageComponent implements OnInit {
         demail = localStorage.getItem('email');
         dpass = localStorage.getItem('password');
 
-        demail = CryptoJS.AES.decrypt(demail, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
-        dpass = CryptoJS.AES.decrypt(dpass, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
+        if (demail && dpass) {
+          demail = CryptoJS.AES.decrypt(demail, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
+          dpass = CryptoJS.AES.decrypt(dpass, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
+        }
       }
 
       this.progressBarService.show();
