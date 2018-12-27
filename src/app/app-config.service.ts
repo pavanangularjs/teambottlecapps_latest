@@ -9,6 +9,11 @@ export class AppConfigService {
     constructor() { }
 
     getLoginCustomerParams(email?: string, pwd?: string, loginType?: string, sourceId?: string) {
+        this.deviceID = localStorage.getItem('deviceId');
+        if (this.deviceID === null) {
+            this.deviceID = Math.random().toString(36).substring(2);
+            localStorage.setItem('deviceId', this.deviceID);
+        }
         return {
             AppId: 10060, // 10275,
             AppVersion: '8.5',

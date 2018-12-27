@@ -35,15 +35,15 @@ export class CustomerService {
     private toastr: ToastrService,
     private progressBarService: ProgressBarService,
     private appConfig: AppConfigService) {
-      if (this.appConfig.deviceID === '') {
+      /* if (this.appConfig.deviceID === '') {
         this.appConfig.deviceID = Math.random().toString(36).substring(2);
-      }
+      } */
   }
 
   loginCustomer(reqParams: CustomerLoginRequestPayload): Observable<any> {
     return this.http.post<any>(baseUrl + UrlNames.LoginCustomer, reqParams, { headers: this.headers }).pipe(
       switchMap((res: any) => {
-        if (res.ErrorDetail !== '' || res.ErrorMessage !== '') {
+        if ((res.ErrorDetail && res.ErrorDetail !== '') || (res.ErrorMessage && res.ErrorMessage !== '')) {
           this.toastr.error(res.ErrorDetail);
           this.progressBarService.hide();
 
@@ -55,11 +55,15 @@ export class CustomerService {
             localStorage.removeItem('password');
             this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams()));
           }
-        } else {
+        } else if (res.SessionId && res.SessionId !== '') {
           this.customerSession = res;
           this.authService.setSessionToken(res.SessionId);
           this.authService.setUserId(res.UserId);
           return of(res);
+        } else {
+          this.toastr.error('Internal Server Error.');
+          this.progressBarService.hide();
+          return EMPTY;
         }
       }),
       retry(3),

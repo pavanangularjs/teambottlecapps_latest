@@ -129,10 +129,10 @@ export class HeaderComponent implements OnInit {
   }
 
   onSignOut() {
-    localStorage.clear();
+    sessionStorage.clear();
     // localStorage.removeItem(key);  for removing a single item
-    location.reload();
+    // location.reload();
     this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams()));
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 }

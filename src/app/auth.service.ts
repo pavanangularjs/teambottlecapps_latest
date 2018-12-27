@@ -10,22 +10,22 @@ export class AuthService {
 
   // Set User Secure Token
   setSessionToken(secure_token: string) {
-    localStorage.setItem('SessionId', secure_token);
+    sessionStorage.setItem('SessionId', secure_token);
   }
 
   // Set User Secure Token
   getSessionToken() {
-    return localStorage.getItem('SessionId');
+    return sessionStorage.getItem('SessionId');
   }
 
   // Set User Secure Token
   setUserId(userId: number) {
-    localStorage.setItem('UserId', userId.toString());
+    sessionStorage.setItem('UserId', userId.toString());
   }
 
   // Set User Secure Token
   getUserId() {
-    return localStorage.getItem('UserId');
+    return sessionStorage.getItem('UserId');
   }
 
   // Check User is LoggedIn or not!
@@ -35,8 +35,8 @@ export class AuthService {
 
   // Logout method
   logout() {
-    localStorage.removeItem('SessionId');
-    localStorage.removeItem('UserId');
-    this.router.navigate(['login']);
+    sessionStorage.removeItem('SessionId');
+    sessionStorage.removeItem('UserId');
+    this.router.navigate(['/home']);
   }
 }
