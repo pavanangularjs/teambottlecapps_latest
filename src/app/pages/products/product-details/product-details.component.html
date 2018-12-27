@@ -88,16 +88,22 @@
 
                         <div class="margin_top col-md-8 col-sm-8 col-lg-8 col-xs-12">
                             <div class="row">
-                                <div class="col-md-12 col-xs-12"><label class="sizelabel">Qty</label></div>
+                                <div class="col-md-12 col-xs-12">
+                                    <label class="sizelabel">Qty</label>
+                                </div>
                                 <div class="col-md-4 col-xs-5">
                                     <div class="select-bg">
-                                        <select class="selectsize form-control" [(ngModel)]="qty">
+                                        <select [disabled]="productDetails?.Product?.Inventory === 0 || productDetails?.Product?.InCart > 0"  
+                                                class="selectsize form-control" 
+                                                [(ngModel)]="qty">
                                                 <option *ngFor="let qty of quantity">{{qty}}</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-5 col-xs-7">
-                                    <button class="btn btn-default addtocart" (click)="addToCart()">Add to Cart</button>
+                                    <button *ngIf="productDetails?.Product?.Inventory > 0 && productDetails?.Product?.InCart === 0" class="btn btn-default addtocart" (click)="addToCart()">Add to Cart</button>
+                                    <button *ngIf="productDetails?.Product?.InCart > 0" class="btn btn-default addtocart" (click)="removeFromCart()">Remove from Cart</button>
+                                    <button *ngIf="productDetails?.Product?.Inventory === 0" [disabled]="true" class="btn btn-default">Out Of Stock</button>                                    
                                 </div>
                             </div>
                             <!-- <button  class="dec_circle">

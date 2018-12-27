@@ -60,6 +60,9 @@ export class ProductDetailsComponent implements OnInit {
           }
         }
 
+        if (this.productDetails.Product  && this.productDetails.Product.InCart > 0) {
+          this.qty = this.productDetails.Product.InCart;
+        }
         if (this.productDetails.RatingAverage) {
           this.rating = +this.productDetails.RatingAverage;
         }
@@ -139,9 +142,25 @@ export class ProductDetailsComponent implements OnInit {
         (data: any) => {
           this.toastr.success(data.SuccessMessage);
           this.progressBarService.hide();
+          this.getProductDetails();
         });
     }
 
+  }
+
+  removeFromCart() {
+    if (this.productDetails && this.productDetails.Product &&
+      this.productDetails.Product.PID) {
+
+      this.progressBarService.show();
+      this.cartService.removeFromCart(this.productDetails.Product.PID).subscribe(
+        (data: any) => {
+          this.progressBarService.hide();
+          this.toastr.success(data.SuccessMessage);
+          this.qty = 1;
+          this.getProductDetails();
+        });
+    }
   }
 
   getTypeId(typeName: string) {

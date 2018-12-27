@@ -16,6 +16,7 @@ import { AddProductReview } from '../models/add-product-review';
 import { UpdateProductReview } from '../models/update-product-review';
 import { ErrorHandlerService } from '../shared/services/error-handler.service';
 import { BaseRequest } from '../models/base-request';
+import { CartService } from '../services/cart.service';
 
 @Injectable()
 export class ProductStoreService {
@@ -26,8 +27,10 @@ export class ProductStoreService {
     storeList: any;
     customerInfo: any;
 
-    constructor(private http: HttpClient, private store: Store<CustomerLoginSession>,
-        private errorHandler: ErrorHandlerService) {
+    constructor(private http: HttpClient,
+        private store: Store<CustomerLoginSession>,
+        private errorHandler: ErrorHandlerService,
+        private cartService: CartService) {
         this.store.select(CustomerSelectors.customerLoginSessionData)
             .subscribe(clsd => {
                 if (clsd) {
@@ -42,6 +45,7 @@ export class ProductStoreService {
             switchMap((res: any) => {
                 if (res && res.CustomerInfo) {
                     this.customerInfo = res.CustomerInfo;
+                    this.cartService.cartItemCount.next(res.CustomerInfo.CartItemCount);
                 }
                 this.storeDetails = null;
                 this.couponsList = null;
@@ -64,6 +68,8 @@ export class ProductStoreService {
             SessionId: this.customerSession.SessionId,
             UserId: this.customerSession.UserId,
             AppId: this.customerSession.AppId,
+            DeviceId: this.customerSession.DeviceId,
+            DeviceType: this.customerSession.DeviceType,
             IsFeatureProduct: 1
         };
     }
