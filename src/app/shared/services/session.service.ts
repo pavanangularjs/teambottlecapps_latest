@@ -24,12 +24,21 @@ export class SessionService {
     private toastr: ToastrService) { }
 
   createNewSession() {
-    let demail = localStorage.getItem('email');
-    let dpass = localStorage.getItem('password');
+
+    let demail = sessionStorage.getItem('email');
+    let dpass = sessionStorage.getItem('password');
 
     if (demail && dpass) {
       demail = CryptoJS.AES.decrypt(demail, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
       dpass = CryptoJS.AES.decrypt(dpass, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
+    } else {
+      demail = localStorage.getItem('email');
+      dpass = localStorage.getItem('password');
+
+      if (demail && dpass) {
+        demail = CryptoJS.AES.decrypt(demail, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
+        dpass = CryptoJS.AES.decrypt(dpass, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
+      }
     }
 
     this.progressBarService.show();
@@ -37,8 +46,8 @@ export class SessionService {
     if (demail && dpass) {
       this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams(demail, dpass, 'E')));
     } else {
-      localStorage.removeItem('email');
-      localStorage.removeItem('password');
+      /* localStorage.removeItem('email');
+      localStorage.removeItem('password'); */
       this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams()));
     }
     this.route.navigate(['/home'], { queryParams: { returnUrl: this.route.url } });
