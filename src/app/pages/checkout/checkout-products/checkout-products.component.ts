@@ -44,11 +44,12 @@ export class CheckoutProductsComponent implements OnInit {
     }
     this.listCharges = this.cartDetails.ListCharge.filter(charge => charge.ChargeTitle !== 'Tip');
 
-    if (this.cartDetails.ListTipForDriver.filter(item => item.Percentage === 0).length === 0) {
-      const otherTip = { 'Percentage': 0, 'TipAmount': '', 'TipAmountDisplay': 'Other', 'IsDeafault': false };
-      this.cartDetails.ListTipForDriver.push(otherTip);
+    if ( this.cartDetails.OrderTypeId === 2 && this.cartDetails.ListTipForDriver.length > 0 ) {
+      if (this.cartDetails.ListTipForDriver.filter(item => item.Percentage === 0).length === 0) {
+        const otherTip = { 'Percentage': 0, 'TipAmount': '', 'TipAmountDisplay': 'Other', 'IsDeafault': false };
+        this.cartDetails.ListTipForDriver.push(otherTip);
+      }
     }
-
   }
   onCheckout() {
 

@@ -18,7 +18,7 @@ export class PlaceOrderResultComponent implements OnInit {
   }
 
   onContinueShoping() {
-    this.store.dispatch(new StoreGetHome());
+    // this.store.dispatch(new StoreGetHome());
     this.router.navigate(['/home']);
   }
 
