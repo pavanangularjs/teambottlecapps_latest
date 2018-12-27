@@ -243,6 +243,8 @@ td .checkout-product-details {
   font-family: $poppins-bold;
 }
 
+
+
 @media only screen and (max-width: 1024px) {
     .order-details-panel {
       padding: 15px !important;
@@ -254,5 +256,51 @@ td .checkout-product-details {
     }
     .checkout-info {
       margin-left: 5px;
+    }
+
+    .m-radio {
+      float: left;
+        .checkmark {
+              top: 0px !important;
+        }
+    }
+
+    .tip-container {
+      input {
+        width: 60px;
+        float: left;
+        height: 25px;
+        margin-left: 5px;
+        margin-right: 3px;
+        margin-top: -4px;
+      }
+      .icon {
+        font-size: 20px;
+        color: $lukas-color;
+        position: relative;
+        top: -5px;
+      }
+  }
+}
+.m-radio {
+  float: left;
+  .checkmark {
+    margin-top: -2px;
+  }
+}
+.tip-container {
+    input {
+      width: 60px;
+      float: left;
+      height: 25px;
+      margin-left: 5px;
+      margin-right: 3px;
+      margin-top: 0px;
+    }
+    .icon {
+      font-size: 20px;
+      color: $lukas-color;
+      position: relative;
+      top: -1px;
     }
 }

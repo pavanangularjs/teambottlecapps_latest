@@ -7,21 +7,22 @@
       <div class="payment-method">
         <div class="row" *ngIf="orderTypeId === 1">
           <div class="payment-option-select">
-            <div class="col-md-6 col-xs-6">
+            
+            <div class="col-md-12 col-xs-12">
+              <a (click)="changePaymentType('payAtStore')" [ngClass]="{'pay-opt-1' : paymentTypeId === 0}" class="payatstorenew">
+<!--                 <div class="text-left">  -->
+                  <span class="fa fa-check-circle" *ngIf="paymentTypeId === 0"></span> 
+                  <span class="payonline"> Pay at Store</span>
+<!--                 </div> -->
+              </a>
+            </div>
+                 <span class="pay-or-store">OR</span>
+            <div class="col-md-12 col-xs-12">
               <a (click)="changePaymentType('payOnline')" [ngClass]="{'pay-opt-1' : paymentTypeId === 1}">
                 <span class="fa fa-check-circle" *ngIf="paymentTypeId === 1"></span> 
                 <span class="payonline"> Pay Online</span>
               </a>
             </div>
-            <div class="col-md-6 col-xs-6">
-              <a (click)="changePaymentType('payAtStore')" [ngClass]="{'pay-opt-1' : paymentTypeId === 0}">
-                <h5 class="text-right"> 
-                  <span class="fa fa-check-circle" *ngIf="paymentTypeId === 0"></span> 
-                  Pay at Store
-                </h5>
-              </a>
-            </div>
-            <span class="pay-or-store">OR</span>
           </div>
         </div>
         <div *ngIf="paymentTypeId === 1">
@@ -47,8 +48,8 @@
                     <img *ngIf="paymentProfile?.payment?.creditCard?.cardType === 'AmericanExpress'" alt="Amex" title="Amex"
                       src="../../assets/Images/american_express_logo_.gif" width="43" height="36" border="0" />
                     {{paymentProfile?.payment?.creditCard?.cardNumber}}
-                    <div *ngIf="selectedCard===i">
-                      CVV: <input type="password" name="cvv" [(ngModel)]="cardCVV" (keyup)="saveCVV()" class="text-cvv form-control">
+                    <div *ngIf="selectedCard===i" class="pull-right enter-cvv">
+                      <span>CVV: </span> <input type="password" name="cvv" [(ngModel)]="cardCVV" (keyup)="saveCVV()" class="text-cvv form-control">
                     </div>
                   </div>
                 </td>
@@ -67,7 +68,6 @@
       </div>
     </div>
     <div class="col-md-12">
-      <br>
       <h5>Special Instructions</h5>
       <form class="form-group">
         <textarea rows="3" class="form-control"></textarea>

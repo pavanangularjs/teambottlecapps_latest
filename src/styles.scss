@@ -11,6 +11,7 @@
 body {
     margin-top: 60px;
     background-color: #fcfcfc;
+    font-family: poppinsregular, poppinsbold, montserratregular, montserratbold;
 }
 
    h1,h2,h3,h4,h5,h6{
@@ -459,7 +460,7 @@ nav .navbar-nav ul li a{
       }
 
       ol.breadcrumb{
-          float: left;
+          float: right;
           padding-left: 0;
       }
 }
@@ -1018,7 +1019,7 @@ ul.navbar-nav li a:hover {
     }
     ul.navbar-nav {
         padding-left: 0 !important;
-        margin-top: 10px !important;
+        margin-top: 0px !important;
     }
     .navbar-collapse ul li a {
         color: #fff !important;
@@ -1052,6 +1053,14 @@ ul.navbar-nav li a:hover {
    
     .navbar-toggle{
         margin-right: 0px;
+    }
+
+    .carousel {
+        padding-bottom: 15px !important;
+    }
+
+    .bottom {
+        margin-bottom: 15px !important;
     }
 }
 
@@ -1671,7 +1680,7 @@ select.form-control {
 }
 
 .radiobox input:checked ~ .checkmark {
-    background-color: transparent;
+    background-color: $lukas-color;
     border: solid $lukas-color;
     /*border-width: 0 3px 3px 0;*/
     -webkit-transform: rotate(45deg);
@@ -1891,4 +1900,28 @@ a img.second_img {
         color: $lukas-color;
       }
     }
+
+    .Searchrelated_noborder h4{
+        width: 100% !important;
+        font-size: 18px !important;
+        padding: 0px;
+        margin-top: 5px;
+    }
+
+    .Searchrelated_div h4{
+        width: 48% !important;
+        font-size: 18px !important;
+        padding: 0px;
+        margin-top: 5px;
+    }
+
+    .Search_div h4 {
+        font-size: 18px !important;
+        padding: 0px;
+        margin-top: 2px;
+    }
+}
+
+.menu-icon {
+    float: left;
 }

@@ -87,13 +87,13 @@
                   <table class="exapnded-table">
                     <tr *ngFor="let tip of cartDetails?.ListTipForDriver">
                       <td>
-                        <div class="radiobox">
+                        <div class="radiobox m-radio">
                             <small class="text-muted">
                                   <input type="radio" name="tip" (change)="onTipSelected($event, tip)" [checked]="tip?.IsDeafault === true"> {{tip?.Percentage !== 0 ? tip?.TipAmountDisplay + '(' + tip?.Percentage + ')%' : 'Other'}}
                                   <span class="checkmark"></span>
                             </small>
                         </div>
-                        <div *ngIf="tip?.Percentage === 0 && tip?.IsDeafault === true">
+                        <div class="tip-container" *ngIf="tip?.Percentage === 0 && tip?.IsDeafault === true">
                           <input type="text" [(ngModel)]="tip.TipAmount">
                           <i (click)="onTipSelected($event, tip)" class="icon icon-selected"></i>
                         </div>

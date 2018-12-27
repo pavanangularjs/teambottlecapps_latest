@@ -89,13 +89,15 @@
         color: $lukas-color;
       }
     }
-    vertical-align: text-top;
+    vertical-align: middle;
     input.text-cvv {
       width: 100px;
-      padding: 5px;
+      /* padding: 5px; */
       margin-top: 10px;
-      left: 70px;
+      left: 55px;
       position: relative;
+      /* float: left; */
+      top: -29px;
     }
   }
   a.new-payment-mode {
@@ -153,4 +155,23 @@
 
 .text-muted, .checkout-content  {
   font-family: $poppins-regular;
+}
+
+.payatstorenew {
+    padding-top: 25px;
+    display: inline-block;
+    padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .enter-cvv {
+      margin-top: 15px;
+      float: left !important;
+      position: relative;
+      left: -30px;
+      span {
+        position: relative;
+        top: 10px;
+      }
+  }
 }

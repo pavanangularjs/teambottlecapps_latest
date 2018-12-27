@@ -9,7 +9,7 @@
 }
 
 .your_rating h5,form.common_width label{
-    font-family: 'Roboto', sans-serif;
+    font-family: poppinsregular;
     font-size: 12.3px;
     font-weight: normal;
     font-style: normal;
@@ -18,4 +18,9 @@
     letter-spacing: 0.4px;
     text-align: left;
     color: #777777 ;
+}
+
+.add_review p{
+    font-family: poppinsregular;
+    font-size: 12.3px;
 }

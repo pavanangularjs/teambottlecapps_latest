@@ -37,10 +37,37 @@
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <h5 class="color" [routerLink]="['/forgot']">Forgot your password?</h5>
+        <h5 data-toggle="modal" data-target="#forgotModal" class="color">Forgot your password?</h5>
       </div>
     </div>
     <button type="submit" class="btn submit">LOGIN NOW</button>
 
   </form>
+</div>
+
+<!-- Forgot Password -->
+
+<div class="modal fade forgot-password-container" id="forgotModal" tabindex="-1" role="dialog" aria-labelledby="forgotModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content forgot-container">
+      <div class="modal-header forgot-header">
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+        <h4 class="modal-title text-center" id="forgotModalLabel">Forgot your Password?</h4>
+      </div>
+      <div class="modal-body">
+        <p class="text-center">Enter your email address below, and we'll send you instructions for resetting it.</p>
+        <br>
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">EMAIL ADDRESS<span class="bottles-brand">*</span></label>
+            <input type="text" class="form-control" id="recipient-name" placeholder="Your email">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer forgot">
+        <button type="button" class="btn btn-default novalue" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-default active">Reset Password</button>
+      </div>
+    </div>
+  </div>
 </div>
