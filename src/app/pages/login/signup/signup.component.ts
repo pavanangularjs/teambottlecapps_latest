@@ -11,6 +11,8 @@ import { CustomerLoginSession } from '../../../models/customer-login-session';
 import { ToastrService } from 'ngx-toastr';
 import { ProgressBarService } from '../../../shared/services/progress-bar.service';
 import { AppConfigService } from '../../../app-config.service';
+import * as CryptoJS from 'crypto-js';
+import { baseUrl } from '../../../services/url-provider';
 
 @Component({
   selector: 'app-signup',
@@ -64,10 +66,30 @@ export class SignupComponent implements OnInit {
     }
     // this.spinnerService.show();
     this.progressBarService.show();
-    const email = this.formSignUp.get('semail').value;
-    const password = this.formSignUp.get('spassword').value;
+    let email = this.formSignUp.get('semail').value;
+    let password = this.formSignUp.get('spassword').value;
 
     this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams(email, password, 'S')));
+
+    if (email && password && baseUrl) {
+      email = CryptoJS.AES.encrypt(email, baseUrl.substr(3)).toString();
+      password = CryptoJS.AES.encrypt(password, baseUrl.substr(3)).toString();
+
+      sessionStorage.setItem('email', email);
+      sessionStorage.setItem('password', password);
+      this.clearLocalStorage();
+    }
   }
 
+  clearLocalStorage() {
+    const lemail = localStorage.getItem('email');
+    const lpass = localStorage.getItem('password');
+    const lrememberMe = localStorage.getItem('rememberMe');
+
+    if (lemail && lpass && lrememberMe) {
+      localStorage.removeItem('email');
+      localStorage.removeItem('password');
+      localStorage.removeItem('rememberMe');
+    }
+  }
 }

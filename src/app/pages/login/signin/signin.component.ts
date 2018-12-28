@@ -20,7 +20,7 @@ import { AppConfigService } from '../../../app-config.service';
 })
 export class SigninComponent implements OnInit {
   formSignIn: FormGroup;
-  customerSession: CustomerLoginSession;
+  // customerSession: CustomerLoginSession;
   submitted = false;
   returnUrl: string;
   email: string;
@@ -38,11 +38,8 @@ export class SigninComponent implements OnInit {
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         if (clsd) {
-          this.customerSession = clsd;
+          // this.customerSession = clsd;
           this.progressBarService.hide();
-          if (this.customerSession.IsAccess === true && this.customerSession.UserId !== 0) {
-            this.doCaching();
-          }
         }
       });
   }
@@ -96,6 +93,8 @@ export class SigninComponent implements OnInit {
     this.email = this.formSignIn.get('eemail').value;
     this.password = this.formSignIn.get('epassword').value;
     this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams(this.email, this.password, 'E')));
+    this.doCaching();
+
   }
 
   signOut(): void {
