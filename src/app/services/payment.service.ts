@@ -8,17 +8,18 @@ import { CustomerSelectors } from '../state/customer/customer.selector';
 import { CustomerLoginSession } from '../models/customer-login-session';
 import { ProductStoreService } from './product-store.service';
 import { Store } from '@ngrx/store';
+import { AppConfigService } from '../app-config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PaymentService {
 
-  URL = 'https://apitest.authorize.net/xml/v1/request.api';
+  /* URL = 'https://apitest.authorize.net/xml/v1/request.api';
   merchantAuthentication = {
     vAppLoginId: '5Pj5hE6a',
     vTransactionKey: '77Za8R4Wnx988xQs'
-  };
+  }; */
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
   customerSession: CustomerLoginSession;
   customerInfo: any;
@@ -28,8 +29,11 @@ export class PaymentService {
     cvv: 0
   };
 
-  constructor(private http: HttpClient, private store: Store<CustomerLoginSession>,
-    private errorHandler: ErrorHandlerService, private productService: ProductStoreService) {
+  constructor(private http: HttpClient,
+    private store: Store<CustomerLoginSession>,
+    private errorHandler: ErrorHandlerService,
+    private productService: ProductStoreService,
+    private appConfig: AppConfigService) {
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         if (clsd) {
@@ -42,7 +46,7 @@ export class PaymentService {
   }
 
   createCustomerProfile(profile: PaymentProfile): Observable<any> {
-    return this.http.post<any>(this.URL,
+    return this.http.post<any>(this.appConfig.URL,
       this.getCreateCustomerProfileRequestPayload(profile), { headers: this.headers }).pipe(
         switchMap((res: any) => {
           return of(res);
@@ -62,8 +66,8 @@ export class PaymentService {
     return {
       'createCustomerProfileRequest': {
         'merchantAuthentication': {
-          'name': this.merchantAuthentication.vAppLoginId,
-          'transactionKey': this.merchantAuthentication.vTransactionKey
+          'name': this.appConfig.merchantAuthentication.vAppLoginId,
+          'transactionKey': this.appConfig.merchantAuthentication.vTransactionKey
         },
         'profile': {
           'merchantCustomerId': this.customerSession.UserId,
@@ -96,7 +100,7 @@ export class PaymentService {
   }
 
   createCustomerPaymentProfileRequest(profile: PaymentProfile): Observable<any> {
-    return this.http.post<any>(this.URL,
+    return this.http.post<any>(this.appConfig.URL,
       this.getCreateCustomerPaymentProfileRequestPayload(profile), { headers: this.headers }).pipe(
         switchMap((res: any) => {
           return of(res);
@@ -116,8 +120,8 @@ export class PaymentService {
     return {
       'createCustomerPaymentProfileRequest': {
         'merchantAuthentication': {
-          'name': this.merchantAuthentication.vAppLoginId,
-          'transactionKey': this.merchantAuthentication.vTransactionKey
+          'name': this.appConfig.merchantAuthentication.vAppLoginId,
+          'transactionKey': this.appConfig.merchantAuthentication.vTransactionKey
         },
         'customerProfileId': profile.customerProfileId,
         'paymentProfile': {
@@ -144,7 +148,7 @@ export class PaymentService {
     };
   }
   getExistingCards(profileId: string): Observable<any> {
-    return this.http.post<any>(this.URL, this.getCustomerProfileRequestPayload(profileId), { headers: this.headers }).pipe(
+    return this.http.post<any>(this.appConfig.URL, this.getCustomerProfileRequestPayload(profileId), { headers: this.headers }).pipe(
         switchMap((res: any) => {
           return of(res);
         }),
@@ -159,8 +163,8 @@ export class PaymentService {
     return {
       'getCustomerProfileRequest': {
         'merchantAuthentication': {
-          'name': this.merchantAuthentication.vAppLoginId,
-          'transactionKey': this.merchantAuthentication.vTransactionKey
+          'name': this.appConfig.merchantAuthentication.vAppLoginId,
+          'transactionKey': this.appConfig.merchantAuthentication.vTransactionKey
         },
         'customerProfileId': profileId,
         'includeIssuerInfo': 'true'
@@ -169,7 +173,7 @@ export class PaymentService {
   }
 
   deleteCustomerPaymentProfile(profileId: string, paymentProfileId: string): Observable<any> {
-    return this.http.post<any>(this.URL,
+    return this.http.post<any>(this.appConfig.URL,
       this.deleteCustomerPaymentProfileRequestPayload(profileId, paymentProfileId), { headers: this.headers }).pipe(
         switchMap((res: any) => {
           return of(res);
@@ -185,8 +189,8 @@ export class PaymentService {
     return {
       'deleteCustomerPaymentProfileRequest': {
         'merchantAuthentication': {
-          'name': this.merchantAuthentication.vAppLoginId,
-          'transactionKey': this.merchantAuthentication.vTransactionKey
+          'name': this.appConfig.merchantAuthentication.vAppLoginId,
+          'transactionKey': this.appConfig.merchantAuthentication.vTransactionKey
         },
         'customerProfileId': profileId,
         'customerPaymentProfileId': paymentProfileId
@@ -195,7 +199,7 @@ export class PaymentService {
   }
 
   createTransactionRequest(data): Observable<any> {
-    return this.http.post<any>(this.URL,
+    return this.http.post<any>(this.appConfig.URL,
       this.createTransactionRequestPayload(data), { headers: this.headers }).pipe(
         switchMap((res: any) => {
           return of(res);
@@ -211,8 +215,8 @@ export class PaymentService {
     return {
       'createTransactionRequest': {
         'merchantAuthentication': {
-          'name': this.merchantAuthentication.vAppLoginId,
-          'transactionKey': this.merchantAuthentication.vTransactionKey
+          'name': this.appConfig.merchantAuthentication.vAppLoginId,
+          'transactionKey': this.appConfig.merchantAuthentication.vTransactionKey
         },
         'refId': '{{vRefId}}',
         'transactionRequest': {

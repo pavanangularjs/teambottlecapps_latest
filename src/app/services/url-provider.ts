@@ -1,4 +1,6 @@
-export const baseUrl = 'https://staging.liquorapps.com/Bcapi/api/';
+import { baseURL } from '../app-config.service';
+export const baseUrl = baseURL;
+
 export enum UrlNames {
     GetStoreHome = 'Store/StoreGetHome',
     StoreGetDetail = 'Store/StoreGetDetail',

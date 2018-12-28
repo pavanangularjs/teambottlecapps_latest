@@ -1,11 +1,31 @@
 import { Injectable } from '@angular/core';
 
+export const baseURL = 'https://staging.liquorapps.com/Bcapi/api/';
+
+export enum AuthorizeNetURLs {
+    sandBox_URL = 'https://apitest.authorize.net/xml/v1/request.api',
+    prod_URL = 'https://api.authorize.net/xml/v1/request.api'
+}
+
+export enum ValidationsModes {
+    test = 'testMode',
+    live = 'liveMode'
+}
+
 @Injectable({
     providedIn: 'root'
 })
 export class AppConfigService {
     deviceID = '';
     storeID = 10060;
+    appID = 10060;
+    URL = '';
+    merchantAuthentication = {
+      vAppLoginId: '5Pj5hE6a',
+      vTransactionKey: '77Za8R4Wnx988xQs'
+    };
+    validationMode = '';
+
     constructor() { }
 
     getLoginCustomerParams(email?: string, pwd?: string, loginType?: string, sourceId?: string) {
@@ -15,10 +35,10 @@ export class AppConfigService {
             localStorage.setItem('deviceId', this.deviceID);
         }
         return {
-            AppId: 10060, // 10275,
+            AppId: this.appID, // 10275,
             AppVersion: '8.5',
             DeviceId: this.deviceID,
-            DeviceType: this.deviceID,
+            DeviceType: 'W',
             EmailId: email || '',
             LoginType: loginType || 'B',
             Password: pwd || '',
@@ -29,4 +49,20 @@ export class AppConfigService {
             UserIp: ''
         };
     }
+
+    decryptionKeyandTransaction(Credential1, Credential2, Credential3, StoreID) {
+        if (StoreID === 10002 && Credential3 === 'T') {
+          this.merchantAuthentication.vAppLoginId = '5Pj5hE6a';
+          this.merchantAuthentication.vTransactionKey = '77Za8R4Wnx988xQs';
+        } else if (StoreID === 10002 && Credential3 === 'L') {
+          this.merchantAuthentication.vAppLoginId = '5Pj5hE6a';
+          this.merchantAuthentication.vTransactionKey = '77Za8R4Wnx988xQs';
+        } else if (StoreID === 10060 && Credential3 === 'T') {
+          this.merchantAuthentication.vAppLoginId = '5Pj5hE6a';
+          this.merchantAuthentication.vTransactionKey = '77Za8R4Wnx988xQs';
+        } else if (StoreID === 10060 && Credential3 === 'L') {
+          this.merchantAuthentication.vAppLoginId = '5Pj5hE6a';
+          this.merchantAuthentication.vTransactionKey = '77Za8R4Wnx988xQs';
+        }
+      }
 }

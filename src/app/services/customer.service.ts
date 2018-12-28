@@ -18,7 +18,7 @@ import { CustomerLogin } from '../state/customer/customer.action';
 import { Store } from '@ngrx/store';
 import { ToastrService } from 'ngx-toastr';
 import { ProgressBarService } from '../shared/services/progress-bar.service';
-import { AppConfigService } from '../app-config.service';
+import { AppConfigService, ValidationsModes, AuthorizeNetURLs } from '../app-config.service';
 
 @Injectable()
 export class CustomerService {
@@ -35,9 +35,9 @@ export class CustomerService {
     private toastr: ToastrService,
     private progressBarService: ProgressBarService,
     private appConfig: AppConfigService) {
-      /* if (this.appConfig.deviceID === '') {
-        this.appConfig.deviceID = Math.random().toString(36).substring(2);
-      } */
+    /* if (this.appConfig.deviceID === '') {
+      this.appConfig.deviceID = Math.random().toString(36).substring(2);
+    } */
   }
 
   loginCustomer(reqParams: CustomerLoginRequestPayload): Observable<any> {
@@ -105,7 +105,7 @@ export class CustomerService {
     };
   }
 
-  updateCustomerProfile(profile: CustomerProfileUpdate ): Observable<any> {
+  updateCustomerProfile(profile: CustomerProfileUpdate): Observable<any> {
     return this.http.post<any>(baseUrl + UrlNames.CustomerProfileUpdate,
       this.updateProfileDetails(profile), { headers: this.headers }).pipe(
         switchMap((res: any) => {
@@ -121,7 +121,7 @@ export class CustomerService {
 
   UploadImage(image: any): Observable<any> {
     return this.http.post<any>(baseUrl + UrlNames.UploadImage,
-      {path: image}, { headers: this.headers }).pipe(
+      { path: image }, { headers: this.headers }).pipe(
         switchMap((res: any) => {
           return of(res);
         }),
@@ -216,6 +216,7 @@ export class CustomerService {
       this.getProfileDetailsRequestParams(), { headers: this.headers }).pipe(
         switchMap((res: any) => {
           this.customerPaymentMethodGetList = res;
+          this.getPaymentTypes();
           return of(res);
         }),
         retry(3),
@@ -224,6 +225,34 @@ export class CustomerService {
         })
       );
   }
+
+  getPaymentTypes() {
+    if (this.customerPaymentMethodGetList && this.customerPaymentMethodGetList.ListPaymentItem) {
+      const cardPayment = this.customerPaymentMethodGetList.ListPaymentItem.filter(
+        item => item.PaymentType === 'Card Payment')[0];
+
+        if (cardPayment) {
+
+          if (cardPayment.Credential3 === 'L') {
+            this.appConfig.validationMode = ValidationsModes.live;
+            this.appConfig.URL = AuthorizeNetURLs.prod_URL;
+          } else {
+            this.appConfig.validationMode = ValidationsModes.test;
+            this.appConfig.URL = AuthorizeNetURLs.sandBox_URL;
+          }
+
+          if (cardPayment.Credential1 && cardPayment.Credential2 && cardPayment.Credential3) {
+            this.decryptionKeyandTransaction(
+              cardPayment.Credential1, cardPayment.Credential2, cardPayment.Credential3, this.customerPaymentMethodGetList.StoreId);
+          }
+        }
+    }
+  }
+
+  decryptionKeyandTransaction(Credential1, Credential2, Credential3, StoreID) {
+    this.appConfig.decryptionKeyandTransaction(Credential1, Credential2, Credential3, StoreID);
+  }
+
   customerPaymentInsert(userProfileId: string, isDefault: number, paymentTypeId: number): Observable<any> {
     return this.http.post<any>(baseUrl + UrlNames.CustomerPaymentInsert,
       this.getCustomerPaymentInsertRequestParams(userProfileId, isDefault, paymentTypeId), { headers: this.headers }).pipe(

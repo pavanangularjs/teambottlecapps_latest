@@ -9,6 +9,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { CreditcardTypeService } from '../../../../shared/services/creditcard-type.service';
 import { ProgressBarService } from '../../../../shared/services/progress-bar.service';
+import { AppConfigService } from '../../../../app-config.service';
+
 @Component({
   selector: 'app-add-new-payment',
   templateUrl: './add-new-payment.component.html',
@@ -34,7 +36,8 @@ export class AddNewPaymentComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router,
     private cardService: CreditcardTypeService,
-    private progressBarService: ProgressBarService) {
+    private progressBarService: ProgressBarService,
+    private appConfig: AppConfigService) {
     if (this.productService.customerInfo) {
       this.customerInfo = this.productService.customerInfo;
     }
@@ -193,7 +196,7 @@ export class AddNewPaymentComponent implements OnInit {
     this.cardProfile.expirationDate =
       `${this.formAddNewPayment.get('expiryYear').value}-${this.formAddNewPayment.get('expiryMonth').value}`;
     this.cardProfile.defaultPaymentProfile = false;
-    this.cardProfile.validationMode = 'testMode';
+    this.cardProfile.validationMode = this.appConfig.validationMode;
 
     if (this.isSaveAddress) {
       this.saveAddress();
