@@ -1,7 +1,7 @@
 <ul class="nav navbar-nav mobile_none search-block">
   <li>
       <div class="input-group searchby">
-        <input type="text" class="form-control" name="search" [(ngModel)]="searchText" placeholder="Find Your Drink...">
+        <input type="text" class="form-control" (keyup.enter)="searchByText()" name="search" [(ngModel)]="searchText" placeholder="Find Your Drink...">
 		    <div class="search-btn">
 		    	<button type="button" class="btn btn-primaray" (click)="searchByText()" >
 		        	<!-- <img src="assets/Images/search.png"> -->

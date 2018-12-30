@@ -58,17 +58,17 @@ h6.color_text{
     padding-bottom: 15px;
     color: #666666;
 }
-h5.color{
+h5.color, a.color{
     font-family: $poppins-regular;
     font-size: 14.5px;
     font-stretch: normal;
-    line-height: 1.88;
+    line-height: 2.88;
     letter-spacing: 0.4px;
     text-align: left;
     color: $lukas-color;
     cursor: pointer;
   }
-  h5.color:focus{
+  h5.color:focus, a.color:focus{
       outline: none;
   }
   .checkbox label{

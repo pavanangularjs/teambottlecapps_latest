@@ -362,7 +362,7 @@ table tr td h4,table tr td h5,table tr td span,table tr td .total_price{
 
 .myorder-details {
     font-family: $poppins-regular;
-    padding: 0px 0px 0px 15px !important;
+    padding: 10px 0px 10px 15px !important;
         .myorder-status {
             margin-right: 5px !important;
             width: auto !important;
@@ -409,4 +409,116 @@ table tr td h4,table tr td h5,table tr td span,table tr td .total_price{
 
 button.dec_circle.toggle {
     margin-right: -10px;
+}
+
+    .icon.icon-expand, .icon.icon-collapse {
+        color: #999;
+        font-size: 14px;
+    }
+
+@media only screen and (max-width: 1024px) {
+
+    .product-image {
+        margin: 0px;
+        float: left;
+        padding: 0px 20px 10px 0px;
+        margin-right: 0px;
+        width: 50px;
+    }
+
+    .Product_name {
+        display: block;
+        margin-left: 0px;
+    }
+
+    span.rating-icon {
+        margin-left: 0px !important;
+    }
+
+    span.total_price {
+        font-family: poppinsbold;
+        font-size: 18px;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: 0.5px;
+        text-align: center;
+        color: #A61455;
+    }
+
+    .qty-xs {
+        padding-right: 15px;
+        padding-top: 0px;
+        margin-top: 5px;
+    }
+
+    .myorder-details {
+        font-family: $poppins-regular;
+        padding: 0px 0px 0px 15px !important;
+        float: left;
+            .myorder-status {
+                margin-right: 5px !important;
+                width: auto !important;
+                font-family: $poppins-regular;
+                .status-img {
+                    width: 17px;
+                    margin: 0px;
+                    padding: 0px;
+                }
+            }
+            strong {
+                line-height: 45px;
+                font-size: 13px;
+                font-family: $poppins-regular;
+                .icon {
+                    font-size: 14px !important;
+                }
+            }
+    }
+
+    .tfoot-order-summary {
+        padding: 3px 15px 0px 15px;
+        border-top: solid 0px transparent;
+        .icon.icon-expand, .icon.icon-collapse {
+            color: #999;
+            font-size: 14px;
+        }
+        .date_time {
+            margin-left: 3px;
+            font-family: montserratregular !important;
+        }
+    }
+
+    .order-summary-expand {
+        width: 80%;
+        td.text-right {
+            font-size: 14px !important;
+            font-family: $poppins-regular !important;
+            color: #222;
+        }
+        td.text-left {
+            font-size: 11px;
+            font-family: $poppins-regular;
+            color: #333;
+        }
+        h5.summary {
+            text-transform: uppercase;
+        }
+    }
+
+    .bill_summary{
+        width: 100%;
+        float: right;
+        margin-bottom: 15px;
+    }
+
+    button.dec_circle.toggle {
+        padding-top: 5px;
+        .icon.icon-collapse {
+            font-size: 14px;
+        }
+    }
+
+    .order_total span.font_color{
+        padding-left: 5px;
+    }
 }

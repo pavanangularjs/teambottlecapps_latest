@@ -4,6 +4,7 @@
   border: solid 1px #e5e5e5 !important;
   border-radius: 2px !important;
   margin-bottom: -6px !important;
+  list-style: none;
 }
 
 h4.left-panel-title {
@@ -25,6 +26,11 @@ h4.left-panel-title {
       background-color: #f8f8f8;
     }
   }
+}
+
+ul.panel-group {
+    margin: 0px;
+    padding: 0px;
 }
 
 ul.left-panel-body {

@@ -55,6 +55,14 @@
             small {
                 font-family: poppinsregular;
                 color: #999;
+                a {
+                    color: #999;
+                    margin-left: 5px;
+                    &:hover {
+                      color: $lukas-color;
+                      text-decoration: none;
+                    }
+                }
             }
           }
           .store-distance-info {
@@ -73,7 +81,7 @@
             }
             .select-store {
               position: absolute;
-              bottom: 20px;
+              top: 35px;
               right: 0;
               button.active {
                 background-color: $lukas-color !important;

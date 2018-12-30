@@ -195,6 +195,22 @@ color: rgba(255,255,255,255) !important;
     line-height: 25px;
 }
 
+.Searchrelated_noborder h5, .Searchrelated_div h5{
+    width: 50%;
+    height: 21px;
+    padding-left: 0px;
+    border: none;
+    float: left;
+    font-family: montserratregular;
+    font-size: 20px !important;
+    font-stretch: normal;
+    /*line-height: 1.7;*/
+    letter-spacing: normal;
+    text-align: left;
+    color: #191919;
+    line-height: 25px;
+}
+
 .img_div{
     margin-bottom: 20px;
     text-align: center;
@@ -1698,11 +1714,19 @@ select.form-control {
 i.icon-favorites {
     font-size: 26px;
     color: #c2c4ca;
+    cursor: pointer;
 }
 
 i.icon-add-cart {
     font-size: 32px;
     color: #c2c4ca;
+    cursor: pointer;
+}
+
+i.icon-cart-outofstock {
+    font-size: 32px;
+    color: #c2c4ca;
+    cursor: pointer;
 }
 
 i.active {
@@ -1719,6 +1743,22 @@ a img.second_img {
 
    /* M Header */
 @media only screen and (max-width: 1024px) {
+    
+    .Searchrelated_noborder h5, .Searchrelated_div h5{
+        width: 50%;
+        height: 21px;
+        padding-left: 0px;
+        border: none;
+        float: left;
+        font-family: montserratregular;
+        font-size: 20px !important;
+        font-stretch: normal;
+        /*line-height: 1.7;*/
+        letter-spacing: normal;
+        text-align: left;
+        color: #191919;
+        line-height: 25px;
+    }
 
     ul.search-block {
         width: 100%;
@@ -1913,6 +1953,7 @@ a img.second_img {
         font-size: 18px !important;
         padding: 0px;
         margin-top: 5px;
+        padding-left: 12px;
     }
 
     .Search_div h4 {
