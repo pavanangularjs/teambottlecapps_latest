@@ -148,14 +148,16 @@ export class CheckoutProductsComponent implements OnInit {
   }
 
   applyCoupon() {
-    if (this.couponCode.trim() !== '') {
+    if (this.couponCode.trim() !== '' && !this.isCouponApplied) {
       this.cartDetails.CouponCode = this.couponCode;
       this.cartService.updateCart(this.cartDetails).subscribe(
         (data: any) => {
           this.cartDetails = data;
-          this.isCouponApplied = true;
-          this.toastr.success('Coupon Applied Successfully.');
-          this.filterCartDetails();
+          if ( data.Remark === '') {
+            this.isCouponApplied = true;
+            this.toastr.success('Coupon Applied Successfully.');
+            this.filterCartDetails();
+          }
         });
     }
   }

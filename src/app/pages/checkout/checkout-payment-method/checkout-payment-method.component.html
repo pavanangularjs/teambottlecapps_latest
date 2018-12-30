@@ -25,7 +25,7 @@
             </div>
           </div>
         </div>
-        <div *ngIf="paymentTypeId === 1">
+        <div *ngIf="paymentTypeId === 1 || orderTypeId === 2">
           <table>
             <thead>
               <th>Your Saved Card</th>
@@ -61,7 +61,7 @@
           <br>
           <div class="col-md-12">
             <div class="row">
-              <a [routerLink]="['/myaccount/add-new-payment-method']" class="new-payment-mode">Add New Payment Method</a>
+              <a (click)="onAddNewPaymentMethod()" class="new-payment-mode">Add New Payment Method</a>
             </div>
           </div>
         </div>

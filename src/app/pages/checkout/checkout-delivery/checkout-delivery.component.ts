@@ -4,6 +4,7 @@ import { CustomerService } from '../../../services/customer.service';
 import { CartService } from '../../../services/cart.service';
 import { ProgressBarService } from '../../../shared/services/progress-bar.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout-delivery',
@@ -22,7 +23,8 @@ export class CheckoutDeliveryComponent implements OnInit {
     // private spinnerService: Ng4LoadingSpinnerService,
     private cartService: CartService,
     private progressBarService: ProgressBarService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private route: Router) { }
 
   ngOnInit() {
     this.cartDetails = this.cartService.cartdetails;
@@ -63,6 +65,10 @@ export class CheckoutDeliveryComponent implements OnInit {
   getAddressList() {
     if (this.customerService.customerAddressList && this.customerService.customerAddressList.ListAddress) {
       this.addressList = this.customerService.customerAddressList.ListAddress;
+
+      if (this.addressList.length === 1 && this.cartService.cartdetails.AddressId === 0) {
+        this.cartService.cartdetails.AddressId = this.addressList[0].AddressId;
+      }
     } else {
       // this.spinnerService.show();
       this.progressBarService.show();
@@ -72,6 +78,8 @@ export class CheckoutDeliveryComponent implements OnInit {
           this.addressList = this.addressList.sort((x, y) => x.IsDefault > y.IsDefault ? -1 : 1 );
           if (this.addressList && this.addressList.filter(address => address.IsDefault === true).length > 0) {
             this.cartService.cartdetails.AddressId = this.addressList.filter(address => address.IsDefault === true)[0].AddressId;
+          } else if (this.addressList.length === 1 && this.cartService.cartdetails.AddressId === 0) {
+            this.cartService.cartdetails.AddressId = this.addressList[0].AddressId;
           }
           // this.spinnerService.hide();
           this.progressBarService.hide();
@@ -96,6 +104,15 @@ export class CheckoutDeliveryComponent implements OnInit {
           this.toastr.error(this.cartDetails.DeliveryAddress.Remark);
         }
       });
+  }
+
+  onAddAddress() {
+    this.route.navigate(['/myaccount/add-new-address'], { queryParams: { returnUrl: this.route.url } });
+  }
+
+  onEditAddress(addressId) {
+    // routerLink="/myaccount/edit-address/{{address.AddressId}}"
+    this.route.navigate(['/myaccount/edit-address/' + addressId], { queryParams: { returnUrl: this.route.url } });
   }
 
 }

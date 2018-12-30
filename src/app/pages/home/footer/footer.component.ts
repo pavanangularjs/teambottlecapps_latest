@@ -20,7 +20,8 @@ export class FooterComponent implements OnInit {
   } */
 
   storeDetails: any;
-  constructor(private store: Store<CustomerLoginSession>, private storeService: ProductStoreService) {
+  constructor(private store: Store<CustomerLoginSession>,
+    private storeService: ProductStoreService) {
 
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {

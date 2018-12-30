@@ -112,7 +112,7 @@
   <div class="coupon-panel">
     <form>
       <i class="icon icon-coupon"></i><!-- <img src="../assets/Images/coupon.png"> -->
-      <input type="text" name="coupun" (keydown.Enter)="applyCoupon()" placeholder="Apply Coupon" [(ngModel)]="couponCode" class="form-control coupon">
+      <input type="text" name="coupun" [disabled]="isCouponApplied" (keydown.Enter)="applyCoupon()" placeholder="Apply Coupon" [(ngModel)]="couponCode" class="form-control coupon">
       <i (click)="applyCoupon()" class="icon icon-selected"></i> <i (click)="clearCoupon()" class="icon icon-cancel2"></i>
     </form>
   </div>

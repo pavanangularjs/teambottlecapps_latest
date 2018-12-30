@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CartService } from '../../../services/cart.service';
 import { ProductStoreService } from '../../../services/product-store.service';
 import { ProgressBarService } from '../../../shared/services/progress-bar.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout-payment-method',
@@ -29,7 +30,8 @@ export class CheckoutPaymentMethodComponent implements OnInit {
     private toastr: ToastrService,
     private cartService: CartService,
     private storeService: ProductStoreService,
-    private progressBarService: ProgressBarService) { }
+    private progressBarService: ProgressBarService,
+    private route: Router) { }
 
   ngOnInit() {
     this.getPaymentMethodGetList();
@@ -112,6 +114,11 @@ export class CheckoutPaymentMethodComponent implements OnInit {
 
     this.paymentService.createTransaction.customerPaymentProfileId = paymentProfile.customerPaymentProfileId;
 
+  }
+
+  onAddNewPaymentMethod() {
+    // [routerLink]="['/myaccount/add-new-payment-method']"
+    this.route.navigate(['/myaccount/add-new-payment-method'], { queryParams: { returnUrl: this.route.url } });
   }
 
 }

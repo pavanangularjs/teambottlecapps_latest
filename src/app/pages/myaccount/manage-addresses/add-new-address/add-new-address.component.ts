@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AddressInsert } from '../../../../models/address-insert';
 import { CustomerService } from '../../../../services/customer.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-add-new-address',
@@ -12,12 +12,16 @@ import { ToastrService } from 'ngx-toastr';
 export class AddNewAddressComponent implements OnInit {
   formAddNewAddress: FormGroup;
   submitted = false;
+  returnUrl: string;
   constructor(private customerService: CustomerService,
     private router: Router,
+    private route: ActivatedRoute,
     private toastr: ToastrService,
     private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'myaccount/manage-addresses';
 
     this.formAddNewAddress = this.formBuilder.group({
       aFirstName: ['', [Validators.required, Validators.minLength(2)]],
@@ -75,7 +79,7 @@ export class AddNewAddressComponent implements OnInit {
     this.customerService.AddNewAddress(address).subscribe(
       (data) => {
         this.toastr.success(data.SuccessMessage);
-        this.router.navigate(['myaccount/manage-addresses']);
+        this.router.navigate([this.returnUrl]);
       });
   }
 }

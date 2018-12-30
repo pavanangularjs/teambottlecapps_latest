@@ -6,7 +6,7 @@ import { PaymentService } from '../../../../services/payment.service';
 import { ProductStoreService } from '../../../../services/product-store.service';
 import { CustomerService } from '../../../../services/customer.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CreditcardTypeService } from '../../../../shared/services/creditcard-type.service';
 import { ProgressBarService } from '../../../../shared/services/progress-bar.service';
 import { AppConfigService } from '../../../../app-config.service';
@@ -27,9 +27,11 @@ export class AddNewPaymentComponent implements OnInit {
   months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
   years: any;
   isValidCard = false;
+  returnUrl: string;
 
   constructor(private formBuilder: FormBuilder,
     // private spinnerService: Ng4LoadingSpinnerService,
+    private route: ActivatedRoute,
     private paymentService: PaymentService,
     private productService: ProductStoreService,
     private customerService: CustomerService,
@@ -52,6 +54,7 @@ export class AddNewPaymentComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/myaccount/payment-methods';
     this.isSaveAddress = false;
     this.formAddNewPayment = this.formBuilder.group({
       firstName: [this.customerInfo && this.customerInfo.FirstName || '', [Validators.required]],
@@ -101,7 +104,7 @@ export class AddNewPaymentComponent implements OnInit {
       firstName: [this.customerInfo && this.customerInfo.FirstName || '', [Validators.required]],
       lastName: [this.customerInfo && this.customerInfo.LastName || '', [Validators.required]],
       sixteenDigitNumber: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(15)]],
-      expiryMonth: ['', [Validators.required]],
+      expiryMonth: ['01', [Validators.required]],
       expiryYear: ['', [Validators.required]],
       address: [address.Address1, [Validators.required]],
       city: [address.City, [Validators.required]],
@@ -218,7 +221,7 @@ export class AddNewPaymentComponent implements OnInit {
           //  if (res && res.SuccessMessage !== '') {
           this.toastr.success('Card Added Successfully');
           this.progressBarService.hide();
-          this.router.navigate(['/myaccount/payment-methods']);
+          this.router.navigate([this.returnUrl]);
           //  }
           // });
         } else {
@@ -236,7 +239,7 @@ export class AddNewPaymentComponent implements OnInit {
             if (res && res.SuccessMessage !== '') {
               this.toastr.success(res.SuccessMessage);
               this.progressBarService.hide();
-              this.router.navigate(['/myaccount/payment-methods']);
+              this.router.navigate([this.returnUrl]);
             }
           });
         } else {

@@ -15,7 +15,9 @@ export class EditAddressComponent implements OnInit {
   editAddress: any;
   formEditAddress: FormGroup;
   submitted = false;
-  constructor(private route: ActivatedRoute, private customerService: CustomerService,
+  returnUrl: string;
+  constructor(private route: ActivatedRoute,
+    private customerService: CustomerService,
     private router: Router,
     private toastr: ToastrService,
     private progressBarService: ProgressBarService,
@@ -36,6 +38,7 @@ export class EditAddressComponent implements OnInit {
 
   ngOnInit() {
     const addressId = +this.route.snapshot.paramMap.get('id');
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'myaccount/manage-addresses';
 
     if (this.customerService.customerAddressList && this.customerService.customerAddressList.ListAddress) {
       this.editAddress = this.customerService.customerAddressList.ListAddress.filter(item => item.AddressId === addressId)[0];
@@ -106,7 +109,8 @@ export class EditAddressComponent implements OnInit {
     this.customerService.UpdateAddress(address).subscribe(
       (data) => {
         this.toastr.success(data.SuccessMessage);
-        this.router.navigate(['myaccount/manage-addresses']);
+        // this.router.navigate(['myaccount/manage-addresses']);
+        this.router.navigate([this.returnUrl]);
       });
   }
 

@@ -28,16 +28,13 @@ export class AuthGuard implements CanActivate {
 
     if ((this.customerSession && this.customerSession.SessionId && this.customerSession.UserId > 0)) {
       return true;
-    }
-
-    const demail = localStorage.getItem('email');
-    const dpass = localStorage.getItem('password');
-
-    if (!(demail && dpass)) {
+    } else if ((this.customerSession && this.customerSession.SessionId && this.customerSession.UserId === 0)) {
+      this.route.navigate(['/login']);
       this.toastr.info('Please Sign In');
+      return false;
+    } else {
+      this.route.navigate(['/home'], { queryParams: { returnUrl: state.url } });
+      return false;
     }
-
-    this.route.navigate(['/login']);
-    return false;
   }
 }

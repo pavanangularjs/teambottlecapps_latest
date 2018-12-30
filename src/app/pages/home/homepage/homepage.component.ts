@@ -44,7 +44,12 @@ export class HomepageComponent implements OnInit {
           this.titleService.setTitle(this.storeGetHomeData.StoreName);
           this.updateCartId();
           if (this.returnUrl && this.returnUrl !== '/' && this.returnUrl !== '/home') {
-            this.router.navigate([this.returnUrl]);
+
+            if (this.returnUrl !== '/checkout') {
+              this.router.navigate([this.returnUrl]);
+            } else {
+              this.router.navigate(['/cart']);
+            }
           }
         }
       });
