@@ -267,6 +267,7 @@ h4.left-panel-title a.bottles-brand {
       width: 100%;
       overflow-y: auto;
       overflow-x: hidden;
+      margin-bottom: 10px;
       li {
         margin: 0px;
         padding: 0px;
@@ -294,5 +295,22 @@ h4.left-panel-title a.bottles-brand {
       }
     }
 
+    ul#myAccount {
+        /*display: table;*/
+        border-top: solid 0px transparent;
+        background-color: transparent;
+        text-align: center;
+        width: 100%;
 
+        li {
+            display: table-cell;
+            text-align: center;
+            border: solid 1px #f9f9f9;
+            /*width: 100%;*/
+            a {
+                padding: 10px;
+                font-size: 12px;
+            }
+        }
+    }
 }

@@ -29,21 +29,23 @@ body {
     border-radius: 0px;
     overflow: hidden;
 }
-.Search_div input{
-    width: 50%;
+.Search_div input, .Search_div h4{
+    width: 46%;
     height: 21px;
     padding-left: 12px;
     border: none;
     float: left;
     border-left: 5px solid $lukas-color;
     font-family:poppinsbold;
-    font-size: 20px;
+    font-size: 16px;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
     text-align: left;
     background-color: #fcfcfc;
     color: #191919;
+    padding-top: 0px;
+    margin-top: 2px;
    
 }
 .Search_div input::placeholder{
@@ -924,7 +926,7 @@ nav ul.navbar-nav li a{
     cursor:pointer;
     letter-spacing: 0; 
     position: relative;
-    padding: 0px 8px !important;
+    padding: 0px 6px !important;
     top: 5px !important;
 }
 
@@ -1180,19 +1182,23 @@ ul.navbar-nav li a:hover {
         margin-top: -1px;
     }
 
-    .mid-nav li.nav-item.dropdown.dropdown_menu.droparrow,
-    .mid-nav li.nav-item {
+    .mid-nav li.nav-item.dropdown.dropdown_menu.droparrow {
         height: 36px;
         margin-top: 7px;
     }
 
+    .mid-nav li.nav-item {
+        height: 34px;
+        margin-top: 7px;
+    }
+
      .navbar .dropdown:not(.nohover):hover .dropdown-menu {
-            min-width: 900px;
+            /*min-width: 900px;*/
             visibility: visible;
             opacity: 1;
             transition: visibility 0s, opacity 0.3s linear;
-            width: 85%;
-            max-width: 85% !important;
+            /*width: 85%;*/
+            /*max-width: 85% !important;*/
      }
        .navbar .dropdown-menu {
          border: 1px solid rgba(0,0,0,.15);
@@ -1743,7 +1749,16 @@ a img.second_img {
 
    /* M Header */
 @media only screen and (max-width: 1024px) {
-    
+
+    .breadcrumb>li+li:before {
+        padding: 0 0px 0 5px !important;
+    }
+
+    .pagination>li>a, .pagination>li>span {
+        font-size: 12px;
+        padding: 5px 10px !important;
+        margin-bottom: 15px;
+    }
     .Searchrelated_noborder h5, .Searchrelated_div h5{
         width: 50%;
         height: 21px;
@@ -1956,11 +1971,11 @@ a img.second_img {
         padding-left: 12px;
     }
 
-    .Search_div h4 {
+/*    .Search_div h4 {
         font-size: 18px !important;
         padding: 0px;
         margin-top: 2px;
-    }
+    }*/
 }
 
 .menu-icon {

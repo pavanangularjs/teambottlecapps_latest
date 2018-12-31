@@ -37,11 +37,6 @@
                           </a>
                         </h4>
                       </div>
-                      <ul id="myAccount" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="myAccountHeading">
-                          <li (click)="onOptionSelected('profile')"><a routerLink="./profile" [ngClass]="{'active': selectedOption === 'profile'}">Profile Information</a></li>
-                          <li (click)="onOptionSelected('address')"><a routerLink="./manage-addresses" [ngClass]="{'active': selectedOption === 'address'}">Manage Addresses</a></li>
-                          <li (click)="onOptionSelected('payment')"><a routerLink="./payment-methods" [ngClass]="{'active': selectedOption === 'payment'}">Payment Methods</a></li>
-                      </ul>
                     </li>
 
                     <li class="panel bottle-panel-container">
@@ -57,10 +52,15 @@
                     <li class="bottle-panel-container">
                         <div class="left-panel-section">
                             <h4 class="left-panel-title">
-                                <a href="#" class="bottles-brand"><span class="fa fa-sign-out myac-icon"></span> Logout</a>
+                                <a href="#" class=""><span class="fa fa-sign-out myac-icon"></span> Logout</a>
                             </h4>
                         </div>
                     </li>
+              </ul>
+              <ul id="myAccount" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="myAccountHeading">
+                  <li (click)="onOptionSelected('profile')"><a routerLink="./profile" [ngClass]="{'active': selectedOption === 'profile'}">Profile Information</a></li>
+                  <li (click)="onOptionSelected('address')"><a routerLink="./manage-addresses" [ngClass]="{'active': selectedOption === 'address'}">Manage Addresses</a></li>
+                  <li (click)="onOptionSelected('payment')"><a routerLink="./payment-methods" [ngClass]="{'active': selectedOption === 'payment'}">Payment Methods</a></li>
               </ul>
         </div>
 <!-- My Account Left Menu End -->

@@ -17,7 +17,19 @@ label {
 
 ul.nav.flex-column {
 	display: table;
+	width: 100%;
 	span.text-white {
 		margin-bottom: 5px;
 	}
+}
+
+.wid2 {
+	width: 200px;
+	margin: 0;
+    padding: 0;
+    float: left;
+}
+
+.wid4 {
+	width: 400px;
 }

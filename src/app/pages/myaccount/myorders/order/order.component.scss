@@ -158,7 +158,7 @@ button.dec_circle,button.dec_circle:focus{
     /* font-family: Poppins-SemiBold; */
     font-family: $poppins-regular !important;
     color: rgba(91,91,91,255);
-    font-size: 22px;
+    font-size: 18px;
 }
 .order_total span.font_color{
     color: $lukas-color;
@@ -266,7 +266,7 @@ table tr td h4,table tr td h5,table tr td span,table tr td .total_price{
     width: 100%;
     border-bottom: solid 1px #ccc;
     display: inline-block;
-    margin-bottom: 0px;
+    margin-bottom: -6px;
 }
 
 .product-image {
@@ -347,6 +347,11 @@ table tr td h4,table tr td h5,table tr td span,table tr td .total_price{
     /* padding-bottom: 10px; */
     overflow: hidden;   
 }
+
+.Searchrelated_div:nthchild(2) {
+    margin: 15px 0px 10px 0;
+}
+
 .Searchrelated_div h4{
     width: 50%;
     height: 21px;
@@ -362,7 +367,7 @@ table tr td h4,table tr td h5,table tr td span,table tr td .total_price{
 
 .myorder-details {
     font-family: $poppins-regular;
-    padding: 10px 0px 10px 15px !important;
+    padding: 0px 0px 0px 15px !important;
         .myorder-status {
             margin-right: 5px !important;
             width: auto !important;
@@ -384,6 +389,7 @@ table tr td h4,table tr td h5,table tr td span,table tr td .total_price{
     border-bottom: solid 1px #ccc;
     .myorder-table {
         margin-bottom: 0px;
+        padding-top: 5px;
     }
 }
 

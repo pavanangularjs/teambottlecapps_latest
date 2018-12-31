@@ -115,3 +115,17 @@ span.img_class{
       width: 90%;
     }
   }
+
+@media only screen and (max-width: 1024px) {
+  .btn_right {
+    text-align: left;
+    margin-top: 15px;
+  }
+}
+
+    .m-radio {
+      float: left;
+        .checkmark {
+              top: 0px !important;
+        }
+    }
