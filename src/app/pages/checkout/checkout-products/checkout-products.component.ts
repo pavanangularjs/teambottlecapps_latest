@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { PlaceOrderForOnlinePayment } from '../../../models/place-order-onlinepayment';
 import { CustomerService } from '../../../services/customer.service';
+import { Store } from '@ngrx/store';
+import { CustomerLoginSession } from '../../../models/customer-login-session';
+import { StoreGetHome } from '../../../state/product-store/product-store.action';
 
 @Component({
   selector: 'app-checkout-products',
@@ -24,7 +27,8 @@ export class CheckoutProductsComponent implements OnInit {
   constructor(private cartService: CartService, private router: Router,
     private paymentService: PaymentService,
     private toastr: ToastrService,
-    private customerService: CustomerService) { }
+    private customerService: CustomerService,
+    private store: Store<CustomerLoginSession>) { }
 
   ngOnInit() {
     this.couponCode = '';
@@ -51,6 +55,12 @@ export class CheckoutProductsComponent implements OnInit {
       }
     }
   }
+
+  onCancelOrder() {
+    this.clearPaymentCache();
+    this.router.navigate(['/cart']);
+  }
+
   onCheckout() {
 
     /* this.cartDetails.OrderTypeId = 1;
@@ -98,6 +108,7 @@ export class CheckoutProductsComponent implements OnInit {
         this.toastr.success('Order Placed Successfully.');
         this.clearPaymentCache();
         this.orderplace.emit(this.cartDetails);
+        this.store.dispatch(new StoreGetHome());
       });
   }
 
@@ -111,6 +122,7 @@ export class CheckoutProductsComponent implements OnInit {
           this.toastr.success('Order Placed Successfully.');
           this.clearPaymentCache();
           this.orderplace.emit(this.cartDetails);
+          this.store.dispatch(new StoreGetHome());
         });
     } else {
       this.toastr.error('Invalid Session, Please ReLogin ...');
