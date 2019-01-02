@@ -89,6 +89,11 @@ export class CheckoutDeliveryComponent implements OnInit {
 
   onSelectAddress(address) {
     this.cartService.cartdetails.AddressId = address.AddressId;
+    if (this.cartDetails && this.cartDetails.DeliveryAddress
+      && this.cartDetails.DeliveryAddress.Remark !== '') {
+      this.cartDetails.DeliveryAddress.Remark = '';
+    }
+
     this.updateCart();
   }
 
@@ -99,10 +104,10 @@ export class CheckoutDeliveryComponent implements OnInit {
         this.cartDetails = data;
         this.progressBarService.hide();
 
-        if ( this.cartDetails && this.cartDetails.DeliveryAddress
+        /* if ( this.cartDetails && this.cartDetails.DeliveryAddress
           && this.cartDetails.DeliveryAddress.Remark !== '') {
           this.toastr.error(this.cartDetails.DeliveryAddress.Remark);
-        }
+        } */
       });
   }
 

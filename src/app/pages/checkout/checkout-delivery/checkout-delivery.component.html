@@ -60,7 +60,7 @@
                   <small class="text-uppercase" *ngIf="address?.IsDefault">Favorite</small>
                   <h4>{{address?.AddressName}}</h4>
                   <p class="text-muted">{{address?.Address1}} {{address?.Address2}} {{address?.City}}, {{address?.State}} {{address?.Zip}}</p>
-                  <p class="bottles-brand" *ngIf="false">Remarks: we do not deliver to this address.</p>
+                  <p class="bottles-brand" *ngIf="cartService?.cartdetails?.AddressId===address.AddressId && cartDetails?.DeliveryAddress?.Remark !== ''">Remarks: {{cartDetails?.DeliveryAddress?.Remark}}</p>
                 </div>
               </div>
             </div>
