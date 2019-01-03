@@ -834,3 +834,28 @@ i.beer.icon {
 nav ul.navbar-nav li a {
   padding: 0px 6px !important;
 }
+
+ul.msidenav {
+    width: 100%;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+     li {
+        list-style: none;
+        display: block;
+        margin: 0px;
+        padding: 0px;
+        text-align: left;
+        a {
+          color: #777;
+          text-decoration: none;
+          text-transform: uppercase;
+          font-family: montserratbold;
+          padding: 5px 10px;
+          &:hover, .active {
+            text-decoration: none;
+            color: $lukas-color;
+            }
+          }
+        }
+}
