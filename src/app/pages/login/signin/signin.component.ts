@@ -114,6 +114,7 @@ export class SigninComponent implements OnInit {
       localStorage.setItem('email', email);
       localStorage.setItem('password', password);
       localStorage.setItem('rememberMe', this.rememberMe.toString());
+      localStorage.setItem('isSignIn', '1');
 
       this.clearSessionStorage();
     } else if (!this.rememberMe && this.email && this.password && baseUrl) {

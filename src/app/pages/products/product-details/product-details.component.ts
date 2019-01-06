@@ -82,6 +82,7 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.qty = 1;
+    this.rating = 0;
     this.productDetails = null;
     this.productsList = [];
     this.getProductDetails();

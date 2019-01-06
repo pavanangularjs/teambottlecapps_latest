@@ -63,6 +63,7 @@
                         </ul>
                     </div>
                     <div class="customers_review">
+                        <p class="strike_text" *ngIf="productDetails?.Product?.PriceDisplay !== productDetails?.Product?.OfferPriceDisplay">{{productDetails?.Product?.PriceDisplay}}</p>
                         <span>{{productDetails?.Product?.OfferPriceDisplay}}</span>
                         <ul class="float_right">
                             <li>

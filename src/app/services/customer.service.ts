@@ -43,6 +43,7 @@ export class CustomerService {
   loginCustomer(reqParams: CustomerLoginRequestPayload): Observable<any> {
     return this.http.post<any>(baseUrl + UrlNames.LoginCustomer, reqParams, { headers: this.headers }).pipe(
       switchMap((res: any) => {
+        this.profileDetails = null;
         if ((res.ErrorDetail && res.ErrorDetail !== '') || (res.ErrorMessage && res.ErrorMessage !== '')) {
           this.toastr.error(res.ErrorDetail);
           this.progressBarService.hide();

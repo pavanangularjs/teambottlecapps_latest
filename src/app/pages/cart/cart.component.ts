@@ -126,7 +126,7 @@ export class CartComponent implements OnInit {
 
   onDelivery() {
     this.cartDetails.OrderTypeId = 2;
-    this.cartDetails.PaymentTypeId = 0;
+    this.cartDetails.PaymentTypeId = 1;
     const tip = this.cartDetails.ListCharge.filter(charge => charge.ChargeTitle === 'Tip')[0];
     if (tip) {
       this.cartDetails.TipForDriver = tip.ChargeAmount;
