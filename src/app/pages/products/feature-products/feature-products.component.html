@@ -4,23 +4,29 @@
       <div class=" col-lg-5 col-md-5 col-sm-5 col-xs-12 Searchrelated_noborder slideInUP wow delay-05s  animated">
         <h4>Featured Products</h4>
       </div>
-      <div class="button_feature col-lg-7 col-md-7 col-sm-7 hidden-xs hidden-sm visible-mg visible-lg">
-        <button class="btn btn-default" [ngClass]="{'active' : (currentCategoryId === '0' || currentCategoryId === '1,2,3,4')}" (click)="onCategoryChange()" *ngIf="storeGetHomeData?.StoreFilters">All</button>
+      <div *ngIf="productsList.length > 0" class="button_feature col-lg-7 col-md-7 col-sm-7 hidden-xs hidden-sm visible-mg visible-lg">
+        <button class="btn btn-default" [ngClass]="{'active' : (currentCategoryId === '0' || currentCategoryId === '1,2,3,4')}"
+          (click)="onCategoryChange()" *ngIf="storeGetHomeData?.StoreFilters">All</button>
         <button class="btn btn-default" (click)="onCategoryChange(fitem.CategoryId)" *ngFor="let fitem of storeGetHomeData?.StoreFilters">{{fitem.CategoryName}}</button>
       </div>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" *ngFor="let product of productsList">
+    <div *ngIf="productsList.length > 0">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" *ngFor="let product of productsList">
         <app-product [item]="product"></app-product>
-     </div>
-     <div class="col-md-12 btn-container" *ngIf="isFeatureProductsPage">
+      </div>
+      <div class="col-md-12 btn-container" *ngIf="isFeatureProductsPage">
         <div class="row margin-bottom-20">
           <div class="col-md-6">
-              <button class="btn btn-default" (click)="showPreviousProducts()" *ngIf="isPrevious">Previous Page</button>
+            <button class="btn btn-default" (click)="showPreviousProducts()" *ngIf="isPrevious">Previous Page</button>
           </div>
           <div class="col-md-6">
-              <button class="btn btn-default pull-right" *ngIf="isNext" (click)="showMoreProducts()" >Next Page</button>
+            <button class="btn btn-default pull-right" *ngIf="isNext" (click)="showMoreProducts()">Next Page</button>
           </div>
         </div>
-     </div>
+      </div>
+    </div>
+    <div *ngIf="productsList?.length === 0 && isFeatureProductsPage">
+      <img class="no_products" src='../../../../assets/Images/no-productss.png'>
+    </div>
   </div>
 </div>
