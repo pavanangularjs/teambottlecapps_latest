@@ -15,6 +15,7 @@ export class CouponsComponent implements OnInit {
     private progressBarService: ProgressBarService) { }
 
   ngOnInit() {
+    this.couponsList = null;
     this.getCouponsList();
   }
 
