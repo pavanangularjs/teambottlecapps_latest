@@ -83,7 +83,7 @@ export class PaymentService {
               'state': profile.state,
               'zip': profile.zip,
               'country': profile.country,
-              'phoneNumber': this.customerInfo.ContactNo
+              'phoneNumber': profile.phoneNumber || this.customerInfo.ContactNo
             },
             'payment': {
               'creditCard': {

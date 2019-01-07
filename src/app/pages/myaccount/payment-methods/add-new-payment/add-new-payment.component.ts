@@ -104,8 +104,8 @@ export class AddNewPaymentComponent implements OnInit {
       firstName: [this.customerInfo && this.customerInfo.FirstName || '', [Validators.required]],
       lastName: [this.customerInfo && this.customerInfo.LastName || '', [Validators.required]],
       sixteenDigitNumber: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(15)]],
-      expiryMonth: ['01', [Validators.required]],
-      expiryYear: ['', [Validators.required]],
+      expiryMonth: [this.months[0], [Validators.required]],
+      expiryYear: [this.years[0], [Validators.required]],
       address: [address.Address1, [Validators.required]],
       city: [address.City, [Validators.required]],
       state: [address.State, [Validators.required, Validators.maxLength(2), Validators.minLength(2)]],
@@ -124,13 +124,13 @@ export class AddNewPaymentComponent implements OnInit {
 
       this.cardType = this.cardService.getCardType(this.formAddNewPayment.get('sixteenDigitNumber').value);
 
-      if (this.cardType !== undefined) {
+      /* if (this.cardType !== undefined) {
         this.isValidCard = this.isValidateCardNumber(cardNumber);
 
         if (!this.isValidCard) {
           this.toastr.error('Please Enter Valid Card Number');
         }
-      }
+      }*/
     }
   }
 
@@ -143,14 +143,20 @@ export class AddNewPaymentComponent implements OnInit {
     }
 
     const lastDigit = cardDigits.pop();
-    nonDigits.reverse();
+    cardDigits.reverse();
 
-    cardDigits = cardDigits.map((num) => {
+    for (let i = 1; i <= cardDigits.length; i++) {
+      if (i % 2 !== 0) {
+        cardDigits[i - 1] = cardDigits[i - 1] * 2;
+      }
+    }
+
+    /* cardDigits = cardDigits.map((num) => {
       if (num % 2 !== 0) {
         return num * 2;
       }
       return num;
-    });
+    }); */
 
     cardDigits = cardDigits.map((num) => {
       if (num > 9) {
@@ -177,10 +183,10 @@ export class AddNewPaymentComponent implements OnInit {
       return;
     }
 
-    if (!this.isValidCard) {
+    /* if (!this.isValidCard) {
       this.toastr.error('Please Enter Valid Card Number');
       return;
-    }
+    } */
 
     // this.spinnerService.show();
     this.cardProfile = new PaymentProfile();
