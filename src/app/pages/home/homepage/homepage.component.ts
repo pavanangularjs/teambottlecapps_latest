@@ -58,7 +58,7 @@ export class HomepageComponent implements OnInit {
   ngOnInit() {
     const isSignIn = localStorage.getItem('isSignIn');
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-    if (!(this.customerSession && this.customerSession.SessionId) && (isSignIn === '1')) {
+    if (!(this.customerSession && this.customerSession.SessionId) && (isSignIn === '1' || isSignIn === null)) {
       // this.spinnerService.show();
 
       let demail = sessionStorage.getItem('email');
