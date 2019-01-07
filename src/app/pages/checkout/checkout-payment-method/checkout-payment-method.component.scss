@@ -52,6 +52,10 @@
         font-size: 18px;
       }
     }
+    .checkout-icon-inactive {
+      font-size: 20px;
+      color: $lukas-color;
+    }
   }
 
   .payment-option-select .pay-or-store {
@@ -158,9 +162,9 @@
 }
 
 .payatstorenew {
-    padding-top: 25px;
+    padding-top: 20px;
     display: inline-block;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
 }
 
 @media only screen and (max-width: 1024px) {

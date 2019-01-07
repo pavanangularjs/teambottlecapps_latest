@@ -31,7 +31,14 @@
     }
 }
 
-.no_coupons {
-  width: 400px;
-  margin-left: -25px;
+.no-coupons-container {
+    width: 25%;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 1024px) {
+    .no-coupons-container {
+        width: 100%;
+        margin: 0 auto 10px auto;
+    }
 }

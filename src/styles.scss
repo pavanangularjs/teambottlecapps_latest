@@ -714,7 +714,7 @@ nav.navbar{
     z-index: 9999;
 }
 .dropdownlist{
-    height: 500px;
+    min-height: 140px;
     overflow-y: scroll;
     overflow-x:hidden;
     display: block;
@@ -1175,7 +1175,7 @@ ul.navbar-nav li a:hover {
     .optional-dropmenu {
         margin: 5px;
         display: block;
-        height: 550px;
+        min-height: 140px;
     }
 
     .navbar > li > .dropdown-menu {
@@ -1885,7 +1885,7 @@ a img.second_img {
     }
 
     .dropdownlist {
-        min-height: 420px;
+        min-height: 140px;
         height: auto;
     }
 

@@ -89,7 +89,7 @@
   padding: 10px 25px;
   position: relative;
   input.coupon {
-    width: 90%;
+    width: 75%;
     background-color: transparent;
     outline: none;
     border: 0px solid transparent;
@@ -103,19 +103,20 @@
     top: 1px;
     font-size: 22px;
     color: #ccc;
+    float: left;
   }
   .icon-selected {
     position: absolute;
     top: 15px;
-    font-size: 24px;
+    font-size: 21px;
     color: $lukas-color;
     right: 55px;
     cursor: pointer;
   }
   .icon-cancel2 {
     position: absolute;
-    top: 17px;
-    font-size: 20px;
+    top: 19px;
+    font-size: 16px;
     color: #ccc;
     right: 25px;
     cursor: pointer;
