@@ -107,6 +107,32 @@ export class HeaderComponent implements OnInit {
     this.appConfig.storeID = storeId;
 
     if (this.customerSession && this.customerSession.SessionId) {
+
+      let demail = sessionStorage.getItem('email');
+      let dpass = sessionStorage.getItem('password');
+
+      if (demail && dpass) {
+        demail = CryptoJS.AES.decrypt(demail, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
+        dpass = CryptoJS.AES.decrypt(dpass, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
+      } else {
+        demail = localStorage.getItem('email');
+        dpass = localStorage.getItem('password');
+
+        if (demail && dpass) {
+          demail = CryptoJS.AES.decrypt(demail, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
+          dpass = CryptoJS.AES.decrypt(dpass, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
+        }
+      }
+
+      this.progressBarService.show();
+      if (demail && dpass) {
+        this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams(demail, dpass, 'E')));
+      } else {
+        this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams()));
+      }
+    }
+
+    /* if (this.customerSession && this.customerSession.SessionId) {
       // this.spinnerService.show();
 
       let demail = localStorage.getItem('email');
@@ -125,7 +151,7 @@ export class HeaderComponent implements OnInit {
         localStorage.removeItem('password');
         this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams()));
       }
-    }
+    }*/
   }
 
   onSignOut() {

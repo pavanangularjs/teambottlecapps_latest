@@ -123,6 +123,7 @@ export class SigninComponent implements OnInit {
 
       sessionStorage.setItem('email', email);
       sessionStorage.setItem('password', password);
+      localStorage.setItem('isSignIn', '1');
       this.clearLocalStorage();
     }
 
