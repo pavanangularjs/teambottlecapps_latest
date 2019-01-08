@@ -26,6 +26,7 @@ export class ProductStoreService {
     couponsList: any;
     storeList: any;
     customerInfo: any;
+    isFavoritesUpdated = false;
 
     constructor(private http: HttpClient,
         private store: Store<CustomerLoginSession>,

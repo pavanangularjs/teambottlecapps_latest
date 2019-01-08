@@ -78,8 +78,11 @@ export class FeatureProductsComponent implements OnInit {
   }
 
   getProductsList() {
-    if (this.router.url === '/home') {
+    if (this.router.url === '/home' && !this.productStoreService.isFavoritesUpdated) {
       this.productsList = this.storeGetHomeData ? this.storeGetHomeData.HomeList : [];
+    } else {
+      this.productStoreService.isFavoritesUpdated = false;
+      this.onCategoryChange();
     }
   }
   /* ngOnChanges() {

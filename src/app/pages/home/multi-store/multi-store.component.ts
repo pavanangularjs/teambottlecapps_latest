@@ -27,6 +27,7 @@ export class MultiStoreComponent implements OnInit {
     if (this.stores && !this.tempStores) {
       this.tempStores = this.stores.map(obj => {
         const rObj = {
+          'StoreId' : obj.StoreId,
           'Address1': obj.Address1,
           'Address2': obj.Address2,
           'City': obj.City,

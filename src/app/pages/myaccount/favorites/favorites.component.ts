@@ -68,11 +68,12 @@ export class FavoritesComponent implements OnInit {
     this.progressBarService.show();
     this.productStoreService.favoriteProductUpdate(item.PID, status).subscribe(
       (data: any) => {
+        this.productStoreService.isFavoritesUpdated = true;
         item.IsFavorite = data.IsFavorite;
         // this.spinnerService.hide();
         this.progressBarService.hide();
         this.toastr.success(data.SuccessMessage);
-        if ((this.totalCount - 1) <= this.pageSize) {
+        if ((this.totalCount - 1) === this.pageSize) {
           this.currentPageNo -= 1;
         }
         this.getFavoriteProducts();
