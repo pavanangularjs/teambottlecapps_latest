@@ -88,6 +88,8 @@ export class HomepageComponent implements OnInit {
         localStorage.removeItem('password'); */
         this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams()));
       }
+    } else if (!(this.customerSession && this.customerSession.SessionId) && (isSignIn === '0')) {
+      this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams()));
     }
   }
 
