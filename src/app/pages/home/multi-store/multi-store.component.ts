@@ -31,6 +31,7 @@ export class MultiStoreComponent implements OnInit {
           'Address1': obj.Address1,
           'Address2': obj.Address2,
           'City': obj.City,
+          'Location' : obj.Location,
           'Phone': obj.Phone,
           'State': obj.State,
           'ContactNo': obj.ContactNo,
