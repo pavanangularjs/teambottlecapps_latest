@@ -54,6 +54,7 @@
         <a routerLink="/event-details/{{event.EventId}}">
           <img src="{{event.EventLargeImage}}" alt="{{event.EventName}}" class="carousel-img">
         </a>
+      </div>
         <!-- Controls -->
         <a class="left carousel-control" *ngIf="eventList?.length > 1" href="#myCarousel" role="button" data-slide="prev">
           <!-- <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> -->
@@ -65,7 +66,6 @@
           <img src="src../../../../assets/Images/right-arrow.png" aria-hidden="true" class="pull-right">
           <span class="sr-only">Next</span>
         </a>
-      </div>
     </div>
   </div>
 </div>

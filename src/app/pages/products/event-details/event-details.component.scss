@@ -297,3 +297,12 @@ p {
         }
     }
 }
+
+    .details_content a i.icon.icon-navigate {
+        color: #ccc;
+        font-family: $poppins-bold;
+        font-size: 26px;
+    &:hover {
+        color: $lukas-color;
+    }
+    }

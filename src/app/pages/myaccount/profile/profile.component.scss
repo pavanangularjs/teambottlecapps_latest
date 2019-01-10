@@ -54,13 +54,13 @@
             -webkit-border-radius: 50%;
             -o-border-radius: 50%;
             -moz-border-radius: 50%;
-            float: left;
             margin-right: 30px;
             border: solid 1px #ccc;
             color: #222;
             font-size: 24px;
             text-align: center;
             background-color: #777;
+            display: inline-block;
         img {
             height: 90px;
             width: 90px;
@@ -104,14 +104,14 @@ button.btn-profile, button.btn-profile:focus, button.btn-profile:hover {
             -webkit-border-radius: 50%;
             -o-border-radius: 50%;
             -moz-border-radius: 50%;
-            float: left;
-            margin-right: 30px;
+            margin: 0px auto !important;
             border: solid 1px #ccc;
             color: #222;
             font-size: 24px;
             text-align: center;
             background-color: #777;
             margin: 0 auto;
+            display: inline-block;
         img {
             height: 90px;
             width: 90px;
@@ -119,19 +119,21 @@ button.btn-profile, button.btn-profile:focus, button.btn-profile:hover {
             -webkit-border-radius: 50%;
             -o-border-radius: 50%;
             -moz-border-radius: 50%;
-            float: left;
-            margin-right: 30px;
+            float: none;
+            margin: 0px auto !important;
             border: solid 1px #ccc;
             color: #222;
             font-size: 24px;
             text-align: center;
+            margin: 0 auto;
+            display: inline-block;
         }
     }
 
 
     button.btn-profile .icon-radius {
-            width: 50px;
-            height: 50px;
+            width: 35px;
+            height: 35px;
             background-color: $lukas-color;
             text-align: center;
             color: #fff;
@@ -139,7 +141,7 @@ button.btn-profile, button.btn-profile:focus, button.btn-profile:hover {
             font-size: 24px;
             padding: 0px;
             position: absolute;
-            top: -80px;
+            top: 5px;
             right: 0;
             .icon {
                 color: #fff;
@@ -149,14 +151,20 @@ button.btn-profile, button.btn-profile:focus, button.btn-profile:hover {
 }
 
 button.btn-profile .icon-radius {
-            width: 50px;
-            height: 50px;
+            width: 35px;
+            height: 35px;
             background-color: $lukas-color;
             text-align: center;
             border-radius: 50%;
-            padding: 5px 0px 0px 0px;
+            padding: 0px 0px 0px 0px;
+            display: inline-block;
             .icon {
                 color: #fff;
                 font-size: 24px;
             }
     }
+
+.float_right {
+    position: absolute;
+    right: 0;
+}

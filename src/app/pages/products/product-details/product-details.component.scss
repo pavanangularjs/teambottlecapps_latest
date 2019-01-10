@@ -158,14 +158,13 @@ text-transform: uppercase;
     border: 1px solid transparent;
     font-size: 15px;
     padding: 0px;
-    margin: 0px;
+    margin: 0px 0px;
     margin-left: 0px;
-    /*min-width: 265px;*/
-    width: 95px;
+    width: 100%;
     border-radius: 0px !important;
     outline: none;
     background: transparent;
-    font-family: $montserrat-regular;
+    font-family: montserratregular;
     box-shadow: none;
 }
 
@@ -177,7 +176,7 @@ text-transform: uppercase;
     color: #999;
     font-weight: normal;
     width: 120px;
-    padding: 5px 10px;
+    padding: 5px 0px 5px 0px;
     float: left;
 }
 
@@ -208,6 +207,7 @@ button.addtocart:focus,button.addtocart:active{
 }
 button.addtocart:hover{
     border-color:none;
+    background-color: $lukas-color;
 }
 
 span.arrow_right{
