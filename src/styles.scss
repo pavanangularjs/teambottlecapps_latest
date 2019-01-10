@@ -720,6 +720,7 @@ nav.navbar{
     display: block;
     padding-bottom: 20px;
     margin-bottom: 15px;
+    max-height: 300px;
 }
  .header_icon {
     background: #333;
@@ -1176,6 +1177,7 @@ ul.navbar-nav li a:hover {
         margin: 5px;
         display: block;
         min-height: 140px;
+        max-height: 350px;
     }
 
     .navbar > li > .dropdown-menu {
@@ -1886,7 +1888,12 @@ a img.second_img {
 
     .dropdownlist {
         min-height: 140px;
-        height: auto;
+        max-height: 250px;
+    }
+
+    .optional-dropmenu {
+        min-height: 140px;
+        max-height: 300px;
     }
 
     .nav-item {
