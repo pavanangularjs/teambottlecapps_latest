@@ -56,6 +56,11 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit() {
+    const storeId = this.route.snapshot.queryParams['storeID'];
+    if (storeId) {
+      this.appConfig.appID = 0;
+      this.appConfig.storeID = +storeId;
+    }
     const isSignIn = localStorage.getItem('isSignIn');
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     if (!(this.customerSession && this.customerSession.SessionId) && (isSignIn === '1' || isSignIn === null)) {
