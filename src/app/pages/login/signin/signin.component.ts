@@ -177,6 +177,7 @@ export class SigninComponent implements OnInit {
         this.toastr.success(data.Mesaage);
         this.progressBarService.hide();
         this.onCancel();
+      }
     });
   }
 
