@@ -12,6 +12,7 @@ import { CustomerSelectors } from '../../../state/customer/customer.selector';
 import { CustomerLoginSession } from '../../../models/customer-login-session';
 import { baseUrl } from '../../../services/url-provider';
 import { AppConfigService } from '../../../app-config.service';
+import { CustomerService } from '../../../services/customer.service';
 
 @Component({
   selector: 'app-signin',
@@ -20,19 +21,25 @@ import { AppConfigService } from '../../../app-config.service';
 })
 export class SigninComponent implements OnInit {
   formSignIn: FormGroup;
+  formForgotPwd: FormGroup;
   // customerSession: CustomerLoginSession;
   submitted = false;
+  fpSubmitted = false;
   returnUrl: string;
   email: string;
   password: string;
   rememberMe: boolean;
+  // forgotPwdEmail: string;
 
-  constructor(private route: ActivatedRoute, private router: Router, private store: Store<CustomerLoginSession>,
+  constructor(private route: ActivatedRoute,
+    private router: Router,
+    private store: Store<CustomerLoginSession>,
     private socialAuthService: AuthService,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
     private progressBarService: ProgressBarService,
-    private appConfig: AppConfigService) {
+    private appConfig: AppConfigService,
+    private customerService: CustomerService) {
 
     this.rememberMe = false;
     this.store.select(CustomerSelectors.customerLoginSessionData)
@@ -49,6 +56,9 @@ export class SigninComponent implements OnInit {
       eemail: ['', [Validators.required, Validators.email]],
       epassword: ['', Validators.required],
       rememberMe: [false]
+    });
+    this.formForgotPwd = this.formBuilder.group({
+      fpemail: ['', [Validators.required, Validators.email]]
     });
 
     let demail = localStorage.getItem('email');
@@ -69,6 +79,7 @@ export class SigninComponent implements OnInit {
 
   // convenience getter for easy access to form fields
   get f() { return this.formSignIn.controls; }
+  get fp() { return this.formForgotPwd.controls; }
 
   signInWithFB(): void {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then((user) => {
@@ -149,6 +160,31 @@ export class SigninComponent implements OnInit {
       sessionStorage.removeItem('email');
       sessionStorage.removeItem('password');
     }
+  }
+
+  onResetPassword() {
+    this.fpSubmitted = true;
+
+    // stop here if form is invalid
+    if (this.formForgotPwd.invalid) {
+      return;
+    }
+
+    this.progressBarService.show();
+    const forgotPwdEmail = this.formForgotPwd.get('fpemail').value;
+    this.customerService.forgotPassword(forgotPwdEmail).subscribe(data => {
+      if (data && data.Mesaage) {
+        this.toastr.success(data.Mesaage);
+        this.progressBarService.hide();
+        this.onCancel();
+    });
+  }
+
+  onCancel() {
+    this.fpSubmitted = false;
+    this.formForgotPwd = this.formBuilder.group({
+      fpemail: ['', [Validators.required, Validators.email]]
+    });
   }
 
 }

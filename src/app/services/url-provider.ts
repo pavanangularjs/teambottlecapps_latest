@@ -6,6 +6,7 @@ export enum UrlNames {
     StoreGetDetail = 'Store/StoreGetDetail',
     StoreGetList = 'Store/StoreGetList',
     LoginCustomer = 'Login/LoginCustomer',
+    ForgotPassword  = 'Login/ForgotPassword',
     ProductGetList = 'Product/ProductGetList',
     ProductGetDetails = 'Product/ProductGetDetail',
     EventGetDetails = 'Event/EventGetDetail',

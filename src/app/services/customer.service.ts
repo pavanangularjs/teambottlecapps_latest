@@ -202,6 +202,11 @@ export class CustomerService {
   }
 
   updateProfileDetails(address: any): any {
+
+    if (!this.customerSession) {
+      return address;
+    }
+
     address.StoreId = this.customerSession.StoreId;
     address.SessionId = this.customerSession.SessionId;
     address.UserId = this.customerSession.UserId;
@@ -283,6 +288,37 @@ export class CustomerService {
       UserProfileId: userProfileId,
       IsDefault: isDefault,
       PaymentTypeId: paymentTypeId
+    };
+
+  }
+
+  forgotPassword(email: string): Observable<any> {
+
+    return this.http.post<any>(baseUrl + UrlNames.ForgotPassword,
+      this.getForgotPasswordRequestParams(email), { headers: this.headers }).pipe(
+      switchMap((res: any) => {
+        return of(res);
+      }),
+      retry(3),
+      catchError((error: any, caught: Observable<any>) => {
+        return this.errorHandler.processError(error);
+      })
+    );
+  }
+
+  getForgotPasswordRequestParams(email: string): any {
+    if (!this.customerSession) {
+      return null;
+    }
+
+    return {
+      AppId: this.customerSession.AppId,
+      DeviceId: this.customerSession.DeviceId,
+      DeviceType: this.customerSession.DeviceType,
+      EmailId: email,
+      StoreId: 0,
+      SessionId: '',
+      UserId: 0
     };
 
   }
