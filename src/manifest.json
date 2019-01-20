@@ -1,0 +1,11 @@
+{
+    "short_name": "Lukas",
+    "name": "Lukas Liquors",
+    "prefer_related_applications": true,
+    "related_applications": [
+        {
+            "platform": "play",
+            "id": "com.cta.lukas"
+        }
+    ]
+}
