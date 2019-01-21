@@ -9,22 +9,24 @@
       </div>
       <div class="modal-body">
         <div class="row" *ngFor="let item of cartItems">
-          <div class="col-md-3">
+          <div class="col-md-3 col-xs-3">
             <div class="product-image">
               <img class="img-responsive" src="{{item?.ProductImage}}" />
             </div>
           </div>
-          <div class="col-md-5">
+          <div class="col-md-5 col-xs-9">
+            <br>
             <div class="modal-captions">
               <h5>{{item?.ProductName}}</h5>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 col-xs-9">
             <div class="modal-captions">
-              <h5>Quantity Requested: <span>{{item?.QuantityOrdered}}</span></h5>
-              <h5>Quantity Available: <span>{{item?.Quantity}}</span></h5>
+              <p>Quantity Requested: <span>{{item?.QuantityOrdered}}</span></p>
+              <p>Quantity Available: <span>{{item?.Quantity}}</span></p>
             </div>
           </div>
+          <hr>
         </div>
       </div>
       <div class="modal-footer buttons-container">

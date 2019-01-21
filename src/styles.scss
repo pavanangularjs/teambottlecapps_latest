@@ -289,7 +289,7 @@ table tr td .img_div{
     border: 1px solid #d7d7d7;
     border-top: none;
     text-align: left;
-    padding: 10px;
+    padding: 10px 15px;
     min-height: 40%;
     height: 40%;
     border-radius: 0 0 5px 5px;
@@ -1537,8 +1537,9 @@ nav ul.user-menu li {
     ul.pagination {
         margin: 10px 0px 10px 0px;
     }
-    width: 50%;
+    width: 100%;
     margin: 0px auto;
+    text-align: center;
 }
 select.form-control {
     -webkit-appearance: menulist !important;
@@ -1987,4 +1988,9 @@ a img.second_img {
 
 .menu-icon {
     float: left;
+}
+
+.btn.reviewsubmit {
+    background-color: $lukas-color !important;
+    color: #fff;
 }

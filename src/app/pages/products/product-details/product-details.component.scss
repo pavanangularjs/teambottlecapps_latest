@@ -160,12 +160,13 @@ text-transform: uppercase;
     padding: 0px;
     margin: 0px 0px;
     margin-left: 0px;
-    width: 100%;
+    width: 88%;
     border-radius: 0px !important;
     outline: none;
     background: transparent;
     font-family: montserratregular;
     box-shadow: none;
+    margin-left: 10px;
 }
 
 .size .select-bg {
@@ -176,7 +177,7 @@ text-transform: uppercase;
     color: #999;
     font-weight: normal;
     width: 120px;
-    padding: 5px 0px 5px 0px;
+    padding: 5px 10px 5px 0px;
     float: left;
 }
 
@@ -484,6 +485,11 @@ form label{
         letter-spacing: -0.5px;
         text-align: left;
         color: #232323;
+    }
+    .write-review {
+        padding: 10px 30px !important;
+        margin: 0px !important;
+        margin-bottom: 20px !important;
     }
    
 }

@@ -65,6 +65,7 @@
 			.name_date {
 				font-family: poppinssemiregular;
 				font-size: 13px;
+				margin-bottom: 10px;
 			}
 	}
 
@@ -120,5 +121,15 @@
 	.write-review {
 	    padding: 20px 20px !important;
 	    margin: 0px !important;
+	}
+	.user-review-content {
+		letter-spacing: 0.4px;
+		font-family: poppinssemiregular;
+	    margin-left: 15px;
+	    border: solid 1px #eee;
+	    float: right;
+	    width: 100% !important;
+	    padding: 15px;
+	    margin-top: 10px;
 	}
 }

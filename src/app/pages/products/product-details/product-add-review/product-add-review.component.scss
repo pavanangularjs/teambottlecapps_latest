@@ -1,3 +1,4 @@
+@import "~src/variable.scss";
 
 .rating-stars {
     font-size: 22px;
@@ -23,4 +24,9 @@
 .add_review p{
     font-family: poppinsregular;
     font-size: 12.3px;
+}
+
+.btn.reviewsubmit {
+    background-color: $lukas-color !important;
+    color: #fff;
 }

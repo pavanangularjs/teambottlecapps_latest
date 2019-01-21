@@ -257,6 +257,12 @@ h4.left-panel-title a.bottles-brand {
     text-align: center;
 }
 
+.page-navigation {
+    width: auto;
+    margin: 0 auto;
+    display: table;
+}
+
 @media only screen and (max-width: 1024px) {
     ul.myac-panel {
       margin-left: 0px;
