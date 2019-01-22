@@ -22,7 +22,7 @@ export class ProfileEditComponent implements OnInit {
 
     this.formEditProfile = this.formBuilder.group({
       pFirstName: ['', [Validators.required]],
-      pLastName: ['', []],
+      pLastName: ['', [Validators.required]],
       pContactNo: ['', [Validators.required]],
       pEmail: ['', [Validators.required, Validators.email]],
       pDOB: ['', []],
@@ -47,7 +47,7 @@ export class ProfileEditComponent implements OnInit {
   initializeProfile() {
     this.formEditProfile = this.formBuilder.group({
       pFirstName: [this.profile.FirstName, [Validators.required]],
-      pLastName: [this.profile.LastName, []],
+      pLastName: [this.profile.LastName, [Validators.required]],
       pContactNo: [this.profile.ContactNo, [Validators.required]],
       pEmail: [this.profile.EmailId, [Validators.required, Validators.email]],
       pDOB: [this.profile.DOBDt ? new Date (this.profile.DOBDt) : '', []],

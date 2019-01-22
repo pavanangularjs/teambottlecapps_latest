@@ -44,6 +44,9 @@
                                         <label class="text-uppercase">Last Name <span>*</span>
                                             <input type="text" formControlName="pLastName" class="form-control"
                                                 placeholder="Last Name" />
+                                            <div *ngIf="submitted && f.pLastName.errors" class="alert alert-danger">
+                                                <div *ngIf="f.pLastName.errors.required">LastName is required.</div>
+                                            </div>
                                         </label>
                                     </div>
                                 </div>
