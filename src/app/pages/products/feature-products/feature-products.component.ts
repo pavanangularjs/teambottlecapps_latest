@@ -91,6 +91,7 @@ export class FeatureProductsComponent implements OnInit {
 
   onCategoryChange(catId = '1,2,3,4') {
     this.currentCategoryId = catId;
+    this.currentPageNo = 1;
     // this.spinnerService.show();
     this.progressBarService.show();
     this.store.dispatch(new ProductGetList(
