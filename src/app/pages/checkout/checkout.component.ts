@@ -18,9 +18,9 @@ export class CheckoutComponent implements OnInit {
 
   onOrderPlace(cartDetails) {
     this.orderNumber = '';
+    this.isOrderPlaced = true;
     if (cartDetails && cartDetails.OrderNo) {
       this.orderNumber = cartDetails.OrderNo;
-      this.isOrderPlaced = true;
     }
   }
 }

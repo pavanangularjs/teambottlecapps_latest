@@ -40,9 +40,9 @@ export class PaymentService {
           this.customerSession = clsd;
         }
       });
-      if (this.productService.customerInfo) {
-        this.customerInfo = this.productService.customerInfo;
-      }
+    if (this.productService.customerInfo) {
+      this.customerInfo = this.productService.customerInfo;
+    }
   }
 
   createCustomerProfile(profile: PaymentProfile): Observable<any> {
@@ -149,14 +149,14 @@ export class PaymentService {
   }
   getExistingCards(profileId: string): Observable<any> {
     return this.http.post<any>(this.appConfig.URL, this.getCustomerProfileRequestPayload(profileId), { headers: this.headers }).pipe(
-        switchMap((res: any) => {
-          return of(res);
-        }),
-        retry(3),
-        catchError((error: any, caught: Observable<any>) => {
-          return this.errorHandler.processError(error);
-        })
-      );
+      switchMap((res: any) => {
+        return of(res);
+      }),
+      retry(3),
+      catchError((error: any, caught: Observable<any>) => {
+        return this.errorHandler.processError(error);
+      })
+    );
   }
 
   getCustomerProfileRequestPayload(profileId: string) {
@@ -218,7 +218,7 @@ export class PaymentService {
           'name': this.appConfig.merchantAuthentication.vAppLoginId,
           'transactionKey': this.appConfig.merchantAuthentication.vTransactionKey
         },
-        'refId': '{{vRefId}}',
+        'refId': this.getRefIdForAuthorizeNet(),
         'transactionRequest': {
           'transactionType': 'authOnlyTransaction',
           'amount': data.amount, // 22.09
@@ -238,5 +238,17 @@ export class PaymentService {
       }
     };
   }
+
+  getRefIdForAuthorizeNet() {
+    let refID = '';
+    if (this.customerSession) {
+      const userId = this.customerSession.UserId;
+      const milliSec = Math.floor(Date.now() / 1000);
+      refID = milliSec.toString() + userId;
+    }
+    return refID;
+  }
+
 }
+
 

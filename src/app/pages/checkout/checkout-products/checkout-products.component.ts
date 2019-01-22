@@ -93,9 +93,10 @@ export class CheckoutProductsComponent implements OnInit {
       this.placeOrder();
     } else {
       this.paymentService.createTransactionRequest(data).subscribe(paymentResponse => {
-        if (paymentResponse.messages.message[0].text === 'Successful.'
-          || paymentResponse.messages.message[0].code === 'I00001') {
+        if (paymentResponse.transactionResponse && paymentResponse.transactionResponse.responseCode === '1') {
           this.placeOrderForOnlinePayment(paymentResponse);
+        } else if (paymentResponse.transactionResponse && paymentResponse.transactionResponse.responseCode === '2') {
+          this.orderplace.emit();
         }
       });
     }
