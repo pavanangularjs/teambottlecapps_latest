@@ -4,46 +4,42 @@
       <div class="Searchrelated_div col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <h4>Recipes</h4>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a [routerLink]="['/home']">Home</a></li>
-            <li class="breadcrumb-item active"><a>Recipes</a></li>
-          </ol>
+          <li class="breadcrumb-item"><a [routerLink]="['/home']">Home</a></li>
+          <li class="breadcrumb-item active"><a>Recipes</a></li>
+        </ol>
       </div>
+
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-        <div class="recipes col-lg-3 col-md-3 col-sm-3 col-xs-12 item_img animated fadeInLeft" *ngFor="let recipe of recipeList">
-          <div class="row">
-              <div class="thumbnail">
-                <a (click)="onRecipeSelection(recipe)">
-                  <img src='{{recipe?.ThumbNailImage}}' />
-                  <div class="caption">
-                    <h6 class="text_center">{{recipe?.Title}}</h6>
-                  </div>
-                </a>
-              </div>
+        <div class="page-navigation">
+          <div class="f-page-navigation" *ngIf="recipeList?.RecipeCount > 0">
+            <ngb-pagination [collectionSize]="recipeList?.RecipeCount" (pageChange)="onPageChange($event)" [(page)]="page"
+              [pageSize]="recipeList?.PageSize" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
           </div>
         </div>
-      </div>
-            <div class="page-navigation" *ngIf="false">
-              <nav aria-label="Page navigation">
-                <ul class="pagination">
-                  <li>
-                    <a href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
-                  <li><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-                  <li>
-                    <a href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
+
+        <div class="recipes col-lg-3 col-md-3 col-sm-3 col-xs-12 item_img animated fadeInLeft" *ngFor="let recipe of recipeList?.ListRecipe">
+          <div class="row">
+            <div class="thumbnail">
+              <a (click)="onRecipeSelection(recipe)">
+                <img src='{{recipe?.ThumbNailImage}}' />
+                <div class="caption">
+                  <h6 class="text_center">{{recipe?.Title}}</h6>
+                </div>
+              </a>
             </div>
+          </div>
+        </div>
+
+        <div class="page-navigation">
+          <div class="f-page-navigation" *ngIf="recipeList?.RecipeCount > 0">
+            <ngb-pagination [collectionSize]="recipeList?.RecipeCount" (pageChange)="onPageChange($event)" [(page)]="page"
+              [pageSize]="recipeList?.PageSize" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </div>
 

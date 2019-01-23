@@ -17,7 +17,7 @@ export class RecipeService {
 
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
   customerSession: CustomerLoginSession;
-  recipesList: any;
+  // recipesList: any;
   selectedRecipe: any;
 
   constructor(private http: HttpClient,
@@ -31,10 +31,9 @@ export class RecipeService {
       });
   }
 
-  getRecipeList(): Observable<any> {
-    return this.http.post<any>(baseUrl + UrlNames.RecipeGetList, this.getRecipeRequestParams(), { headers: this.headers }).pipe(
+  getRecipeList(pageNo = 1): Observable<any> {
+    return this.http.post<any>(baseUrl + UrlNames.RecipeGetList, this.getRecipeRequestParams(pageNo), { headers: this.headers }).pipe(
       switchMap((res: any) => {
-        this.recipesList = res;
         return of(res);
       }),
       retry(3),
@@ -44,7 +43,7 @@ export class RecipeService {
     );
   }
 
-  private getRecipeRequestParams(): RecipeGetListRequestPayload {
+  private getRecipeRequestParams(pageNo: number): RecipeGetListRequestPayload {
     if (!this.customerSession) {
       return null;
     }
@@ -54,7 +53,7 @@ export class RecipeService {
       SessionId: this.customerSession.SessionId,
       UserId: this.customerSession.UserId,
       AppId: this.customerSession.AppId,
-      PageNumber: 1,
+      PageNumber: pageNo,
       PageSize: 12
     };
   }
