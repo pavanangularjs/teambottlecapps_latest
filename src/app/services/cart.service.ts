@@ -23,6 +23,7 @@ export class CartService {
   cartId = 0;
   cartdetails: any;
   cartItemCount = new Subject<number>();
+  cartUpdated = new Subject<any>();
 
 
   constructor(private http: HttpClient,
@@ -134,6 +135,7 @@ export class CartService {
       data, { headers: this.headers }).pipe(
         switchMap((res: any) => {
           this.cartdetails = res;
+          this.cartUpdated.next();
           return of(res);
         }),
         catchError((error: any, caught: Observable<any>) => {

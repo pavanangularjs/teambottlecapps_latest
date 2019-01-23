@@ -28,7 +28,11 @@ export class CheckoutProductsComponent implements OnInit {
     private paymentService: PaymentService,
     private toastr: ToastrService,
     private customerService: CustomerService,
-    private store: Store<CustomerLoginSession>) { }
+    private store: Store<CustomerLoginSession>) {
+      this.cartService.cartUpdated.subscribe(() => {
+        this.cartDetails = this.cartService.cartdetails;
+      });
+     }
 
   ngOnInit() {
     this.couponCode = '';
