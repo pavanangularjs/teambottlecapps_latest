@@ -76,21 +76,35 @@ export class HomepageComponent implements OnInit {
         demail = localStorage.getItem('email');
         dpass = localStorage.getItem('password');
 
-        if (demail && dpass) {
-          demail = CryptoJS.AES.decrypt(demail, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
-          dpass = CryptoJS.AES.decrypt(dpass, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
+        try {
+          if (demail && dpass) {
+            demail = CryptoJS.AES.decrypt(demail, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
+            dpass = CryptoJS.AES.decrypt(dpass, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
+          }
+        } catch {
+          sessionStorage.removeItem('email');
+          sessionStorage.removeItem('password');
+
+          localStorage.removeItem('email');
+          localStorage.removeItem('password');
+          localStorage.removeItem('isSignIn');
+          localStorage.removeItem('rememberMe');
+          this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams()));
         }
+
       }
 
       this.progressBarService.show();
       if (demail && dpass) {
         this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams(demail, dpass, 'E')));
       } else {
-        /* sessionStorage.removeItem('email');
+        sessionStorage.removeItem('email');
         sessionStorage.removeItem('password');
 
         localStorage.removeItem('email');
-        localStorage.removeItem('password'); */
+        localStorage.removeItem('password');
+        localStorage.removeItem('isSignIn');
+        localStorage.removeItem('rememberMe');
         this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams()));
       }
     } else if (!(this.customerSession && this.customerSession.SessionId) && (isSignIn === '0')) {

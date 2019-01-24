@@ -46,8 +46,10 @@ export class SessionService {
     if (demail && dpass) {
       this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams(demail, dpass, 'E')));
     } else {
-      /* localStorage.removeItem('email');
-      localStorage.removeItem('password'); */
+      localStorage.removeItem('email');
+      localStorage.removeItem('password');
+      localStorage.removeItem('isSignIn');
+      localStorage.removeItem('rememberMe');
       this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams()));
     }
     this.route.navigate(['/home'], { queryParams: { returnUrl: this.route.url } });

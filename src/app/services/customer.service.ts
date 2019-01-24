@@ -54,6 +54,8 @@ export class CustomerService {
           if (demail && dpass) {
             localStorage.removeItem('email');
             localStorage.removeItem('password');
+            localStorage.removeItem('rememberMe');
+            localStorage.removeItem('isSignIn');
             this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams()));
           }
         } else if (res.SessionId && res.SessionId !== '') {

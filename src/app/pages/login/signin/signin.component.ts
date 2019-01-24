@@ -141,25 +141,26 @@ export class SigninComponent implements OnInit {
   }
 
   clearLocalStorage() {
-    const lemail = localStorage.getItem('email');
+    /* const lemail = localStorage.getItem('email');
     const lpass = localStorage.getItem('password');
     const lrememberMe = localStorage.getItem('rememberMe');
 
-    if (lemail && lpass && lrememberMe) {
+    if (lemail && lpass && lrememberMe) { */
       localStorage.removeItem('email');
       localStorage.removeItem('password');
       localStorage.removeItem('rememberMe');
-    }
+      localStorage.removeItem('isSignIn');
+    // }
   }
 
   clearSessionStorage() {
-    const semail = sessionStorage.getItem('email');
+    /* const semail = sessionStorage.getItem('email');
     const spass = sessionStorage.getItem('password');
 
-    if (semail && spass) {
+    if (semail && spass) { */
       sessionStorage.removeItem('email');
       sessionStorage.removeItem('password');
-    }
+    // }
   }
 
   onResetPassword() {

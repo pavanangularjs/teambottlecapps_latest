@@ -90,6 +90,7 @@ export class SignupComponent implements OnInit {
       localStorage.removeItem('email');
       localStorage.removeItem('password');
       localStorage.removeItem('rememberMe');
+      localStorage.removeItem('isSignIn');
     }
   }
 }
