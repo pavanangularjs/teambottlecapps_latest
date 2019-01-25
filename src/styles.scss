@@ -1759,7 +1759,7 @@ a img.second_img {
 
     .pagination>li>a, .pagination>li>span {
         font-size: 12px;
-        padding: 5px 10px !important;
+        padding: 5px 8px !important;
         margin-bottom: 15px;
     }
     .Searchrelated_noborder h5, .Searchrelated_div h5{
@@ -1811,12 +1811,13 @@ a img.second_img {
     background-color: transparent !important;
     border: transparent;
     color: #777;
-    font-size: 22px;
-    padding: 4px 5px;
+    font-size: 26px;
+    padding: 12px 5px 4px 5px;
     margin: 0px 5px 0px 0px !important;
     &:focus {
         padding: 4px 5px !important;
         margin: 0px 5px 0px 0px !important;
+        color: $lukas-color;
     }
    }
    .header_icon i.search-icon {

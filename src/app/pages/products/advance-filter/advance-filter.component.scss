@@ -229,6 +229,9 @@ ul.search-history {
       display: block;
       margin-bottom: 5px;
       margin-right: 5px;
+      span.fa {
+        cursor: pointer;
+      }
     }
   }
 }

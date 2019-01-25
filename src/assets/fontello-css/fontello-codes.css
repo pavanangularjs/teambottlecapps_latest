@@ -1,6 +1,6 @@
 
-.icon-account:before { content: '\eab0'; } /* '' */
-.icon-active-add-cart:before { content: '\eab1'; } /* '' */
+.icon-account:before { content: '\e800'; } /* '' */
+.icon-active-add-cart:before { content: '\e801'; } /* '' */
 .icon-active-rating:before { content: '\eab2'; } /* '' */
 .icon-added-favorite:before { content: '\eab3'; } /* '' */
 .icon-arrow:before { content: '\eab4'; } /* '' */
@@ -11,6 +11,7 @@
 .icon-banner-next:before { content: '\eab9'; } /* '' */
 .icon-checked:before { content: '\eaba'; } /* '' */
 .icon-collapse:before { content: '\eabb'; } /* '' */
+.icon-avatar-placeholder:before { content: '\eabc'; } /* '' */
 .icon-cancel:before { content: '\eabd'; } /* '' */
 .icon-coupon:before { content: '\eabe'; } /* '' */
 .icon-cvv-info:before { content: '\eabf'; } /* '' */
@@ -37,8 +38,10 @@
 .icon-options:before { content: '\ead4'; } /* '' */
 .icon-linkedin:before { content: '\ead5'; } /* '' */
 .icon-navigate:before { content: '\ead6'; } /* '' */
+.icon-offer:before { content: '\ead7'; } /* '' */
 .icon-orders:before { content: '\ead8'; } /* '' */
 .icon-price:before { content: '\ead9'; } /* '' */
+.icon-quantity-remove:before { content: '\eada'; } /* '' */
 .icon-profile:before { content: '\eadb'; } /* '' */
 .icon-add-address:before { content: '\eadc'; } /* '' */
 .icon-add-cart:before { content: '\eadd'; } /* '' */
@@ -64,3 +67,8 @@
 .icon-liquor:before { content: '\eaf2'; } /* '' */
 .icon-mixer:before { content: '\eaf3'; } /* '' */
 .icon-wine:before { content: '\eaf4'; } /* '' */
+.icon-no-productss:before { content: '\eaf5'; } /* '' */
+.icon-no-coupons-v2:before { content: '\eaf6'; } /* '' */
+.icon-reorder:before { content: '\eaf7'; } /* '' */
+.icon-inprogress-1:before { content: '\eaf8'; } /* '' */
+.icon-remove-cart:before { content: '\eafd'; } /* '' */
