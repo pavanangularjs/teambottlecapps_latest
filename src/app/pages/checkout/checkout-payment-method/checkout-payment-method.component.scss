@@ -31,6 +31,7 @@
 
   .payment-option-select a{
       color: #222;
+      font-size: 20px;
   }
   .payment-option-select a:hover,
   .payment-option-select a.active{
@@ -45,7 +46,7 @@
   span.payonline, h5.text-right {
       font-size: 15px;
       font-family: $poppins-bold;
-      vertical-align: middle;
+      // vertical-align: middle;
     }
     h5.text-right {
       span {

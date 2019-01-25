@@ -1738,6 +1738,12 @@ i.icon-cart-outofstock {
     cursor: pointer;
 }
 
+i.icon.icon-remove-cart.active {
+    font-size: 32px;
+    color: #c2c4ca;
+    cursor: pointer;
+}
+
 i.active {
     color: $lukas-color;
 }
