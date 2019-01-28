@@ -14,7 +14,7 @@
         <a routerLink="/product-details/{{item.PID}}"><img class="second_img" src="{{item?.ProductImg}}" /></a>
         <i class="icon icon-cart-outofstock active" *ngIf="item?.Inventory === 0; else showCart"></i>
         <ng-template #showCart>
-          <i class="icon icon-add-cart" (click)="addToCart(item)" *ngIf="item?.InCart === 0; else cartActive"></i>
+          <i class="icon icon-add-to-my-cart" (click)="addToCart(item)" *ngIf="item?.InCart === 0; else cartActive"></i>
           <ng-template #cartActive>
             <i class="icon icon-remove-cart active" (click)="removeFromCart(item)"></i>          
           </ng-template>

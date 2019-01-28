@@ -50,6 +50,7 @@ export class ProductStoreService {
                 }
                 this.storeDetails = null;
                 this.couponsList = null;
+                this.storeList = null;
                 return of(res);
             }),
             retry(3),

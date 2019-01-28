@@ -31,6 +31,7 @@ export class HeaderComponent implements OnInit {
   storeList: any;
   isMobile: boolean;
   storeDetails: any;
+  currentStoreId = '';
 
   constructor(private store: Store<CustomerLoginSession>,
     private customerService: CustomerService,
@@ -90,6 +91,7 @@ export class HeaderComponent implements OnInit {
     this.storeService.storeGetList().subscribe(data => {
       if (data && data.ListStore) {
         this.storeList = data.ListStore;
+        this.currentStoreId = data.StoreId;
         this.progressBarService.hide();
       }
     });

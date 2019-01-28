@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 
 
 @Component({
@@ -6,8 +6,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: './multi-store.component.html',
   styleUrls: ['./multi-store.component.scss']
 })
-export class MultiStoreComponent implements OnInit {
+export class MultiStoreComponent implements OnChanges {
   @Input() stores: any;
+  @Input() currentStore: any;
   @Output() storeChange = new EventEmitter<number>();
   searchText: string;
   tempStores: any;
@@ -16,7 +17,7 @@ export class MultiStoreComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+  ngOnChanges() {
   }
 
   onStoreSelect(storeId: number) {

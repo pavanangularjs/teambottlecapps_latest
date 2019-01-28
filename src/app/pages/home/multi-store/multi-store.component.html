@@ -40,7 +40,7 @@
                             <i class="icon icon-location-picker"></i> 0.1 mi
                         </div>
                         <div class="select-store">
-                            <button class="btn btn-default active" data-dismiss="modal" (click)="onStoreSelect(store.StoreId)">Select Store</button>
+                            <button class="btn btn-default " [ngClass]="currentStore === store?.StoreId  ? 'selected' : 'active'" data-dismiss="modal" (click)="onStoreSelect(store.StoreId)">Select Store</button>
                         </div>
                     </div>
                 </div>

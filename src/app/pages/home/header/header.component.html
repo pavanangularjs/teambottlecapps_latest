@@ -209,6 +209,6 @@
 <!-- M Header End -->
 
 <!-- Mutli Store Select -->
-<app-multi-store [stores]="storeList" (storeChange)="onStoreChange($event)"></app-multi-store>
+<app-multi-store [stores]="storeList" [currentStore]="currentStoreId" (storeChange)="onStoreChange($event)"></app-multi-store>
 <button id="openMultiLocationModal" #openMultiLocationModal [hidden]="true" data-toggle="modal" data-target="#multiLocationDialog"></button>
 <!-- Mutli Store Select End  -->

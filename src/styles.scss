@@ -1384,7 +1384,7 @@ button.btn{
     line-height: normal;
     letter-spacing: normal;
     text-align: left;
-    color: #191919; 
+/*    color: #191919; */
     
 }
 .card_number{
@@ -1726,7 +1726,13 @@ i.icon-favorites {
     cursor: pointer;
 }
 
-i.icon-add-cart {
+i.icon-add-to-my-cart {
+    font-size: 32px;
+    color: #c2c4ca;
+    cursor: pointer;
+}
+
+i.fa-cart-plus {
     font-size: 32px;
     color: #c2c4ca;
     cursor: pointer;

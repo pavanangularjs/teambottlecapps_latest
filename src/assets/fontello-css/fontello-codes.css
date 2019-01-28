@@ -44,7 +44,6 @@
 .icon-quantity-remove:before { content: '\eada'; } /* '' */
 .icon-profile:before { content: '\eadb'; } /* '' */
 .icon-add-address:before { content: '\eadc'; } /* '' */
-.icon-add-cart:before { content: '\eadd'; } /* '' */
 .icon-add-payment:before { content: '\eade'; } /* '' */
 .icon-add-tip:before { content: '\eadf'; } /* '' */
 .icon-search:before { content: '\eae0'; } /* '' */
@@ -72,3 +71,4 @@
 .icon-reorder:before { content: '\eaf7'; } /* '' */
 .icon-inprogress-1:before { content: '\eaf8'; } /* '' */
 .icon-remove-cart:before { content: '\eafd'; } /* '' */
+.icon-add-to-my-cart:before { content: '\eafe'; } /* '' */
