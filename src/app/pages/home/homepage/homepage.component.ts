@@ -62,6 +62,8 @@ export class HomepageComponent implements OnInit {
       this.appConfig.storeID = +storeId;
     }
     const isSignIn = localStorage.getItem('isSignIn');
+    const sourceId = localStorage.getItem('sourceId');
+
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     if (!(this.customerSession && this.customerSession.SessionId) && (isSignIn === '1' || isSignIn === null)) {
       // this.spinnerService.show();
@@ -97,6 +99,8 @@ export class HomepageComponent implements OnInit {
       this.progressBarService.show();
       if (demail && dpass) {
         this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams(demail, dpass, 'E')));
+      } else if (demail && sourceId) {
+        this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams(demail, '' , 'F', sourceId)));
       } else {
         sessionStorage.removeItem('email');
         sessionStorage.removeItem('password');
@@ -105,6 +109,7 @@ export class HomepageComponent implements OnInit {
         localStorage.removeItem('password');
         localStorage.removeItem('isSignIn');
         localStorage.removeItem('rememberMe');
+        localStorage.removeItem('sourceId');
         this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams()));
       }
     } else if (!(this.customerSession && this.customerSession.SessionId) && (isSignIn === '0')) {

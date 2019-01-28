@@ -83,10 +83,16 @@ export class SigninComponent implements OnInit {
 
   signInWithFB(): void {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then((user) => {
-      console.log(user);
+      // console.log(user);
       if (user) {
         this.store.dispatch(new CustomerLogin(
           this.appConfig.getLoginCustomerParams(user.email, '', 'F', user.id)));
+
+        localStorage.setItem('email', user.email);
+        localStorage.setItem('password', '');
+        localStorage.setItem('rememberMe', 'false');
+        localStorage.setItem('isSignIn', '1');
+        localStorage.setItem('sourceId', user.id);
       }
 
     });
@@ -146,10 +152,11 @@ export class SigninComponent implements OnInit {
     const lrememberMe = localStorage.getItem('rememberMe');
 
     if (lemail && lpass && lrememberMe) { */
-      localStorage.removeItem('email');
-      localStorage.removeItem('password');
-      localStorage.removeItem('rememberMe');
-      localStorage.removeItem('isSignIn');
+    localStorage.removeItem('email');
+    localStorage.removeItem('password');
+    localStorage.removeItem('rememberMe');
+    localStorage.removeItem('isSignIn');
+    localStorage.removeItem('sourceId');
     // }
   }
 
@@ -158,8 +165,9 @@ export class SigninComponent implements OnInit {
     const spass = sessionStorage.getItem('password');
 
     if (semail && spass) { */
-      sessionStorage.removeItem('email');
-      sessionStorage.removeItem('password');
+    sessionStorage.removeItem('email');
+    sessionStorage.removeItem('password');
+    localStorage.removeItem('sourceId');
     // }
   }
 
