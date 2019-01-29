@@ -92,23 +92,26 @@ export class FeatureProductsComponent implements OnInit {
   onCategoryChange(catId = '1,2,3,4') {
     this.currentCategoryId = catId;
     this.currentPageNo = 1;
-    // this.spinnerService.show();
-    this.progressBarService.show();
-    this.store.dispatch(new ProductGetList(
-      this.productStoreService.getProductGetListParams(
-        { categoryId: catId, pageSize: this.pageSize, isFeatured: 1, pageNumber: this.currentPageNo})));
+    this.getFeatureProducts();
   }
 
   showMoreProducts() {
     this.currentPageNo += 1;
-    this.onCategoryChange();
+    this.getFeatureProducts();
   }
 
   showPreviousProducts() {
     if (this.currentPageNo > 1) {
       this.currentPageNo -= 1;
-      this.onCategoryChange();
+      this.getFeatureProducts();
     }
+  }
+
+  getFeatureProducts() {
+    this.progressBarService.show();
+    this.store.dispatch(new ProductGetList(
+      this.productStoreService.getProductGetListParams(
+        { categoryId: this.currentCategoryId, pageSize: this.pageSize, isFeatured: 1, pageNumber: this.currentPageNo})));
   }
 
 }
