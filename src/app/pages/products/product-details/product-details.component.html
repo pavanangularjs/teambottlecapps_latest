@@ -104,7 +104,7 @@
                                 <div class="col-md-5 col-xs-7">
                                     <button *ngIf="productDetails?.Product?.Inventory > 0 && productDetails?.Product?.InCart === 0" class="btn btn-default addtocart" (click)="addToCart()">Add to Cart</button>
                                     <button *ngIf="productDetails?.Product?.InCart > 0" class="btn btn-default addtocart" (click)="removeFromCart()">Remove from Cart</button>
-                                    <button *ngIf="productDetails?.Product?.Inventory === 0" [disabled]="true" class="btn btn-default disabled">Out Of Stock</button>                                    
+                                    <button *ngIf="productDetails?.Product?.Inventory === 0" [disabled]="true" class="btn btn-default addtocart disabled">Out Of Stock</button>                                    
                                 </div>
                             </div>
                             <!-- <button  class="dec_circle">

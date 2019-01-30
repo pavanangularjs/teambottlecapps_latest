@@ -57,7 +57,6 @@
 .icon-search2:before { content: '\eae8'; } /* '' */
 .icon-selected:before { content: '\eae9'; } /* '' */
 .icon-time:before { content: '\eaeb'; } /* '' */
-.icon-cart-outofstock:before { content: '\eaec'; } /* '' */
 .icon-no-items:before { content: '\eaed'; } /* '' */
 .icon-distance:before { content: '\eaee'; } /* '' */
 .icon-location-picker:before { content: '\eaef'; } /* '' */
@@ -72,3 +71,4 @@
 .icon-inprogress-1:before { content: '\eaf8'; } /* '' */
 .icon-remove-cart:before { content: '\eafd'; } /* '' */
 .icon-add-to-my-cart:before { content: '\eafe'; } /* '' */
+.icon-remove-from-my-cart:before { content: '\eaff'; } /* '' */

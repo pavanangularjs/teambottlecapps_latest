@@ -1738,10 +1738,10 @@ i.fa-cart-plus {
     cursor: pointer;
 }
 
-i.icon-cart-outofstock {
+i.icon-remove-from-my-cart {
     font-size: 32px;
     color: #c2c4ca;
-    cursor: pointer;
+    cursor: not-allowed;
 }
 
 i.icon.icon-remove-cart.active {
@@ -2006,4 +2006,22 @@ a img.second_img {
 .btn.reviewsubmit {
     background-color: $lukas-color !important;
     color: #fff;
+}
+
+/* mobile new menu */
+
+.shopdropdown {
+  position: relative;
+}
+
+.dropdown-menu-shop {
+  display: none;
+}
+
+.toggle, .dropdown-menu-shop {
+  width: 100%;
+}
+
+.is-active .dropdown-menu-shop {
+  display: block;
 }
