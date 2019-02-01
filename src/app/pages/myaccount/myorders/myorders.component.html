@@ -23,6 +23,12 @@
   <div class="row">
     <div class="Searchrelated_div Searchrelated_div-bot col-md-12 col-sm-12 col-lg-12 col-xs-12">
       <h5>My Orders</h5>
+      <div class="page-navigation">
+        <div class="f-page-navigation" *ngIf="myOrdersList?.OrderCount > 0">
+          <ngb-pagination [collectionSize]="myOrdersList?.OrderCount" (pageChange)="onPageChange($event)" [(page)]="page"
+            [pageSize]="myOrdersList?.PageSize" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+        </div>
+      </div>
     </div>
   </div>
 </div>

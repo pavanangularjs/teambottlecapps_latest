@@ -9,6 +9,7 @@ import { ProgressBarService } from '../../../shared/services/progress-bar.servic
 })
 export class MyOrdersComponent implements OnInit {
   myOrdersList: any;
+  page = 1;
 
   constructor(private ordersService: OrdersService,
     // private spinnerService: Ng4LoadingSpinnerService,
@@ -21,7 +22,7 @@ export class MyOrdersComponent implements OnInit {
   getMyOrders() {
     // this.spinnerService.show();
     this.progressBarService.show();
-    this.ordersService.getMyOrdersList().subscribe(
+    this.ordersService.getMyOrdersList(this.page).subscribe(
       (data: any) => {
         this.myOrdersList = data;
         // this.spinnerService.hide();
@@ -33,4 +34,8 @@ export class MyOrdersComponent implements OnInit {
     this.getMyOrders();
   }
 
+  onPageChange(pageNo) {
+    this.page = pageNo;
+    this.getMyOrders();
+  }
 }

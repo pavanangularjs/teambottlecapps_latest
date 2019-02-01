@@ -28,8 +28,8 @@ export class OrdersService {
       });
   }
 
-  getMyOrdersList(): Observable<any> {
-    return this.http.post<any>(baseUrl + UrlNames.OrderGetList, this.getMyOrdersRequestParams(), { headers: this.headers }).pipe(
+  getMyOrdersList(pageNo = 1): Observable<any> {
+    return this.http.post<any>(baseUrl + UrlNames.OrderGetList, this.getMyOrdersRequestParams(pageNo), { headers: this.headers }).pipe(
       switchMap((res: any) => {
         return of(res);
       }),
@@ -40,7 +40,7 @@ export class OrdersService {
     );
   }
 
-  private getMyOrdersRequestParams(): MyOrders {
+  private getMyOrdersRequestParams(pageNo: number): MyOrders {
     if (!this.customerSession) {
       return null;
     }
@@ -52,7 +52,7 @@ export class OrdersService {
       AppId: this.customerSession.AppId,
       DeviceId: this.customerSession.DeviceId,
       DeviceType: this.customerSession.DeviceType,
-      PageNumber: 1,
+      PageNumber: pageNo,
       PageSize: 10
     };
   }
