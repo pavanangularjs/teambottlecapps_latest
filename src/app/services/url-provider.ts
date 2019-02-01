@@ -31,5 +31,6 @@ export enum UrlNames {
     UploadImage = 'Customer/UploadImage',
     CustomerPaymentMethodGetList = 'Customer/CustomerPaymentMethodGetList',
     CustomerPaymentInsert = 'Customer/CustomerPaymentInsert',
-    CouponGetList = 'Coupon/CouponGetList'
+    CouponGetList = 'Coupon/CouponGetList',
+    ReOrderCart = 'Cart/ReOrderCart'
 }

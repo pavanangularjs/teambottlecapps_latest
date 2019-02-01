@@ -85,4 +85,33 @@ export class OrdersService {
       StatusId: 1
     };
   }
+
+  reOrder(orderId): Observable<any> {
+    return this.http.post<any>(baseUrl + UrlNames.ReOrderCart, this.getReOrderRequestParams(orderId), { headers: this.headers }).pipe(
+      switchMap((res: any) => {
+        return of(res);
+      }),
+      retry(3),
+      catchError((error: any, caught: Observable<any>) => {
+        return this.errorHandler.processError(error);
+      })
+    );
+  }
+
+  private getReOrderRequestParams(orderId: number): any {
+    if (!this.customerSession) {
+      return null;
+    }
+
+    return {
+      StoreId: this.customerSession.StoreId,
+      SessionId: this.customerSession.SessionId,
+      UserId: this.customerSession.UserId,
+      AppId: this.customerSession.AppId,
+      DeviceId: this.customerSession.DeviceId,
+      DeviceType: this.customerSession.DeviceType,
+      OrderId: orderId,
+      ListPID: ''
+    };
+  }
 }
