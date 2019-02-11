@@ -95,13 +95,13 @@ h5.color, a.color{
     text-align: center;
     border: $lukas-color;
     box-shadow: none;
-    box-shadow: 0px 10px 20px 0 rgba(166, 20, 85, 0.2);
+    box-shadow: 0 10px 40px 0 $lukas-color;
  
   }
   button.submit:focus{
       border:$lukas-color;
       outline: none;
-      box-shadow: 0px 10px 20px 0 rgba(166, 20, 85, 0.2);
+      box-shadow: 0 10px 40px 0 $lukas-color;
   }
 section.padding_top{
     padding-top: 15px;
@@ -139,7 +139,7 @@ section.padding_top{
         text-align: center;
         border: $lukas-color;
         box-shadow: none;
-        box-shadow: 0px 10px 20px 0 rgba(166, 20, 85, 0.2);
+        box-shadow: 0 10px 40px 0 $lukas-color;
       }
     }
 

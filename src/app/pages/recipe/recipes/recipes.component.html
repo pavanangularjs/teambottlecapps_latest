@@ -31,10 +31,14 @@
           </div>
         </div>
 
-        <div class="page-navigation">
-          <div class="f-page-navigation" *ngIf="recipeList?.RecipeCount > 0">
-            <ngb-pagination [collectionSize]="recipeList?.RecipeCount" (pageChange)="onPageChange($event)" [(page)]="page"
-              [pageSize]="recipeList?.PageSize" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="page-navigation">
+              <div class="f-page-navigation" *ngIf="recipeList?.RecipeCount > 0">
+                <ngb-pagination [collectionSize]="recipeList?.RecipeCount" (pageChange)="onPageChange($event)" [(page)]="page"
+                  [pageSize]="recipeList?.PageSize" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+              </div>
+            </div>
           </div>
         </div>
 

@@ -41,12 +41,12 @@
   </div>
 </div>
 <div class="container">
-  <div id="myCarousel" class="carousel slide row" data-ride="carousel">
+  <div id="myCarousel" class="carousel slide row">
     <!-- <ol class="carousel-indicators">
       <li data-target="#myCarousel"   [ngClass]="{'active' : i == 0}" *ngFor="let event of eventList; let i = index"></li>
     </ol> -->
 
-    <div class="carousel-inner carousel-block" role="listbox">
+    <div class="carousel-inner" role="listbox">
       <div class="item active" *ngIf="!(eventList?.length > 0)">
         <img src="../../../../assets/Images/default-carousel-img.jpg" alt="" class="carousel-img">
       </div>
@@ -58,7 +58,7 @@
         <!-- Controls -->
         <a class="left carousel-control" *ngIf="eventList?.length > 1" href="#myCarousel" role="button" data-slide="prev">
           <!-- <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> -->
-          <img src="src../../../../assets/Images/left-arrow.png" aria-hidden="true">
+          <img src="src../../../../assets/Images/left-arrow.png" aria-hidden="true" class="pull-left">
           <span class="sr-only">Previous</span>
         </a>
         <a class="right carousel-control" *ngIf="eventList?.length > 1" href="#myCarousel" role="button" data-slide="next">

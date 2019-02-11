@@ -26,6 +26,8 @@ export class CustomerService {
   private profileDetails: any;
   customerAddressList: any;
   customerPaymentMethodGetList: any;
+  isPayAtStore = false;
+  isPayOnline = false;
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
 
   constructor(private http: HttpClient,
@@ -236,6 +238,21 @@ export class CustomerService {
 
   getPaymentTypes() {
     if (this.customerPaymentMethodGetList && this.customerPaymentMethodGetList.ListPaymentItem) {
+
+      const payAtStore = this.customerPaymentMethodGetList.ListPaymentItem.filter(
+        item => item.PaymentTypeId === 2)[0];
+
+      if (payAtStore) {
+        this.isPayAtStore = true;
+      }
+
+      const payOnline = this.customerPaymentMethodGetList.ListPaymentItem.filter(
+        item => (item.PaymentTypeId === 1 || item.PaymentTypeId === 7))[0];
+
+      if (payOnline) {
+        this.isPayOnline = true;
+      }
+
       const cardPayment = this.customerPaymentMethodGetList.ListPaymentItem.filter(
         item => item.PaymentType === 'Card Payment')[0];
 

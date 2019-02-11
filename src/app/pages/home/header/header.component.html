@@ -28,7 +28,7 @@
                         <ul class="dropdown-menu user-menu" *ngIf="isActive">
                             <li [routerLink]="['/myaccount/myorders']">
                                 <a>
-                                    <!-- <img class="beer" src="assets/Images/Orders.png"> --><i class="beer icon icon-orders"></i> My Orders
+                                    <!-- <img class="beer" src="assets/Images/Orders.png"> --><i class="beer icon icon-recipt-date"></i> My Orders
                                 </a>
                             </li>
                             <li [routerLink]="['/myaccount']">
@@ -93,7 +93,7 @@
 </header>
 
 <!-- M Header -->
-<header id="menu" class="hidden-md hidden-ld visible-xs visible-sm m-header">
+<header id="menu" class="hidden-md hidden-lg visible-xs visible-sm m-header">
     <nav>
         <div class="navbar-header">
             <button class="pull-left m-menu" role="button" data-toggle="collapse" href="#navCollapse" aria-expanded="false" aria-controls="collapseExample"> <span class="fa fa-bars"> </span></button>
@@ -119,7 +119,7 @@
                 <ul class="dropdown-menu user-menu user-m-menu" *ngIf="isActive">
                     <li [routerLink]="['/myaccount/myorders']">
                         <a>
-                            <!-- <img class="beer" src="assets/Images/Orders.png"> --><i class="beer icon icon-orders"></i> My Orders
+                            <!-- <img class="beer" src="assets/Images/Orders.png"> --><i class="beer icon-recipt-date"></i> My Orders
                         </a>
                     </li>
                     <li [routerLink]="['/myaccount']">
@@ -194,7 +194,7 @@
         <!-- User Login icon Ends Here -->
         <!-- Mobile Main Menu UI Start -->
             <div class="visible-xs visible-sm hidden-lg hidden-md">
-            <ul class="collapse msidenav" id="navCollapse">
+            <ul class="collapse msidenav" id="navCollapse" tabindex="-1" aria-labelledby="gridModalLabel">
               <li><a [routerLink]="['/feature-products']">Featured Products</a></li>
               <li><a [routerLink]="['/recipes']">Recipes</a></li>
               <li><a [routerLink]="['/coupons']">Coupons</a></li>

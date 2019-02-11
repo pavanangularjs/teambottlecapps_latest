@@ -8,7 +8,7 @@
         <div class="row" *ngIf="orderTypeId === 1">
           <div class="payment-option-select">
 
-            <div class="col-md-12 col-xs-12">
+            <div class="col-md-12 col-xs-12" *ngIf="customerService?.isPayAtStore">
               <a (click)="changePaymentType('payAtStore')" [ngClass]="{'pay-opt-1' : paymentTypeId === 0}" class="payatstorenew">
                 <!--                 <div class="text-left">  -->
                 <span class="fa fa-check-circle" *ngIf="paymentTypeId === 0"></span>
@@ -18,7 +18,7 @@
               </a>
             </div>
             <!-- <span class="pay-or-store">OR</span> -->
-            <div class="col-md-12 col-xs-12">
+            <div class="col-md-12 col-xs-12" *ngIf="customerService?.isPayOnline">
               <a (click)="changePaymentType('payOnline')" [ngClass]="{'pay-opt-1' : paymentTypeId === 1}">
                 <span class="fa fa-check-circle" *ngIf="paymentTypeId === 1"></span>
                 <span class="fa fa-circle-o" *ngIf="paymentTypeId === 0"></span>

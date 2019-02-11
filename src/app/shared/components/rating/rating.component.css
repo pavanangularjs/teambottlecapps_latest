@@ -1,8 +1,10 @@
+@import "~src/variable.scss";
+
 .fa-star {
-    color: #A61455 !important;
+    color: $lukas-color !important;
 }
 .fa-star-half-o {
-    color: #A61455 !important;
+    color: $lukas-color !important;
 }
 
 span.rating-icon a .fa, .Product_name span.rating-icon a .fa, .myorder-table span.rating-icon a .fa {

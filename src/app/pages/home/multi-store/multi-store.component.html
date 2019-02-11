@@ -39,8 +39,12 @@
                         <div class="store-distance" *ngIf="false">
                             <i class="icon icon-location-picker"></i> 0.1 mi
                         </div>
-                        <div class="select-store">
+                        <div class="select-store visible-md visible-lg hidden-xs hidden-sm">
                             <button class="btn btn-default " [ngClass]="currentStore === store?.StoreId  ? 'selected' : 'active'" data-dismiss="modal" (click)="onStoreSelect(store.StoreId)">Select Store</button>
+                        </div>
+                        <div class="select-store visible-xs visible-sm hidden-lg hidden-md">
+                            <span class="fa fa-check-circle normal" (click)="onStoreSelect(store.StoreId)" data-dismiss="modal" *ngIf="currentStore !== store?.StoreId"></span>
+                            <span class="fa fa-check-circle success" *ngIf="currentStore === store?.StoreId"></span>
                         </div>
                     </div>
                 </div>

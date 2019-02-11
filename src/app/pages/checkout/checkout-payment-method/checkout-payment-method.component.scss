@@ -1,7 +1,7 @@
 @import "~src/variable.scss";
 
 .payment-method {
-  margin-top: 15px;
+  margin-top: 0px;
   margin-bottom: 15px;
   table {
     width: 100%;
@@ -40,7 +40,7 @@
   }
 
   .payment-option-select {
-      border-bottom: solid 1px #ccc;
+      border-bottom: solid 0px #ccc;
       margin-bottom: 25px;
       margin-top: 10px;
   span.payonline, h5.text-right {
@@ -163,7 +163,7 @@
 }
 
 .payatstorenew {
-    padding-top: 20px;
+    padding-top: 0px;
     display: inline-block;
     padding-bottom: 0px;
 }
