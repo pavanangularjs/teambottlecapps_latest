@@ -14,6 +14,8 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { AddNewAddressComponent } from './manage-addresses/add-new-address/add-new-address.component';
 import { AddNewPaymentComponent } from './payment-methods/add-new-payment/add-new-payment.component';
 import { EditAddressComponent } from './manage-addresses/edit-address/edit-address.component';
+import { AddNewCardComponent } from './vantiv-payment-methods/add-new-card/add-new-card.component';
+import { VantivPaymentMethodsComponent } from './vantiv-payment-methods/vantiv-payment-methods.component';
 
 @NgModule({
   exports: [
@@ -42,7 +44,9 @@ import { EditAddressComponent } from './manage-addresses/edit-address/edit-addre
       FavoritesComponent,
       AddNewAddressComponent,
       AddNewPaymentComponent,
-      EditAddressComponent
+      EditAddressComponent,
+      AddNewCardComponent,
+      VantivPaymentMethodsComponent
     ]
 })
 export class MyAccountModule { }

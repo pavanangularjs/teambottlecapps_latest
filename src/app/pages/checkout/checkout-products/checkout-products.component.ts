@@ -8,6 +8,7 @@ import { CustomerService } from '../../../services/customer.service';
 import { Store } from '@ngrx/store';
 import { CustomerLoginSession } from '../../../models/customer-login-session';
 import { StoreGetHome } from '../../../state/product-store/product-store.action';
+import { VantivPaymentService } from '../../../services/vantiv-payment.service';
 
 @Component({
   selector: 'app-checkout-products',
@@ -28,6 +29,7 @@ export class CheckoutProductsComponent implements OnInit {
     private paymentService: PaymentService,
     private toastr: ToastrService,
     private customerService: CustomerService,
+    private vantivPaymentService: VantivPaymentService,
     private store: Store<CustomerLoginSession>) {
       this.cartService.cartUpdated.subscribe(() => {
         this.cartDetails = this.cartService.cartdetails;
@@ -81,6 +83,12 @@ export class CheckoutProductsComponent implements OnInit {
       return;
     }
 
+    if (this.cartDetails.PaymentTypeId === 7 &&
+      this.vantivPaymentService.vUserSelectedPaymentAccountID === '') {
+      this.toastr.error('Please Select Payment Method');
+      return;
+    }
+
     if (this.cartDetails.PaymentTypeId === 1 &&
       this.paymentService.createTransaction.cvv === 0 || this.paymentService.createTransaction.cvv.toString() === '') {
       this.toastr.error('Please Enter CVV');
@@ -95,7 +103,7 @@ export class CheckoutProductsComponent implements OnInit {
 
     if (this.cartDetails.PaymentTypeId === 0) {
       this.placeOrder();
-    } else {
+    } else if (this.cartDetails.PaymentTypeId === 1 ) {
       this.paymentService.createTransactionRequest(data).subscribe(paymentResponse => {
         if (paymentResponse.transactionResponse && paymentResponse.transactionResponse.responseCode === '1') {
           this.placeOrderForOnlinePayment(paymentResponse);
@@ -103,7 +111,79 @@ export class CheckoutProductsComponent implements OnInit {
           this.orderplace.emit();
         }
       });
+    } else if (this.cartDetails.PaymentTypeId === 7 ) {
+
+      if (this.vantivPaymentService.vantiveProfile &&
+        this.vantivPaymentService.vantiveProfile.credential7 === 'Authorize') {
+          this.vantivPaymentService.CreditCardAuthorization(data.amount).subscribe((paymentResponse: any) => {
+            if (this.vantivPaymentService.vExpressResponseCode === '0') {
+              this.placeOrderForOnlinePayment(this.parseVantivResponse(paymentResponse));
+            } else {
+              this.orderplace.emit();
+            }
+          });
+        } else if (this.vantivPaymentService.vantiveProfile &&
+          this.vantivPaymentService.vantiveProfile.credential7 === 'Sale') {
+            this.vantivPaymentService.CreditCardSale(data.amount).subscribe((paymentResponse: any) => {
+              if (this.vantivPaymentService.vExpressResponseCode === '0') {
+                this.placeOrderForOnlinePayment(this.parseVantivResponse(paymentResponse));
+              } else {
+                this.orderplace.emit();
+              }
+            });
+        }
     }
+  }
+
+  parseVantivResponse(response) {
+
+    let req;
+
+    if (response.CreditCardAuthorizationResponse &&
+      response.CreditCardAuthorizationResponse.Response) {
+
+      const res = response.CreditCardAuthorizationResponse.Response;
+
+      req = {
+              'Address': {
+                'BillingAddress1': res.Address.BillingAddress1 || ''
+              },
+              'Batch': {
+                // 'HostBatchAmount': '7946.21',
+                'HostBatchID': res.Batch.HostBatchID || ''
+                // 'HostItemID': '352'
+              },
+              'Card': {
+                'AVSResponseCode': res.Card.AVSResponseCode || '',
+                'BIN': res.Card.BIN || '',
+                'CardLogo': res.Card.CardLogo || '',
+                'CardNumberMasked': res.Card.CardNumberMasked || ''
+              },
+              'ExpressResponseCode': res.ExpressResponseCode || '',
+              'ExpressResponseMessage': res.ExpressResponseMessage || '',
+              'ExpressTransactionDate': res.ExpressTransactionDate || '',
+              'ExpressTransactionTime': res.ExpressTransactionTime || '',
+              'ExpressTransactionTimezone': res.ExpressTransactionTimezone || '',
+              'HostResponseCode': res.HostResponseCode || '',
+              'HostResponseMessage': res.HostResponseMessage || '',
+              'PaymentAccount': {
+                'PaymentAccountID': this.vantivPaymentService.vUserSelectedPaymentAccountID,
+                'PaymentAccountReferenceNumber': res.PaymentAccount.PaymentAccountReferenceNumber
+              },
+              'Transaction': {
+                'AcquirerData': res.Transaction.AcquirerData,
+                'ApprovalNumber': res.Transaction.ApprovalNumber,
+                'ApprovedAmount': res.Transaction.ApprovedAmount,
+                'ProcessorName': res.Transaction.ProcessorName,
+                'ReferenceNumber': res.Transaction.ReferenceNumber,
+                'TransactionID': res.Transaction.TransactionID,
+                'TransactionStatus': res.Transaction.TransactionStatus,
+                'TransactionStatusCode': res.Transaction.TransactionStatusCode
+              }
+        };
+    }
+
+    return req;
   }
 
   placeOrder() {

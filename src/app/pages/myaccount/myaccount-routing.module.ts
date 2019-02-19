@@ -12,6 +12,8 @@ import { AddNewPaymentComponent } from './payment-methods/add-new-payment/add-ne
 import { EditAddressComponent } from './manage-addresses/edit-address/edit-address.component';
 import { MyOrdersComponent } from './myorders/myorders.component';
 import { AuthGuard } from '../../auth.guard';
+import { VantivPaymentMethodsComponent } from './vantiv-payment-methods/vantiv-payment-methods.component';
+import { AddNewCardComponent } from './vantiv-payment-methods/add-new-card/add-new-card.component';
 
 const routes: Routes = [
     {
@@ -27,6 +29,8 @@ const routes: Routes = [
             { path: 'favorites', component: FavoritesComponent },
             { path: 'add-new-address', component: AddNewAddressComponent },
             { path: 'add-new-payment-method', component: AddNewPaymentComponent },
+            { path: 'vantiv-payment-methods', component: VantivPaymentMethodsComponent },
+            { path: 'add-new-card', component: AddNewCardComponent },
             { path: 'myorders', component: MyOrdersComponent, canActivate: [AuthGuard]},
         ]
     }

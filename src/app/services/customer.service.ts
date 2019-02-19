@@ -19,6 +19,7 @@ import { Store } from '@ngrx/store';
 import { ToastrService } from 'ngx-toastr';
 import { ProgressBarService } from '../shared/services/progress-bar.service';
 import { AppConfigService, ValidationsModes, AuthorizeNetURLs } from '../app-config.service';
+import { VantivPaymentService } from '../services/vantiv-payment.service';
 
 @Injectable()
 export class CustomerService {
@@ -29,6 +30,7 @@ export class CustomerService {
   isPayAtStore = false;
   isPayOnline = false;
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+  paymentTypeId: number;
 
   constructor(private http: HttpClient,
     private authService: AuthService,
@@ -36,7 +38,8 @@ export class CustomerService {
     private store: Store<CustomerLoginSession>,
     private toastr: ToastrService,
     private progressBarService: ProgressBarService,
-    private appConfig: AppConfigService) {
+    private appConfig: AppConfigService,
+    private vantivPaymentService: VantivPaymentService) {
     /* if (this.appConfig.deviceID === '') {
       this.appConfig.deviceID = Math.random().toString(36).substring(2);
     } */
@@ -251,10 +254,11 @@ export class CustomerService {
 
       if (payOnline) {
         this.isPayOnline = true;
+        this.paymentTypeId = payOnline.PaymentTypeId;
       }
 
       const cardPayment = this.customerPaymentMethodGetList.ListPaymentItem.filter(
-        item => item.PaymentType === 'Card Payment')[0];
+        item => (item.PaymentType === 'Card Payment' || item.PaymentTypeId === 1))[0];
 
         if (cardPayment) {
 
@@ -271,6 +275,12 @@ export class CustomerService {
               cardPayment.Credential1, cardPayment.Credential2, cardPayment.Credential3, this.customerPaymentMethodGetList.StoreId);
           }
         }
+      const vantiv = this.customerPaymentMethodGetList.ListPaymentItem.filter(
+        item => (item.PaymentType === 'Vantiv' || item.PaymentTypeId === 7))[0];
+
+      if (vantiv) {
+        this.vantivPaymentService.setVantivProfile(vantiv);
+      }
     }
   }
 
@@ -278,7 +288,7 @@ export class CustomerService {
     this.appConfig.decryptionKeyandTransaction(Credential1, Credential2, Credential3, StoreID);
   }
 
-  customerPaymentInsert(userProfileId: string, isDefault: number, paymentTypeId: number): Observable<any> {
+  customerPaymentInsert(userProfileId: string, isDefault: boolean, paymentTypeId: number): Observable<any> {
     return this.http.post<any>(baseUrl + UrlNames.CustomerPaymentInsert,
       this.getCustomerPaymentInsertRequestParams(userProfileId, isDefault, paymentTypeId), { headers: this.headers }).pipe(
         switchMap((res: any) => {
@@ -292,7 +302,7 @@ export class CustomerService {
       );
   }
 
-  getCustomerPaymentInsertRequestParams(userProfileId: string, isDefault: number, paymentTypeId: number): CustomerPaymentInsert {
+  getCustomerPaymentInsertRequestParams(userProfileId: string, isDefault: boolean, paymentTypeId: number): CustomerPaymentInsert {
     if (!this.customerSession) {
       return null;
     }
@@ -306,6 +316,7 @@ export class CustomerService {
       DeviceType: this.customerSession.DeviceType,
       UserProfileId: userProfileId,
       IsDefault: isDefault,
+      IsCardDefault: isDefault,
       PaymentTypeId: paymentTypeId
     };
 

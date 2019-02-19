@@ -7,6 +7,7 @@ import { CartService } from '../../../services/cart.service';
 import { ProductStoreService } from '../../../services/product-store.service';
 import { ProgressBarService } from '../../../shared/services/progress-bar.service';
 import { Router } from '@angular/router';
+import { VantivPaymentService } from '../../../services/vantiv-payment.service';
 
 @Component({
   selector: 'app-checkout-payment-method',
@@ -17,12 +18,14 @@ export class CheckoutPaymentMethodComponent implements OnInit {
 
   paymentMethodList: any;
   paymentProfiles: any;
+  paymentProfilesForVantiv: any;
   userProfileId: string;
   selectedCard: number;
   cardCVV: number;
   storeDetails: any;
   orderTypeId: number;
   paymentTypeId: number;
+  onlinePaymentTypeId: number;
 
   constructor(private customerService: CustomerService,
     private paymentService: PaymentService,
@@ -31,7 +34,8 @@ export class CheckoutPaymentMethodComponent implements OnInit {
     private cartService: CartService,
     private storeService: ProductStoreService,
     private progressBarService: ProgressBarService,
-    private route: Router) { }
+    private route: Router,
+    private vantivPaymentService: VantivPaymentService) { }
 
   ngOnInit() {
     this.getPaymentMethodGetList();
@@ -57,12 +61,24 @@ export class CheckoutPaymentMethodComponent implements OnInit {
 
   getPaymentList() {
 
-    const cardType = this.paymentMethodList.filter(type => type.PaymentType === 'Card Payment')[0];
+    const authorizeNet = this.paymentMethodList.filter(
+      type => (type.PaymentType === 'Card Payment' || type.PaymentTypeId === 1))[0];
 
-    if (cardType && cardType.UserProfileId) {
-      this.userProfileId = cardType.UserProfileId;
-      this.paymentService.createTransaction.customerProfileId = cardType.UserProfileId;
-      this.getExistingCardDetails(cardType.UserProfileId);
+    if (authorizeNet && authorizeNet.UserProfileId) {
+      this.onlinePaymentTypeId = 1;
+      this.userProfileId = authorizeNet.UserProfileId;
+      this.paymentService.createTransaction.customerProfileId = authorizeNet.UserProfileId;
+      this.getExistingCardDetails(authorizeNet.UserProfileId);
+    }
+
+    const vantiv = this.paymentMethodList.filter(
+      type => (type.PaymentType === 'Vantiv' || type.PaymentTypeId === 7))[0];
+
+    if (vantiv && vantiv.UserProfileId) {
+      this.onlinePaymentTypeId = 7;
+      // this.userProfileId = vantiv.UserProfileId;
+      // this.paymentService.createTransaction.customerProfileId = vantiv.UserProfileId;
+      this.getExistingCardDetailsForVantiv();
     } else {
       // this.spinnerService.hide();
       this.progressBarService.hide();
@@ -71,8 +87,8 @@ export class CheckoutPaymentMethodComponent implements OnInit {
 
   changePaymentType(paymentType) {
     if (paymentType === 'payOnline') {
-      this.cartService.cartdetails.PaymentTypeId = 1;
-      this.paymentTypeId = 1;
+      this.cartService.cartdetails.PaymentTypeId = this.onlinePaymentTypeId;
+      this.paymentTypeId = this.onlinePaymentTypeId;
     } else if (paymentType === 'payAtStore') {
       this.cartService.cartdetails.PaymentTypeId = 0;
       this.paymentTypeId = 0;
@@ -83,6 +99,7 @@ export class CheckoutPaymentMethodComponent implements OnInit {
     // vAppLoginId: 5Pj5hE6a   vTransactionKey: 77Za8R4Wnx988xQs
     this.paymentProfiles = [];
     if (userProfileId !== '') {
+      this.progressBarService.show();
       this.paymentService.getExistingCards(userProfileId).subscribe(
         data => {
           if (data && data.profile && data.profile.paymentProfiles) {
@@ -95,6 +112,28 @@ export class CheckoutPaymentMethodComponent implements OnInit {
       // this.spinnerService.hide();
       this.progressBarService.hide();
     }
+  }
+
+  getExistingCardDetailsForVantiv() {
+    // vAppLoginId: 5Pj5hE6a   vTransactionKey: 77Za8R4Wnx988xQs
+    this.paymentProfilesForVantiv = [];
+
+    this.progressBarService.show();
+      this.vantivPaymentService.getAddedCards().subscribe(
+        data => {
+          // data.PaymentAccountQueryResponse.Response.QueryData.Items.Item.TruncatedCardNumber
+          if (data && data.PaymentAccountQueryResponse &&
+            data.PaymentAccountQueryResponse.Response &&
+            data.PaymentAccountQueryResponse.Response.QueryData &&
+            data.PaymentAccountQueryResponse.Response.QueryData.Items &&
+            data.PaymentAccountQueryResponse.Response.QueryData.Items.Item ) {
+            this.paymentProfilesForVantiv = data.PaymentAccountQueryResponse.Response.QueryData.Items.Item;
+
+          }
+          // this.spinnerService.hide();
+          this.progressBarService.hide();
+        });
+
   }
 
   getStoreDetails() {
@@ -114,6 +153,12 @@ export class CheckoutPaymentMethodComponent implements OnInit {
 
     this.paymentService.createTransaction.customerPaymentProfileId = paymentProfile.customerPaymentProfileId;
 
+  }
+
+  updateSelectedPaymentForVantiv(paymentProfile) {
+    this.cartService.cartdetails.PaymentTypeId = 7; // paymentProfile.customerPaymentProfileId;
+
+    this.vantivPaymentService.vUserSelectedPaymentAccountID = paymentProfile.PaymentAccountID;
   }
 
   onAddNewPaymentMethod() {

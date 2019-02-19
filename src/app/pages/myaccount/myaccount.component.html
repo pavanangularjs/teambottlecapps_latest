@@ -41,7 +41,7 @@
                             <ul id="myAccount" class="panel-collapse collapse left-panel-body" role="tabpanel" aria-labelledby="myAccountHeading">
                               <li (click)="onOptionSelected('profile')"><a routerLink="./profile" [ngClass]="{'active': selectedOption === 'profile'}">Profile Information</a></li>
                               <li (click)="onOptionSelected('address')"><a routerLink="./manage-addresses" [ngClass]="{'active': selectedOption === 'address'}">Manage Addresses</a></li>
-                              <li (click)="onOptionSelected('payment')"><a routerLink="./payment-methods" [ngClass]="{'active': selectedOption === 'payment'}">Payment Methods</a></li>
+                              <li (click)="onOptionSelected('payment')"><a [ngClass]="{'active': selectedOption === 'payment'}">Payment Methods</a></li>
                           </ul>
                       </li>
 

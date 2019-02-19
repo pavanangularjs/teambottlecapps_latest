@@ -6,6 +6,23 @@ export enum AuthorizeNetURLs {
     sandBox_URL = 'https://apitest.authorize.net/xml/v1/request.api',
     prod_URL = 'https://api.authorize.net/xml/v1/request.api'
 }
+export enum VantivURLs {
+    hostedPayments = 'https://certtransaction.hostedpayments.com/?TransactionSetupID=',
+    return_URL = 'https://staging.liquorapps.com/Store/Vantiv',
+
+    // Live Environment
+    certTransaction = 'https://certtransaction.elementexpress.com/',
+    certReporting = 'https://certreporting.elementexpress.com/',
+    certservices = 'https://certservices.elementexpress.com/'
+
+    // Local Environment
+    /*
+    certTransaction = '/certtransaction',
+    certReporting = '/certreporting',
+    certservices = '/certservices'
+    */
+    // ng serve --proxy-config=proxy.conf.json --aot
+}
 
 export enum ValidationsModes {
     test = 'testMode',
@@ -17,8 +34,8 @@ export enum ValidationsModes {
 })
 export class AppConfigService {
     deviceID = '';
-    storeID = 10060;
-    appID = 10060;
+    storeID = 10010;
+    appID = 10002;
     URL = '';
     merchantAuthentication = {
       vAppLoginId: '5Pj5hE6a',

@@ -241,7 +241,7 @@ export class AddNewPaymentComponent implements OnInit {
     } else {
       this.paymentService.createCustomerProfile(this.cardProfile).subscribe(data => {
         if (data && data.customerProfileId) {
-          this.customerService.customerPaymentInsert(data.customerProfileId, 1, 1).subscribe(res => {
+          this.customerService.customerPaymentInsert(data.customerProfileId, true, 1).subscribe(res => {
             if (res && res.SuccessMessage !== '') {
               this.toastr.success(res.SuccessMessage);
               this.progressBarService.hide();

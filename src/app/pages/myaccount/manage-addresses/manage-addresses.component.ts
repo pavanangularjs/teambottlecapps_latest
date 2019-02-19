@@ -3,6 +3,7 @@ import { CustomerService } from '../../../services/customer.service';
 // import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { ProgressBarService } from '../../../shared/services/progress-bar.service';
 import { ToastrService } from 'ngx-toastr';
+import { VantivPaymentService } from '../../../services/vantiv-payment.service';
 
 @Component({
   selector: 'app-manage-addresses',
@@ -14,7 +15,8 @@ addressList: any;
   constructor(private customerService: CustomerService,
     // private spinnerService: Ng4LoadingSpinnerService,
     private toastr: ToastrService,
-    private progressBarService: ProgressBarService) { }
+    private progressBarService: ProgressBarService,
+    private vantivPaymentService: VantivPaymentService) { }
 
   ngOnInit() {
    this.getAddressList();
@@ -24,6 +26,9 @@ addressList: any;
     if (this.customerService.customerAddressList && this.customerService.customerAddressList.ListAddress) {
       this.addressList = this.customerService.customerAddressList.ListAddress;
       this.addressList = this.addressList.sort((x, y) => x.IsDefault > y.IsDefault ? -1 : 1 );
+      if ( this.addressList && this.addressList.length > 0) {
+        this.vantivPaymentService.setBillingAddress(this.addressList[0]);
+      }
     } else {
       // this.spinnerService.show();
       this.progressBarService.show();
@@ -32,6 +37,9 @@ addressList: any;
           this.addressList = data ? (data.ListAddress ? data.ListAddress : []) : [];
           this.addressList = this.addressList.sort((x, y) => x.IsDefault > y.IsDefault ? -1 : 1 );
           // this.spinnerService.hide();
+          if ( this.addressList && this.addressList.length > 0) {
+            this.vantivPaymentService.setBillingAddress(this.addressList[0]);
+          }
           this.progressBarService.hide();
         });
     }

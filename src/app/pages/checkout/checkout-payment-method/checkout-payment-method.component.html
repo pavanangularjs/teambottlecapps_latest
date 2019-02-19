@@ -27,7 +27,7 @@
             </div>
           </div>
         </div>
-        <div *ngIf="paymentTypeId === 1 || orderTypeId === 2">
+        <div *ngIf="(paymentTypeId === 1 || paymentTypeId === 7) || orderTypeId === 2">
           <br>
           <table>
             <thead>
@@ -35,7 +35,7 @@
               <th></th>
               <th style="border-left: solid 2px #fff;">Expires On</th>
             </thead>
-            <tbody>
+            <tbody *ngIf="paymentProfiles?.length > 0">
               <tr *ngFor="let paymentProfile of paymentProfiles; index as i" (click)="updateSelectedPayment(paymentProfile); selectedCard=i">
                 <td>
                   <div class="check-icon-payment-container">
@@ -59,6 +59,32 @@
                 </td>
                 <td></td>
                 <td>{{paymentProfile?.payment?.creditCard?.expirationDate}}</td>
+              </tr>
+            </tbody>
+            <tbody *ngIf="paymentProfilesForVantiv?.length > 0">
+              <tr *ngFor="let paymentProfile of paymentProfilesForVantiv; index as i" (click)="updateSelectedPaymentForVantiv(paymentProfile); selectedCard=i">
+                <td>
+                  <div class="check-icon-payment-container">
+                    <span [ngClass]="{'fa fa-check-circle checkout-icon-style':selectedCard===i}"></span>
+                  </div>
+                  <div class="td-para">
+                    <img *ngIf="paymentProfile?.PaymentBrand === 'Discover'" alt="Discover" title="Discover"
+                      src="../../assets/Images/discover_logo_.gif" width="57" height="36" border="0" />
+                    <img *ngIf="paymentProfile?.PaymentBrand === 'MasterCard' || paymentProfile?.PaymentBrand === 'Mastercard'" alt="Master" title="Master"
+                      src="../../assets/Images/mastercard_logo_.gif" width="57" height="36" border="0" />
+                    <img *ngIf="paymentProfile?.PaymentBrand === 'Visa'" style="padding-top: 5px;" alt="Visa"
+                      title="Visa" src="../../assets/Images/new_visa_.gif" width="57" height="26" border="0" />
+                    <img *ngIf="paymentProfile?.PaymentBrand === 'AmericanExpress' || paymentProfile?.PaymentBrand === 'Amex'" alt="Amex" title="Amex"
+                      src="../../assets/Images/american_express_logo_.gif" width="43" height="36" border="0" />
+                    {{paymentProfile?.TruncatedCardNumber}}
+                    <div *ngIf="selectedCard===i" class="pull-right enter-cvv">
+                      <span>CVV: </span> <input type="password" name="cvv" [(ngModel)]="cardCVV" (keyup)="saveCVV()"
+                        class="text-cvv form-control">
+                    </div>
+                  </div>
+                </td>
+                <td></td>
+                <td>{{paymentProfile?.ExpirationMonth}}/{{paymentProfile?.ExpirationYear}}</td>
               </tr>
             </tbody>
           </table>

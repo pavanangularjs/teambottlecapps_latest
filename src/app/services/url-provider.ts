@@ -32,5 +32,6 @@ export enum UrlNames {
     CustomerPaymentMethodGetList = 'Customer/CustomerPaymentMethodGetList',
     CustomerPaymentInsert = 'Customer/CustomerPaymentInsert',
     CouponGetList = 'Coupon/CouponGetList',
-    ReOrderCart = 'Cart/ReOrderCart'
+    ReOrderCart = 'Cart/ReOrderCart',
+    VantivRequestAndResponseInsert = 'Store/VantivRequestAndResponseInsert'
 }
