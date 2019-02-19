@@ -96,7 +96,11 @@
 <header id="menu" class="hidden-md hidden-lg visible-xs visible-sm m-header">
     <nav>
         <div class="navbar-header">
-            <button class="pull-left m-menu" role="button" data-toggle="collapse" href="#navCollapse" aria-expanded="false" aria-controls="collapseExample"> <span class="fa fa-bars"> </span></button>
+            <button class="pull-left m-menu" role="button" data-toggle="collapse" data-target=".navbar-collapse" id="nav-icon4"> <!-- <span class="fa fa-bars"> </span> --> 
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <a class="navbar-brand lukas-logo">
                 <img src="assets/Images/logo.png" class="img-responsive" [routerLink]="['/']" alt="Lukas">
             </a>
@@ -194,12 +198,26 @@
         <!-- User Login icon Ends Here -->
         <!-- Mobile Main Menu UI Start -->
             <div class="visible-xs visible-sm hidden-lg hidden-md">
-            <ul class="collapse msidenav" id="navCollapse" tabindex="-1" aria-labelledby="gridModalLabel">
-              <li><a [routerLink]="['/feature-products']">Featured Products</a></li>
-              <li><a [routerLink]="['/recipes']">Recipes</a></li>
-              <li><a [routerLink]="['/coupons']">Coupons</a></li>
-              <li><a [routerLink]="['/events']">Events</a></li>
-            </ul>
+                <div class="collapse navbar-collapse">
+                    <ul class="collapse msidenav" id="navCollapse" tabindex="-1" aria-labelledby="gridModalLabel">
+                      <li>
+                        <a target="_self" data-toggle="collapse" data-target=".navbar-collapse" [routerLink]="['/feature-products']">Featured Products
+                        </a>
+                    </li>
+                      <li>
+                        <a target="_self" data-toggle="collapse" data-target=".navbar-collapse" [routerLink]="['/recipes']">Recipes
+                        </a>
+                    </li>
+                      <li>
+                        <a target="_self" data-toggle="collapse" data-target=".navbar-collapse" [routerLink]="['/coupons']">Coupons
+                        </a>
+                    </li>
+                      <li>
+                        <a target="_self" data-toggle="collapse" data-target=".navbar-collapse" [routerLink]="['/events']">Events
+                        </a>
+                    </li>
+                    </ul>
+                </div>
             </div>
             <app-progress-bar></app-progress-bar>
         <!-- Mobile Main Menu UI End -->

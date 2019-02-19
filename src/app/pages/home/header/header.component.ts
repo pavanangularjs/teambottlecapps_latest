@@ -14,6 +14,7 @@ import { ProgressBarService } from '../../../shared/services/progress-bar.servic
 import * as CryptoJS from 'crypto-js';
 import { baseUrl } from '../../../services/url-provider';
 import { AppConfigService } from '../../../app-config.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-header',
@@ -80,6 +81,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.isMobile = this.deviceService.isMobile();
+
+    $(document).ready(function() {
+      $('#nav-icon4').click(function() {
+        $(this).toggleClass('open');
+      });
+    });
   }
 
   openMultiLocationDialog() {

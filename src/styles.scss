@@ -1810,7 +1810,7 @@ a img.second_img {
     display: inline-block !important;
    }
    .navbar-header {
-    width: 56% !important;
+    width: 50%;
     float: left;
    }
    nav ul.float_right {
@@ -1827,7 +1827,7 @@ a img.second_img {
     padding: 12px 5px 4px 5px;
     margin: 0px 5px 0px 0px !important;
     &:focus {
-        padding: 4px 5px !important;
+        padding: 12px 5px 4px 5px !important;
         margin: 0px 5px 0px 0px !important;
         color: $lukas-color;
     }
