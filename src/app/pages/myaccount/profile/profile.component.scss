@@ -26,7 +26,7 @@
 .profile {
     h4.margin_top {
         font-family: $poppins-bold;
-        font-size: 26px;
+        font-size: 20px;
         font-stretch: normal;
         line-height: normal;
         letter-spacing: normal;
@@ -81,6 +81,9 @@
 button.btn-profile, button.btn-profile:focus, button.btn-profile:hover {
     outline: 0px;
     box-shadow: none;
+    position: absolute;
+    top: -15px;
+    right: -20px;
 }
 
 .text-dp {
@@ -167,4 +170,8 @@ button.btn-profile .icon-radius {
 .float_right {
     position: absolute;
     right: 0;
+}
+
+.border_bottom .float_right {
+    position: relative;
 }

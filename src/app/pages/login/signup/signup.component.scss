@@ -95,13 +95,13 @@ h5.color{
     text-align: center;
     border: $lukas-color;
     box-shadow: none;
-    box-shadow: 0 10px 40px 0 $lukas-color;
+    box-shadow: $boxshadow-active;
  
   }
   button.submit:focus{
       border:$lukas-color;
       outline: none;
-      box-shadow: 0 10px 40px 0 $lukas-color;
+      box-shadow: $boxshadow-active;
   }
 section.padding_top{
     padding-top: 15px;

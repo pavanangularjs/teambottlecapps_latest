@@ -38,7 +38,7 @@
     padding:4px 25px;
     margin-right:8px;
     /* box-shadow: 3px 6px $lukas-color; */
-    box-shadow: 0 10px 40px 0 $lukas-color;
+    box-shadow: $boxshadow-active;
 }
 
 .bottom{
@@ -56,7 +56,7 @@
       border-color: $lukas-color;
       margin-right: 8px;
       border-radius: 5px;
-      box-shadow: 0px 10px 20px 0 rgba(236, 28, 36, 0.3);
+      box-shadow: $boxshadow-active;
     &:hover, &:focus {
     width: 130px;
     text-align: center;
@@ -65,7 +65,7 @@
       color: #fff;
       border-color: $lukas-color;
       border-radius: 5px;
-      box-shadow: 0px 10px 20px 0 rgba(236, 28, 36, 0.3);
+      box-shadow: $boxshadow-active;
     }
 }
 

@@ -200,7 +200,7 @@ button.addtocart{
     letter-spacing: normal;
     text-align: left;
     color: #ffffff;
-    box-shadow: 0 10px 40px 0 $lukas-color;
+    box-shadow: $boxshadow-active;
 }
 button.addtocart:focus,button.addtocart:active{
     outline: none;
