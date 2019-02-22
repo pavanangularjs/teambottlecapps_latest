@@ -9,6 +9,7 @@ import { RecipeDetailsComponent } from './pages/recipe/recipe-details/recipe-det
 import { ProductDetailsComponent } from './pages/products/product-details/product-details.component';
 import { EventDetailsComponent } from './pages/products/event-details/event-details.component';
 import { MyAccountComponent } from './pages/myaccount/myaccount.component';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 
 import { CartComponent } from './pages/cart/cart.component';
 import { AdvanceFilterComponent } from './pages/products/advance-filter/advance-filter.component';
@@ -45,6 +46,7 @@ const routes: Routes = [
   { path: 'events', component: EventsComponent, runGuardsAndResolvers: 'always', canActivate: [GeneralGuard] },
   { path: 'privacy-policy', component: PrivacyPolicyComponent, runGuardsAndResolvers: 'always', canActivate: [GeneralGuard] },
   { path: 'terms-conditions', component: TermsAndConditionsComponent, runGuardsAndResolvers: 'always', canActivate: [GeneralGuard] },
+  { path: 'contactus', component: ContactUsComponent, runGuardsAndResolvers: 'always', canActivate: [GeneralGuard] },
   { path: '**', component: HomepageComponent },
 ];
 

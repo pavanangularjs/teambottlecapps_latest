@@ -1,4 +1,4 @@
-<header id="menu" class="hidden-xs hidden-sm visible-lg visible-md">
+<header id="menu" class="hidden-xs hidden-sm visible-lg visible-md desktop-menu">
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="header_div row">
@@ -96,7 +96,7 @@
 <header id="menu" class="hidden-md hidden-lg visible-xs visible-sm m-header">
     <nav>
         <div class="navbar-header">
-            <button class="pull-left m-menu" role="button" data-toggle="collapse" data-target=".navbar-collapse" id="nav-icon4"> <!-- <span class="fa fa-bars"> </span> --> 
+            <button class="pull-left m-menu" type="button" id="nav-icon4"> <!-- <span class="fa fa-bars"> </span> --> 
                 <span></span>
                 <span></span>
                 <span></span>
@@ -197,23 +197,23 @@
         </ul>
         <!-- User Login icon Ends Here -->
         <!-- Mobile Main Menu UI Start -->
-            <div class="visible-xs visible-sm hidden-lg hidden-md">
-                <div class="collapse navbar-collapse">
-                    <ul class="collapse msidenav" id="navCollapse" tabindex="-1" aria-labelledby="gridModalLabel">
+            <div class="col-xs-12">
+                <div id="hide-menu" class="hide-menu">
+                    <ul class="msidenav">
                       <li>
-                        <a target="_self" data-toggle="collapse" data-target=".navbar-collapse" [routerLink]="['/feature-products']">Featured Products
+                        <a [routerLink]="['/feature-products']">Featured Products
                         </a>
                     </li>
                       <li>
-                        <a target="_self" data-toggle="collapse" data-target=".navbar-collapse" [routerLink]="['/recipes']">Recipes
+                        <a [routerLink]="['/recipes']">Recipes
                         </a>
                     </li>
                       <li>
-                        <a target="_self" data-toggle="collapse" data-target=".navbar-collapse" [routerLink]="['/coupons']">Coupons
+                        <a [routerLink]="['/coupons']">Coupons
                         </a>
                     </li>
                       <li>
-                        <a target="_self" data-toggle="collapse" data-target=".navbar-collapse" [routerLink]="['/events']">Events
+                        <a [routerLink]="['/events']">Events
                         </a>
                     </li>
                     </ul>

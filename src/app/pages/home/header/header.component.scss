@@ -786,6 +786,31 @@ i.beer.icon {
   }
 
 @media only screen and (max-width: 1024px) {
+
+  ul.msidenav {
+      width: 100%;
+      float: left;
+      margin: 0px;
+      padding: 0px;
+       li {
+          list-style: none;
+          display: block;
+          margin: 0px;
+          padding: 0px;
+          text-align: left;
+          a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: montserratbold;
+            padding: 5px 10px;
+            &:hover, .active {
+              text-decoration: none;
+              color: #fff !important;
+              }
+            }
+          }
+  }
        .navbar .dropdown-menu.user-menu {
           min-width: 100% !important;
           width: 100% !important;
@@ -847,7 +872,7 @@ ul.msidenav {
         padding: 0px;
         text-align: left;
         a {
-          color: #777;
+          color: #fff;
           text-decoration: none;
           text-transform: uppercase;
           font-family: montserratbold;
@@ -928,7 +953,7 @@ ul.msidenav {
 #nav-icon4 {
 }
 
-#nav-icon4 span:nth-child(1) {
+#nav-icon4 span:nth-child(1), .close span:nth-child(1) {
   top: 18px;
   -webkit-transform-origin: left center;
   -moz-transform-origin: left center;
@@ -936,7 +961,7 @@ ul.msidenav {
   transform-origin: left center;
 }
 
-#nav-icon4 span:nth-child(2) {
+#nav-icon4 span:nth-child(2), .close span:nth-child(2) {
   top: 28px;
   -webkit-transform-origin: left center;
   -moz-transform-origin: left center;
@@ -944,7 +969,7 @@ ul.msidenav {
   transform-origin: left center;
 }
 
-#nav-icon4 span:nth-child(3) {
+#nav-icon4 span:nth-child(3), .close span:nth-child(3) {
   top: 38px;
   -webkit-transform-origin: left center;
   -moz-transform-origin: left center;
@@ -974,3 +999,34 @@ ul.msidenav {
   top: 33px;
   left: 0px;
 }
+
+.hide-menu {
+    background-color: $lukas-color-alpha;
+    position: absolute;
+    top: 0px;
+    left: -2000px;
+    z-index: 1;
+    width: 100%;
+    min-height: 160px;
+    -webkit-transform: translate3d(300px,0,0);
+    -moz-transform: translate3d(300px,0,0);
+    -o-transform: translate3d(300px,0,0);
+    -ms-transform: translate3d(300px,0,0);
+    transform: translate3d(300px,0,0);      
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    padding: 5px 15px;
+}
+
+.show-menu {
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    left: 0;
+    top: 0;
+ }  

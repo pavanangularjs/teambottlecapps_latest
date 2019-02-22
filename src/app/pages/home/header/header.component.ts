@@ -82,8 +82,22 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.isMobile = this.deviceService.isMobile();
 
-    $(document).ready(function() {
-      $('#nav-icon4').click(function() {
+    $('.m-menu').click(function (e) {
+      e.stopPropagation();
+      $('#hide-menu').toggleClass('show-menu');
+    });
+
+    $('#hide-menu').click(function (e) {
+      e.stopPropagation();
+    });
+
+    $('body,html,li a').click(function (e) {
+      $('#hide-menu').removeClass('show-menu');
+      $('#nav-icon4').removeClass('open');
+    });
+
+    $(document).ready(function () {
+      $('#nav-icon4').click(function () {
         $(this).toggleClass('open');
       });
     });

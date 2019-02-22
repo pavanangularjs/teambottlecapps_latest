@@ -67,6 +67,7 @@ import { PrivacyPolicyComponent } from './pages/home/privacy-policy/privacy-poli
 import { TermsAndConditionsComponent } from './pages/home/terms-and-conditions/terms-and-conditions.component';
 import { PlaceOrderResultComponent } from './pages/checkout/place-order-result/place-order-result.component';
 import { MultiStoreComponent } from './pages/home/multi-store/multi-store.component';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -122,7 +123,8 @@ export function getAuthServiceConfigs() {
     PrivacyPolicyComponent,
     TermsAndConditionsComponent,
     PlaceOrderResultComponent,
-    MultiStoreComponent
+    MultiStoreComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,

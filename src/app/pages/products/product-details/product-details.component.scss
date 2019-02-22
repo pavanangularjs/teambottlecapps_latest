@@ -190,7 +190,7 @@ text-transform: uppercase;
 }
 button.addtocart{
     background-color: $lukas-color;
-    padding: 15px 35px;
+    padding: 15px 25px;
     font-family: $montserrat-bold !important;
     font-size: 11.2px;
     font-weight: bold;
@@ -200,7 +200,9 @@ button.addtocart{
     letter-spacing: normal;
     text-align: left;
     color: #ffffff;
-    box-shadow: $boxshadow-active;
+    box-shadow: 0 10px 40px 0 $lukas-color;
+    border-color: #A61455;
+    border-radius: 0;
 }
 button.addtocart:focus,button.addtocart:active{
     outline: none;
