@@ -787,6 +787,10 @@ i.beer.icon {
 
 @media only screen and (max-width: 1024px) {
 
+  ul.float_right, .fixed ul.float_right {
+    margin-top: 12px;
+  }
+
   ul.msidenav {
       width: 100%;
       float: left;
