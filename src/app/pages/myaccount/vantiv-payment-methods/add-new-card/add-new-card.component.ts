@@ -6,6 +6,7 @@ import { CustomerService } from '../../../../services/customer.service';
 import { ProgressBarService } from '../../../../shared/services/progress-bar.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { VantivResponseCodes } from '../../../../services/vantiv-responsecodes';
 
 @Component({
   selector: 'app-add-new-card',
@@ -28,6 +29,7 @@ export class AddNewCardComponent implements OnInit {
 
   ngOnInit() {
     this.url = '';
+    this.vantivPaymentService.vTransactionSetupID = '';
     this.getAddressList();
   }
 
@@ -85,14 +87,43 @@ export class AddNewCardComponent implements OnInit {
           this.vantivPaymentService.vTransactionSetupID).subscribe(data => {
             this.progressBarService.hide();
             this.vantivPaymentService.vTransactionSetupID = '';
-            this.saveRequestAndResponse();
-            this.getPaymentAccountId();
+            if ( data && data.TransactionQueryResponse
+              && data.TransactionQueryResponse.Response
+              && data.TransactionQueryResponse.Response.ReportingData
+              && data.TransactionQueryResponse.Response.ReportingData.Items
+              && data.TransactionQueryResponse.Response.ReportingData.Items.Item) {
+                const res = data.TransactionQueryResponse.Response.ReportingData.Items.Item;
+                if (res && res.ExpressResponseCode === '0'
+                  && res.AVSResponseCode.trim() === 'Y'
+                  && res.CVVResponseCode.trim() === 'M') {
+                    this.saveRequestAndResponse();
+                    this.getPaymentAccountId();
+                  } else {
+                    this.showProperErrorMessage(res);
+                  }
+            }
         });
         // this.vantivPaymentService.vTransactionSetupID = '';
         // alert(this.ifrm.src);
         // console.log(this.ifrm.src);
       }
     }
+  }
+
+  private showProperErrorMessage(res) {
+    const avsCode = VantivResponseCodes.AVSInfo.filter( item => item.AVSCode === res.AVSResponseCode)[0];
+
+    if (avsCode) {
+      this.toastr.error(avsCode.AVSMessage);
+    }
+
+    const cvvInfo = VantivResponseCodes.CVVInfo.filter( item => item.CVVCode === res.CVVResponseCode)[0];
+
+    if (cvvInfo) {
+      this.toastr.error(cvvInfo.CVVMessage);
+    }
+
+    this.router.navigate(['/myaccount/vantiv-payment-methods']);
   }
 
   getPaymentAccountId() {

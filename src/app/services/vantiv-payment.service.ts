@@ -498,7 +498,7 @@ export class VantivPaymentService {
         </CreditCardSale>`;
 
         this.vRootName = 'CreditCardSale';
-        this.vRequest = reqXML.replace(/\n|\t|\s/g, '');
+        this.vRequest = reqXML.replace(/\n|\t/g, '');
         this.vResponse = '';
     }
 
@@ -566,7 +566,7 @@ export class VantivPaymentService {
         </CreditCardReversal>`;
 
         this.vRootName = 'CreditCardReversal';
-        this.vRequest = reqXML.replace(/\n|\t|\s/g, '');
+        this.vRequest = reqXML.replace(/\n|\t/g, '');
         this.vResponse = '';
     }
 
@@ -601,6 +601,49 @@ export class VantivPaymentService {
         };
     }
 
+    deletePaymentMethod(paymentAccountID: string, paymentAccountType: string, paymentAccountRefNo: string): Observable<any> {
+        this.getPaymentAccountDeleteRequest(paymentAccountID, paymentAccountType, paymentAccountRefNo);
+        return this.http.post(VantivURLs.certservices, this.vRequest, this.options)
+            .pipe(
+                switchMap((res: any) => {
+                    this.vResponse = res;
+                    this.vIsSuccess = 1;
+                    const response = this.parseXML2Json(res);
+                    return of(response);
+                }),
+                retry(3),
+                catchError((error: any, caught: Observable<any>) => {
+                    return this.errorHandler.processError(error);
+                })
+            );
+    }
+    private getPaymentAccountDeleteRequest(paymentAccountID: string, paymentAccountType: string, paymentAccountRefNo: string ) {
+        if (!this.vantiveProfile) {
+            return null;
+        }
+        const reqXML = `
+        <PaymentAccountDelete xmlns='https://services.elementexpress.com'>
+            <Credentials>
+                <AccountID>${this.vantiveProfile.credential1}</AccountID>
+                <AccountToken>${this.vantiveProfile.credential2}</AccountToken>
+                <AcceptorID>${this.vantiveProfile.credential3}</AcceptorID>
+            </Credentials>
+            <Application>
+                <ApplicationID>${this.vantiveProfile.credential4}</ApplicationID>
+                <ApplicationVersion>${this.vantiveProfile.credential5}</ApplicationVersion>
+                <ApplicationName>${this.vantiveProfile.credential6}</ApplicationName>
+            </Application>
+            <PaymentAccount>
+                <PaymentAccountID>${paymentAccountID}</PaymentAccountID>
+                <PaymentAccountType>${paymentAccountType}</PaymentAccountType>
+                <PaymentAccountReferenceNumber>${paymentAccountRefNo}</PaymentAccountReferenceNumber>
+            </PaymentAccount>
+        </PaymentAccountDelete>
+        `;
+        this.vRootName = 'PaymentAccountDelete';
+        this.vRequest = reqXML.replace(/\n|\t/g, '');
+        this.vResponse = '';
+    }
     parseXML2Json(data) {
         const parser = new DOMParser();
         const xml = parser.parseFromString(data, 'text/xml');

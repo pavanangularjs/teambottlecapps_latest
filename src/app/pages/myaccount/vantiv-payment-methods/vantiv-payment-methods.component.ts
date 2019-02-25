@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProgressBarService } from '../../../shared/services/progress-bar.service';
 import { VantivPaymentService } from '../../../services/vantiv-payment.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-vantiv-payment-methods',
@@ -11,7 +12,8 @@ export class VantivPaymentMethodsComponent implements OnInit {
   vantivPaymentProfiles: any;
   constructor(
     private progressBarService: ProgressBarService,
-    private vantivPaymentService: VantivPaymentService) { }
+    private vantivPaymentService: VantivPaymentService,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.vantivPaymentProfiles = [];
@@ -41,5 +43,21 @@ export class VantivPaymentMethodsComponent implements OnInit {
   }
   deletePaymentMethod( profile) {
     // TODO Should delete the Payment Profile
+    this.vantivPaymentService.deletePaymentMethod(
+      profile.PaymentAccountID,
+      profile.PaymentAccountType,
+      profile.PaymentAccountReferenceNumber).subscribe(
+      data => {
+        if (data && data.PaymentAccountDeleteResponse && data.PaymentAccountDeleteResponse.Response) {
+          const res = data.PaymentAccountDeleteResponse.Response;
+
+          if (res.ExpressResponseCode === '0') {
+            this.toastr.success(res.ExpressResponseMessage);
+            this.getExistingCardDetailsForVantiv();
+          } else {
+            this.toastr.error(res.ExpressResponseMessage);
+          }
+        }
+      });
   }
 }
