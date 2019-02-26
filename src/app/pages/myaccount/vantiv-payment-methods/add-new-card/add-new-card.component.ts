@@ -39,6 +39,7 @@ export class AddNewCardComponent implements OnInit {
       this.vantivPaymentService.setupTransactionID().subscribe(() => {
         this.progressBarService.hide();
         this.setURL();
+        this.saveRequestAndResponse();
       });
     } else {
       this.setURL();
@@ -86,6 +87,7 @@ export class AddNewCardComponent implements OnInit {
         this.vantivPaymentService.onCardValidationSuccessGetTransactionDetails(
           this.vantivPaymentService.vTransactionSetupID).subscribe(data => {
             this.progressBarService.hide();
+            this.saveRequestAndResponse();
             this.vantivPaymentService.vTransactionSetupID = '';
             if ( data && data.TransactionQueryResponse
               && data.TransactionQueryResponse.Response
@@ -96,7 +98,6 @@ export class AddNewCardComponent implements OnInit {
                 if (res && res.ExpressResponseCode === '0'
                   && res.AVSResponseCode.trim() === 'Y'
                   && res.CVVResponseCode.trim() === 'M') {
-                    this.saveRequestAndResponse();
                     this.getPaymentAccountId();
                   } else {
                     this.showProperErrorMessage(res);
@@ -111,13 +112,13 @@ export class AddNewCardComponent implements OnInit {
   }
 
   private showProperErrorMessage(res) {
-    const avsCode = VantivResponseCodes.AVSInfo.filter( item => item.AVSCode === res.AVSResponseCode)[0];
+    const avsCode = VantivResponseCodes.AVSInfo.filter( item => item.AVSCode === res.AVSResponseCode.trim())[0];
 
     if (avsCode) {
       this.toastr.error(avsCode.AVSMessage);
     }
 
-    const cvvInfo = VantivResponseCodes.CVVInfo.filter( item => item.CVVCode === res.CVVResponseCode)[0];
+    const cvvInfo = VantivResponseCodes.CVVInfo.filter( item => item.CVVCode === res.CVVResponseCode.trim())[0];
 
     if (cvvInfo) {
       this.toastr.error(cvvInfo.CVVMessage);

@@ -18,7 +18,7 @@ import { CartService } from '../services/cart.service';
     providedIn: 'root'
 })
 export class VantivPaymentService {
-    headers = new HttpHeaders().set('Content-Type', 'text/xml; charset=utf-8');
+    headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     options = {
         headers: new HttpHeaders({ 'Content-Type': 'text/xml; charset=utf-8' }),
         responseType: 'text' as 'text'
