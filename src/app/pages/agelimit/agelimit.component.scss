@@ -129,7 +129,11 @@
     padding:10px 30px;
     opacity: 1;
   }
-
+  @media only screen and (max-width: 1024px) {
+    .modal-body h2.popins_bold {
+      font-size: 2em;
+    }
+  }
  
   #dialog{
     text-align: left;

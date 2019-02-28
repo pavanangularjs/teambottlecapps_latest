@@ -1,5 +1,5 @@
-<div class="container">
-  <div class=" col-lg-8 col-md-8 col-sm-8 col-xs-12">
+<div class="">
+  <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="new-payment-method-section">
       <div class="row">
         <div class="col-md-12">
@@ -44,12 +44,18 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="text-uppercase">Expiry Date <span>*</span>
-                        <select class="selectsize form-control" formControlName="expiryMonth">
-                          <option *ngFor="let month of months">{{month}}</option>
-                        </select>
-                        <select class="selectsize form-control" formControlName="expiryYear">
-                          <option *ngFor="let year of years">{{year}}</option>
-                        </select>
+                        <div class="row">
+                          <div class="col-xs-6">
+                            <select class="selectsize form-control" formControlName="expiryMonth">
+                              <option *ngFor="let month of months">{{month}}</option>
+                            </select>
+                          </div>
+                          <div class="col-xs-6">
+                            <select class="selectsize form-control" formControlName="expiryYear">
+                              <option *ngFor="let year of years">{{year}}</option>
+                            </select>
+                          </div>
+                        </div>
                       </label>
                     </div>
                   </div>

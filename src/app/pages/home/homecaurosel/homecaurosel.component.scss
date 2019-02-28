@@ -41,6 +41,13 @@ a.right.carousel-control {
 .carousel-control.right, .carousel-control.left, a.carousel-control {
   background-image: none;
 }
+
+@media only screen and (max-width: 480px) {
+  .search-block .searchby .search-btn .btn {
+        top: 0px !important;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
   .carousel-control img {
     width: 50%;

@@ -473,7 +473,7 @@ address .contact_text {
       text-align: left;
     }
     .hours ul{
-      width: 126px;
+      width: 100%;
     }
     .payments, .payments ul li {
       display: inline-block;
@@ -485,5 +485,15 @@ address .contact_text {
         text-align: left;
         line-height: normal;
         width: 170px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .item_img payments.item_img payments-m {
+      width: 100%;
+      display: block;
+    }
+    .item_img payments {
+      display: none;
     }
 }

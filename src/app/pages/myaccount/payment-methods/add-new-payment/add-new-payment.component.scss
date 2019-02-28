@@ -11,6 +11,7 @@
     }
         h4 {
           font-family: $poppins-bold;
+          font-size: 14px;
         }
         button.novalue{
         background: #d7d7d7 !important;
@@ -78,6 +79,9 @@
     }
     .img-disabled {
         opacity:0.1 !important;
+        width: 35px;
+        height: auto;
+        margin-right: 2px;
     }
 
     .cards {

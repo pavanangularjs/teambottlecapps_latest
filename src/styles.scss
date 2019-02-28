@@ -457,7 +457,7 @@ nav .navbar-nav ul li a{
         margin-right: 10px;
     }
     .Product_name h5,table.res_table tr thead th{
-        font-size: 7px !important;
+        font-size: 14px !important;
     }
     ul.float_right {
         float: none;
@@ -577,9 +577,9 @@ nav .navbar-nav ul li a{
 }
 
 .form-control:focus {
-    border-color: #ccc;
-    outline: 0;
-    box-shadow:none !important;
+    /*border-color: #ccc;*/
+    /*outline: 0;*/
+    /*box-shadow:none !important;*/
 } 
 
 .sidebar-menu .sidebar-submenu > li > a{
@@ -935,11 +935,16 @@ nav ul.navbar-nav li a{
     margin-top: 4px;
 }
 .form-control:focus {
-    border-color:none !important;
+    border-color:$lukas-color !important;
     outline: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+    /*-webkit-box-shadow: none;*/
+    /*box-shadow: none;*/
 }
+
+.btn, button {
+    outline: none !important;
+}
+
 .fixed .input-group button {
     background-color: $lukas-color !important;
     margin-left: -3px !important;
@@ -1763,6 +1768,22 @@ a img.second_img {
 }
 
    /* M Header */
+@media only screen and (max-width: 480px) {
+    .Searchrelated_div h4{
+        width: 48% !important;
+        font-size: 14px !important;
+        padding: 0px;
+        margin-top: 5px;
+        padding-left: 12px;
+    }
+
+    .pagination>li>a, .pagination>li>span {
+        font-size: 12px;
+        padding: 5px 8px !important;
+        margin-bottom: 0px !important;
+    }
+}
+
 @media only screen and (max-width: 1024px) {
 
     .breadcrumb>li+li:before {
@@ -1814,7 +1835,7 @@ a img.second_img {
     display: inline-block !important;
    }
    .navbar-header {
-    width: 54%;
+    width: 52%;
     float: left;
    }
    nav ul.float_right {
@@ -1886,7 +1907,7 @@ a img.second_img {
       }
 
       .navbar-brand {
-            width: 130px;
+            width: 125px;
             img {
                 height: auto !important;
                 width: 100%;
@@ -1990,7 +2011,7 @@ a img.second_img {
 
     .Searchrelated_div h4{
         width: 48% !important;
-        font-size: 18px !important;
+        font-size: 18px;
         padding: 0px;
         margin-top: 5px;
         padding-left: 12px;
@@ -2028,4 +2049,26 @@ a img.second_img {
 
 .is-active .dropdown-menu-shop {
   display: block;
+}
+
+@media only screen and (max-width: 1024px) {
+  
+  .tab-search-bar {
+    padding-top: 10px;
+    margin-right: 10px;
+    .searchby {
+    &:focus {
+              border-color: #ff80ff;
+              box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 100, 255, 0.5);
+              outline: none;
+        }
+        input {
+            padding-right: 20% !important;
+        }
+    }
+    .search-btn {
+      right: -5px !important;
+    }
+  }
+
 }

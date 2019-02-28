@@ -21,7 +21,7 @@
   text-align: center;
   width: 35px;
   height: 35px;
-  margin-right: 10px;
+  margin-right: 15px;
   display: block;
   /*line-height: 37px;*/
     i.icon {
@@ -327,7 +327,7 @@ ul.float_right li {
             background-color: $lukas-color;
             color: #fff;
             top: 15px;
-            left: 18px;
+            left: 20px;
             line-height: 24px;
         }
         .icon-distance {
@@ -336,7 +336,7 @@ ul.float_right li {
             text-align: center;
             padding: 5px;
         }
-      margin-right: 10px;
+      margin-right: 15px !important;
     }
   }
   h6.logout {
@@ -837,6 +837,11 @@ i.beer.icon {
             height: 60px !important;
             .searchby {
                 width: 100% !important;
+                &:focus {
+                      border-color: #ff80ff;
+                      box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 100, 255, 0.5);
+                      outline: none;
+                }
             }
             .input-group .form-control {
                   width: 100% !important;

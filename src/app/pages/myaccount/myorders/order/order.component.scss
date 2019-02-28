@@ -196,7 +196,7 @@ button.dec_circle,button.dec_circle:focus{
     font-size: 15px;
 }
 .bill_summary{
-    width: 50%;
+    width: 60%;
     float: right;
 }
 .bill_summary .text_left{
@@ -233,10 +233,10 @@ table tr td.width_20{
 @media screen and (min-width:320px) and (max-width:767px){
 
 .margin_top_25 .date_time,.order_total h4,.border_bottom .delevary_color,.border1_bottom .deleverd_color,.float_right .breadcrumb li.code a {
-    font-size: 10px;
+    font-size: 14px;
 }
 .Product_name h5{
-    font-size: 7px;
+    font-size: 14px;
 }
 
 .Product_name span a {
@@ -415,21 +415,74 @@ table tr td h4,table tr td h5,table tr td span,table tr td .total_price{
 
 button.dec_circle.toggle {
     margin-right: -10px;
+    width: 47px;
+    padding-top: 4px;
 }
 
     .icon.icon-expand, .icon.icon-collapse {
         color: #999;
-        font-size: 14px;
+        font-size: 20px;
     }
+
+@media only screen and (max-width: 480px) {
+
+    .bill_summary{
+        width: 100% !important;
+        float: right;
+        margin-bottom: 15px;
+    }
+
+    .order-summary-expand {
+        width: 100% !important;
+        td.text-right {
+            font-size: 14px !important;
+            font-family: $poppins-regular !important;
+            color: #222;
+        }
+        td.text-left {
+            font-size: 11px;
+            font-family: $poppins-regular;
+            color: #333;
+        }
+        h5.summary {
+            text-transform: uppercase;
+        }
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 1024px) {
+    .bill_summary{
+        width: 65%;
+        float: right;
+        margin-bottom: 15px;
+    }
+
+    .order-summary-expand {
+        width: 75%;
+        td.text-right {
+            font-size: 14px !important;
+            font-family: $poppins-regular !important;
+            color: #222;
+        }
+        td.text-left {
+            font-size: 11px;
+            font-family: $poppins-regular;
+            color: #333;
+        }
+        h5.summary {
+            text-transform: uppercase;
+        }
+    }
+}
 
 @media only screen and (max-width: 1024px) {
 
     .product-image {
-        margin: 0px;
-        float: left;
+        margin: 0px auto;
+        /*float: left;*/
         padding: 0px 20px 10px 0px;
-        margin-right: 0px;
-        width: 50px;
+        /*margin-right: 0px;*/
+        /*width: 50px;*/
     }
 
     .Product_name {
@@ -486,7 +539,7 @@ button.dec_circle.toggle {
         border-top: solid 0px transparent;
         .icon.icon-expand, .icon.icon-collapse {
             color: #999;
-            font-size: 14px;
+            font-size: 20px;
         }
         .date_time {
             margin-left: 3px;
@@ -495,7 +548,7 @@ button.dec_circle.toggle {
     }
 
     .order-summary-expand {
-        width: 80%;
+        width: 75%;
         td.text-right {
             font-size: 14px !important;
             font-family: $poppins-regular !important;
@@ -511,16 +564,10 @@ button.dec_circle.toggle {
         }
     }
 
-    .bill_summary{
-        width: 100%;
-        float: right;
-        margin-bottom: 15px;
-    }
-
     button.dec_circle.toggle {
         padding-top: 5px;
         .icon.icon-collapse {
-            font-size: 14px;
+            font-size: 20px;
         }
     }
 

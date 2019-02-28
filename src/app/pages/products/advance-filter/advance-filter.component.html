@@ -129,17 +129,17 @@
       <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12">
         <div class="row margin_bottom_35" *ngIf="productsList?.length > 0">
 
-          <div class="col-md-4 col-sm-4">
+          <div class="col-md-4 col-sm-12">
             <p class="text_transform">
               Showing {{fromProductNo}}-{{(fromProductNo - 1) + productsList.length}} of {{totalProducts}} Products
             </p>
           </div>
-          <div class="col-md-6 col-sm-6">
+          <div class="col-md-6 col-sm-8">
             <div class="page-navigation" *ngIf="totalProducts > 0">
               <ngb-pagination [collectionSize]="totalProducts" (pageChange)="onPageChange($event)" [(page)]="page" [pageSize]="selectedPageSize" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
             </div>
           </div>
-          <div class="col-md-2 col-sm-2">
+          <div class="col-md-2 col-sm-4">
             <div class="select_box">
 
               <select #selectedvalue class="selectBox" [(ngModel)]="selectedPageSize" (change)="onPageSizeChange()">
@@ -164,7 +164,7 @@
 
         <div class="Main_bottlesection">
           <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" *ngFor="let product of productsList">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" *ngFor="let product of productsList">
               <app-product [item]="product"></app-product>
             </div>
           </div>

@@ -1,42 +1,44 @@
-<div class="container visible-xs visible-sm hidden-md hidden-lg">
-  <div class="row">
-    <div class="input-group searchby visible-xs visible-sm hidden-md hidden-lg">
-      <app-search-bar></app-search-bar>
-    </div>
-
-    <div class="m-menu-tabs">
-      <!-- Nav tabs -->
-      <ul class="nav nav-tabs" role="tablist">
-        <li (click)="showFilters(1)" role="presentation" class="">
-          <a aria-controls="beer" role="tab" data-toggle="tab">
-            <!-- <img src="../assets/Images/beer-m.png" class="img-responsive"> -->
-            <i class="icon icon-beer"></i>
-          </a>
-        </li>
-        <li (click)="showFilters(2)" role="presentation">
-          <a aria-controls="liquor" role="tab" data-toggle="tab">
-            <!-- <img src="../assets/Images/liquor-m.png" class="img-responsive"> -->
-            <i class="icon icon-liquor"></i>
-          </a>
-        </li>
-        <li (click)="showFilters(3)" role="presentation">
-          <a aria-controls="wine" role="tab" data-toggle="tab">
-            <!-- <img src="../assets/Images/wine-m.png" class="img-responsive"> -->
-            <i class="icon icon-wine"></i>
-          </a>
-        </li>
-        <li (click)="showFilters(4)" role="presentation">
-          <a aria-controls="mixer & more" role="tab" data-toggle="tab">
-            <!-- <img src="../assets/Images/mixer-more.png" class="img-responsive"> -->
-            <i class="icon icon-mixer"></i>
-          </a>
-        </li>
-      </ul>
-
-      <div class="tab-content m-tab-section" *ngIf="isShowFilters">
-        <app-filter-menu [filters]="categoryFilters" (filterApply)="onApplyFilter()"></app-filter-menu>
+<div class="visible-xs hidden-sm hidden-md hidden-lg"> 
+  <div class="container">
+    <div class="row">
+      <div class="input-group searchby visible-xs visible-sm hidden-md hidden-lg">
+        <app-search-bar></app-search-bar>
       </div>
 
+      <div class="m-menu-tabs">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li (click)="showFilters(1)" role="presentation" class="">
+            <a aria-controls="beer" role="tab" data-toggle="tab">
+              <!-- <img src="../assets/Images/beer-m.png" class="img-responsive"> -->
+              <i class="icon icon-beer"></i>
+            </a>
+          </li>
+          <li (click)="showFilters(2)" role="presentation">
+            <a aria-controls="liquor" role="tab" data-toggle="tab">
+              <!-- <img src="../assets/Images/liquor-m.png" class="img-responsive"> -->
+              <i class="icon icon-liquor"></i>
+            </a>
+          </li>
+          <li (click)="showFilters(3)" role="presentation">
+            <a aria-controls="wine" role="tab" data-toggle="tab">
+              <!-- <img src="../assets/Images/wine-m.png" class="img-responsive"> -->
+              <i class="icon icon-wine"></i>
+            </a>
+          </li>
+          <li (click)="showFilters(4)" role="presentation">
+            <a aria-controls="mixer & more" role="tab" data-toggle="tab">
+              <!-- <img src="../assets/Images/mixer-more.png" class="img-responsive"> -->
+              <i class="icon icon-mixer"></i>
+            </a>
+          </li>
+        </ul>
+
+        <div class="tab-content m-tab-section" *ngIf="isShowFilters">
+          <app-filter-menu [filters]="categoryFilters" (filterApply)="onApplyFilter()"></app-filter-menu>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
