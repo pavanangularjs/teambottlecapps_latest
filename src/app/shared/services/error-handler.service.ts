@@ -40,8 +40,11 @@ export class ErrorHandlerService {
 
         return EMPTY;
       } else if (error.status === 400) {
-        if (error.error && error.error.ErrorMessage) { //  && error.error.ErrorMessage === 'Invalid Request.') {
+        if (error.error && error.error.ErrorMessage && error.error.ErrorMessage !== 'Invalid Request.') {
           this.toastr.error(error.error.ErrorMessage);
+        } else if (error.error && error.error.ErrorMessage && error.error.ErrorMessage === 'Invalid Request.') { 
+          // console.log(error.error.ErrorMessage);
+          this.route.navigate(['/home']);
         } else {
           if ((this.customerSession && this.customerSession.UserId === 0)) {
             this.route.navigate(['/home'], { queryParams: { returnUrl: this.route.url } });

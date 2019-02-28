@@ -33,7 +33,9 @@ export class VantivPaymentMethodsComponent implements OnInit {
             data.PaymentAccountQueryResponse.Response.QueryData &&
             data.PaymentAccountQueryResponse.Response.QueryData.Items &&
             data.PaymentAccountQueryResponse.Response.QueryData.Items.Item) {
-            this.vantivPaymentProfiles = data.PaymentAccountQueryResponse.Response.QueryData.Items.Item;
+            // this.vantivPaymentProfiles = data.PaymentAccountQueryResponse.Response.QueryData.Items.Item;
+            this.vantivPaymentProfiles = [...this.vantivPaymentProfiles,
+              ...data.PaymentAccountQueryResponse.Response.QueryData.Items.Item];
 
           }
           // this.spinnerService.hide();
@@ -42,7 +44,7 @@ export class VantivPaymentMethodsComponent implements OnInit {
 
   }
   deletePaymentMethod( profile) {
-    // TODO Should delete the Payment Profile
+    this.progressBarService.show();
     this.vantivPaymentService.deletePaymentMethod(
       profile.PaymentAccountID,
       profile.PaymentAccountType,
@@ -53,6 +55,7 @@ export class VantivPaymentMethodsComponent implements OnInit {
 
           if (res.ExpressResponseCode === '0') {
             this.toastr.success(res.ExpressResponseMessage);
+            this.progressBarService.hide();
             this.getExistingCardDetailsForVantiv();
           } else {
             this.toastr.error(res.ExpressResponseMessage);

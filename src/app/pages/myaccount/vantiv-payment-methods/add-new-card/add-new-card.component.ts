@@ -96,7 +96,7 @@ export class AddNewCardComponent implements OnInit {
               && data.TransactionQueryResponse.Response.ReportingData.Items.Item) {
                 const res = data.TransactionQueryResponse.Response.ReportingData.Items.Item;
                 if (res && res.ExpressResponseCode === '0'
-                  && res.AVSResponseCode.trim() === 'Y'
+                  && ['X', 'Y', 'Z', 'D', 'M'].indexOf(res.AVSResponseCode.trim()) !== -1
                   && res.CVVResponseCode.trim() === 'M') {
                     this.getPaymentAccountId();
                   } else {
@@ -116,15 +116,16 @@ export class AddNewCardComponent implements OnInit {
 
     if (avsCode) {
       this.toastr.error(avsCode.AVSMessage);
+      this.router.navigate(['/myaccount/vantiv-payment-methods']);
+      return;
     }
 
     const cvvInfo = VantivResponseCodes.CVVInfo.filter( item => item.CVVCode === res.CVVResponseCode.trim())[0];
 
     if (cvvInfo) {
       this.toastr.error(cvvInfo.CVVMessage);
+      this.router.navigate(['/myaccount/vantiv-payment-methods']);
     }
-
-    this.router.navigate(['/myaccount/vantiv-payment-methods']);
   }
 
   getPaymentAccountId() {
