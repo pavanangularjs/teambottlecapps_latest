@@ -74,8 +74,28 @@ export class HeaderComponent implements OnInit {
 
       });
 
+    this.progressBarService.show();
     this.cartService.cartItemCount.subscribe((data) => {
       this.cartItemCount = data;
+      this.progressBarService.hide();
+    });
+
+    this.customerService.profileUpdated.subscribe(() => {
+      this.progressBarService.show();
+      this.customerService.getProfileDetails().subscribe(
+        (data: any) => {
+          const profile = data;
+          this.progressBarService.hide();
+
+          if (profile && profile.ProfileImage !== '') {
+            this.profilePic = profile.ProfileImage;
+          } else if (profile && profile.FirstName) {
+            this.profileFirstLetter = profile.FirstName.substr(0, 1);
+          } else if (profile && profile.EmailId) {
+            this.profileFirstLetter = profile.EmailId.substr(0, 1);
+          }
+
+        });
     });
   }
 
@@ -119,10 +139,12 @@ export class HeaderComponent implements OnInit {
   }
 
   getStoreDetails() {
+    this.progressBarService.show();
     this.storeService.getStoreDetails().subscribe(data => {
       if (data && data.GetStoredetails) {
         this.storeDetails = data.GetStoredetails;
       }
+      this.progressBarService.hide();
     });
   }
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError, EMPTY } from 'rxjs';
+import { Observable, of, throwError, EMPTY, Subject } from 'rxjs';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { switchMap, catchError, retry } from 'rxjs/operators';
 import { CustomerLoginRequestPayload } from '../models/customer-login-request-payload';
@@ -31,6 +31,7 @@ export class CustomerService {
   isPayOnline = false;
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
   paymentTypeId: number;
+  profileUpdated = new Subject<any> ();
 
   constructor(private http: HttpClient,
     private authService: AuthService,
@@ -118,6 +119,7 @@ export class CustomerService {
       this.updateProfileDetails(profile), { headers: this.headers }).pipe(
         switchMap((res: any) => {
           this.profileDetails = res;
+          this.profileUpdated.next();
           return of(res);
         }),
         retry(3),
@@ -129,7 +131,7 @@ export class CustomerService {
 
   UploadImage(image: any): Observable<any> {
     return this.http.post<any>(baseUrl + UrlNames.UploadImage,
-      { path: image }, { headers: this.headers }).pipe(
+      image).pipe(
         switchMap((res: any) => {
           return of(res);
         }),

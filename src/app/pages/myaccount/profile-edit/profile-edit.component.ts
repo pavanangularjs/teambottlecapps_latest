@@ -3,6 +3,7 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { CustomerService } from '../../../services/customer.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ProgressBarService } from '../../../shared/services/progress-bar.service';
 @Component({
   selector: 'app-profile-edit',
   templateUrl: './profile-edit.component.html',
@@ -14,11 +15,13 @@ export class ProfileEditComponent implements OnInit {
   submitted = false;
 
   formEditProfile: FormGroup;
+  selectedFile: any;
   constructor(
     private customerService: CustomerService,
     private router: Router,
     private toastr: ToastrService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private progressBarService: ProgressBarService) {
 
     this.formEditProfile = this.formBuilder.group({
       pFirstName: ['', [Validators.required]],
@@ -30,11 +33,13 @@ export class ProfileEditComponent implements OnInit {
       pImage: ['', []]
     });
 
+    this.progressBarService.show();
     this.customerService.getProfileDetails().subscribe(
       (data: any) => {
         if (data) {
           this.profile = data;
           this.profileImage = this.profile.ProfileImage;
+          this.progressBarService.hide();
           this.initializeProfile();
         }
       });
@@ -61,6 +66,7 @@ export class ProfileEditComponent implements OnInit {
 
   uploadPicture(fileInput) {
     if (fileInput.target.files && fileInput.target.files[0]) {
+      this.selectedFile = fileInput.target.files[0];
       const reader = new FileReader();
       reader.onload = ((e) => {
         this.profileImage = e.target['result'];
@@ -78,9 +84,27 @@ export class ProfileEditComponent implements OnInit {
       return;
     }
 
+    this.progressBarService.show();
+    const uploadData = new FormData();
+    uploadData.append('Image', this.selectedFile, this.selectedFile.name);
+
+    this.customerService.UploadImage(uploadData).subscribe((res) => {
+      if (res) {
+        this.profileImage = res.SuccessMessage;
+        this.updateProfile();
+      }
+    },
+      error => {
+        this.toastr.error(error);
+        this.progressBarService.hide();
+      });
+  }
+
+  private updateProfile() {
+
     const profile = {
       FirstName: '', LastName: '', EmailId: '',
-      ContactNo: '', DOB: '', Gender: '', UserIpAddress: '', ProfileImage: '',
+      ContactNo: '', DOB: '', Gender: '', UserIpAddress: '', ProfileImage: this.profileImage,
       StoreId: 0, SessionId: '', UserId: 0, AppId: 0, DeviceId: '', DeviceType: ''
     };
 
@@ -92,18 +116,15 @@ export class ProfileEditComponent implements OnInit {
       profile.DOB = this.formEditProfile.get('pDOB').value.toLocaleDateString();
     }
     profile.Gender = this.formEditProfile.get('pGender').value;
-    // profile.ProfileImage = this.formEditProfile.get('pImage').value;
-    // profile.UserIpAddress = '';
-
 
     this.customerService.updateCustomerProfile(profile).subscribe(
       (res) => {
         if (res) {
           this.toastr.success(res.SuccessMessage);
         }
+        this.progressBarService.hide();
         this.router.navigate(['myaccount/profile']);
       });
-
   }
 
 }
