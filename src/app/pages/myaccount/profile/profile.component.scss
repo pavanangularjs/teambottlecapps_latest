@@ -299,6 +299,16 @@ button.btn-profile, button.btn-profile:focus, button.btn-profile:hover {
     }
 }
 
+
+@media only screen and (max-width: 768px) {
+    .float_right {
+        position: absolute;
+        right: -35px;
+        width: 170px;
+        z-index: 9;
+    }
+}
+
 button.btn-profile .icon-radius {
             width: 35px;
             height: 35px;
@@ -314,8 +324,10 @@ button.btn-profile .icon-radius {
     }
 
 .float_right {
-    position: absolute;
-    right: 0;
+    position: absolute !important;
+    right: 0px;
+    width: 170px;
+    z-index: 9;
 }
 
 .border_bottom .float_right {
