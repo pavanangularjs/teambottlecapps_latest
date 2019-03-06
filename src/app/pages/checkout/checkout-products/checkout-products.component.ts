@@ -25,6 +25,8 @@ export class CheckoutProductsComponent implements OnInit {
   tipAmount: string;
   listCharges: any;
   isCouponApplied: boolean;
+  isCheckoutSubmitted: boolean;
+
   constructor(private cartService: CartService, private router: Router,
     private paymentService: PaymentService,
     private toastr: ToastrService,
@@ -40,6 +42,7 @@ export class CheckoutProductsComponent implements OnInit {
     this.couponCode = '';
     this.tipAmount = '';
     this.isCouponApplied = false;
+    this.isCheckoutSubmitted = false;
     this.cartDetails = this.cartService.cartdetails;
     this.filterCartDetails();
   }
@@ -64,6 +67,7 @@ export class CheckoutProductsComponent implements OnInit {
 
   onCancelOrder() {
     this.clearPaymentCache();
+    this.isCheckoutSubmitted = false;
     this.router.navigate(['/cart']);
   }
 
@@ -100,6 +104,8 @@ export class CheckoutProductsComponent implements OnInit {
       taxAmount: this.cartDetails.ListCharge.filter(item => item.ChargeTitle === 'Tax')[0].ChargeAmount,
       taxType: 'Sales Tax'
     };
+
+    this.isCheckoutSubmitted = true;
 
     if (this.cartDetails.PaymentTypeId === 0) {
       this.placeOrder();
@@ -191,6 +197,7 @@ export class CheckoutProductsComponent implements OnInit {
       (orderResponse: any) => {
         this.cartDetails = orderResponse;
         this.toastr.success('Order Placed Successfully.');
+        this.isCheckoutSubmitted = false;
         this.clearPaymentCache();
         this.orderplace.emit(this.cartDetails);
         this.store.dispatch(new StoreGetHome());
@@ -204,6 +211,7 @@ export class CheckoutProductsComponent implements OnInit {
       this.cartService.placeOrder(placeOrderReq).subscribe(
         (orderResponse: any) => {
           this.cartDetails = orderResponse;
+          this.isCheckoutSubmitted = false;
           this.toastr.success('Order Placed Successfully.');
           this.clearPaymentCache();
           this.orderplace.emit(this.cartDetails);

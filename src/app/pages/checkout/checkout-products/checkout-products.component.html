@@ -137,7 +137,7 @@
   </div>
   <div class="btn_right buttons-container">
     <button type="cancel" class="btn btn-default novalue" (click)="onCancelOrder()" >Cancel</button>
-    <button type="checkout" [disabled]="cartDetails?.OrderTypeId === 2 && cartDetails?.DeliveryAddress?.Remark !== ''" class="btn btn-default" 
+    <button type="checkout" [disabled]="(cartDetails?.OrderTypeId === 2 && cartDetails?.DeliveryAddress?.Remark !== '') || isCheckoutSubmitted" class="btn btn-default" 
     [ngClass]= "cartDetails?.OrderTypeId === 2 && cartDetails?.DeliveryAddress?.Remark !== '' ? 'novalue' : 'close'" (click)="onCheckout()">Checkout</button>
   </div>
 </div>

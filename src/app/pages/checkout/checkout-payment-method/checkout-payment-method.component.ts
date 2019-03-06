@@ -127,7 +127,9 @@ export class CheckoutPaymentMethodComponent implements OnInit {
             data.PaymentAccountQueryResponse.Response.QueryData &&
             data.PaymentAccountQueryResponse.Response.QueryData.Items &&
             data.PaymentAccountQueryResponse.Response.QueryData.Items.Item ) {
-            this.paymentProfilesForVantiv = data.PaymentAccountQueryResponse.Response.QueryData.Items.Item;
+            // this.paymentProfilesForVantiv = data.PaymentAccountQueryResponse.Response.QueryData.Items.Item;
+            this.paymentProfilesForVantiv = [...this.paymentProfilesForVantiv,
+              ...data.PaymentAccountQueryResponse.Response.QueryData.Items.Item];
 
           }
           // this.spinnerService.hide();
