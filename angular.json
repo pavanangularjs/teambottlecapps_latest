@@ -25,7 +25,9 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/android-icon.png"
+              "src/android-icon.png",
+              "src/firebase-messaging-sw.js",
+              "src/manifest.json"
             ],
             "styles": [
               "./node_modules/ngx-toastr/toastr.css",

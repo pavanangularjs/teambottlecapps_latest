@@ -20,7 +20,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { AngularFireModule } from '@angular/fire';
 import { AppComponent } from './app.component';
+import { environment } from '../environments/environment';
 import { HeaderComponent } from './pages/home/header/header.component';
 import { FooterComponent } from './pages/home/footer/footer.component';
 import { HomepageComponent } from './pages/home/homepage/homepage.component';
@@ -68,6 +71,7 @@ import { TermsAndConditionsComponent } from './pages/home/terms-and-conditions/t
 import { PlaceOrderResultComponent } from './pages/checkout/place-order-result/place-order-result.component';
 import { MultiStoreComponent } from './pages/home/multi-store/multi-store.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { HomePageResolver } from './pages/home/homepage/homepage.resolver';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -135,6 +139,8 @@ export function getAuthServiceConfigs() {
     HttpClientModule,
     SharedModule,
     MyAccountModule,
+    AngularFireMessagingModule,
+    AngularFireModule.initializeApp(environment.firebase),
     StoreModule.forRoot({customer: customerReducer, productStore: productStoreReducer }),
     EffectsModule.forRoot([CustomerEffects, ProductStoreEffects]),
     Ng4LoadingSpinnerModule.forRoot(),
@@ -142,7 +148,7 @@ export function getAuthServiceConfigs() {
     DeviceDetectorModule.forRoot(),
     NgbPaginationModule
   ],
-  providers: [CustomerService, ProductStoreService, DataService, DecimalPipe, AuthService, Title,
+  providers: [CustomerService, ProductStoreService, DataService, DecimalPipe, AuthService, Title, HomePageResolver,
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
