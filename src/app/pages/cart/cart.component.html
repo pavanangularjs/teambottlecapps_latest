@@ -59,6 +59,7 @@
                   <h5 class="text-left">{{cartItem?.ProductName}}</h5>
 
                   <span class="font_size">{{cartItem?.UnitSize}} | SKU: {{cartItem?.SKU}} | UPC: {{cartItem?.UPC}}</span>
+                  <p class="limit-per-user" *ngIf="cartItem?.DealInventoryMessage">{{cartItem?.DealInventoryMessage}}</p>
                 </div>
 
               </td>
@@ -74,7 +75,7 @@
               <td width="12%" class="cart-item">
                 <div class="margin_top">
                   <select class="select-quant form-control" [(ngModel)]="cartItem.QuantityOrdered" (change)="onQtyChange(cartItem)">
-                    <option *ngFor="let qty of quantity">{{qty}}</option>
+                    <option *ngFor="let qty of getQty(cartItem)">{{qty}}</option>
                   </select>
                 </div>
 

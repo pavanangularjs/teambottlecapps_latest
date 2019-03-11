@@ -203,4 +203,11 @@ export class ProductDetailsComponent implements OnInit {
         this.toastr.success(data.SuccessMessage);
       });
   }
+
+  getQty (item: any) {
+    if (item && item.DealId !== 0 && item.IsBottleLimitAtRetail === false) {
+      return this.quantity.filter(qty => qty <= item.DealInventory);
+    }
+    return this.quantity;
+  }
 }
