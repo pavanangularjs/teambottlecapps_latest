@@ -127,7 +127,7 @@ font-family: poppinsregular;
     color: rgba(51, 51, 51, 0.5);
 }
 .second_content .rating_star i{
-color: #d4d6da;
+color: $lukas-color;
 }
 .second_content .rating_star span.first,.second_content .rating_star span.reviews{
     /* margin-left: 25px; */
@@ -1467,7 +1467,7 @@ button {
 
 .rating-stars span a {
     margin-right: 3px;
-    color: #777;
+    color: $lukas-color;
 }
 
 ul.float_right span a {
@@ -1475,7 +1475,7 @@ ul.float_right span a {
 }
 
 ul.float_right span a .fa{
-    color: #f8c848 !important;
+    color: $lukas-color !important;
     font-size: 16px;
 }
 
