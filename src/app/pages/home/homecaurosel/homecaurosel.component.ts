@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DataService } from '../../../services/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homecaurosel',
@@ -10,7 +12,7 @@ export class HomecauroselComponent implements OnInit {
 isShowFilters = false;
 categoryFilters: any;
 
-  constructor() { }
+  constructor(private router: Router, public dataservice: DataService) { }
 
   ngOnInit() {
   }
@@ -19,6 +21,14 @@ categoryFilters: any;
     this.isShowFilters = true;
     this.categoryFilters = { 'CategoryId': categoryId};
   }
+
+  showProducts(catId, catName) {
+    this.dataservice.searchByText = '';
+    this.dataservice.categoryId = catId;
+    this.dataservice.getFiltersByCategory();
+    this.router.navigate([`/${catName}`]);
+  }
+
   onApplyFilter() {
     this.isShowFilters = false;
   }
