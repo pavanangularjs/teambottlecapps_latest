@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProgressBarService } from '../../../shared/services/progress-bar.service';
 import { VantivPaymentService } from '../../../services/vantiv-payment.service';
+import { CustomerService } from '../../../services/customer.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -13,11 +14,22 @@ export class VantivPaymentMethodsComponent implements OnInit {
   constructor(
     private progressBarService: ProgressBarService,
     private vantivPaymentService: VantivPaymentService,
+    private customerService: CustomerService,
     private toastr: ToastrService) { }
 
   ngOnInit() {
     this.vantivPaymentProfiles = [];
-    this.getExistingCardDetailsForVantiv();
+
+    if (!(this.vantivPaymentService.vantiveProfile && this.vantivPaymentService.vantiveProfile.credential1 !== undefined)) {
+      this.progressBarService.show();
+      this.customerService.getCustomerPaymentMethodGetList().subscribe(
+        () => {
+          this.getExistingCardDetailsForVantiv();
+        });
+
+    } else {
+      this.getExistingCardDetailsForVantiv();
+    }
   }
 
   getExistingCardDetailsForVantiv() {

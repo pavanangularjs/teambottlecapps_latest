@@ -5,7 +5,7 @@ import { VantivPaymentService } from '../../../../services/vantiv-payment.servic
 import { CustomerService } from '../../../../services/customer.service';
 import { ProgressBarService } from '../../../../shared/services/progress-bar.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { VantivResponseCodes } from '../../../../services/vantiv-responsecodes';
 
 @Component({
@@ -19,15 +19,18 @@ export class AddNewCardComponent implements OnInit {
   setupTransactionURL: string;
   ifrm: HTMLIFrameElement;
   addressList: any;
+  returnUrl: string;
 
   constructor(public sanitizer: DomSanitizer,
     private vantivPaymentService: VantivPaymentService,
     private customerService: CustomerService,
     private progressBarService: ProgressBarService,
     private toastr: ToastrService,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/myaccount/vantiv-payment-methods';
     this.url = '';
     this.vantivPaymentService.vTransactionSetupID = '';
     this.getAddressList();
@@ -116,7 +119,8 @@ export class AddNewCardComponent implements OnInit {
 
     if (avsCode) {
       this.toastr.error(avsCode.AVSMessage);
-      this.router.navigate(['/myaccount/vantiv-payment-methods']);
+      // this.router.navigate(['/myaccount/vantiv-payment-methods']);
+      this.router.navigate([this.returnUrl]);
       return;
     }
 
@@ -124,7 +128,8 @@ export class AddNewCardComponent implements OnInit {
 
     if (cvvInfo) {
       this.toastr.error(cvvInfo.CVVMessage);
-      this.router.navigate(['/myaccount/vantiv-payment-methods']);
+      // this.router.navigate(['/myaccount/vantiv-payment-methods']);
+      this.router.navigate([this.returnUrl]);
     }
   }
 
@@ -146,7 +151,8 @@ export class AddNewCardComponent implements OnInit {
           this.toastr.success(res.SuccessMessage);
           this.progressBarService.hide();
           this.saveRequestAndResponse();
-          this.router.navigate(['/myaccount/vantiv-payment-methods']);
+          // this.router.navigate(['/myaccount/vantiv-payment-methods']);
+          this.router.navigate([this.returnUrl]);
         }
       });
     }

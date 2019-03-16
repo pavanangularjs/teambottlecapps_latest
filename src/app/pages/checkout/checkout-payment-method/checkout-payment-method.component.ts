@@ -165,7 +165,11 @@ export class CheckoutPaymentMethodComponent implements OnInit {
 
   onAddNewPaymentMethod() {
     // [routerLink]="['/myaccount/add-new-payment-method']"
-    this.route.navigate(['/myaccount/add-new-payment-method'], { queryParams: { returnUrl: this.route.url } });
+    if ( this.paymentTypeId === 1) {
+      this.route.navigate(['/myaccount/add-new-payment-method'], { queryParams: { returnUrl: this.route.url } });
+    } else {
+      this.route.navigate(['/myaccount/add-new-card'], { queryParams: { returnUrl: this.route.url } });
+    }
   }
 
 }

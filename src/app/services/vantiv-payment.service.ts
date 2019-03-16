@@ -81,13 +81,13 @@ export class VantivPaymentService {
 
     setBillingAddress(data: any) {
         this.billingAddress.addressEditAllowed = 1;
-        this.billingAddress.billingName = data.BillingName || '';
-        this.billingAddress.address1 = data.address1 || '';
-        this.billingAddress.city = data.city || '';
-        this.billingAddress.state = data.state || '';
-        this.billingAddress.zipcode = data.zipcode || '';
+        this.billingAddress.billingName = data.AddressName || '';
+        this.billingAddress.address1 = data.Address1 || '';
+        this.billingAddress.city = data.City || '';
+        this.billingAddress.state = data.State || '';
+        this.billingAddress.zipcode = data.Zip || '';
         this.billingAddress.email = data.email || '';
-        this.billingAddress.phone = data.phone || '';
+        this.billingAddress.phone = data.ContactNo || '';
     }
 
     setupTransactionID(): Observable<any> {
