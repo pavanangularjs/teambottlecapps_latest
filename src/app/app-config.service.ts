@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 
 export const baseURL = 'https://staging.liquorapps.com/Bcapi/api/';
+export const facebookProviderID = '502181350180492';
+
+export enum SmartBannerInfo {
+  title = 'BC Starter',
+  author = 'Critical Telephone Applications, Inc'
+}
 
 export enum AuthorizeNetURLs {
     sandBox_URL = 'https://apitest.authorize.net/xml/v1/request.api',

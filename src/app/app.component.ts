@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import SmartBanner from 'smart-app-banner';
+import { SmartBannerInfo } from './app-config.service';
 
 @Component({
   selector: 'app-root',
@@ -18,8 +19,8 @@ export class AppComponent implements OnInit {
       daysHidden: 0,   // days to hide banner after close button is clicked (defaults to 15)
       daysReminder: 0, // days to hide banner after "VIEW" button is clicked (defaults to 90)
       appStoreLanguage: 'us', // language code for the App Store (defaults to user's browser language)
-      title: 'BC Starter',
-      author: 'Critical Telephone Applications, Inc',
+      title: SmartBannerInfo.title,
+      author: SmartBannerInfo.author,
       button: 'View',
       store: {
         android: 'On the Google Play'
@@ -35,9 +36,10 @@ export class AppComponent implements OnInit {
     // this.isMobile = this.deviceService.isMobile();
 
     /* For Mobile WebSite */
-    this.isMobile = false;
+    // this.isMobile = false;
 
-    if (!this.isMobile && localStorage.getItem('isAgeVerified') !== 'true') {
+    // !this.isMobile &&
+    if (localStorage.getItem('isAgeVerified') !== 'true') {
       this.openModal.nativeElement.click();
     }
   }

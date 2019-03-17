@@ -72,6 +72,7 @@ import { PlaceOrderResultComponent } from './pages/checkout/place-order-result/p
 import { MultiStoreComponent } from './pages/home/multi-store/multi-store.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { HomePageResolver } from './pages/home/homepage/homepage.resolver';
+import { facebookProviderID } from './app-config.service';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -79,7 +80,7 @@ export function getAuthServiceConfigs() {
       [
         {
           id: FacebookLoginProvider.PROVIDER_ID,
-          provider: new FacebookLoginProvider('502181350180492') // 2187506571532619')
+          provider: new FacebookLoginProvider(facebookProviderID) // 2187506571532619')
         }
       ]
   );
