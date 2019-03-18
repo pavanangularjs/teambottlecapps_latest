@@ -46,7 +46,6 @@ export class ProfileEditComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
 
   initializeProfile() {
@@ -85,19 +84,23 @@ export class ProfileEditComponent implements OnInit {
     }
 
     this.progressBarService.show();
-    const uploadData = new FormData();
-    uploadData.append('Image', this.selectedFile, this.selectedFile.name);
+    if (this.selectedFile && this.selectedFile.name) {
+      const uploadData = new FormData();
+      uploadData.append('Image', this.selectedFile, this.selectedFile.name);
 
-    this.customerService.UploadImage(uploadData).subscribe((res) => {
-      if (res) {
-        this.profileImage = res.SuccessMessage;
-        this.updateProfile();
-      }
-    },
-      error => {
-        this.toastr.error(error);
-        this.progressBarService.hide();
-      });
+      this.customerService.UploadImage(uploadData).subscribe((res) => {
+        if (res) {
+          this.profileImage = res.SuccessMessage;
+          this.updateProfile();
+        }
+      },
+        error => {
+          this.toastr.error(error);
+          this.progressBarService.hide();
+        });
+    } else {
+      this.updateProfile();
+    }
   }
 
   private updateProfile() {
@@ -124,7 +127,11 @@ export class ProfileEditComponent implements OnInit {
         }
         this.progressBarService.hide();
         this.router.navigate(['myaccount/profile']);
-      });
+      },
+        error => {
+          this.toastr.error(error);
+          this.progressBarService.hide();
+        });
   }
 
 }
