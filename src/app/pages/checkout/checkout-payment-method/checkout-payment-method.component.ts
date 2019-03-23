@@ -83,6 +83,11 @@ export class CheckoutPaymentMethodComponent implements OnInit {
       // this.spinnerService.hide();
       this.progressBarService.hide();
     }
+
+    if (this.paymentMethodList.length === 1 && this.onlinePaymentTypeId) {
+      this.cartService.cartdetails.PaymentTypeId = this.onlinePaymentTypeId;
+      this.paymentTypeId = this.onlinePaymentTypeId;
+    }
   }
 
   changePaymentType(paymentType) {
@@ -133,6 +138,9 @@ export class CheckoutPaymentMethodComponent implements OnInit {
 
           }
           // this.spinnerService.hide();
+          this.progressBarService.hide();
+        },
+        error => {
           this.progressBarService.hide();
         });
 

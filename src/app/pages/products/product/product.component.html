@@ -3,7 +3,7 @@
     <div class="img_div">
 
       <div class="margin_bottom">
-        <div class="sale-tag" *ngIf="item?.OfferType === 'SALE' || item?.OfferType === 'Flash Sale'">
+        <div class="sale-tag" *ngIf="item?.OfferType === 'SALE' || item?.OfferType === 'Flash Sale' || item?.OfferType === 'CLUB'">
           <img [src]="item?.OfferIcon" class="img-responsive">
         </div>
 
