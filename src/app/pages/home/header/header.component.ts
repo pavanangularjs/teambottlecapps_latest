@@ -54,13 +54,13 @@ export class HeaderComponent implements OnInit {
           } else {
             this.isActive = false;
           }
+          this.getStoreDetails();
         }
       });
     this.store.select(ProductStoreSelectors.productStoreStateData)
       .subscribe(pssd => {
         if (pssd) {
           this.storeGetHomeData = pssd;
-          this.getStoreDetails();
           this.getStoreList();
 
           if (this.storeGetHomeData.CustomerInfo && this.storeGetHomeData.CustomerInfo.ProfileImage !== '') {

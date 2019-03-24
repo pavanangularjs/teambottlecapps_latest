@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError, EMPTY } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { switchMap, catchError, retry } from 'rxjs/operators';
+import { switchMap, catchError } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
 import { baseUrl, UrlNames } from './url-provider';
@@ -36,7 +36,6 @@ export class RecipeService {
       switchMap((res: any) => {
         return of(res);
       }),
-      retry(3),
       catchError((error: any, caught: Observable<any>) => {
         return this.errorHandler.processError(error);
       })

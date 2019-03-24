@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError, EMPTY, Subject } from 'rxjs';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
-import { switchMap, catchError, retry } from 'rxjs/operators';
+import { switchMap, catchError } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
 import { baseUrl, UrlNames } from './url-provider';
@@ -48,12 +48,11 @@ export class ProductStoreService {
                     this.customerInfo = res.CustomerInfo;
                     this.cartService.cartItemCount.next(res.CustomerInfo.CartItemCount);
                 }
-                this.storeDetails = null;
+                // this.storeDetails = null;
                 this.couponsList = null;
                 this.storeList = null;
                 return of(res);
             }),
-            retry(3),
             catchError((error: any, caught: Observable<any>) => {
                 return this.errorHandler.processError(error);
             })
@@ -78,9 +77,9 @@ export class ProductStoreService {
 
     getStoreDetails(): Observable<any> {
 
-        /* if (this.storeDetails) {
+        if (this.storeDetails) {
             return of(this.storeDetails);
-          } */
+        }
 
         return this.http.post<any>(baseUrl + UrlNames.StoreGetDetail, this.getProfileDetailsRequestParams()).pipe(
             switchMap((res: any) => {
@@ -89,7 +88,6 @@ export class ProductStoreService {
                 }
                 return of(res);
             }),
-            retry(3),
             catchError((error: any, caught: Observable<any>) => {
                 return this.errorHandler.processError(error);
             })
@@ -101,7 +99,6 @@ export class ProductStoreService {
             switchMap((res: any) => {
                 return of(res);
             }),
-            retry(3),
             catchError((error: any, caught: Observable<any>) => {
                 return this.errorHandler.processError(error);
             })
@@ -154,7 +151,6 @@ export class ProductStoreService {
             switchMap((res: any) => {
                 return of(res);
             }),
-            retry(3),
             catchError((error: any, caught: Observable<any>) => {
                 return this.errorHandler.processError(error);
             })
@@ -179,7 +175,6 @@ export class ProductStoreService {
             switchMap((res: any) => {
                 return of(res);
             }),
-            retry(3),
             catchError((error: any, caught: Observable<any>) => {
                 return this.errorHandler.processError(error);
             })
@@ -273,7 +268,6 @@ export class ProductStoreService {
                 this.couponsList = res;
                 return of(res);
             }),
-            retry(3),
             catchError((error: any, caught: Observable<any>) => {
                 return this.errorHandler.processError(error);
             })
@@ -292,7 +286,6 @@ export class ProductStoreService {
                 this.storeList = res;
                 return of(res);
             }),
-            retry(3),
             catchError((error: any, caught: Observable<any>) => {
                 return this.errorHandler.processError(error);
             })

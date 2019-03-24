@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError, EMPTY } from 'rxjs';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
-import { switchMap, catchError, retry } from 'rxjs/operators';
+import { switchMap, catchError } from 'rxjs/operators';
 import { ErrorHandlerService } from '../shared/services/error-handler.service';
 import { PaymentProfile } from '../models/payment-profile';
 import { CustomerSelectors } from '../state/customer/customer.selector';
@@ -51,7 +51,6 @@ export class PaymentService {
         switchMap((res: any) => {
           return of(res);
         }),
-        retry(3),
         catchError((error: any, caught: Observable<any>) => {
           return this.errorHandler.processError(error);
         })
@@ -105,7 +104,6 @@ export class PaymentService {
         switchMap((res: any) => {
           return of(res);
         }),
-        retry(3),
         catchError((error: any, caught: Observable<any>) => {
           return this.errorHandler.processError(error);
         })
@@ -152,7 +150,6 @@ export class PaymentService {
       switchMap((res: any) => {
         return of(res);
       }),
-      retry(3),
       catchError((error: any, caught: Observable<any>) => {
         return this.errorHandler.processError(error);
       })
@@ -178,7 +175,6 @@ export class PaymentService {
         switchMap((res: any) => {
           return of(res);
         }),
-        retry(3),
         catchError((error: any, caught: Observable<any>) => {
           return this.errorHandler.processError(error);
         })
@@ -204,7 +200,6 @@ export class PaymentService {
         switchMap((res: any) => {
           return of(res);
         }),
-        retry(3),
         catchError((error: any, caught: Observable<any>) => {
           return this.errorHandler.processError(error);
         })

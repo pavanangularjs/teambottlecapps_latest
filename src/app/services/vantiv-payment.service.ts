@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError, EMPTY } from 'rxjs';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
-import { switchMap, catchError, retry } from 'rxjs/operators';
+import { switchMap, catchError } from 'rxjs/operators';
 import { ErrorHandlerService } from '../shared/services/error-handler.service';
 import { VantivPaymentProfile } from '../models/vantiv-payment-profile';
 import { CustomerSelectors } from '../state/customer/customer.selector';
@@ -100,7 +100,6 @@ export class VantivPaymentService {
                     this.parseSetupTransactionResponse(response);
                     return of(response);
                 }),
-                retry(3),
                 catchError((error: any, caught: Observable<any>) => {
                     return this.errorHandler.processError(error);
                 })
@@ -182,7 +181,6 @@ export class VantivPaymentService {
                     this.saveUpdatedBillingDetails(response);
                     return of(response);
                 }),
-                retry(3),
                 catchError((error: any, caught: Observable<any>) => {
                     return this.errorHandler.processError(error);
                 })
@@ -249,7 +247,6 @@ export class VantivPaymentService {
                     this.savePaymentAccountID(response);
                     return of(response);
                 }),
-                retry(3),
                 catchError((error: any, caught: Observable<any>) => {
                     return this.errorHandler.processError(error);
                 })
@@ -314,7 +311,6 @@ export class VantivPaymentService {
                     this.vResponse = res;
                     return of(this.parseXML2Json(res));
                 }),
-                retry(3),
                 catchError((error: any, caught: Observable<any>) => {
                     return this.errorHandler.processError(error);
                 })
@@ -371,7 +367,6 @@ export class VantivPaymentService {
                     this.parseAuthorizationResponse(response);
                     return of(response);
                 }),
-                retry(3),
                 catchError((error: any, caught: Observable<any>) => {
                     this.vIsSuccess = 0;
                     return this.errorHandler.processError(error);
@@ -446,7 +441,6 @@ export class VantivPaymentService {
                     this.parseSaleResponse(response);
                     return of(response);
                 }),
-                retry(3),
                 catchError((error: any, caught: Observable<any>) => {
                     this.vIsSuccess = 0;
                     return this.errorHandler.processError(error);
@@ -520,7 +514,6 @@ export class VantivPaymentService {
                     this.vIsSuccess = 1;
                     return of(res);
                 }),
-                retry(3),
                 catchError((error: any, caught: Observable<any>) => {
                     return this.errorHandler.processError(error);
                 })
@@ -576,7 +569,6 @@ export class VantivPaymentService {
                 switchMap((res: any) => {
                     return of(res);
                 }),
-                retry(3),
                 catchError((error: any, caught: Observable<any>) => {
                     return this.errorHandler.processError(error);
                 })
@@ -611,7 +603,6 @@ export class VantivPaymentService {
                     const response = this.parseXML2Json(res);
                     return of(response);
                 }),
-                retry(3),
                 catchError((error: any, caught: Observable<any>) => {
                     return this.errorHandler.processError(error);
                 })

@@ -9,6 +9,7 @@ import { CustomerLoginSession } from '../../models/customer-login-session';
 import { Router } from '@angular/router';
 import { AppConfigService } from '../../app-config.service';
 import { ToastrService } from 'ngx-toastr';
+import { CustomerSelectors } from '../../state/customer/customer.selector';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,15 @@ export class SessionService {
     // private customerService: CustomerService,
     private route: Router,
     private appConfig: AppConfigService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService) {
+
+    this.store.select(CustomerSelectors.customerLoginSessionData)
+      .subscribe(clsd => {
+        if (clsd && this.route.url !== '/home') {
+          this.route.navigate(['/home'], { queryParams: { returnUrl: this.route.url } });
+        }
+      });
+  }
 
   createNewSession() {
 
@@ -52,6 +61,5 @@ export class SessionService {
       localStorage.removeItem('rememberMe');
       this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams()));
     }
-    this.route.navigate(['/home'], { queryParams: { returnUrl: this.route.url } });
   }
 }

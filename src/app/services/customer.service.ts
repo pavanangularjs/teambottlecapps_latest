@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError, EMPTY, Subject } from 'rxjs';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
-import { switchMap, catchError, retry } from 'rxjs/operators';
+import { switchMap, catchError } from 'rxjs/operators';
 import { CustomerLoginRequestPayload } from '../models/customer-login-request-payload';
 import { CustomerLoginSession } from '../models/customer-login-session';
 import { StoreGetHomeRequestPayload } from '../models/store-get-home-request-payload';
@@ -20,6 +20,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ProgressBarService } from '../shared/services/progress-bar.service';
 import { AppConfigService, ValidationsModes, AuthorizeNetURLs } from '../app-config.service';
 import { VantivPaymentService } from '../services/vantiv-payment.service';
+import { ProductStoreService } from '../services/product-store.service';
 
 @Injectable()
 export class CustomerService {
@@ -40,7 +41,8 @@ export class CustomerService {
     private toastr: ToastrService,
     private progressBarService: ProgressBarService,
     private appConfig: AppConfigService,
-    private vantivPaymentService: VantivPaymentService) {
+    private vantivPaymentService: VantivPaymentService,
+    private productStoreService: ProductStoreService) {
     /* if (this.appConfig.deviceID === '') {
       this.appConfig.deviceID = Math.random().toString(36).substring(2);
     } */
@@ -68,6 +70,7 @@ export class CustomerService {
           this.customerSession = res;
           this.authService.setSessionToken(res.SessionId);
           this.authService.setUserId(res.UserId);
+          this.productStoreService.storeDetails = null;
           return of(res);
         } else {
           this.toastr.error('Internal Server Error.');
@@ -75,7 +78,6 @@ export class CustomerService {
           return EMPTY;
         }
       }),
-      retry(3),
       catchError((error: any, caught: Observable<any>) => {
         return this.errorHandler.processError(error);
       })
@@ -92,7 +94,6 @@ export class CustomerService {
         this.profileDetails = res;
         return of(res);
       }),
-      retry(3),
       catchError((error: any, caught: Observable<any>) => {
         return this.errorHandler.processError(error);
       })
@@ -122,7 +123,6 @@ export class CustomerService {
           this.profileUpdated.next();
           return of(res);
         }),
-        retry(3),
         catchError((error: any, caught: Observable<any>) => {
           return this.errorHandler.processError(error);
         })
@@ -135,7 +135,6 @@ export class CustomerService {
         switchMap((res: any) => {
           return of(res);
         }),
-        retry(3),
         catchError((error: any, caught: Observable<any>) => {
           return this.errorHandler.processError(error);
         })
@@ -149,7 +148,6 @@ export class CustomerService {
           this.customerAddressList = res;
           return of(res);
         }),
-        retry(3),
         catchError((error: any, caught: Observable<any>) => {
           return this.errorHandler.processError(error);
         })
@@ -163,7 +161,6 @@ export class CustomerService {
           this.customerAddressList = null;
           return of(res);
         }),
-        retry(3),
         catchError((error: any, caught: Observable<any>) => {
           return this.errorHandler.processError(error);
         })
@@ -177,7 +174,6 @@ export class CustomerService {
           this.customerAddressList = null;
           return of(res);
         }),
-        retry(3),
         catchError((error: any, caught: Observable<any>) => {
           return this.errorHandler.processError(error);
         })
@@ -191,7 +187,6 @@ export class CustomerService {
           this.customerAddressList = null;
           return of(res);
         }),
-        retry(3),
         catchError((error: any, caught: Observable<any>) => {
           return this.errorHandler.processError(error);
         })
@@ -234,7 +229,6 @@ export class CustomerService {
           this.getPaymentTypes();
           return of(res);
         }),
-        retry(3),
         catchError((error: any, caught: Observable<any>) => {
           return this.errorHandler.processError(error);
         })
@@ -297,7 +291,6 @@ export class CustomerService {
           this.customerPaymentMethodGetList = null;
           return of(res);
         }),
-        retry(3),
         catchError((error: any, caught: Observable<any>) => {
           return this.errorHandler.processError(error);
         })
@@ -331,7 +324,6 @@ export class CustomerService {
       switchMap((res: any) => {
         return of(res);
       }),
-      retry(3),
       catchError((error: any, caught: Observable<any>) => {
         return this.errorHandler.processError(error);
       })
