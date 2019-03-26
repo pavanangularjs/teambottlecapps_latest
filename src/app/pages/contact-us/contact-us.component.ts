@@ -28,7 +28,7 @@ export class ContactUsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.mapURL = '';
+    // this.mapURL = '';
   }
 
   getStoreDetails() {

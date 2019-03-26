@@ -26,6 +26,7 @@
     input {
       width: 200px;
       margin-right: 40px;
+      color: #000;
     }
   }
 }
@@ -33,7 +34,7 @@
 @media only screen and (max-width: 480px) {
   .search-btn .btn {
       right: -5px;
-      top: 0px !important;
+      top: -2px !important;
   }
 }
 
@@ -71,6 +72,7 @@
         width: 98%;
         margin-right: 0px;
         padding-right: 11%;
+        color: #000;
     }
   }
 }

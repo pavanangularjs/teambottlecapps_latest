@@ -21,4 +21,22 @@
   <app-root></app-root>
 </body>
 
+<script type="text/javascript">
+function myFunction() {
+    var x = document.getElementById("dropMenu");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+  $("#mobMenu").click(function(){
+    $("#dropMenu").addClass("show").removeClass("hide");
+  });
+
+function mysecFunction(){
+    document.getElementById("dropMenu").style.display = "block";
+}
+</script>
+
 </html>
