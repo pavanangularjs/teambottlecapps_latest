@@ -1,4 +1,4 @@
-@import "~src/variable.scss";
+@import "../../../../variable.scss";
 
 .fa-star {
     color: $lukas-color !important;

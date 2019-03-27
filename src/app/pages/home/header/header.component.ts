@@ -131,8 +131,18 @@ export class HeaderComponent implements OnInit {
     this.progressBarService.show();
     this.storeService.storeGetList().subscribe(data => {
       if (data && data.ListStore) {
-        this.storeList = data.ListStore;
         this.currentStoreId = data.StoreId;
+
+        const sList = data.ListStore;
+        const fromIndex = sList.findIndex(item => item.StoreId === this.currentStoreId);
+
+        if (fromIndex) {
+          const element = sList[fromIndex];
+          sList.splice(fromIndex, 1);
+          sList.splice(0, 0, element);
+        }
+
+        this.storeList = sList;
         this.progressBarService.hide();
       }
     });
