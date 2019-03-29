@@ -71,7 +71,7 @@ import { TermsAndConditionsComponent } from './pages/home/terms-and-conditions/t
 import { PlaceOrderResultComponent } from './pages/checkout/place-order-result/place-order-result.component';
 import { MultiStoreComponent } from './pages/home/multi-store/multi-store.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
-import { HomePageResolver } from './pages/home/homepage/homepage.resolver';
+// import { HomePageResolver } from './pages/home/homepage/homepage.resolver';
 import { facebookProviderID } from './app-config.service';
 
 // Configs
@@ -149,7 +149,7 @@ export function getAuthServiceConfigs() {
     DeviceDetectorModule.forRoot(),
     NgbPaginationModule
   ],
-  providers: [CustomerService, ProductStoreService, DataService, DecimalPipe, AuthService, Title, HomePageResolver,
+  providers: [CustomerService, ProductStoreService, DataService, DecimalPipe, AuthService, Title, // HomePageResolver,
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs

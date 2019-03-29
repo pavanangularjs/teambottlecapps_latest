@@ -20,7 +20,7 @@ import { FeatureProductsComponent } from './pages/products/feature-products/feat
 import { EventsComponent } from './pages/products/events/events.component';
 import { PrivacyPolicyComponent } from './pages/home/privacy-policy/privacy-policy.component';
 import { TermsAndConditionsComponent } from './pages/home/terms-and-conditions/terms-and-conditions.component';
-import { HomePageResolver } from './pages/home/homepage/homepage.resolver';
+// import { HomePageResolver } from './pages/home/homepage/homepage.resolver';
 
 import { AuthGuard } from './auth.guard';
 import { GeneralGuard } from './general.guard';
@@ -30,7 +30,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomepageComponent,
-    resolve: { token: HomePageResolver },
+    // resolve: { token: HomePageResolver },
     runGuardsAndResolvers: 'always'
   },
   { path: 'aboutus', component: AboutusComponent, canActivate: [GeneralGuard] },
