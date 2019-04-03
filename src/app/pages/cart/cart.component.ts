@@ -50,6 +50,11 @@ export class CartComponent implements OnInit {
     this.cartService.getCartDetails().subscribe(
       (data: any) => {
         this.cartDetails = data;
+
+        if (this.cartDetails && this.cartDetails.ListCartItem) {
+          this.cartService.cartItemCount.next(this.cartDetails.ListCartItem.length);
+        }
+
         this.doStockAvailabilityCheck();
         // this.spinnerService.hide();
         this.progressBarService.hide();
