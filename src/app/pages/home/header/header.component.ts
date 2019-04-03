@@ -161,6 +161,7 @@ export class HeaderComponent implements OnInit {
   onStoreChange(storeId) {
     this.appConfig.storeID = storeId;
 
+    const sourceId = localStorage.getItem('sourceId');
     if (this.customerSession && this.customerSession.SessionId) {
 
       let demail = sessionStorage.getItem('email');
@@ -182,6 +183,8 @@ export class HeaderComponent implements OnInit {
       this.progressBarService.show();
       if (demail && dpass) {
         this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams(demail, dpass, 'E')));
+      } else if (demail && sourceId) {
+        this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams(demail, '' , 'F', sourceId)));
       } else {
         this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams()));
       }
