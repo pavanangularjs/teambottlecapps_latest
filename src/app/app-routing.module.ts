@@ -4,6 +4,7 @@ import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 
 import { HomepageComponent } from './pages/home/homepage/homepage.component';
 import { AboutusComponent } from './pages/aboutus/aboutuscomponent';
+import { OfferComponent } from './pages/offer/offer.component';
 import { RecipesComponent } from './pages/recipe/recipes/recipes.component';
 import { RecipeDetailsComponent } from './pages/recipe/recipe-details/recipe-details.component';
 import { ProductDetailsComponent } from './pages/products/product-details/product-details.component';
@@ -34,6 +35,7 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always'
   },
   { path: 'aboutus', component: AboutusComponent, canActivate: [GeneralGuard] },
+  { path: 'offer', component: OfferComponent, canActivate: [GeneralGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'feature-products', component: FeatureProductsComponent, canActivate: [GeneralGuard]},
   { path: 'recipes', component: RecipesComponent, canActivate: [GeneralGuard]},

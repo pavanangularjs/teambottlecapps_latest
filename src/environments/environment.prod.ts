@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
   firebase: {
-  apiKey: 'AIzaSyCmTjBMCRJg3a0CJBjQ-xtl1YS2wqzGb7Y',
-  authDomain: 'bottlecappsdeveloper.firebaseapp.com',
-  databaseURL: 'https://bottlecappsdeveloper.firebaseio.com',
-  projectId: 'bottlecappsdeveloper',
-  storageBucket: 'bottlecappsdeveloper.appspot.com',
-  messagingSenderId: '482299564387'
+  apiKey: 'AIzaSyAEOaHbxHE6G2ThlIi52Afikls-2nYsmXw',
+    authDomain: 'lukas-liquor-store.firebaseapp.com',
+    databaseURL: 'https://lukas-liquor-store.firebaseio.com',
+    projectId: 'lukas-liquor-store',
+    storageBucket: 'lukas-liquor-store.appspot.com',
+    messagingSenderId: '83079552723'
   }
 };

@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { AngularFireMessaging } from '@angular/fire/messaging';
+// import { truncateSync } from 'fs';
 
 export const baseURL = 'https://staging.liquorapps.com/Bcapi/api/';
 export const facebookProviderID = '502181350180492';
@@ -40,19 +41,36 @@ export enum ValidationsModes {
   providedIn: 'root'
 })
 export class AppConfigService {
+
+  @Output() getComponent: EventEmitter<any> = new EventEmitter();
+  @Output() getDownload: EventEmitter<any> = new EventEmitter();
+  @Output() getPartners: EventEmitter<any> = new EventEmitter();
+  /* Home Page Ad Space change to ture or false */
+  offer = 'true';
+  /* Home Page download app change to ture or false */
+  downloadapp = 'true';
+  /* Home Page footer partners change to ture or false */
+  partners = 'true';
   deviceID = '';
   storeID = 10010;
   appID = 10002;
   URL = '';
+
   merchantAuthentication = {
     vAppLoginId: '5Pj5hE6a',
     vTransactionKey: '77Za8R4Wnx988xQs'
   };
   validationMode = '';
 
-  constructor(private angularFireMessaging: AngularFireMessaging) { }
+  constructor(private angularFireMessaging: AngularFireMessaging) {
+
+  }
 
   getLoginCustomerParams(email?: string, pwd?: string, loginType?: string, sourceId?: string) {
+    this.getComponent.emit(this.offer);
+    this.getDownload.emit(this.downloadapp);
+    this.getPartners.emit(this.partners);
+
     this.deviceID = localStorage.getItem('deviceId');
     if (this.deviceID === null) {
       this.deviceID = Math.random().toString(36).substring(2);

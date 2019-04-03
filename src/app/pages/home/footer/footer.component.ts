@@ -4,6 +4,7 @@ import { ProductStoreSelectors } from '../../../state/product-store/product-stor
 import { ProductStoreService } from '../../../services/product-store.service';
 import { CustomerLoginSession } from '../../../models/customer-login-session';
 import { CustomerSelectors } from '../../../state/customer/customer.selector';
+import { AppConfigService } from '../../../app-config.service';
 
 @Component({
   selector: 'app-footer',
@@ -18,10 +19,11 @@ export class FooterComponent implements OnInit {
         this.storeGetHomeData = pssd;
       });
   } */
-
+  partners = 'true';
   storeDetails: any;
   constructor(private store: Store<CustomerLoginSession>,
-    private storeService: ProductStoreService) {
+    private storeService: ProductStoreService, private authenticationService: AppConfigService) {
+    authenticationService.getPartners.subscribe(name => { this.partners = name; });
 
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
@@ -29,7 +31,6 @@ export class FooterComponent implements OnInit {
           this.getStoreDetails();
         }
       });
-
 
   }
   ngOnInit() {

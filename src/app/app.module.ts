@@ -73,6 +73,8 @@ import { MultiStoreComponent } from './pages/home/multi-store/multi-store.compon
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 // import { HomePageResolver } from './pages/home/homepage/homepage.resolver';
 import { facebookProviderID } from './app-config.service';
+import { OffersComponent } from './pages/home/offers/offers.component';
+import { OfferComponent } from './pages/offer/offer.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -129,7 +131,9 @@ export function getAuthServiceConfigs() {
     TermsAndConditionsComponent,
     PlaceOrderResultComponent,
     MultiStoreComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    OfferComponent,
+    OffersComponent
   ],
   imports: [
     BrowserModule,
