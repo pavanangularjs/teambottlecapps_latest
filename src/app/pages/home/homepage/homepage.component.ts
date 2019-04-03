@@ -32,6 +32,7 @@ export class HomepageComponent implements OnInit {
     private titleService: Title,
     private progressBarService: ProgressBarService,
     private appConfig: AppConfigService) {
+    this.returnUrl = '';
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         this.customerSession = clsd;

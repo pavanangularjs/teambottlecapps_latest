@@ -93,7 +93,7 @@ export class CheckoutProductsComponent implements OnInit {
       return;
     }
 
-    if (this.cartDetails.PaymentTypeId === 1 &&
+    if ((this.cartDetails.PaymentTypeId === 1 || this.cartDetails.PaymentTypeId === 7)  &&
       this.paymentService.createTransaction.cvv === 0 || this.paymentService.createTransaction.cvv.toString() === '') {
       this.toastr.error('Please Enter CVV');
       return;
@@ -196,11 +196,14 @@ export class CheckoutProductsComponent implements OnInit {
     this.cartService.placeOrder(this.cartDetails).subscribe(
       (orderResponse: any) => {
         this.cartDetails = orderResponse;
-        this.toastr.success('Order Placed Successfully.');
+        if (this.cartDetails.OrderId !== 0) {
+          this.toastr.success('Order Placed Successfully.');
+          this.store.dispatch(new StoreGetHome());
+        }
         this.isCheckoutSubmitted = false;
         this.clearPaymentCache();
         this.orderplace.emit(this.cartDetails);
-        this.store.dispatch(new StoreGetHome());
+
       });
   }
 
@@ -212,10 +215,12 @@ export class CheckoutProductsComponent implements OnInit {
         (orderResponse: any) => {
           this.cartDetails = orderResponse;
           this.isCheckoutSubmitted = false;
-          this.toastr.success('Order Placed Successfully.');
+          if (this.cartDetails.OrderId !== 0) {
+            this.toastr.success('Order Placed Successfully.');
+            this.store.dispatch(new StoreGetHome());
+          }
           this.clearPaymentCache();
           this.orderplace.emit(this.cartDetails);
-          this.store.dispatch(new StoreGetHome());
         });
     } else {
       this.toastr.error('Invalid Session, Please ReLogin ...');

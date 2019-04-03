@@ -64,21 +64,25 @@ export class CheckoutPaymentMethodComponent implements OnInit {
     const authorizeNet = this.paymentMethodList.filter(
       type => (type.PaymentType === 'Card Payment' || type.PaymentTypeId === 1))[0];
 
-    if (authorizeNet && authorizeNet.UserProfileId) {
+    if (authorizeNet) {
       this.onlinePaymentTypeId = 1;
-      this.userProfileId = authorizeNet.UserProfileId;
-      this.paymentService.createTransaction.customerProfileId = authorizeNet.UserProfileId;
-      this.getExistingCardDetails(authorizeNet.UserProfileId);
+      if (authorizeNet.UserProfileId) {
+        this.userProfileId = authorizeNet.UserProfileId;
+        this.paymentService.createTransaction.customerProfileId = authorizeNet.UserProfileId;
+        this.getExistingCardDetails(authorizeNet.UserProfileId);
+      }
     }
 
     const vantiv = this.paymentMethodList.filter(
       type => (type.PaymentType === 'Vantiv' || type.PaymentTypeId === 7))[0];
 
-    if (vantiv && vantiv.UserProfileId) {
+    if (vantiv) {
       this.onlinePaymentTypeId = 7;
       // this.userProfileId = vantiv.UserProfileId;
       // this.paymentService.createTransaction.customerProfileId = vantiv.UserProfileId;
+      // if (vantiv.UserProfileId) {
       this.getExistingCardDetailsForVantiv();
+      // }
     } else {
       // this.spinnerService.hide();
       this.progressBarService.hide();
