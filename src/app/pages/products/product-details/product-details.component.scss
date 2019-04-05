@@ -616,3 +616,48 @@ form label{
         margin-right: 0px !important;
     }
 }
+
+/*all review*/
+
+.more-reviews {
+    display: block;
+    border: solid 1px #ccc;
+    width: 45px;
+    height: 45px;
+    margin: 0px auto;
+    text-align: center;
+    padding: 5px 12px 5px 11px;
+    border-radius: 50%;
+    font-size: 32px;
+    color: #ccc;
+    background-color: #fff;
+    position: absolute;
+    top: -58px;
+    left: 40%;
+    text-decoration: none;
+}
+
+.more-reviews:hover {
+    color: $lukas-color;
+}
+
+.all-reviews-block {
+    display: block;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.arotate {
+    -moz-transition: all .3s linear;
+    -webkit-transition: all .3s linear;
+    transition: all .3s linear;
+}
+.arotate.down {
+    -moz-transform:rotate(180deg);
+    -webkit-transform:rotate(180deg);
+    transform:rotate(180deg);
+}
+
+.reviews .user-review-dp img {
+  height: 54px;  
+}

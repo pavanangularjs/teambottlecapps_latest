@@ -167,9 +167,18 @@
             <p *ngIf="userReviews?.length === 0 && productDetails?.UserReview?.UserId === 0" class="no-reviews">There
                 are no customer reviews yet.</p>
 
-            <div>
-                <app-product-review [review]="review" (edit)="onEdit($event)" *ngFor="let review of userReviews"></app-product-review>
-            </div>
+                <div>
+                    <app-product-review [review]="review" (edit)="onEdit($event)" *ngFor="let review of userReviews | slice:0:1">
+                    </app-product-review>
+                    <div class="all-reviews-block">
+                        <div id="demo" class="collapse">
+                            <app-product-review [review]="review" (edit)="onEdit($event)" *ngFor="let review of userReviews | slice:1">
+                            </app-product-review>
+                        </div>
+                        <a href="#demo" onclick="rotateFunction()" class="more-reviews fa fa-angle-down arotate" data-toggle="collapse"
+                            id="rotate"> </a>
+                    </div>
+                </div>
             <div *ngIf="productDetails?.UserReview?.UserId === 0 && !reviewAdded">
                 <app-product-add-review [productId]="productDetails?.Product?.PID" (addReview)="onAddReview()"></app-product-add-review>
             </div>
