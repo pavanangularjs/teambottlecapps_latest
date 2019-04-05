@@ -127,7 +127,7 @@ font-family: poppinsregular;
     color: rgba(51, 51, 51, 0.5);
 }
 .second_content .rating_star i{
-color: $lukas-color;
+color: $active-danger;
 }
 .second_content .rating_star span.first,.second_content .rating_star span.reviews{
     /* margin-left: 25px; */
@@ -841,6 +841,11 @@ ul.float_right,.fixed ul.float_right  {
 .active{
     color:$lukas-color !important;
 }
+
+.item_img .icon.icon-favorites.active, .icon.icon-favorites .active {
+    color: $active-danger !important;
+}
+
 .padding_left {
     padding-left: 0px;
 }
@@ -1467,7 +1472,7 @@ button {
 
 .rating-stars span a {
     margin-right: 3px;
-    color: $lukas-color;
+    color: $active-danger;
 }
 
 ul.float_right span a {
@@ -1475,7 +1480,7 @@ ul.float_right span a {
 }
 
 ul.float_right span a .fa{
-    color: $lukas-color !important;
+    color: $active-danger !important;
     font-size: 16px;
 }
 
@@ -1751,12 +1756,12 @@ i.icon-remove-from-my-cart {
 
 i.icon.icon-remove-cart.active {
     font-size: 32px;
-    color: #c2c4ca;
+    color: $active-danger !important;
     cursor: pointer;
 }
 
 i.active {
-    color: $lukas-color;
+    color: $active-danger !important;
 }
 
 a img.second_img {

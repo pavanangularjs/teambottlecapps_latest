@@ -45,6 +45,10 @@
 	}
 }
 
+	.no-resize {
+		resize: none !important;
+	}
+
 @media screen and (min-width:320px) and (max-width:768px) {
 	.contact-section {
 		margin-top: -70px;
