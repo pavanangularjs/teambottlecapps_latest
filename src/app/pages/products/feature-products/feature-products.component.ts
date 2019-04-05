@@ -78,7 +78,7 @@ export class FeatureProductsComponent implements OnInit {
   }
 
   getProductsList() {
-    if (this.router.url === '/home' && !this.productStoreService.isFavoritesUpdated) {
+    if ((this.router.url === '/home' || this.router.url.startsWith('/home')) && !this.productStoreService.isFavoritesUpdated) {
       this.productsList = this.storeGetHomeData ? this.storeGetHomeData.HomeList : [];
     } else {
       this.productStoreService.isFavoritesUpdated = false;

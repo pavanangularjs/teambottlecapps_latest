@@ -32,7 +32,6 @@ export class HomepageComponent implements OnInit {
     private titleService: Title,
     private progressBarService: ProgressBarService,
     private appConfig: AppConfigService) {
-    this.returnUrl = '';
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
         this.customerSession = clsd;
@@ -45,9 +44,9 @@ export class HomepageComponent implements OnInit {
           this.titleService.setTitle(this.storeGetHomeData.StoreName);
           this.updateCartId();
           if (this.returnUrl && this.returnUrl !== '/' && this.returnUrl !== '/home') {
-
             if (this.returnUrl !== '/checkout') {
               this.router.navigate([this.returnUrl]);
+              this.returnUrl = '/';
             } else {
               this.router.navigate(['/cart']);
             }

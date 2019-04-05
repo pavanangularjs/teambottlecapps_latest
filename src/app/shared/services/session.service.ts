@@ -26,7 +26,7 @@ export class SessionService {
 
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {
-        if (clsd && this.route.url !== '/home') {
+        if (clsd && (this.route.url !== '/home' && !this.route.url.startsWith('/home'))) {
           this.route.navigate(['/home'], { queryParams: { returnUrl: this.route.url } });
         }
       });
