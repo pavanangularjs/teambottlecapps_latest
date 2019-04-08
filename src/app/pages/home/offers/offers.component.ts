@@ -7,9 +7,9 @@ import { AppConfigService } from '../../../app-config.service';
   styleUrls: ['./offers.component.scss']
 })
 export class OffersComponent implements OnInit {
-  offer = 'true';
+  offer = '';
   constructor(private authenticationService: AppConfigService) {
-    authenticationService.getComponent.subscribe(name => { this.offer = name; });
+    this.offer = this.authenticationService.offer;
   }
   ngOnInit() {
   }

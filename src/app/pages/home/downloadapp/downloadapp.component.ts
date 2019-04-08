@@ -6,10 +6,9 @@ import { AppConfigService } from '../../../app-config.service';
   styleUrls: ['./downloadapp.component.scss']
 })
 export class DownloadappComponent implements OnInit {
-  downloadapp = 'true';
-
+  downloadapp = '';
   constructor(private authenticationService: AppConfigService) {
-    authenticationService.getDownload.subscribe(name => { this.downloadapp = name; });
+    this.downloadapp = this.authenticationService.downloadapp;
   }
 
   ngOnInit() {

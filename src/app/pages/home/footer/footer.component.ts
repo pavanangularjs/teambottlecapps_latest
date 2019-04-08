@@ -19,11 +19,11 @@ export class FooterComponent implements OnInit {
         this.storeGetHomeData = pssd;
       });
   } */
-  partners = 'true';
+  partners = '';
   storeDetails: any;
   constructor(private store: Store<CustomerLoginSession>,
     private storeService: ProductStoreService, private authenticationService: AppConfigService) {
-    authenticationService.getPartners.subscribe(name => { this.partners = name; });
+    this.partners = this.authenticationService.partners;
 
     this.store.select(CustomerSelectors.customerLoginSessionData)
       .subscribe(clsd => {

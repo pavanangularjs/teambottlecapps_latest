@@ -41,16 +41,10 @@ export enum ValidationsModes {
   providedIn: 'root'
 })
 export class AppConfigService {
-
-  @Output() getComponent: EventEmitter<any> = new EventEmitter();
-  @Output() getDownload: EventEmitter<any> = new EventEmitter();
-  @Output() getPartners: EventEmitter<any> = new EventEmitter();
-  /* Home Page Ad Space change to ture or false */
-  offer = 'true';
-  /* Home Page download app change to ture or false */
+  offer = 'false';
   downloadapp = 'true';
-  /* Home Page footer partners change to ture or false */
-  partners = 'true';
+  partners = 'false';
+
   deviceID = '';
   storeID = 10010;
   appID = 10002;
@@ -67,9 +61,6 @@ export class AppConfigService {
   }
 
   getLoginCustomerParams(email?: string, pwd?: string, loginType?: string, sourceId?: string) {
-    this.getComponent.emit(this.offer);
-    this.getDownload.emit(this.downloadapp);
-    this.getPartners.emit(this.partners);
 
     this.deviceID = localStorage.getItem('deviceId');
     if (this.deviceID === null) {
