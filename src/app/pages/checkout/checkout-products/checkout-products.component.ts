@@ -77,6 +77,17 @@ export class CheckoutProductsComponent implements OnInit {
     this.cartDetails.AddressId = 0;
     this.cartDetails.PaymentTypeId = 0; */
 
+    if (this.cartDetails.PaymentTypeId === 0) {
+      if (
+        !this.cartDetails.Profile ||
+        this.cartDetails.Profile.ContactNo === '' ||
+        this.cartDetails.Profile.FirstName === '' ||
+        this.cartDetails.Profile.LastName === '' ) {
+          this.toastr.error('Please complete your profile');
+          return;
+        }
+    }
+
     if (this.cartDetails.OrderTypeId === 2 && this.cartDetails.AddressId === 0) {
       this.toastr.error('Please Select Address');
       return;
