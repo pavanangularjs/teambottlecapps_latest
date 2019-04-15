@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { VantivURLs } from '../../../../app-config.service';
-import { VantivPaymentService } from '../../../../services/vantiv-payment.service';
+import { VantivPaymentServerSideApiService } from '../../../../services/vantiv-payment-serverside-api.service';
 import { CustomerService } from '../../../../services/customer.service';
 import { ProgressBarService } from '../../../../shared/services/progress-bar.service';
 import { ToastrService } from 'ngx-toastr';
@@ -22,7 +22,7 @@ export class AddNewCardComponent implements OnInit {
   returnUrl: string;
 
   constructor(public sanitizer: DomSanitizer,
-    private vantivPaymentService: VantivPaymentService,
+    private vantivPaymentService: VantivPaymentServerSideApiService,
     private customerService: CustomerService,
     private progressBarService: ProgressBarService,
     private toastr: ToastrService,
@@ -42,7 +42,7 @@ export class AddNewCardComponent implements OnInit {
       this.vantivPaymentService.setupTransactionID().subscribe(() => {
         this.progressBarService.hide();
         this.setURL();
-        this.saveRequestAndResponse();
+        // this.saveRequestAndResponse();
       });
     } else {
       this.setURL();
@@ -90,23 +90,23 @@ export class AddNewCardComponent implements OnInit {
         this.vantivPaymentService.onCardValidationSuccessGetTransactionDetails(
           this.vantivPaymentService.vTransactionSetupID).subscribe(data => {
             this.progressBarService.hide();
-            this.saveRequestAndResponse();
             this.vantivPaymentService.vTransactionSetupID = '';
-            if ( data && data.TransactionQueryResponse
-              && data.TransactionQueryResponse.Response
-              && data.TransactionQueryResponse.Response.ReportingData
-              && data.TransactionQueryResponse.Response.ReportingData.Items
-              && data.TransactionQueryResponse.Response.ReportingData.Items.Item) {
-                const res = data.TransactionQueryResponse.Response.ReportingData.Items.Item;
-                if (res && res.ExpressResponseCode === '0'
-                  && ['X', 'Y', 'Z', 'D', 'M'].indexOf(res.AVSResponseCode.trim()) !== -1
-                  && res.CVVResponseCode.trim() === 'M') {
-                    this.getPaymentAccountId();
-                  } else {
-                    this.showProperErrorMessage(res);
-                  }
+
+            if (data && data.QueryTransactionDetails && data.QueryTransactionDetails.length > 0) {
+              const res = data.QueryTransactionDetails[0];
+
+              if (res && (res.ExpressResponseCode === '0')
+                && ['X', 'Y', 'Z', 'D', 'M'].indexOf(res.AVSResponseCode.trim()) !== -1
+                && res.CVVResponseCode.trim() === 'M') {
+                this.getPaymentAccountId();
+              } else {
+                this.showProperErrorMessage(data);
+              }
             }
-        });
+            // this.saveRequestAndResponse();
+            
+            
+          });
         // this.vantivPaymentService.vTransactionSetupID = '';
         // alert(this.ifrm.src);
         // console.log(this.ifrm.src);
@@ -137,33 +137,7 @@ export class AddNewCardComponent implements OnInit {
     this.progressBarService.show();
     this.vantivPaymentService.OnSuccessParseDetailsForAddCardRequest().subscribe(data => {
       this.progressBarService.hide();
-        this.saveRequestAndResponse();
-        this.sendCustomerPaymentInsertReference();
-    });
-  }
-
-  private sendCustomerPaymentInsertReference() {
-    if (this.vantivPaymentService && this.vantivPaymentService.vPaymentAccountID) {
-      this.progressBarService.show();
-      this.customerService.customerPaymentInsert(this.vantivPaymentService.vPaymentAccountID, true, 1)
-      .subscribe(res => {
-        if (res && res.SuccessMessage !== '') {
-          this.toastr.success(res.SuccessMessage);
-          this.progressBarService.hide();
-          this.saveRequestAndResponse();
-          // this.router.navigate(['/myaccount/vantiv-payment-methods']);
-          this.router.navigate([this.returnUrl]);
-        }
-      });
-    }
-  }
-  saveRequestAndResponse() {
-    this.progressBarService.show();
-    this.vantivPaymentService.insertVantivRequestAndResponse().subscribe((data) => {
-      if (data) {
-        this.progressBarService.hide();
-        console.log(data);
-      }
+      this.router.navigate([this.returnUrl]);
     });
   }
 }

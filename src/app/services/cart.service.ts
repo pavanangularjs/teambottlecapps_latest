@@ -24,6 +24,7 @@ export class CartService {
   cartdetails: any;
   cartItemCount = new Subject<number>();
   cartUpdated = new Subject<any>();
+  userRemarks: string;
 
 
   constructor(private http: HttpClient,
@@ -35,6 +36,7 @@ export class CartService {
           this.customerSession = clsd;
         }
       });
+      this.userRemarks = '';
   }
 
   addToCard(pid: number, qty: number): Observable<any> {

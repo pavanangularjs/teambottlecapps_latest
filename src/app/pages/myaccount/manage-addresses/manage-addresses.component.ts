@@ -3,7 +3,7 @@ import { CustomerService } from '../../../services/customer.service';
 // import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { ProgressBarService } from '../../../shared/services/progress-bar.service';
 import { ToastrService } from 'ngx-toastr';
-import { VantivPaymentService } from '../../../services/vantiv-payment.service';
+import { VantivPaymentServerSideApiService } from '../../../services/vantiv-payment-serverside-api.service';
 
 @Component({
   selector: 'app-manage-addresses',
@@ -16,7 +16,7 @@ addressList: any;
     // private spinnerService: Ng4LoadingSpinnerService,
     private toastr: ToastrService,
     private progressBarService: ProgressBarService,
-    private vantivPaymentService: VantivPaymentService) { }
+    private vantivPaymentService: VantivPaymentServerSideApiService) { }
 
   ngOnInit() {
    this.getAddressList();

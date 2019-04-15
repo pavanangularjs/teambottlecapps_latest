@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProgressBarService } from '../../../shared/services/progress-bar.service';
-import { VantivPaymentService } from '../../../services/vantiv-payment.service';
+import { VantivPaymentServerSideApiService } from '../../../services/vantiv-payment-serverside-api.service';
 import { CustomerService } from '../../../services/customer.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -13,7 +13,7 @@ export class VantivPaymentMethodsComponent implements OnInit {
   vantivPaymentProfiles: any;
   constructor(
     private progressBarService: ProgressBarService,
-    private vantivPaymentService: VantivPaymentService,
+    private vantivPaymentService: VantivPaymentServerSideApiService,
     private customerService: CustomerService,
     private toastr: ToastrService) { }
 
@@ -40,39 +40,31 @@ export class VantivPaymentMethodsComponent implements OnInit {
       this.vantivPaymentService.getAddedCards().subscribe(
         data => {
           // data.PaymentAccountQueryResponse.Response.QueryData.Items.Item.TruncatedCardNumber
-          if (data && data.PaymentAccountQueryResponse &&
-            data.PaymentAccountQueryResponse.Response &&
-            data.PaymentAccountQueryResponse.Response.QueryData &&
-            data.PaymentAccountQueryResponse.Response.QueryData.Items &&
-            data.PaymentAccountQueryResponse.Response.QueryData.Items.Item) {
+          if (data && data.VantivCardList) {
             // this.vantivPaymentProfiles = data.PaymentAccountQueryResponse.Response.QueryData.Items.Item;
             this.vantivPaymentProfiles = [...this.vantivPaymentProfiles,
-              ...data.PaymentAccountQueryResponse.Response.QueryData.Items.Item];
+              ...data.VantivCardList];
 
+          } else if (data && data.ExpressResponseCode === 101) {
+            this.toastr.error(data.ExpressResponseMessage);
           }
           // this.spinnerService.hide();
           this.progressBarService.hide();
         });
 
   }
-  deletePaymentMethod( profile) {
+  deletePaymentMethod(profile) {
     this.progressBarService.show();
     this.vantivPaymentService.deletePaymentMethod(
-      profile.PaymentAccountID,
-      profile.PaymentAccountType,
-      profile.PaymentAccountReferenceNumber).subscribe(
-      data => {
-        if (data && data.PaymentAccountDeleteResponse && data.PaymentAccountDeleteResponse.Response) {
-          const res = data.PaymentAccountDeleteResponse.Response;
-
-          if (res.ExpressResponseCode === '0') {
-            this.toastr.success(res.ExpressResponseMessage);
+      profile.PaymentAccountID).subscribe(
+        data => {
+          if (data && data.ExpressResponseCode === '0') {
+            this.toastr.success(data.ExpressResponseMessage);
             this.progressBarService.hide();
             this.getExistingCardDetailsForVantiv();
           } else {
-            this.toastr.error(res.ExpressResponseMessage);
+            this.toastr.error(data.ExpressResponseMessage);
           }
-        }
-      });
+        });
   }
 }

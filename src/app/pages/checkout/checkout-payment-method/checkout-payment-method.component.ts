@@ -7,7 +7,7 @@ import { CartService } from '../../../services/cart.service';
 import { ProductStoreService } from '../../../services/product-store.service';
 import { ProgressBarService } from '../../../shared/services/progress-bar.service';
 import { Router } from '@angular/router';
-import { VantivPaymentService } from '../../../services/vantiv-payment.service';
+import { VantivPaymentServerSideApiService } from '../../../services/vantiv-payment-serverside-api.service';
 
 @Component({
   selector: 'app-checkout-payment-method',
@@ -26,6 +26,7 @@ export class CheckoutPaymentMethodComponent implements OnInit {
   orderTypeId: number;
   paymentTypeId: number;
   onlinePaymentTypeId: number;
+  remarks: string;
 
   constructor(private customerService: CustomerService,
     private paymentService: PaymentService,
@@ -35,7 +36,7 @@ export class CheckoutPaymentMethodComponent implements OnInit {
     private storeService: ProductStoreService,
     private progressBarService: ProgressBarService,
     private route: Router,
-    private vantivPaymentService: VantivPaymentService) { }
+    private vantivPaymentService: VantivPaymentServerSideApiService) { }
 
   ngOnInit() {
     this.getPaymentMethodGetList();
@@ -131,14 +132,10 @@ export class CheckoutPaymentMethodComponent implements OnInit {
       this.vantivPaymentService.getAddedCards().subscribe(
         data => {
           // data.PaymentAccountQueryResponse.Response.QueryData.Items.Item.TruncatedCardNumber
-          if (data && data.PaymentAccountQueryResponse &&
-            data.PaymentAccountQueryResponse.Response &&
-            data.PaymentAccountQueryResponse.Response.QueryData &&
-            data.PaymentAccountQueryResponse.Response.QueryData.Items &&
-            data.PaymentAccountQueryResponse.Response.QueryData.Items.Item ) {
+          if (data && data.VantivCardList) {
             // this.paymentProfilesForVantiv = data.PaymentAccountQueryResponse.Response.QueryData.Items.Item;
             this.paymentProfilesForVantiv = [...this.paymentProfilesForVantiv,
-              ...data.PaymentAccountQueryResponse.Response.QueryData.Items.Item];
+              ...data.VantivCardList];
 
           }
           // this.spinnerService.hide();
@@ -182,6 +179,10 @@ export class CheckoutPaymentMethodComponent implements OnInit {
     } else {
       this.route.navigate(['/myaccount/add-new-card'], { queryParams: { returnUrl: this.route.url } });
     }
+  }
+
+  saveRemarks() {
+    this.cartService.userRemarks = this.remarks;
   }
 
 }

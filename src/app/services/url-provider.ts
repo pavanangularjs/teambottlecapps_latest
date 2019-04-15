@@ -29,9 +29,16 @@ export enum UrlNames {
     ProfileGetDetail = 'Customer/ProfileGetDetail',
     CustomerProfileUpdate = 'Customer/CustomerProfileUpdate',
     UploadImage = 'Customer/UploadImage',
-    CustomerPaymentMethodGetList = 'Customer/CustomerPaymentMethodGetList',
+    CustomerPaymentMethodGetList = 'Customer/CustomerGetPayMethods',
     CustomerPaymentInsert = 'Customer/CustomerPaymentInsert',
     CouponGetList = 'Coupon/CouponGetList',
     ReOrderCart = 'Cart/ReOrderCart',
-    VantivRequestAndResponseInsert = 'Store/VantivRequestAndResponseInsert'
+    VantivRequestAndResponseInsert = 'Store/VantivRequestAndResponseInsert',
+    VantivGetSetUpTransactionId = 'Customer/VantivGetSetUpTransactionId',
+    VantivCardsGetList = 'Customer/VantivCardsGetList',
+    VantivCardDelete = 'Customer/VantivCardDelete',
+    VantivGetQueryDetails = 'Customer/VantivGetQueryDetails',
+    VantivAddCard = 'Customer/VantivAddCard',
+    VantivCardPayment = 'Customer/VantivCardPayment',
+    VantivCardReversal = 'Customer/VantivCardReversal'
 }

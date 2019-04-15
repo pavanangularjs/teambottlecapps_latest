@@ -19,7 +19,7 @@ import { Store } from '@ngrx/store';
 import { ToastrService } from 'ngx-toastr';
 import { ProgressBarService } from '../shared/services/progress-bar.service';
 import { AppConfigService, ValidationsModes, AuthorizeNetURLs } from '../app-config.service';
-import { VantivPaymentService } from '../services/vantiv-payment.service';
+import { VantivPaymentServerSideApiService } from '../services/vantiv-payment-serverside-api.service';
 import { ProductStoreService } from '../services/product-store.service';
 
 @Injectable()
@@ -41,7 +41,7 @@ export class CustomerService {
     private toastr: ToastrService,
     private progressBarService: ProgressBarService,
     private appConfig: AppConfigService,
-    private vantivPaymentService: VantivPaymentService,
+    private vantivPaymentService: VantivPaymentServerSideApiService,
     private productStoreService: ProductStoreService) {
     /* if (this.appConfig.deviceID === '') {
       this.appConfig.deviceID = Math.random().toString(36).substring(2);

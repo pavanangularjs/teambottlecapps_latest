@@ -17,19 +17,6 @@ export enum AuthorizeNetURLs {
 export enum VantivURLs {
   hostedPayments = 'https://certtransaction.hostedpayments.com/?TransactionSetupID=',
   return_URL = 'https://staging.liquorapps.com/Store/Vantiv',
-
-  // Live Environment
-  certTransaction = 'https://certtransaction.elementexpress.com/',
-  certReporting = 'https://certreporting.elementexpress.com/',
-  certservices = 'https://certservices.elementexpress.com/'
-
-  // Local Environment
-  /*
-  certTransaction = '/certtransaction',
-  certReporting = '/certreporting',
-  certservices = '/certservices'
-  */
-  // ng serve --proxy-config=proxy.conf.json --aot
 }
 
 export enum ValidationsModes {

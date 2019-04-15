@@ -8,7 +8,7 @@ import { CustomerService } from '../../../services/customer.service';
 import { Store } from '@ngrx/store';
 import { CustomerLoginSession } from '../../../models/customer-login-session';
 import { StoreGetHome } from '../../../state/product-store/product-store.action';
-import { VantivPaymentService } from '../../../services/vantiv-payment.service';
+import { VantivPaymentServerSideApiService } from '../../../services/vantiv-payment-serverside-api.service';
 
 @Component({
   selector: 'app-checkout-products',
@@ -31,7 +31,7 @@ export class CheckoutProductsComponent implements OnInit {
     private paymentService: PaymentService,
     private toastr: ToastrService,
     private customerService: CustomerService,
-    private vantivPaymentService: VantivPaymentService,
+    private vantivPaymentService: VantivPaymentServerSideApiService,
     private store: Store<CustomerLoginSession>) {
       this.cartService.cartUpdated.subscribe(() => {
         this.cartDetails = this.cartService.cartdetails;
@@ -77,7 +77,7 @@ export class CheckoutProductsComponent implements OnInit {
     this.cartDetails.AddressId = 0;
     this.cartDetails.PaymentTypeId = 0; */
 
-    if (this.cartDetails.PaymentTypeId === 0) {
+    // if (this.cartDetails.PaymentTypeId === 0) {
       if (
         !this.cartDetails.Profile ||
         this.cartDetails.Profile.ContactNo === '' ||
@@ -86,7 +86,7 @@ export class CheckoutProductsComponent implements OnInit {
           this.toastr.error('Please complete your profile');
           return;
         }
-    }
+    // }
 
     if (this.cartDetails.OrderTypeId === 2 && this.cartDetails.AddressId === 0) {
       this.toastr.error('Please Select Address');
@@ -130,24 +130,14 @@ export class CheckoutProductsComponent implements OnInit {
       });
     } else if (this.cartDetails.PaymentTypeId === 7 ) {
 
-      if (this.vantivPaymentService.vantiveProfile &&
-        this.vantivPaymentService.vantiveProfile.credential7 === 'Authorize') {
-          this.vantivPaymentService.CreditCardAuthorization(data.amount).subscribe((paymentResponse: any) => {
+      if (this.vantivPaymentService.vantiveProfile) {
+          this.vantivPaymentService.CreditCardPayment(data.amount).subscribe((paymentResponse: any) => {
             if (this.vantivPaymentService.vExpressResponseCode === '0') {
               this.placeOrderForOnlinePayment(this.parseVantivResponse(paymentResponse));
             } else {
               this.orderplace.emit();
             }
           });
-        } else if (this.vantivPaymentService.vantiveProfile &&
-          this.vantivPaymentService.vantiveProfile.credential7 === 'Sale') {
-            this.vantivPaymentService.CreditCardSale(data.amount).subscribe((paymentResponse: any) => {
-              if (this.vantivPaymentService.vExpressResponseCode === '0') {
-                this.placeOrderForOnlinePayment(this.parseVantivResponse(paymentResponse));
-              } else {
-                this.orderplace.emit();
-              }
-            });
         }
     }
   }
@@ -155,12 +145,27 @@ export class CheckoutProductsComponent implements OnInit {
   parseVantivResponse(response) {
 
     let req;
+    let res;
 
-    if (response.CreditCardAuthorizationResponse &&
-      response.CreditCardAuthorizationResponse.Response) {
-
-      const res = response.CreditCardAuthorizationResponse.Response;
-
+    if (response.VantivAction === 'Sale') {
+      if (
+        response.TransactionResponse && 
+        response.TransactionResponse.CreditCardSaleResponse &&
+        response.TransactionResponse.CreditCardSaleResponse.Response) {
+  
+        res = response.TransactionResponse.CreditCardSaleResponse.Response;
+        }
+    } else {
+      if (
+        response.TransactionResponse && 
+        response.TransactionResponse.CreditCardAuthorizationResponse  &&
+        response.TransactionResponse.CreditCardAuthorizationResponse.Response) {
+  
+        res = response.TransactionResponse.CreditCardAuthorizationResponse.Response;
+        }
+    }
+    if ( res )
+    {
       req = {
               'Address': {
                 'BillingAddress1': res.Address.BillingAddress1 || ''
@@ -262,7 +267,7 @@ export class CheckoutProductsComponent implements OnInit {
       DoPSlot: (this.cartDetails.OrderTypeId === 2) ? this.cartDetails.DoPTimeSlot : '',
       CartId: this.cartDetails.CartId,
       CardInfo: data,
-      UserRemarks: this.cartDetails.Remark,
+      UserRemarks: this.cartService.userRemarks,
       OrderTypeId: this.cartDetails.OrderTypeId,
       PaymentTypeId: this.cartDetails.PaymentTypeId
     };

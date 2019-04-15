@@ -3,7 +3,6 @@ import { CustomerService } from '../../services/customer.service';
 // import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { ProgressBarService } from '../../shared/services/progress-bar.service';
 import { Router } from '@angular/router';
-import { VantivPaymentService } from '../../services/vantiv-payment.service';
 
 @Component({
   selector: 'app-myaccount',
@@ -17,8 +16,7 @@ export class MyAccountComponent implements OnInit {
   constructor(private router: Router,
     private customerService: CustomerService,
     // private spinnerService: Ng4LoadingSpinnerService,
-    private progressBarService: ProgressBarService,
-    private vantivPaymentService: VantivPaymentService) { }
+    private progressBarService: ProgressBarService) { }
 
   ngOnInit() {
     // this.spinnerService.show();
