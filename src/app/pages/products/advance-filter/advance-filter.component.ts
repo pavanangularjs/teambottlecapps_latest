@@ -19,7 +19,7 @@ import { ProgressBarService } from '../../../shared/services/progress-bar.servic
   templateUrl: './advance-filter.component.html',
   styleUrls: ['./advance-filter.component.scss']
 })
-export class AdvanceFilterComponent implements OnInit, OnDestroy {
+export class AdvanceFilterComponent implements OnInit {
   allFilterOptions: ProductFilters;
   selectedFilters: Item[] = [];
   selectedTypes: ProductType[] = [];
@@ -48,11 +48,11 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
 
 
 
-    this.navigationSubscription = this.router.events.subscribe((e: any) => {
+    /* this.navigationSubscription = this.router.events.subscribe((e: any) => {
       if (e instanceof NavigationEnd) {
         this.initialiseSearchFilter();
       }
-    });
+    }); */
     this.store.select(ProductStoreSelectors.productGetListData)
       .subscribe(pgld => {
         this.productsList = pgld ? pgld.ListProduct : [];
@@ -325,9 +325,9 @@ export class AdvanceFilterComponent implements OnInit, OnDestroy {
     this.getFilteredProducts();
   }
 
-  ngOnDestroy() {
+ /*  ngOnDestroy() {
     if (this.navigationSubscription) {
       this.navigationSubscription.unsubscribe();
     }
-  }
+  } */
 }

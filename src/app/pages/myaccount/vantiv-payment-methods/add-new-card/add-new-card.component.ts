@@ -100,12 +100,10 @@ export class AddNewCardComponent implements OnInit {
                 && res.CVVResponseCode.trim() === 'M') {
                 this.getPaymentAccountId();
               } else {
-                this.showProperErrorMessage(data);
+                this.showProperErrorMessage(res);
               }
             }
             // this.saveRequestAndResponse();
-            
-            
           });
         // this.vantivPaymentService.vTransactionSetupID = '';
         // alert(this.ifrm.src);
@@ -115,18 +113,28 @@ export class AddNewCardComponent implements OnInit {
   }
 
   private showProperErrorMessage(res) {
+    if (!res.AVSResponseCode) {
+      this.toastr.error('Sorry, Can not add given Card details.');
+      this.router.navigate([this.returnUrl]);
+      return;
+    }
     const avsCode = VantivResponseCodes.AVSInfo.filter( item => item.AVSCode === res.AVSResponseCode.trim())[0];
 
-    if (avsCode) {
+    if (avsCode && avsCode.AVSMessage !== '') {
       this.toastr.error(avsCode.AVSMessage);
       // this.router.navigate(['/myaccount/vantiv-payment-methods']);
       this.router.navigate([this.returnUrl]);
       return;
     }
 
+    if (!res.CVVResponseCode) {
+      this.toastr.error('Sorry, Can not add given Card details.');
+      this.router.navigate([this.returnUrl]);
+      return;
+    }
     const cvvInfo = VantivResponseCodes.CVVInfo.filter( item => item.CVVCode === res.CVVResponseCode.trim())[0];
 
-    if (cvvInfo) {
+    if (cvvInfo && cvvInfo.CVVMessage !== '') {
       this.toastr.error(cvvInfo.CVVMessage);
       // this.router.navigate(['/myaccount/vantiv-payment-methods']);
       this.router.navigate([this.returnUrl]);

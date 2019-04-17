@@ -48,7 +48,7 @@ export class HomepageComponent implements OnInit {
               this.router.navigate([this.returnUrl]);
               this.returnUrl = '/';
             } else {
-              this.router.navigate(['/cart']);
+              this.router.navigate(['/home']);
             }
           }
         }

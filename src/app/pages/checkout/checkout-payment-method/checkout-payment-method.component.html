@@ -77,10 +77,6 @@
                     <img *ngIf="paymentProfile?.PaymentBrand === 'AmericanExpress' || paymentProfile?.PaymentBrand === 'Amex'" alt="Amex" title="Amex"
                       src="../../assets/Images/american_express_logo_.gif" width="43" height="36" border="0" />
                     {{paymentProfile?.TruncatedCardNumber}}
-                    <div *ngIf="selectedCard===i" class="pull-right enter-cvv">
-                      <span>CVV: </span> <input type="password" name="cvv" [(ngModel)]="cardCVV" (keyup)="saveCVV()"
-                        class="text-cvv form-control">
-                    </div>
                   </div>
                 </td>
                 <td></td>

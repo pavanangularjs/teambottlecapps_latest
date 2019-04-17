@@ -70,7 +70,7 @@
                   <h4>{{charge?.ChargeAmountDisplay}}</h4>
                 </td>
               </tr>            
-              <tr *ngIf="cartDetails?.OrderTypeId !== 1">
+              <tr *ngIf="cartDetails?.OrderTypeId !== 1 && cartDetails?.ListTipForDriver.length > 0">
                 <td width="25px">
                   <a class="exapand-icon" (click)="isTipExpand = !isTipExpand"><span class="fa" [ngClass]="isTipExpand ? 'fa-minus-circle' : 'fa-plus-circle'"></span></a>
                 </td>

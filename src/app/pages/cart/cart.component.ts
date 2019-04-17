@@ -102,6 +102,7 @@ export class CartComponent implements OnInit {
         // this.spinnerService.hide();
         this.progressBarService.hide();
         this.toastr.success(data.SuccessMessage);
+        this.getCartDetails();
       });
   }
 

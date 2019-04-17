@@ -104,7 +104,7 @@ export class CheckoutProductsComponent implements OnInit {
       return;
     }
 
-    if ((this.cartDetails.PaymentTypeId === 1 || this.cartDetails.PaymentTypeId === 7)  &&
+    if ((this.cartDetails.PaymentTypeId === 1)  &&
       this.paymentService.createTransaction.cvv === 0 || this.paymentService.createTransaction.cvv.toString() === '') {
       this.toastr.error('Please Enter CVV');
       return;
