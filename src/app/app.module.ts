@@ -51,6 +51,7 @@ import { AdvanceFilterComponent } from './pages/products/advance-filter/advance-
 import { CustomerService } from './services/customer.service';
 import { ProductStoreService } from './services/product-store.service';
 import { DataService } from './services/data.service';
+import { DataFilterAllService } from './services/data-filter-all.service';
 import { DecimalPipe } from '@angular/common';
 
 import { CheckoutComponent } from './pages/checkout/checkout.component';
@@ -75,6 +76,7 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { facebookProviderID } from './app-config.service';
 import { OffersComponent } from './pages/home/offers/offers.component';
 import { OfferComponent } from './pages/offer/offer.component';
+import { AdvancedFilterAllComponent } from './pages/products/advanced-filter-all/advanced-filter-all.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -133,7 +135,8 @@ export function getAuthServiceConfigs() {
     MultiStoreComponent,
     ContactUsComponent,
     OfferComponent,
-    OffersComponent
+    OffersComponent,
+    AdvancedFilterAllComponent
   ],
   imports: [
     BrowserModule,
@@ -153,7 +156,7 @@ export function getAuthServiceConfigs() {
     DeviceDetectorModule.forRoot(),
     NgbPaginationModule
   ],
-  providers: [CustomerService, ProductStoreService, DataService, DecimalPipe, AuthService, Title, // HomePageResolver,
+  providers: [CustomerService, ProductStoreService, DataService, DataFilterAllService, DecimalPipe, AuthService, Title, // HomePageResolver,
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs

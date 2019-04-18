@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../../../services/data.service';
+import { DataFilterAllService } from '../../../../services/data-filter-all.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class SearchBarComponent implements OnInit {
   searchText: string;
-  constructor(public dataservice: DataService, private router: Router) { }
+  constructor(public dataservice: DataFilterAllService, private router: Router) { }
 
   ngOnInit() {
   }

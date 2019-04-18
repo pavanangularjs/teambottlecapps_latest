@@ -21,6 +21,7 @@ import { FeatureProductsComponent } from './pages/products/feature-products/feat
 import { EventsComponent } from './pages/products/events/events.component';
 import { PrivacyPolicyComponent } from './pages/home/privacy-policy/privacy-policy.component';
 import { TermsAndConditionsComponent } from './pages/home/terms-and-conditions/terms-and-conditions.component';
+import { AdvancedFilterAllComponent } from './pages/products/advanced-filter-all/advanced-filter-all.component';
 // import { HomePageResolver } from './pages/home/homepage/homepage.resolver';
 
 import { AuthGuard } from './auth.guard';
@@ -43,7 +44,7 @@ const routes: Routes = [
   { path: 'product-details/:id', component: ProductDetailsComponent, canActivate: [GeneralGuard] },
   { path: 'event-details/:id', component: EventDetailsComponent, runGuardsAndResolvers: 'always', canActivate: [GeneralGuard] },
   { path: 'myaccount', loadChildren: './pages/myaccount/myaccount.module#MyAccountModule', canActivate: [AuthGuard] },
-  { path: 'advance-filter', component: AdvanceFilterComponent, runGuardsAndResolvers: 'always' , canActivate: [GeneralGuard] },
+  { path: 'advance-filter', component: AdvancedFilterAllComponent, runGuardsAndResolvers: 'always' , canActivate: [GeneralGuard] },
   { path: 'beer', component: AdvanceFilterComponent, runGuardsAndResolvers: 'always', canActivate: [GeneralGuard] },
   { path: 'liquor', component: AdvanceFilterComponent, runGuardsAndResolvers: 'always' , canActivate: [GeneralGuard]},
   { path: 'wine', component: AdvanceFilterComponent, runGuardsAndResolvers: 'always', canActivate: [GeneralGuard] },
