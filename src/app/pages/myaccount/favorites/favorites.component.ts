@@ -95,7 +95,7 @@ export class FavoritesComponent implements OnInit {
   removeFromCart(item: any) {
     // this.spinnerService.show();
     this.progressBarService.show();
-    this.cartService.removeFromCart(item.PID).subscribe(
+    this.cartService.removeFromCart(item).subscribe(
       (data: any) => {
         item.InCart = 0;
         // this.spinnerService.hide();

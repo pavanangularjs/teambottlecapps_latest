@@ -8,6 +8,7 @@ import { ProductStoreService } from '../../../services/product-store.service';
 import { ProductStoreSelectors } from '../../../state/product-store/product-store.selector';
 // import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { ProgressBarService } from '../../../shared/services/progress-bar.service';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-feature-products',
@@ -30,7 +31,8 @@ export class FeatureProductsComponent implements OnInit {
     private productStoreService: ProductStoreService,
     // private spinnerService: Ng4LoadingSpinnerService,
     private router: Router,
-    private progressBarService: ProgressBarService) {
+    private progressBarService: ProgressBarService,
+    private cartService: CartService) {
 
       this.store.select(ProductStoreSelectors.productStoreStateData)
       .subscribe(pssd => {
@@ -78,7 +80,9 @@ export class FeatureProductsComponent implements OnInit {
   }
 
   getProductsList() {
-    if ((this.router.url === '/home' || this.router.url.startsWith('/home')) && !this.productStoreService.isFavoritesUpdated) {
+    if (
+      (this.router.url === '/home' || this.router.url.startsWith('/home')) &&
+      (!this.productStoreService.isFavoritesUpdated && !this.cartService.isItemRemovedFromCart)) {
       this.productsList = this.storeGetHomeData ? this.storeGetHomeData.HomeList : [];
     } else {
       this.productStoreService.isFavoritesUpdated = false;

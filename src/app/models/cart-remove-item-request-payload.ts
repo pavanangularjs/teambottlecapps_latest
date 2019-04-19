@@ -6,5 +6,8 @@ export class CartRemoveItemRequestPayload {
     SessionId: string;
     AppId: number;
     PID: number;
+    CartItemId: number;
+    DealId: number;
+    Quantity: number;
     CartId: number;
 }

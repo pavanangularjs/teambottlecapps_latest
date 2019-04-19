@@ -25,6 +25,7 @@ export class CartService {
   cartItemCount = new Subject<number>();
   cartUpdated = new Subject<any>();
   userRemarks: string;
+  isItemRemovedFromCart = false;
 
 
   constructor(private http: HttpClient,
@@ -73,11 +74,12 @@ export class CartService {
     };
   }
 
-  removeFromCart(pid: number): Observable<any> {
+  removeFromCart(item: any): Observable<any> {
     return this.http.post<any>(baseUrl + UrlNames.CartRemoveItem,
-      this.getRemoveFromCartRequestParams(pid), { headers: this.headers }).pipe(
+      this.getRemoveFromCartRequestParams(item), { headers: this.headers }).pipe(
         switchMap((res: any) => {
           this.cartItemCount.next(res.CartItemCount);
+          this.isItemRemovedFromCart = true;
           return of(res);
         }),
         catchError((error: any, caught: Observable<any>) => {
@@ -86,7 +88,7 @@ export class CartService {
       );
   }
 
-  private getRemoveFromCartRequestParams(pid: number): CartRemoveItemRequestPayload {
+  private getRemoveFromCartRequestParams(item: any): CartRemoveItemRequestPayload {
     if (!this.customerSession) {
       return null;
     }
@@ -96,7 +98,10 @@ export class CartService {
       SessionId: this.customerSession.SessionId,
       UserId: this.customerSession.UserId,
       AppId: this.customerSession.AppId,
-      PID: pid,
+      PID: item.PID,
+      CartItemId: item.CartItemId,
+      DealId: item.DealId,
+      Quantity: item.Quantity,
       CartId: this.cartId,
       DeviceId: this.customerSession.DeviceId,
       DeviceType: this.customerSession.DeviceType
@@ -128,7 +133,8 @@ export class CartService {
       AppId: this.customerSession.AppId,
       CartId: this.cartId,
       DeviceId: this.customerSession.DeviceId,
-      DeviceType: this.customerSession.DeviceType
+      DeviceType: this.customerSession.DeviceType,
+      IsCredentialOff: true
     };
   }
 

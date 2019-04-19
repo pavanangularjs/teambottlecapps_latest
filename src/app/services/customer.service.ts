@@ -52,6 +52,7 @@ export class CustomerService {
     return this.http.post<any>(baseUrl + UrlNames.LoginCustomer, reqParams, { headers: this.headers }).pipe(
       switchMap((res: any) => {
         this.profileDetails = null;
+        this.customerPaymentMethodGetList = null;
         if ((res.ErrorDetail && res.ErrorDetail !== '') || (res.ErrorMessage && res.ErrorMessage !== '')) {
           this.toastr.error(res.ErrorDetail);
           this.progressBarService.hide();

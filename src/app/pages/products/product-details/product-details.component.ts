@@ -154,7 +154,7 @@ export class ProductDetailsComponent implements OnInit {
       this.productDetails.Product.PID) {
 
       this.progressBarService.show();
-      this.cartService.removeFromCart(this.productDetails.Product.PID).subscribe(
+      this.cartService.removeFromCart(this.productDetails.Product).subscribe(
         (data: any) => {
           this.progressBarService.hide();
           this.toastr.success(data.SuccessMessage);

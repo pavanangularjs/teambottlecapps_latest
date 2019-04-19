@@ -6,4 +6,5 @@ export class CartGetDetailsRequestPayload {
     SessionId: string;
     AppId: number;
     CartId: number;
+    IsCredentialOff: boolean;
 }
