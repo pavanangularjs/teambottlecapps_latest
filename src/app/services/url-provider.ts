@@ -40,5 +40,6 @@ export enum UrlNames {
     VantivGetQueryDetails = 'Customer/VantivGetQueryDetails',
     VantivAddCard = 'Customer/VantivAddCard',
     VantivCardPayment = 'Customer/VantivCardPayment',
-    VantivCardReversal = 'Customer/VantivCardReversal'
+    VantivCardReversal = 'Customer/VantivCardReversal',
+    StoreContactUs = 'Store/StoreContactUs'
 }
