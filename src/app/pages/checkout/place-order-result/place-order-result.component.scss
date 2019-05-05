@@ -1,8 +1,9 @@
 @import "~src/variable.scss";
 
 .success-failed-order-section {
-    margin: 0px auto 15px auto;
+    margin: 15% auto 10% auto;
     display: block;
+    text-align: center;
     .order-details-section {
         h2 {
             font-family: $poppins-bold;

@@ -371,7 +371,7 @@ select.select-quant {
 /*Emty Cart UI*/
 .empty-cart {
     min-height: 350px;
-    padding: 15px;
+    padding: 10% 15px;
     display: flex;
     h3 {
         font-family: $poppins-regular;
@@ -390,7 +390,7 @@ select.select-quant {
         color: #fff;
         text-align: center;
         font-weight: bold;
-        float: right;
+        float: left;
         margin: 35px 0px 0px 0px;
         min-width: 290px;
         font-family: $poppins-bold;

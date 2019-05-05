@@ -162,17 +162,16 @@ text-transform: uppercase;
 .selectsize {
     border: 1px solid transparent;
     font-size: 15px;
-    padding: 0px;
+    padding: 0 0 0 3px;
     margin: 0px 0px;
     margin-left: 0px;
-    width: 88%;
     border-radius: 0px !important;
     outline: none;
     background: transparent;
     font-family: montserratregular;
     box-shadow: none;
-    margin-left: 10px;
 }
+.selectsize:focus{ border: none !important; outline: none;}
 
 .size .select-bg {
     background-color: #fff;
@@ -182,7 +181,7 @@ text-transform: uppercase;
     color: #999;
     font-weight: normal;
     width: 120px;
-    padding: 5px 10px 5px 0px;
+    padding: 5px 0px 5px 0px;
     float: left;
 }
 

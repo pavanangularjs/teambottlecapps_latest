@@ -52,7 +52,7 @@ table tr td .img_div img{
 }
 table tr td .total_price{
     font-family: $poppins-bold;
-    font-size: 24px;
+    font-size: 1.4em !important;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
@@ -229,7 +229,8 @@ table tr td.width_20{
 .border_bottom table tr{
     cursor: pointer;
 }
-
+.bottom-border{ border-bottom: 1px solid #d7d7d7;}
+td.width50{width:50%;}
 @media screen and (min-width:320px) and (max-width:767px){
 
 .margin_top_25 .date_time,.order_total h4,.border_bottom .delevary_color,.border1_bottom .deleverd_color,.float_right .breadcrumb li.code a {
@@ -254,9 +255,9 @@ table tr td .img_div {
     height: 80px;
 }
 table tr td h4,table tr td h5,table tr td span,table tr td .total_price{
-    font-size: 10px;
+    font-size: 1.4em !important;
 }
-
+.mtop15{ margin-top: 15px;}
 
 }
 
@@ -373,8 +374,8 @@ table tr td h4,table tr td h5,table tr td span,table tr td .total_price{
             width: auto !important;
             font-family: $poppins-regular;
             .status-img {
-                width: 25px;
-                margin: 0px;
+                width: 17px;
+                margin: -5px 0 0 0;
                 padding: 0px;
             }
         }
@@ -399,7 +400,7 @@ table tr td h4,table tr td h5,table tr td span,table tr td .total_price{
 
 .text-muted {
     font-family: $poppins-regular;
-    font-size: 13px;
+    font-size: 1.4em !important;
 }
 
 .no-border {
@@ -447,6 +448,7 @@ button.dec_circle.toggle {
         h5.summary {
             text-transform: uppercase;
         }
+        .mtop15{ margin-top: 15px;}
     }
 }
 
@@ -472,6 +474,7 @@ button.dec_circle.toggle {
         h5.summary {
             text-transform: uppercase;
         }
+        .mtop15{ margin-top: 15px;}
     }
 }
 
@@ -496,7 +499,7 @@ button.dec_circle.toggle {
 
     span.total_price {
         font-family: poppinsbold;
-        font-size: 18px;
+        font-size: 1.4em !important;
         font-stretch: normal;
         line-height: normal;
         letter-spacing: 0.5px;
@@ -520,7 +523,7 @@ button.dec_circle.toggle {
                 font-family: $poppins-regular;
                 .status-img {
                     width: 17px;
-                    margin: 0px;
+                    margin: -5px 0 0 0;
                     padding: 0px;
                 }
             }
@@ -562,6 +565,7 @@ button.dec_circle.toggle {
         h5.summary {
             text-transform: uppercase;
         }
+        .bottom-border{ border-bottom: 1px solid #d7d7d7 !important; }
     }
 
     button.dec_circle.toggle {
