@@ -31,6 +31,7 @@ export class AppConfigService {
   offer = 'false';
   downloadapp = 'true';
   partners = 'false';
+  showEventsInCaurosel = true;
 
   deviceID = '';
   storeID = 10010;

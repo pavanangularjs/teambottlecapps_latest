@@ -23,6 +23,7 @@ export class HomepageComponent implements OnInit {
   customerSession: CustomerLoginSession;
   storeGetHomeData: any;
   returnUrl: string;
+  eventsList: any;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -41,6 +42,12 @@ export class HomepageComponent implements OnInit {
       .subscribe(pssd => {
         if (pssd) {
           this.storeGetHomeData = pssd;
+
+          this.eventsList = [];
+          if (pssd.EventList && this.appConfig.showEventsInCaurosel) {
+            this.eventsList = pssd.EventList;
+          }
+
           this.titleService.setTitle(this.storeGetHomeData.StoreName);
           this.updateCartId();
           if (this.returnUrl && this.returnUrl !== '/' && this.returnUrl !== '/home') {
