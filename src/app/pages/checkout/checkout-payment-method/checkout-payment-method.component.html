@@ -35,17 +35,18 @@
             <thead>
               <th></th>
               <th>Your Saved Card</th>
+              <th></th>
               <th style="border-left: solid 2px #fff;">Expires On</th>
             </thead>
             <tbody *ngIf="paymentProfiles?.length > 0">
               <tr *ngFor="let paymentProfile of paymentProfiles; index as i"
                 (click)="updateSelectedPayment(paymentProfile); selectedCard=i">
-                <td>
+                <td width="2%">
                   <div class="check-icon-payment-container">
                       <span [ngClass]="(selectedCard === i)?'fa fa-check-circle checkout-icon-style':'fa fa-circle-o'"></span>
                   </div>
                 </td>
-                <td>
+                <td width="50%">
                   <div class="td-para">
                     <img *ngIf="paymentProfile?.payment?.creditCard?.cardType === 'Discover'" alt="Discover"
                       title="Discover" src="../../assets/Images/discover_logo_.gif" width="57" height="36" border="0" />
@@ -58,13 +59,19 @@
                       title="Amex" src="../../assets/Images/american_express_logo_.gif" width="43" height="36"
                       border="0" />
                     {{paymentProfile?.payment?.creditCard?.cardNumber}}
-                    <div *ngIf="selectedCard===i" class="pull-right enter-cvv">
-                      <span>CVV: </span> <input type="password" name="cvv" [(ngModel)]="cardCVV" (keyup)="saveCVV()"
-                        class="text-cvv form-control">
+                    
+                  </div>
+                  
+                </td>
+                <td width="20%">
+                  <div *ngIf="selectedCard===i" class="enter-cvv">
+                    <div class="form-group-inline">
+                      <label>CVV: </label>
+                      <input type="password" name="cvv" [(ngModel)]="cardCVV" (keyup)="saveCVV()" class="text-cvv form-control">
                     </div>
                   </div>
                 </td>
-                <td>{{paymentProfile?.payment?.creditCard?.expirationDate}}</td>
+                <td width="28%">{{paymentProfile?.payment?.creditCard?.expirationDate}}</td>
               </tr>
             </tbody>
             <tbody *ngIf="paymentProfilesForVantiv?.length > 0">
@@ -75,7 +82,7 @@
                     <span [ngClass]="(selectedCard === i)?'fa fa-check-circle checkout-icon-style':'fa fa-circle-o'"></span>
                   </div>
                 </td>
-                <td width="70%">
+                <td width="50%">
                   <!-- <div class="check-icon-payment-container">
                     
                   </div> -->
@@ -95,6 +102,7 @@
                     {{paymentProfile?.TruncatedCardNumber}}
                   </div>
                 </td>
+                <td width="20%"></td>
                 <td width="28%">
                   <span *ngIf="paymentProfile?.ExpirationMonth && paymentProfile?.ExpirationYear">
                     {{paymentProfile?.ExpirationMonth}}/{{paymentProfile?.ExpirationYear}}

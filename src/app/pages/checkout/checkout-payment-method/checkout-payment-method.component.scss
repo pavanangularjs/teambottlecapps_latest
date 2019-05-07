@@ -93,13 +93,13 @@
     }
     vertical-align: middle;
     input.text-cvv {
-      width: 100px;
+      width: 60%;
       /* padding: 5px; */
       margin-top: 10px;
-      left: 55px;
+      left: 9px;
       position: relative;
       /* float: left; */
-      top: -29px;
+      top: -9px;
     }
   }
   a.new-payment-mode {
@@ -167,13 +167,19 @@
 
 @media only screen and (max-width: 1024px) {
   .enter-cvv {
-      margin-top: 15px;
-      float: left !important;
-      position: relative;
-      left: -30px;
+      width: 100px;
       span {
         position: relative;
         top: 10px;
       }
+  }
+}
+.enter-cvv{ 
+  display: inline-flex;
+  label{ 
+    display: inline; 
+    float: left; 
+    margin-right: 5px; 
+    margin-top: 7px;
   }
 }

@@ -203,8 +203,8 @@ button.dec_circle,button.dec_circle:focus{
     text-align: left;  
 }
 table.text_left tr td{
-    font-size: 11px;
-    font-weight: 600;
+    font-size: 0.95em !important;
+    // font-weight: 600;
     padding-bottom: 0px;
 }
 .bill_summary h5.summary{
@@ -283,9 +283,9 @@ table tr td h4,table tr td h5,table tr td span,table tr td .total_price{
 }*/
 
 .order-summary-expand {
-    width: 60%;
+    width: 78%;
     td.text-right {
-        font-size: 14px !important;
+        font-size: 0.97em !important;
         font-family: $poppins-regular !important;
         color: #222;
     }
@@ -309,6 +309,7 @@ table tr td h4,table tr td h5,table tr td span,table tr td .total_price{
             font-size: 11px;
             font-family: $poppins-regular;
             color: #333;
+            white-space: nowrap;
         }
         h5.summary {
             text-transform: uppercase;
@@ -317,7 +318,7 @@ table tr td h4,table tr td h5,table tr td span,table tr td .total_price{
 
 .tfoot-order-summary {
     border-top: solid 1px #ccc;
-    padding: 3px 20px 0px 20px;
+    padding: 3px 20px 20px 20px;
     display: inline-block;
     margin-top: -1px;
     width: 100%;
