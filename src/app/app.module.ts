@@ -77,6 +77,7 @@ import { facebookProviderID } from './app-config.service';
 import { OffersComponent } from './pages/home/offers/offers.component';
 import { OfferComponent } from './pages/offer/offer.component';
 import { AdvancedFilterAllComponent } from './pages/products/advanced-filter-all/advanced-filter-all.component';
+import { PhoneMaskDirective } from './shared/directives/phone-mask.directive';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -136,7 +137,8 @@ export function getAuthServiceConfigs() {
     ContactUsComponent,
     OfferComponent,
     OffersComponent,
-    AdvancedFilterAllComponent
+    AdvancedFilterAllComponent,
+    PhoneMaskDirective
   ],
   imports: [
     BrowserModule,
@@ -156,6 +158,7 @@ export function getAuthServiceConfigs() {
     DeviceDetectorModule.forRoot(),
     NgbPaginationModule
   ],
+  exports: [PhoneMaskDirective],
   providers: [CustomerService, ProductStoreService, DataService, DataFilterAllService, DecimalPipe, AuthService, Title, // HomePageResolver,
     {
       provide: AuthServiceConfig,

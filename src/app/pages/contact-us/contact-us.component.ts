@@ -39,10 +39,10 @@ export class ContactUsComponent implements OnInit {
 
   ngOnInit() {
     this.formContactUs = this.formBuilder.group({
-      name: ['', []],
-      email: ['', [Validators.required, Validators.email]],
+      name: ['', [Validators.required, Validators.maxLength(40)]],
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(40)]],
       phone: ['', [Validators.required]],
-      subject: ['', []],
+      subject: ['Website - Contact Us', [Validators.required, Validators.maxLength(1000)]],
       message: ['', []]
     });
   }
@@ -77,11 +77,17 @@ export class ContactUsComponent implements OnInit {
       StoreId: 0, SessionId: '', UserId: 0, AppId: 0, DeviceId: '', DeviceType: ''
     };
 
+    // contactUsRequestPayload.Phone.replace(/[()-]/g, '').substring(0,10)
+    if (contactUsRequestPayload.Phone.length > 14) {
+      contactUsRequestPayload.Phone = contactUsRequestPayload.Phone.substring(0, 14);
+    }
+
     this.progressBarService.show();
     this.contactUsService.SendContactUsMessage(contactUsRequestPayload).subscribe((res) => {
       if (res && res.SuccessMessage !== '') {
         this.toastr.success(res.SuccessMessage);
         this.formContactUs.reset();
+        this.formContactUs.controls['subject'].setValue('Website - Contact Us');
         this.submitted = false;
       } else {
         this.toastr.error(res.ErrorMessage);

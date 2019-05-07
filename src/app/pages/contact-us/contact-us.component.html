@@ -22,8 +22,12 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label class="text-uppercase">Name</label>
+                <label class="text-uppercase">Name  <span>*</span></label>
                 <input type="text" formControlName="name" class="form-control">
+                <div *ngIf="submitted && f.name.errors" class="alert alert-danger">
+                  <div *ngIf="f.name.errors.required">Name is required.</div>
+                  <div *ngIf="f.name.errors.maxlength">Name should not be more than 40 characters</div>
+                </div>
               </div>
             </div>
             <div class="col-md-6">
@@ -33,6 +37,7 @@
                   <div *ngIf="submitted && f.email.errors" class="alert alert-danger">
                     <div *ngIf="f.email.errors.required">E-Mail is required.</div>
                     <div *ngIf="f.email.errors.email">E-Mail must be a valid email address</div>
+                    <div *ngIf="f.email.errors.maxlength">E-Mail should not be more than 40 characters</div>
                   </div>
               </div>
             </div>
@@ -41,7 +46,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="text-uppercase">Phone <span>*</span> </label>
-                  <input type="text" formControlName="phone" class="form-control">
+                  <input type="text" formControlName="phone" appPhoneMask class="form-control" id="phone-number">
                   <div *ngIf="submitted && f.email.errors" class="alert alert-danger">
                     <div *ngIf="f.phone.errors.required">Phone is required.</div>
                   </div>
@@ -49,8 +54,12 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label class="text-uppercase">Subject</label>
+                <label class="text-uppercase">Subject  <span>*</span></label>
                 <input type="textarea" formControlName="subject" class="form-control">
+                <div *ngIf="submitted && f.subject.errors" class="alert alert-danger">
+                  <div *ngIf="f.subject.errors.required">Subject is required.</div>
+                  <div *ngIf="f.subject.errors.maxlength">Subject should not be more than 1000 characters</div>
+                </div>
               </div>
             </div>
           </div>
@@ -66,7 +75,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                <button type="submit" class="btn btn-brand contact">Continue</button>
+                <button type="submit" class="btn btn-brand contact">Send</button>
               </div>
             </div>
           </div>
