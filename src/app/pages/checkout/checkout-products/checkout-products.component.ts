@@ -35,6 +35,7 @@ export class CheckoutProductsComponent implements OnInit {
     private store: Store<CustomerLoginSession>) {
       this.cartService.cartUpdated.subscribe(() => {
         this.cartDetails = this.cartService.cartdetails;
+        this.filterCartDetails();
       });
      }
 
