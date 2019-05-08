@@ -29,8 +29,6 @@ export class CheckoutDeliveryComponent implements OnInit {
   ngOnInit() {
     this.cartDetails = this.cartService.cartdetails;
     if (this.cartDetails) {
-      this.selectedDeliveryDate = this.cartDetails.DoPDate;
-      this.selectedDeliveryTime = this.cartDetails.DoPTimeSlot;
       this.getDeliveryDates();
       this.getDeliveryTimings();
     }
@@ -45,16 +43,33 @@ export class CheckoutDeliveryComponent implements OnInit {
           this.deliveryDatesList.push(slot.DoPDate);
         }
       });
+
+      if (this.cartDetails.DoPDate !== '') {
+        this.cartDetails.DoPDate = new Date (this.cartDetails.DoPDate).toLocaleDateString();
+      }
+
+      if (this.deliveryDatesList.indexOf(this.cartDetails.DoPDate) >= 0) {
+        this.selectedDeliveryDate = this.cartDetails.DoPDate;
+      } else {
+        this.selectedDeliveryDate = this.deliveryDatesList[0];
+      }
+      this.getDeliveryTimings();
     }
   }
 
   getDeliveryTimings() {
     this.cartService.cartdetails.DoPDate = this.selectedDeliveryDate;
-    this.updateCart();
     this.deliveryTimingsList = [];
     if (this.cartDetails && this.cartDetails.ListDoPTimeSlot) {
       this.deliveryTimingsList = this.cartDetails.ListDoPTimeSlot.filter(slot => slot.DoPDate === this.selectedDeliveryDate)
       .map(item => item.DoPSlot);
+    }
+
+    if (this.deliveryTimingsList.indexOf(this.cartDetails.DoPTimeSlot) >= 0) {
+      this.selectedDeliveryTime = this.cartDetails.DoPTimeSlot;
+    } else {
+      this.selectedDeliveryTime = this.deliveryTimingsList[0];
+      this.updateDeliveryTime();
     }
   }
 
