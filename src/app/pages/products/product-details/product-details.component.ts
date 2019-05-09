@@ -34,6 +34,8 @@ export class ProductDetailsComponent implements OnInit {
   review: any;
   quantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
   rating = 0;
+  moreReviews: any;
+
 
   constructor(private route: ActivatedRoute,
     private store: Store<ProductGetDetailsRequestPayload>,
@@ -58,6 +60,10 @@ export class ProductDetailsComponent implements OnInit {
           if (pgdd && pgdd.UserReview && pgdd.UserReview.ReviewId !== 0) {
             this.userReviews = [...this.userReviews, ...pgdd.UserReview];
           }
+
+          /* if (pgdd.ReviewTotalCount > 2) {
+            this.getMoreReviews();
+          } */
         }
 
         if (this.productDetails.Product  && this.productDetails.Product.InCart > 0) {
@@ -95,6 +101,24 @@ export class ProductDetailsComponent implements OnInit {
     if (productId) {
       this.store.dispatch(new ProductGetDetails(this.productStoreService.getProductGetDetailsParams(productId)));
     }
+  }
+
+  getMoreReviews() {
+    if (this.moreReviews) {
+      return;
+    }
+
+    if (this.productDetails.ReviewTotalCount <= 2) {
+      return;
+    }
+
+    this.progressBarService.show();
+      this.productStoreService.getReviewList(this.productDetails.Product.PID, 1).subscribe(
+        (data: any) => {
+          this.progressBarService.hide();
+          this.moreReviews = data.ListReview;
+          this.userReviews = [...data.ListReview];
+        });
   }
 
   onEdit(review: any) {

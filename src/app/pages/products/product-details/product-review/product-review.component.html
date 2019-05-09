@@ -7,9 +7,9 @@
 
           <div class="user-review-content">
               <div class="name_date">
-                <span class="title">{{review?.UserName}}</span> - <small class="text-muted"> {{review?.Reviewdate}}</small>
+                <span class="title">{{review?.UserName}}</span> - <small class="text-muted"> {{review?.TimePeriod}}</small>
               </div> 
-              <div *ngIf="review?.UserId" class="review-edit" (click)="onEdit()"><span class="fa fa-pencil edit-icon"></span></div>
+              <div *ngIf="review?.UserId === currentUserId" class="review-edit" (click)="onEdit()"><span class="fa fa-pencil edit-icon"></span></div>
               <div class="star_right rating-stars">
                   <app-rating [rate]="review?.ReviewRating"></app-rating>
               </div>

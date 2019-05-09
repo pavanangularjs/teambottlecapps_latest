@@ -14,6 +14,7 @@ import { EventGetDetailsRequestPayload } from '../models/event-get-details-reque
 import { FavoriteProductUpdateRequestPayload } from '../models/favorite-product-update-payload';
 import { AddProductReview } from '../models/add-product-review';
 import { UpdateProductReview } from '../models/update-product-review';
+import { ReviewList } from '../models/review-list';
 import { ErrorHandlerService } from '../shared/services/error-handler.service';
 import { BaseRequest } from '../models/base-request';
 import { CartService } from '../services/cart.service';
@@ -169,6 +170,36 @@ export class ProductStoreService {
             PID: pid
         };
     }
+
+    getReviewList(pid: number, pageNumber: number): Observable<any> {
+        return this.http.post<any>(baseUrl + UrlNames.ReviewGetList,
+            this.getReviewListParams(pid, pageNumber), { headers: this.headers }).pipe(
+            switchMap((res: any) => {
+                return of(res);
+            }),
+            catchError((error: any, caught: Observable<any>) => {
+                return this.errorHandler.processError(error);
+            })
+        );
+    }
+
+    getReviewListParams(pid: number, pageNumber: number): ReviewList {
+        if (!this.customerSession) {
+            return null;
+        }
+        return {
+            StoreId: this.customerSession.StoreId,
+            UserId: this.customerSession.UserId,
+            SessionId: this.customerSession.SessionId,
+            AppId: this.customerSession.AppId,
+            DeviceId: this.customerSession.DeviceId,
+            DeviceType: this.customerSession.DeviceType,
+            PageSize: 10,
+            PageNumber: pageNumber,
+            PID: pid,
+        };
+    }
+
 
     eventGetDetails(reqParams: EventGetDetailsRequestPayload): Observable<any> {
         return this.http.post<any>(baseUrl + UrlNames.EventGetDetails, reqParams, { headers: this.headers }).pipe(

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { CustomerService } from '../../../../services/customer.service';
 
 @Component({
   selector: 'app-product-review',
@@ -8,9 +9,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ProductReviewComponent implements OnInit {
   @Input() review: any;
   @Output() edit = new EventEmitter<any>();
-  constructor() { }
+
+  currentUserId: number;
+  constructor(private customerService: CustomerService) { }
 
   ngOnInit() {
+    if (this.customerService.customerSession) {
+      this.currentUserId = this.customerService.customerSession.UserId;
+    }
   }
 
   getCount(n: number): any[] {

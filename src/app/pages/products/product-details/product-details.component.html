@@ -175,7 +175,7 @@
                             <app-product-review [review]="review" (edit)="onEdit($event)" *ngFor="let review of userReviews | slice:1">
                             </app-product-review>
                         </div>
-                        <a href="#demo" onclick="rotateFunction()" class="more-reviews fa fa-angle-down arotate" data-toggle="collapse"
+                        <a href="#demo" onclick="rotateFunction()" (click)="getMoreReviews()" class="more-reviews fa fa-angle-down arotate" data-toggle="collapse"
                             id="rotate"> </a>
                     </div>
                 </div>
