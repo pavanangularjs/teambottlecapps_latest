@@ -47,6 +47,7 @@ import { EventDetailsComponent } from './pages/products/event-details/event-deta
 import { MyOrdersComponent } from './pages/myaccount/myorders/myorders.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { AdvanceFilterComponent } from './pages/products/advance-filter/advance-filter.component';
+import { PopupComponent } from './pages/home/popup/popup.component';
 
 import { CustomerService } from './services/customer.service';
 import { ProductStoreService } from './services/product-store.service';
@@ -138,7 +139,8 @@ export function getAuthServiceConfigs() {
     OfferComponent,
     OffersComponent,
     AdvancedFilterAllComponent,
-    PhoneMaskDirective
+    PhoneMaskDirective,
+    PopupComponent
   ],
   imports: [
     BrowserModule,

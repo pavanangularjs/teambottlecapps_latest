@@ -21,8 +21,13 @@ export class MultiStoreComponent implements OnChanges {
   }
 
   onStoreSelect(storeId: number) {
-    this.storeChange.emit(storeId);
+    this.currentStore = storeId;
   }
+
+  onStoreSelectConfirm() {
+    this.storeChange.emit(this.currentStore);
+  }
+
 
   filterBySearchText() {
     if (this.stores && !this.tempStores) {
@@ -37,7 +42,8 @@ export class MultiStoreComponent implements OnChanges {
           'State': obj.State,
           'ContactNo': obj.ContactNo,
           'StoreName': obj.StoreName,
-          'Zip': obj.Zip
+          'Zip': obj.Zip,
+          'StoreImage': obj.StoreImage
         };
         return rObj;
       });
