@@ -17,10 +17,12 @@ import { CommonService } from '../../../shared/services/common.service';
   styleUrls: ['./popup.component.scss']
 })
 export class PopupComponent implements OnInit {
-  @ViewChild('myModalBtn') myModalBtn: ElementRef;
+
   isAgeVerified = false;
   currentStoreId = 0;
   storeList: any;
+  searchText: string;
+  tempStores: any;
 
   constructor(private router: Router,
     private store: Store<CustomerLoginSession>,
@@ -58,7 +60,7 @@ export class PopupComponent implements OnInit {
       this.commonService.onCacheUpdated();
       // this.sessionService.createNewSession();
 
-      this.myModalBtn.nativeElement.click();
+      // this.openModal.nativeElement.click();
     }
   }
 
@@ -92,5 +94,34 @@ export class PopupComponent implements OnInit {
     this.appConfig.storeID = this.currentStoreId;
     this.sessionService.createNewSession();
     this.commonService.onCacheUpdated();
+  }
+
+  filterBySearchText() {
+    if (this.storeList && !this.tempStores) {
+      this.tempStores = this.storeList.map(obj => {
+        const rObj = {
+          'StoreId' : obj.StoreId,
+          'Address1': obj.Address1,
+          'Address2': obj.Address2,
+          'City': obj.City,
+          'Location' : obj.Location,
+          'Phone': obj.Phone,
+          'State': obj.State,
+          'ContactNo': obj.ContactNo,
+          'StoreName': obj.StoreName,
+          'Zip': obj.Zip,
+          'StoreImage': obj.StoreImage
+        };
+        return rObj;
+      });
+    }
+    console.log(this.searchText);
+
+    this.storeList = this.tempStores;
+    this.storeList = this.storeList.filter(item =>
+      Object.keys(item).some(k => item[k] != null &&
+        item[k].toString().toLowerCase()
+          .includes(this.searchText.toLowerCase()))
+    );
   }
 }
