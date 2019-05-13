@@ -36,10 +36,13 @@ export class SessionService {
 
     let demail = sessionStorage.getItem('email');
     let dpass = sessionStorage.getItem('password');
+    const sourceId = localStorage.getItem('sourceId');
 
     if (demail && dpass) {
       demail = CryptoJS.AES.decrypt(demail, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
       dpass = CryptoJS.AES.decrypt(dpass, baseUrl.substr(3)).toString(CryptoJS.enc.Utf8);
+    } else if (demail && sourceId) {
+      this.store.dispatch(new CustomerLogin(this.appConfig.getLoginCustomerParams(demail, '' , 'F', sourceId)));
     } else {
       demail = localStorage.getItem('email');
       dpass = localStorage.getItem('password');

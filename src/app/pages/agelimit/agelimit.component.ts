@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-agelimit',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./agelimit.component.scss']
 })
 export class AgelimitComponent implements OnInit {
+  @Output() ageVerified = new EventEmitter<boolean>();
   sorryPopup = false;
   legalDate: Date;
   constructor() { }
@@ -16,5 +17,6 @@ export class AgelimitComponent implements OnInit {
 
   onAgeVarify() {
     localStorage.setItem('isAgeVerified', 'true');
+    this.ageVerified.emit(true);
   }
 }

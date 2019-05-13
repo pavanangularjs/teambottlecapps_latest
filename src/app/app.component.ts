@@ -3,6 +3,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import SmartBanner from 'smart-app-banner';
 import { SmartBannerInfo } from './app-config.service';
 import { Router, NavigationEnd } from '@angular/router';
+import { CommonService } from './shared/services/common.service';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +13,13 @@ import { Router, NavigationEnd } from '@angular/router';
 export class AppComponent implements OnInit {
   @ViewChild('openModal') openModal: ElementRef;
   title = 'TeamBottlecApps';
-  // template = `<img src='/assets/Images/loading_icon.gif' />`;
   isMobile: boolean;
+  storeId = 0;
+  isAgeVerified = false;
 
-  constructor(private deviceService: DeviceDetectorService, private router: Router) {
+  constructor(private deviceService: DeviceDetectorService,
+    private router: Router,
+    private commonService: CommonService) {
     new SmartBanner({
       daysHidden: 0,   // days to hide banner after close button is clicked (defaults to 15)
       daysReminder: 0, // days to hide banner after "VIEW" button is clicked (defaults to 90)
@@ -37,18 +41,32 @@ export class AppComponent implements OnInit {
         (<any>window).ga('send', 'pageview');
       }
     });
+
+    this.commonService.cacheUpdated.subscribe(() => {
+      this.verifyCache();
+    });
   }
 
   ngOnInit() {
-    /* To Show Mobile Banner */
-    // this.isMobile = this.deviceService.isMobile();
+    this.verifyCache();
+  }
 
-    /* For Mobile WebSite */
-    // this.isMobile = false;
+  verifyCache() {
+    if (localStorage.getItem('storeId')) {
+      this.storeId = +localStorage.getItem('storeId');
+    }
+
+    if (localStorage.getItem('isAgeVerified') === 'true') {
+      this.isAgeVerified = true;
+    }
 
     // !this.isMobile &&
-    if (localStorage.getItem('isAgeVerified') !== 'true') {
-      this.openModal.nativeElement.click();
+      if (
+        !this.isAgeVerified ||
+        !this.storeId ||
+        this.storeId === 0
+      ) {
+        this.openModal.nativeElement.click();
+      }
     }
-  }
 }

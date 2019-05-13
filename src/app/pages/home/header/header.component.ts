@@ -136,7 +136,7 @@ export class HeaderComponent implements OnInit {
         const sList = data.ListStore;
         const fromIndex = sList.findIndex(item => item.StoreId === this.currentStoreId);
 
-        if (fromIndex) {
+        if (fromIndex !== -1)  {
           const element = sList[fromIndex];
           sList.splice(fromIndex, 1);
           sList.splice(0, 0, element);

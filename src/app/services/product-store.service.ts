@@ -37,7 +37,9 @@ export class ProductStoreService {
             .subscribe(clsd => {
                 if (clsd) {
                     this.customerSession = clsd;
-                    this.store.dispatch(new StoreGetHome());
+                    if (this.customerSession.StoreId !== 0) {
+                        this.store.dispatch(new StoreGetHome());
+                    }
                 }
             });
     }

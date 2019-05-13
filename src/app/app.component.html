@@ -1,4 +1,4 @@
-<div> <!--  *ngIf="!isMobile; else mobileView"> -->
+<div *ngIf="storeId !== 0 && isAgeVerified">  <!--  *ngIf="!isMobile; else mobileView"> -->
     <app-header></app-header>
     <router-outlet></router-outlet>
     <app-footer></app-footer>

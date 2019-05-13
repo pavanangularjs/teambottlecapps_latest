@@ -34,7 +34,7 @@ export class AppConfigService {
   showEventsInCaurosel = true;
 
   deviceID = '';
-  storeID = 10010;
+  storeID = 0;
   appID = 10002;
   URL = '';
 
@@ -45,7 +45,9 @@ export class AppConfigService {
   validationMode = '';
 
   constructor(private angularFireMessaging: AngularFireMessaging) {
-
+    if (localStorage.getItem('storeId') && localStorage.getItem('storeId') !== '0') {
+      this.storeID = +localStorage.getItem('storeId');
+    }
   }
 
   getLoginCustomerParams(email?: string, pwd?: string, loginType?: string, sourceId?: string) {
