@@ -98,7 +98,13 @@ export class FilterMenuComponent implements OnChanges {
     this.dataservice.categoryId = this.filters.CategoryId;
     this.dataservice.filtersAllData = this.allFilters;
     this.dataservice.allVarietals = this.allVarietals;
-    this.router.navigate(['/advance-filter']);
+
+
+    let catName = this.filters.CategoryName;
+    if (catName === 'Mixers & More') {
+      catName = 'mixers-more';
+    }
+    this.router.navigate([`/${catName.toLowerCase()}`]);
   }
 
   clearAll() {
