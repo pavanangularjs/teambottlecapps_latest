@@ -12,8 +12,8 @@
                     <label class="text-uppercase">First Name <span>*</span>
                       <input type="name" formControlName="aFirstName" class="form-control" placeholder="">
                       <div *ngIf="submitted && f.aFirstName.errors" class="alert alert-danger">
-                        <div *ngIf="f.aFirstName.errors.required">FirstName is required.</div>
-                        <div *ngIf="f.aFirstName.errors.minlength">FirstName should be at least 2 characters</div>
+                        <div *ngIf="f.aFirstName.errors.required">First Name is required.</div>
+                        <div *ngIf="f.aFirstName.errors.minlength">First Name should be at least 2 characters</div>
                       </div>
                     </label>
                   </div>
@@ -22,6 +22,10 @@
                   <div class="form-group">
                     <label class="text-uppercase">Last Name <span>*</span>
                       <input type="name" formControlName="aLastName" class="form-control" placeholder="">
+                      <div *ngIf="submitted && f.aLastName.errors" class="alert alert-danger">
+                        <div *ngIf="f.aLastName.errors.required">Last Name is required.</div>
+                        <div *ngIf="f.aLastName.errors.minlength">Last Name should be at least 2 characters</div>
+                      </div>
                     </label>
                   </div>
                 </div>

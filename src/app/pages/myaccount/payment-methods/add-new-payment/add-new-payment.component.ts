@@ -173,13 +173,21 @@ export class AddNewPaymentComponent implements OnInit {
 
     return false;
   }
+  
+  numericOnly(event): boolean {
+    const patt = /^([0-9])$/;
+    const result = patt.test(event.key);
+    return result;
+  }
+
+  get f() { return this.formAddNewPayment.controls; }
 
   onSaveCard() {
     this.submitted = true;
 
     // stop here if form is invalid
     if (this.formAddNewPayment.invalid) {
-      this.toastr.error('Please enter valid data');
+      // this.toastr.error('Please enter valid data');
       return;
     }
 

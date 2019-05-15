@@ -36,7 +36,12 @@
                     <div class="form-group">
                       <label class="text-uppercase">Card Number <span>*</span>
                         <input type="text" formControlName="sixteenDigitNumber" (keyup)="showCardType(formAddNewPayment.controls['sixteenDigitNumber'].valid)"
-                          class="form-control" placeholder="">
+                          class="form-control" placeholder="" (keypress)="numericOnly($event)">
+                        <div *ngIf="submitted && f.sixteenDigitNumber.errors" class="alert alert-danger">
+                          <div *ngIf="f.sixteenDigitNumber.errors.required">Card Number is required.</div>
+                          <div *ngIf="f.sixteenDigitNumber.errors.maxlength">Card Number should not be more than 16 digits</div>
+                          <div *ngIf="f.sixteenDigitNumber.errors.minlength">Invalid Card Number</div>
+                        </div>
                       </label>
                     </div>
                   </div>
@@ -49,11 +54,17 @@
                             <select class="selectsize form-control" formControlName="expiryMonth">
                               <option *ngFor="let month of months">{{month}}</option>
                             </select>
+                            <div *ngIf="submitted && f.expiryMonth.errors" class="alert alert-danger">
+                              <div *ngIf="f.expiryMonth.errors.required">Expiry Month is required.</div>
+                            </div>
                           </div>
                           <div class="col-xs-6">
                             <select class="selectsize form-control" formControlName="expiryYear">
                               <option *ngFor="let year of years">{{year}}</option>
                             </select>
+                            <div *ngIf="submitted && f.expiryYear.errors" class="alert alert-danger">
+                              <div *ngIf="f.expiryYear.errors.required">Expiry Year is required.</div>
+                            </div>
                           </div>
                         </div>
                       </label>
@@ -70,6 +81,10 @@
                     <div class="form-group">
                       <label class="text-uppercase">First Name <span>*</span>
                         <input type="text" formControlName="firstName" class="form-control" placeholder="">
+                        <div *ngIf="submitted && f.firstName.errors" class="alert alert-danger">
+                          <div *ngIf="f.firstName.errors.required">First Name is required.</div>
+                          <div *ngIf="f.firstName.errors.minlength">First Name should be at least 2 characters</div>
+                        </div>
                       </label>
                     </div>
                   </div>
@@ -77,6 +92,10 @@
                     <div class="form-group">
                       <label class="text-uppercase">Last Name
                         <input type="text" formControlName="lastName" class="form-control" placeholder="">
+                        <div *ngIf="submitted && f.lastName.errors" class="alert alert-danger">
+                          <div *ngIf="f.lastName.errors.required">Last Name is required.</div>
+                          <div *ngIf="f.lastName.errors.minlength">Last Name should be at least 2 characters</div>
+                        </div>
                       </label>
                     </div>
                   </div>
@@ -86,6 +105,9 @@
                     <div class="form-group">
                       <label class="text-uppercase">Address<span>*</span>
                         <input type="text" formControlName="address" class="form-control" placeholder="">
+                        <div *ngIf="submitted && f.address.errors" class="alert alert-danger">
+                          <div *ngIf="f.address.errors.required">Address is required.</div>
+                        </div>
                       </label>
                     </div>
                   </div>
@@ -93,6 +115,9 @@
                     <div class="form-group">
                       <label class="text-uppercase">City <span>*</span>
                         <input type="text" formControlName="city" class="form-control" placeholder="">
+                        <div *ngIf="submitted && f.city.errors" class="alert alert-danger">
+                          <div *ngIf="f.city.errors.required">City is required.</div>
+                        </div>
                       </label>
                     </div>
                   </div>
@@ -102,6 +127,9 @@
                     <div class="form-group">
                       <label class="text-uppercase country">State <span>*</span>
                         <input type="text" formControlName="state" class="form-control" placeholder="">
+                        <div *ngIf="submitted && f.state.errors" class="alert alert-danger">
+                          <div *ngIf="f.state.errors.required">State is required.</div>
+                        </div>
                       </label>
                     </div>
                   </div>
@@ -109,6 +137,9 @@
                     <div class="form-group">
                       <label class="text-uppercase">Zip Code <span>*</span>
                         <input type="text" formControlName="zipCode" class="form-control" placeholder="">
+                        <div *ngIf="submitted && f.zipCode.errors" class="alert alert-danger">
+                          <div *ngIf="f.zipCode.errors.required">Zip Code is required.</div>
+                        </div>
                       </label>
                     </div>
                   </div>
@@ -118,6 +149,9 @@
                     <div class="form-group">
                       <label class="text-uppercase">Phone Number <span>*</span>
                         <input type="text" formControlName="phoneNumber" class="form-control" placeholder="">
+                        <div *ngIf="submitted && f.phoneNumber.errors" class="alert alert-danger">
+                          <div *ngIf="f.phoneNumber.errors.required">Phone Number is required.</div>
+                        </div>
                       </label>
                     </div>
                   </div>
