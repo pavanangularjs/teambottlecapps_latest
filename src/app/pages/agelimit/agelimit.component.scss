@@ -8,7 +8,18 @@
     background-color: #000;
     display: none;
   }
-  
+  .modal-body.text-center {
+    border: 1px solid rgba(0,0,0,.1) !important;
+   background: #fff !important;
+   border-radius: 8px;
+   padding-top: 40px;
+   }
+  .modal-content{
+  box-shadow: none !important;
+  border:none !important;  
+  background: none !important;
+    
+  }
   #boxes .window {
     position: absolute;
     left: 0;
@@ -87,8 +98,8 @@
     letter-spacing: normal;
     text-align: center;
     color: $lukas-color;
-    padding-bottom: 30px;
-    padding-top: 20px;
+    padding-bottom: 50px;
+    padding-top: 40px;
   }
 
   .modal-body h2.popins_bold-2{
@@ -134,6 +145,12 @@
     .modal-body h2.popins_bold {
       font-size: 2em;
     }
+  }
+  @media screen and (min-width:320px) and (max-width:767px){
+    .modal-body h2.popins_bold {
+      line-height: 1.2em;
+    }
+
   }
  
   #dialog{

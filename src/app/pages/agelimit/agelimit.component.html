@@ -12,14 +12,14 @@
     <span class="fa fa-ban popicon-block"></span>
     <h2 class="popins_bold-2">Sorry!</h2>
   </ng-template>
-</div>
-<div class="modal-footer buttons-container">
-  <p *ngIf="!sorryPopup; else sorryDialogFooter">To learn more about responsible consumption, please visit <a
-      href="https://www.drinksmart.com" target="_blank">www.drinksmart.com</a></p>
-  <ng-template #sorryDialogFooter>
-    <p>You must be 21 years of age or older to view this site. </p>
-    <div class="btncenter-block">
-      <button type="button" class="btn btn-default close">Leave Site!</button>
+  <div class="modal-footer buttons-container">
+      <p *ngIf="!sorryPopup; else sorryDialogFooter">To learn more about responsible consumption, please visit <a
+          href="https://www.drinksmart.com" target="_blank">www.drinksmart.com</a></p>
+      <ng-template #sorryDialogFooter>
+        <p>You must be 21 years of age or older to view this site. </p>
+        <div class="btncenter-block">
+          <button type="button" class="btn btn-default close">Leave Site!</button>
+        </div>
+      </ng-template>
     </div>
-  </ng-template>
 </div>

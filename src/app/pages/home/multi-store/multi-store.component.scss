@@ -5,8 +5,13 @@
 }
 
 .modal-content {
+  box-shadow: none !important;
+  border:none !important;  
+  background: none !important;
   .modal-body {
     padding: 30px;
+    border: 1px solid rgba(0,0,0,.1) !important;
+    background: #fff !important;
     h3 {
       font-size: 1.2em;
       margin-top: 0;
@@ -90,7 +95,7 @@
 }
 
 .fade {
-  background: #fff !important;
+  background: #f9fbfc !important;
   opacity: 1;
 }
 .fa-map-marker {

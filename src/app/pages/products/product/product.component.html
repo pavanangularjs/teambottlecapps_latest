@@ -22,17 +22,22 @@
       </div>
       <div class="second_content" routerLink="/product-details/{{item.PID}}">
         <div class="">
-          <p class="strike_text" *ngIf="item?.PriceDisplay !== item?.OfferPriceDisplay">{{item?.PriceDisplay}}</p>
-          <p class="price">{{item?.OfferPriceDisplay}}</p>
-          <h5 class="productname">{{item?.ProductName}}</h5>
-          <p class="product_size">
+          <div class="strike_text" *ngIf="item?.PriceDisplay !== item?.OfferPriceDisplay">{{item?.PriceDisplay}}</div>
+          <div><p class="price">{{item?.OfferPriceDisplay}}</p></div>
+          <div><h5 class="productname">{{item?.ProductName}}</h5></div>
+          <div class="row col-md-12"><p class="product_size">
             <span>{{item?.Size}}</span>
-          </p>
+          </p></div>
+          <div class="row ptop15">
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <p class="rating_star">
-            <app-rating [rate]='item?.Rating'></app-rating>
-            <span class="first">{{item?.ReviewCount}}</span>
-            <span class="reviews"> reviews</span>
-          </p>
+            <app-rating [rate]='item?.Rating'></app-rating> </p>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <p><span class="first">{{item?.ReviewCount}}</span>
+            <span class="reviews"> reviews</span> </p>
+        </div>
+      </div>
         </div>
       </div>
     </div>
