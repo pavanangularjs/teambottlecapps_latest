@@ -17,12 +17,15 @@ import { CommonService } from '../../../shared/services/common.service';
   styleUrls: ['./popup.component.scss']
 })
 export class PopupComponent implements OnInit {
+  @ViewChild('openModal') openModal: ElementRef;
 
   isAgeVerified = false;
   currentStoreId = 0;
   storeList: any;
   searchText: string;
   tempStores: any;
+
+  initialStoreId = 0;
 
   constructor(private router: Router,
     private store: Store<CustomerLoginSession>,
@@ -60,7 +63,7 @@ export class PopupComponent implements OnInit {
       this.commonService.onCacheUpdated();
       // this.sessionService.createNewSession();
 
-      // this.openModal.nativeElement.click();
+      this.openModal.nativeElement.click();
     }
   }
 
@@ -69,6 +72,7 @@ export class PopupComponent implements OnInit {
     this.storeService.storeGetList().subscribe(data => {
       if (data && data.ListStore) {
         this.currentStoreId = data.StoreId;
+        this.initialStoreId = data.StoreId;
 
         const sList = data.ListStore;
         const fromIndex = sList.findIndex(item => item.StoreId === this.currentStoreId);

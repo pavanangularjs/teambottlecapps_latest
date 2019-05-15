@@ -1,3 +1,4 @@
+<button id="openModal" #openModal [hidden]="true" data-toggle="modal" data-target="#myModal"></button>
 <!-- Modal -->
 <div id="myModal" class="modal fade animated fadeInRightBig  activate" role="dialog">
   <div class="modal-dialog">
@@ -8,7 +9,7 @@
         <h4 class="modal-title text-center"><img src="../../../assets/Images/headerlogo.png"></h4>
       </div>
       <app-agelimit *ngIf="!isAgeVerified" (ageVerified)="onAgeVerified($event)"></app-agelimit>
-      <div *ngIf="isAgeVerified && storeList?.length > 0">
+      <div *ngIf="isAgeVerified && initialStoreId === 0">
         <div class="modal-body">
           <form class="mbottom15">
             <div class="form-inline-lg">
@@ -67,7 +68,8 @@
           </div>
         </div>
         <div class="modal-footer text-center">
-          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="onStoreSelectConfirm()">Start
+          <button type="button" class="btn btn-default" data-dismiss="modal" 
+           [disabled]="currentStoreId===0" (click)="onStoreSelectConfirm()">Start
             Shopping</button>
         </div>
       </div>
