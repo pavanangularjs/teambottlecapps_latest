@@ -160,7 +160,7 @@ export class CartComponent implements OnInit {
   }
 
   getQty (item: any) {
-    if (item && item.DealId !== 0 && item.IsBottleLimitAtRetail === false) {
+    if (item && item.DealId !== 0 && item.IsBottleLimitAtRetail === false && item.DealInventory > 0) {
       return this.quantity.filter(qty => qty <= item.DealInventory);
     }
     return this.quantity;
