@@ -24,5 +24,8 @@
     <div class="row" *ngIf="isOrderPlaced">
       <app-place-order-result [orderNumber]="orderNumber"></app-place-order-result>
     </div>
+    <div *ngIf="orderInProgress">
+      <app-preloader></app-preloader>
+    </div>
   </div>
 </section>

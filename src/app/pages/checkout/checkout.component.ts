@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
+import { CommonService } from '../../shared/services/common.service';
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -9,7 +11,12 @@ export class CheckoutComponent implements OnInit {
   cartDetails: any;
   orderNumber: string;
   isOrderPlaced = false;
-  constructor(private cartService: CartService) { }
+  orderInProgress = false;
+  constructor(private cartService: CartService, private commonService: CommonService) {
+    this.commonService.orderPlaced.subscribe(data => {
+      this.orderInProgress = data;
+    });
+   }
 
   ngOnInit() {
     this.isOrderPlaced = false;

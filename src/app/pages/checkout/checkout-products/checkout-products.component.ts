@@ -9,6 +9,7 @@ import { Store } from '@ngrx/store';
 import { CustomerLoginSession } from '../../../models/customer-login-session';
 import { StoreGetHome } from '../../../state/product-store/product-store.action';
 import { VantivPaymentServerSideApiService } from '../../../services/vantiv-payment-serverside-api.service';
+import { CommonService } from '../../../shared/services/common.service';
 
 @Component({
   selector: 'app-checkout-products',
@@ -32,12 +33,13 @@ export class CheckoutProductsComponent implements OnInit {
     private toastr: ToastrService,
     private customerService: CustomerService,
     private vantivPaymentService: VantivPaymentServerSideApiService,
-    private store: Store<CustomerLoginSession>) {
-      this.cartService.cartUpdated.subscribe(() => {
-        this.cartDetails = this.cartService.cartdetails;
-        this.filterCartDetails();
-      });
-     }
+    private store: Store<CustomerLoginSession>,
+    private commonService: CommonService) {
+    this.cartService.cartUpdated.subscribe(() => {
+      this.cartDetails = this.cartService.cartdetails;
+      this.filterCartDetails();
+    });
+  }
 
   ngOnInit() {
     this.couponCode = '';
@@ -58,7 +60,7 @@ export class CheckoutProductsComponent implements OnInit {
     }
     this.listCharges = this.cartDetails.ListCharge.filter(charge => charge.ChargeTitle !== 'Tip');
 
-    if ( this.cartDetails.OrderTypeId === 2 && this.cartDetails.ListTipForDriver.length > 0 ) {
+    if (this.cartDetails.OrderTypeId === 2 && this.cartDetails.ListTipForDriver.length > 0) {
       if (this.cartDetails.ListTipForDriver.filter(item => item.Percentage === 0).length === 0) {
         const otherTip = { 'Percentage': 0, 'TipAmount': '', 'TipAmountDisplay': 'Other', 'IsDeafault': false };
         this.cartDetails.ListTipForDriver.push(otherTip);
@@ -79,14 +81,14 @@ export class CheckoutProductsComponent implements OnInit {
     this.cartDetails.PaymentTypeId = 0; */
 
     // if (this.cartDetails.PaymentTypeId === 0) {
-      if (
-        !this.cartDetails.Profile ||
-        this.cartDetails.Profile.ContactNo === '' ||
-        this.cartDetails.Profile.FirstName === '' ||
-        this.cartDetails.Profile.LastName === '' ) {
-          this.toastr.error('Please complete your profile');
-          return;
-        }
+    if (
+      !this.cartDetails.Profile ||
+      this.cartDetails.Profile.ContactNo === '' ||
+      this.cartDetails.Profile.FirstName === '' ||
+      this.cartDetails.Profile.LastName === '') {
+      this.toastr.error('Please complete your profile');
+      return;
+    }
     // }
 
     if (this.cartDetails.OrderTypeId === 2 && this.cartDetails.AddressId === 0) {
@@ -105,7 +107,7 @@ export class CheckoutProductsComponent implements OnInit {
       return;
     }
 
-    if ((this.cartDetails.PaymentTypeId === 1)  &&
+    if ((this.cartDetails.PaymentTypeId === 1) &&
       this.paymentService.createTransaction.cvv === 0 || this.paymentService.createTransaction.cvv.toString() === '') {
       this.toastr.error('Please Enter CVV');
       return;
@@ -119,9 +121,10 @@ export class CheckoutProductsComponent implements OnInit {
 
     this.isCheckoutSubmitted = true;
 
+    this.commonService.onOrderPlaced(true);
     if (this.cartDetails.PaymentTypeId === 0) {
       this.placeOrder();
-    } else if (this.cartDetails.PaymentTypeId === 1 ) {
+    } else if (this.cartDetails.PaymentTypeId === 1) {
       this.paymentService.createTransactionRequest(data).subscribe(paymentResponse => {
         if (paymentResponse.transactionResponse && paymentResponse.transactionResponse.responseCode === '1') {
           this.placeOrderForOnlinePayment(paymentResponse);
@@ -129,17 +132,17 @@ export class CheckoutProductsComponent implements OnInit {
           this.orderplace.emit();
         }
       });
-    } else if (this.cartDetails.PaymentTypeId === 7 ) {
+    } else if (this.cartDetails.PaymentTypeId === 7) {
 
       if (this.vantivPaymentService.vantiveProfile) {
-          this.vantivPaymentService.CreditCardPayment(data.amount).subscribe((paymentResponse: any) => {
-            if (this.vantivPaymentService.vExpressResponseCode === '0') {
-              this.placeOrderForOnlinePayment(this.parseVantivResponse(paymentResponse));
-            } else {
-              this.orderplace.emit();
-            }
-          });
-        }
+        this.vantivPaymentService.CreditCardPayment(data.amount).subscribe((paymentResponse: any) => {
+          if (this.vantivPaymentService.vExpressResponseCode === '0') {
+            this.placeOrderForOnlinePayment(this.parseVantivResponse(paymentResponse));
+          } else {
+            this.orderplace.emit();
+          }
+        });
+      }
     }
   }
 
@@ -150,60 +153,59 @@ export class CheckoutProductsComponent implements OnInit {
 
     if (response.VantivAction === 'Sale') {
       if (
-        response.TransactionResponse && 
+        response.TransactionResponse &&
         response.TransactionResponse.CreditCardSaleResponse &&
         response.TransactionResponse.CreditCardSaleResponse.Response) {
-  
+
         res = response.TransactionResponse.CreditCardSaleResponse.Response;
-        }
+      }
     } else {
       if (
-        response.TransactionResponse && 
-        response.TransactionResponse.CreditCardAuthorizationResponse  &&
+        response.TransactionResponse &&
+        response.TransactionResponse.CreditCardAuthorizationResponse &&
         response.TransactionResponse.CreditCardAuthorizationResponse.Response) {
-  
+
         res = response.TransactionResponse.CreditCardAuthorizationResponse.Response;
-        }
+      }
     }
-    if ( res )
-    {
+    if (res) {
       req = {
-              'Address': {
-                'BillingAddress1': res.Address.BillingAddress1 || ''
-              },
-              'Batch': {
-                // 'HostBatchAmount': '7946.21',
-                'HostBatchID': res.Batch.HostBatchID || ''
-                // 'HostItemID': '352'
-              },
-              'Card': {
-                'AVSResponseCode': res.Card.AVSResponseCode || '',
-                'BIN': res.Card.BIN || '',
-                'CardLogo': res.Card.CardLogo || '',
-                'CardNumberMasked': res.Card.CardNumberMasked || ''
-              },
-              'ExpressResponseCode': res.ExpressResponseCode || '',
-              'ExpressResponseMessage': res.ExpressResponseMessage || '',
-              'ExpressTransactionDate': res.ExpressTransactionDate || '',
-              'ExpressTransactionTime': res.ExpressTransactionTime || '',
-              'ExpressTransactionTimezone': res.ExpressTransactionTimezone || '',
-              'HostResponseCode': res.HostResponseCode || '',
-              'HostResponseMessage': res.HostResponseMessage || '',
-              'PaymentAccount': {
-                'PaymentAccountID': this.vantivPaymentService.vUserSelectedPaymentAccountID,
-                'PaymentAccountReferenceNumber': res.PaymentAccount.PaymentAccountReferenceNumber
-              },
-              'Transaction': {
-                'AcquirerData': res.Transaction.AcquirerData,
-                'ApprovalNumber': res.Transaction.ApprovalNumber,
-                'ApprovedAmount': res.Transaction.ApprovedAmount,
-                'ProcessorName': res.Transaction.ProcessorName,
-                'ReferenceNumber': res.Transaction.ReferenceNumber,
-                'TransactionID': res.Transaction.TransactionID,
-                'TransactionStatus': res.Transaction.TransactionStatus,
-                'TransactionStatusCode': res.Transaction.TransactionStatusCode
-              }
-        };
+        'Address': {
+          'BillingAddress1': res.Address.BillingAddress1 || ''
+        },
+        'Batch': {
+          // 'HostBatchAmount': '7946.21',
+          'HostBatchID': res.Batch.HostBatchID || ''
+          // 'HostItemID': '352'
+        },
+        'Card': {
+          'AVSResponseCode': res.Card.AVSResponseCode || '',
+          'BIN': res.Card.BIN || '',
+          'CardLogo': res.Card.CardLogo || '',
+          'CardNumberMasked': res.Card.CardNumberMasked || ''
+        },
+        'ExpressResponseCode': res.ExpressResponseCode || '',
+        'ExpressResponseMessage': res.ExpressResponseMessage || '',
+        'ExpressTransactionDate': res.ExpressTransactionDate || '',
+        'ExpressTransactionTime': res.ExpressTransactionTime || '',
+        'ExpressTransactionTimezone': res.ExpressTransactionTimezone || '',
+        'HostResponseCode': res.HostResponseCode || '',
+        'HostResponseMessage': res.HostResponseMessage || '',
+        'PaymentAccount': {
+          'PaymentAccountID': this.vantivPaymentService.vUserSelectedPaymentAccountID,
+          'PaymentAccountReferenceNumber': res.PaymentAccount.PaymentAccountReferenceNumber
+        },
+        'Transaction': {
+          'AcquirerData': res.Transaction.AcquirerData,
+          'ApprovalNumber': res.Transaction.ApprovalNumber,
+          'ApprovedAmount': res.Transaction.ApprovedAmount,
+          'ProcessorName': res.Transaction.ProcessorName,
+          'ReferenceNumber': res.Transaction.ReferenceNumber,
+          'TransactionID': res.Transaction.TransactionID,
+          'TransactionStatus': res.Transaction.TransactionStatus,
+          'TransactionStatusCode': res.Transaction.TransactionStatusCode
+        }
+      };
     }
 
     return req;
@@ -214,6 +216,7 @@ export class CheckoutProductsComponent implements OnInit {
       (orderResponse: any) => {
         this.cartDetails = orderResponse;
         if (this.cartDetails.OrderId !== 0) {
+          this.commonService.onOrderPlaced(false);
           this.toastr.success('Order Placed Successfully.');
           this.store.dispatch(new StoreGetHome());
         }
@@ -233,6 +236,7 @@ export class CheckoutProductsComponent implements OnInit {
           this.cartDetails = orderResponse;
           this.isCheckoutSubmitted = false;
           if (this.cartDetails.OrderId !== 0) {
+            this.commonService.onOrderPlaced(false);
             this.toastr.success('Order Placed Successfully.');
             this.store.dispatch(new StoreGetHome());
           }
@@ -240,6 +244,7 @@ export class CheckoutProductsComponent implements OnInit {
           this.orderplace.emit(this.cartDetails);
         });
     } else {
+      this.commonService.onOrderPlaced(false);
       this.toastr.error('Invalid Session, Please ReLogin ...');
     }
 
@@ -280,7 +285,7 @@ export class CheckoutProductsComponent implements OnInit {
       this.cartService.updateCart(this.cartDetails).subscribe(
         (data: any) => {
           this.cartDetails = data;
-          if ( data.Remark === '') {
+          if (data.Remark === '') {
             this.isCouponApplied = true;
             this.toastr.success('Coupon Applied Successfully.');
             this.filterCartDetails();

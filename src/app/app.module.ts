@@ -79,6 +79,7 @@ import { OffersComponent } from './pages/home/offers/offers.component';
 import { OfferComponent } from './pages/offer/offer.component';
 import { AdvancedFilterAllComponent } from './pages/products/advanced-filter-all/advanced-filter-all.component';
 import { PhoneMaskDirective } from './shared/directives/phone-mask.directive';
+import { PreloaderComponent } from './pages/checkout/preloader/preloader.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -140,7 +141,8 @@ export function getAuthServiceConfigs() {
     OffersComponent,
     AdvancedFilterAllComponent,
     PhoneMaskDirective,
-    PopupComponent
+    PopupComponent,
+    PreloaderComponent
   ],
   imports: [
     BrowserModule,
