@@ -290,8 +290,8 @@ table tr td .img_div{
     border-top: none;
     text-align: left;
     padding: 10px 15px;
-    min-height: 40%;
-    height: 40%;
+    min-height: 45%;
+    height: 45%;
     border-radius: 0 0 5px 5px;
     cursor: pointer;
     position: relative;
@@ -308,11 +308,11 @@ table tr td .img_div{
     letter-spacing: normal;
     text-align: left;
     color: #262628;
-    position: absolute;
+    //position: absolute;
 }
 .second_content p.price{
     font-family:montserratbold;
-    font-size: 18px;
+    font-size: 16px;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
@@ -334,6 +334,9 @@ table tr td .img_div{
     color: #262628;
     margin: 0;
     padding:5px 0;
+    // white-space: nowrap;
+    // text-overflow: ellipsis;
+    // overflow: hidden;
 }
 
 .second_content h5{
@@ -341,8 +344,8 @@ table tr td .img_div{
 }
 
 .second_content p.rating_star {
-    position: absolute;
-    bottom: 0px;
+    // position: absolute;
+    // bottom: 0px;
 }
 
 .breadcrumb>li.breadcrumb-item a{
@@ -1090,6 +1093,11 @@ ul.navbar-nav li a:hover {
 
     .bottom {
         margin-bottom: 15px !important;
+    }
+    .second_content h4, .second_content h5{
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
 }
 

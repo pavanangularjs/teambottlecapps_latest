@@ -1,5 +1,5 @@
-<div class="modal fade store-picker-container" id="multiLocationDialog" tabindex="-1" role="dialog"
-  aria-labelledby="multiLocationDialogLabel">
+<div [ngClass]="currentStore === 0 ? 'fade' : 'fade2'" class="modal store-picker-container" id="multiLocationDialog" tabindex="-1" role="dialog"
+  aria-labelledby="multiLocationDialogLabel" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -40,11 +40,11 @@
             </div>
             <div class="col-md-3 text-center">
               <table width="100%">
-                <tr>
+                <!-- <tr>
                   <td class="text-center">
                     <i class="fa fa-map-marker success" aria-hidden="true"></i> 0.1 mi
                   </td>
-                </tr>
+                </tr> -->
                 <tr>
                   <td class="text-center">
                     <div _ngcontent-c8="">
@@ -61,8 +61,17 @@
             </div>
           </div>
         </div>
+        <div class="row empty" *ngIf="stores?.length === 0">
+          <div class="col-md-12">
+            <img src="../../../../assets/Images/icon-store.png">
+          </div>
+          <div class="col-md-12">
+            <h4>No Stores Available!</h4>
+          </div>
+        </div>
       </div>
       <div class="modal-footer text-center">
+          <button type="button" class="btn btn-default skip" data-dismiss="modal" >Skip Location Selection</button>
         <button type="button" class="btn btn-default" data-dismiss="modal" (click)="onStoreSelectConfirm()">Start Shopping</button>
       </div>
     </div>

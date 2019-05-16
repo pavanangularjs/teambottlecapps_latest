@@ -1,6 +1,6 @@
 <button id="openModal" #openModal [hidden]="true" data-toggle="modal" data-target="#myModal"></button>
 <!-- Modal -->
-<div id="myModal" class="modal fade animated fadeInRightBig  activate" role="dialog">
+<div id="myModal" class="modal fade animated fadeInRightBig  activate" role="dialog" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -43,11 +43,11 @@
               </div>
               <div class="col-md-3 text-center">
                 <table width="100%">
-                  <tr>
+                  <!-- <tr>
                     <td class="text-center">
                       <i class="fa fa-map-marker success" aria-hidden="true"></i> 0.1 mi
                     </td>
-                  </tr>
+                  </tr> -->
                   <tr>
                     <td class="text-center">
                       <div _ngcontent-c8="">
@@ -64,6 +64,14 @@
                   </tr>
                 </table>
               </div>
+            </div>
+          </div>
+          <div class="row empty" *ngIf="storeList?.length === 0">
+            <div class="col-md-12">
+              <img src="../../../../assets/Images/icon-store.png">
+            </div>
+            <div class="col-md-12">
+              <h4>No Stores Available!</h4>
             </div>
           </div>
         </div>

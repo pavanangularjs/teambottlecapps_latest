@@ -2,16 +2,21 @@
 
 .modal-header {
   border-bottom: none;
+  background: #f9fbfc;
 }
 
 .modal-content {
   box-shadow: none !important;
   border:none !important;  
   background: none !important;
+  .modal-footer{ background: #fff !important;}
+  button.skip{ background: #fff !important; border:none !important; box-shadow: none !important; color: #777;}
+  button.skip:hover{background: #fff !important;}
   .modal-body {
     padding: 30px;
     border: 1px solid rgba(0,0,0,.1) !important;
     background: #fff !important;
+    min-height: 400px;
     h3 {
       font-size: 1.2em;
       margin-top: 0;
@@ -35,6 +40,8 @@
     .store-block:nth-last-child(n + 3) {
       border-bottom: none;
     }
+    .empty{ text-align: center; padding: 15px 0;}
+    .empty img{ width: 100%; height: auto; max-width: 60%; margin-bottom: 15px;}
   }
   .mbottom15 {
     margin-bottom: 15px;
@@ -61,6 +68,7 @@
     input.form-control {
       font-family: poppinsregular !important;
     }
+    :focus{ outline-color: white; outline-style: auto;}
   }
   .input-group-addon {
     background-color: #fff !important;
@@ -95,8 +103,14 @@
 }
 
 .fade {
-  background: #f9fbfc !important;
-  opacity: 1;
+  background: rgba(249,251,252,1) !important;
+}
+.fade1 {
+  background: rgba(249,251,252,1) !important;
+
+}
+.fade2 {
+  background: rgba(56, 56, 56, 0.3) !important;
 }
 .fa-map-marker {
   color: #e80a1c;
@@ -124,9 +138,9 @@
 }
 .modal-footer {
   text-align: center;
-  border-top: none;
+  border-top: none !important;
   padding-bottom: 30px;
-  padding-top: 0px;
+  padding-top: 20px;
 }
 /*.fa-map-marker.success{ color: #07c11d;}*/
 .filer_go.success {
