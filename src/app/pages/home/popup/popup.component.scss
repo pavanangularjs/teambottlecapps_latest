@@ -73,8 +73,9 @@
     input.form-control {
       font-family: poppinsregular !important;
     }
-    :focus{ outline-color: white; outline-style: auto;}
+    
   }
+  .form-control:focus{ outline-color: white !important; outline-style: auto !important;}
   .input-group-addon {
     background-color: #fff !important;
     padding: 5px;
