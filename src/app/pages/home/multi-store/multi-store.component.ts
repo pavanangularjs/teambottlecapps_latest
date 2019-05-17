@@ -25,6 +25,7 @@ export class MultiStoreComponent implements OnChanges {
   }
 
   onStoreSelectConfirm() {
+    localStorage.setItem('storeId', this.currentStore.toString());
     this.storeChange.emit(this.currentStore);
   }
 
