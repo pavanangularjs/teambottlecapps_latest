@@ -38,6 +38,10 @@ export class PopupComponent implements OnInit {
     this.store.select(CustomerSelectors.customerLoginSessionData)
     .subscribe(clsd => {
       if (clsd) {
+        if (!localStorage.getItem('storeId') && clsd.StoreId !== 0) {
+          localStorage.setItem('storeId', clsd.StoreId.toString());
+          this.currentStoreId = clsd.StoreId;
+        }
         this.getStoreList();
       }
     });
