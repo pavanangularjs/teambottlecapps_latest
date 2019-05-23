@@ -295,6 +295,7 @@ table tr td .img_div{
     border-radius: 0 0 5px 5px;
     cursor: pointer;
     position: relative;
+    float: none !important;
 }
 .second_content p.product_size{
     /* border-bottom: 1px solid #ddd;
@@ -1098,7 +1099,9 @@ ul.navbar-nav li a:hover {
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
+        font-size: 0.8em !important;
     }
+    .Main_bottlesection{ margin-bottom: 15px !important; display: flow-root;}
 }
 
  #menu,.default {
@@ -1463,12 +1466,14 @@ ul.sidebar-menu,.border_bottom {
 
 }
 
-@media screen and (min-width:320px) and (max-width:500px){
+@media screen and (min-width:320px) and (max-width:568px){
     .profile,.float_right{
         width:100%;
     }
     
 }
+
+
 
 button {
     margin-right: 10px;

@@ -378,3 +378,11 @@ h4.left-panel-title a.bottles-brand {
 .filter-panel {
   margin-bottom: 0px !important;
 }
+/* iPhone 2G-4S in portrait */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 568px) 
+and (orientation : portrait) {
+    .second_content{ height: 59% !important; margin-bottom: none !important;}
+}
+.mbottom15{ margin-bottom: 15px;}

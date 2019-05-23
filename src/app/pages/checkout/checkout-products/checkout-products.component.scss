@@ -141,10 +141,12 @@
 
 .summary-container {
   a.exapand-icon {
-    font-size: 22px;
+    font-size: 0.8em !important;
     position: relative;
     top: 0px;
     color: #222;
+    padding-left: 10px;
+    padding-right: 3px;
   }
   table {
     td p {
@@ -152,7 +154,8 @@
     }
     &.exapnded-table {
       margin-bottom: 10px;
-      width: 100%;
+      width: 93%;
+      margin-left: 30px;
     }
   }
   h4, h5 {
@@ -243,7 +246,10 @@ td .checkout-product-details {
 .payment-method table th {
   font-family: $poppins-bold;
 }
-
+.text-muted{ color: #191818;}
+.tip{ background: #f1f1f1; height: 40px;}
+.tip span{ font-size: 1.4em; padding-right: 3px;}
+.tipdown{ background: #fff; padding: 10px;}
 
 
 @media only screen and (max-width: 1024px) {
@@ -305,3 +311,4 @@ td .checkout-product-details {
       top: -1px;
     }
 }
+.pright10{ padding-right:10px;}

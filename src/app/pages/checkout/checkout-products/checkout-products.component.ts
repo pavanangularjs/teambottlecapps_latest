@@ -256,6 +256,7 @@ export class CheckoutProductsComponent implements OnInit {
       customerPaymentProfileId: '',
       cvv: 0
     };
+    this.vantivPaymentService.vUserSelectedPaymentAccountID = '';
   }
   private getPlaceOrderRequestParamsForOnlinePayment(data: any): PlaceOrderForOnlinePayment {
     if (!this.customerService.customerSession) {

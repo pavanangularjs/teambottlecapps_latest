@@ -39,7 +39,7 @@
                   <h4>{{cartDetails?.SubTotalDisplay}}</h4>
                 </td>
               </tr>
-              <tr>
+              <tr class="tip">
                 <td width="25px"> 
                   <a *ngIf="cartDetails?.ListDiscount?.length > 0" class="exapand-icon" (click)="isExpand = !isExpand"> <span class="fa" [ngClass]="isExpand ? 'fa-minus-circle' : 'fa-plus-circle'"></span> </a> 
                 </td>
@@ -51,8 +51,8 @@
                 </td>
               </tr>
               <tr *ngIf="cartDetails?.ListDiscount?.length > 0" >
-                <td></td>
-                <td colspan="2"  *ngIf="isExpand">
+                <!-- <td></td> -->
+                <td colspan="3"  *ngIf="isExpand">
                   <table class="exapnded-table">
                     <tr *ngFor="let discount of cartDetails?.ListDiscount">
                       <td><small class="text-muted">{{discount?.DiscountTitle}}</small></td>
@@ -70,7 +70,7 @@
                   <h4>{{charge?.ChargeAmountDisplay}}</h4>
                 </td>
               </tr>            
-              <tr *ngIf="cartDetails?.OrderTypeId !== 1 && cartDetails?.ListTipForDriver.length > 0">
+              <tr *ngIf="cartDetails?.OrderTypeId !== 1 && cartDetails?.ListTipForDriver.length > 0" class="tip">
                 <td width="25px">
                   <a class="exapand-icon" (click)="isTipExpand = !isTipExpand"><span class="fa" [ngClass]="isTipExpand ? 'fa-minus-circle' : 'fa-plus-circle'"></span></a>
                 </td>
@@ -82,8 +82,8 @@
                 </td>
               </tr>
               <tr>
-                <td></td>
-                <td colspan="2" *ngIf="isTipExpand">
+                <!-- <td></td> -->
+                <td colspan="2" *ngIf="isTipExpand" class="tipdown" colspan="3">
                   <table class="exapnded-table">
                     <tr *ngFor="let tip of cartDetails?.ListTipForDriver">
                       <td>

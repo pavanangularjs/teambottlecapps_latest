@@ -11,9 +11,13 @@
       </div>
     </div>
     <div *ngIf="productsList?.length > 0">
-      <div class="row"><div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 margin-bottom-20" *ngFor="let product of productsList">
+      <div class="row">
+        <div class="col-md-12">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 margin-bottom-20" *ngFor="let product of productsList">
         <app-product [item]="product"></app-product>
-      </div></div>
+      </div>
+    </div>
+    </div>
       <div class="col-md-12 col-sm-12 btn-container" *ngIf="isFeatureProductsPage">
         <div class="row margin-bottom-20">
           <div class="col-md-6 col-sm-6">
