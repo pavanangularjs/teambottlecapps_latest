@@ -1,4 +1,4 @@
-import { Component, OnChanges, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnChanges, Input, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
 
 
 @Component({
@@ -10,6 +10,7 @@ export class MultiStoreComponent implements OnChanges {
   @Input() stores: any;
   @Input() currentStore: any;
   @Output() storeChange = new EventEmitter<number>();
+  @ViewChild('openModal') openModal: ElementRef;
   searchText: string;
   tempStores: any;
 
@@ -20,13 +21,15 @@ export class MultiStoreComponent implements OnChanges {
   ngOnChanges() {
   }
 
-  onStoreSelect(storeId: number) {
+  /* onStoreSelect(storeId: number) {
     this.currentStore = storeId;
-  }
+  } */
 
-  onStoreSelectConfirm() {
+  onStoreSelectConfirm(storeId: number) {
+    this.currentStore = storeId;
     localStorage.setItem('storeId', this.currentStore.toString());
     this.storeChange.emit(this.currentStore);
+    this.openModal.nativeElement.click();
   }
 
 

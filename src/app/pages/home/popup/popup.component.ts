@@ -93,11 +93,12 @@ export class PopupComponent implements OnInit {
     });
   }
 
-  onStoreSelect(storeId: number) {
+  /* onStoreSelect(storeId: number) {
     this.currentStoreId = storeId;
     // this.storeChange.emit(storeId);
-  }
-  onStoreSelectConfirm() {
+  } */
+  onStoreSelectConfirm(storeId: number) {
+    this.currentStoreId = storeId;
     localStorage.setItem('storeId', this.currentStoreId.toString());
     this.appConfig.storeID = this.currentStoreId;
     this.sessionService.createNewSession();

@@ -51,14 +51,8 @@
                   <tr>
                     <td class="text-center">
                       <div _ngcontent-c8="">
-                        <button *ngIf="currentStoreId === store?.StoreId" _ngcontent-c8=""
-                          class="btn btn-default filer_go success animated fadeInRightBig  activate">
-                          Selected Store
-                        </button>
-                        <button *ngIf="currentStoreId !== store?.StoreId" _ngcontent-c8=""
-                          class="btn btn-default filer_go" (click)="onStoreSelect(store.StoreId)">
-                          Select Store
-                        </button>
+                        <button type="button" class="btn btn-default filer_go" data-dismiss="modal"
+                          (click)="onStoreSelectConfirm(store.StoreId)">Select Store</button>
                       </div>
                     </td>
                   </tr>
@@ -75,7 +69,7 @@
             </div>
           </div>
         </div>
-        <div class="modal-footer text-center">
+        <div class="modal-footer text-center" *ngIf="false">
           <button type="button" class="btn btn-default" data-dismiss="modal" 
            [disabled]="currentStoreId===0" (click)="onStoreSelectConfirm()">Start
             Shopping</button>

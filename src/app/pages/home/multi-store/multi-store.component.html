@@ -1,3 +1,4 @@
+<button id="openModal" #openModal [hidden]="true" data-toggle="modal" data-target="#multiLocationDialog"></button>
 <div [ngClass]="currentStore === 0 ? 'fade' : 'fade2'" class="modal store-picker-container" id="multiLocationDialog" tabindex="-1" role="dialog"
   aria-labelledby="multiLocationDialogLabel" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog">
@@ -5,6 +6,7 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title text-center"><img src="../../../assets/Images/logo-popup.png"></h4>
       </div>
       <div class="modal-body">
@@ -48,10 +50,10 @@
                 <tr>
                   <td class="text-center">
                     <div _ngcontent-c8="">
-                      <button *ngIf="currentStore === store?.StoreId" _ngcontent-c8="" class="btn btn-default filer_go success animated fadeInRightBig  activate">
+                      <button type="button" *ngIf="currentStore === store?.StoreId" class="btn btn-default filer_go success animated fadeInRightBig  activate">
                         Selected Store
                       </button>
-                      <button *ngIf="currentStore !== store?.StoreId" _ngcontent-c8="" class="btn btn-default filer_go" (click)="onStoreSelect(store.StoreId)">
+                      <button type="button" *ngIf="currentStore !== store?.StoreId" class="btn btn-default filer_go" (click)="onStoreSelectConfirm(store.StoreId)">
                         Select Store
                       </button>
                     </div>
@@ -70,8 +72,8 @@
           </div>
         </div>
       </div>
-      <div class="modal-footer text-center">
-          <button type="button" class="btn btn-default skip" data-dismiss="modal" >Skip Location Selection</button>
+      <div class="modal-footer text-center" *ngIf="false">
+        <button type="button" class="btn btn-default skip" data-dismiss="modal" >Skip Location Selection</button>
         <button type="button" class="btn btn-default" data-dismiss="modal" (click)="onStoreSelectConfirm()">Start Shopping</button>
       </div>
     </div>
